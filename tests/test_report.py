@@ -1,4 +1,4 @@
-"""Tests for the suit acquisition matrix rendering."""
+"""Tests for the multi-cycle acquisition matrix rendering."""
 
 from __future__ import annotations
 
@@ -43,6 +43,41 @@ def test_print_report_suit_table(make_save):
     print_report(analyze(make_save(obtained={"BS_09_2"}), load_catalog()), console=console)
     output = buffer.getvalue()
     assert "纳米战衣" in output
+    assert "耳饰" in output
     assert "✅" in output
     assert "🔒" in output
     assert "Flooded Commercial Sector" in output
+
+
+def test_earring_matrix_markdown(make_save):
+    catalog = load_catalog()
+    text_ng0 = render_markdown(analyze(make_save(ng_plus=0), catalog, categories=["earrings"]))
+    assert "## 耳饰获取一览" in text_ng0
+    assert "### Eidos 7" in text_ng0
+    assert "❌ 绯红泪珠" in text_ng0
+    assert "🔒 高贵泪珠" in text_ng0
+    assert "🔒 黄金之心" in text_ng0
+    text_ng2 = render_markdown(analyze(make_save(ng_plus=2), catalog, categories=["earrings"]))
+    assert "❌ 高贵泪珠" in text_ng2
+    assert "❌ 黄金之心" in text_ng2
+
+
+def test_other_matrix_categories(make_save):
+    save = make_save(ng_plus=1)
+    catalog = load_catalog()
+    cases = [
+        ("glasses", "## 眼镜/面饰获取一览", "❌ 超大圆框眼镜"),
+        ("drone_seals", "## 无人机外观获取一览", "❌ 铁甲套装"),
+        ("adam_costumes", "## 亚当服装获取一览", "❌ 夜鹰"),
+        ("lily_costumes", "## 莉莉服装获取一览", "❌ 雨天"),
+    ]
+    for key, heading, needle in cases:
+        text = render_markdown(analyze(save, catalog, categories=[key]))
+        assert heading in text, key
+        assert needle in text, key
+
+
+def test_non_matrix_categories_keep_flat_list(make_save):
+    text = render_markdown(analyze(make_save(), load_catalog(), categories=["design_patterns"]))
+    assert "## 设计图案获取一览" not in text
+    assert "### 设计图案 (0/87)" in text
