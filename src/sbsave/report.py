@@ -10,6 +10,7 @@ from rich.console import Console
 from rich.table import Table
 
 from .analyze import Analysis, CategoryResult, ItemStatus
+from .savegame import SaveData
 
 STATUS_STYLE = {
     "需要二周目(NG+)": "yellow",
@@ -19,6 +20,23 @@ STATUS_STYLE = {
     "豪华版": "cyan",
     "预购特典": "cyan",
     "夏日更新": "cyan",
+}
+
+_SUIT_LEGEND = "✅ 已获得 · ❌ 未获得 · 🔒 需更高周目 · 🎁 DLC/特典 · ➖ 默认外观"
+
+_SUIT_COLUMNS = ("首周目", "二周目(NG+)", "三周目(NG++)", "DLC/特典")
+
+_AREA_ORDER = {
+    "Default": 0,
+    "Eidos 7": 1,
+    "Xion": 2,
+    "Wasteland": 3,
+    "Matrix 11": 5,
+    "Great Desert": 6,
+    "Abyss Levoire": 7,
+    "Eidos 9": 8,
+    "Spire 4": 9,
+    "Boss Challenge": 11,
 }
 
 
@@ -38,6 +56,76 @@ def _obtain_label(status: ItemStatus) -> str:
     if status.reason:
         parts.append(status.reason)
     return " | ".join(parts)
+
+
+def _suit_emoji(status: ItemStatus, save: SaveData) -> str:
+    if status.obtained:
+        return "✅"
+    item = status.item
+    if item.dlc:
+        return "🎁"
+    if item.ng_plus > save.ng_plus_count:
+        return "🔒"
+    if not item.aliases:
+        return "➖"
+    return "❌"
+
+
+def _suit_matrix(statuses: list[ItemStatus], save: SaveData) -> dict[str, dict[str, list[str]]]:
+    """Group suit statuses as area -> location -> cells for 首周目/NG+/NG++/DLC."""
+    areas: dict[str, dict[str, list[str]]] = {}
+    for status in statuses:
+        item = status.item
+        area = item.area or "未分类"
+        location = item.location or "未分类"
+        cells = areas.setdefault(area, {}).setdefault(location, [""] * len(_SUIT_COLUMNS))
+        column = 3 if item.dlc else min(item.ng_plus, 2)
+        entry = f"{_suit_emoji(status, save)} {item.name}"
+        cells[column] = f"{cells[column]}\n{entry}" if cells[column] else entry
+    return {
+        area: locations
+        for area, locations in sorted(areas.items(), key=lambda kv: (_AREA_ORDER.get(kv[0], 99), kv[0]))
+    }
+
+
+def _used_suit_columns(locations: dict[str, list[str]]) -> list[int]:
+    return [i for i in range(len(_SUIT_COLUMNS)) if any(cells[i] for cells in locations.values())]
+
+
+def _print_suit_matrix(result: CategoryResult, save: SaveData, console: Console) -> None:
+    console.print(
+        f"[bold]{result.category.name}[/bold] 已获得 {result.obtained_count}/{result.total} · 图例：{_SUIT_LEGEND}"
+    )
+    for area, locations in _suit_matrix(result.statuses, save).items():
+        used = _used_suit_columns(locations)
+        table = Table(title=area)
+        table.add_column("地点", style="bold")
+        for index in used:
+            table.add_column(_SUIT_COLUMNS[index])
+        for location, cells in locations.items():
+            row = [location] + [cells[index] or "[dim]—[/dim]" for index in used]
+            table.add_row(*row)
+        console.print(table)
+
+
+def _suit_markdown(result: CategoryResult, save: SaveData) -> list[str]:
+    lines = [f"## {result.category.name}获取一览", ""]
+    lines.append(f"已获得 {result.obtained_count}/{result.total} · 图例：{_SUIT_LEGEND}")
+    for area, locations in _suit_matrix(result.statuses, save).items():
+        used = _used_suit_columns(locations)
+        lines.append("")
+        lines.append(f"### {area}")
+        lines.append("")
+        headers = ["地点"] + [_SUIT_COLUMNS[index] for index in used]
+        lines.append("| " + " | ".join(headers) + " |")
+        lines.append("| --- | " + " | ".join("---" for _ in used) + " |")
+        for location, cells in locations.items():
+            values = [
+                cells[index].replace("\n", "<br>") if cells[index] else "—"
+                for index in used
+            ]
+            lines.append(f"| {location} | " + " | ".join(value.replace("|", "\\|") for value in values) + " |")
+    return lines
 
 
 def print_report(analysis: Analysis, console: Console | None = None, show_all: bool = False) -> None:
@@ -73,7 +161,13 @@ def print_report(analysis: Analysis, console: Console | None = None, show_all: b
     console.print(summary)
 
     for result in analysis.categories:
-        if not result.missing:
+        if result.category.key != "nano_suits":
+            continue
+        console.print()
+        _print_suit_matrix(result, save, console)
+
+    for result in analysis.categories:
+        if result.category.key == "nano_suits" or not result.missing:
             continue
         console.print()
         console.print(
@@ -94,7 +188,7 @@ def print_report(analysis: Analysis, console: Console | None = None, show_all: b
 
     if show_all:
         for result in analysis.categories:
-            if not result.obtained_items:
+            if result.category.key == "nano_suits" or not result.obtained_items:
                 continue
             console.print()
             console.print(f"[bold]{result.category.name}[/bold] 已收集:")
@@ -202,10 +296,14 @@ def render_markdown(analysis: Analysis) -> str:
             f"| {result.category.name} | {result.obtained_count}/{result.total} "
             f"({result.percent:.0f}%) | {len(result.missing)} | {result.blocked_count} |"
         )
+    suits = next((result for result in analysis.categories if result.category.key == "nano_suits"), None)
+    if suits is not None:
+        lines.append("")
+        lines.extend(_suit_markdown(suits, save))
     lines.append("")
     lines.append("## 未收集清单")
     for result in analysis.categories:
-        if not result.missing:
+        if result.category.key == "nano_suits" or not result.missing:
             continue
         lines.append("")
         lines.append(f"### {result.category.name} ({result.obtained_count}/{result.total})")

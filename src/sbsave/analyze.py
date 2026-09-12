@@ -37,6 +37,7 @@ class CategoryResult:
     obtained_items: list[CatalogItem] = field(default_factory=list)
     extra_obtained: list[str] = field(default_factory=list)
     blocked_count: int = 0
+    statuses: list[ItemStatus] = field(default_factory=list)
 
     @property
     def percent(self) -> float:
@@ -91,10 +92,12 @@ def analyze(save: SaveData, catalog: Catalog, categories: list[str] | None = Non
             continue
         missing: list[ItemStatus] = []
         obtained_items: list[CatalogItem] = []
+        statuses: list[ItemStatus] = []
         blocked = 0
         for item in items:
             is_obtained = any(alias in obtained for alias in item.satisfy_aliases)
             status = ItemStatus(item=item, obtained=is_obtained)
+            statuses.append(status)
             if is_obtained:
                 obtained_items.append(item)
             else:
@@ -116,6 +119,7 @@ def analyze(save: SaveData, catalog: Catalog, categories: list[str] | None = Non
                 obtained_items=obtained_items,
                 extra_obtained=extra,
                 blocked_count=blocked,
+                statuses=statuses,
             )
         )
 
