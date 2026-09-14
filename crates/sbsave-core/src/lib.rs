@@ -2,6 +2,7 @@ pub mod analyze;
 pub mod catalog;
 pub mod gvas;
 mod paths;
+pub mod report;
 pub mod savegame;
 
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
