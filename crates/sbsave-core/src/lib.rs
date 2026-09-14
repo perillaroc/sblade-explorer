@@ -1,3 +1,5 @@
+pub mod gvas;
+
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 #[cfg(test)]
