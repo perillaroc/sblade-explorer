@@ -10,6 +10,9 @@
 
 工具为**只读**分析，不会修改存档。
 
+> 本项目为 AI 大模型开发项目：全部代码、目录库数据管线与文档均由 AI 大模型生成，
+> 人类负责提出需求、提供数据与最终审阅。
+
 ## 安装
 
 需要 [uv](https://docs.astral.sh/uv/)（Python 3.10+，uv 会自动管理环境）。
@@ -54,6 +57,7 @@ uv run sbsave catalog check
 uv run sbsave dump
 uv run sbsave dump --obtained
 uv run sbsave dump --json dump_summary.json
+uv run sbsave dump --tree tree.json   # 完整解析树（可能很大）
 ```
 
 ## 存档位置
@@ -154,9 +158,19 @@ tagged property 布局，并针对本作的特殊字段顺序做了适配。收�
 
 ## 开发
 
+本项目为 AI 大模型开发项目（见文首说明），本地开发与验证流程如下：
+
 ```powershell
-uv run pytest
-uv run ruff check src tools tests
+uv run pytest                        # 全量测试（41 个）
+uv run pytest tests/test_gvas.py -q  # 单个文件
+uv run ruff check src tools tests    # lint（line-length 120，E501 忽略）
 ```
+
+修改目录库数据源后：先运行 `uv run python tools/build_catalog.py` 重新生成
+`src/sbsave/data/catalog.json`，再运行 `uv run sbsave catalog check` 校验。
+
+## 许可证
+
+[Apache License 2.0](LICENSE) · Copyright 2026 perillaroc
 
 本项目与 Shift Up / Sony Interactive Entertainment 无关，仅供个人存档分析使用。

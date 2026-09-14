@@ -2,6 +2,8 @@
 name = "sblade-explorer"
 version = "0.1.0"
 description = "Stellar Blade (剑星) Steam 存档收集度分析工具"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
