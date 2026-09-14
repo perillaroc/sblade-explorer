@@ -1,4 +1,4 @@
-"""Build src/sbsave/data/catalog.json from raw guides + crosswalk data.
+"""Build data/catalog.json from raw guides + crosswalk data.
 
 Run with:  uv run python tools/build_catalog.py
 
@@ -8,7 +8,7 @@ Inputs:
   tools/crosswalk_data.py     hand curated alias <-> guide item mappings
 
 Output:
-  src/sbsave/data/catalog.json
+  data/catalog.json
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ API_DIR = ROOT / "data" / "raw" / "api"
 I18N_DIR = API_DIR / "i18n"
 UNIVERSE = ROOT / "data" / "raw" / "universe" / "aliases.json"
 GAME_NAMES = ROOT / "data" / "raw" / "game" / "name_map.json"
-OUTPUT = ROOT / "src" / "sbsave" / "data" / "catalog.json"
+OUTPUT = ROOT / "data" / "catalog.json"
 
 _GAME_NOTES = {
     "records": "名称来自游戏数据库（zh-Hans 本地化）",

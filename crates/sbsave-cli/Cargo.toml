@@ -1,0 +1,13 @@
+[package]
+name = "sbsave-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "sbsave"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+sbsave-core = { path = "../sbsave-core" }
