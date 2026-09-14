@@ -10,6 +10,7 @@ from rich.console import Console
 from rich.table import Table
 
 from .analyze import Analysis, CategoryResult, ItemStatus
+from .catalog import CatalogItem
 from .savegame import SaveData
 
 STATUS_STYLE = {
@@ -44,17 +45,41 @@ _AREA_ORDER = {
 }
 
 
-def _location_label(status: ItemStatus) -> str:
+LANGUAGES = ("zh", "en", "both")
+
+
+def _localized(zh: str | None, en: str | None, lang: str) -> str:
+    """Pick the requested language; ``both`` nests English after Chinese."""
+    if lang == "en":
+        return en or zh or ""
+    if lang == "both" and zh and en and zh != en:
+        return f"{zh}（{en}）"
+    return zh or en or ""
+
+
+def _display_name(item: CatalogItem, lang: str) -> str:
+    if lang == "en":
+        return item.name_en or item.name
+    if lang == "both" and item.name_en and item.name_en != item.name:
+        return f"{item.name}（{item.name_en}）"
+    return item.name
+
+
+def _location_label(status: ItemStatus, lang: str = "zh") -> str:
     item = status.item
-    parts = [part for part in (item.area, item.location) if part]
-    return " · ".join(parts)
+    parts = [
+        _localized(item.area_zh, item.area, lang),
+        _localized(item.location_zh, item.location, lang),
+    ]
+    return " · ".join(part for part in parts if part)
 
 
-def _obtain_label(status: ItemStatus) -> str:
+def _obtain_label(status: ItemStatus, lang: str = "zh") -> str:
     item = status.item
     parts: list[str] = []
-    if item.obtain:
-        parts.append(item.obtain)
+    obtain = _localized(item.obtain_zh, item.obtain, lang)
+    if obtain:
+        parts.append(obtain)
     if item.note:
         parts.append(item.note)
     if status.reason:
@@ -75,19 +100,26 @@ def _item_emoji(status: ItemStatus, save: SaveData) -> str:
     return "❌"
 
 
-def _item_matrix(statuses: list[ItemStatus], save: SaveData) -> dict[str, dict[str, list[str]]]:
-    """Group collectible statuses as area -> location -> cells for 首周目/NG+/NG++/DLC."""
+def _item_matrix(statuses: list[ItemStatus], save: SaveData, lang: str) -> dict[str, dict[str, list[str]]]:
+    """Group collectible statuses as area -> location -> cells for 首周目/NG+/NG++/DLC.
+
+    Sorting always uses the English guide names so ``_AREA_ORDER`` keeps working;
+    only the displayed labels are localized.
+    """
     areas: dict[str, dict[str, list[str]]] = {}
+    labels: dict[str, str] = {}
     for status in statuses:
         item = status.item
         area = item.area or "未分类"
         location = item.location or "未分类"
+        labels.setdefault(area, _localized(item.area_zh, item.area, lang) or "未分类")
+        labels.setdefault(location, _localized(item.location_zh, item.location, lang) or "未分类")
         cells = areas.setdefault(area, {}).setdefault(location, [""] * len(_MATRIX_COLUMNS))
         column = 3 if item.dlc else min(item.ng_plus, 2)
-        entry = f"{_item_emoji(status, save)} {item.name}"
+        entry = f"{_item_emoji(status, save)} {_display_name(item, lang)}"
         cells[column] = f"{cells[column]}\n{entry}" if cells[column] else entry
     return {
-        area: locations
+        labels[area]: {labels[location]: cells for location, cells in locations.items()}
         for area, locations in sorted(areas.items(), key=lambda kv: (_AREA_ORDER.get(kv[0], 99), kv[0]))
     }
 
@@ -96,11 +128,11 @@ def _used_matrix_columns(locations: dict[str, list[str]]) -> list[int]:
     return [i for i in range(len(_MATRIX_COLUMNS)) if any(cells[i] for cells in locations.values())]
 
 
-def _print_item_matrix(result: CategoryResult, save: SaveData, console: Console) -> None:
+def _print_item_matrix(result: CategoryResult, save: SaveData, console: Console, lang: str) -> None:
     console.print(
         f"[bold]{result.category.name}[/bold] 已获得 {result.obtained_count}/{result.total} · 图例：{_MATRIX_LEGEND}"
     )
-    for area, locations in _item_matrix(result.statuses, save).items():
+    for area, locations in _item_matrix(result.statuses, save, lang).items():
         used = _used_matrix_columns(locations)
         table = Table(title=area)
         table.add_column("地点", style="bold")
@@ -112,10 +144,10 @@ def _print_item_matrix(result: CategoryResult, save: SaveData, console: Console)
         console.print(table)
 
 
-def _item_markdown(result: CategoryResult, save: SaveData) -> list[str]:
+def _item_markdown(result: CategoryResult, save: SaveData, lang: str) -> list[str]:
     lines = [f"## {result.category.name}获取一览", ""]
     lines.append(f"已获得 {result.obtained_count}/{result.total} · 图例：{_MATRIX_LEGEND}")
-    for area, locations in _item_matrix(result.statuses, save).items():
+    for area, locations in _item_matrix(result.statuses, save, lang).items():
         used = _used_matrix_columns(locations)
         lines.append("")
         lines.append(f"### {area}")
@@ -132,7 +164,9 @@ def _item_markdown(result: CategoryResult, save: SaveData) -> list[str]:
     return lines
 
 
-def print_report(analysis: Analysis, console: Console | None = None, show_all: bool = False) -> None:
+def print_report(
+    analysis: Analysis, console: Console | None = None, show_all: bool = False, lang: str = "zh"
+) -> None:
     console = console or Console()
     save = analysis.save
     console.print(f"[bold]剑星存档分析[/bold] — {save.path.name}")
@@ -168,7 +202,7 @@ def print_report(analysis: Analysis, console: Console | None = None, show_all: b
         if result.category.key not in _MATRIX_CATEGORIES:
             continue
         console.print()
-        _print_item_matrix(result, save, console)
+        _print_item_matrix(result, save, console, lang)
 
     for result in analysis.categories:
         if result.category.key in _MATRIX_CATEGORIES or not result.missing:
@@ -180,9 +214,9 @@ def print_report(analysis: Analysis, console: Console | None = None, show_all: b
         for status in result.missing:
             flags = status.flags
             flag_text = f" [{'/'.join(flags)}]" if flags else ""
-            location = _location_label(status)
-            obtain = _obtain_label(status)
-            line = f"  [cyan]{status.item.id}[/cyan] {status.item.name}"
+            location = _location_label(status, lang)
+            obtain = _obtain_label(status, lang)
+            line = f"  [cyan]{status.item.id}[/cyan] {_display_name(status.item, lang)}"
             if location:
                 line += f"  [dim]{location}[/dim]"
             if obtain:
@@ -197,7 +231,7 @@ def print_report(analysis: Analysis, console: Console | None = None, show_all: b
             console.print()
             console.print(f"[bold]{result.category.name}[/bold] 已收集:")
             for item in result.obtained_items:
-                console.print(f"  [green]✓[/green] {item.id} {item.name}")
+                console.print(f"  [green]✓[/green] {item.id} {_display_name(item, lang)}")
 
     if analysis.unmapped_obtained:
         from .analyze import unmapped_summary
@@ -245,8 +279,11 @@ def _item_to_dict(status: ItemStatus) -> dict[str, Any]:
         "name_en": item.name_en,
         "aliases": item.satisfy_aliases,
         "area": item.area,
+        "area_zh": item.area_zh,
         "location": item.location,
+        "location_zh": item.location_zh,
         "obtain": item.obtain,
+        "obtain_zh": item.obtain_zh,
         "ng_plus": item.ng_plus,
         "dlc": item.dlc,
         "missable": item.missable,
@@ -277,7 +314,7 @@ def write_json(analysis: Analysis, path: str, include_obtained: bool = True) -> 
         json.dump(payload, handle, ensure_ascii=False, indent=2)
 
 
-def render_markdown(analysis: Analysis) -> str:
+def render_markdown(analysis: Analysis, lang: str = "zh") -> str:
     save = analysis.save
     lines: list[str] = []
     lines.append(f"# 剑星存档分析 — {save.path.name}")
@@ -304,7 +341,7 @@ def render_markdown(analysis: Analysis) -> str:
         if result.category.key not in _MATRIX_CATEGORIES:
             continue
         lines.append("")
-        lines.extend(_item_markdown(result, save))
+        lines.extend(_item_markdown(result, save, lang))
     lines.append("")
     lines.append("## 未收集清单")
     for result in analysis.categories:
@@ -316,18 +353,19 @@ def render_markdown(analysis: Analysis) -> str:
         for status in result.missing:
             item = status.item
             details: list[str] = []
-            location = _location_label(status)
+            location = _location_label(status, lang)
             if location:
                 details.append(location)
-            if item.obtain:
-                details.append(item.obtain)
+            obtain = _localized(item.obtain_zh, item.obtain, lang)
+            if obtain:
+                details.append(obtain)
             if item.note:
                 details.append(item.note)
             if status.reason:
                 details.append(status.reason)
             flags = status.flags
             suffix = f" `{'/'.join(flags)}`" if flags else ""
-            line = f"- **{item.name}** (`{item.id}`)"
+            line = f"- **{_display_name(item, lang)}** (`{item.id}`)"
             if details:
                 line += " — " + "；".join(details)
             line += suffix
@@ -341,6 +379,6 @@ def render_markdown(analysis: Analysis) -> str:
     return "\n".join(lines)
 
 
-def write_markdown(analysis: Analysis, path: str) -> None:
+def write_markdown(analysis: Analysis, path: str, lang: str = "zh") -> None:
     with open(path, "w", encoding="utf-8") as handle:
-        handle.write(render_markdown(analysis))
+        handle.write(render_markdown(analysis, lang=lang))

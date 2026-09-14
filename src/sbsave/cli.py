@@ -15,7 +15,7 @@ from . import __version__
 from .analyze import analyze
 from .catalog import load_catalog
 from .gvas import to_jsonable
-from .report import print_report, write_json, write_markdown
+from .report import LANGUAGES, print_report, write_json, write_markdown
 from .savegame import SaveError, SaveSlot, discover_saves, load_save, pick_default_save
 
 for _stream in (sys.stdout, sys.stderr):
@@ -123,12 +123,15 @@ def report_command(
     save: str | None = typer.Option(None, "--save", "-s", help="指定 .sav 存档路径"),
     slot: int | None = typer.Option(None, "--slot", help="存档槽位编号"),
     category: str | None = typer.Option(None, "--category", "-c", help="只分析指定分类，逗号分隔"),
+    lang: str = typer.Option("zh", "--lang", help="文本语言：zh（中文，默认）、en（英文）、both（中英对照）"),
     all_items: bool = typer.Option(False, "--all", help="同时列出已收集的物品"),
     json_out: str | None = typer.Option(None, "--json", help="导出 JSON 报告"),
     markdown_out: str | None = typer.Option(None, "--markdown", help="导出 Markdown 报告"),
     catalog_path: str | None = typer.Option(None, "--catalog", help="附加的目录覆盖 JSON 文件"),
 ) -> None:
     """分析存档收集情况并输出报告。"""
+    if lang not in LANGUAGES:
+        raise typer.BadParameter(f"未知语言: {lang}（可选 {', '.join(LANGUAGES)}）")
     try:
         save_data = _load(save, slot)
     except SaveError as exc:
@@ -137,12 +140,12 @@ def report_command(
     catalog = load_catalog([Path(catalog_path)] if catalog_path else None)
     keys = _resolve_categories(catalog, category)
     result = analyze(save_data, catalog, categories=keys)
-    print_report(result, console=console, show_all=all_items)
+    print_report(result, console=console, show_all=all_items, lang=lang)
     if json_out:
         write_json(result, json_out)
         console.print(f"[green]JSON 报告已写入 {json_out}[/green]")
     if markdown_out:
-        write_markdown(result, markdown_out)
+        write_markdown(result, markdown_out, lang=lang)
         console.print(f"[green]Markdown 报告已写入 {markdown_out}[/green]")
 
 

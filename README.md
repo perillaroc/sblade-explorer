@@ -36,6 +36,10 @@ uv run sbsave report --slot 0
 uv run sbsave report --category nano_suits,cans
 uv run sbsave report --category 纳米战衣
 
+# 文本语言：默认中文（攻略描述已翻译）；en 为英文原文，both 为中英对照
+uv run sbsave report --lang en
+uv run sbsave report --lang both
+
 # 同时列出已收集的物品
 uv run sbsave report --all
 
@@ -74,6 +78,11 @@ uv run sbsave dump --json dump_summary.json
   这些分类不再输出逐条缺失列表，其余分类（如设计图案、罐子）不受影响。
 - **映射待确认**：目录库中仍有少量条目是推定映射（个别记录版本变体、部分营地）。
   报告会显示该标记，便于核对与修正。
+- **语言**：名称来自游戏本地化（简中/英文）；区域、地点与获取描述来自英文攻略，
+  其简体中文由 `data/raw/api/i18n/` 手工维护，默认输出中文（缺失时回退英文）。
+  `--lang en` 输出全英文原文，`--lang both` 以「中文（English）」形式并排显示；
+  导出的 JSON 报告始终同时包含 `area`/`area_zh`、`location`/`location_zh`、
+  `obtain`/`obtain_zh` 两套字段。
 
 ## 自定义目录库
 
@@ -98,7 +107,8 @@ uv run sbsave dump --json dump_summary.json
 }
 ```
 
-也可以用 `--catalog 路径.json` 临时附加。
+也可以用 `--catalog 路径.json` 临时附加。需要覆盖中文攻略文案时，在条目中补充
+`area_zh`/`location_zh`/`obtain_zh` 字段即可（优先级高于内置翻译）。
 
 ## 目录数据来源
 
@@ -107,6 +117,7 @@ uv run sbsave dump --json dump_summary.json
 - [Stellar-Blade-100-completion-save-file](https://github.com/lecher-wang/Stellar-Blade-100-completion-save-file) —— 别名全集与数据校验
 - 游戏本体数据表 + `Game.locres`（zh-Hans/en）—— 内部别名到官方名称的精确映射
   （由 `tools/mine_game_names.py` 提取到 `data/raw/game/name_map.json`）
+- `data/raw/api/i18n/` —— stellarbladeguide.com 区域/地点/获取描述的手工简体中文翻译
 - 原始数据保存在 `data/raw/`，目录库由 `tools/build_catalog.py` 生成到 `src/sbsave/data/catalog.json`
 
 如需更新目录库：

@@ -7,6 +7,8 @@
 | 路径 | 内容 |
 | --- | --- |
 | `api/*.json` | stellarbladeguide.com API 响应（物品名称、位置描述、周目标签） |
+| `api/i18n/levels.json`、`locations.json` | 攻略区域/地点的简体中文翻译（英文原文 -> 中文） |
+| `api/i18n/obtain_*.json` | 攻略获取描述的简体中文翻译（站点条目 id -> 中文） |
 | `universe/aliases.json` | 从参考存档与本地存档提取的物品别名全集（不含未解锁 ID） |
 | `game/name_map.json` | 游戏数据表 + `Game.locres` 提取的内部别名→官方名称映射（生成物） |
 | `reference/Sources_TrainerCore_*.swift` | 中文名称对照（来自 stellar-blade-macos-save-editor） |
@@ -15,6 +17,7 @@
 ## 数据来源
 
 - <https://stellarbladeguide.com> —— 英文名称、位置、描述、Base/NG+/NG++/DLC 标签
+- `api/i18n/` —— 上述英文攻略文案的手工简体中文翻译（名称仍以游戏本地化为准）
 - <https://github.com/wuxiao00j/stellar-blade-macos-save-editor> —— 简体中文名称
 - <https://github.com/lecher-wang/Stellar-Blade-100-completion-save-file> —— 别名全集校验
 - 游戏本体数据表（`ItemTable`、`ZoneCampTable`）与 `Game.locres`（zh-Hans/en）——
@@ -27,7 +30,9 @@ uv run python tools/build_catalog.py
 uv run sbsave catalog check
 ```
 
-人工别名映射在 `tools/crosswalk_data.py`；如只需修正个别条目，优先使用
+人工别名映射在 `tools/crosswalk_data.py`；攻略文案翻译在 `data/raw/api/i18n/`
+（新增站点条目后需补齐 `obtain_*.json`，`tools/build_catalog.py` 会按英文原文合并，
+`tests/test_catalog.py` 会校验覆盖率）。如只需修正个别条目，优先使用
 `%LOCALAPPDATA%\sbsave\catalog.user.json` 覆盖文件。
 
 ## 刷新游戏名称映射（需要本机安装游戏）

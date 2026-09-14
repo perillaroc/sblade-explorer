@@ -21,6 +21,7 @@ import crosswalk_data as cw
 
 ROOT = Path(__file__).resolve().parent.parent
 API_DIR = ROOT / "data" / "raw" / "api"
+I18N_DIR = API_DIR / "i18n"
 UNIVERSE = ROOT / "data" / "raw" / "universe" / "aliases.json"
 GAME_NAMES = ROOT / "data" / "raw" / "game" / "name_map.json"
 OUTPUT = ROOT / "src" / "sbsave" / "data" / "catalog.json"
@@ -97,6 +98,33 @@ def apply_game_names(items: list[dict], game_names: dict) -> None:
             item["note"] = _GAME_NOTES[item["category"]]
         elif item["category"] == "cans":
             item["note"] = None
+
+
+def load_i18n(site: dict[int, dict]) -> dict[str, dict]:
+    """Load hand maintained Simplified Chinese translations for guide text.
+
+    ``levels.json``/``locations.json`` map English guide names to Chinese;
+    ``obtain_*.json`` map site item ids to Chinese guide descriptions.  The
+    latter are re-keyed by their English description so items sharing the same
+    guide entry (nano suits and their design patterns) reuse one translation.
+    """
+    levels = json.loads((I18N_DIR / "levels.json").read_text(encoding="utf-8"))
+    locations = json.loads((I18N_DIR / "locations.json").read_text(encoding="utf-8"))
+    obtain: dict[str, str] = {}
+    for path in sorted(I18N_DIR.glob("obtain_*.json")):
+        for site_id, text in json.loads(path.read_text(encoding="utf-8")).items():
+            info = site.get(int(site_id))
+            if info and info["description"]:
+                obtain[info["description"]] = text
+    return {"levels": levels, "locations": locations, "obtain": obtain}
+
+
+def apply_i18n(items: list[dict], i18n: dict[str, dict]) -> None:
+    """Attach ``*_zh`` fields; the English ``area``/``location``/``obtain`` stay."""
+    for item in items:
+        item["area_zh"] = i18n["levels"].get(item.get("area"))
+        item["location_zh"] = i18n["locations"].get(item.get("location"))
+        item["obtain_zh"] = i18n["obtain"].get(item.get("obtain"))
 
 
 def dlc_from_aliases(aliases: list[str], cycle: str) -> str | None:
@@ -432,6 +460,7 @@ def main() -> None:
     site = load_site_index()
     universe = json.loads(UNIVERSE.read_text(encoding="utf-8"))
     game_names = load_game_names()
+    i18n = load_i18n(site)
 
     items: list[dict] = []
     items += build_nano_suits(site)
@@ -445,6 +474,7 @@ def main() -> None:
     # collectible, and the alias names carry no localised text.  The alias
     # universe is kept in data/raw/universe/aliases.json for future use.
     apply_game_names(items, game_names)
+    apply_i18n(items, i18n)
 
     # Validate alias uniqueness.
     seen: dict[str, str] = {}
@@ -462,6 +492,7 @@ def main() -> None:
             "https://github.com/wuxiao00j/stellar-blade-macos-save-editor (Simplified Chinese names)",
             "https://github.com/lecher-wang/Stellar-Blade-100-completion-save-file (alias universe)",
             "Stellar Blade game tables + zh-Hans/en Game.locres (mined names, data/raw/game/name_map.json)",
+            "data/raw/api/i18n (hand maintained Chinese translations of guide region/location/obtain text)",
         ],
         "categories": [{"key": k, "name": n, "order": o} for k, n, o in CATEGORIES],
         "items": items,

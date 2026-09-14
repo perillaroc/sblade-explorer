@@ -16,7 +16,7 @@ def test_suit_matrix_markdown(make_save):
     save = make_save(obtained={"BS_09_2"})
     text = render_markdown(analyze(save, catalog, categories=["nano_suits"]))
     assert "## 纳米战衣获取一览" in text
-    assert "### Eidos 7" in text
+    assert "### 埃多斯7号" in text
     assert "✅ 星球空降服（第7小队）第2版" in text
     assert "❌ 废土冒险家" in text
     assert "🔒 星球空降服（第7小队）第3版" in text
@@ -46,14 +46,38 @@ def test_print_report_suit_table(make_save):
     assert "耳饰" in output
     assert "✅" in output
     assert "🔒" in output
-    assert "Flooded Commercial Sector" in output
+    assert "淹水商业区" in output
+
+
+def test_language_option(make_save):
+    catalog = load_catalog()
+    analysis = analyze(make_save(), catalog, categories=["nano_suits"])
+    zh = render_markdown(analysis)
+    en = render_markdown(analysis, lang="en")
+    both = render_markdown(analysis, lang="both")
+    assert "### 埃多斯7号" in zh and "Flooded Commercial Sector" not in zh
+    assert "### Eidos 7" in en and "### 埃多斯7号" not in en
+    assert "Flooded Commercial Sector" in en
+    assert "埃多斯7号（Eidos 7）" in both
+    assert "淹水商业区（Flooded Commercial Sector）" in both
+
+
+def test_missing_list_uses_chinese_obtain(make_save):
+    analysis = analyze(make_save(), load_catalog(), categories=["cans"])
+    zh = render_markdown(analysis)
+    en = render_markdown(analysis, lang="en")
+    both = render_markdown(analysis, lang="both")
+    assert "在施工区东侧" in zh
+    assert "On the east side of the Construction Zone" in en
+    assert "On the east side of the Construction Zone" not in zh
+    assert "在施工区东侧" in both and "On the east side of the Construction Zone" in both
 
 
 def test_earring_matrix_markdown(make_save):
     catalog = load_catalog()
     text_ng0 = render_markdown(analyze(make_save(ng_plus=0), catalog, categories=["earrings"]))
     assert "## 耳饰获取一览" in text_ng0
-    assert "### Eidos 7" in text_ng0
+    assert "### 埃多斯7号" in text_ng0
     assert "❌ 绯红泪珠" in text_ng0
     assert "🔒 高贵泪珠" in text_ng0
     assert "🔒 黄金之心" in text_ng0

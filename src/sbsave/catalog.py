@@ -38,8 +38,11 @@ class CatalogItem:
     category: str
     aliases: list[str] = field(default_factory=list)
     area: str | None = None
+    area_zh: str | None = None
     location: str | None = None
+    location_zh: str | None = None
     obtain: str | None = None
+    obtain_zh: str | None = None
     ng_plus: int = 0
     dlc: str | None = None
     missable: bool = False
@@ -91,8 +94,11 @@ def _parse_item(raw: dict[str, Any]) -> CatalogItem:
         category=str(raw["category"]),
         aliases=[str(a) for a in aliases],
         area=raw.get("area"),
+        area_zh=raw.get("area_zh"),
         location=raw.get("location"),
+        location_zh=raw.get("location_zh"),
         obtain=raw.get("obtain"),
+        obtain_zh=raw.get("obtain_zh"),
         ng_plus=int(raw.get("ng_plus") or 0),
         dlc=raw.get("dlc"),
         missable=bool(raw.get("missable")),

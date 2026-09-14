@@ -60,3 +60,18 @@ def test_ng_plus_metadata_present():
     ng_items = [item for item in catalog.items if item.ng_plus > 0]
     assert len(ng_items) > 30
     assert any(item.ng_plus == 2 for item in ng_items)
+
+
+def test_chinese_translations_cover_guide_text():
+    catalog = load_catalog()
+    with_obtain = [item for item in catalog.items if item.obtain]
+    assert len(with_obtain) == 353
+    missing = [item.id for item in with_obtain if not item.obtain_zh]
+    assert not missing, missing[:10]
+    index = catalog.alias_index()
+    assert index["BS_09_2"].area_zh == "埃多斯7号"
+    assert index["BS_09_2"].location_zh == "淹水商业区"
+    assert "淹水商业区" in index["BS_09_2"].obtain_zh
+    assert index["Hair_006"].obtain_zh.startswith("完成支线任务《第一位顾客》")
+    construction = [item for item in catalog.items if item.location_zh == "施工区"]
+    assert any("施工区东侧" in (item.obtain_zh or "") for item in construction)
