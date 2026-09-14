@@ -37,6 +37,17 @@ def test_key_alias_mappings():
     assert index["DesignPattern_BS_01"].category == "design_patterns"
 
 
+def test_game_data_names_applied():
+    index = load_catalog().alias_index()
+    assert index["Can_007"].name == "妙之跃"
+    assert index["BS_Nikke_01"].name == "浪游剑客服"
+    assert index["Hair_Nikke_01"].name == "月下美人"
+    assert index["DesignPattern_BS_01"].name == "设计图：镂空服"
+    assert index["Item_Records_DED10_Memory_09"].name == "《塑料之心：第3卷》"
+    assert index["Item_Records_DED10_Memory_09"].confidence == "high"
+    assert index["ChangeState_ZoneEnv_WLA_10_EnvS_001_Camp"].name == "隐秘之路"
+
+
 def test_catalog_counts():
     catalog = load_catalog()
     assert len(catalog.by_category("nano_suits")) == 126

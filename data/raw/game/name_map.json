@@ -1,0 +1,4321 @@
+{
+ "version": 1,
+ "generated_by": "tools/mine_game_names.py",
+ "source": "Stellar Blade game tables (ItemTable, ZoneCampTable) + zh-Hans/en Game.locres",
+ "items": {
+  "2DQuantumWafer": {
+   "zh": "极态纳米元素",
+   "en": "Extreme Nano Element"
+  },
+  "AdamCostume_001": {
+   "zh": "下水道老鼠",
+   "en": "Sewer Rat"
+  },
+  "AdamCostume_002": {
+   "zh": "占星师服装",
+   "en": "Stargazer Wear"
+  },
+  "AdamCostume_003": {
+   "zh": "拾荒人",
+   "en": "Junkman"
+  },
+  "AdamCostume_003_Var2": {
+   "zh": "废品回收人",
+   "en": "Ragman"
+  },
+  "AdamCostume_004": {
+   "zh": "变色龙",
+   "en": "Chameleon"
+  },
+  "AdamCostume_004_Var2": {
+   "zh": "夜鹰",
+   "en": "Nighthawk"
+  },
+  "AdamCostume_Christmas_01": {
+   "zh": "我不是圣诞老人",
+   "en": "I'm No Santa"
+  },
+  "AdamCostume_Nier_001": {
+   "zh": "艾米尔的头巾",
+   "en": "Emil's Head"
+  },
+  "BS_01": {
+   "zh": "镂空服",
+   "en": "Keyhole Suit "
+  },
+  "BS_01_Var2": {
+   "zh": "占星服",
+   "en": "Stargazer Suit"
+  },
+  "BS_01_Var3": {
+   "zh": "镂空裙装",
+   "en": "Keyhole Dress"
+  },
+  "BS_02": {
+   "zh": "星球空降服（第2小队）",
+   "en": "Planet Diving Suit (2nd)"
+  },
+  "BS_02_Var2": {
+   "zh": "星球空降服（第2小队）第2版",
+   "en": "Planet Diving Suit (2nd) V2"
+  },
+  "BS_03": {
+   "zh": "赛博裙装",
+   "en": "Cybernetic Dress"
+  },
+  "BS_03_Var2": {
+   "zh": "赛博服装",
+   "en": "Cybernetic Suit"
+  },
+  "BS_04": {
+   "zh": "休闲针织裙装",
+   "en": "Daily Knitted Dress"
+  },
+  "BS_04_Var2": {
+   "zh": "舒适针织裙装",
+   "en": "Comfort Knitted Dress"
+  },
+  "BS_05_E": {
+   "zh": "星球空降防护服（第7小队）",
+   "en": "Planet Diving Protection Suit (7th)"
+  },
+  "BS_05_Var2_E": {
+   "zh": "星球空降防护服（第7小队）第2版",
+   "en": "Planet Diving Protection Suit (7th) V2"
+  },
+  "BS_07": {
+   "zh": "奥卡工程师",
+   "en": "Orca Engineer"
+  },
+  "BS_07_Var2": {
+   "zh": "奥卡技术员",
+   "en": "Orca Techie"
+  },
+  "BS_08": {
+   "zh": "墨黑忍者装",
+   "en": "Black Kunoichi"
+  },
+  "BS_08_Var2": {
+   "zh": "洁白忍者装",
+   "en": "White Kunoichi"
+  },
+  "BS_09_2": {
+   "zh": "星球空降服（第7小队）第2版",
+   "en": "Planet Diving Suit (7th) V2"
+  },
+  "BS_09_2_Var2": {
+   "zh": "星球空降服（第7小队）第3版",
+   "en": "Planet Diving Suit (7th) V3"
+  },
+  "BS_10": {
+   "zh": "白礼服",
+   "en": "White Full Dress"
+  },
+  "BS_102": {
+   "zh": "活肤紧身服",
+   "en": "Skin Suit"
+  },
+  "BS_11": {
+   "zh": "黑礼服",
+   "en": "Black Full Dress"
+  },
+  "BS_13": {
+   "zh": "休闲吉祥物装",
+   "en": "Daily Mascot"
+  },
+  "BS_13_Var2": {
+   "zh": "舒适吉祥物装",
+   "en": "Comfort Mascot"
+  },
+  "BS_14_E": {
+   "zh": "芍药独韵",
+   "en": "Peony"
+  },
+  "BS_14_Var2_E": {
+   "zh": "绣球花",
+   "en": "Hydrangea"
+  },
+  "BS_15": {
+   "zh": "国色牡丹",
+   "en": "Moutan Peony"
+  },
+  "BS_15_Var2_E": {
+   "zh": "乌莲",
+   "en": "Black Lotus"
+  },
+  "BS_16": {
+   "zh": "假日兔",
+   "en": "Holiday Rabbit"
+  },
+  "BS_16_Var2": {
+   "zh": "假日兔女郎",
+   "en": "Holiday Bunny"
+  },
+  "BS_17": {
+   "zh": "赛博兔女郎",
+   "en": "Cyber Bunny"
+  },
+  "BS_18": {
+   "zh": "海洋之丝",
+   "en": "Ocean String"
+  },
+  "BS_19": {
+   "zh": "黑珍珠",
+   "en": "Black Pearl"
+  },
+  "BS_19_Var2": {
+   "zh": "赤色珍珠",
+   "en": "Red Pearl"
+  },
+  "BS_20": {
+   "zh": "碧蓝季风",
+   "en": "Blue Monsoon"
+  },
+  "BS_20_Var2": {
+   "zh": "纯白季风",
+   "en": "White Monsoon"
+  },
+  "BS_21": {
+   "zh": "莹白珍珠",
+   "en": "White Pearl"
+  },
+  "BS_21_Var2": {
+   "zh": "水珍珠",
+   "en": "Aqua Pearl"
+  },
+  "BS_22": {
+   "zh": "海的女仆",
+   "en": "Ocean Maid"
+  },
+  "BS_22_Var2_E": {
+   "zh": "海潮女仆",
+   "en": "Tidal Maid"
+  },
+  "BS_23": {
+   "zh": "废料机械师",
+   "en": "Junk Mechanic"
+  },
+  "BS_23_Var2": {
+   "zh": "废品工程师",
+   "en": "Junk Engineer"
+  },
+  "BS_24_E": {
+   "zh": "通勤装",
+   "en": "Office Style"
+  },
+  "BS_24_Var2": {
+   "zh": "空乘风",
+   "en": "Crew Style"
+  },
+  "BS_26": {
+   "zh": "“四秒钟”休闲装",
+   "en": "FourSeconds Everyday Wear"
+  },
+  "BS_26_Var2": {
+   "zh": "“四秒钟”基本造型",
+   "en": "FourSeconds Essential Wear"
+  },
+  "BS_30": {
+   "zh": "空中王牌",
+   "en": "Sky Ace"
+  },
+  "BS_30_Var2": {
+   "zh": "天骄王牌",
+   "en": "Air Ace"
+  },
+  "BS_31": {
+   "zh": "休闲活力装",
+   "en": "Daily Force"
+  },
+  "BS_31_Var2": {
+   "zh": "舒适活力装",
+   "en": "Comfort Force"
+  },
+  "BS_32": {
+   "zh": "“四秒钟”破洞牛仔布套装",
+   "en": "FourSeconds Destroyed Denim"
+  },
+  "BS_33": {
+   "zh": "“四秒钟”黑色牛仔布套装",
+   "en": "FourSeconds Black Denim"
+  },
+  "BS_33_Var2": {
+   "zh": "“四秒钟”条纹牛仔布套装",
+   "en": "FourSeconds Striped Denim"
+  },
+  "BS_34": {
+   "zh": "黄色运动服",
+   "en": "Sporty Yellow"
+  },
+  "BS_34_Var2": {
+   "zh": "活力运动服",
+   "en": "Sporty Energy"
+  },
+  "BS_37": {
+   "zh": "黑玫瑰",
+   "en": "Black Rose"
+  },
+  "BS_37_Var2": {
+   "zh": "玫瑰人生",
+   "en": "La Vie en Rose"
+  },
+  "BS_37_Var3": {
+   "zh": "天使玫瑰",
+   "en": "Angelic Rose"
+  },
+  "BS_38": {
+   "zh": "赤血丹心",
+   "en": "Red Passion"
+  },
+  "BS_38_Var2": {
+   "zh": "翡翠热情",
+   "en": "Emerald Passion"
+  },
+  "BS_40": {
+   "zh": "赛博绑带装",
+   "en": "Cybernetic Bondage"
+  },
+  "BS_40_Var2": {
+   "zh": "自动绑带装",
+   "en": "Autonetic Bondage"
+  },
+  "BS_40_Var3": {
+   "zh": "神经元回路绑带装",
+   "en": "Neurocircuit Bondage"
+  },
+  "BS_41": {
+   "zh": "废土冒险家",
+   "en": "Wasteland Adventurer"
+  },
+  "BS_41_Var2": {
+   "zh": "废土探索者",
+   "en": "Wasteland Explorer"
+  },
+  "BS_42": {
+   "zh": "动力十足",
+   "en": "Motivation"
+  },
+  "BS_42_Var2": {
+   "zh": "共鸣",
+   "en": "Resonance"
+  },
+  "BS_43": {
+   "zh": "终极兔女郎",
+   "en": "Ultimate Bunny"
+  },
+  "BS_43_Var2": {
+   "zh": "极致兔女郎",
+   "en": "Extreme Bunny"
+  },
+  "BS_44": {
+   "zh": "赛博魔法师",
+   "en": "Cyber Magician"
+  },
+  "BS_44_Var2": {
+   "zh": "赛博诡术士",
+   "en": "Cyber Trickster"
+  },
+  "BS_44_Var3_E": {
+   "zh": "赛博幻术师",
+   "en": "Cyber Illusionist"
+  },
+  "BS_45": {
+   "zh": "狂飙车手",
+   "en": "Racer's High"
+  },
+  "BS_45_Var2": {
+   "zh": "极速快感",
+   "en": "Speeder's High"
+  },
+  "BS_47": {
+   "zh": "目光焦点",
+   "en": "Photogenic"
+  },
+  "BS_47_Var2": {
+   "zh": "丽影",
+   "en": "Telegenic"
+  },
+  "BS_48": {
+   "zh": "奥卡探索者",
+   "en": "Orca Exploration Suit"
+  },
+  "BS_48_Var2": {
+   "zh": "奥卡探路者",
+   "en": "Orca Pathfinder"
+  },
+  "BS_50": {
+   "zh": "神经元链接套装原型",
+   "en": "Prototype Neurolink Suit"
+  },
+  "BS_50_Var2": {
+   "zh": "知觉套装原型",
+   "en": "Prototype Sensate Suit"
+  },
+  "BS_52": {
+   "zh": "神经元链接套装",
+   "en": "Neurolink Suit"
+  },
+  "BS_53": {
+   "zh": "神经元链接紧身服",
+   "en": "Neurolink Skin"
+  },
+  "BS_53_Var2": {
+   "zh": "知觉活肤紧身服",
+   "en": "Sensate Skin"
+  },
+  "BS_54": {
+   "zh": "烽火神盾",
+   "en": "War Aegis"
+  },
+  "BS_55": {
+   "zh": "烽火裙装",
+   "en": "War Dress"
+  },
+  "BS_55_Var2": {
+   "zh": "烽火装",
+   "en": "War Suit"
+  },
+  "BS_56": {
+   "zh": "盛夏爱丽丝",
+   "en": "Midsummer Alice"
+  },
+  "BS_57": {
+   "zh": "盛夏小红帽",
+   "en": "Midsummer Redhood"
+  },
+  "BS_58": {
+   "zh": "“波浪”潜水比基尼",
+   "en": "Wave Diver Bikini"
+  },
+  "BS_60": {
+   "zh": "“波浪”斜款连体比基尼",
+   "en": "Wave Oblique Monokini"
+  },
+  "BS_99": {
+   "zh": "星球空降服（队长）",
+   "en": "Planet Diving Suit (Captain)"
+  },
+  "BS_Bear": {
+   "zh": "毛绒熊熊",
+   "en": "Fluffy Bear"
+  },
+  "BS_Bear_Var2": {
+   "zh": "粉红小熊",
+   "en": "Pink Bear"
+  },
+  "BS_Black_Leather_bikini": {
+   "zh": "墨色波浪",
+   "en": "Black Wave"
+  },
+  "BS_Black_Leather_bikini_Var2": {
+   "zh": "怒涛",
+   "en": "Wild Wave"
+  },
+  "BS_Blue_Suit_E": {
+   "zh": "星球空降服（第5小队）",
+   "en": "Planet Diving Suit (5th)"
+  },
+  "BS_Christmas_01": {
+   "zh": "圣诞裙装",
+   "en": "Santa Dress"
+  },
+  "BS_Default": {
+   "zh": "星球空降服（第6小队）第2版",
+   "en": "Planet Diving Suit (6th) V2"
+  },
+  "BS_Default_Var2": {
+   "zh": "星球空降服（第6小队）",
+   "en": "Planet Diving Suit (6th)"
+  },
+  "BS_Default_Var3": {
+   "zh": "星球空降服（第6小队）第3版",
+   "en": "Planet Diving Suit (6th) V3"
+  },
+  "BS_EVE_04": {
+   "zh": "牛仔布休闲装",
+   "en": "Daily Denim"
+  },
+  "BS_EVE_04_Var2": {
+   "zh": "“四秒钟”牛仔布套装",
+   "en": "FourSeconds Denim"
+  },
+  "BS_Green_Suit": {
+   "zh": "星球空降服（第7小队）",
+   "en": "Planet Diving Suit (7th)"
+  },
+  "BS_Leather_Jean": {
+   "zh": "休闲车手服",
+   "en": "Daily Biker"
+  },
+  "BS_Leather_Jean_Var2": {
+   "zh": "“四秒钟”车手服",
+   "en": "FourSeconds Biker"
+  },
+  "BS_Nier_01": {
+   "zh": "寄叶二号B型制服",
+   "en": "YoRHa No.2 Type B Uniform"
+  },
+  "BS_Nier_02": {
+   "zh": "寄叶制服1",
+   "en": "YoRHa Uniform 1"
+  },
+  "BS_Nier_03": {
+   "zh": "寄叶非正式礼仪着装",
+   "en": "YoRHa Unofficial Ceremonial Attire"
+  },
+  "BS_Nier_04": {
+   "zh": "寄叶A型二号制服",
+   "en": "YoRHa Type A No.2 Uniform"
+  },
+  "BS_Nikke_01": {
+   "zh": "浪游剑客服",
+   "en": "Wandering Swordfighter Outfit"
+  },
+  "BS_Nikke_02": {
+   "zh": "优雅裙装",
+   "en": "Elegant Dress"
+  },
+  "BS_Nikke_03": {
+   "zh": "极乐净土战斗服",
+   "en": "Elysion Combat Uniform"
+  },
+  "BS_Nikke_04": {
+   "zh": "永不回头",
+   "en": "Never Look Back"
+  },
+  "BS_Nikke_05": {
+   "zh": "遗失之链",
+   "en": "Missing Link"
+  },
+  "BS_Nikke_06": {
+   "zh": "冷却服",
+   "en": "Cooling Suit"
+  },
+  "BS_OneMillion_01": {
+   "zh": "绯红之翼",
+   "en": "Crimson Wings"
+  },
+  "BS_Raven": {
+   "zh": "渡鸦装",
+   "en": "Raven Suit"
+  },
+  "BS_RoyalGuard_01": {
+   "zh": "神圣护卫套装",
+   "en": "Royal Guard Suit"
+  },
+  "BS_Sailor_Jean": {
+   "zh": "休闲水手服",
+   "en": "Daily Sailor"
+  },
+  "BS_Sailor_Jean_Var2": {
+   "zh": "舒适水手服",
+   "en": "Comfort Sailor"
+  },
+  "BS_SilverKunoichi": {
+   "zh": "亮银忍者装",
+   "en": "Silver Kunoichi"
+  },
+  "BS_SilverKunoichi_Var2": {
+   "zh": "暗影忍者装",
+   "en": "Shadow Kunoichi"
+  },
+  "BS_White_Jean": {
+   "zh": "朋克炸街服",
+   "en": "Punk Top"
+  },
+  "BS_White_Jean_Var2": {
+   "zh": "朋克风",
+   "en": "Punk Style"
+  },
+  "BS_Yellow_Suit": {
+   "zh": "星球空降服原型",
+   "en": "Prototype Planet Diving Suit"
+  },
+  "BS_Yellow_Suit_Jacket": {
+   "zh": "星球空降服（第3小队）",
+   "en": "Planet Diving Suit (3rd)"
+  },
+  "BS_Yellow_Suit_Jacket_Var2": {
+   "zh": "星球空降服（第3小队）第2版",
+   "en": "Planet Diving Suit (3rd) V2"
+  },
+  "BS_Yellow_Suit_Var2": {
+   "zh": "星球空降服原型第2版",
+   "en": "Prototype Planet Diving Suit V2"
+  },
+  "BetaCore": {
+   "zh": "贝塔核心",
+   "en": "Beta Core"
+  },
+  "BetaCrystal": {
+   "zh": "金方",
+   "en": "Gold"
+  },
+  "BetaCrystal_ForLarge": {
+   "zh": "金方",
+   "en": "Gold"
+  },
+  "BetaCrystal_SpawnRangeNone": {
+   "zh": "金方",
+   "en": "Gold"
+  },
+  "BodyCore": {
+   "zh": "机体核心",
+   "en": "Body Core"
+  },
+  "Bullet_Explosive": {
+   "zh": "高爆弹",
+   "en": "Explosive Shell"
+  },
+  "Bullet_Missile": {
+   "zh": "飞针",
+   "en": "Stinger"
+  },
+  "Bullet_Normal": {
+   "zh": "磁轨弹",
+   "en": "Slug"
+  },
+  "Bullet_Package_Dummy": {
+   "zh": "弹药包",
+   "en": "Ammo Package"
+  },
+  "Bullet_Railgun": {
+   "zh": "爆能弹",
+   "en": "Blaster Cell"
+  },
+  "Bullet_Scatter": {
+   "zh": "霰弹",
+   "en": "Shotgun Shell"
+  },
+  "Camera": {
+   "zh": "相机",
+   "en": "Camera"
+  },
+  "Can_001": {
+   "zh": "原味克里欧",
+   "en": "Cryo Original"
+  },
+  "Can_002": {
+   "zh": "克里欧无糖饮料",
+   "en": "Cryo Zero"
+  },
+  "Can_003": {
+   "zh": "雪精灵",
+   "en": "Pixie"
+  },
+  "Can_004": {
+   "zh": "雪精灵无糖饮料",
+   "en": "Pixie Zero"
+  },
+  "Can_005": {
+   "zh": "新地干姜水",
+   "en": "Newfoundland Dry"
+  },
+  "Can_006": {
+   "zh": "无糖新地干姜水",
+   "en": "Newfoundland Dry Zero"
+  },
+  "Can_007": {
+   "zh": "妙之跃",
+   "en": "Milky Pop"
+  },
+  "Can_008": {
+   "zh": "妙之跃无糖饮料",
+   "en": "Milky Pop Zero"
+  },
+  "Can_009": {
+   "zh": "马奇内塔美式咖啡",
+   "en": "The Machinetta Americano"
+  },
+  "Can_010": {
+   "zh": "马奇内塔拿铁咖啡",
+   "en": "The Machinetta Cafe Latte"
+  },
+  "Can_011": {
+   "zh": "马奇内塔焦糖玛奇朵",
+   "en": "The Machinetta Caramel Macchiato"
+  },
+  "Can_012": {
+   "zh": "克里欧原味咖啡",
+   "en": "Cryo Café Original"
+  },
+  "Can_013": {
+   "zh": "克里欧香草咖啡",
+   "en": "Cryo Café Vanilla"
+  },
+  "Can_014": {
+   "zh": "克里欧抹茶咖啡",
+   "en": "Cryo Café Mocha"
+  },
+  "Can_015": {
+   "zh": "庇佑之地伯爵茶",
+   "en": "The Haven Earl Grey"
+  },
+  "Can_016": {
+   "zh": "庇佑之地奶茶",
+   "en": "The Haven Milk Tea"
+  },
+  "Can_017": {
+   "zh": "庇佑之地绿茶",
+   "en": "The Haven Green Tea"
+  },
+  "Can_018": {
+   "zh": "大麦谷物茶",
+   "en": "GrainT Barley"
+  },
+  "Can_019": {
+   "zh": "乌龙谷物茶",
+   "en": "GrainT Oolong"
+  },
+  "Can_020": {
+   "zh": "玉米谷物茶",
+   "en": "GrainT Corn"
+  },
+  "Can_021": {
+   "zh": "橙子甘露",
+   "en": "Nectar Orange"
+  },
+  "Can_022": {
+   "zh": "葡萄甘露",
+   "en": "Nectar Grape"
+  },
+  "Can_023": {
+   "zh": "苹果甘露",
+   "en": "Nectar Apple"
+  },
+  "Can_024": {
+   "zh": "蔓越莓甘露",
+   "en": "Nectar Cranberry"
+  },
+  "Can_025": {
+   "zh": "灵泉胡萝卜汁",
+   "en": "Elixir Carrot"
+  },
+  "Can_026": {
+   "zh": "灵泉翠汁",
+   "en": "Elixir Green"
+  },
+  "Can_027": {
+   "zh": "红比蒙狮",
+   "en": "Behemoth Red"
+  },
+  "Can_028": {
+   "zh": "绿比蒙狮",
+   "en": "Behemoth Green"
+  },
+  "Can_029": {
+   "zh": "黑比蒙狮",
+   "en": "Behemoth Black"
+  },
+  "Can_030": {
+   "zh": "焰火能量饮料",
+   "en": "Liquid Fire"
+  },
+  "Can_031": {
+   "zh": "闪电能量饮料",
+   "en": "Liquid Lightning"
+  },
+  "Can_032": {
+   "zh": "核子能量饮料",
+   "en": "Liquid Nuclear"
+  },
+  "Can_033": {
+   "zh": "劲能疾风维他命",
+   "en": "Potential Blast"
+  },
+  "Can_034": {
+   "zh": "劲能暴风维他命",
+   "en": "Potential Tempest"
+  },
+  "Can_035": {
+   "zh": "劲能冰霜维他命",
+   "en": "Potential Frost"
+  },
+  "Can_036": {
+   "zh": "狄俄倪索斯-C",
+   "en": "Dionysus C"
+  },
+  "Can_037": {
+   "zh": "月泉水",
+   "en": "Moonwell"
+  },
+  "Can_038": {
+   "zh": "星泉水",
+   "en": "Starwell"
+  },
+  "Can_039": {
+   "zh": "勃朗峰气泡水",
+   "en": "Mountain Sparkle Mont Blanc"
+  },
+  "Can_040": {
+   "zh": "珠穆朗玛峰气泡水",
+   "en": "Mountain Sparkle Everest"
+  },
+  "Can_041": {
+   "zh": "汉拿山气泡水",
+   "en": "Mountain Sparkle Halla"
+  },
+  "Can_042": {
+   "zh": "克里欧纯净水",
+   "en": "Cryo The Clear"
+  },
+  "Can_043": {
+   "zh": "克里欧麦芽酒",
+   "en": "Cryo The Malt"
+  },
+  "Can_044": {
+   "zh": "巴伐利亚酵母小麦白啤酒",
+   "en": "Bayern Hefe Weissbier"
+  },
+  "Can_045": {
+   "zh": "巴伐利亚小麦黑啤酒",
+   "en": "Bayern Weissbier Dunkel"
+  },
+  "Can_046": {
+   "zh": "海盗拉格啤酒",
+   "en": "Corsair Lager"
+  },
+  "Can_047": {
+   "zh": "海盗麦芽啤酒",
+   "en": "Corsair Ale"
+  },
+  "Can_048": {
+   "zh": "乔纳森柠檬味嗨棒",
+   "en": "Johnson's Highball Lemon"
+  },
+  "Can_049": {
+   "zh": "乔纳森姜味嗨棒",
+   "en": "Johnson's Highball Ginger"
+  },
+  "ConcussionGrenade": {
+   "zh": "震荡手雷",
+   "en": "Shock Grenade"
+  },
+  "DesignPattern_BS_01": {
+   "zh": "设计图：镂空服",
+   "en": "Design Pattern: Keyhole Suit"
+  },
+  "DesignPattern_BS_01_Var2": {
+   "zh": "设计图：占星服",
+   "en": "Design Pattern: Stargazer Suit"
+  },
+  "DesignPattern_BS_01_Var3": {
+   "zh": "设计图：镂空裙装",
+   "en": "Design Pattern: Keyhole Dress"
+  },
+  "DesignPattern_BS_02": {
+   "zh": "设计图：星球空降服（第2小队）",
+   "en": "Design Pattern: Planet Diving Suit (2nd)"
+  },
+  "DesignPattern_BS_02_Var2": {
+   "zh": "设计图：星球空降服（第2小队）第2版",
+   "en": "Design Pattern: Planet Diving Suit (2nd) V2"
+  },
+  "DesignPattern_BS_03": {
+   "zh": "设计图：赛博裙装",
+   "en": "Design Pattern: Cybernetic Dress"
+  },
+  "DesignPattern_BS_03_Var2": {
+   "zh": "设计图：赛博服装",
+   "en": "Design Pattern: Cybernetic Suit"
+  },
+  "DesignPattern_BS_04": {
+   "zh": "设计图：休闲针织裙装",
+   "en": "Design Pattern: Daily Knitted Dress"
+  },
+  "DesignPattern_BS_04_Var2": {
+   "zh": "设计图：舒适针织裙装",
+   "en": "Design Pattern: Comfort Knitted Dress"
+  },
+  "DesignPattern_BS_05": {
+   "zh": "设计图：星球空降防护服（第7小队）",
+   "en": "Design Pattern: Planet Diving Protection Suit (7th)"
+  },
+  "DesignPattern_BS_05_Var2": {
+   "zh": "设计图：星球空降防护服（第7小队）第2版",
+   "en": "Design Pattern: Planet Diving Protection Suit (7th) V2"
+  },
+  "DesignPattern_BS_07": {
+   "zh": "设计图：奥卡工程师",
+   "en": "Design Pattern: Orca Engineer"
+  },
+  "DesignPattern_BS_07_Var2": {
+   "zh": "设计图：奥卡技术员",
+   "en": "Design Pattern: Orca Techie"
+  },
+  "DesignPattern_BS_08": {
+   "zh": "设计图：墨黑忍者装",
+   "en": "Design Pattern: Black Kunoichi"
+  },
+  "DesignPattern_BS_08_Var2": {
+   "zh": "设计图：洁白忍者装",
+   "en": "Design Pattern: White Kunoichi"
+  },
+  "DesignPattern_BS_09_2": {
+   "zh": "设计图：星球空降服（第7小队）第2版",
+   "en": "Design Pattern: Planet Diving Suit (7th) V2"
+  },
+  "DesignPattern_BS_09_2_Var2": {
+   "zh": "设计图：星球空降服（第7小队）第3版",
+   "en": "Design Pattern: Planet Diving Suit (7th) V3"
+  },
+  "DesignPattern_BS_10": {
+   "zh": "设计图：白礼服",
+   "en": "Design Pattern: White Full Dress"
+  },
+  "DesignPattern_BS_102": {
+   "zh": "设计图：活肤紧身服",
+   "en": "Design Pattern: Skin Suit"
+  },
+  "DesignPattern_BS_11": {
+   "zh": "设计图：黑礼服",
+   "en": "Design Pattern: Black Full Dress"
+  },
+  "DesignPattern_BS_13": {
+   "zh": "设计图：休闲吉祥物装",
+   "en": "Design Pattern: Daily Mascot"
+  },
+  "DesignPattern_BS_13_Var2": {
+   "zh": "设计图：舒适吉祥物装",
+   "en": "Design Pattern: Comfort Mascot"
+  },
+  "DesignPattern_BS_14": {
+   "zh": "设计图：芍药独韵",
+   "en": "Design Pattern: Peony"
+  },
+  "DesignPattern_BS_14_Var2": {
+   "zh": "设计图：绣球花",
+   "en": "Design Pattern: Hydrangea"
+  },
+  "DesignPattern_BS_15": {
+   "zh": "设计图：国色牡丹",
+   "en": "Design Pattern: Moutan Peony"
+  },
+  "DesignPattern_BS_15_Var2": {
+   "zh": "设计图：乌莲",
+   "en": "Design Pattern: Black Lotus"
+  },
+  "DesignPattern_BS_16": {
+   "zh": "设计图：假日兔",
+   "en": "Design Pattern: Holiday Rabbit"
+  },
+  "DesignPattern_BS_16_Var2": {
+   "zh": "设计图：假日兔女郎",
+   "en": "Design Pattern: Holiday Bunny"
+  },
+  "DesignPattern_BS_17": {
+   "zh": "设计图：赛博兔女郎",
+   "en": "Design Pattern: Cyber Bunny"
+  },
+  "DesignPattern_BS_19": {
+   "zh": "设计图：黑珍珠",
+   "en": "Design Pattern: Black Pearl"
+  },
+  "DesignPattern_BS_19_Var2": {
+   "zh": "设计图：赤色珍珠",
+   "en": "Design Pattern: Red Pearl"
+  },
+  "DesignPattern_BS_20": {
+   "zh": "设计图：碧蓝季风",
+   "en": "Design Pattern: Blue Monsoon"
+  },
+  "DesignPattern_BS_20_Var2": {
+   "zh": "设计图：纯白季风",
+   "en": "Design Pattern: White Monsoon"
+  },
+  "DesignPattern_BS_21": {
+   "zh": "设计图：莹白珍珠",
+   "en": "Design Pattern: White Pearl"
+  },
+  "DesignPattern_BS_21_Var2": {
+   "zh": "设计图：水珍珠",
+   "en": "Design Pattern: Aqua Pearl"
+  },
+  "DesignPattern_BS_22": {
+   "zh": "设计图：海的女仆",
+   "en": "Design Pattern: Ocean Maid"
+  },
+  "DesignPattern_BS_22_Var2": {
+   "zh": "设计图：海潮女仆",
+   "en": "Design Pattern: Tidal Maid"
+  },
+  "DesignPattern_BS_23": {
+   "zh": "设计图：废土机械师",
+   "en": "Design Pattern: Junk Mechanic"
+  },
+  "DesignPattern_BS_23_Var2": {
+   "zh": "设计图：废品工程师",
+   "en": "Design Pattern: Junk Engineer"
+  },
+  "DesignPattern_BS_24": {
+   "zh": "设计图：通勤装",
+   "en": "Design Pattern: Office Style"
+  },
+  "DesignPattern_BS_24_Var2": {
+   "zh": "设计图：空乘风",
+   "en": "Design Pattern: Crew Style"
+  },
+  "DesignPattern_BS_26": {
+   "zh": "设计图：“四秒钟”休闲装",
+   "en": "Design Pattern: FourSeconds Everyday Wear"
+  },
+  "DesignPattern_BS_26_Var2": {
+   "zh": "设计图：“四秒钟”基本造型",
+   "en": "Design Pattern: FourSeconds Essential Wear"
+  },
+  "DesignPattern_BS_30": {
+   "zh": "设计图：空中王牌",
+   "en": "Design Pattern: Sky Ace"
+  },
+  "DesignPattern_BS_30_Var2": {
+   "zh": "设计图：天骄王牌",
+   "en": "Design Pattern: Air Ace"
+  },
+  "DesignPattern_BS_31": {
+   "zh": "设计图：休闲活力装",
+   "en": "Design Pattern: Daily Force"
+  },
+  "DesignPattern_BS_31_Var2": {
+   "zh": "设计图：舒适活力装",
+   "en": "Design Pattern: Comfort Force"
+  },
+  "DesignPattern_BS_32": {
+   "zh": "设计图：“四秒钟”破洞牛仔布套装",
+   "en": "Design Pattern: FourSeconds Destroyed Denim"
+  },
+  "DesignPattern_BS_33": {
+   "zh": "设计图：“四秒钟”黑色牛仔布套装",
+   "en": "Design Pattern: FourSeconds Black Denim"
+  },
+  "DesignPattern_BS_34": {
+   "zh": "设计图：黄色运动服",
+   "en": "Design Pattern: Sporty Yellow"
+  },
+  "DesignPattern_BS_34_Var2": {
+   "zh": "设计图：活力运动服",
+   "en": "Design Pattern: Sporty Energy"
+  },
+  "DesignPattern_BS_37": {
+   "zh": "设计图：黑玫瑰",
+   "en": "Design Pattern: Black Rose"
+  },
+  "DesignPattern_BS_37_Var2": {
+   "zh": "设计图：玫瑰人生",
+   "en": "Design Pattern: La Vie en Rose"
+  },
+  "DesignPattern_BS_37_Var3": {
+   "zh": "设计图：天使玫瑰",
+   "en": "Design Pattern: Angelic Rose"
+  },
+  "DesignPattern_BS_38": {
+   "zh": "设计图：赤血丹心",
+   "en": "Design Pattern: Red Passion"
+  },
+  "DesignPattern_BS_38_Var2": {
+   "zh": "设计图：翡翠热情",
+   "en": "Design Pattern: Emerald Passion"
+  },
+  "DesignPattern_BS_40": {
+   "zh": "设计图：赛博绑带装",
+   "en": "Design Pattern: Cybernetic Bondage"
+  },
+  "DesignPattern_BS_40_Var2": {
+   "zh": "设计图：自动绑带装",
+   "en": "Design Pattern: Autonetic Bondage"
+  },
+  "DesignPattern_BS_40_Var3": {
+   "zh": "设计图：神经元回路绑带装",
+   "en": "Design Pattern: Neurocircuit Bondage"
+  },
+  "DesignPattern_BS_41": {
+   "zh": "设计图：废土冒险家",
+   "en": "Design Pattern: Wasteland Adventurer"
+  },
+  "DesignPattern_BS_41_Var2": {
+   "zh": "设计图：废土探索者",
+   "en": "Design Pattern: Wasteland Explorer"
+  },
+  "DesignPattern_BS_42": {
+   "zh": "设计图：动力十足",
+   "en": "Design Pattern: Motivation"
+  },
+  "DesignPattern_BS_42_Var2": {
+   "zh": "设计图：共鸣",
+   "en": "Design Pattern: Resonance"
+  },
+  "DesignPattern_BS_43": {
+   "zh": "设计图：终极兔女郎",
+   "en": "Design Pattern: Ultimate Bunny"
+  },
+  "DesignPattern_BS_43_Var2": {
+   "zh": "设计图：极致兔女郎",
+   "en": "Design Pattern: Extreme Bunny"
+  },
+  "DesignPattern_BS_44": {
+   "zh": "设计图：赛博魔法师",
+   "en": "Design Pattern: Cyber Magician"
+  },
+  "DesignPattern_BS_44_Var2": {
+   "zh": "设计图：赛博诡术士",
+   "en": "Design Pattern: Cyber Trickster"
+  },
+  "DesignPattern_BS_44_Var3": {
+   "zh": "设计图：赛博幻术师",
+   "en": "Design Pattern: Cyber Illusionist"
+  },
+  "DesignPattern_BS_45": {
+   "zh": "设计图：狂飙车手",
+   "en": "Design Pattern: Racer's High"
+  },
+  "DesignPattern_BS_45_Var2": {
+   "zh": "设计图：极速快感",
+   "en": "Design Pattern: Speeder's High"
+  },
+  "DesignPattern_BS_47": {
+   "zh": "设计图：目光焦点",
+   "en": "Design Pattern: Photogenic"
+  },
+  "DesignPattern_BS_47_Var2": {
+   "zh": "设计图：丽影",
+   "en": "Design Pattern: Telegenic"
+  },
+  "DesignPattern_BS_48": {
+   "zh": "设计图：奥卡探索者",
+   "en": "Design Pattern: Orca Exploration Suit"
+  },
+  "DesignPattern_BS_48_Var2": {
+   "zh": "设计图：奥卡探路者",
+   "en": "Design Pattern: Orca Pathfinder"
+  },
+  "DesignPattern_BS_50": {
+   "zh": "设计图：神经元链接套装原型",
+   "en": "Design Pattern: Prototype Neurolink Suit"
+  },
+  "DesignPattern_BS_50_Var2": {
+   "zh": "设计图：知觉套装原型",
+   "en": "Design Pattern: Prototype Sensate Suit"
+  },
+  "DesignPattern_BS_53": {
+   "zh": "设计图：神经元链接紧身服",
+   "en": "Design Pattern: Neurolink Skin"
+  },
+  "DesignPattern_BS_53_Var2": {
+   "zh": "设计图：知觉活肤紧身服",
+   "en": "Design Pattern: Sensate Skin"
+  },
+  "DesignPattern_BS_54": {
+   "zh": "设计图：烽火神盾",
+   "en": "Design Pattern: War Aegis"
+  },
+  "DesignPattern_BS_55": {
+   "zh": "设计图：烽火裙装",
+   "en": "Design Pattern: War Dress"
+  },
+  "DesignPattern_BS_55_Var2": {
+   "zh": "设计图：烽火装",
+   "en": "Design Pattern: War Suit"
+  },
+  "DesignPattern_BS_56": {
+   "zh": "设计图：盛夏爱丽丝",
+   "en": "Design Pattern: Midsummer Alice"
+  },
+  "DesignPattern_BS_57": {
+   "zh": "设计图：盛夏小红帽",
+   "en": "Design Pattern: Midsummer Redhood"
+  },
+  "DesignPattern_BS_58": {
+   "zh": "设计图：“波浪”潜水比基尼",
+   "en": "Design Pattern: Wave Diver Bikini"
+  },
+  "DesignPattern_BS_60": {
+   "zh": "设计图：“波浪”斜款连体比基尼",
+   "en": "Design Pattern: Wave Oblique Monokini"
+  },
+  "DesignPattern_BS_99": {
+   "zh": "设计图：星球空降服（队长）",
+   "en": "Design Pattern: Planet Diving Suit (Captain)"
+  },
+  "DesignPattern_BS_Bear": {
+   "zh": "设计图：毛绒熊熊",
+   "en": "Design Pattern: Fluffy Bear"
+  },
+  "DesignPattern_BS_Bear_Var2": {
+   "zh": "设计图：粉红小熊",
+   "en": "Design Pattern: Pink Bear"
+  },
+  "DesignPattern_BS_Black_Leather_bikini": {
+   "zh": "设计图：墨色波浪",
+   "en": "Design Pattern: Black Wave"
+  },
+  "DesignPattern_BS_Black_Leather_bikini_Var2": {
+   "zh": "设计图：怒涛",
+   "en": "Design Pattern: Wild Wave"
+  },
+  "DesignPattern_BS_Blue_Suit": {
+   "zh": "设计图：星球空降服（第5小队）",
+   "en": "Design Pattern: Planet Diving Suit (5th)"
+  },
+  "DesignPattern_BS_Default": {
+   "zh": "设计图：星球空降服（第6小队）第2版",
+   "en": "Design Pattern: Planet Diving Suit (6th) V2"
+  },
+  "DesignPattern_BS_Default_Var2": {
+   "zh": "设计图：星球空降服（第6小队）",
+   "en": "Design Pattern: Planet Diving Suit (6th)"
+  },
+  "DesignPattern_BS_Default_Var3": {
+   "zh": "设计图：星球空降服（第6小队）第3版",
+   "en": "Design Pattern: Planet Diving Suit (6th) V3"
+  },
+  "DesignPattern_BS_EVE_04": {
+   "zh": "设计图：牛仔布休闲装",
+   "en": "Design Pattern: Daily Denim"
+  },
+  "DesignPattern_BS_EVE_04_Var2": {
+   "zh": "设计图：“四秒钟”牛仔布套装",
+   "en": "Design Pattern: FourSeconds Denim"
+  },
+  "DesignPattern_BS_Leather_Jean": {
+   "zh": "设计图：休闲车手服",
+   "en": "Design Pattern: Daily Biker"
+  },
+  "DesignPattern_BS_Leather_Jean_Var2": {
+   "zh": "设计图：“四秒钟”车手服",
+   "en": "Design Pattern: FourSeconds Biker"
+  },
+  "DesignPattern_BS_Raven": {
+   "zh": "设计图：渡鸦装",
+   "en": "Design Pattern: Raven Suit"
+  },
+  "DesignPattern_BS_Sailor_Jean": {
+   "zh": "设计图：休闲水手服",
+   "en": "Design Pattern: Daily Sailor"
+  },
+  "DesignPattern_BS_Sailor_Jean_Var2": {
+   "zh": "设计图：舒适水手服",
+   "en": "Design Pattern: Comfort Sailor"
+  },
+  "DesignPattern_BS_SilverKunoichi": {
+   "zh": "设计图：亮银忍者装",
+   "en": "Design Pattern: Silver Kunoichi"
+  },
+  "DesignPattern_BS_SilverKunoichi_Var2": {
+   "zh": "设计图：暗影忍者装",
+   "en": "Design Pattern: Shadow Kunoichi"
+  },
+  "DesignPattern_BS_White_Jean": {
+   "zh": "设计图：朋克炸街服",
+   "en": "Design Pattern: Punk Top"
+  },
+  "DesignPattern_BS_White_Jean_Var2": {
+   "zh": "设计图：朋克风",
+   "en": "Design Pattern: Punk Style"
+  },
+  "DesignPattern_BS_Yellow_Suit": {
+   "zh": "设计图：星球空降服原型",
+   "en": "Design Pattern: Prototype Planet Diving Suit"
+  },
+  "DesignPattern_BS_Yellow_Suit_Jacket": {
+   "zh": "设计图：星球空降服（第3小队）",
+   "en": "Design Pattern: Planet Diving Suit (3rd)"
+  },
+  "DesignPattern_BS_Yellow_Suit_Jacket_Var2": {
+   "zh": "设计图：星球空降服（第3小队）第2版",
+   "en": "Design Pattern: Planet Diving Suit (3rd) V2"
+  },
+  "DesignPattern_BS_Yellow_Suit_Var2": {
+   "zh": "设计图：星球空降服原型第2版",
+   "en": "Design Pattern: Prototype Planet Diving Suit V2"
+  },
+  "DroneCore": {
+   "zh": "无人机升级模块",
+   "en": "Drone Upgrade Module"
+  },
+  "DroneSeal_001": {
+   "zh": "战术包",
+   "en": "Tactical Pack"
+  },
+  "DroneSeal_002": {
+   "zh": "装甲包",
+   "en": "Armored Pack"
+  },
+  "DroneSeal_002_Var2": {
+   "zh": "铁甲套装",
+   "en": "Ironclad Pack"
+  },
+  "DroneSeal_003": {
+   "zh": "占星师套装",
+   "en": "Stargazer Pack"
+  },
+  "DroneSeal_004": {
+   "zh": "兔宝宝套装",
+   "en": "Lop Bunny Pack"
+  },
+  "DroneSeal_004_Var2": {
+   "zh": "迷你兔套装",
+   "en": "Dwarf Rabbit Pack"
+  },
+  "DroneSeal_005": {
+   "zh": "毛绒熊熊套装",
+   "en": "Fluffy Bear Pack"
+  },
+  "DroneSeal_Christmas_01": {
+   "zh": "驯鹿鲁道夫套装",
+   "en": "Rudolf Pack"
+  },
+  "DroneSeal_Nier_001": {
+   "zh": "辅助机042套装",
+   "en": "Pod 042 Pack"
+  },
+  "ECelluloseRayon": {
+   "zh": "极态聚合物材料",
+   "en": "Extreme Polymer Material"
+  },
+  "EQ_DED_Item_CraneAccessKey": {
+   "zh": "起重机ID卡",
+   "en": "Crane ID Card"
+  },
+  "EQ_DED_Item_WaterGateKey": {
+   "zh": "水闸钥匙",
+   "en": "Floodgate Key"
+  },
+  "EQ_Item_HyperCell": {
+   "zh": "超能电池",
+   "en": "Hyper Cell"
+  },
+  "EQ_Item_IED": {
+   "zh": "聚变电池",
+   "en": "Fusion Cell"
+  },
+  "EQ_SE_Item_PropulsionControlBoard": {
+   "zh": "推进装置控制面板",
+   "en": "Propulsion Control Board"
+  },
+  "ETC_Item_VendingMachineCoin": {
+   "zh": "维特币",
+   "en": "Vitcoin"
+  },
+  "ETC_Item_VendingMachineCoin_Christmas": {
+   "zh": "维特币",
+   "en": "Vitcoin"
+  },
+  "Earring_001": {
+   "zh": "绯红泪珠",
+   "en": "Crimson Tear"
+  },
+  "Earring_001_Var2": {
+   "zh": "高贵泪珠",
+   "en": "Noble Tear"
+  },
+  "Earring_002": {
+   "zh": "点点蓝晶",
+   "en": "Blue Point"
+  },
+  "Earring_002_Var2": {
+   "zh": "光点",
+   "en": "Shining Point"
+  },
+  "Earring_003": {
+   "zh": "银齿",
+   "en": "Silver Tooth"
+  },
+  "Earring_003_Var2": {
+   "zh": "金齿",
+   "en": "Cybernetic Tooth"
+  },
+  "Earring_004": {
+   "zh": "聚变之光",
+   "en": "Fusion Light"
+  },
+  "Earring_005": {
+   "zh": "护耳",
+   "en": "Ear Armor"
+  },
+  "Earring_006": {
+   "zh": "绿松石环",
+   "en": "Turquoise Hoops"
+  },
+  "Earring_007": {
+   "zh": "太阳之泪",
+   "en": "Sun Drop"
+  },
+  "Earring_008": {
+   "zh": "记忆耳坠",
+   "en": "Hanging Memory"
+  },
+  "Earring_008_Var2": {
+   "zh": "闪亮记忆",
+   "en": "Shining Memory"
+  },
+  "Earring_009": {
+   "zh": "辐射钟摆",
+   "en": "Radial Pendulum"
+  },
+  "Earring_010": {
+   "zh": "黑色矩形",
+   "en": "Black Rectangle"
+  },
+  "Earring_011": {
+   "zh": "四倍矩形",
+   "en": "Quadruple Rectangle"
+  },
+  "Earring_012": {
+   "zh": "黄金之心",
+   "en": "Golden Heart"
+  },
+  "Earring_013": {
+   "zh": "美玉良珀",
+   "en": "Jade and Amber"
+  },
+  "Earring_014": {
+   "zh": "水晶之泪",
+   "en": "Crystal Drop"
+  },
+  "Earring_015": {
+   "zh": "红宝石之泪",
+   "en": "Ruby Drop"
+  },
+  "Earring_016": {
+   "zh": "摇摆兔兔",
+   "en": "Dangling Bunny"
+  },
+  "Earring_017": {
+   "zh": "黄金枝",
+   "en": "Golden Branch"
+  },
+  "Earring_018": {
+   "zh": "承传标记",
+   "en": "Symbol of Legacy"
+  },
+  "Earring_Christmas_01": {
+   "zh": "花环耳饰",
+   "en": "Wreath Earrings"
+  },
+  "Earring_Christmas_02": {
+   "zh": "雪橇耳夹",
+   "en": "Sleigh Earcuff"
+  },
+  "ElastomerFiber": {
+   "zh": "聚合物材料",
+   "en": "Polymer Material"
+  },
+  "ExospineCore": {
+   "zh": "万用卡",
+   "en": "Omnicard"
+  },
+  "FaceAccessory_001": {
+   "zh": "椭圆角质架眼镜",
+   "en": "Oval Horn-rimmed Glasses"
+  },
+  "FaceAccessory_002": {
+   "zh": "大圆框眼镜",
+   "en": "Large Round Glasses"
+  },
+  "FaceAccessory_002_Var2": {
+   "zh": "超大圆框眼镜",
+   "en": "Oversized Round Glasses"
+  },
+  "FaceAccessory_003": {
+   "zh": "经典圆框眼镜",
+   "en": "Classic Round Glasses"
+  },
+  "FaceAccessory_004": {
+   "zh": "棕色角质架眼镜",
+   "en": "Brown Horn-rimmed Glasses"
+  },
+  "FaceAccessory_005": {
+   "zh": "金属框架眼镜",
+   "en": "Metal-framed Glasses"
+  },
+  "FaceAccessory_006": {
+   "zh": "猫眼",
+   "en": "Cat's Eye"
+  },
+  "FaceAccessory_007": {
+   "zh": "实验室护目镜",
+   "en": "Laboratory Goggles"
+  },
+  "FaceAccessory_008": {
+   "zh": "超窄太阳镜",
+   "en": "Skinny Sunglasses"
+  },
+  "FaceAccessory_009": {
+   "zh": "橙色飞行员太阳镜",
+   "en": "Orange Aviators"
+  },
+  "FaceAccessory_010": {
+   "zh": "多边形方框眼镜",
+   "en": "Polygonal-Framed Glasses"
+  },
+  "FaceAccessory_011": {
+   "zh": "方框眼镜",
+   "en": "Square-Framed Glasses"
+  },
+  "FaceAccessory_012": {
+   "zh": "半框眼镜",
+   "en": "Half-Rim Glasses"
+  },
+  "FaceAccessory_013": {
+   "zh": "超大号太阳镜",
+   "en": "Oversized Sunglasses"
+  },
+  "FaceAccessory_026": {
+   "zh": "环绕式太阳镜",
+   "en": "Wraparound Sunglasses"
+  },
+  "FaceAccessory_027": {
+   "zh": "漩涡眼镜",
+   "en": "Spiraling Glasses"
+  },
+  "FaceAccessory_028": {
+   "zh": "眼罩",
+   "en": "Eyepatch"
+  },
+  "FaceAccessory_029": {
+   "zh": "偏光太阳镜",
+   "en": "Polarized Sunglasses"
+  },
+  "FaceAccessory_Christmas_01": {
+   "zh": "冰晶眼镜",
+   "en": "Snow Crystal Glasses"
+  },
+  "FaceAccessory_Nier_001": {
+   "zh": "战斗护目饰",
+   "en": "Battle Goggles"
+  },
+  "Fish_Arowana": {
+   "zh": "金龙鱼",
+   "en": "Arowana"
+  },
+  "Fish_Betta": {
+   "zh": "斗鱼",
+   "en": "Betta"
+  },
+  "Fish_Box1": {
+   "zh": "花哨的箱子",
+   "en": "Fancy Box"
+  },
+  "Fish_Box2": {
+   "zh": "坚固的箱子",
+   "en": "Sturdy Box"
+  },
+  "Fish_Box3": {
+   "zh": "普通的箱子",
+   "en": "Plain Box"
+  },
+  "Fish_Box4": {
+   "zh": "破旧的箱子",
+   "en": "Shabby Box"
+  },
+  "Fish_ButterflyFish": {
+   "zh": "蝴蝶鱼",
+   "en": "Butterflyfish"
+  },
+  "Fish_CannedFish": {
+   "zh": "鱼罐头",
+   "en": "Canned Fish"
+  },
+  "Fish_CannerHam": {
+   "zh": "罐头火腿",
+   "en": "Canned Ham"
+  },
+  "Fish_ChannelCatfish": {
+   "zh": "钳鱼",
+   "en": "Channel Catfish"
+  },
+  "Fish_Dunkleosteus": {
+   "zh": "邓氏鱼",
+   "en": "Dunkleosteus"
+  },
+  "Fish_FancyCarp": {
+   "zh": "锦鲤",
+   "en": "Koi"
+  },
+  "Fish_FishCake": {
+   "zh": "鱼饼",
+   "en": "Fish Cake"
+  },
+  "Fish_FlyingFish": {
+   "zh": "飞鱼",
+   "en": "Flying Fish"
+  },
+  "Fish_FootBallfish": {
+   "zh": "灯笼鱼",
+   "en": "Footballfish"
+  },
+  "Fish_Goby": {
+   "zh": "弹涂鱼",
+   "en": "Mudskipper"
+  },
+  "Fish_GoldFish": {
+   "zh": "金鱼",
+   "en": "Goldfish"
+  },
+  "Fish_GreatWhiteShark": {
+   "zh": "大白鲨",
+   "en": "Great White Shark"
+  },
+  "Fish_Halibut": {
+   "zh": "大比目鱼",
+   "en": "Halibut"
+  },
+  "Fish_Lobster": {
+   "zh": "龙虾",
+   "en": "Lobster"
+  },
+  "Fish_Mahimahi": {
+   "zh": "鬼头刀",
+   "en": "Mahi-Mahi"
+  },
+  "Fish_MolaMola": {
+   "zh": "翻车鱼",
+   "en": "Ocean Sunfish"
+  },
+  "Fish_Nikke_Glasses": {
+   "zh": "尼恩的眼镜",
+   "en": "Neon's Glasses"
+  },
+  "Fish_Nikke_Laplace": {
+   "zh": "拉普拉斯",
+   "en": "Laplace"
+  },
+  "Fish_Nikke_Poli": {
+   "zh": "波莉",
+   "en": "Poli"
+  },
+  "Fish_Nikke_Rapunzel": {
+   "zh": "长发公主",
+   "en": "Rapunzel"
+  },
+  "Fish_Nikke_SnowWhite": {
+   "zh": "白雪公主",
+   "en": "Snow White"
+  },
+  "Fish_Nikke_Tape": {
+   "zh": "卡式录音带",
+   "en": "Cassette Tape"
+  },
+  "Fish_NuclearWaste": {
+   "zh": "核废料",
+   "en": "Nuclear Waste"
+  },
+  "Fish_Pirarucu": {
+   "zh": "巨骨舌鱼",
+   "en": "Pirarucu"
+  },
+  "Fish_PorcupineFish": {
+   "zh": "刺豚",
+   "en": "Porcupinefish"
+  },
+  "Fish_SailFish": {
+   "zh": "平鳍旗鱼",
+   "en": "Sailfish"
+  },
+  "Fish_Salmon": {
+   "zh": "鲑鱼",
+   "en": "Salmon"
+  },
+  "Fish_SeaBass": {
+   "zh": "海鲈鱼",
+   "en": "Sea Bass"
+  },
+  "Fish_SeaBream": {
+   "zh": "真鲷",
+   "en": "Red Seabream"
+  },
+  "Fish_Tire": {
+   "zh": "轮胎",
+   "en": "Tire"
+  },
+  "Fish_Triggerfish": {
+   "zh": "扳机鱼",
+   "en": "Triggerfish"
+  },
+  "Fish_Tuna": {
+   "zh": "太平洋蓝鳍金枪鱼",
+   "en": "Pacific Bluefin Tuna"
+  },
+  "Fish_WhaleShark": {
+   "zh": "鲸鲨",
+   "en": "Whale Shark"
+  },
+  "Fish_mackerel": {
+   "zh": "鲭鱼",
+   "en": "Mackerel"
+  },
+  "FishingPoint": {
+   "zh": "钓鱼积分",
+   "en": "Fishing Score"
+  },
+  "FishingRod": {
+   "zh": "钓鱼竿",
+   "en": "Fishing Rod"
+  },
+  "FishingSkillBook1": {
+   "zh": "钓鱼数据",
+   "en": "Fishing Data"
+  },
+  "FishingSkillBook2": {
+   "zh": "进阶钓鱼数据",
+   "en": "Advanced Fishing Data"
+  },
+  "FishingSkillBook3": {
+   "zh": "神奇钓鱼数据",
+   "en": "Fantastic Fishing Data"
+  },
+  "FishingSkillBook4": {
+   "zh": "最佳钓鱼数据",
+   "en": "Best Fishing Data"
+  },
+  "FishingSkillBook4_Dummy": {
+   "zh": "最佳钓鱼数据",
+   "en": "Best Fishing Data"
+  },
+  "FlashGrenade": {
+   "zh": "声波手雷",
+   "en": "Sonic Grenade"
+  },
+  "GearCore": {
+   "zh": "万用螺栓",
+   "en": "Omnibolt"
+  },
+  "Gear_AdditiveBetaSkillDamage_Common": {
+   "zh": "贝塔增强组件",
+   "en": "Beta Enhancement Gear"
+  },
+  "Gear_AdditiveBetaSkillDamage_Common_MK2": {
+   "zh": "贝塔增强组件Mk2",
+   "en": "Beta Enhancement Gear Mk2"
+  },
+  "Gear_AdditiveBetaSkillDamage_Rare": {
+   "zh": "贝塔增强组件",
+   "en": "Beta Enhancement Gear"
+  },
+  "Gear_AdditiveBetaSkillDamage_Rare_MK2": {
+   "zh": "贝塔增强组件Mk2",
+   "en": "Beta Enhancement Gear Mk2"
+  },
+  "Gear_AdditiveBetaSkillDamage_Uncommon": {
+   "zh": "贝塔增强组件",
+   "en": "Beta Enhancement Gear"
+  },
+  "Gear_AdditiveBetaSkillDamage_Uncommon_MK2": {
+   "zh": "贝塔增强组件Mk2",
+   "en": "Beta Enhancement Gear Mk2"
+  },
+  "Gear_AdditiveBustSkillDamage_Common": {
+   "zh": "爆发增强组件",
+   "en": "Burst Enhancement Gear"
+  },
+  "Gear_AdditiveBustSkillDamage_Common_MK2": {
+   "zh": "爆发增强组件Mk2",
+   "en": "Burst Enhancement Gear Mk2"
+  },
+  "Gear_AdditiveBustSkillDamage_Rare": {
+   "zh": "爆发增强组件",
+   "en": "Burst Enhancement Gear"
+  },
+  "Gear_AdditiveBustSkillDamage_Rare_MK2": {
+   "zh": "爆发增强组件Mk2",
+   "en": "Burst Enhancement Gear Mk2"
+  },
+  "Gear_AdditiveBustSkillDamage_Uncommon": {
+   "zh": "爆发增强组件",
+   "en": "Burst Enhancement Gear"
+  },
+  "Gear_AdditiveBustSkillDamage_Uncommon_MK2": {
+   "zh": "爆发增强组件Mk2",
+   "en": "Burst Enhancement Gear Mk2"
+  },
+  "Gear_AdditiveFixedDamage_Common": {
+   "zh": "固定伤害组件",
+   "en": "Fixed Damage Gear"
+  },
+  "Gear_AdditiveFixedDamage_Common_MK2": {
+   "zh": "固定伤害组件Mk2",
+   "en": "Fixed Damage Gear Mk2"
+  },
+  "Gear_AdditiveFixedDamage_Rare": {
+   "zh": "固定伤害组件",
+   "en": "Fixed Damage Gear"
+  },
+  "Gear_AdditiveFixedDamage_Rare_MK2": {
+   "zh": "固定伤害组件Mk2",
+   "en": "Fixed Damage Gear Mk2"
+  },
+  "Gear_AdditiveFixedDamage_Uncommon": {
+   "zh": "固定伤害组件",
+   "en": "Fixed Damage Gear"
+  },
+  "Gear_AdditiveFixedDamage_Uncommon_MK2": {
+   "zh": "固定伤害组件Mk2",
+   "en": "Fixed Damage Gear Mk2"
+  },
+  "Gear_AdditiveGiveAndReciveDamageRate_Common": {
+   "zh": "双刃组件",
+   "en": "Double Edged Gear"
+  },
+  "Gear_AdditiveGiveAndReciveDamageRate_Common_MK2": {
+   "zh": "双刃组件Mk2",
+   "en": "Double Edged Gear Mk2"
+  },
+  "Gear_AdditiveGiveAndReciveDamageRate_Rare": {
+   "zh": "双刃组件",
+   "en": "Double Edged Gear"
+  },
+  "Gear_AdditiveGiveAndReciveDamageRate_Rare_MK2": {
+   "zh": "双刃组件Mk2",
+   "en": "Double Edged Gear Mk2"
+  },
+  "Gear_AdditiveGiveAndReciveDamageRate_Uncommon": {
+   "zh": "双刃组件",
+   "en": "Double Edged Gear"
+  },
+  "Gear_AdditiveGiveAndReciveDamageRate_Uncommon_MK2": {
+   "zh": "双刃组件Mk2",
+   "en": "Double Edged Gear Mk2"
+  },
+  "Gear_AttackSpeed_Common": {
+   "zh": "加速组件",
+   "en": "Speed Increase Gear"
+  },
+  "Gear_AttackSpeed_Common_MK2": {
+   "zh": "加速组件Mk2",
+   "en": "Speed Increase Gear Mk2"
+  },
+  "Gear_AttackSpeed_Rare": {
+   "zh": "加速组件",
+   "en": "Speed Increase Gear"
+  },
+  "Gear_AttackSpeed_Rare_MK2": {
+   "zh": "加速组件Mk2",
+   "en": "Speed Increase Gear Mk2"
+  },
+  "Gear_AttackSpeed_Uncommon": {
+   "zh": "加速组件",
+   "en": "Speed Increase Gear"
+  },
+  "Gear_AttackSpeed_Uncommon_MK2": {
+   "zh": "加速组件Mk2",
+   "en": "Speed Increase Gear Mk2"
+  },
+  "Gear_BetaCrystalAdditiveRate_Common": {
+   "zh": "金方组件",
+   "en": "Gold Gear"
+  },
+  "Gear_BetaCrystalAdditiveRate_Common_MK2": {
+   "zh": "金方组件Mk2",
+   "en": "Gold Gear Mk2"
+  },
+  "Gear_BetaCrystalAdditiveRate_Rare": {
+   "zh": "金方组件",
+   "en": "Gold Gear"
+  },
+  "Gear_BetaCrystalAdditiveRate_Rare_MK2": {
+   "zh": "金方组件Mk2",
+   "en": "Gold Gear Mk2"
+  },
+  "Gear_BetaCrystalAdditiveRate_Uncommon": {
+   "zh": "金方组件",
+   "en": "Gold Gear"
+  },
+  "Gear_BetaCrystalAdditiveRate_Uncommon_MK2": {
+   "zh": "金方组件Mk2",
+   "en": "Gold Gear Mk2"
+  },
+  "Gear_BetaGaugeAdditiveRate_Common": {
+   "zh": "贝塔充能组件",
+   "en": "Beta Charge Gear"
+  },
+  "Gear_BetaGaugeAdditiveRate_Common_MK2": {
+   "zh": "贝塔充能组件Mk2",
+   "en": "Beta Charge Gear Mk2"
+  },
+  "Gear_BetaGaugeAdditiveRate_Rare": {
+   "zh": "贝塔充能组件",
+   "en": "Beta Charge Gear"
+  },
+  "Gear_BetaGaugeAdditiveRate_Rare_MK2": {
+   "zh": "贝塔充能组件Mk2",
+   "en": "Beta Charge Gear Mk2"
+  },
+  "Gear_BetaGaugeAdditiveRate_Uncommon": {
+   "zh": "贝塔充能组件",
+   "en": "Beta Charge Gear"
+  },
+  "Gear_BetaGaugeAdditiveRate_Uncommon_MK2": {
+   "zh": "贝塔充能组件Mk2",
+   "en": "Beta Charge Gear Mk2"
+  },
+  "Gear_BurstGaugeAdditiveRate_Common": {
+   "zh": "爆发充能组件",
+   "en": "Burst Charge Gear"
+  },
+  "Gear_BurstGaugeAdditiveRate_Common_MK2": {
+   "zh": "爆发充能组件Mk2",
+   "en": "Burst Charge Gear Mk2"
+  },
+  "Gear_BurstGaugeAdditiveRate_Rare": {
+   "zh": "爆发充能组件",
+   "en": "Burst Charge Gear"
+  },
+  "Gear_BurstGaugeAdditiveRate_Rare_MK2": {
+   "zh": "爆发充能组件Mk2",
+   "en": "Burst Charge Gear Mk2"
+  },
+  "Gear_BurstGaugeAdditiveRate_Uncommon": {
+   "zh": "爆发充能组件",
+   "en": "Burst Charge Gear"
+  },
+  "Gear_BurstGaugeAdditiveRate_Uncommon_MK2": {
+   "zh": "爆发充能组件Mk2",
+   "en": "Burst Charge Gear Mk2"
+  },
+  "Gear_ComboAttackAdditiveDamage_Common": {
+   "zh": "组合连击增强组件",
+   "en": "Combo Attack Enhancement Gear"
+  },
+  "Gear_ComboAttackAdditiveDamage_Common_MK2": {
+   "zh": "组合连击增强组件Mk2",
+   "en": "Combo Attack Enhancement Gear Mk2"
+  },
+  "Gear_ComboAttackAdditiveDamage_Rare": {
+   "zh": "组合连击增强组件",
+   "en": "Combo Attack Enhancement Gear"
+  },
+  "Gear_ComboAttackAdditiveDamage_Rare_MK2": {
+   "zh": "组合连击增强组件Mk2",
+   "en": "Combo Attack Enhancement Gear Mk2"
+  },
+  "Gear_ComboAttackAdditiveDamage_Uncommon": {
+   "zh": "组合连击增强组件",
+   "en": "Combo Attack Enhancement Gear"
+  },
+  "Gear_ComboAttackAdditiveDamage_Uncommon_MK2": {
+   "zh": "组合连击增强组件Mk2",
+   "en": "Combo Attack Enhancement Gear Mk2"
+  },
+  "Gear_CriticalPercentage_Common": {
+   "zh": "暴击强化组件",
+   "en": "Crit Boost Gear"
+  },
+  "Gear_CriticalPercentage_Common_MK2": {
+   "zh": "暴击强化组件Mk2",
+   "en": "Crit Boost Gear Mk2"
+  },
+  "Gear_CriticalPercentage_Rare": {
+   "zh": "暴击强化组件",
+   "en": "Crit Boost Gear"
+  },
+  "Gear_CriticalPercentage_Rare_MK2": {
+   "zh": "暴击强化组件Mk2",
+   "en": "Crit Boost Gear Mk2"
+  },
+  "Gear_CriticalPercentage_Uncommon": {
+   "zh": "暴击强化组件",
+   "en": "Crit Boost Gear"
+  },
+  "Gear_CriticalPercentage_Uncommon_MK2": {
+   "zh": "暴击强化组件Mk2",
+   "en": "Crit Boost Gear Mk2"
+  },
+  "Gear_CriticalValueRate_Common": {
+   "zh": "暴击伤害增强组件",
+   "en": "Crit Enhancement Gear"
+  },
+  "Gear_CriticalValueRate_Common_MK2": {
+   "zh": "暴击伤害增强组件Mk2",
+   "en": "Crit Enhancement Gear Mk2"
+  },
+  "Gear_CriticalValueRate_Rare": {
+   "zh": "暴击伤害增强组件",
+   "en": "Crit Enhancement Gear"
+  },
+  "Gear_CriticalValueRate_Rare_MK2": {
+   "zh": "暴击伤害增强组件Mk2",
+   "en": "Crit Enhancement Gear Mk2"
+  },
+  "Gear_CriticalValueRate_Uncommon": {
+   "zh": "暴击伤害增强组件",
+   "en": "Crit Enhancement Gear"
+  },
+  "Gear_CriticalValueRate_Uncommon_MK2": {
+   "zh": "暴击伤害增强组件Mk2",
+   "en": "Crit Enhancement Gear Mk2"
+  },
+  "Gear_GainBetaGaugeValueOnDamaged_Common": {
+   "zh": "贝塔恢复组件",
+   "en": "Beta Recovery Gear"
+  },
+  "Gear_GainBetaGaugeValueOnDamaged_Common_MK2": {
+   "zh": "贝塔恢复组件Mk2",
+   "en": "Beta Recovery Gear Mk2"
+  },
+  "Gear_GainBetaGaugeValueOnDamaged_Rare": {
+   "zh": "贝塔恢复组件",
+   "en": "Beta Recovery Gear"
+  },
+  "Gear_GainBetaGaugeValueOnDamaged_Rare_MK2": {
+   "zh": "贝塔恢复组件Mk2",
+   "en": "Beta Recovery Gear Mk2"
+  },
+  "Gear_GainBetaGaugeValueOnDamaged_Uncommon": {
+   "zh": "贝塔恢复组件",
+   "en": "Beta Recovery Gear"
+  },
+  "Gear_GainBetaGaugeValueOnDamaged_Uncommon_MK2": {
+   "zh": "贝塔恢复组件Mk2",
+   "en": "Beta Recovery Gear Mk2"
+  },
+  "Gear_GainBurstGaugeValueOnDamaged_Common": {
+   "zh": "爆发恢复组件",
+   "en": "Burst Recovery Gear"
+  },
+  "Gear_GainBurstGaugeValueOnDamaged_Common_MK2": {
+   "zh": "爆发恢复组件Mk2",
+   "en": "Burst Recovery Gear Mk2"
+  },
+  "Gear_GainBurstGaugeValueOnDamaged_Rare": {
+   "zh": "爆发恢复组件",
+   "en": "Burst Recovery Gear"
+  },
+  "Gear_GainBurstGaugeValueOnDamaged_Rare_MK2": {
+   "zh": "爆发恢复组件Mk2",
+   "en": "Burst Recovery Gear Mk2"
+  },
+  "Gear_GainBurstGaugeValueOnDamaged_Uncommon": {
+   "zh": "爆发恢复组件",
+   "en": "Burst Recovery Gear"
+  },
+  "Gear_GainBurstGaugeValueOnDamaged_Uncommon_MK2": {
+   "zh": "爆发恢复组件Mk2",
+   "en": "Burst Recovery Gear Mk2"
+  },
+  "Gear_HighHpDamageAdditiveRate_Common": {
+   "zh": "完美战斗组件",
+   "en": "Perfect Combat Gear"
+  },
+  "Gear_HighHpDamageAdditiveRate_Common_MK2": {
+   "zh": "完美战斗组件Mk2",
+   "en": "Perfect Combat Gear Mk2"
+  },
+  "Gear_HighHpDamageAdditiveRate_Rare": {
+   "zh": "完美战斗组件",
+   "en": "Perfect Combat Gear"
+  },
+  "Gear_HighHpDamageAdditiveRate_Rare_MK2": {
+   "zh": "完美战斗组件Mk2",
+   "en": "Perfect Combat Gear Mk2"
+  },
+  "Gear_HighHpDamageAdditiveRate_Uncommon": {
+   "zh": "完美战斗组件",
+   "en": "Perfect Combat Gear"
+  },
+  "Gear_HighHpDamageAdditiveRate_Uncommon_MK2": {
+   "zh": "完美战斗组件Mk2",
+   "en": "Perfect Combat Gear Mk2"
+  },
+  "Gear_KillEnemyAdditiveDamageRate_Common": {
+   "zh": "战斗延续组件",
+   "en": "Combat Continuation Gear"
+  },
+  "Gear_KillEnemyAdditiveDamageRate_Common_MK2": {
+   "zh": "战斗延续组件Mk2",
+   "en": "Combat Continuation Gear Mk2"
+  },
+  "Gear_KillEnemyAdditiveDamageRate_Rare": {
+   "zh": "战斗延续组件",
+   "en": "Combat Continuation Gear"
+  },
+  "Gear_KillEnemyAdditiveDamageRate_Rare_MK2": {
+   "zh": "战斗延续组件Mk2",
+   "en": "Combat Continuation Gear Mk2"
+  },
+  "Gear_KillEnemyAdditiveDamageRate_Uncommon": {
+   "zh": "战斗延续组件",
+   "en": "Combat Continuation Gear"
+  },
+  "Gear_KillEnemyAdditiveDamageRate_Uncommon_MK2": {
+   "zh": "战斗延续组件Mk2",
+   "en": "Combat Continuation Gear Mk2"
+  },
+  "Gear_KillEnemyHealHP_Common": {
+   "zh": "战斗补给组件",
+   "en": "Combat Supply Gear"
+  },
+  "Gear_KillEnemyHealHP_Common_MK2": {
+   "zh": "战斗补给组件Mk2",
+   "en": "Combat Supply Gear Mk2"
+  },
+  "Gear_KillEnemyHealHP_Rare": {
+   "zh": "战斗补给组件",
+   "en": "Combat Supply Gear"
+  },
+  "Gear_KillEnemyHealHP_Rare_MK2": {
+   "zh": "战斗补给组件Mk2",
+   "en": "Combat Supply Gear Mk2"
+  },
+  "Gear_KillEnemyHealHP_Uncommon": {
+   "zh": "战斗补给组件",
+   "en": "Combat Supply Gear"
+  },
+  "Gear_KillEnemyHealHP_Uncommon_MK2": {
+   "zh": "战斗补给组件Mk2",
+   "en": "Combat Supply Gear Mk2"
+  },
+  "Gear_LowHpDamageAdditiveRate_Common": {
+   "zh": "背水一战组件",
+   "en": "Risk Taking Gear"
+  },
+  "Gear_LowHpDamageAdditiveRate_Common_MK2": {
+   "zh": "背水一战组件Mk2",
+   "en": "Risk Taking Gear Mk2"
+  },
+  "Gear_LowHpDamageAdditiveRate_Rare": {
+   "zh": "背水一战组件",
+   "en": "Risk Taking Gear"
+  },
+  "Gear_LowHpDamageAdditiveRate_Rare_MK2": {
+   "zh": "背水一战组件Mk2",
+   "en": "Risk Taking Gear Mk2"
+  },
+  "Gear_LowHpDamageAdditiveRate_Uncommon": {
+   "zh": "背水一战组件",
+   "en": "Risk Taking Gear"
+  },
+  "Gear_LowHpDamageAdditiveRate_Uncommon_MK2": {
+   "zh": "背水一战组件Mk2",
+   "en": "Risk Taking Gear Mk2"
+  },
+  "Gear_MaxBurstGauge_Common": {
+   "zh": "爆发拓展组件",
+   "en": "Burst Expansion Gear"
+  },
+  "Gear_MaxBurstGauge_Common_MK2": {
+   "zh": "爆发拓展组件Mk2",
+   "en": "Burst Expansion Gear Mk2"
+  },
+  "Gear_MaxBurstGauge_Rare": {
+   "zh": "爆发拓展组件",
+   "en": "Burst Expansion Gear"
+  },
+  "Gear_MaxBurstGauge_Rare_MK2": {
+   "zh": "爆发拓展组件Mk2",
+   "en": "Burst Expansion Gear Mk2"
+  },
+  "Gear_MaxBurstGauge_Uncommon": {
+   "zh": "爆发拓展组件",
+   "en": "Burst Expansion Gear"
+  },
+  "Gear_MaxBurstGauge_Uncommon_MK2": {
+   "zh": "爆发拓展组件Mk2",
+   "en": "Burst Expansion Gear Mk2"
+  },
+  "Gear_MaxShield_Common": {
+   "zh": "护盾增强组件",
+   "en": "Shield Enhancement Gear"
+  },
+  "Gear_MaxShield_Common_MK2": {
+   "zh": "护盾增强组件Mk2",
+   "en": "Shield Enhancement Gear Mk2"
+  },
+  "Gear_MaxShield_Rare": {
+   "zh": "护盾增强组件",
+   "en": "Shield Enhancement Gear"
+  },
+  "Gear_MaxShield_Rare_MK2": {
+   "zh": "护盾增强组件Mk2",
+   "en": "Shield Enhancement Gear Mk2"
+  },
+  "Gear_MaxShield_Uncommon": {
+   "zh": "护盾增强组件",
+   "en": "Shield Enhancement Gear"
+  },
+  "Gear_MaxShield_Uncommon_MK2": {
+   "zh": "护盾增强组件Mk2",
+   "en": "Shield Enhancement Gear Mk2"
+  },
+  "Gear_MeleeAttackDamageReductionRate_Common": {
+   "zh": "近战防护组件",
+   "en": "Melee Protection Gear"
+  },
+  "Gear_MeleeAttackDamageReductionRate_Common_MK2": {
+   "zh": "近战防护组件Mk2",
+   "en": "Melee Protection Gear Mk2"
+  },
+  "Gear_MeleeAttackDamageReductionRate_Rare": {
+   "zh": "近战防护组件",
+   "en": "Melee Protection Gear"
+  },
+  "Gear_MeleeAttackDamageReductionRate_Rare_MK2": {
+   "zh": "近战防护组件Mk2",
+   "en": "Melee Protection Gear Mk2"
+  },
+  "Gear_MeleeAttackDamageReductionRate_Uncommon": {
+   "zh": "近战防护组件",
+   "en": "Melee Protection Gear"
+  },
+  "Gear_MeleeAttackDamageReductionRate_Uncommon_MK2": {
+   "zh": "近战防护组件Mk2",
+   "en": "Melee Protection Gear Mk2"
+  },
+  "Gear_MeleeRangeDamageReductionRate_Common": {
+   "zh": "防护组件",
+   "en": "Protection Gear"
+  },
+  "Gear_MeleeRangeDamageReductionRate_Common_MK2": {
+   "zh": "防护组件Mk2",
+   "en": "Protection Gear Mk2"
+  },
+  "Gear_MeleeRangeDamageReductionRate_Rare": {
+   "zh": "防护组件",
+   "en": "Protection Gear"
+  },
+  "Gear_MeleeRangeDamageReductionRate_Rare_MK2": {
+   "zh": "防护组件Mk2",
+   "en": "Protection Gear Mk2"
+  },
+  "Gear_MeleeRangeDamageReductionRate_Uncommon": {
+   "zh": "防护组件",
+   "en": "Protection Gear"
+  },
+  "Gear_MeleeRangeDamageReductionRate_Uncommon_MK2": {
+   "zh": "防护组件Mk2",
+   "en": "Protection Gear Mk2"
+  },
+  "Gear_RangeAttackDamageAdditiveRate_Common": {
+   "zh": "远程增强组件",
+   "en": "Ranged Enhancement Gear"
+  },
+  "Gear_RangeAttackDamageAdditiveRate_Common_MK2": {
+   "zh": "远程增强组件Mk2",
+   "en": "Ranged Enhancement Gear Mk2"
+  },
+  "Gear_RangeAttackDamageAdditiveRate_Rare": {
+   "zh": "远程增强组件",
+   "en": "Ranged Enhancement Gear"
+  },
+  "Gear_RangeAttackDamageAdditiveRate_Rare_MK2": {
+   "zh": "远程增强组件Mk2",
+   "en": "Ranged Enhancement Gear Mk2"
+  },
+  "Gear_RangeAttackDamageAdditiveRate_Uncommon": {
+   "zh": "远程增强组件",
+   "en": "Ranged Enhancement Gear"
+  },
+  "Gear_RangeAttackDamageAdditiveRate_Uncommon_MK2": {
+   "zh": "远程增强组件Mk2",
+   "en": "Ranged Enhancement Gear Mk2"
+  },
+  "Gear_RangeAttackDamageReductionRate_Common": {
+   "zh": "远程防护组件",
+   "en": "Ranged Protection Gear"
+  },
+  "Gear_RangeAttackDamageReductionRate_Common_MK2": {
+   "zh": "远程防护组件Mk2",
+   "en": "Ranged Protection Gear Mk2"
+  },
+  "Gear_RangeAttackDamageReductionRate_Rare": {
+   "zh": "远程防护组件",
+   "en": "Ranged Protection Gear"
+  },
+  "Gear_RangeAttackDamageReductionRate_Rare_MK2": {
+   "zh": "远程防护组件Mk2",
+   "en": "Ranged Protection Gear Mk2"
+  },
+  "Gear_RangeAttackDamageReductionRate_Uncommon": {
+   "zh": "远程防护组件",
+   "en": "Ranged Protection Gear"
+  },
+  "Gear_RangeAttackDamageReductionRate_Uncommon_MK2": {
+   "zh": "远程防护组件Mk2",
+   "en": "Ranged Protection Gear Mk2"
+  },
+  "Gear_SPExpAdditiveRate_Common": {
+   "zh": "训练组件",
+   "en": "Training Gear"
+  },
+  "Gear_SPExpAdditiveRate_Common_MK2": {
+   "zh": "训练组件Mk2",
+   "en": "Training Gear Mk2"
+  },
+  "Gear_SPExpAdditiveRate_Rare": {
+   "zh": "训练组件",
+   "en": "Training Gear"
+  },
+  "Gear_SPExpAdditiveRate_Rare_MK2": {
+   "zh": "训练组件Mk2",
+   "en": "Training Gear Mk2"
+  },
+  "Gear_SPExpAdditiveRate_Uncommon": {
+   "zh": "训练组件",
+   "en": "Training Gear"
+  },
+  "Gear_SPExpAdditiveRate_Uncommon_MK2": {
+   "zh": "训练组件Mk2",
+   "en": "Training Gear Mk2"
+  },
+  "Gear_ShieldAttackPowerRate_Common": {
+   "zh": "护盾伤害组件",
+   "en": "Shield Destruction Gear"
+  },
+  "Gear_ShieldAttackPowerRate_Common_MK2": {
+   "zh": "护盾伤害组件Mk2",
+   "en": "Shield Destruction Gear Mk2"
+  },
+  "Gear_ShieldAttackPowerRate_Rare": {
+   "zh": "护盾伤害组件",
+   "en": "Shield Destruction Gear"
+  },
+  "Gear_ShieldAttackPowerRate_Rare_MK2": {
+   "zh": "护盾伤害组件Mk2",
+   "en": "Shield Destruction Gear Mk2"
+  },
+  "Gear_ShieldAttackPowerRate_Uncommon": {
+   "zh": "护盾伤害组件",
+   "en": "Shield Destruction Gear"
+  },
+  "Gear_ShieldAttackPowerRate_Uncommon_MK2": {
+   "zh": "护盾伤害组件Mk2",
+   "en": "Shield Destruction Gear Mk2"
+  },
+  "Gear_ShieldIgnorePercentage_Common": {
+   "zh": "护盾穿透组件",
+   "en": "Shield Penetration Gear"
+  },
+  "Gear_ShieldIgnorePercentage_Common_MK2": {
+   "zh": "护盾穿透组件Mk2",
+   "en": "Shield Penetration Gear Mk2"
+  },
+  "Gear_ShieldIgnorePercentage_Rare": {
+   "zh": "护盾穿透组件",
+   "en": "Shield Penetration Gear"
+  },
+  "Gear_ShieldIgnorePercentage_Rare_MK2": {
+   "zh": "护盾穿透组件Mk2",
+   "en": "Shield Penetration Gear Mk2"
+  },
+  "Gear_ShieldIgnorePercentage_Uncommon": {
+   "zh": "护盾穿透组件",
+   "en": "Shield Penetration Gear"
+  },
+  "Gear_ShieldIgnorePercentage_Uncommon_MK2": {
+   "zh": "护盾穿透组件Mk2",
+   "en": "Shield Penetration Gear Mk2"
+  },
+  "HP_Potion": {
+   "zh": "高浓度药水",
+   "en": "Highly Concentrated Potion"
+  },
+  "HP_Potion_Small": {
+   "zh": "长效药水",
+   "en": "Lingering Potion"
+  },
+  "Hair_000": {
+   "zh": "星球空降马尾",
+   "en": "Planet Diving Tail"
+  },
+  "Hair_001": {
+   "zh": "卡西姆的抉择",
+   "en": "Kasim's Choice"
+  },
+  "Hair_002": {
+   "zh": "最可爱的发型",
+   "en": "The Cutest"
+  },
+  "Hair_003": {
+   "zh": "希雍公主",
+   "en": "Princess of Xion"
+  },
+  "Hair_004": {
+   "zh": "桃香",
+   "en": "Peach Fragrance"
+  },
+  "Hair_005": {
+   "zh": "哥特时代",
+   "en": "Gothic Age"
+  },
+  "Hair_006": {
+   "zh": "女儿的回忆",
+   "en": "A Daughter's Memories"
+  },
+  "Hair_007": {
+   "zh": "初恋",
+   "en": "Hatsukoi"
+  },
+  "Hair_008": {
+   "zh": "武士刀",
+   "en": "Katana"
+  },
+  "Hair_009": {
+   "zh": "情人节",
+   "en": "Valentine"
+  },
+  "Hair_010": {
+   "zh": "卡西姆的招牌发型",
+   "en": "Kasim’s Signature"
+  },
+  "Hair_011": {
+   "zh": "假日",
+   "en": "Vacation"
+  },
+  "Hair_012": {
+   "zh": "创新之作",
+   "en": "Originative"
+  },
+  "Hair_Christmas_01": {
+   "zh": "圣诞女孩",
+   "en": "Santa Girl"
+  },
+  "Hair_Nier_001": {
+   "zh": "寄叶二号B型发型",
+   "en": "YoRHa No.2 Type B Style"
+  },
+  "Hair_Nier_002": {
+   "zh": "白狐面具发型",
+   "en": "White Fox Mask Style"
+  },
+  "Hair_Nier_003": {
+   "zh": "寄叶A型二号发型",
+   "en": "YoRHa Type A No.2 Style"
+  },
+  "Hair_Nikke_01": {
+   "zh": "月下美人",
+   "en": "Moonlit Beauty"
+  },
+  "Hair_Nikke_02": {
+   "zh": "高贵典雅",
+   "en": "Noble Elegance"
+  },
+  "Hair_Nikke_03": {
+   "zh": "标准长发",
+   "en": "Standard Long"
+  },
+  "Hair_Nikke_04": {
+   "zh": "活力刘海",
+   "en": "Energetic Bangs"
+  },
+  "Hair_Nikke_05": {
+   "zh": "初恋",
+   "en": "First Affection"
+  },
+  "Hair_Nikke_06": {
+   "zh": "潮流双马尾",
+   "en": "Poppin' Twin Tails"
+  },
+  "HealGrenade": {
+   "zh": "生化力场发生器",
+   "en": "Biotic Field Generator"
+  },
+  "HighDensityWafer": {
+   "zh": "先进纳米元素",
+   "en": "Advanced Nano Element"
+  },
+  "Item_Fish_Slice_Bait": {
+   "zh": "鱼片",
+   "en": "Fish Slice"
+  },
+  "Item_Lure_Megabait": {
+   "zh": "神奇鱼饵",
+   "en": "Fantastic Bait"
+  },
+  "Item_Lure_Megabait_Dummy": {
+   "zh": "神奇鱼饵",
+   "en": "Fantastic Bait"
+  },
+  "Item_Lure_Weird": {
+   "zh": "奇怪的鱼饵",
+   "en": "Strange Bait"
+  },
+  "Item_Records_ATL_Memory_01": {
+   "zh": "访客信息",
+   "en": "Visitor Information"
+  },
+  "Item_Records_ATL_Memory_02": {
+   "zh": "启动序列",
+   "en": "Booting Sequence"
+  },
+  "Item_Records_ATL_Memory_03": {
+   "zh": "你是假的",
+   "en": "You Are Fake"
+  },
+  "Item_Records_ATL_Memory_04": {
+   "zh": "埃多斯公司宣传广告",
+   "en": "Eidos Company Promotion"
+  },
+  "Item_Records_ATL_Memory_05": {
+   "zh": "安检程序指南",
+   "en": "Security Procedure Guide"
+  },
+  "Item_Records_ATL_Memory_06": {
+   "zh": "人类解放阵线",
+   "en": "Humanity Liberation Front"
+  },
+  "Item_Records_ATL_Passcode_01": {
+   "zh": "μηλαμη",
+   "en": "μηλαμη"
+  },
+  "Item_Records_AYL_Memory_01": {
+   "zh": "杀死母主领域",
+   "en": "Kill Mother Sphere"
+  },
+  "Item_Records_AYL_Memory_02": {
+   "zh": "繁育实验",
+   "en": "Cultivation Experiment"
+  },
+  "Item_Records_AYL_Memory_03": {
+   "zh": "发现攻击",
+   "en": "Attack Detected"
+  },
+  "Item_Records_AYL_Memory_04": {
+   "zh": "量产",
+   "en": "Mass Production"
+  },
+  "Item_Records_AYL_Memory_05": {
+   "zh": "隔离失败？",
+   "en": "Quarantine Failure?"
+  },
+  "Item_Records_Christmas_01": {
+   "zh": "弗朗西斯的信",
+   "en": "Francis's Letter"
+  },
+  "Item_Records_DED00_Memory_01": {
+   "zh": "《真相》，第3篇",
+   "en": "THE TRUTH, Article 3"
+  },
+  "Item_Records_DED10_Memory_01": {
+   "zh": "绝望者的遗言",
+   "en": "The Last Words of the Hopeless"
+  },
+  "Item_Records_DED10_Memory_02": {
+   "zh": "路易的证言",
+   "en": "Louis's Testimony"
+  },
+  "Item_Records_DED10_Memory_03": {
+   "zh": "绝望的哀鸣",
+   "en": "Lament of Despair"
+  },
+  "Item_Records_DED10_Memory_04": {
+   "zh": "204号军团战士的记忆",
+   "en": "Legionnaire 204's Memory"
+  },
+  "Item_Records_DED10_Memory_05": {
+   "zh": "对母主领域的请求",
+   "en": "Request to Mother Sphere"
+  },
+  "Item_Records_DED10_Memory_06": {
+   "zh": "心怀希望者的喘息",
+   "en": "Respite of the Hopeful"
+  },
+  "Item_Records_DED10_Memory_07": {
+   "zh": "备忘录",
+   "en": "Memo"
+  },
+  "Item_Records_DED10_Memory_08": {
+   "zh": "虔诚的菲利克斯留下的语句",
+   "en": "The Words of the Devout Felix"
+  },
+  "Item_Records_DED10_Memory_09": {
+   "zh": "《塑料之心：第3卷》",
+   "en": "Plastic Hearts, Vol. 3"
+  },
+  "Item_Records_DED10_Memory_10": {
+   "zh": "对天空的呼喊",
+   "en": "Outcry to the Sky"
+  },
+  "Item_Records_DED10_Memory_11": {
+   "zh": "451号军团战士的决心",
+   "en": "Legionnaire 451's Resolution"
+  },
+  "Item_Records_DED10_Memory_12": {
+   "zh": "302号军团战士的悲叹",
+   "en": "Legionnaire 302's Sorrow"
+  },
+  "Item_Records_DED10_Passcode_01": {
+   "zh": "βθακθγ",
+   "en": "βθακθγ"
+  },
+  "Item_Records_DED10_Passcode_02": {
+   "zh": "δβμκδβ",
+   "en": "δβμκδβ"
+  },
+  "Item_Records_DED10_Passcode_03": {
+   "zh": "γθαγθα",
+   "en": "γθαγθα"
+  },
+  "Item_Records_DED20_Memory_01": {
+   "zh": "244号军团战士的记忆",
+   "en": "Legionnaire 244's Memory"
+  },
+  "Item_Records_DED20_Memory_02": {
+   "zh": "272号军团战士的目击证词",
+   "en": "Legionnaire 272's Eyewitness Account"
+  },
+  "Item_Records_DED20_Memory_03": {
+   "zh": "信徒的记忆",
+   "en": "Memory of a Believer"
+  },
+  "Item_Records_DED20_Memory_04": {
+   "zh": "249号军团战士的记忆",
+   "en": "Legionnaire 249's Memory"
+  },
+  "Item_Records_DED20_Memory_05": {
+   "zh": "苦涩的自杀遗书",
+   "en": "Bitter Suicide Note"
+  },
+  "Item_Records_DED20_Memory_06": {
+   "zh": "麦克斯的记忆",
+   "en": "Max's Memory"
+  },
+  "Item_Records_DED20_Memory_07": {
+   "zh": "阿尔忒弥斯8号的命令",
+   "en": "Artemis 8's Orders"
+  },
+  "Item_Records_DED20_Memory_08": {
+   "zh": "阿尔忒弥斯132号的命令",
+   "en": "Artemis 132's Orders"
+  },
+  "Item_Records_DED20_Memory_09": {
+   "zh": "阿尔忒弥斯49号的回复",
+   "en": "Artemis 49's Reply"
+  },
+  "Item_Records_DED20_Memory_10": {
+   "zh": "214号军团战士的遗言",
+   "en": "Legionnaire 214's Testament"
+  },
+  "Item_Records_DED20_Memory_11": {
+   "zh": "286号军团战士的回忆",
+   "en": "Legionnaire 286's Recollection"
+  },
+  "Item_Records_DED20_Memory_12": {
+   "zh": "雅典娜82号的命令",
+   "en": "Athena 82's Order"
+  },
+  "Item_Records_DED20_Memory_13": {
+   "zh": "幸存日记",
+   "en": "Survival Journal"
+  },
+  "Item_Records_DED20_Memory_14": {
+   "zh": "<StoryTitle_1>: : : 警告: : :</>",
+   "en": "<StoryTitle_1>: : : WARNING : : :</>"
+  },
+  "Item_Records_DED20_Memory_15": {
+   "zh": "326号军团战士的传输留言",
+   "en": "Legionnaire 326's Transmission"
+  },
+  "Item_Records_DED20_Memory_16": {
+   "zh": "212号军团战士的疑问",
+   "en": "Legionnaire 212's Question"
+  },
+  "Item_Records_DED20_Memory_17": {
+   "zh": "绝望的记忆",
+   "en": "Memory of Despair"
+  },
+  "Item_Records_DED20_Memory_18": {
+   "zh": "求助",
+   "en": "Help"
+  },
+  "Item_Records_DED20_Memory_19": {
+   "zh": "信仰与智慧之书2:3-6",
+   "en": "Book of Faith and Wisdom 2:3-6"
+  },
+  "Item_Records_DED20_Memory_20": {
+   "zh": "她来了",
+   "en": "She Is Here"
+  },
+  "Item_Records_DED20_Memory_21": {
+   "zh": "反对之声",
+   "en": "Voice of Objection"
+  },
+  "Item_Records_DED20_Memory_22": {
+   "zh": "忧郁的哭泣",
+   "en": "A Melancholic Cry"
+  },
+  "Item_Records_DED20_Passcode_02": {
+   "zh": "λμακθκ",
+   "en": "λμακθκ"
+  },
+  "Item_Records_DED20_Passcode_05": {
+   "zh": "ααμθβθ",
+   "en": "ααμθβθ"
+  },
+  "Item_Records_DED30_Memory_01": {
+   "zh": "220号军团战士的记忆",
+   "en": "Legionnaire 220's Memory"
+  },
+  "Item_Records_DED30_Memory_02": {
+   "zh": "248号军团战士的抱怨",
+   "en": "Legionnaire 248's Complaint"
+  },
+  "Item_Records_DED30_Memory_03": {
+   "zh": "268号军团战士的祈祷",
+   "en": "Legionnaire 268's Prayer"
+  },
+  "Item_Records_DED30_Memory_04": {
+   "zh": "274号军团战士的记忆",
+   "en": "Legionnaire 274's Memory"
+  },
+  "Item_Records_DED30_Memory_05": {
+   "zh": "失望者的哀鸣",
+   "en": "Lament of the Disappointed"
+  },
+  "Item_Records_DED30_Memory_06": {
+   "zh": "498号军团战士的愿望",
+   "en": "Legionnaire 498's Wish"
+  },
+  "Item_Records_DED40_Memory_01": {
+   "zh": "158号军团战士的记忆",
+   "en": "Legionnaire 158's Memory"
+  },
+  "Item_Records_DED40_Memory_02": {
+   "zh": "196号军团战士的报告",
+   "en": "Legionnaire 196's Report"
+  },
+  "Item_Records_DED40_Memory_03": {
+   "zh": "192号军团战士的记忆",
+   "en": "Legionnaire 192's Memory"
+  },
+  "Item_Records_DED40_Memory_04": {
+   "zh": "292号军团战士的回忆",
+   "en": "Legionnaire 292's Recollection"
+  },
+  "Item_Records_DED40_Memory_05": {
+   "zh": "230号军团战士的无奈",
+   "en": "Legionnaire 230's Resignation"
+  },
+  "Item_Records_DED40_Memory_09": {
+   "zh": "207号军团战士的请求",
+   "en": "Legionnaire 207's Request"
+  },
+  "Item_Records_DED40_Memory_10": {
+   "zh": "282号军团战士的记忆",
+   "en": "Legionnaire 282's Memory"
+  },
+  "Item_Records_DED40_Memory_11": {
+   "zh": "埃多斯9号，你与母主",
+   "en": "Eidos 9, Of You and Mother"
+  },
+  "Item_Records_DED40_Memory_12": {
+   "zh": "你会如何选择？",
+   "en": "What Will You Choose?"
+  },
+  "Item_Records_DED40_Memory_13": {
+   "zh": "前往天堂的客票",
+   "en": "Ticket to Heaven"
+  },
+  "Item_Records_DED40_Memory_14": {
+   "zh": "《引言之书》2",
+   "en": "Book of Quotes 2"
+  },
+  "Item_Records_Day1_Memory_01": {
+   "zh": "伊芙计划笔记1",
+   "en": "Notes on EVE Protocol 1"
+  },
+  "Item_Records_Day1_Memory_02": {
+   "zh": "伊芙计划笔记2",
+   "en": "Notes on EVE Protocol 2"
+  },
+  "Item_Records_Day1_Memory_03": {
+   "zh": "伊芙计划笔记3",
+   "en": "Notes on EVE Protocol 3"
+  },
+  "Item_Records_Day1_Memory_04": {
+   "zh": "伊芙计划笔记4",
+   "en": "Notes on EVE Protocol 4"
+  },
+  "Item_Records_Day1_Memory_05": {
+   "zh": "《失落的72年》卷1",
+   "en": "The Lost 72 Years 1"
+  },
+  "Item_Records_Day1_Memory_06": {
+   "zh": "《失落的72年》卷2",
+   "en": "The Lost 72 Years 2"
+  },
+  "Item_Records_Day1_Memory_07": {
+   "zh": "《失落的72年》卷3",
+   "en": "The Lost 72 Years 3"
+  },
+  "Item_Records_Day1_Memory_08": {
+   "zh": "《失落的72年》卷4",
+   "en": "The Lost 72 Years 4"
+  },
+  "Item_Records_Day1_Memory_09": {
+   "zh": "诅咒天堂王室！",
+   "en": "Curse the Heaven's Royalty!"
+  },
+  "Item_Records_Day1_Memory_10": {
+   "zh": "筹款公告：前往拓殖区的火箭",
+   "en": "Funding Announcement: Colony-bound Rocket"
+  },
+  "Item_Records_Day1_Memory_11": {
+   "zh": "天使受到操控",
+   "en": "Angels Are Rigged"
+  },
+  "Item_Records_Day1_Memory_12": {
+   "zh": "祷告会指南",
+   "en": "Prayer Meeting Guide"
+  },
+  "Item_Records_Day1_Memory_13": {
+   "zh": "献给依然相信母主领域的蠢货们",
+   "en": "For You Dimwits Still Believing in Mother Sphere"
+  },
+  "Item_Records_ETC_Memory_01": {
+   "zh": "试炼之章2-<StoryTitle_1>θ</>",
+   "en": "Chapter of Trial 2-<StoryTitle_1>θ</>"
+  },
+  "Item_Records_ETC_Memory_02": {
+   "zh": "试炼之章3-<StoryTitle_1>α</>",
+   "en": "Chapter of Trial 3-<StoryTitle_1>α</>"
+  },
+  "Item_Records_ETC_Memory_03": {
+   "zh": "试炼之章4-<StoryTitle_1>λ</>",
+   "en": "Chapter of Trial 4-<StoryTitle_1>λ</>"
+  },
+  "Item_Records_ETC_Memory_04": {
+   "zh": "试炼之章5-<StoryTitle_1>δ</>",
+   "en": "Chapter of Trial 5-<StoryTitle_1>δ</>"
+  },
+  "Item_Records_ETC_Memory_05": {
+   "zh": "试炼之章6-<StoryTitle_1>ζ</>",
+   "en": "Chapter of Trial 6-<StoryTitle_1>ζ</>"
+  },
+  "Item_Records_ETC_Memory_06": {
+   "zh": "救赎之章0-<StoryTitle_1>Ω</>",
+   "en": "Chapter of Salvation 0-<StoryTitle_1>Ω</>"
+  },
+  "Item_Records_ETC_Memory_07": {
+   "zh": "《希雍》#1",
+   "en": "The Xion #1"
+  },
+  "Item_Records_ETC_Memory_08": {
+   "zh": "《希雍》#2",
+   "en": "The Xion #2"
+  },
+  "Item_Records_ETC_Memory_09": {
+   "zh": "《希雍》#3",
+   "en": "The Xion #3"
+  },
+  "Item_Records_ETC_Memory_10": {
+   "zh": "《希雍》#4",
+   "en": "The Xion #4"
+  },
+  "Item_Records_ETC_Memory_11": {
+   "zh": "《希雍》#5",
+   "en": "The Xion #5"
+  },
+  "Item_Records_ETC_Memory_12": {
+   "zh": "《塑料之心：第4卷》",
+   "en": "Plastic Hearts, Vol. 4"
+  },
+  "Item_Records_ETC_Memory_13": {
+   "zh": "《塑料之心：第5卷》",
+   "en": "Plastic Hearts, Vol. 5"
+  },
+  "Item_Records_ETC_Memory_14": {
+   "zh": "被孤立者的哀鸣",
+   "en": "Lament of the Isolated"
+  },
+  "Item_Records_ETC_Memory_15": {
+   "zh": "卡西姆的备忘录",
+   "en": "Kasim's Memo"
+  },
+  "Item_Records_ME01_Memory_01": {
+   "zh": "38号员工的记忆",
+   "en": "Employee 38's Memory"
+  },
+  "Item_Records_ME01_Memory_02": {
+   "zh": "547号军团战士的证言",
+   "en": "Legionnaire 547's Testimony"
+  },
+  "Item_Records_ME01_Memory_03": {
+   "zh": "569号军团战士的回忆",
+   "en": "Legionnaire 569's Recollection"
+  },
+  "Item_Records_ME01_Memory_04": {
+   "zh": "552号军团战士的建议",
+   "en": "Legionnaire 552's Advice"
+  },
+  "Item_Records_ME01_Memory_05": {
+   "zh": "33号员工的决心",
+   "en": "Employee 33's Determination"
+  },
+  "Item_Records_ME01_Memory_06": {
+   "zh": "507号军团战士的悔意",
+   "en": "Legionnaire 507's Regret"
+  },
+  "Item_Records_ME01_Memory_07": {
+   "zh": "交通延误通知",
+   "en": "Transport Delay Notice"
+  },
+  "Item_Records_ME01_Passcode_01": {
+   "zh": "αγδμθδ",
+   "en": "αγδμθδ"
+  },
+  "Item_Records_ME03_Memory_01": {
+   "zh": "亚历克斯的记忆",
+   "en": "Alex's Memory"
+  },
+  "Item_Records_ME03_Memory_02": {
+   "zh": "罗伯特最后的告别",
+   "en": "Robert's Last Farewell"
+  },
+  "Item_Records_ME04_Memory_01": {
+   "zh": "514号军团战士的记忆",
+   "en": "Legionnaire 514's Memory"
+  },
+  "Item_Records_ME04_Memory_02": {
+   "zh": "保罗的记忆",
+   "en": "Paul's Memory"
+  },
+  "Item_Records_ME04_Memory_03": {
+   "zh": "詹米的恳求",
+   "en": "Jamie's Plea"
+  },
+  "Item_Records_ME04_Memory_04": {
+   "zh": "诺曼的建议",
+   "en": "Norman's Advice"
+  },
+  "Item_Records_ME04_Memory_05": {
+   "zh": "黛西的记忆",
+   "en": "Daisy's Memory"
+  },
+  "Item_Records_ME04_Memory_06": {
+   "zh": "哈利的记忆",
+   "en": "Harry's Memory"
+  },
+  "Item_Records_ME04_Memory_07": {
+   "zh": "杰西的记忆",
+   "en": "Jesse's Memory"
+  },
+  "Item_Records_ME04_Memory_08": {
+   "zh": "里昂娜的建议",
+   "en": "Leona's Advice"
+  },
+  "Item_Records_ME04_Memory_09": {
+   "zh": "Z的日记",
+   "en": "Z's Diary"
+  },
+  "Item_Records_ME04_Memory_10": {
+   "zh": "J的备忘录",
+   "en": "J's Memo"
+  },
+  "Item_Records_ME04_Memory_11": {
+   "zh": "苏珊的警告",
+   "en": "Susan's Warning"
+  },
+  "Item_Records_ME04_Memory_12": {
+   "zh": "杰克的演讲",
+   "en": "Jake's Speech"
+  },
+  "Item_Records_ME04_Memory_13": {
+   "zh": "凯瑟琳的遗言",
+   "en": "Katherine's Testament"
+  },
+  "Item_Records_ME04_Memory_14": {
+   "zh": "试炼之章1-<StoryTitle_1>β</>",
+   "en": "Chapter of Trial 1-<StoryTitle_1>β</>"
+  },
+  "Item_Records_ME04_Memory_15": {
+   "zh": "致敬小小无人机",
+   "en": "To the Little Drone"
+  },
+  "Item_Records_ME04_Memory_16": {
+   "zh": "裂隙",
+   "en": "Crevice"
+  },
+  "Item_Records_ME04_Memory_17": {
+   "zh": "帕斯卡的警告",
+   "en": "Pascal's Warning"
+  },
+  "Item_Records_ME04_Passcode_01": {
+   "zh": "εκακδζ",
+   "en": "εκακδζ"
+  },
+  "Item_Records_ME05_Memory_01": {
+   "zh": "山姆的无奈",
+   "en": "Sam's Resignation"
+  },
+  "Item_Records_ME05_Memory_02": {
+   "zh": "516号军团战士的记忆",
+   "en": "Legionnaire 516's Memory"
+  },
+  "Item_Records_ME05_Passcode_01": {
+   "zh": "μηλδκα",
+   "en": "μηλδκα"
+  },
+  "Item_Records_ME06_Memory_01": {
+   "zh": "511号军团战士的祈祷",
+   "en": "Legionnaire 511's Prayer"
+  },
+  "Item_Records_Quest_Request_001_01": {
+   "zh": "CT27932",
+   "en": "CT27932"
+  },
+  "Item_Records_Quest_Request_005_01": {
+   "zh": "马修的记忆",
+   "en": "Matthew's Memory"
+  },
+  "Item_Records_Quest_Request_006_01": {
+   "zh": "唐娜的记忆",
+   "en": "Donna's Memory"
+  },
+  "Item_Records_Quest_Request_006_02": {
+   "zh": "阿曼达的记忆",
+   "en": "Amanda's Memory"
+  },
+  "Item_Records_Quest_Request_008_01": {
+   "zh": "DB372-25",
+   "en": "DB372-25"
+  },
+  "Item_Records_SE01_Memory_01": {
+   "zh": "753号军团战士的记忆",
+   "en": "Legionnaire 753's Memory"
+  },
+  "Item_Records_SE01_Memory_02": {
+   "zh": "742号军团战士的抱怨",
+   "en": "Legionnaire 742's Complaint"
+  },
+  "Item_Records_SE01_Memory_03": {
+   "zh": "717号军团战士的命令",
+   "en": "Legionnaire 717's Order"
+  },
+  "Item_Records_SE01_Memory_04": {
+   "zh": "712号军团战士的记忆",
+   "en": "Legionnaire 712's Memory"
+  },
+  "Item_Records_SE01_Memory_05": {
+   "zh": "716号军团战士的建议",
+   "en": "Legionnaire 716's Proposal"
+  },
+  "Item_Records_SE01_Memory_06": {
+   "zh": "466号军团战士的记忆",
+   "en": "Legionnaire 466's Memory"
+  },
+  "Item_Records_SE01_Passcode_01": {
+   "zh": "ιθγηκλ",
+   "en": "ιθγηκλ"
+  },
+  "Item_Records_SE02_Memory_01": {
+   "zh": "798号军团战士的建议",
+   "en": "Legionnaire 798's Advice"
+  },
+  "Item_Records_SE04_Memory_01": {
+   "zh": "708号军团战士的怒吼",
+   "en": "Legionnaire 708's Shout"
+  },
+  "Item_Records_SE05_Memory_01": {
+   "zh": "721号军团战士的恳求",
+   "en": "Legionnaire 721's Plea"
+  },
+  "Item_Records_SE05_Memory_02": {
+   "zh": "725号军团战士的疑问",
+   "en": "Legionnaire 725's Question"
+  },
+  "Item_Records_SE05_Memory_03": {
+   "zh": "775号军团战士的恳求",
+   "en": "Legionnaire 775's Plea"
+  },
+  "Item_Records_SE06_Memory_01": {
+   "zh": "738号军团战士的记忆",
+   "en": "Legionnaire 738's Memory"
+  },
+  "Item_Records_SE06_Memory_02": {
+   "zh": "749号军团战士的遗言",
+   "en": "Legionnaire 749's Testament"
+  },
+  "Item_Records_SE06_Memory_03": {
+   "zh": "凯恩的记忆",
+   "en": "Kane's Memory"
+  },
+  "Item_Records_SE06_Memory_04": {
+   "zh": "715号军团战士的建议",
+   "en": "Legionnaire 715's Advice"
+  },
+  "Item_Records_SE06_Memory_05": {
+   "zh": "泰瑞的无奈",
+   "en": "Terry's Resignation"
+  },
+  "Item_Records_SE06_Memory_06": {
+   "zh": "吉姆的决心",
+   "en": "Jim's Resolution"
+  },
+  "Item_Records_SE06_Memory_07": {
+   "zh": "729号军团战士的记忆",
+   "en": "Legionnaire 729's Memory"
+  },
+  "Item_Records_SE06_Memory_08": {
+   "zh": "754号军团战士的嘶吼",
+   "en": "Legionnaire 754's Shout"
+  },
+  "Item_Records_SE06_Memory_09": {
+   "zh": "751号军团战士的遗言",
+   "en": "Legionnaire 751's Testament"
+  },
+  "Item_Records_SE06_Memory_10": {
+   "zh": "欢迎来到拉斐尔太空中心！",
+   "en": "Welcome to the Raphael Space Center!"
+  },
+  "Item_Records_SE06_Memory_11": {
+   "zh": "奥卡航空航天公司宣传资料",
+   "en": "Orca Aerospace Company Promotion"
+  },
+  "Item_Records_SE06_Memory_12": {
+   "zh": "251号军团战士的决心",
+   "en": "Legionnaire 251's Resolution"
+  },
+  "Item_Records_SE06_Memory_13": {
+   "zh": "212号军团战士的终局",
+   "en": "Legionnaire 212's End"
+  },
+  "Item_Records_SE06_Passcode_01": {
+   "zh": "ηεγβεγ",
+   "en": "ηεγβεγ"
+  },
+  "Item_Records_SE07_Memory_01": {
+   "zh": "759号军团战士的无奈",
+   "en": "Legionnaire 759's Resignation"
+  },
+  "Item_Records_SE07_Memory_02": {
+   "zh": "761号军团战士的请求",
+   "en": "Legionnaire 761's Request"
+  },
+  "Item_Records_SE07_Memory_03": {
+   "zh": "760号军团战士的记忆",
+   "en": "Legionnaire 760's Memory"
+  },
+  "Item_Records_SE07_Memory_04": {
+   "zh": "743号军团战士的震惊",
+   "en": "Legionnaire 743's Shock"
+  },
+  "Item_Records_SE07_Memory_05": {
+   "zh": "719号军团战士的记忆",
+   "en": "Legionnaire 719's Memory"
+  },
+  "Item_Records_SE07_Memory_06": {
+   "zh": "约翰的追忆",
+   "en": "John's Retrospection"
+  },
+  "Item_Records_WLA_Memory_01": {
+   "zh": "439号市民的无奈",
+   "en": "Citizen 439's Resignation"
+  },
+  "Item_Records_WLA_Memory_02": {
+   "zh": "78号哨兵的安慰",
+   "en": "Sentinel 78's Consolation"
+  },
+  "Item_Records_WLA_Memory_03": {
+   "zh": "224号市民的记忆",
+   "en": "Citizen 224's Memory"
+  },
+  "Item_Records_WLA_Memory_04": {
+   "zh": "27号哨兵的证言",
+   "en": "Sentinel 27's Testimony"
+  },
+  "Item_Records_WLA_Memory_05": {
+   "zh": "275号市民的遗言",
+   "en": "Citizen 275's Testament"
+  },
+  "Item_Records_WLA_Memory_06": {
+   "zh": "103号拾荒者的告别",
+   "en": "Scavenger 103's Farewell"
+  },
+  "Item_Records_WLA_Memory_07": {
+   "zh": "188号拾荒者的建议",
+   "en": "Scavenger 188's Advice"
+  },
+  "Item_Records_WLA_Memory_08": {
+   "zh": "尤翰的证言",
+   "en": "Yohan's Testimony"
+  },
+  "Item_Records_WLA_Memory_09": {
+   "zh": "212号市民的记忆",
+   "en": "Citizen 212's Memory"
+  },
+  "Item_Records_WLA_Memory_10": {
+   "zh": "303号市民的恳求",
+   "en": "Citizen 303's Plea"
+  },
+  "Item_Records_WLA_Memory_11": {
+   "zh": "寻找庇佑之地",
+   "en": "The Search for a Haven"
+  },
+  "Item_Records_WLA_Memory_12": {
+   "zh": "311号军团战士的决心",
+   "en": "Legionnaire 311's Resolution"
+  },
+  "Item_Records_WLA_Memory_13": {
+   "zh": "323号军团战士的警告",
+   "en": "Legionnaire 323's Warning"
+  },
+  "Item_Records_WLA_Memory_14": {
+   "zh": "马尔科的回忆",
+   "en": "Marco's Recollection"
+  },
+  "Item_Records_WLA_Memory_15": {
+   "zh": "216号拾荒者的建议",
+   "en": "Scavenger 216's Advice"
+  },
+  "Item_Records_WLA_Memory_16": {
+   "zh": "295号军团战士的命令",
+   "en": "Legionnaire 295's Order"
+  },
+  "Item_Records_WLA_Memory_17": {
+   "zh": "阿尔伯特的记忆",
+   "en": "Albert's Memory"
+  },
+  "Item_Records_WLA_Memory_18": {
+   "zh": "102号拾荒者的决定",
+   "en": "Scavenger 102's Decision"
+  },
+  "Item_Records_WLA_Memory_19": {
+   "zh": "160号拾荒者的建议",
+   "en": "Scavenger 160's Advice"
+  },
+  "Item_Records_WLA_Memory_20": {
+   "zh": "131号拾荒者的记忆",
+   "en": "Scavenger 131's Memory"
+  },
+  "Item_Records_WLA_Memory_21": {
+   "zh": "212号拾荒者的遗言",
+   "en": "Scavenger 212's Testament"
+  },
+  "Item_Records_WLA_Memory_22": {
+   "zh": "47号哨兵的决定",
+   "en": "Sentinel 47's Decision"
+  },
+  "Item_Records_WLA_Memory_23": {
+   "zh": "90号哨兵的无奈",
+   "en": "Sentinel 90's Resignation"
+  },
+  "Item_Records_WLA_Memory_24": {
+   "zh": "290号市民的祈祷",
+   "en": "Citizen 290's Prayer"
+  },
+  "Item_Records_WLA_Memory_25": {
+   "zh": "65号哨兵的遗言",
+   "en": "Sentinel 65's Testament"
+  },
+  "Item_Records_WLA_Memory_26": {
+   "zh": "搜索记录",
+   "en": "Search Record"
+  },
+  "Item_Records_WLA_Memory_27": {
+   "zh": "调查日志",
+   "en": "Investigation Journal"
+  },
+  "Item_Records_WLA_Memory_28": {
+   "zh": "亚伦的记忆",
+   "en": "Aaron's Memory"
+  },
+  "Item_Records_WLA_Memory_29": {
+   "zh": "情报：服务无人机",
+   "en": "Information: Service Drones"
+  },
+  "Item_Records_WLA_Memory_30": {
+   "zh": "我将离去",
+   "en": "I'm Leaving"
+  },
+  "Item_Records_WLA_Memory_31": {
+   "zh": "《塑料之心：第2卷》",
+   "en": "Plastic Hearts, Vol. 2"
+  },
+  "Item_Records_WLA_Memory_32": {
+   "zh": "《真相》，第1篇",
+   "en": "THE TRUTH, Article 1"
+  },
+  "Item_Records_WLA_Memory_33": {
+   "zh": "《真相》，第5篇",
+   "en": "THE TRUTH, Article 5"
+  },
+  "Item_Records_WLA_Memory_34": {
+   "zh": "情报：阴谋",
+   "en": "Information: Conspiracy"
+  },
+  "Item_Records_WLA_Memory_35": {
+   "zh": "请勿打扰",
+   "en": "Do Not Disturb"
+  },
+  "Item_Records_WLA_Memory_36": {
+   "zh": "S2RV1C2-7812的数据",
+   "en": "S2RV1C2-7812's Data"
+  },
+  "Item_Records_WLA_Memory_37": {
+   "zh": "114号拾荒者的愿望",
+   "en": "Scavenger 114's Wish"
+  },
+  "Item_Records_WLA_Memory_38": {
+   "zh": "82号哨兵的报告",
+   "en": "Sentinel 82's Report"
+  },
+  "Item_Records_WLA_Memory_39": {
+   "zh": "248号拾荒者的绝望",
+   "en": "Scavenger 248's Despair"
+  },
+  "Item_Records_WLA_Memory_40": {
+   "zh": "阿琳的日记",
+   "en": "Arin's Journal"
+  },
+  "Item_Records_WLA_Memory_41": {
+   "zh": "李的抱怨",
+   "en": "Lee's Complaint"
+  },
+  "Item_Records_WLA_Memory_42": {
+   "zh": "杨的嘶吼",
+   "en": "Young's Screams"
+  },
+  "Item_Records_WLA_Memory_43": {
+   "zh": "吴的记录",
+   "en": "Woo's Record"
+  },
+  "Item_Records_WLA_Memory_44": {
+   "zh": "汤米的遗言",
+   "en": "Tommy's Testament"
+  },
+  "Item_Records_WLA_Memory_45": {
+   "zh": "高的记忆",
+   "en": "Go's Memory"
+  },
+  "Item_Records_WLA_Memory_46": {
+   "zh": "卢克的记忆",
+   "en": "Luke's Memory"
+  },
+  "Item_Records_WLA_Memory_47": {
+   "zh": "奇怪的信息",
+   "en": "Strange Information"
+  },
+  "Item_Records_WLA_Passcode_01": {
+   "zh": "αζαζαζ",
+   "en": "αζαζαζ"
+  },
+  "Item_Records_WLB_Memory_01": {
+   "zh": "109号市民的决心",
+   "en": "Citizen 109's Resolution"
+  },
+  "Item_Records_WLB_Memory_02": {
+   "zh": "206号市民的记忆",
+   "en": "Citizen 206's Memory"
+  },
+  "Item_Records_WLB_Memory_03": {
+   "zh": "246号市民的回忆",
+   "en": "Citizen 246's Recollection"
+  },
+  "Item_Records_WLB_Memory_04": {
+   "zh": "39号哨兵的决心",
+   "en": "Sentinel 39's Resolution"
+  },
+  "Item_Records_WLB_Memory_05": {
+   "zh": "艾米尔的哀鸣",
+   "en": "Emil's Lament"
+  },
+  "Item_Records_WLB_Memory_06": {
+   "zh": "218号市民的记忆",
+   "en": "Citizen 218's Memory"
+  },
+  "Item_Records_WLB_Memory_07": {
+   "zh": "58号哨兵的建议",
+   "en": "Sentinel 58's Advice"
+  },
+  "Item_Records_WLB_Memory_08": {
+   "zh": "41号哨兵的记忆",
+   "en": "Sentinel 41's Memory"
+  },
+  "Item_Records_WLB_Memory_09": {
+   "zh": "388号拾荒者的恳求",
+   "en": "Scavenger 388's Plea"
+  },
+  "Item_Records_WLB_Memory_10": {
+   "zh": "477号哨兵的恳求",
+   "en": "Sentinel 477's Plea"
+  },
+  "Item_Records_WLB_Memory_11": {
+   "zh": "360号市民的抱怨",
+   "en": "Citizen 360's Complaint"
+  },
+  "Item_Records_WLB_Memory_12": {
+   "zh": "内奥米的遗言",
+   "en": "Naomi's Testament"
+  },
+  "Item_Records_WLB_Memory_13": {
+   "zh": "404号拾荒者的建议",
+   "en": "Scavenger 404's Advice"
+  },
+  "Item_Records_WLB_Memory_14": {
+   "zh": "95号哨兵的悔意",
+   "en": "Sentinel 95's Regret"
+  },
+  "Item_Records_WLB_Memory_15": {
+   "zh": "71号哨兵的无奈",
+   "en": "Sentinel 71's Resignation"
+  },
+  "Item_Records_WLB_Memory_16": {
+   "zh": "82号哨兵的记忆",
+   "en": "Sentinel 82's Memory"
+  },
+  "Item_Records_WLB_Memory_17": {
+   "zh": "390号拾荒者的记忆",
+   "en": "Scavenger 390's Memory"
+  },
+  "Item_Records_WLB_Memory_18": {
+   "zh": "779号市民的安慰",
+   "en": "Citizen 779's Consolation"
+  },
+  "Item_Records_WLB_Memory_19": {
+   "zh": "103号拾荒者的记忆",
+   "en": "Scavenger 103's Memory"
+  },
+  "Item_Records_WLB_Memory_20": {
+   "zh": "173号拾荒者的哀鸣",
+   "en": "Scavenger 173's Lament"
+  },
+  "Item_Records_WLB_Memory_21": {
+   "zh": "55号哨兵的决定",
+   "en": "Sentinel 55's Decision"
+  },
+  "Item_Records_WLB_Memory_22": {
+   "zh": "哈利的回忆",
+   "en": "Harry's Recollection"
+  },
+  "Item_Records_WLB_Memory_23": {
+   "zh": "46号哨兵的记忆",
+   "en": "Sentinel 46's Memory"
+  },
+  "Item_Records_WLB_Memory_24": {
+   "zh": "438号拾荒者的恳求",
+   "en": "Scavenger 438's Plea"
+  },
+  "Item_Records_WLB_Memory_25": {
+   "zh": "15号哨兵的恳求",
+   "en": "Sentinel 15's Plea"
+  },
+  "Item_Records_WLB_Memory_26": {
+   "zh": "任务失败之哨兵的哀鸣",
+   "en": "Failed Sentinel's Lament"
+  },
+  "Item_Records_WLB_Memory_27": {
+   "zh": "唔呃呃唔呃呃",
+   "en": "Whiiir Whiiir"
+  },
+  "Item_Records_WLB_Memory_28": {
+   "zh": "横穿大沙漠探险小队招募广告",
+   "en": "Great Desert Crossing Exploration Team Advertisement"
+  },
+  "Item_Records_WLB_Memory_29": {
+   "zh": "泰迪的记忆",
+   "en": "Teddy's Memory"
+  },
+  "Item_Records_WLB_Memory_30": {
+   "zh": "“盖乐世”艾伦的哀鸣",
+   "en": "Galaxy Alan's Lament"
+  },
+  "Item_Records_WLB_Memory_31": {
+   "zh": "《真相》，第4篇",
+   "en": "THE TRUTH, Article 4"
+  },
+  "Item_Records_WLB_Memory_32": {
+   "zh": "《真相》，第6篇",
+   "en": "THE TRUTH, Article 6"
+  },
+  "Item_Records_WLB_Memory_33": {
+   "zh": "S2RV1C2-875687的数据",
+   "en": "S2RV1C2-875687's Data"
+  },
+  "Item_Records_WLB_Memory_34": {
+   "zh": "S2RV1C2-99991的数据",
+   "en": "S2RV1C2-99991's Data"
+  },
+  "Item_Records_WLB_Memory_35": {
+   "zh": "杰罗姆的信念",
+   "en": "Jerome's Faith"
+  },
+  "Item_Records_WLB_Memory_36": {
+   "zh": "梅的记忆",
+   "en": "May's Memory"
+  },
+  "Item_Records_WLB_Memory_37": {
+   "zh": "朱莱的记忆",
+   "en": "July's Memory"
+  },
+  "Item_Records_WLB_Memory_38": {
+   "zh": "奥古斯特的记忆",
+   "en": "August's Memory"
+  },
+  "Item_Records_WLB_Memory_39": {
+   "zh": "埃科的哀鸣",
+   "en": "Echo's Lament"
+  },
+  "Item_Records_WLB_Memory_40": {
+   "zh": "摇篮的真相",
+   "en": "Truth of The Cradle"
+  },
+  "Item_Records_WLB_Memory_41": {
+   "zh": "希雍城下的真相",
+   "en": "The Truth Under The City Of Xion"
+  },
+  "Item_Records_WLB_Memory_42": {
+   "zh": "我听到了",
+   "en": "I Heard It"
+  },
+  "Item_Records_WLB_Memory_43": {
+   "zh": "我看到了",
+   "en": "I Saw It"
+  },
+  "Item_Records_WLB_Memory_44": {
+   "zh": "我感觉到了",
+   "en": "I Felt It"
+  },
+  "Item_Records_WLB_Memory_45": {
+   "zh": "姚的呢喃",
+   "en": "Yo's Mutterings"
+  },
+  "Item_Records_WLB_Memory_46": {
+   "zh": "柳的暴怒",
+   "en": "Ryu's Rage"
+  },
+  "Item_Records_WLB_Memory_47": {
+   "zh": "徐的决心",
+   "en": "So's Resolution"
+  },
+  "Item_Records_WLB_Memory_48": {
+   "zh": "信徒的呐喊",
+   "en": "Believer's Screams"
+  },
+  "Item_Records_WLB_Memory_49": {
+   "zh": "我们必须找到它",
+   "en": "We Must Find Them"
+  },
+  "Item_Records_WLB_Memory_50": {
+   "zh": "方舟科技先锋引领绿地开发！",
+   "en": "Ark-tech pioneers developing the green land!"
+  },
+  "Item_Records_WLB_Memory_51": {
+   "zh": "流放者的决心",
+   "en": "Exile's Resolution"
+  },
+  "Item_Records_WLB_Memory_52": {
+   "zh": "第三条道路",
+   "en": "Third Road"
+  },
+  "Item_Records_WLB_Memory_53": {
+   "zh": "被孤立者的狂笑",
+   "en": "Laughter of the Isolated"
+  },
+  "Item_Records_WLB_Memory_54": {
+   "zh": "无名氏的最后定理",
+   "en": "The Last Theorem of an Unknown"
+  },
+  "Item_Records_WLB_Memory_55": {
+   "zh": "奥卡航空航天公司超级管道系统",
+   "en": "Orca Aerospace Company Hypertube System"
+  },
+  "Item_Records_WLB_Memory_56": {
+   "zh": "飞升者的呓语",
+   "en": "Rambling of the Ascended"
+  },
+  "Item_Records_WLB_Memory_57": {
+   "zh": "胆怯者的哀叹",
+   "en": "Lament of the Fearful"
+  },
+  "Item_Records_WLB_Memory_58": {
+   "zh": "诉说言语：临终前寻求内心的平静",
+   "en": "Words Spoken: Finding Peace Before Death"
+  },
+  "Item_Records_WLB_Memory_59": {
+   "zh": "诉说言语：用微笑迎接死亡",
+   "en": "Words Spoken: Embracing Death with a Smile"
+  },
+  "Item_Records_WLB_Memory_60": {
+   "zh": "鲁恩的遗言",
+   "en": "Lune's Last Words"
+  },
+  "Item_Records_WLB_Memory_61": {
+   "zh": "米尔的信仰",
+   "en": "Mel's Faith"
+  },
+  "Item_Records_WLB_Memory_62": {
+   "zh": "拉安的遗言",
+   "en": "Raan's Testament"
+  },
+  "Item_Records_WLB_Memory_63": {
+   "zh": "破损的承传记录仪",
+   "en": "Damaged Legacy"
+  },
+  "Item_Records_WLB_Memory_64": {
+   "zh": "路德的发现",
+   "en": "Luther's Revelation"
+  },
+  "Item_Records_WLB_Passcode_01": {
+   "zh": "ηαεδγγ",
+   "en": "ηαεδγγ"
+  },
+  "Item_Records_WLB_Passcode_02": {
+   "zh": "λλλλαθ",
+   "en": "λλλλαθ"
+  },
+  "Item_Records_Xion_Memory_01": {
+   "zh": "情报：绿洲",
+   "en": "Information: Oasis"
+  },
+  "Item_Records_Xion_Memory_03": {
+   "zh": "情报：神奇鱼饵",
+   "en": "Information: Fantastic Bait"
+  },
+  "Item_Records_Xion_Memory_04": {
+   "zh": "情报：超级管道",
+   "en": "Information: Hypertube"
+  },
+  "Item_Records_Xion_Memory_05": {
+   "zh": "情报：日光塔",
+   "en": "Information: Solar Tower"
+  },
+  "Item_Records_Xion_Memory_06": {
+   "zh": "情报：饮料罐",
+   "en": "Information: Can"
+  },
+  "Item_Records_Xion_Memory_07": {
+   "zh": "情报：疯狂无人机",
+   "en": "Information: Crazy Drone"
+  },
+  "Item_Records_Xion_Memory_08": {
+   "zh": "情报：祈祷者密码",
+   "en": "Information: Prayer Passcode"
+  },
+  "Item_Records_Xion_Memory_09": {
+   "zh": "隆重推出方舟科技的方舟！",
+   "en": "Introducing the Ark-Tech's Ark!"
+  },
+  "Item_Records_Xion_Memory_10": {
+   "zh": "体验方舟科技的方舟！",
+   "en": "Experience Ark-Tech's Ark!"
+  },
+  "Item_Records_Xion_Memory_11": {
+   "zh": "被困者的哀鸣",
+   "en": "Lament of the Trapped"
+  },
+  "Item_Records_Xion_Memory_12": {
+   "zh": "请求信",
+   "en": "Request Letter"
+  },
+  "Item_Records_Xion_Memory_13": {
+   "zh": "招募人手",
+   "en": "Help Wanted"
+  },
+  "Item_Records_Xion_Memory_14": {
+   "zh": "希雍自由解放联盟宣传单",
+   "en": "Xion Freedom Liberation Alliance Flyer"
+  },
+  "Item_Records_Xion_Memory_15": {
+   "zh": "亚伦的日记",
+   "en": "Aaron's Journal"
+  },
+  "Item_Records_Xion_Memory_16": {
+   "zh": "情报：奥尔科的个人链路",
+   "en": "Information: Personal Link with Orcal"
+  },
+  "Item_Records_Xion_Memory_17": {
+   "zh": "《希雍》#6",
+   "en": "The Xion #6"
+  },
+  "Item_Records_Xion_Memory_18": {
+   "zh": "《塑料之心：第1卷》",
+   "en": "Plastic Hearts, Vol. 1"
+  },
+  "Item_Records_Xion_Memory_19": {
+   "zh": "《真相》，第2篇",
+   "en": "THE TRUTH, Article 2"
+  },
+  "Item_Records_Xion_Memory_20": {
+   "zh": "方舟科技致力于为客户提供最优质的保护服务！",
+   "en": "Ark-Tech delivers its best service by protecting its customers!"
+  },
+  "Item_Records_Xion_Memory_21": {
+   "zh": "拓殖区之光",
+   "en": "Light of the Colony"
+  },
+  "Item_Records_Xion_Memory_22": {
+   "zh": "天使接受眼泪",
+   "en": "Angel Accepting Shed Tears"
+  },
+  "Item_Records_Xion_Memory_23": {
+   "zh": "为了更美好的世界",
+   "en": "For a Better World"
+  },
+  "Item_Records_Xion_Memory_24": {
+   "zh": "《引言之书》1",
+   "en": "Book of Quotes 1"
+  },
+  "Item_Records_Xion_Memory_25": {
+   "zh": "埃多斯公司宣传广告",
+   "en": "Eidos Company Promotion"
+  },
+  "Item_Records_Xion_Memory_26": {
+   "zh": "致敬我的战友",
+   "en": "To my allies"
+  },
+  "Item_Records_Xion_Memory_27": {
+   "zh": "信仰与智慧之书2:1-4",
+   "en": "Book of Faith and Wisdom 2:1-4"
+  },
+  "Item_Records_Xion_Memory_28": {
+   "zh": "幽默谈吐之道",
+   "en": "How to Speak with Style"
+  },
+  "Item_Records_Xion_Memory_29": {
+   "zh": "破旧的报告",
+   "en": "Tattered Report"
+  },
+  "Item_Records_Xion_Memory_30": {
+   "zh": "你们是什么人？",
+   "en": "Who Are You Guys?"
+  },
+  "Item_Records_Xion_Memory_31": {
+   "zh": "放我出去",
+   "en": "Let Me Out"
+  },
+  "Item_Records_Xion_Memory_32": {
+   "zh": "受困者的独白",
+   "en": "Monolog of a Trapped Man"
+  },
+  "Item_Records_Xion_Memory_33": {
+   "zh": "各位市民，请注意！1",
+   "en": "Attention, Citizens! 1"
+  },
+  "Item_Records_Xion_Memory_34": {
+   "zh": "各位市民，请注意！2",
+   "en": "Attention, Citizens! 2"
+  },
+  "Item_Records_Xion_Passcode_01": {
+   "zh": "αααδδκ",
+   "en": "αααδδκ"
+  },
+  "Item_Records_Xion_Passcode_02": {
+   "zh": "θθκκκε",
+   "en": "θθκκκε"
+  },
+  "Item_Records_Xion_Passcode_03": {
+   "zh": "μλκιαβ",
+   "en": "μλκιαβ"
+  },
+  "Item_Records_Xion_Passcode_04": {
+   "zh": "θηγγγζ",
+   "en": "θηγγγζ"
+  },
+  "Item_Records_Xion_Passcode_05": {
+   "zh": "γβθαλα",
+   "en": "γβθαλα"
+  },
+  "Item_Records_Xion_Passcode_06": {
+   "zh": "λβιιδα",
+   "en": "λβιιδα"
+  },
+  "Item_Records_Xion_Passcode_07": {
+   "zh": "μηζεεγ",
+   "en": "μηζεεγ"
+  },
+  "Item_Records_Xion_Passcode_08": {
+   "zh": "ηηαμμδ",
+   "en": "ηηαμμδ"
+  },
+  "Item_Records_Xion_Passcode_09": {
+   "zh": "λβκβδβ",
+   "en": "λβκβδβ"
+  },
+  "Item_Shrimp_Bait": {
+   "zh": "虾米",
+   "en": "Small Shrimp"
+  },
+  "Item_Special_Bait": {
+   "zh": "特殊鱼饵",
+   "en": "Special Bait"
+  },
+  "Item_Worm_Bait": {
+   "zh": "蠕动的虫子",
+   "en": "Wriggling Insect"
+  },
+  "LilyCostume_001": {
+   "zh": "阿尔忒弥斯",
+   "en": "Artemis"
+  },
+  "LilyCostume_002": {
+   "zh": "占星师外套",
+   "en": "Stargazer Coat"
+  },
+  "LilyCostume_003": {
+   "zh": "忧郁之雨",
+   "en": "Rainy Day"
+  },
+  "LilyCostume_003_Var2": {
+   "zh": "雨天",
+   "en": "Shower Day"
+  },
+  "LilyCostume_004": {
+   "zh": "休假日",
+   "en": "Off-duty"
+  },
+  "LilyCostume_004_Var2": {
+   "zh": "休息日",
+   "en": "Day Off"
+  },
+  "LilyCostume_Nier_001": {
+   "zh": "寄叶九号S型制服",
+   "en": "YoRHa No.9 Type S Uniform"
+  },
+  "LowDensityWafer": {
+   "zh": "纳米元素",
+   "en": "Nano Element"
+  },
+  "Money_JunkIron_A": {
+   "zh": "微型驱动装置",
+   "en": "Micro Drive"
+  },
+  "Money_JunkIron_B": {
+   "zh": "微型马达",
+   "en": "Micro Motor"
+  },
+  "Money_JunkIron_C": {
+   "zh": "微型线圈",
+   "en": "Micro Coil"
+  },
+  "Money_Nier": {
+   "zh": "星之泪",
+   "en": "Stellar Tear"
+  },
+  "Money_Nier_Dummy_1": {
+   "zh": "星之泪",
+   "en": "Stellar Tear"
+  },
+  "Money_Nier_Dummy_2": {
+   "zh": "星之泪",
+   "en": "Stellar Tear"
+  },
+  "Money_Nikke": {
+   "zh": "骨头扳手",
+   "en": "Bone-Wrench"
+  },
+  "Nikke_AR": {
+   "zh": "军品",
+   "en": "Militaria"
+  },
+  "Nikke_LostItem_Alice": {
+   "zh": "兔子玩偶",
+   "en": "Rabbit Doll"
+  },
+  "Nikke_LostItem_Anis": {
+   "zh": "罐装气泡水",
+   "en": "Sparkling Water Can"
+  },
+  "Nikke_LostItem_Dorothy": {
+   "zh": "桃乐丝的遮阳伞",
+   "en": "Dorothy's Parasol"
+  },
+  "Nikke_LostItem_Modernia": {
+   "zh": "指挥官人偶",
+   "en": "Commander Doll"
+  },
+  "Nikke_LostItem_Rapi": {
+   "zh": "拉毗的帽子",
+   "en": "Rapi's Hat"
+  },
+  "Nikke_PhotomodeSitcker_Dororong": {
+   "zh": "神秘生物贴纸",
+   "en": "Mysterious Creature Sticker"
+  },
+  "PT_Burst": {
+   "zh": "“爆发出神”型辅助脊椎",
+   "en": "Burst Trance-Type Exospine"
+  },
+  "PT_Burst_MK2": {
+   "zh": "“爆发出神”型辅助脊椎Mk2",
+   "en": "Burst Trance-Type Exospine Mk2"
+  },
+  "PT_Combo": {
+   "zh": "“连锁反应”型辅助脊椎",
+   "en": "Chain-Type Exospine"
+  },
+  "PT_Combo_MK2": {
+   "zh": "“连锁反应”型辅助脊椎Mk2",
+   "en": "Chain-Type Exospine Mk2"
+  },
+  "PT_Crowd": {
+   "zh": "“强力冲击”型辅助脊椎",
+   "en": "Impact-Type Exospine"
+  },
+  "PT_Crowd_MK2": {
+   "zh": "“强力冲击”型辅助脊椎Mk2",
+   "en": "Impact-Type Exospine Mk2"
+  },
+  "PT_Down": {
+   "zh": "“碾压”型辅助脊椎",
+   "en": "Suppression-Type Exospine"
+  },
+  "PT_Down_MK2": {
+   "zh": "“碾压”型辅助脊椎Mk2",
+   "en": "Suppression-Type Exospine Mk2"
+  },
+  "PT_Grenade": {
+   "zh": "“掷弹兵”型辅助脊椎",
+   "en": "Grenadier-Type Exospine"
+  },
+  "PT_Grenade_MK2": {
+   "zh": "“掷弹兵”型辅助脊椎Mk2",
+   "en": "Grenadier-Type Exospine Mk2"
+  },
+  "PT_Guard": {
+   "zh": "“本能反应”型辅助脊椎",
+   "en": "Reflex-Type Exospine"
+  },
+  "PT_Guard_MK2": {
+   "zh": "“本能反应”型辅助脊椎Mk2",
+   "en": "Reflex-Type Exospine Mk2"
+  },
+  "PT_Recovery": {
+   "zh": "“恢复”型辅助脊椎",
+   "en": "Recovery-Type Exospine"
+  },
+  "PT_Recovery_MK2": {
+   "zh": "“恢复”型辅助脊椎Mk2",
+   "en": "Recovery-Type Exospine Mk2"
+  },
+  "PT_Shoot": {
+   "zh": "“鹰眼”型辅助脊椎",
+   "en": "Eagle Eye-Type Exospine"
+  },
+  "PT_Shoot_MK2": {
+   "zh": "“鹰眼”型辅助脊椎Mk2",
+   "en": "Eagle Eye-Type Exospine Mk2"
+  },
+  "PT_Skill": {
+   "zh": "“贝塔出神”型辅助脊椎",
+   "en": "Beta Trance-Type Exospine"
+  },
+  "PT_Skill_MK2": {
+   "zh": "“贝塔出神”型辅助脊椎Mk2",
+   "en": "Beta Trance-Type Exospine Mk2"
+  },
+  "PT_Stab": {
+   "zh": "“伪装”型辅助脊椎",
+   "en": "Camouflage-Type Exospine"
+  },
+  "PT_Stab_MK2": {
+   "zh": "“伪装”型辅助脊椎Mk2",
+   "en": "Camouflage-Type Exospine Mk2"
+  },
+  "PT_Survive": {
+   "zh": "“防护”型辅助脊椎",
+   "en": "Protection-Type Exospine"
+  },
+  "PT_Survive_MK2": {
+   "zh": "“防护”型辅助脊椎Mk2",
+   "en": "Protection-Type Exospine Mk2"
+  },
+  "PT_Tachy": {
+   "zh": "“审判”型辅助脊椎",
+   "en": "Judgment-Type Exospine"
+  },
+  "PT_Tachy_MK2": {
+   "zh": "“审判”型辅助脊椎Mk2",
+   "en": "Judgment-Type Exospine Mk2"
+  },
+  "PolymerOrganicFilm": {
+   "zh": "先进聚合物材料",
+   "en": "Advanced Polymer Material"
+  },
+  "Potion_ForInstance": {
+   "zh": "高浓度药水",
+   "en": "Highly Concentrated Potion"
+  },
+  "PulseGrenade": {
+   "zh": "脉冲手雷",
+   "en": "Pulse Grenade"
+  },
+  "RQ_004_Item_Reward": {
+   "zh": "算术女王徽章",
+   "en": "Queen of Arithmetic Badge"
+  },
+  "RQ_005_Item_MemoryStick": {
+   "zh": "马修的记忆棒",
+   "en": "Matthew's Memorystick"
+  },
+  "RQ_006_Item_MemoryStick_Amanda": {
+   "zh": "阿曼达的记忆棒",
+   "en": "Amanda's Memorystick"
+  },
+  "RQ_006_Item_MemoryStick_Dona": {
+   "zh": "唐娜的记忆棒",
+   "en": "Donna's Memorystick"
+  },
+  "RQ_008_Item_Terminal": {
+   "zh": "设备HM021",
+   "en": "Device HM021"
+  },
+  "RQ_010_Item_Bag": {
+   "zh": "弗兰克的旅行袋",
+   "en": "Frank's Bag"
+  },
+  "RQ_018_Item_Potion": {
+   "zh": "沙疫治疗药品",
+   "en": "Sand Disease Medicine"
+  },
+  "RQ_021_Item_MemoryStick": {
+   "zh": "亚伦的记忆棒",
+   "en": "Aaron's Memorystick"
+  },
+  "RQ_038_Item_Terminal": {
+   "zh": "已解密的设备",
+   "en": "Deciphered Device"
+  },
+  "RQ_AllFishRQ_Item_Reward": {
+   "zh": "传说之鱼徽章",
+   "en": "Legendary Fish Badge"
+  },
+  "Recovery_HP_Potion": {
+   "zh": "可续用维生包",
+   "en": "Rechargeable Tumbler"
+  },
+  "ResurrectionItem": {
+   "zh": "白血泵",
+   "en": "WB Pump"
+  },
+  "SPInitializer": {
+   "zh": "技能点初始化设备",
+   "en": "SP Initializer"
+  },
+  "SPLevel": {
+   "zh": "技能点",
+   "en": "SP"
+  },
+  "SQ_001_Item_Trunk": {
+   "zh": "卡雅的行李箱",
+   "en": "Kaya's Trunk"
+  },
+  "SQ_002_Item_MemoryStick": {
+   "zh": "卡拉的记忆棒",
+   "en": "Kara's Memorystick"
+  },
+  "SQ_006_Item_Token": {
+   "zh": "入场凭证",
+   "en": "Entry Token"
+  },
+  "SQ_011_Item_AccessCode_1": {
+   "zh": "母网访问码",
+   "en": "NETWORK Access Code"
+  },
+  "SQ_011_Item_AccessCode_2": {
+   "zh": "母网访问码",
+   "en": "NETWORK Access Code"
+  },
+  "SQ_011_Item_AccessCode_3": {
+   "zh": "母网访问码",
+   "en": "NETWORK Access Code"
+  },
+  "SQ_011_Item_AccessCode_4": {
+   "zh": "母网访问码",
+   "en": "NETWORK Access Code"
+  },
+  "SQ_020_Item_MemoryStick_Ave": {
+   "zh": "阿贝的记忆棒",
+   "en": "Abe's Memorystick"
+  },
+  "SQ_020_Item_MemoryStick_Blake": {
+   "zh": "布莱克的记忆棒",
+   "en": "Blake’s Memorystick"
+  },
+  "SQ_022_Item_BearDoll": {
+   "zh": "泰迪熊",
+   "en": "Teddy Bear"
+  },
+  "SQ_023_Item_FusionCell": {
+   "zh": "有凹损的聚变电池",
+   "en": "Dented Fusion Cell"
+  },
+  "SQ_024_Item_Wine_1": {
+   "zh": "慕拉酒庄葡萄酒",
+   "en": "Chateau Moulac"
+  },
+  "SQ_024_Item_Wine_2": {
+   "zh": "雅克杜尔内葡萄酒",
+   "en": "Jacques Tournel"
+  },
+  "SQ_024_Item_Wine_3": {
+   "zh": "纳帕朗提葡萄酒",
+   "en": "Napa Ronti"
+  },
+  "SQ_027_Item_Book": {
+   "zh": "《信仰之书》",
+   "en": "Book of Faith"
+  },
+  "SQ_029_Item_MemoryStick": {
+   "zh": "爱人的记忆棒",
+   "en": "Lover's Memorystick"
+  },
+  "SQ_031_Item_Dryer": {
+   "zh": "吹风机",
+   "en": "Dryer"
+  },
+  "SQ_031_Item_Scissors": {
+   "zh": "剪刀",
+   "en": "Scissors"
+  },
+  "SQ_031_Item_Strainer": {
+   "zh": "直发夹",
+   "en": "Straightener"
+  },
+  "SQ_032_Item_BuddhaStatue": {
+   "zh": "鎏金青铜立佛",
+   "en": "Gilt-bronze Standing Buddha"
+  },
+  "SQ_033_Item_MemoryStick_Lee": {
+   "zh": "李的记忆棒",
+   "en": "Lee's Memorystick"
+  },
+  "SQ_033_Item_MemoryStick_Woo": {
+   "zh": "吴的记忆棒",
+   "en": "Woo's Memorystick"
+  },
+  "SQ_033_Item_MemoryStick_Young": {
+   "zh": "杨的记忆棒",
+   "en": "Young's Memorystick"
+  },
+  "SQ_034_Item_MemoryStick_Tommy": {
+   "zh": "汤米的记忆棒",
+   "en": "Tommy's Memorystick"
+  },
+  "SQ_035_Item_Grape": {
+   "zh": "葡萄",
+   "en": "Grape"
+  },
+  "SQ_036_Item_MemoryStick_Go": {
+   "zh": "高的记忆棒",
+   "en": "Go's Memorystick"
+  },
+  "SQ_037_Item_FusionCell": {
+   "zh": "老式聚变电池",
+   "en": "Old-style Fusion Cell"
+  },
+  "SQ_038_Item_MemoryStick_August": {
+   "zh": "奥古斯特的记忆棒",
+   "en": "August's Memorystick"
+  },
+  "SQ_038_Item_MemoryStick_July": {
+   "zh": "朱莱的记忆棒",
+   "en": "July's Memorystick"
+  },
+  "SQ_038_Item_MemoryStick_May": {
+   "zh": "梅的记忆棒",
+   "en": "May's Memorystick"
+  },
+  "SQ_039_Item_MemoryStick": {
+   "zh": "埃科的记忆棒",
+   "en": "Echo's Memorystick"
+  },
+  "SQ_040_Item_MemoryStick_Felix": {
+   "zh": "菲利克斯的记忆棒",
+   "en": "Felix's Memorystick"
+  },
+  "SQ_041_Item_Algorithm_Chipset": {
+   "zh": "算法芯片组",
+   "en": "Algorithm Chipset"
+  },
+  "SQ_042_Item_MemoryStick_Mel": {
+   "zh": "米尔的记忆棒",
+   "en": "Mel's Memorystick"
+  },
+  "SQ_042_Item_MemoryStick_Ran": {
+   "zh": "拉安的记忆棒",
+   "en": "Raan's Memorystick"
+  },
+  "SQ_042_Item_MemoryStick_Rune": {
+   "zh": "鲁恩的记忆棒",
+   "en": "Lune's Memorystick"
+  },
+  "SQ_042_Item_MemoryStick_Ryu": {
+   "zh": "柳的记忆棒",
+   "en": "Ryu's Memorystick"
+  },
+  "SQ_042_Item_MemoryStick_So": {
+   "zh": "徐的记忆棒",
+   "en": "So's Memorystick"
+  },
+  "SQ_042_Item_MemoryStick_Yo": {
+   "zh": "姚的记忆棒",
+   "en": "Yo's Memorystick"
+  },
+  "SQ_043_Item_Terminal": {
+   "zh": "受损的设备",
+   "en": "Damaged Device"
+  },
+  "SQ_Item_Mindmap_Part1": {
+   "zh": "思维导图副本",
+   "en": "Mind Map Copy"
+  },
+  "SQ_Item_Mindmap_Part2": {
+   "zh": "思维导图副本",
+   "en": "Mind Map Copy"
+  },
+  "SQ_Item_Mindmap_Part3": {
+   "zh": "思维导图副本",
+   "en": "Mind Map Copy"
+  },
+  "SQ_Item_Mindmap_Part4": {
+   "zh": "思维导图副本",
+   "en": "Mind Map Copy"
+  },
+  "SQ_Item_Mindmap_Part5": {
+   "zh": "思维导图副本",
+   "en": "Mind Map Copy"
+  },
+  "SkillPoint": {
+   "zh": "技能点",
+   "en": "SP"
+  },
+  "TrapGrenade": {
+   "zh": "智能地雷",
+   "en": "Smart Mine"
+  },
+  "TumblerCore": {
+   "zh": "维生包拓展模块",
+   "en": "Tumbler Expansion Module"
+  },
+  "TurntableMusicBundle": {
+   "zh": "恩雅的谢礼",
+   "en": "A Thank You Gift From Enya"
+  },
+  "TurntableMusicBundle2": {
+   "zh": "恩雅的谢礼",
+   "en": "A Thank You Gift From Enya"
+  },
+  "WeaponCore": {
+   "zh": "武器核心",
+   "en": "Weapon Core"
+  },
+  "WeaponCore_Damaged": {
+   "zh": "受损的武器核心",
+   "en": "Damaged Weapon Core"
+  }
+ },
+ "camps": {
+  "ChangeState_ZoneEnv_WLA_10_EnvS_001_Camp": {
+   "zh": "隐秘之路",
+   "en": "Hidden Path"
+  },
+  "ChangeState_ZoneEnv_WLA_10_EnvS_050_Camp": {
+   "zh": "大峡谷西部",
+   "en": "Western Great Canyon"
+  },
+  "ChangeState_ZoneEnv_WLA_10_EnvS_057_Camp": {
+   "zh": "大峡谷中部",
+   "en": "Central Great Canyon"
+  },
+  "ChangeState_ZoneEnv_WLA_10_EnvS_061_Camp": {
+   "zh": "不毛之地",
+   "en": "Barren Land"
+  },
+  "ChangeState_ZoneEnv_WLA_10_EnvS_065_Camp": {
+   "zh": "日光塔入口",
+   "en": "Solar Tower Entrance"
+  },
+  "ChangeState_ZoneEnv_WLA_30_EnvS_008_Camp": {
+   "zh": "废品场",
+   "en": "Junkyard"
+  },
+  "ChangeState_ZoneEnv_WLA_30_EnvS_028_Camp": {
+   "zh": "大峡谷东部",
+   "en": "Eastern Great Canyon"
+  },
+  "ChangeState_ZoneEnv_WLA_30_EnvS_041_Camp": {
+   "zh": "卢瓦高层入口",
+   "en": "Altess Levoire Entrance"
+  },
+  "ChangeState_ZoneEnv_WLA_40_EnvS_022_Camp": {
+   "zh": "废品平原中部",
+   "en": "Central Scrap Plains"
+  },
+  "ChangeState_ZoneEnv_WLA_40_EnvS_026_Camp": {
+   "zh": "公交车站",
+   "en": "Bus Stop"
+  },
+  "ChangeState_ZoneEnv_WLA_50_EnvS_016_Camp": {
+   "zh": "废品堆放场入口",
+   "en": "Scrap Yard Entrance"
+  },
+  "ChangeState_ZoneEnv_WLB_10_EnvS_001_Camp": {
+   "zh": "流放通道",
+   "en": "Exile's Passage"
+  },
+  "ChangeState_ZoneEnv_WLB_10_EnvS_028_Camp": {
+   "zh": "大沙漠北部",
+   "en": "Northern Great Desert"
+  },
+  "ChangeState_ZoneEnv_WLB_10_EnvS_034_Camp": {
+   "zh": "大沙漠中部",
+   "en": "Central Great Desert"
+  },
+  "ChangeState_ZoneEnv_WLB_10_EnvS_040_Camp": {
+   "zh": "绿洲",
+   "en": "Oasis"
+  },
+  "ChangeState_ZoneEnv_WLB_10_EnvS_084_Camp": {
+   "zh": "大沙漠",
+   "en": "Great Desert"
+  },
+  "ChangeState_ZoneEnv_WLB_10_EnvS_118_Camp": {
+   "zh": "掩埋的废墟外围",
+   "en": "Buried Ruins Outskirt"
+  },
+  "ChangeState_ZoneEnv_WLB_10_EnvS_125_Camp": {
+   "zh": "掩埋的废墟（西）",
+   "en": "West of Buried Ruins"
+  },
+  "ChangeState_ZoneEnv_WLB_10_EnvS_131_Camp": {
+   "zh": "卢瓦底层入口",
+   "en": "Abyss Levoire Entrance"
+  },
+  "ChangeState_ZoneEnv_WLB_10_EnvS_138_Camp": {
+   "zh": "迫降地点",
+   "en": "Crash Landing Point"
+  },
+  "ChangeState_ZoneEnv_WLB_20_EnvS_032_Camp": {
+   "zh": "掩埋的废墟（南）",
+   "en": "South of Buried Ruins"
+  },
+  "ChangeState_ZoneEnv_WLB_20_EnvS_155_Camp": {
+   "zh": "布满残骸的入口",
+   "en": "Debris-filled Entryway"
+  },
+  "ChangeState_ZoneEnv_WLB_20_EnvS_176_Camp": {
+   "zh": "通往日光塔之路",
+   "en": "Way to the Solar Tower"
+  },
+  "ChangeState_ZoneEnv_WLB_20_EnvS_183_Camp": {
+   "zh": "荒弃高架桥",
+   "en": "Abandoned Overpass"
+  },
+  "ChangeState_ZoneEnv_WLB_30_EnvS_014_Camp": {
+   "zh": "大沙漠外围",
+   "en": "Great Desert Outskirts"
+  },
+  "ChangeState_ZoneEnv_WLB_30_EnvS_067_Camp": {
+   "zh": "超级管道",
+   "en": "Hypertube"
+  },
+  "ChangeState_ZoneEnv_WLB_30_EnvS_071_Camp": {
+   "zh": "双子岩",
+   "en": "Twin Rocks"
+  },
+  "ChangeState_ZoneEnv_WLB_50_EnvS_017_Camp": {
+   "zh": "掩埋的废墟（北）",
+   "en": "North of Buried Ruins"
+  },
+  "ChangeState_ZoneEnv_WLB_50_EnvS_178_Camp": {
+   "zh": "废墟间的中央通路",
+   "en": "Middle Path between Ruins"
+  },
+  "ChangeState_ZoneEnv_WLB_50_EnvS_182_Camp": {
+   "zh": "地下秘密通道",
+   "en": "Underground Secret Passage"
+  },
+  "ChangeState_ZoneEnv_WLB_50_EnvS_226_Camp": {
+   "zh": "摇摇欲坠的屋顶",
+   "en": "Crumbling Rooftop"
+  }
+ }
+}

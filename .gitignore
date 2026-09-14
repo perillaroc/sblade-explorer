@@ -11,3 +11,6 @@ build/
 data/raw/reference/*.sav
 data/raw/reference/*.html
 data/raw/reference/*.js
+
+# Game data dumps (only data/raw/game/name_map.json is committed)
+data/raw/game/dump/

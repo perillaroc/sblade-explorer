@@ -22,7 +22,15 @@ import crosswalk_data as cw
 ROOT = Path(__file__).resolve().parent.parent
 API_DIR = ROOT / "data" / "raw" / "api"
 UNIVERSE = ROOT / "data" / "raw" / "universe" / "aliases.json"
+GAME_NAMES = ROOT / "data" / "raw" / "game" / "name_map.json"
 OUTPUT = ROOT / "src" / "sbsave" / "data" / "catalog.json"
+
+_GAME_NOTES = {
+    "records": "名称来自游戏数据库（zh-Hans 本地化）",
+    "passcodes": "名称来自游戏数据库（zh-Hans 本地化）",
+    "camps": "名称来自游戏营地数据（zh-Hans 本地化）",
+    "design_patterns": "图案名称来自游戏数据（zh-Hans 本地化）",
+}
 
 CATEGORIES = [
     ("nano_suits", "纳米战衣", 10),
@@ -63,6 +71,32 @@ def load_site_index() -> dict[int, dict]:
                         "order": order,
                     }
     return index
+
+
+def load_game_names() -> dict:
+    if not GAME_NAMES.exists():
+        return {}
+    return json.loads(GAME_NAMES.read_text(encoding="utf-8"))
+
+
+def apply_game_names(items: list[dict], game_names: dict) -> None:
+    """Override placeholder names with mined game localisation (exact aliases)."""
+    names = game_names.get("items", {})
+    camps = game_names.get("camps", {})
+    for item in items:
+        entry = camps.get(item["id"]) if item["category"] == "camps" else None
+        entry = entry or names.get(item["id"])
+        if not entry or not entry.get("zh"):
+            continue
+        item["name"] = entry["zh"]
+        if entry.get("en"):
+            item["name_en"] = entry["en"]
+        item["confidence"] = "high"
+        item["source"] = "game"
+        if item["category"] in _GAME_NOTES:
+            item["note"] = _GAME_NOTES[item["category"]]
+        elif item["category"] == "cans":
+            item["note"] = None
 
 
 def dlc_from_aliases(aliases: list[str], cycle: str) -> str | None:
@@ -397,6 +431,7 @@ def build_gear(universe: dict) -> list[dict]:
 def main() -> None:
     site = load_site_index()
     universe = json.loads(UNIVERSE.read_text(encoding="utf-8"))
+    game_names = load_game_names()
 
     items: list[dict] = []
     items += build_nano_suits(site)
@@ -409,6 +444,7 @@ def main() -> None:
     # Gear is deliberately left out of v1: it is equipment rather than a
     # collectible, and the alias names carry no localised text.  The alias
     # universe is kept in data/raw/universe/aliases.json for future use.
+    apply_game_names(items, game_names)
 
     # Validate alias uniqueness.
     seen: dict[str, str] = {}
@@ -425,6 +461,7 @@ def main() -> None:
             "https://stellarbladeguide.com (collectibles, cosmetics, locations, cycles)",
             "https://github.com/wuxiao00j/stellar-blade-macos-save-editor (Simplified Chinese names)",
             "https://github.com/lecher-wang/Stellar-Blade-100-completion-save-file (alias universe)",
+            "Stellar Blade game tables + zh-Hans/en Game.locres (mined names, data/raw/game/name_map.json)",
         ],
         "categories": [{"key": k, "name": n, "order": o} for k, n, o in CATEGORIES],
         "items": items,

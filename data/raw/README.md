@@ -8,6 +8,7 @@
 | --- | --- |
 | `api/*.json` | stellarbladeguide.com API 响应（物品名称、位置描述、周目标签） |
 | `universe/aliases.json` | 从参考存档与本地存档提取的物品别名全集（不含未解锁 ID） |
+| `game/name_map.json` | 游戏数据表 + `Game.locres` 提取的内部别名→官方名称映射（生成物） |
 | `reference/Sources_TrainerCore_*.swift` | 中文名称对照（来自 stellar-blade-macos-save-editor） |
 | `reference/*.sav` | 参考存档（仅本地校验用，已在 .gitignore 中忽略） |
 
@@ -16,6 +17,8 @@
 - <https://stellarbladeguide.com> —— 英文名称、位置、描述、Base/NG+/NG++/DLC 标签
 - <https://github.com/wuxiao00j/stellar-blade-macos-save-editor> —— 简体中文名称
 - <https://github.com/lecher-wang/Stellar-Blade-100-completion-save-file> —— 别名全集校验
+- 游戏本体数据表（`ItemTable`、`ZoneCampTable`）与 `Game.locres`（zh-Hans/en）——
+  内部别名到官方名称的精确映射，经 `tools/mine_game_names.py` 生成 `game/name_map.json`
 
 ## 重新生成目录库
 
@@ -26,6 +29,20 @@ uv run sbsave catalog check
 
 人工别名映射在 `tools/crosswalk_data.py`；如只需修正个别条目，优先使用
 `%LOCALAPPDATA%\sbsave\catalog.user.json` 覆盖文件。
+
+## 刷新游戏名称映射（需要本机安装游戏）
+
+需要社区工具 `cue4parse.exe`、`repak.exe` 与社区 `.usmap`。把它们放在同一目录后执行：
+
+```powershell
+uv run python tools/mine_game_names.py `
+  --game "H:\SteamLibrary\steamapps\common\StellarBlade" `
+  --tools path\to\tools
+```
+
+`--game` 会把数据表导出到 `data/raw/game/dump`（已在 .gitignore 中忽略）并解包
+`Game.{zh-Hans,en}.locres`，然后写出 `data/raw/game/name_map.json`。也可以先用
+`retoc`/`cue4parse` 自行导出，再用 `--dump 目录` 离线运行。
 
 ## 刷新 API 数据（需要可访问外网）
 

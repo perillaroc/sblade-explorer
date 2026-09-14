@@ -72,8 +72,8 @@ uv run sbsave dump --json dump_summary.json
   列=首周目/二周目(NG+)/三周目(NG++)/DLC 特典；同一地点不同周目给出的物品并列展示。
   状态用 emoji 标记：✅ 已获得、❌ 未获得、🔒 需更高周目、🎁 DLC/特典、➖ 默认外观。
   这些分类不再输出逐条缺失列表，其余分类（如设计图案、罐子）不受影响。
-- **映射待确认**：目录库中部分条目是根据内部 ID 推导/顺序推定的（如罐子编号顺序、
-  记录/营地/图案）。报告会显示该标记，便于核对与修正。
+- **映射待确认**：目录库中仍有少量条目是推定映射（个别记录版本变体、部分营地）。
+  报告会显示该标记，便于核对与修正。
 
 ## 自定义目录库
 
@@ -105,6 +105,8 @@ uv run sbsave dump --json dump_summary.json
 - [stellarbladeguide.com](https://stellarbladeguide.com) —— 物品名称（英文）、位置描述、周目标签
 - [stellar-blade-macos-save-editor](https://github.com/wuxiao00j/stellar-blade-macos-save-editor) —— 简体中文物品名称与别名映射
 - [Stellar-Blade-100-completion-save-file](https://github.com/lecher-wang/Stellar-Blade-100-completion-save-file) —— 别名全集与数据校验
+- 游戏本体数据表 + `Game.locres`（zh-Hans/en）—— 内部别名到官方名称的精确映射
+  （由 `tools/mine_game_names.py` 提取到 `data/raw/game/name_map.json`）
 - 原始数据保存在 `data/raw/`，目录库由 `tools/build_catalog.py` 生成到 `src/sbsave/data/catalog.json`
 
 如需更新目录库：
@@ -112,6 +114,13 @@ uv run sbsave dump --json dump_summary.json
 ```powershell
 uv run python tools/build_catalog.py
 uv run sbsave catalog check
+```
+
+游戏更新后如需刷新名称映射（需要本机游戏与本目录以外下载的 cue4parse/repak）：
+
+```powershell
+uv run python tools/mine_game_names.py --game "H:\SteamLibrary\steamapps\common\StellarBlade" --tools path\to\tools
+uv run python tools/build_catalog.py
 ```
 
 ## 存档格式说明
@@ -127,8 +136,8 @@ tagged property 布局，并针对本作的特殊字段顺序做了适配。收�
 ## 已知限制
 
 - 工具只读，不支持修改存档。
-- 记录（文档/记忆棒/密码）的逐条名称由内部 ID 推导（区域+编号），精确名称请对照攻略
-  同区域列表；罐子编号顺序为推定映射。
+- 记录（文档/记忆棒/密码）、罐子、设计图案与外观名称来自游戏数据，均为精确映射；
+  剩余少量推定项（记录版本变体、未能与营地表关联的营地）仍会标记「映射待确认」。
 - 装备词条（Gear）与技能（PT）等非收集类数据未纳入 v1。
 - 游戏更新可能改变存档结构；解析失败会给出明确错误，请不要用旧版本目录强行解析新版本。
 
