@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import type { CategoryResult, Item, Lang, ObtainedItem } from "../types";
+import type { Lang } from "../types";
 import { itemName, localized } from "../lib/display";
+import type { ItemRow } from "../lib/items";
 
 const props = defineProps<{
-  category: CategoryResult;
+  rows: ItemRow[];
   ngPlusCount: number;
   lang: Lang;
 }>();
@@ -24,20 +25,6 @@ const AREA_ORDER: Record<string, number> = {
   "Boss Challenge": 11,
 };
 
-interface MatrixItem {
-  id: string;
-  name: string;
-  name_en?: string | null;
-  area?: string | null;
-  area_zh?: string | null;
-  location?: string | null;
-  location_zh?: string | null;
-  ng_plus: number;
-  dlc: string | null;
-  aliases: string[];
-  obtained: boolean;
-}
-
 interface LocationRow {
   label: string;
   cells: string[][];
@@ -48,22 +35,18 @@ interface AreaRow {
   locations: LocationRow[];
 }
 
-const items = computed<MatrixItem[]>(() => [
-  ...props.category.obtained_items.map((item: ObtainedItem) => ({ ...item, obtained: true })),
-  ...props.category.missing.map((item: Item) => ({ ...item, obtained: false })),
-]);
-
-function emoji(item: MatrixItem): string {
-  if (item.obtained) return "✅";
-  if (item.dlc) return "🎁";
-  if (item.ng_plus > props.ngPlusCount) return "🔒";
-  if (item.aliases.length === 0) return "➖";
+function emoji(row: ItemRow): string {
+  if (row.obtained) return "✅";
+  if (row.item.dlc) return "🎁";
+  if (row.item.ng_plus > props.ngPlusCount) return "🔒";
+  if (row.item.aliases.length === 0) return "➖";
   return "❌";
 }
 
 const areas = computed<AreaRow[]>(() => {
   const map = new Map<string, { label: string; locations: Map<string, LocationRow> }>();
-  for (const item of items.value) {
+  for (const row of props.rows) {
+    const item = row.item;
     const areaRaw = item.area ?? "未分类";
     const locationRaw = item.location ?? "未分类";
     let area = map.get(areaRaw);
@@ -83,7 +66,7 @@ const areas = computed<AreaRow[]>(() => {
       area.locations.set(locationRaw, location);
     }
     const column = item.dlc ? 3 : Math.min(item.ng_plus, 2);
-    location.cells[column].push(`${emoji(item)} ${itemName(item, props.lang)}`);
+    location.cells[column].push(`${emoji(row)} ${itemName(item, props.lang)}`);
   }
   return [...map.entries()]
     .sort(
@@ -102,14 +85,8 @@ function usedColumns(locations: LocationRow[]): number[] {
 </script>
 
 <template>
-  <section class="rounded-lg border border-slate-800 bg-slate-900/60 p-4">
-    <h2 class="text-sm font-semibold">
-      {{ category.name }}
-      <span class="ml-2 text-xs font-normal text-slate-400">
-        已获得 {{ category.obtained }}/{{ category.total }}
-      </span>
-    </h2>
-    <p class="mt-1 text-xs text-slate-500">✅ 已获得 · ❌ 未获得 · 🔒 需更高周目 · 🎁 DLC/特典 · ➖ 默认外观</p>
+  <div class="p-4">
+    <p class="text-xs text-slate-500">✅ 已获得 · ❌ 未获得 · 🔒 需更高周目 · 🎁 DLC/特典 · ➖ 默认外观</p>
     <div v-for="area in areas" :key="area.label" class="mt-3">
       <h3 class="text-xs font-semibold text-slate-300">{{ area.label }}</h3>
       <table class="mt-1 w-full text-xs">
@@ -132,5 +109,5 @@ function usedColumns(locations: LocationRow[]): number[] {
         </tbody>
       </table>
     </div>
-  </section>
+  </div>
 </template>

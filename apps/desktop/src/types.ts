@@ -84,3 +84,5 @@ export interface Analysis {
 }
 
 export type Lang = "zh" | "en" | "both";
+
+export type ItemFilter = "all" | "obtained" | "missing";
