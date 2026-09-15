@@ -84,7 +84,7 @@ CLI 亦可用 `--catalog 路径.json` 临时附加；条目内 `area_zh`/`locati
 ## 项目结构
 
 - `crates/sbsave-core/` - Rust 核心库：GVAS 解析、存档提取、目录库、差集分析、报告与 JSON 契约。
-- `crates/sbsave-cli/` - `sbsave` CLI（clap），命令与输出对齐归档 Python 版。
+- `crates/sbsave-cli/` - `sbsave` CLI（clap），命令与输出沿用原 Python 版约定。
 - `apps/desktop/` - Tauri 2 桌面应用：前端 Vue 3 + Vite + TypeScript + Tailwind v4（工程根），
   Rust 在 `src-tauri/`。
 - `tools/` - 构建期 Python 数据管线（`build_catalog.py`、`crosswalk_data.py`、`mine_game_names.py`）。
@@ -120,8 +120,8 @@ uv run ruff check tools
 ```
 
 回归哨兵：目录库 810 条 / 13 分类；纳米战衣 126、罐子 49、营地 89、低置信度 69。
-差分基准：Python 参考实现归档于仓库外 `archived/sblade-explorer-python/`，迁移期间
-两端 `report --json` 逐节点一致、Markdown 逐字一致。
+迁移验收（2026-09-14）：与原 Python 版 `report --json` 逐节点一致、Markdown 逐字一致；
+Python 参考实现已删除，代码历史保留在 git（提交 `33cb981`）。
 
 ## 已知限制
 
