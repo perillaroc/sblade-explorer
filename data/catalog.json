@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generated_by": "tools/build_catalog.py",
+ "generated_by": "crates/sbsave-tools (catalog build)",
  "sources": [
   "https://stellarbladeguide.com (collectibles, cosmetics, locations, cycles)",
   "https://github.com/wuxiao00j/stellar-blade-macos-save-editor (Simplified Chinese names)",

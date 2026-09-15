@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generated_by": "tools/mine_game_names.py",
+ "generated_by": "crates/sbsave-tools (mine-names)",
  "source": "Stellar Blade game tables (ItemTable, ZoneCampTable) + zh-Hans/en Game.locres",
  "items": {
   "2DQuantumWafer": {

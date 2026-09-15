@@ -1,6 +1,11 @@
 [workspace]
 resolver = "2"
-members = ["crates/sbsave-core", "crates/sbsave-cli", "apps/desktop/src-tauri"]
+members = [
+    "crates/sbsave-core",
+    "crates/sbsave-cli",
+    "crates/sbsave-tools",
+    "apps/desktop/src-tauri",
+]
 
 [workspace.package]
 version = "0.1.0"

@@ -87,8 +87,9 @@ CLI 亦可用 `--catalog 路径.json` 临时附加；条目内 `area_zh`/`locati
 - `crates/sbsave-cli/` - `sbsave` CLI（clap），命令与输出沿用原 Python 版约定。
 - `apps/desktop/` - Tauri 2 桌面应用：前端 Vue 3 + Vite + TypeScript + Tailwind v4（工程根），
   Rust 在 `src-tauri/`。
-- `tools/` - 构建期 Python 数据管线（`build_catalog.py`、`crosswalk_data.py`、`mine_game_names.py`）。
-- `data/raw/` - 已提交的数据快照；`data/catalog.json` 为生成物（禁止手改）。
+- `crates/sbsave-tools/` - 构建期数据管线（`sbsave-tools` 二进制）：`catalog build` 生成目录库、
+  `mine-names` 挖掘游戏名称映射。
+- `data/raw/` - 已提交的数据快照（含手工维护的 `crosswalk.json`）；`data/catalog.json` 为生成物（禁止手改）。
 
 ## 数据来源
 
@@ -96,7 +97,7 @@ CLI 亦可用 `--catalog 路径.json` 临时附加；条目内 `area_zh`/`locati
 - [stellar-blade-macos-save-editor](https://github.com/wuxiao00j/stellar-blade-macos-save-editor) —— 简体中文物品名称与别名映射
 - [Stellar-Blade-100-completion-save-file](https://github.com/lecher-wang/Stellar-Blade-100-completion-save-file) —— 别名全集与数据校验
 - 游戏本体数据表 + `Game.locres`（zh-Hans/en）—— 内部别名到官方名称的精确映射
-  （`tools/mine_game_names.py` → `data/raw/game/name_map.json`）
+  （`cargo run -p sbsave-tools -- mine-names` → `data/raw/game/name_map.json`）
 - `data/raw/api/i18n/` —— stellabladeguide.com 区域/地点/获取描述的手工简体中文翻译
 
 ## 开发
@@ -114,9 +115,9 @@ pnpm build          # vue-tsc --noEmit + vite build
 pnpm tauri dev      # 桌面应用开发
 pnpm tauri build    # Windows 安装包（NSIS + MSI）
 
-# Python 数据管线（仓库根目录，首次 uv sync）
-uv run python tools/build_catalog.py
-uv run ruff check tools
+# 数据管线（仓库根目录）
+cargo run -p sbsave-tools -- catalog build   # 重新生成 data/catalog.json
+cargo test -p sbsave-tools                   # 生成结果与已提交文件逐字节比对
 ```
 
 回归哨兵：目录库 810 条 / 13 分类；纳米战衣 126、罐子 49、营地 89、低置信度 69。

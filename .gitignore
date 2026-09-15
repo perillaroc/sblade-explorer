@@ -1,11 +1,3 @@
-# Python (build-time data pipeline)
-.venv/
-__pycache__/
-*.py[cod]
-.pytest_cache/
-.ruff_cache/
-*.egg-info/
-
 # Rust
 target/
 

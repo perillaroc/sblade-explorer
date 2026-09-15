@@ -1,0 +1,1919 @@
+{
+ "site_base_url": "https://stellarbladeguide.com",
+ "nano_suits": [
+  {
+   "site_id": 60,
+   "aliases": [
+    "BS_Green_Suit"
+   ],
+   "zh": "星球空降服（第7小队）",
+   "confidence": "high"
+  },
+  {
+   "site_id": 61,
+   "aliases": [
+    "BS_102"
+   ],
+   "zh": "活肤紧身服",
+   "confidence": "high"
+  },
+  {
+   "site_id": 62,
+   "aliases": [
+    "BS_08"
+   ],
+   "zh": "墨黑忍者装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 63,
+   "aliases": [
+    "BS_08_Var2"
+   ],
+   "zh": "洁白忍者装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 64,
+   "aliases": [
+    "BS_OneMillion_01"
+   ],
+   "zh": "绯红之翼",
+   "confidence": "high"
+  },
+  {
+   "site_id": 65,
+   "aliases": [
+    "BS_Raven"
+   ],
+   "zh": "渡鸦装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 117,
+   "aliases": [
+    "BS_09_2"
+   ],
+   "zh": "星球空降服（第7小队）第2版",
+   "confidence": "high"
+  },
+  {
+   "site_id": 118,
+   "aliases": [
+    "BS_09_2_Var2"
+   ],
+   "zh": "星球空降服（第7小队）第3版",
+   "confidence": "high"
+  },
+  {
+   "site_id": 119,
+   "aliases": [
+    "BS_05_E",
+    "BS_05"
+   ],
+   "zh": "星球空降防护服（第7小队）",
+   "confidence": "high"
+  },
+  {
+   "site_id": 141,
+   "aliases": [
+    "BS_41"
+   ],
+   "zh": "废土冒险家",
+   "confidence": "high"
+  },
+  {
+   "site_id": 142,
+   "aliases": [
+    "BS_41_Var2"
+   ],
+   "zh": "废土探索者",
+   "confidence": "high"
+  },
+  {
+   "site_id": 143,
+   "aliases": [
+    "BS_15_Var2_E",
+    "BS_15_Var2"
+   ],
+   "zh": "乌莲",
+   "confidence": "high"
+  },
+  {
+   "site_id": 105,
+   "aliases": [
+    "BS_38"
+   ],
+   "zh": "赤血丹心",
+   "confidence": "high"
+  },
+  {
+   "site_id": 106,
+   "aliases": [
+    "BS_38_Var2"
+   ],
+   "zh": "翡翠热情",
+   "confidence": "high"
+  },
+  {
+   "site_id": 107,
+   "aliases": [
+    "BS_14_E",
+    "BS_14"
+   ],
+   "zh": "芍药独韵",
+   "confidence": "high"
+  },
+  {
+   "site_id": 893,
+   "aliases": [
+    "BS_99"
+   ],
+   "zh": "星球空降服（队长）",
+   "confidence": "high"
+  },
+  {
+   "site_id": 895,
+   "aliases": [
+    "BS_01_Var2"
+   ],
+   "zh": "占星服",
+   "confidence": "high"
+  },
+  {
+   "site_id": 908,
+   "aliases": [
+    "BS_Christmas_01"
+   ],
+   "zh": "圣诞裙装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 936,
+   "aliases": [
+    "BS_02"
+   ],
+   "zh": "星球空降服（第2小队）",
+   "confidence": "high"
+  },
+  {
+   "site_id": 937,
+   "aliases": [
+    "BS_02_Var2"
+   ],
+   "zh": "星球空降服（第2小队）第2版",
+   "confidence": "high"
+  },
+  {
+   "site_id": 938,
+   "aliases": [
+    "BS_48"
+   ],
+   "zh": "奥卡探索者",
+   "confidence": "high"
+  },
+  {
+   "site_id": 939,
+   "aliases": [
+    "BS_48_Var2"
+   ],
+   "zh": "奥卡探路者",
+   "confidence": "high"
+  },
+  {
+   "site_id": 940,
+   "aliases": [
+    "BS_01"
+   ],
+   "zh": "镂空服",
+   "confidence": "high"
+  },
+  {
+   "site_id": 941,
+   "aliases": [
+    "BS_01_Var3"
+   ],
+   "zh": "镂空裙装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 942,
+   "aliases": [
+    "BS_32"
+   ],
+   "zh": "“四秒钟”破洞牛仔布套装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 943,
+   "aliases": [
+    "BS_56"
+   ],
+   "zh": "盛夏爱丽丝",
+   "confidence": "high"
+  },
+  {
+   "site_id": 944,
+   "aliases": [
+    "BS_57"
+   ],
+   "zh": "盛夏小红帽",
+   "confidence": "high"
+  },
+  {
+   "site_id": 945,
+   "aliases": [
+    "BS_15"
+   ],
+   "zh": "国色牡丹",
+   "confidence": "high"
+  },
+  {
+   "site_id": 946,
+   "aliases": [
+    "BS_03"
+   ],
+   "zh": "赛博裙装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 947,
+   "aliases": [
+    "BS_03_Var2"
+   ],
+   "zh": "赛博服装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 948,
+   "aliases": [
+    "BS_17"
+   ],
+   "zh": "赛博兔女郎",
+   "confidence": "high"
+  },
+  {
+   "site_id": 954,
+   "aliases": [
+    "BS_Yellow_Suit"
+   ],
+   "zh": "星球空降服原型",
+   "confidence": "high"
+  },
+  {
+   "site_id": 955,
+   "aliases": [
+    "BS_Yellow_Suit_Var2"
+   ],
+   "zh": "星球空降服原型第2版",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1004,
+   "aliases": [
+    "BS_Leather_Jean"
+   ],
+   "zh": "休闲车手服",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1005,
+   "aliases": [
+    "BS_Leather_Jean_Var2"
+   ],
+   "zh": "“四秒钟”车手服",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1006,
+   "aliases": [
+    "BS_11"
+   ],
+   "zh": "黑礼服",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1007,
+   "aliases": [
+    "BS_10"
+   ],
+   "zh": "白礼服",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1008,
+   "aliases": [
+    "BS_23"
+   ],
+   "zh": "废料机械师",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1009,
+   "aliases": [
+    "BS_23_Var2"
+   ],
+   "zh": "废品工程师",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1010,
+   "aliases": [
+    "BS_EVE_04"
+   ],
+   "zh": "牛仔布休闲装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1011,
+   "aliases": [
+    "BS_EVE_04_Var2"
+   ],
+   "zh": "“四秒钟”牛仔布套装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1019,
+   "aliases": [
+    "BS_Bear"
+   ],
+   "zh": "毛绒熊熊",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1020,
+   "aliases": [
+    "BS_Bear_Var2"
+   ],
+   "zh": "粉红小熊",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1021,
+   "aliases": [
+    "BS_30"
+   ],
+   "zh": "空中王牌",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1022,
+   "aliases": [
+    "BS_30_Var2"
+   ],
+   "zh": "天骄王牌",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1031,
+   "aliases": [
+    "BS_19"
+   ],
+   "zh": "黑珍珠",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1032,
+   "aliases": [
+    "BS_19_Var2"
+   ],
+   "zh": "赤色珍珠",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1033,
+   "aliases": [
+    "BS_26"
+   ],
+   "zh": "“四秒钟”休闲装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1034,
+   "aliases": [
+    "BS_53"
+   ],
+   "zh": "神经元链接紧身服",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1035,
+   "aliases": [
+    "BS_33"
+   ],
+   "zh": "“四秒钟”黑色牛仔布套装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1036,
+   "aliases": [
+    "BS_55"
+   ],
+   "zh": "烽火裙装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 716,
+   "aliases": [
+    "BS_45"
+   ],
+   "zh": "狂飙车手",
+   "confidence": "high"
+  },
+  {
+   "site_id": 717,
+   "aliases": [
+    "BS_45_Var2"
+   ],
+   "zh": "极速快感",
+   "confidence": "high"
+  },
+  {
+   "site_id": 718,
+   "aliases": [
+    "BS_53_Var2"
+   ],
+   "zh": "知觉活肤紧身服",
+   "confidence": "high"
+  },
+  {
+   "site_id": 731,
+   "aliases": [
+    "BS_Nier_01"
+   ],
+   "zh": "寄叶二号B型制服",
+   "confidence": "medium"
+  },
+  {
+   "site_id": 732,
+   "aliases": [
+    "BS_Nier_02"
+   ],
+   "zh": "寄叶制服1",
+   "confidence": "medium"
+  },
+  {
+   "site_id": 733,
+   "aliases": [
+    "BS_Nier_03"
+   ],
+   "zh": "寄叶非官方仪式礼服",
+   "confidence": "medium"
+  },
+  {
+   "site_id": 734,
+   "aliases": [
+    "BS_Nier_04"
+   ],
+   "zh": "寄叶A型二号制服",
+   "confidence": "medium"
+  },
+  {
+   "site_id": 786,
+   "aliases": [
+    "BS_24_E",
+    "BS_24"
+   ],
+   "zh": "通勤装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 787,
+   "aliases": [
+    "BS_24_Var2"
+   ],
+   "zh": "空乘风",
+   "confidence": "high"
+  },
+  {
+   "site_id": 795,
+   "aliases": [
+    "BS_37_Var2"
+   ],
+   "zh": "玫瑰人生",
+   "confidence": "high"
+  },
+  {
+   "site_id": 796,
+   "aliases": [
+    "BS_33_Var2"
+   ],
+   "zh": "“四秒钟”条纹牛仔布套装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 798,
+   "aliases": [
+    "BS_Nikke_05"
+   ],
+   "zh": "清凉装",
+   "confidence": "low"
+  },
+  {
+   "site_id": 799,
+   "aliases": [
+    "BS_Nikke_01"
+   ],
+   "zh": "优雅礼服",
+   "confidence": "low"
+  },
+  {
+   "site_id": 800,
+   "aliases": [
+    "BS_Nikke_02"
+   ],
+   "zh": "极乐净土战斗服",
+   "confidence": "low"
+  },
+  {
+   "site_id": 801,
+   "aliases": [
+    "BS_Nikke_04"
+   ],
+   "zh": "失落之链",
+   "confidence": "low"
+  },
+  {
+   "site_id": 802,
+   "aliases": [
+    "BS_Nikke_03"
+   ],
+   "zh": "永不回头",
+   "confidence": "low"
+  },
+  {
+   "site_id": 880,
+   "aliases": [
+    "BS_16"
+   ],
+   "zh": "假日兔",
+   "confidence": "high"
+  },
+  {
+   "site_id": 881,
+   "aliases": [
+    "BS_16_Var2"
+   ],
+   "zh": "假日兔女郎",
+   "confidence": "high"
+  },
+  {
+   "site_id": 882,
+   "aliases": [
+    "BS_50"
+   ],
+   "zh": "神经元链接套装原型",
+   "confidence": "high"
+  },
+  {
+   "site_id": 884,
+   "aliases": [
+    "BS_44"
+   ],
+   "zh": "赛博魔法师",
+   "confidence": "high"
+  },
+  {
+   "site_id": 885,
+   "aliases": [
+    "BS_44_Var2"
+   ],
+   "zh": "赛博诡术士",
+   "confidence": "high"
+  },
+  {
+   "site_id": 886,
+   "aliases": [
+    "BS_21"
+   ],
+   "zh": "莹白珍珠",
+   "confidence": "high"
+  },
+  {
+   "site_id": 745,
+   "aliases": [
+    "BS_34"
+   ],
+   "zh": "黄色运动服",
+   "confidence": "high"
+  },
+  {
+   "site_id": 746,
+   "aliases": [
+    "BS_34_Var2"
+   ],
+   "zh": "活力运动服",
+   "confidence": "high"
+  },
+  {
+   "site_id": 747,
+   "aliases": [
+    "BS_43_Var2"
+   ],
+   "zh": "极致兔女郎",
+   "confidence": "high"
+  },
+  {
+   "site_id": 463,
+   "aliases": [
+    "BS_04"
+   ],
+   "zh": "休闲针织裙装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 464,
+   "aliases": [
+    "BS_04_Var2"
+   ],
+   "zh": "舒适针织裙装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 465,
+   "aliases": [
+    "BS_21_Var2"
+   ],
+   "zh": "水珍珠",
+   "confidence": "high"
+  },
+  {
+   "site_id": 565,
+   "aliases": [
+    "BS_13"
+   ],
+   "zh": "休闲吉祥物装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 566,
+   "aliases": [
+    "BS_13_Var2"
+   ],
+   "zh": "舒适吉祥物装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 567,
+   "aliases": [
+    "BS_SilverKunoichi_Var2"
+   ],
+   "zh": "暗影忍者装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 609,
+   "aliases": [
+    "BS_SilverKunoichi"
+   ],
+   "zh": "亮银忍者装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 530,
+   "aliases": [
+    "BS_31"
+   ],
+   "zh": "休闲活力装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 531,
+   "aliases": [
+    "BS_31_Var2"
+   ],
+   "zh": "舒适活力装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 532,
+   "aliases": [
+    "BS_Blue_Suit_E",
+    "BS_Blue_Suit"
+   ],
+   "zh": "星球空降服（第5小队）",
+   "confidence": "high"
+  },
+  {
+   "site_id": 534,
+   "aliases": [
+    "BS_18"
+   ],
+   "zh": "海洋之丝",
+   "confidence": "high"
+  },
+  {
+   "site_id": 344,
+   "aliases": [
+    "BS_20"
+   ],
+   "zh": "碧蓝季风",
+   "confidence": "high"
+  },
+  {
+   "site_id": 345,
+   "aliases": [
+    "BS_20_Var2"
+   ],
+   "zh": "纯白季风",
+   "confidence": "high"
+  },
+  {
+   "site_id": 346,
+   "aliases": [
+    "BS_26_Var2"
+   ],
+   "zh": "“四秒钟”基本造型",
+   "confidence": "high"
+  },
+  {
+   "site_id": 355,
+   "aliases": [
+    "BS_Black_Leather_bikini"
+   ],
+   "zh": "墨色波浪",
+   "confidence": "high"
+  },
+  {
+   "site_id": 356,
+   "aliases": [
+    "BS_Black_Leather_bikini_Var2"
+   ],
+   "zh": "怒涛",
+   "confidence": "high"
+  },
+  {
+   "site_id": 357,
+   "aliases": [
+    "BS_54"
+   ],
+   "zh": "烽火神盾",
+   "confidence": "high"
+  },
+  {
+   "site_id": 384,
+   "aliases": [
+    "BS_Sailor_Jean"
+   ],
+   "zh": "休闲水手服",
+   "confidence": "high"
+  },
+  {
+   "site_id": 385,
+   "aliases": [
+    "BS_Sailor_Jean_Var2"
+   ],
+   "zh": "舒适水手服",
+   "confidence": "high"
+  },
+  {
+   "site_id": 386,
+   "aliases": [
+    "BS_50_Var2"
+   ],
+   "zh": "知觉套装原型",
+   "confidence": "high"
+  },
+  {
+   "site_id": 400,
+   "aliases": [
+    "BS_40"
+   ],
+   "zh": "赛博绑带装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 401,
+   "aliases": [
+    "BS_40_Var2"
+   ],
+   "zh": "自动绑带装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 402,
+   "aliases": [
+    "BS_40_Var3_E",
+    "BS_40_Var3"
+   ],
+   "zh": "神经元回路绑带装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 403,
+   "aliases": [
+    "BS_22"
+   ],
+   "zh": "海的女仆",
+   "confidence": "high"
+  },
+  {
+   "site_id": 404,
+   "aliases": [
+    "BS_22_Var2_E",
+    "BS_22_Var2"
+   ],
+   "zh": "海潮女仆",
+   "confidence": "high"
+  },
+  {
+   "site_id": 405,
+   "aliases": [
+    "BS_58"
+   ],
+   "zh": "“波浪”潜水比基尼",
+   "confidence": "high"
+  },
+  {
+   "site_id": 406,
+   "aliases": [
+    "BS_60"
+   ],
+   "zh": "“波浪”斜款连体比基尼",
+   "confidence": "high"
+  },
+  {
+   "site_id": 4,
+   "aliases": [
+    "BS_Yellow_Suit_Jacket"
+   ],
+   "zh": "星球空降服（第3小队）",
+   "confidence": "high"
+  },
+  {
+   "site_id": 5,
+   "aliases": [
+    "BS_Yellow_Suit_Jacket_Var2"
+   ],
+   "zh": "星球空降服（第3小队）第2版",
+   "confidence": "high"
+  },
+  {
+   "site_id": 6,
+   "aliases": [
+    "BS_05_Var2_E",
+    "BS_05_Var2"
+   ],
+   "zh": "星球空降防护服（第7小队）第2版",
+   "confidence": "high"
+  },
+  {
+   "site_id": 219,
+   "aliases": [
+    "BS_Default"
+   ],
+   "zh": "星球空降服（第6小队）",
+   "confidence": "high"
+  },
+  {
+   "site_id": 220,
+   "aliases": [
+    "BS_Default_Var2"
+   ],
+   "zh": "星球空降服（第6小队）第2版",
+   "confidence": "high"
+  },
+  {
+   "site_id": 221,
+   "aliases": [
+    "BS_Default_Var3"
+   ],
+   "zh": "星球空降服（第6小队）第3版",
+   "confidence": "high"
+  },
+  {
+   "site_id": 241,
+   "aliases": [
+    "BS_White_Jean"
+   ],
+   "zh": "朋克炸街服",
+   "confidence": "high"
+  },
+  {
+   "site_id": 242,
+   "aliases": [
+    "BS_White_Jean_Var2"
+   ],
+   "zh": "朋克风",
+   "confidence": "high"
+  },
+  {
+   "site_id": 243,
+   "aliases": [
+    "BS_14_Var2_E",
+    "BS_14_Var2"
+   ],
+   "zh": "绣球花",
+   "confidence": "high"
+  },
+  {
+   "site_id": 261,
+   "aliases": [
+    "BS_42"
+   ],
+   "zh": "动力十足",
+   "confidence": "high"
+  },
+  {
+   "site_id": 262,
+   "aliases": [
+    "BS_42_Var2"
+   ],
+   "zh": "共鸣",
+   "confidence": "high"
+  },
+  {
+   "site_id": 263,
+   "aliases": [
+    "BS_55_Var2"
+   ],
+   "zh": "烽火装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 607,
+   "aliases": [
+    "BS_07"
+   ],
+   "zh": "奥卡工程师",
+   "confidence": "high"
+  },
+  {
+   "site_id": 608,
+   "aliases": [
+    "BS_07_Var2"
+   ],
+   "zh": "奥卡技术员",
+   "confidence": "high"
+  },
+  {
+   "site_id": 650,
+   "aliases": [
+    "BS_37"
+   ],
+   "zh": "黑玫瑰",
+   "confidence": "high"
+  },
+  {
+   "site_id": 651,
+   "aliases": [
+    "BS_37_Var3"
+   ],
+   "zh": "天使玫瑰",
+   "confidence": "high"
+  },
+  {
+   "site_id": 652,
+   "aliases": [
+    "BS_43"
+   ],
+   "zh": "终极兔女郎",
+   "confidence": "high"
+  },
+  {
+   "site_id": 692,
+   "aliases": [
+    "BS_47"
+   ],
+   "zh": "目光焦点",
+   "confidence": "high"
+  },
+  {
+   "site_id": 693,
+   "aliases": [
+    "BS_47_Var2"
+   ],
+   "zh": "丽影",
+   "confidence": "high"
+  },
+  {
+   "site_id": 56,
+   "aliases": [
+    "BS_52"
+   ],
+   "zh": "神经元链接套装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 57,
+   "aliases": [
+    "BS_44_Var3_E",
+    "BS_44_Var3"
+   ],
+   "zh": "赛博幻术师",
+   "confidence": "high"
+  },
+  {
+   "site_id": 58,
+   "aliases": [
+    "BS_RoyalGuard_01"
+   ],
+   "zh": "神圣护卫套装",
+   "confidence": "high"
+  },
+  {
+   "site_id": 59,
+   "aliases": [
+    "BS_Nikke_06"
+   ],
+   "zh": "流浪剑客",
+   "confidence": "low"
+  }
+ ],
+ "appearance": [
+  {
+   "site_id": 67,
+   "aliases": [
+    "Hair_000"
+   ],
+   "zh": "星球空降马尾",
+   "category": "hair",
+   "confidence": "high"
+  },
+  {
+   "site_id": 913,
+   "aliases": [
+    "Hair_Christmas_01"
+   ],
+   "zh": "圣诞女孩",
+   "category": "hair",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1037,
+   "aliases": [
+    "Hair_006"
+   ],
+   "zh": "女儿的回忆",
+   "category": "hair",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1038,
+   "aliases": [
+    "Hair_001"
+   ],
+   "zh": "卡西姆的抉择",
+   "category": "hair",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1039,
+   "aliases": [
+    "Hair_002"
+   ],
+   "zh": "最可爱的发型",
+   "category": "hair",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1040,
+   "aliases": [
+    "Hair_003"
+   ],
+   "zh": "希雍公主",
+   "category": "hair",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1041,
+   "aliases": [
+    "Hair_004"
+   ],
+   "zh": "桃香",
+   "category": "hair",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1042,
+   "aliases": [
+    "Hair_005"
+   ],
+   "zh": "哥特时代",
+   "category": "hair",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1043,
+   "aliases": [
+    "Hair_007"
+   ],
+   "zh": "初恋",
+   "category": "hair",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1044,
+   "aliases": [
+    "Hair_008"
+   ],
+   "zh": "武士刀",
+   "category": "hair",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1045,
+   "aliases": [
+    "Hair_009"
+   ],
+   "zh": "情人节",
+   "category": "hair",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1046,
+   "aliases": [
+    "Hair_010"
+   ],
+   "zh": "卡西姆的招牌发型",
+   "category": "hair",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1047,
+   "aliases": [
+    "Hair_011"
+   ],
+   "zh": "假日",
+   "category": "hair",
+   "confidence": "high"
+  },
+  {
+   "site_id": 1048,
+   "aliases": [
+    "Hair_012"
+   ],
+   "zh": "创新之作",
+   "category": "hair",
+   "confidence": "high"
+  },
+  {
+   "site_id": 736,
+   "aliases": [
+    "Hair_Nier_001"
+   ],
+   "zh": "寄叶二号B型发型",
+   "category": "hair",
+   "confidence": "medium"
+  },
+  {
+   "site_id": 737,
+   "aliases": [
+    "Hair_Nier_002"
+   ],
+   "zh": "白狐面具发型",
+   "category": "hair",
+   "confidence": "medium"
+  },
+  {
+   "site_id": 738,
+   "aliases": [
+    "Hair_Nier_003"
+   ],
+   "zh": "寄叶A型二号发型",
+   "category": "hair",
+   "confidence": "medium"
+  },
+  {
+   "site_id": 803,
+   "aliases": [
+    "Hair_Nikke_01"
+   ],
+   "zh": "高贵优雅",
+   "category": "hair",
+   "confidence": "low"
+  },
+  {
+   "site_id": 804,
+   "aliases": [
+    "Hair_Nikke_02"
+   ],
+   "zh": "标准长发",
+   "category": "hair",
+   "confidence": "low"
+  },
+  {
+   "site_id": 805,
+   "aliases": [
+    "Hair_Nikke_03"
+   ],
+   "zh": "元气刘海",
+   "category": "hair",
+   "confidence": "low"
+  },
+  {
+   "site_id": 806,
+   "aliases": [
+    "Hair_Nikke_04"
+   ],
+   "zh": "初恋",
+   "category": "hair",
+   "confidence": "low"
+  },
+  {
+   "site_id": 807,
+   "aliases": [
+    "Hair_Nikke_05"
+   ],
+   "zh": "活力双马尾",
+   "category": "hair",
+   "confidence": "low"
+  },
+  {
+   "site_id": 1057,
+   "aliases": [
+    "Hair_Nikke_06"
+   ],
+   "zh": "月光美人",
+   "category": "hair",
+   "confidence": "low"
+  },
+  {
+   "site_id": 897,
+   "aliases": [
+    "FaceAccessory_012"
+   ],
+   "zh": "半框眼镜",
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "site_id": 912,
+   "aliases": [
+    "FaceAccessory_Christmas_01"
+   ],
+   "zh": "冰晶眼镜",
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "site_id": 735,
+   "aliases": [
+    "FaceAccessory_Nier_001"
+   ],
+   "zh": "战斗护目镜",
+   "category": "glasses",
+   "confidence": "medium"
+  },
+  {
+   "site_id": 862,
+   "aliases": [
+    "FaceAccessory_001"
+   ],
+   "zh": "椭圆角质架眼镜",
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "site_id": 863,
+   "aliases": [
+    "FaceAccessory_005"
+   ],
+   "zh": "金属框架眼镜",
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "site_id": 864,
+   "aliases": [
+    "FaceAccessory_006"
+   ],
+   "zh": "猫眼",
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "site_id": 865,
+   "aliases": [
+    "FaceAccessory_004"
+   ],
+   "zh": "棕色角质架眼镜",
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "site_id": 866,
+   "aliases": [
+    "FaceAccessory_007"
+   ],
+   "zh": "实验室护目镜",
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "site_id": 867,
+   "aliases": [
+    "FaceAccessory_010"
+   ],
+   "zh": "多边形方框眼镜",
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "site_id": 868,
+   "aliases": [
+    "FaceAccessory_011"
+   ],
+   "zh": "方框眼镜",
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "site_id": 869,
+   "aliases": [
+    "FaceAccessory_026"
+   ],
+   "zh": "环绕式太阳镜",
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "site_id": 870,
+   "aliases": [
+    "FaceAccessory_003"
+   ],
+   "zh": "经典圆框眼镜",
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "site_id": 871,
+   "aliases": [
+    "FaceAccessory_008"
+   ],
+   "zh": "超窄太阳镜",
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "site_id": 872,
+   "aliases": [
+    "FaceAccessory_009"
+   ],
+   "zh": "橙色飞行员太阳镜",
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "site_id": 873,
+   "aliases": [
+    "FaceAccessory_013"
+   ],
+   "zh": "超大号太阳镜",
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "site_id": 874,
+   "aliases": [
+    "FaceAccessory_028"
+   ],
+   "zh": "眼罩",
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "site_id": 875,
+   "aliases": [
+    "FaceAccessory_027"
+   ],
+   "zh": "漩涡眼镜",
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "site_id": 407,
+   "aliases": [
+    "FaceAccessory_029"
+   ],
+   "zh": "偏光太阳镜",
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "site_id": 583,
+   "aliases": [
+    "FaceAccessory_002"
+   ],
+   "zh": "大圆框眼镜",
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "site_id": 584,
+   "aliases": [
+    "FaceAccessory_002_Var2"
+   ],
+   "zh": "超大圆框眼镜",
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "site_id": 66,
+   "aliases": [
+    "Earring_018"
+   ],
+   "zh": "承传标记",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 101,
+   "aliases": [
+    "Earring_001"
+   ],
+   "zh": "绯红泪珠",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 102,
+   "aliases": [
+    "Earring_001_Var2"
+   ],
+   "zh": "高贵泪珠",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 103,
+   "aliases": [
+    "Earring_012"
+   ],
+   "zh": "黄金之心",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 113,
+   "aliases": [
+    "Earring_008"
+   ],
+   "zh": "记忆耳坠",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 114,
+   "aliases": [
+    "Earring_008_Var2"
+   ],
+   "zh": "闪亮记忆",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 115,
+   "aliases": [
+    "Earring_014"
+   ],
+   "zh": "水晶之泪",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 896,
+   "aliases": [
+    "Earring_011"
+   ],
+   "zh": "四倍矩形",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 910,
+   "aliases": [
+    "Earring_Christmas_02"
+   ],
+   "zh": "雪橇耳夹",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 911,
+   "aliases": [
+    "Earring_Christmas_01"
+   ],
+   "zh": "花环耳饰",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 978,
+   "aliases": [
+    "Earring_004"
+   ],
+   "zh": "聚变之光",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 979,
+   "aliases": [
+    "Earring_006"
+   ],
+   "zh": "绿松石环",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 980,
+   "aliases": [
+    "Earring_007"
+   ],
+   "zh": "太阳之泪",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 981,
+   "aliases": [
+    "Earring_017"
+   ],
+   "zh": "黄金枝",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 982,
+   "aliases": [
+    "Earring_009"
+   ],
+   "zh": "辐射钟摆",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 983,
+   "aliases": [
+    "Earring_010"
+   ],
+   "zh": "黑色矩形",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 984,
+   "aliases": [
+    "Earring_015"
+   ],
+   "zh": "红宝石之泪",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 985,
+   "aliases": [
+    "Earring_016"
+   ],
+   "zh": "摇摆兔兔",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 986,
+   "aliases": [
+    "Earring_005"
+   ],
+   "zh": "护耳",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 453,
+   "aliases": [
+    "Earring_002"
+   ],
+   "zh": "点点蓝晶",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 454,
+   "aliases": [
+    "Earring_002_Var2"
+   ],
+   "zh": "光点",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 455,
+   "aliases": [
+    "Earring_013"
+   ],
+   "zh": "美玉良珀",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 634,
+   "aliases": [
+    "Earring_003"
+   ],
+   "zh": "银齿",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 635,
+   "aliases": [
+    "Earring_003_Var2"
+   ],
+   "zh": "金齿",
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "site_id": 68,
+   "aliases": [
+    "DroneSeal_001"
+   ],
+   "zh": "战术包",
+   "category": "drone_seals",
+   "confidence": "high"
+  },
+  {
+   "site_id": 133,
+   "aliases": [
+    "DroneSeal_003"
+   ],
+   "zh": "装甲包",
+   "category": "drone_seals",
+   "confidence": "high"
+  },
+  {
+   "site_id": 134,
+   "aliases": [
+    "DroneSeal_002_Var2"
+   ],
+   "zh": "铁甲套装",
+   "category": "drone_seals",
+   "confidence": "high"
+  },
+  {
+   "site_id": 894,
+   "aliases": [
+    "DroneSeal_005"
+   ],
+   "zh": "毛绒熊熊套装",
+   "category": "drone_seals",
+   "confidence": "high"
+  },
+  {
+   "site_id": 898,
+   "aliases": [
+    "DroneSeal_002"
+   ],
+   "zh": "占星师套装",
+   "category": "drone_seals",
+   "confidence": "high"
+  },
+  {
+   "site_id": 907,
+   "aliases": [
+    "DroneSeal_Christmas_01"
+   ],
+   "zh": "驯鹿鲁道夫套装",
+   "category": "drone_seals",
+   "confidence": "high"
+  },
+  {
+   "site_id": 739,
+   "aliases": [
+    "DroneSeal_Nier_001"
+   ],
+   "zh": "波德042套装",
+   "category": "drone_seals",
+   "confidence": "medium"
+  },
+  {
+   "site_id": 619,
+   "aliases": [
+    "DroneSeal_004"
+   ],
+   "zh": "兔宝宝套装",
+   "category": "drone_seals",
+   "confidence": "high"
+  },
+  {
+   "site_id": 620,
+   "aliases": [
+    "DroneSeal_004_Var2"
+   ],
+   "zh": "迷你兔套装",
+   "category": "drone_seals",
+   "confidence": "high"
+  },
+  {
+   "site_id": 70,
+   "aliases": [
+    "AdamCostume_001"
+   ],
+   "zh": "下水道老鼠",
+   "category": "adam_costumes",
+   "confidence": "high"
+  },
+  {
+   "site_id": 899,
+   "aliases": [
+    "AdamCostume_002"
+   ],
+   "zh": "占星师服装",
+   "category": "adam_costumes",
+   "confidence": "high"
+  },
+  {
+   "site_id": 909,
+   "aliases": [
+    "AdamCostume_Christmas_01"
+   ],
+   "zh": "我不是圣诞老人",
+   "category": "adam_costumes",
+   "confidence": "high"
+  },
+  {
+   "site_id": 741,
+   "aliases": [
+    "AdamCostume_Nier_001"
+   ],
+   "zh": "埃米尔头部",
+   "category": "adam_costumes",
+   "confidence": "medium"
+  },
+  {
+   "site_id": 792,
+   "aliases": [
+    "AdamCostume_003"
+   ],
+   "zh": "拾荒人",
+   "category": "adam_costumes",
+   "confidence": "high"
+  },
+  {
+   "site_id": 793,
+   "aliases": [
+    "AdamCostume_003_Var2"
+   ],
+   "zh": "废品回收人",
+   "category": "adam_costumes",
+   "confidence": "high"
+  },
+  {
+   "site_id": 478,
+   "aliases": [
+    "AdamCostume_004"
+   ],
+   "zh": "变色龙",
+   "category": "adam_costumes",
+   "confidence": "high"
+  },
+  {
+   "site_id": 479,
+   "aliases": [
+    "AdamCostume_004_Var2"
+   ],
+   "zh": "夜鹰",
+   "category": "adam_costumes",
+   "confidence": "high"
+  },
+  {
+   "site_id": 69,
+   "aliases": [
+    "LilyCostume_001"
+   ],
+   "zh": "阿尔忒弥斯",
+   "category": "lily_costumes",
+   "confidence": "high"
+  },
+  {
+   "site_id": 900,
+   "aliases": [
+    "LilyCostume_002"
+   ],
+   "zh": "占星师外套",
+   "category": "lily_costumes",
+   "confidence": "high"
+  },
+  {
+   "site_id": 714,
+   "aliases": [
+    "LilyCostume_003"
+   ],
+   "zh": "忧郁之雨",
+   "category": "lily_costumes",
+   "confidence": "high"
+  },
+  {
+   "site_id": 715,
+   "aliases": [
+    "LilyCostume_003_Var2"
+   ],
+   "zh": "雨天",
+   "category": "lily_costumes",
+   "confidence": "high"
+  },
+  {
+   "site_id": 740,
+   "aliases": [
+    "LilyCostume_Nier_001"
+   ],
+   "zh": "寄叶9号S型制服",
+   "category": "lily_costumes",
+   "confidence": "medium"
+  },
+  {
+   "site_id": 440,
+   "aliases": [
+    "LilyCostume_004"
+   ],
+   "zh": "休假日",
+   "category": "lily_costumes",
+   "confidence": "high"
+  },
+  {
+   "site_id": 441,
+   "aliases": [
+    "LilyCostume_004_Var2"
+   ],
+   "zh": "休息日",
+   "category": "lily_costumes",
+   "confidence": "high"
+  }
+ ],
+ "fish_zh": {
+  "Fish_Arowana": "龙鱼",
+  "Fish_Betta": "斗鱼",
+  "Fish_ButterflyFish": "蝴蝶鱼",
+  "Fish_CannedFish": "鱼罐头",
+  "Fish_ChannelCatfish": "斑点叉尾鮰",
+  "Fish_Dunkleosteus": "盾皮鱼",
+  "Fish_FancyCarp": "锦鲤",
+  "Fish_FishCake": "鱼饼",
+  "Fish_FlyingFish": "飞鱼",
+  "Fish_FootBallfish": "足球鱼",
+  "Fish_Goby": "虾虎鱼",
+  "Fish_Goldfish": "金鱼",
+  "Fish_GoldFish": "金鱼",
+  "Fish_GreatWhiteShark": "大白鲨",
+  "Fish_Halibut": "大比目鱼",
+  "Fish_Lobster": "龙虾",
+  "Fish_MahiMahi": "鲯鳅",
+  "Fish_Mahimahi": "鲯鳅",
+  "Fish_MolaMola": "翻车鱼",
+  "Fish_NuclearWaste": "核废料",
+  "Fish_Pirarucu": "巨骨舌鱼",
+  "Fish_PorcupineFish": "刺豚",
+  "Fish_SailFish": "旗鱼",
+  "Fish_Salmon": "鲑鱼",
+  "Fish_SeaBass": "海鲈鱼",
+  "Fish_SeaBream": "真鲷",
+  "Fish_Tire": "轮胎",
+  "Fish_Triggerfish": "扳机鱼",
+  "Fish_Tuna": "金枪鱼",
+  "Fish_WhaleShark": "鲸鲨",
+  "Fish_mackerel": "鲭鱼",
+  "Fish_Nikke_Glasses": "妮姬·眼镜",
+  "Fish_Nikke_Laplace": "妮姬·拉普拉斯",
+  "Fish_Nikke_Poli": "妮姬·波莉",
+  "Fish_Nikke_Rapunzel": "妮姬·长发公主",
+  "Fish_Nikke_SnowWhite": "妮姬·白雪",
+  "Fish_Nikke_Tape": "妮姬·磁带"
+ },
+ "zone_zh": {
+  "Day1": "第一天",
+  "Xion": "希雍",
+  "WLA": "废土A",
+  "WLB": "废土B",
+  "DED10": "大沙漠1",
+  "DED20": "大沙漠2",
+  "DED30": "大沙漠3",
+  "DED40": "大沙漠4",
+  "ME01": "矩阵11-1",
+  "ME03": "矩阵11-3",
+  "ME04": "矩阵11-4",
+  "ME05": "矩阵11-5",
+  "ME06": "矩阵11-6",
+  "ME": "矩阵11",
+  "SE": "尖塔4(推测)",
+  "DED": "大沙漠",
+  "ME_01": "矩阵11-1",
+  "ME_03": "矩阵11-3",
+  "ME_04": "矩阵11-4",
+  "ME_05": "矩阵11-5",
+  "ME_06": "矩阵11-6",
+  "ATL": "阿尔忒斯勒瓦尔",
+  "AYL": "深渊勒瓦尔",
+  "SE01": "尖塔1",
+  "SE02": "尖塔2",
+  "SE04": "尖塔4",
+  "SE05": "尖塔5",
+  "SE06": "尖塔6",
+  "SE07": "尖塔7",
+  "SE08": "尖塔8",
+  "SE09": "尖塔9",
+  "ETC": "其他",
+  "Christmas": "圣诞",
+  "Nest": "巢穴"
+ }
+}
