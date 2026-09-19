@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { LayoutGrid, List, ListFilter, Search, SearchX, type LucideIcon } from "@lucide/vue";
 import type { CategoryResult, ItemFilter, Lang } from "../types";
 import { areaAccent } from "../lib/area";
@@ -60,6 +60,7 @@ const VIEW_OPTIONS: { value: ViewMode; label: string; icon: LucideIcon }[] = [
 const filter = ref<ItemFilter>("all");
 const query = ref("");
 const view = ref<ViewMode>(props.matrix ? "matrix" : "list");
+const activeRecordType = ref<string | null>(null);
 
 const rows = computed(() =>
   categoryRows(props.category, filter.value).filter((row) => matchesQuery(row.item, query.value)),
@@ -141,9 +142,22 @@ const recordGroups = computed<RecordGroup[]>(() => {
     }
   }
   const order = new Map(RECORD_TYPE_ORDER.map((key, index) => [key, index]));
-  return [...groups.values()]
-    .filter((group) => group.rows.length > 0)
-    .sort((left, right) => (order.get(left.key) ?? 99) - (order.get(right.key) ?? 99));
+  return [...groups.values()].sort(
+    (left, right) => (order.get(left.key) ?? 99) - (order.get(right.key) ?? 99),
+  );
+});
+
+const activeRecordGroup = computed<RecordGroup | null>(() => {
+  const groups = recordGroups.value;
+  return groups.find((group) => group.key === activeRecordType.value) ?? groups[0] ?? null;
+});
+
+watch(recordGroups, (groups) => {
+  if (!isRecords.value) return;
+  const active = groups.find((group) => group.key === activeRecordType.value);
+  if (active && active.rows.length > 0) return;
+  const fallback = groups.find((group) => group.rows.length > 0) ?? groups[0] ?? null;
+  activeRecordType.value = fallback?.key ?? null;
 });
 
 const percent = computed(() =>
@@ -249,17 +263,44 @@ function onInput(event: Event) {
       :lang="lang"
     />
     <template v-else-if="isRecords">
-      <section v-for="group in recordGroups" :key="group.key">
-        <header
-          class="flex flex-wrap items-baseline justify-between gap-2 border-t border-slate-800 bg-slate-900/80 px-4 py-2"
+      <nav
+        class="flex gap-0.5 overflow-x-auto border-b border-slate-800 bg-slate-950/40 px-2"
+        role="tablist"
+      >
+        <button
+          v-for="group in recordGroups"
+          :key="group.key"
+          type="button"
+          role="tab"
+          :aria-selected="activeRecordGroup?.key === group.key"
+          class="flex shrink-0 items-baseline gap-1.5 border-b-2 px-3 py-2 text-xs transition-colors"
+          :class="[
+            activeRecordGroup?.key === group.key
+              ? 'border-emerald-500 bg-slate-900/80 text-slate-100'
+              : 'border-transparent text-slate-400 hover:bg-slate-900/50 hover:text-slate-200',
+            group.rows.length === 0 ? 'opacity-40' : '',
+          ]"
+          @click="activeRecordType = group.key"
         >
-          <h3 class="text-xs font-semibold text-slate-200">{{ group.name }}</h3>
-          <span class="text-[11px] text-slate-500">
-            已收集 {{ group.obtained }}/{{ group.total }}
+          {{ group.name }}
+          <span
+            class="text-[11px]"
+            :class="activeRecordGroup?.key === group.key ? 'text-emerald-400' : 'text-slate-500'"
+          >
+            {{ group.obtained }}/{{ group.total }}
           </span>
-        </header>
-        <template v-if="group.areas.length > 0">
-          <section v-for="area in group.areas" :key="area.key">
+        </button>
+      </nav>
+      <template v-if="activeRecordGroup">
+        <p
+          v-if="activeRecordGroup.rows.length === 0"
+          class="flex items-center justify-center gap-2 px-4 py-10 text-center text-xs text-slate-500"
+        >
+          <SearchX class="h-4 w-4" />
+          没有符合条件的物件
+        </p>
+        <template v-else-if="activeRecordGroup.areas.length > 0">
+          <section v-for="area in activeRecordGroup.areas" :key="area.key">
             <header
               class="flex flex-wrap items-center justify-between gap-2 border-t border-slate-800/70 px-4 py-2"
               :class="areaAccent(area.key).band"
@@ -281,8 +322,8 @@ function onInput(event: Event) {
             <ItemTable :rows="area.rows" :lang="lang" hide-location />
           </section>
         </template>
-        <ItemTable v-else :rows="group.rows" :lang="lang" />
-      </section>
+        <ItemTable v-else :rows="activeRecordGroup.rows" :lang="lang" />
+      </template>
     </template>
     <ItemTable v-else :rows="rows" :lang="lang" />
   </section>
