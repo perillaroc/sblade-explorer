@@ -7,12 +7,21 @@ import MatrixView from "./MatrixView.vue";
 
 type ViewMode = "matrix" | "list";
 
+interface RecordAreaGroup {
+  key: string;
+  label: string;
+  obtained: number;
+  total: number;
+  rows: ItemRow[];
+}
+
 interface RecordGroup {
   key: string;
   name: string;
   obtained: number;
   total: number;
   rows: ItemRow[];
+  areas: RecordAreaGroup[];
 }
 
 const RECORD_TYPE_ORDER = [
@@ -58,6 +67,43 @@ const allRows = computed(() => categoryRows(props.category, "all"));
 
 const isRecords = computed(() => props.category.key === "records");
 
+function orderOf(row: ItemRow): number {
+  return row.item.order > 0 ? row.item.order : Number.MAX_SAFE_INTEGER;
+}
+
+function compareOrder(left: ItemRow, right: ItemRow): number {
+  return orderOf(left) - orderOf(right) || left.id.localeCompare(right.id);
+}
+
+function memorystickAreas(allRows: ItemRow[], visibleRows: ItemRow[]): RecordAreaGroup[] {
+  const areas = new Map<string, RecordAreaGroup>();
+  const ensure = (row: ItemRow) => {
+    const key = row.item.area ?? "";
+    let area = areas.get(key);
+    if (!area) {
+      area = {
+        key,
+        label: row.item.area_zh || row.item.area || "未分类",
+        obtained: 0,
+        total: 0,
+        rows: [],
+      };
+      areas.set(key, area);
+    }
+    return area;
+  };
+  for (const row of allRows) {
+    const area = ensure(row);
+    area.total += 1;
+    if (row.obtained) area.obtained += 1;
+  }
+  for (const row of visibleRows) ensure(row).rows.push(row);
+  return [...areas.values()]
+    .filter((area) => area.rows.length > 0)
+    .map((area) => ({ ...area, rows: [...area.rows].sort(compareOrder) }))
+    .sort((left, right) => orderOf(left.rows[0]) - orderOf(right.rows[0]));
+}
+
 const recordGroups = computed<RecordGroup[]>(() => {
   if (!isRecords.value) return [];
   const groups = new Map<string, RecordGroup>();
@@ -71,17 +117,27 @@ const recordGroups = computed<RecordGroup[]>(() => {
         obtained: 0,
         total: 0,
         rows: [],
+        areas: [],
       };
       groups.set(key, group);
     }
     return group;
   };
+  const allByGroup = new Map<string, ItemRow[]>();
   for (const row of allRows.value) {
     const group = ensure(row);
     group.total += 1;
     if (row.obtained) group.obtained += 1;
+    const list = allByGroup.get(group.key);
+    if (list) list.push(row);
+    else allByGroup.set(group.key, [row]);
   }
   for (const row of rows.value) ensure(row).rows.push(row);
+  for (const group of groups.values()) {
+    if (group.key === "memorystick") {
+      group.areas = memorystickAreas(allByGroup.get(group.key) ?? [], group.rows);
+    }
+  }
   const order = new Map(RECORD_TYPE_ORDER.map((key, index) => [key, index]));
   return [...groups.values()]
     .filter((group) => group.rows.length > 0)
@@ -185,7 +241,20 @@ function onInput(event: Event) {
             已收集 {{ group.obtained }}/{{ group.total }}
           </span>
         </header>
-        <ItemTable :rows="group.rows" :lang="lang" />
+        <template v-if="group.areas.length > 0">
+          <section v-for="area in group.areas" :key="area.key">
+            <header
+              class="flex flex-wrap items-baseline justify-between gap-2 border-t border-slate-800/70 bg-slate-950/40 px-4 py-1.5"
+            >
+              <h4 class="text-[11px] font-medium text-slate-300">{{ area.label }}</h4>
+              <span class="text-[11px] text-slate-500">
+                已收集 {{ area.obtained }}/{{ area.total }}
+              </span>
+            </header>
+            <ItemTable :rows="area.rows" :lang="lang" hide-location />
+          </section>
+        </template>
+        <ItemTable v-else :rows="group.rows" :lang="lang" />
       </section>
     </template>
     <ItemTable v-else :rows="rows" :lang="lang" />

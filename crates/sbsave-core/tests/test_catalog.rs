@@ -164,6 +164,50 @@ fn record_type_samples_and_variant_inheritance() {
 }
 
 #[test]
+fn memorysticks_follow_in_game_menu_order() {
+    let catalog = load_catalog(None).expect("catalog");
+    let memories: Vec<_> = catalog
+        .items
+        .iter()
+        .filter(|item| item.record_type.as_deref() == Some("memorystick"))
+        .collect();
+    assert_eq!(memories.len(), 187);
+    let mut orders: Vec<i64> = memories.iter().map(|item| item.order).collect();
+    assert!(orders.iter().all(|order| *order > 0));
+    orders.sort_unstable();
+    orders.dedup();
+    assert_eq!(orders, (1..=186).collect::<Vec<_>>());
+
+    let index = catalog.alias_index();
+    let first = index["Item_Records_DED10_Memory_11"];
+    assert_eq!(first.area.as_deref(), Some("Eidos 7"));
+    assert_eq!(first.area_zh.as_deref(), Some("埃多斯7号"));
+    assert_eq!(first.order, 1);
+    assert_eq!(
+        index["Item_Records_DED40_Memory_10"].area_zh.as_deref(),
+        Some("埃多斯9号")
+    );
+    assert_eq!(
+        index["Item_Records_WLB_Memory_64"].area_zh.as_deref(),
+        Some("大沙漠")
+    );
+    assert_eq!(
+        index["Item_Records_Quest_Request_006_02"]
+            .area_zh
+            .as_deref(),
+        Some("废土")
+    );
+    assert_eq!(
+        index["Item_Records_Xion_Memory_32"].area_zh.as_deref(),
+        Some("希雍")
+    );
+    assert_eq!(
+        index["Item_Records_ME01_Memory_01_2"].order,
+        index["Item_Records_ME01_Memory_01"].order
+    );
+}
+
+#[test]
 fn ng_plus_metadata_present() {
     let catalog = load_catalog(None).expect("catalog");
     let ng_items: Vec<_> = catalog

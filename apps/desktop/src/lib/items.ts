@@ -11,6 +11,11 @@ export interface ItemRow {
   source: string | null;
 }
 
+function canNumber(id: string): number {
+  const match = /^Can_(\d+)$/.exec(id);
+  return match ? Number(match[1]) : Number.MAX_SAFE_INTEGER;
+}
+
 export function categoryRows(category: CategoryResult, filter: ItemFilter): ItemRow[] {
   const rows: ItemRow[] = [];
   if (filter !== "missing") {
@@ -36,6 +41,9 @@ export function categoryRows(category: CategoryResult, filter: ItemFilter): Item
         source: null,
       })),
     );
+  }
+  if (category.key === "cans") {
+    rows.sort((left, right) => canNumber(left.id) - canNumber(right.id));
   }
   return rows;
 }

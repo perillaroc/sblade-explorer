@@ -6,6 +6,7 @@ import type { ItemRow } from "../lib/items";
 defineProps<{
   rows: ItemRow[];
   lang: Lang;
+  hideLocation?: boolean;
 }>();
 </script>
 
@@ -16,7 +17,7 @@ defineProps<{
         <tr class="text-left text-slate-500">
           <th class="px-4 py-2">状态</th>
           <th class="px-4 py-2">物品</th>
-          <th class="px-4 py-2">位置</th>
+          <th v-if="!hideLocation" class="px-4 py-2">位置</th>
           <th class="px-4 py-2">获取</th>
           <th class="px-4 py-2">标记</th>
         </tr>
@@ -44,7 +45,9 @@ defineProps<{
             <div class="text-slate-100">{{ itemName(row.item, lang) }}</div>
             <div class="text-[11px] text-slate-500">{{ row.id }}</div>
           </td>
-          <td class="px-4 py-2 text-slate-300">{{ locationLine(row.item, lang) || "—" }}</td>
+          <td v-if="!hideLocation" class="px-4 py-2 text-slate-300">
+            {{ locationLine(row.item, lang) || "—" }}
+          </td>
           <td class="px-4 py-2 text-slate-400">{{ obtainLabel(row.item, lang) || "—" }}</td>
           <td class="px-4 py-2">
             <span

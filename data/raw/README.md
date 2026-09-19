@@ -11,6 +11,7 @@
 | `api/i18n/obtain_*.json` | 攻略获取描述的简体中文翻译（站点条目 id -> 中文） |
 | `universe/aliases.json` | 从参考存档与本地存档提取的物品别名全集（不含未解锁 ID） |
 | `crosswalk.json` | 手工维护的别名对照（site id -> 别名 -> 中文名，目录库生成器的唯一事实来源）；`record_type_overrides` 覆盖无法按名称自动匹配的记录类型 |
+| `memorystick_order.json` | 记忆棒的游戏内数据库选单顺序（按区域分组、组内顺序，覆盖全部 186 条；据 Map Genie 与游民星空列表整理） |
 | `game/name_map.json` | 游戏数据表 + `Game.locres` 提取的内部别名→官方名称映射（生成物） |
 | `reference/Sources_TrainerCore_*.swift` | 中文名称对照（来自 stellar-blade-macos-save-editor） |
 | `reference/*.sav` | 参考存档（仅本地校验用，已在 .gitignore 中忽略） |
@@ -18,6 +19,8 @@
 ## 数据来源
 
 - <https://stellarbladeguide.com> —— 英文名称、位置、描述、Base/NG+/NG++/DLC 标签
+- <https://mapgenie.io/stellar-blade/guides/memory-sticks>、<https://www.gamersky.com/handbook/202507/1953527.shtml>
+  —— 记忆棒的游戏内数据库选单顺序（`memorystick_order.json`，两份来源顺序一致）
 - `api/i18n/` —— 上述英文攻略文案的手工简体中文翻译（名称仍以游戏本地化为准）
 - <https://github.com/wuxiao00j/stellar-blade-macos-save-editor> —— 简体中文名称
 - <https://github.com/lecher-wang/Stellar-Blade-100-completion-save-file> —— 别名全集校验

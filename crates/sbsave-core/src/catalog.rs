@@ -59,6 +59,7 @@ pub struct CatalogItem {
     pub name_en: Option<String>,
     pub record_type: Option<String>,
     pub record_type_zh: Option<String>,
+    pub order: i64,
 }
 
 impl CatalogItem {
@@ -194,6 +195,7 @@ fn parse_item(raw: &JsonValue) -> CatalogItem {
         name_en: json_str(raw, "name_en"),
         record_type: json_str(raw, "record_type"),
         record_type_zh: json_str(raw, "record_type_zh"),
+        order: raw.get("order").and_then(JsonValue::as_i64).unwrap_or(0),
     }
 }
 

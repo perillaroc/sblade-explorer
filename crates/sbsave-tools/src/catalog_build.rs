@@ -1,7 +1,8 @@
 //! Catalog builder: port of the former Python `tools/build_catalog.py`.
 //!
 //! Inputs: `data/raw/api/*.json`, `data/raw/api/i18n/`, `data/raw/crosswalk.json`,
-//! `data/raw/universe/aliases.json` and `data/raw/game/name_map.json`.
+//! `data/raw/universe/aliases.json`, `data/raw/game/name_map.json` and
+//! `data/raw/memorystick_order.json`.
 //! Output: `data/catalog.json` (byte-identical to the Python generator).
 
 use std::collections::{BTreeMap, BTreeSet, HashMap};
@@ -15,12 +16,13 @@ use crate::jsonio;
 
 const GENERATED_BY: &str = "crates/sbsave-tools (catalog build)";
 
-const SOURCES: [&str; 5] = [
+const SOURCES: [&str; 6] = [
     "https://stellarbladeguide.com (collectibles, cosmetics, locations, cycles)",
     "https://github.com/wuxiao00j/stellar-blade-macos-save-editor (Simplified Chinese names)",
     "https://github.com/lecher-wang/Stellar-Blade-100-completion-save-file (alias universe)",
     "Stellar Blade game tables + zh-Hans/en Game.locres (mined names, data/raw/game/name_map.json)",
     "data/raw/api/i18n (hand maintained Chinese translations of guide region/location/obtain text)",
+    "https://mapgenie.io + https://www.gamersky.com (in-game Data Bank order of memorysticks)",
 ];
 
 const CATEGORIES: [(&str, &str, i64); 13] = [
@@ -108,6 +110,19 @@ struct CrosswalkAppearance {
     confidence: String,
 }
 
+#[derive(Deserialize)]
+struct MemorystickOrder {
+    #[allow(dead_code)]
+    source: String,
+    regions: Vec<MemorystickRegion>,
+}
+
+#[derive(Deserialize)]
+struct MemorystickRegion {
+    name: String,
+    items: Vec<String>,
+}
+
 #[derive(Debug)]
 struct SiteItem {
     title: String,
@@ -142,6 +157,8 @@ struct CatalogItem {
     obtain_zh: Option<String>,
     record_type: Option<String>,
     record_type_zh: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    order: Option<i64>,
 }
 
 #[derive(Serialize)]
@@ -362,6 +379,7 @@ fn make_item(
         obtain_zh: None,
         record_type: None,
         record_type_zh: None,
+        order: None,
     }
 }
 
@@ -398,6 +416,7 @@ fn plain_item(
         obtain_zh: None,
         record_type: None,
         record_type_zh: None,
+        order: None,
     }
 }
 
@@ -754,6 +773,55 @@ fn apply_record_types(
         .collect();
     if !missing.is_empty() {
         return Err(format!("以下记录条目缺少类型映射: {}", missing.join(", ")));
+    }
+    Ok(())
+}
+
+/// Applies the in-game Data Bank order of memorysticks: every memorystick gets
+/// the game region as `area` and a continuous menu `order` across regions.
+/// Version variants (`..._01_2`) inherit the order of their base entry.
+fn apply_memorystick_order(
+    items: &mut [CatalogItem],
+    order: &MemorystickOrder,
+) -> Result<(), String> {
+    let mut by_id: HashMap<&str, (&str, i64)> = HashMap::new();
+    let mut sequence = 0i64;
+    for region in &order.regions {
+        for id in &region.items {
+            sequence += 1;
+            if by_id
+                .insert(id.as_str(), (region.name.as_str(), sequence))
+                .is_some()
+            {
+                return Err(format!("记忆棒选单顺序重复: {id}"));
+            }
+        }
+    }
+    for id in by_id.keys() {
+        let known = items
+            .iter()
+            .any(|item| item.id == *id && item.record_type.as_deref() == Some("memorystick"));
+        if !known {
+            return Err(format!("记忆棒选单顺序指向不存在的条目: {id}"));
+        }
+    }
+    for item in items.iter_mut() {
+        if item.record_type.as_deref() != Some("memorystick") {
+            continue;
+        }
+        let entry = by_id.get(item.id.as_str()).copied().or_else(|| {
+            item.id
+                .rsplit_once('_')
+                .filter(|(_, suffix)| {
+                    !suffix.is_empty() && suffix.chars().all(|ch| ch.is_ascii_digit())
+                })
+                .and_then(|(base, _)| by_id.get(base).copied())
+        });
+        let Some((region, number)) = entry else {
+            return Err(format!("记忆棒缺少选单顺序: {}", item.id));
+        };
+        item.area = Some(region.to_string());
+        item.order = Some(number);
     }
     Ok(())
 }
@@ -1229,6 +1297,12 @@ pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
     } else {
         Value::Object(Map::new())
     };
+    let memorystick_order_path = root.join("data/raw/memorystick_order.json");
+    let memorystick_order: MemorystickOrder = serde_json::from_str(
+        &std::fs::read_to_string(&memorystick_order_path)
+            .map_err(|error| format!("读取 {} 失败: {error}", memorystick_order_path.display()))?,
+    )
+    .map_err(|error| format!("解析 {} 失败: {error}", memorystick_order_path.display()))?;
     let i18n = load_i18n(&api_dir.join("i18n"), &site)?;
     validate_crosswalk_titles(&site, &crosswalk, &game_names)?;
 
@@ -1242,6 +1316,7 @@ pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
     items.extend(build_design_patterns(&site, &universe, &crosswalk));
     apply_game_names(&mut items, &game_names);
     apply_record_types(&mut items, &site, &crosswalk.record_type_overrides)?;
+    apply_memorystick_order(&mut items, &memorystick_order)?;
     apply_i18n(&mut items, &i18n);
 
     let mut seen: HashMap<String, String> = HashMap::new();
@@ -1298,8 +1373,9 @@ mod tests {
     use std::collections::HashMap;
 
     use super::{
-        crosswalk_title_matches, fold_record_title, loose_record_title, normalize_name,
-        record_type_from_site, zone_label,
+        apply_memorystick_order, crosswalk_title_matches, fold_record_title, loose_record_title,
+        normalize_name, plain_item, record_type_from_site, zone_label, MemorystickOrder,
+        MemorystickRegion,
     };
 
     #[test]
@@ -1390,5 +1466,69 @@ mod tests {
         assert_eq!(zone_label("Unknown_3", &zones), "Unknown_3");
         assert_eq!(zone_label("Unknown", &zones), "Unknown");
         assert_eq!(zone_label("ME_01", &zones), "ME_01");
+    }
+
+    fn memorystick(id: &str) -> super::CatalogItem {
+        let mut item = plain_item(
+            id.to_string(),
+            id.to_string(),
+            id.to_string(),
+            "records",
+            vec![id.to_string()],
+            None,
+            "test",
+            "high",
+            0,
+            None,
+        );
+        item.record_type = Some("memorystick".to_string());
+        item
+    }
+
+    fn order_regions(regions: &[(&str, &[&str])]) -> MemorystickOrder {
+        MemorystickOrder {
+            source: "test".to_string(),
+            regions: regions
+                .iter()
+                .map(|(name, items)| MemorystickRegion {
+                    name: name.to_string(),
+                    items: items.iter().map(|id| id.to_string()).collect(),
+                })
+                .collect(),
+        }
+    }
+
+    #[test]
+    fn memorystick_order_applies_region_and_sequence_with_variant_inheritance() {
+        let mut items = vec![
+            memorystick("Item_Records_ME01_Memory_01"),
+            memorystick("Item_Records_ME01_Memory_01_2"),
+            memorystick("Item_Records_DED10_Memory_11"),
+        ];
+        let order = order_regions(&[
+            ("Eidos 7", &["Item_Records_DED10_Memory_11"]),
+            ("Matrix 11", &["Item_Records_ME01_Memory_01"]),
+        ]);
+        apply_memorystick_order(&mut items, &order).expect("order");
+        assert_eq!(items[2].area.as_deref(), Some("Eidos 7"));
+        assert_eq!(items[2].order, Some(1));
+        assert_eq!(items[0].area.as_deref(), Some("Matrix 11"));
+        assert_eq!(items[0].order, Some(2));
+        assert_eq!(items[1].area.as_deref(), Some("Matrix 11"));
+        assert_eq!(items[1].order, Some(2));
+    }
+
+    #[test]
+    fn memorystick_order_rejects_unknown_and_unmapped_items() {
+        let order = order_regions(&[("Eidos 7", &["Item_Records_DED10_Memory_11"])]);
+        let mut mapped = vec![memorystick("Item_Records_DED10_Memory_11")];
+        assert!(apply_memorystick_order(&mut mapped, &order).is_ok());
+
+        let mut missing = vec![memorystick("Item_Records_WLA_Memory_01")];
+        assert!(apply_memorystick_order(&mut missing, &order).is_err());
+
+        let mut ghost = vec![memorystick("Item_Records_DED10_Memory_11")];
+        let ghost_order = order_regions(&[("Wasteland", &["Item_Records_WLA_Memory_99"])]);
+        assert!(apply_memorystick_order(&mut ghost, &ghost_order).is_err());
     }
 }

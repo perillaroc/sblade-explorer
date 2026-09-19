@@ -6,7 +6,8 @@
   "https://github.com/wuxiao00j/stellar-blade-macos-save-editor (Simplified Chinese names)",
   "https://github.com/lecher-wang/Stellar-Blade-100-completion-save-file (alias universe)",
   "Stellar Blade game tables + zh-Hans/en Game.locres (mined names, data/raw/game/name_map.json)",
-  "data/raw/api/i18n (hand maintained Chinese translations of guide region/location/obtain text)"
+  "data/raw/api/i18n (hand maintained Chinese translations of guide region/location/obtain text)",
+  "https://mapgenie.io + https://www.gamersky.com (in-game Data Bank order of memorysticks)"
  ],
  "categories": [
   {
@@ -4441,7 +4442,7 @@
    "aliases": [
     "Item_Records_DED10_Memory_01"
    ],
-   "area": "大沙漠1",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -4450,11 +4451,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 2
   },
   {
    "id": "Item_Records_DED10_Memory_02",
@@ -4464,7 +4466,7 @@
    "aliases": [
     "Item_Records_DED10_Memory_02"
    ],
-   "area": "大沙漠1",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -4473,11 +4475,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 3
   },
   {
    "id": "Item_Records_DED10_Memory_03",
@@ -4487,7 +4490,7 @@
    "aliases": [
     "Item_Records_DED10_Memory_03"
    ],
-   "area": "大沙漠1",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -4496,11 +4499,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 4
   },
   {
    "id": "Item_Records_DED10_Memory_04",
@@ -4510,7 +4514,7 @@
    "aliases": [
     "Item_Records_DED10_Memory_04"
    ],
-   "area": "大沙漠1",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -4519,11 +4523,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 5
   },
   {
    "id": "Item_Records_DED10_Memory_05",
@@ -4533,7 +4538,7 @@
    "aliases": [
     "Item_Records_DED10_Memory_05"
    ],
-   "area": "大沙漠1",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -4542,11 +4547,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 8
   },
   {
    "id": "Item_Records_DED10_Memory_06",
@@ -4556,7 +4562,7 @@
    "aliases": [
     "Item_Records_DED10_Memory_06"
    ],
-   "area": "大沙漠1",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -4565,11 +4571,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 9
   },
   {
    "id": "Item_Records_DED10_Memory_07",
@@ -4648,7 +4655,7 @@
    "aliases": [
     "Item_Records_DED10_Memory_10"
    ],
-   "area": "大沙漠1",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -4657,11 +4664,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 6
   },
   {
    "id": "Item_Records_DED10_Memory_11",
@@ -4671,7 +4679,7 @@
    "aliases": [
     "Item_Records_DED10_Memory_11"
    ],
-   "area": "大沙漠1",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -4680,11 +4688,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 1
   },
   {
    "id": "Item_Records_DED10_Memory_12",
@@ -4694,7 +4703,7 @@
    "aliases": [
     "Item_Records_DED10_Memory_12"
    ],
-   "area": "大沙漠1",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -4703,11 +4712,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 7
   },
   {
    "id": "Item_Records_DED10_Passcode_01",
@@ -4786,7 +4796,7 @@
    "aliases": [
     "Item_Records_DED20_Memory_01"
    ],
-   "area": "大沙漠2",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -4795,11 +4805,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 10
   },
   {
    "id": "Item_Records_DED20_Memory_02",
@@ -4809,7 +4820,7 @@
    "aliases": [
     "Item_Records_DED20_Memory_02"
    ],
-   "area": "大沙漠2",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -4818,11 +4829,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 11
   },
   {
    "id": "Item_Records_DED20_Memory_03",
@@ -4832,7 +4844,7 @@
    "aliases": [
     "Item_Records_DED20_Memory_03"
    ],
-   "area": "大沙漠2",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -4841,11 +4853,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 12
   },
   {
    "id": "Item_Records_DED20_Memory_04",
@@ -4855,7 +4868,7 @@
    "aliases": [
     "Item_Records_DED20_Memory_04"
    ],
-   "area": "大沙漠2",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -4864,11 +4877,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 13
   },
   {
    "id": "Item_Records_DED20_Memory_05",
@@ -4878,7 +4892,7 @@
    "aliases": [
     "Item_Records_DED20_Memory_05"
    ],
-   "area": "大沙漠2",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -4887,11 +4901,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 14
   },
   {
    "id": "Item_Records_DED20_Memory_06",
@@ -4901,7 +4916,7 @@
    "aliases": [
     "Item_Records_DED20_Memory_06"
    ],
-   "area": "大沙漠2",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -4910,11 +4925,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 15
   },
   {
    "id": "Item_Records_DED20_Memory_07",
@@ -4924,7 +4940,7 @@
    "aliases": [
     "Item_Records_DED20_Memory_07"
    ],
-   "area": "大沙漠2",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -4933,11 +4949,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 16
   },
   {
    "id": "Item_Records_DED20_Memory_08",
@@ -4947,7 +4964,7 @@
    "aliases": [
     "Item_Records_DED20_Memory_08"
    ],
-   "area": "大沙漠2",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -4956,11 +4973,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 17
   },
   {
    "id": "Item_Records_DED20_Memory_09",
@@ -4970,7 +4988,7 @@
    "aliases": [
     "Item_Records_DED20_Memory_09"
    ],
-   "area": "大沙漠2",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -4979,11 +4997,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 18
   },
   {
    "id": "Item_Records_DED20_Memory_10",
@@ -4993,7 +5012,7 @@
    "aliases": [
     "Item_Records_DED20_Memory_10"
    ],
-   "area": "大沙漠2",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5002,11 +5021,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 19
   },
   {
    "id": "Item_Records_DED20_Memory_11",
@@ -5016,7 +5036,7 @@
    "aliases": [
     "Item_Records_DED20_Memory_11"
    ],
-   "area": "大沙漠2",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5025,11 +5045,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 20
   },
   {
    "id": "Item_Records_DED20_Memory_12",
@@ -5039,7 +5060,7 @@
    "aliases": [
     "Item_Records_DED20_Memory_12"
    ],
-   "area": "大沙漠2",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5048,11 +5069,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 22
   },
   {
    "id": "Item_Records_DED20_Memory_13",
@@ -5108,7 +5130,7 @@
    "aliases": [
     "Item_Records_DED20_Memory_15"
    ],
-   "area": "大沙漠2",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5117,11 +5139,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 23
   },
   {
    "id": "Item_Records_DED20_Memory_16",
@@ -5131,7 +5154,7 @@
    "aliases": [
     "Item_Records_DED20_Memory_16"
    ],
-   "area": "大沙漠2",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5140,11 +5163,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 21
   },
   {
    "id": "Item_Records_DED20_Memory_17",
@@ -5154,7 +5178,7 @@
    "aliases": [
     "Item_Records_DED20_Memory_17"
    ],
-   "area": "大沙漠2",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5163,11 +5187,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 32
   },
   {
    "id": "Item_Records_DED20_Memory_18",
@@ -5177,7 +5202,7 @@
    "aliases": [
     "Item_Records_DED20_Memory_18"
    ],
-   "area": "大沙漠2",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5186,11 +5211,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 33
   },
   {
    "id": "Item_Records_DED20_Memory_19",
@@ -5223,7 +5249,7 @@
    "aliases": [
     "Item_Records_DED20_Memory_20"
    ],
-   "area": "大沙漠2",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5232,11 +5258,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 30
   },
   {
    "id": "Item_Records_DED20_Memory_21",
@@ -5246,7 +5273,7 @@
    "aliases": [
     "Item_Records_DED20_Memory_21"
    ],
-   "area": "大沙漠2",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5255,11 +5282,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 31
   },
   {
    "id": "Item_Records_DED20_Memory_22",
@@ -5269,7 +5297,7 @@
    "aliases": [
     "Item_Records_DED20_Memory_22"
    ],
-   "area": "大沙漠2",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5278,11 +5306,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 34
   },
   {
    "id": "Item_Records_DED20_Passcode_02",
@@ -5338,7 +5367,7 @@
    "aliases": [
     "Item_Records_DED30_Memory_01"
    ],
-   "area": "大沙漠3",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5347,11 +5376,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 24
   },
   {
    "id": "Item_Records_DED30_Memory_02",
@@ -5361,7 +5391,7 @@
    "aliases": [
     "Item_Records_DED30_Memory_02"
    ],
-   "area": "大沙漠3",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5370,11 +5400,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 26
   },
   {
    "id": "Item_Records_DED30_Memory_03",
@@ -5384,7 +5415,7 @@
    "aliases": [
     "Item_Records_DED30_Memory_03"
    ],
-   "area": "大沙漠3",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5393,11 +5424,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 28
   },
   {
    "id": "Item_Records_DED30_Memory_04",
@@ -5407,7 +5439,7 @@
    "aliases": [
     "Item_Records_DED30_Memory_04"
    ],
-   "area": "大沙漠3",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5416,11 +5448,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 29
   },
   {
    "id": "Item_Records_DED30_Memory_05",
@@ -5430,7 +5463,7 @@
    "aliases": [
     "Item_Records_DED30_Memory_05"
    ],
-   "area": "大沙漠3",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5439,11 +5472,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 27
   },
   {
    "id": "Item_Records_DED30_Memory_06",
@@ -5453,7 +5487,7 @@
    "aliases": [
     "Item_Records_DED30_Memory_06"
    ],
-   "area": "大沙漠3",
+   "area": "Eidos 7",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5462,11 +5496,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯7号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 25
   },
   {
    "id": "Item_Records_DED40_Memory_01",
@@ -5476,7 +5511,7 @@
    "aliases": [
     "Item_Records_DED40_Memory_01"
    ],
-   "area": "大沙漠4",
+   "area": "Eidos 9",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5485,11 +5520,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯9号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 147
   },
   {
    "id": "Item_Records_DED40_Memory_02",
@@ -5499,7 +5535,7 @@
    "aliases": [
     "Item_Records_DED40_Memory_02"
    ],
-   "area": "大沙漠4",
+   "area": "Eidos 9",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5508,11 +5544,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯9号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 148
   },
   {
    "id": "Item_Records_DED40_Memory_03",
@@ -5522,7 +5559,7 @@
    "aliases": [
     "Item_Records_DED40_Memory_03"
    ],
-   "area": "大沙漠4",
+   "area": "Eidos 9",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5531,11 +5568,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯9号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 149
   },
   {
    "id": "Item_Records_DED40_Memory_04",
@@ -5545,7 +5583,7 @@
    "aliases": [
     "Item_Records_DED40_Memory_04"
    ],
-   "area": "大沙漠4",
+   "area": "Eidos 9",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5554,11 +5592,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯9号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 150
   },
   {
    "id": "Item_Records_DED40_Memory_05",
@@ -5568,7 +5607,7 @@
    "aliases": [
     "Item_Records_DED40_Memory_05"
    ],
-   "area": "大沙漠4",
+   "area": "Eidos 9",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5577,11 +5616,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯9号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 151
   },
   {
    "id": "Item_Records_DED40_Memory_09",
@@ -5591,7 +5631,7 @@
    "aliases": [
     "Item_Records_DED40_Memory_09"
    ],
-   "area": "大沙漠4",
+   "area": "Eidos 9",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5600,11 +5640,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯9号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 152
   },
   {
    "id": "Item_Records_DED40_Memory_10",
@@ -5614,7 +5655,7 @@
    "aliases": [
     "Item_Records_DED40_Memory_10"
    ],
-   "area": "大沙漠4",
+   "area": "Eidos 9",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -5623,11 +5664,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "埃多斯9号",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 153
   },
   {
    "id": "Item_Records_DED40_Memory_11",
@@ -6442,7 +6484,7 @@
    "aliases": [
     "Item_Records_ETC_Memory_14"
    ],
-   "area": "其他",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -6451,11 +6493,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 129
   },
   {
    "id": "Item_Records_ETC_Memory_15",
@@ -6488,7 +6531,7 @@
    "aliases": [
     "Item_Records_ME01_Memory_01"
    ],
-   "area": "矩阵11-1",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -6497,11 +6540,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 72
   },
   {
    "id": "Item_Records_ME01_Memory_01_2",
@@ -6511,7 +6555,7 @@
    "aliases": [
     "Item_Records_ME01_Memory_01_2"
    ],
-   "area": "矩阵11-1",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -6520,11 +6564,12 @@
    "note": "按内部 ID 生成名称；文档/记忆棒共享该别名族，位置请参考攻略同区域列表",
    "confidence": "low",
    "source": null,
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 72
   },
   {
    "id": "Item_Records_ME01_Memory_02",
@@ -6534,7 +6579,7 @@
    "aliases": [
     "Item_Records_ME01_Memory_02"
    ],
-   "area": "矩阵11-1",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -6543,11 +6588,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 73
   },
   {
    "id": "Item_Records_ME01_Memory_03",
@@ -6557,7 +6603,7 @@
    "aliases": [
     "Item_Records_ME01_Memory_03"
    ],
-   "area": "矩阵11-1",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -6566,11 +6612,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 74
   },
   {
    "id": "Item_Records_ME01_Memory_04",
@@ -6580,7 +6627,7 @@
    "aliases": [
     "Item_Records_ME01_Memory_04"
    ],
-   "area": "矩阵11-1",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -6589,11 +6636,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 75
   },
   {
    "id": "Item_Records_ME01_Memory_05",
@@ -6603,7 +6651,7 @@
    "aliases": [
     "Item_Records_ME01_Memory_05"
    ],
-   "area": "矩阵11-1",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -6612,11 +6660,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 76
   },
   {
    "id": "Item_Records_ME01_Memory_06",
@@ -6626,7 +6675,7 @@
    "aliases": [
     "Item_Records_ME01_Memory_06"
    ],
-   "area": "矩阵11-1",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -6635,11 +6684,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 77
   },
   {
    "id": "Item_Records_ME01_Memory_07",
@@ -6695,7 +6745,7 @@
    "aliases": [
     "Item_Records_ME03_Memory_01"
    ],
-   "area": "矩阵11-3",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -6704,11 +6754,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 78
   },
   {
    "id": "Item_Records_ME03_Memory_02",
@@ -6718,7 +6769,7 @@
    "aliases": [
     "Item_Records_ME03_Memory_02"
    ],
-   "area": "矩阵11-3",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -6727,11 +6778,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 79
   },
   {
    "id": "Item_Records_ME04_Memory_01",
@@ -6741,7 +6793,7 @@
    "aliases": [
     "Item_Records_ME04_Memory_01"
    ],
-   "area": "矩阵11-4",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -6750,11 +6802,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 80
   },
   {
    "id": "Item_Records_ME04_Memory_02",
@@ -6764,7 +6817,7 @@
    "aliases": [
     "Item_Records_ME04_Memory_02"
    ],
-   "area": "矩阵11-4",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -6773,11 +6826,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 81
   },
   {
    "id": "Item_Records_ME04_Memory_03",
@@ -6787,7 +6841,7 @@
    "aliases": [
     "Item_Records_ME04_Memory_03"
    ],
-   "area": "矩阵11-4",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -6796,11 +6850,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 82
   },
   {
    "id": "Item_Records_ME04_Memory_04",
@@ -6810,7 +6865,7 @@
    "aliases": [
     "Item_Records_ME04_Memory_04"
    ],
-   "area": "矩阵11-4",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -6819,11 +6874,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 83
   },
   {
    "id": "Item_Records_ME04_Memory_05",
@@ -6833,7 +6889,7 @@
    "aliases": [
     "Item_Records_ME04_Memory_05"
    ],
-   "area": "矩阵11-4",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -6842,11 +6898,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 85
   },
   {
    "id": "Item_Records_ME04_Memory_06",
@@ -6856,7 +6913,7 @@
    "aliases": [
     "Item_Records_ME04_Memory_06"
    ],
-   "area": "矩阵11-4",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -6865,11 +6922,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 87
   },
   {
    "id": "Item_Records_ME04_Memory_07",
@@ -6879,7 +6937,7 @@
    "aliases": [
     "Item_Records_ME04_Memory_07"
    ],
-   "area": "矩阵11-4",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -6888,11 +6946,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 86
   },
   {
    "id": "Item_Records_ME04_Memory_08",
@@ -6902,7 +6961,7 @@
    "aliases": [
     "Item_Records_ME04_Memory_08"
    ],
-   "area": "矩阵11-4",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -6911,11 +6970,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 88
   },
   {
    "id": "Item_Records_ME04_Memory_09",
@@ -6971,7 +7031,7 @@
    "aliases": [
     "Item_Records_ME04_Memory_11"
    ],
-   "area": "矩阵11-4",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -6980,11 +7040,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 89
   },
   {
    "id": "Item_Records_ME04_Memory_12",
@@ -6994,7 +7055,7 @@
    "aliases": [
     "Item_Records_ME04_Memory_12"
    ],
-   "area": "矩阵11-4",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7003,11 +7064,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 90
   },
   {
    "id": "Item_Records_ME04_Memory_13",
@@ -7017,7 +7079,7 @@
    "aliases": [
     "Item_Records_ME04_Memory_13"
    ],
-   "area": "矩阵11-4",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7026,11 +7088,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 91
   },
   {
    "id": "Item_Records_ME04_Memory_14",
@@ -7109,7 +7172,7 @@
    "aliases": [
     "Item_Records_ME04_Memory_17"
    ],
-   "area": "矩阵11-4",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7118,11 +7181,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 84
   },
   {
    "id": "Item_Records_ME04_Passcode_01",
@@ -7155,7 +7219,7 @@
    "aliases": [
     "Item_Records_ME05_Memory_01"
    ],
-   "area": "矩阵11-5",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7164,11 +7228,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 92
   },
   {
    "id": "Item_Records_ME05_Memory_02",
@@ -7178,7 +7243,7 @@
    "aliases": [
     "Item_Records_ME05_Memory_02"
    ],
-   "area": "矩阵11-5",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7187,11 +7252,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 93
   },
   {
    "id": "Item_Records_ME05_Passcode_01",
@@ -7224,7 +7290,7 @@
    "aliases": [
     "Item_Records_ME06_Memory_01"
    ],
-   "area": "矩阵11-6",
+   "area": "Matrix 11",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7233,11 +7299,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 94
   },
   {
    "id": "Item_Records_Quest_Request_001_01",
@@ -7270,7 +7337,7 @@
    "aliases": [
     "Item_Records_Quest_Request_005_01"
    ],
-   "area": null,
+   "area": "Xion",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7279,11 +7346,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "希雍",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 186
   },
   {
    "id": "Item_Records_Quest_Request_006_01",
@@ -7293,7 +7361,7 @@
    "aliases": [
     "Item_Records_Quest_Request_006_01"
    ],
-   "area": null,
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7302,11 +7370,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 70
   },
   {
    "id": "Item_Records_Quest_Request_006_02",
@@ -7316,7 +7385,7 @@
    "aliases": [
     "Item_Records_Quest_Request_006_02"
    ],
-   "area": null,
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7325,11 +7394,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 71
   },
   {
    "id": "Item_Records_Quest_Request_008_01",
@@ -7362,7 +7432,7 @@
    "aliases": [
     "Item_Records_SE01_Memory_01"
    ],
-   "area": "尖塔1",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7371,11 +7441,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 154
   },
   {
    "id": "Item_Records_SE01_Memory_02",
@@ -7385,7 +7456,7 @@
    "aliases": [
     "Item_Records_SE01_Memory_02"
    ],
-   "area": "尖塔1",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7394,11 +7465,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 156
   },
   {
    "id": "Item_Records_SE01_Memory_03",
@@ -7408,7 +7480,7 @@
    "aliases": [
     "Item_Records_SE01_Memory_03"
    ],
-   "area": "尖塔1",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7417,11 +7489,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 155
   },
   {
    "id": "Item_Records_SE01_Memory_04",
@@ -7431,7 +7504,7 @@
    "aliases": [
     "Item_Records_SE01_Memory_04"
    ],
-   "area": "尖塔1",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7440,11 +7513,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 157
   },
   {
    "id": "Item_Records_SE01_Memory_05",
@@ -7454,7 +7528,7 @@
    "aliases": [
     "Item_Records_SE01_Memory_05"
    ],
-   "area": "尖塔1",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7463,11 +7537,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 159
   },
   {
    "id": "Item_Records_SE01_Memory_06",
@@ -7477,7 +7552,7 @@
    "aliases": [
     "Item_Records_SE01_Memory_06"
    ],
-   "area": "尖塔1",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7486,11 +7561,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 158
   },
   {
    "id": "Item_Records_SE01_Passcode_01",
@@ -7523,7 +7599,7 @@
    "aliases": [
     "Item_Records_SE02_Memory_01"
    ],
-   "area": "尖塔2",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7532,11 +7608,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 160
   },
   {
    "id": "Item_Records_SE04_Memory_01",
@@ -7546,7 +7623,7 @@
    "aliases": [
     "Item_Records_SE04_Memory_01"
    ],
-   "area": "尖塔4",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7555,11 +7632,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 161
   },
   {
    "id": "Item_Records_SE05_Memory_01",
@@ -7569,7 +7647,7 @@
    "aliases": [
     "Item_Records_SE05_Memory_01"
    ],
-   "area": "尖塔5",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7578,11 +7656,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 162
   },
   {
    "id": "Item_Records_SE05_Memory_02",
@@ -7592,7 +7671,7 @@
    "aliases": [
     "Item_Records_SE05_Memory_02"
    ],
-   "area": "尖塔5",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7601,11 +7680,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 163
   },
   {
    "id": "Item_Records_SE05_Memory_03",
@@ -7615,7 +7695,7 @@
    "aliases": [
     "Item_Records_SE05_Memory_03"
    ],
-   "area": "尖塔5",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7624,11 +7704,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 164
   },
   {
    "id": "Item_Records_SE06_Memory_01",
@@ -7638,7 +7719,7 @@
    "aliases": [
     "Item_Records_SE06_Memory_01"
    ],
-   "area": "尖塔6",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7647,11 +7728,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 165
   },
   {
    "id": "Item_Records_SE06_Memory_02",
@@ -7661,7 +7743,7 @@
    "aliases": [
     "Item_Records_SE06_Memory_02"
    ],
-   "area": "尖塔6",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7670,11 +7752,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 166
   },
   {
    "id": "Item_Records_SE06_Memory_03",
@@ -7684,7 +7767,7 @@
    "aliases": [
     "Item_Records_SE06_Memory_03"
    ],
-   "area": "尖塔6",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7693,11 +7776,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 167
   },
   {
    "id": "Item_Records_SE06_Memory_04",
@@ -7707,7 +7791,7 @@
    "aliases": [
     "Item_Records_SE06_Memory_04"
    ],
-   "area": "尖塔6",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7716,11 +7800,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 168
   },
   {
    "id": "Item_Records_SE06_Memory_05",
@@ -7730,7 +7815,7 @@
    "aliases": [
     "Item_Records_SE06_Memory_05"
    ],
-   "area": "尖塔6",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7739,11 +7824,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 169
   },
   {
    "id": "Item_Records_SE06_Memory_06",
@@ -7753,7 +7839,7 @@
    "aliases": [
     "Item_Records_SE06_Memory_06"
    ],
-   "area": "尖塔6",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7762,11 +7848,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 170
   },
   {
    "id": "Item_Records_SE06_Memory_07",
@@ -7776,7 +7863,7 @@
    "aliases": [
     "Item_Records_SE06_Memory_07"
    ],
-   "area": "尖塔6",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7785,11 +7872,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 171
   },
   {
    "id": "Item_Records_SE06_Memory_08",
@@ -7799,7 +7887,7 @@
    "aliases": [
     "Item_Records_SE06_Memory_08"
    ],
-   "area": "尖塔6",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7808,11 +7896,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 175
   },
   {
    "id": "Item_Records_SE06_Memory_09",
@@ -7822,7 +7911,7 @@
    "aliases": [
     "Item_Records_SE06_Memory_09"
    ],
-   "area": "尖塔6",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7831,11 +7920,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 172
   },
   {
    "id": "Item_Records_SE06_Memory_10",
@@ -7891,7 +7981,7 @@
    "aliases": [
     "Item_Records_SE06_Memory_12"
    ],
-   "area": "尖塔6",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7900,11 +7990,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 174
   },
   {
    "id": "Item_Records_SE06_Memory_13",
@@ -7914,7 +8005,7 @@
    "aliases": [
     "Item_Records_SE06_Memory_13"
    ],
-   "area": "尖塔6",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7923,11 +8014,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 173
   },
   {
    "id": "Item_Records_SE06_Passcode_01",
@@ -7960,7 +8052,7 @@
    "aliases": [
     "Item_Records_SE07_Memory_01"
    ],
-   "area": "尖塔7",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7969,11 +8061,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 176
   },
   {
    "id": "Item_Records_SE07_Memory_02",
@@ -7983,7 +8076,7 @@
    "aliases": [
     "Item_Records_SE07_Memory_02"
    ],
-   "area": "尖塔7",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -7992,11 +8085,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 177
   },
   {
    "id": "Item_Records_SE07_Memory_03",
@@ -8006,7 +8100,7 @@
    "aliases": [
     "Item_Records_SE07_Memory_03"
    ],
-   "area": "尖塔7",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8015,11 +8109,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 178
   },
   {
    "id": "Item_Records_SE07_Memory_04",
@@ -8029,7 +8124,7 @@
    "aliases": [
     "Item_Records_SE07_Memory_04"
    ],
-   "area": "尖塔7",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8038,11 +8133,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 179
   },
   {
    "id": "Item_Records_SE07_Memory_05",
@@ -8052,7 +8148,7 @@
    "aliases": [
     "Item_Records_SE07_Memory_05"
    ],
-   "area": "尖塔7",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8061,11 +8157,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 181
   },
   {
    "id": "Item_Records_SE07_Memory_06",
@@ -8075,7 +8172,7 @@
    "aliases": [
     "Item_Records_SE07_Memory_06"
    ],
-   "area": "尖塔7",
+   "area": "Spire 4",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8084,11 +8181,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "尖塔4",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 180
   },
   {
    "id": "Item_Records_WLA_Memory_01",
@@ -8098,7 +8196,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_01"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8107,11 +8205,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 35
   },
   {
    "id": "Item_Records_WLA_Memory_02",
@@ -8121,7 +8220,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_02"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8130,11 +8229,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 36
   },
   {
    "id": "Item_Records_WLA_Memory_03",
@@ -8144,7 +8244,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_03"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8153,11 +8253,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 37
   },
   {
    "id": "Item_Records_WLA_Memory_04",
@@ -8167,7 +8268,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_04"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8176,11 +8277,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 38
   },
   {
    "id": "Item_Records_WLA_Memory_05",
@@ -8190,7 +8292,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_05"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8199,11 +8301,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 39
   },
   {
    "id": "Item_Records_WLA_Memory_06",
@@ -8213,7 +8316,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_06"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8222,11 +8325,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 40
   },
   {
    "id": "Item_Records_WLA_Memory_07",
@@ -8236,7 +8340,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_07"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8245,11 +8349,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 41
   },
   {
    "id": "Item_Records_WLA_Memory_08",
@@ -8259,7 +8364,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_08"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8268,11 +8373,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 42
   },
   {
    "id": "Item_Records_WLA_Memory_09",
@@ -8282,7 +8388,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_09"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8291,11 +8397,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 43
   },
   {
    "id": "Item_Records_WLA_Memory_10",
@@ -8305,7 +8412,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_10"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8314,11 +8421,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 44
   },
   {
    "id": "Item_Records_WLA_Memory_11",
@@ -8328,7 +8436,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_11"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8337,11 +8445,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 45
   },
   {
    "id": "Item_Records_WLA_Memory_12",
@@ -8351,7 +8460,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_12"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8360,11 +8469,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 46
   },
   {
    "id": "Item_Records_WLA_Memory_13",
@@ -8374,7 +8484,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_13"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8383,11 +8493,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 47
   },
   {
    "id": "Item_Records_WLA_Memory_14",
@@ -8397,7 +8508,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_14"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8406,11 +8517,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 48
   },
   {
    "id": "Item_Records_WLA_Memory_15",
@@ -8420,7 +8532,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_15"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8429,11 +8541,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 55
   },
   {
    "id": "Item_Records_WLA_Memory_16",
@@ -8443,7 +8556,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_16"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8452,11 +8565,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 56
   },
   {
    "id": "Item_Records_WLA_Memory_17",
@@ -8466,7 +8580,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_17"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8475,11 +8589,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 58
   },
   {
    "id": "Item_Records_WLA_Memory_18",
@@ -8489,7 +8604,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_18"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8498,11 +8613,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 49
   },
   {
    "id": "Item_Records_WLA_Memory_19",
@@ -8512,7 +8628,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_19"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8521,11 +8637,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 50
   },
   {
    "id": "Item_Records_WLA_Memory_20",
@@ -8535,7 +8652,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_20"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8544,11 +8661,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 51
   },
   {
    "id": "Item_Records_WLA_Memory_21",
@@ -8558,7 +8676,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_21"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8567,11 +8685,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 52
   },
   {
    "id": "Item_Records_WLA_Memory_22",
@@ -8581,7 +8700,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_22"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8590,11 +8709,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 59
   },
   {
    "id": "Item_Records_WLA_Memory_23",
@@ -8604,7 +8724,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_23"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8613,11 +8733,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 60
   },
   {
    "id": "Item_Records_WLA_Memory_24",
@@ -8627,7 +8748,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_24"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8636,11 +8757,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 61
   },
   {
    "id": "Item_Records_WLA_Memory_25",
@@ -8650,7 +8772,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_25"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8659,11 +8781,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 62
   },
   {
    "id": "Item_Records_WLA_Memory_26",
@@ -8719,7 +8842,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_28"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8728,11 +8851,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 63
   },
   {
    "id": "Item_Records_WLA_Memory_29",
@@ -8926,7 +9050,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_37"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8935,11 +9059,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 64
   },
   {
    "id": "Item_Records_WLA_Memory_38",
@@ -8949,7 +9074,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_38"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8958,11 +9083,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 53
   },
   {
    "id": "Item_Records_WLA_Memory_39",
@@ -8972,7 +9098,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_39"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -8981,11 +9107,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 54
   },
   {
    "id": "Item_Records_WLA_Memory_40",
@@ -9018,7 +9145,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_41"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9027,11 +9154,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 65
   },
   {
    "id": "Item_Records_WLA_Memory_42",
@@ -9041,7 +9169,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_42"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9050,11 +9178,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 66
   },
   {
    "id": "Item_Records_WLA_Memory_43",
@@ -9064,7 +9193,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_43"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9073,11 +9202,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 67
   },
   {
    "id": "Item_Records_WLA_Memory_44",
@@ -9087,7 +9217,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_44"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9096,11 +9226,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 68
   },
   {
    "id": "Item_Records_WLA_Memory_45",
@@ -9110,7 +9241,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_45"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9119,11 +9250,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 69
   },
   {
    "id": "Item_Records_WLA_Memory_46",
@@ -9133,7 +9265,7 @@
    "aliases": [
     "Item_Records_WLA_Memory_46"
    ],
-   "area": "废土A",
+   "area": "Wasteland",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9142,11 +9274,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "废土",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 57
   },
   {
    "id": "Item_Records_WLA_Memory_47",
@@ -9202,7 +9335,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_01"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9211,11 +9344,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 95
   },
   {
    "id": "Item_Records_WLB_Memory_02",
@@ -9225,7 +9359,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_02"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9234,11 +9368,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 96
   },
   {
    "id": "Item_Records_WLB_Memory_03",
@@ -9248,7 +9383,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_03"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9257,11 +9392,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 97
   },
   {
    "id": "Item_Records_WLB_Memory_04",
@@ -9271,7 +9407,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_04"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9280,11 +9416,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 98
   },
   {
    "id": "Item_Records_WLB_Memory_05",
@@ -9294,7 +9431,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_05"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9303,11 +9440,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 99
   },
   {
    "id": "Item_Records_WLB_Memory_06",
@@ -9317,7 +9455,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_06"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9326,11 +9464,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 100
   },
   {
    "id": "Item_Records_WLB_Memory_07",
@@ -9340,7 +9479,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_07"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9349,11 +9488,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 101
   },
   {
    "id": "Item_Records_WLB_Memory_08",
@@ -9363,7 +9503,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_08"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9372,11 +9512,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 102
   },
   {
    "id": "Item_Records_WLB_Memory_09",
@@ -9386,7 +9527,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_09"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9395,11 +9536,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 103
   },
   {
    "id": "Item_Records_WLB_Memory_10",
@@ -9409,7 +9551,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_10"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9418,11 +9560,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 104
   },
   {
    "id": "Item_Records_WLB_Memory_11",
@@ -9432,7 +9575,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_11"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9441,11 +9584,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 105
   },
   {
    "id": "Item_Records_WLB_Memory_12",
@@ -9455,7 +9599,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_12"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9464,11 +9608,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 106
   },
   {
    "id": "Item_Records_WLB_Memory_13",
@@ -9478,7 +9623,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_13"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9487,11 +9632,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 107
   },
   {
    "id": "Item_Records_WLB_Memory_14",
@@ -9501,7 +9647,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_14"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9510,11 +9656,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 108
   },
   {
    "id": "Item_Records_WLB_Memory_15",
@@ -9524,7 +9671,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_15"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9533,11 +9680,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 109
   },
   {
    "id": "Item_Records_WLB_Memory_16",
@@ -9547,7 +9695,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_16"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9556,11 +9704,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 110
   },
   {
    "id": "Item_Records_WLB_Memory_17",
@@ -9570,7 +9719,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_17"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9579,11 +9728,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 111
   },
   {
    "id": "Item_Records_WLB_Memory_18",
@@ -9593,7 +9743,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_18"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9602,11 +9752,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 112
   },
   {
    "id": "Item_Records_WLB_Memory_19",
@@ -9616,7 +9767,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_19"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9625,11 +9776,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 113
   },
   {
    "id": "Item_Records_WLB_Memory_20",
@@ -9639,7 +9791,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_20"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9648,11 +9800,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 114
   },
   {
    "id": "Item_Records_WLB_Memory_21",
@@ -9662,7 +9815,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_21"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9671,11 +9824,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 115
   },
   {
    "id": "Item_Records_WLB_Memory_22",
@@ -9685,7 +9839,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_22"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9694,11 +9848,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 116
   },
   {
    "id": "Item_Records_WLB_Memory_23",
@@ -9708,7 +9863,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_23"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9717,11 +9872,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 117
   },
   {
    "id": "Item_Records_WLB_Memory_24",
@@ -9731,7 +9887,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_24"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9740,11 +9896,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 118
   },
   {
    "id": "Item_Records_WLB_Memory_25",
@@ -9754,7 +9911,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_25"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9763,11 +9920,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 119
   },
   {
    "id": "Item_Records_WLB_Memory_26",
@@ -9777,7 +9935,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_26"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9786,11 +9944,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 133
   },
   {
    "id": "Item_Records_WLB_Memory_27",
@@ -9800,7 +9959,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_27"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9809,11 +9968,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 134
   },
   {
    "id": "Item_Records_WLB_Memory_28",
@@ -9846,7 +10006,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_29"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9855,11 +10015,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 120
   },
   {
    "id": "Item_Records_WLB_Memory_30",
@@ -9869,7 +10030,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_30"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9878,11 +10039,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 121
   },
   {
    "id": "Item_Records_WLB_Memory_31",
@@ -9984,7 +10146,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_35"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -9993,11 +10155,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 122
   },
   {
    "id": "Item_Records_WLB_Memory_36",
@@ -10007,7 +10170,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_36"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10016,11 +10179,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 144
   },
   {
    "id": "Item_Records_WLB_Memory_37",
@@ -10030,7 +10194,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_37"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10039,11 +10203,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 145
   },
   {
    "id": "Item_Records_WLB_Memory_38",
@@ -10053,7 +10218,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_38"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10062,11 +10227,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 146
   },
   {
    "id": "Item_Records_WLB_Memory_39",
@@ -10076,7 +10242,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_39"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10085,11 +10251,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 136
   },
   {
    "id": "Item_Records_WLB_Memory_40",
@@ -10191,7 +10358,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_44"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10200,11 +10367,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 137
   },
   {
    "id": "Item_Records_WLB_Memory_45",
@@ -10214,7 +10382,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_45"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10223,11 +10391,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 138
   },
   {
    "id": "Item_Records_WLB_Memory_46",
@@ -10237,7 +10406,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_46"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10246,11 +10415,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 139
   },
   {
    "id": "Item_Records_WLB_Memory_47",
@@ -10260,7 +10430,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_47"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10269,11 +10439,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 140
   },
   {
    "id": "Item_Records_WLB_Memory_48",
@@ -10283,7 +10454,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_48"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10292,11 +10463,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 123
   },
   {
    "id": "Item_Records_WLB_Memory_49",
@@ -10306,7 +10478,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_49"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10315,11 +10487,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 124
   },
   {
    "id": "Item_Records_WLB_Memory_50",
@@ -10352,7 +10525,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_51"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10361,11 +10534,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 125
   },
   {
    "id": "Item_Records_WLB_Memory_52",
@@ -10398,7 +10572,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_53"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10407,11 +10581,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 130
   },
   {
    "id": "Item_Records_WLB_Memory_54",
@@ -10421,7 +10596,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_54"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10430,11 +10605,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 126
   },
   {
    "id": "Item_Records_WLB_Memory_55",
@@ -10467,7 +10643,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_56"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10476,11 +10652,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 127
   },
   {
    "id": "Item_Records_WLB_Memory_57",
@@ -10490,7 +10667,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_57"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10499,11 +10676,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 128
   },
   {
    "id": "Item_Records_WLB_Memory_58",
@@ -10513,7 +10691,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_58"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10522,11 +10700,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 131
   },
   {
    "id": "Item_Records_WLB_Memory_59",
@@ -10536,7 +10715,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_59"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10545,11 +10724,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 132
   },
   {
    "id": "Item_Records_WLB_Memory_60",
@@ -10559,7 +10739,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_60"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10568,11 +10748,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 141
   },
   {
    "id": "Item_Records_WLB_Memory_61",
@@ -10582,7 +10763,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_61"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10591,11 +10772,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 142
   },
   {
    "id": "Item_Records_WLB_Memory_62",
@@ -10605,7 +10787,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_62"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10614,11 +10796,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 143
   },
   {
    "id": "Item_Records_WLB_Memory_63",
@@ -10651,7 +10834,7 @@
    "aliases": [
     "Item_Records_WLB_Memory_64"
    ],
-   "area": "废土B",
+   "area": "Great Desert",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10660,11 +10843,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "大沙漠",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 135
   },
   {
    "id": "Item_Records_WLB_Passcode_01",
@@ -10927,7 +11111,7 @@
    "aliases": [
     "Item_Records_Xion_Memory_11"
    ],
-   "area": "希雍",
+   "area": "Xion",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -10936,11 +11120,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "希雍",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 182
   },
   {
    "id": "Item_Records_Xion_Memory_12",
@@ -11410,7 +11595,7 @@
    "aliases": [
     "Item_Records_Xion_Memory_30"
    ],
-   "area": "希雍",
+   "area": "Xion",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -11419,11 +11604,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "希雍",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 183
   },
   {
    "id": "Item_Records_Xion_Memory_31",
@@ -11433,7 +11619,7 @@
    "aliases": [
     "Item_Records_Xion_Memory_31"
    ],
-   "area": "希雍",
+   "area": "Xion",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -11442,11 +11628,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "希雍",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 184
   },
   {
    "id": "Item_Records_Xion_Memory_32",
@@ -11456,7 +11643,7 @@
    "aliases": [
     "Item_Records_Xion_Memory_32"
    ],
-   "area": "希雍",
+   "area": "Xion",
    "location": null,
    "obtain": null,
    "ng_plus": 0,
@@ -11465,11 +11652,12 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
+   "area_zh": "希雍",
    "location_zh": null,
    "obtain_zh": null,
    "record_type": "memorystick",
-   "record_type_zh": "记忆棒"
+   "record_type_zh": "记忆棒",
+   "order": 185
   },
   {
    "id": "Item_Records_Xion_Memory_33",

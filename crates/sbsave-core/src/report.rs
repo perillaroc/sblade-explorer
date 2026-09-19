@@ -474,6 +474,7 @@ fn catalog_item_to_dict(item: &CatalogItem) -> Value {
         "record_type_zh".to_string(),
         optional_string(item.record_type_zh.as_deref()),
     );
+    object.insert("order".to_string(), Value::from(item.order));
     Value::Object(object)
 }
 
@@ -543,6 +544,7 @@ fn item_to_dict(status: &ItemStatus) -> Value {
         "record_type_zh".to_string(),
         optional_string(item.record_type_zh.as_deref()),
     );
+    object.insert("order".to_string(), Value::from(item.order));
     Value::Object(object)
 }
 
