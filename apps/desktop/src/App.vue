@@ -2,6 +2,14 @@
 import { computed, onMounted, ref, watch } from "vue";
 import { invoke } from "@tauri-apps/api/core";
 import { save } from "@tauri-apps/plugin-dialog";
+import {
+  FileJson,
+  FileText,
+  FolderSearch,
+  Languages,
+  LoaderCircle,
+  TriangleAlert,
+} from "@lucide/vue";
 import AppSidebar from "./components/AppSidebar.vue";
 import CategoryPage from "./components/CategoryPage.vue";
 import SavePicker from "./components/SavePicker.vue";
@@ -118,6 +126,7 @@ onMounted(refreshSaves);
           </span>
         </div>
         <div class="flex items-center gap-2">
+          <Languages class="h-4 w-4 text-slate-500" />
           <div class="flex overflow-hidden rounded border border-slate-700 text-xs">
             <button
               v-for="option in LANG_OPTIONS"
@@ -134,16 +143,18 @@ onMounted(refreshSaves);
           </div>
           <button
             type="button"
-            class="rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:bg-slate-800"
+            class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:bg-slate-800"
             @click="exportReport('json')"
           >
+            <FileJson class="h-3.5 w-3.5" />
             导出 JSON
           </button>
           <button
             type="button"
-            class="rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:bg-slate-800"
+            class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:bg-slate-800"
             @click="exportReport('markdown')"
           >
+            <FileText class="h-3.5 w-3.5" />
             导出 Markdown
           </button>
         </div>
@@ -154,15 +165,21 @@ onMounted(refreshSaves);
       <p v-if="notice" class="px-4 py-1 text-xs text-emerald-400">{{ notice }}</p>
 
       <main v-if="loading" class="flex flex-1 items-center justify-center text-sm text-slate-400">
+        <LoaderCircle class="mr-2 h-4 w-4 animate-spin" />
         读取存档中…
       </main>
-      <main v-else-if="error" class="flex flex-1 items-center justify-center text-sm text-rose-400">
+      <main
+        v-else-if="error"
+        class="flex flex-1 items-center justify-center text-sm text-rose-400"
+      >
+        <TriangleAlert class="mr-2 h-4 w-4" />
         读取存档失败: {{ error }}
       </main>
       <main
         v-else-if="!analysis"
         class="flex flex-1 items-center justify-center text-sm text-slate-400"
       >
+        <FolderSearch class="mr-2 h-4 w-4" />
         未找到存档，请将存档放入默认目录后点击刷新。
       </main>
       <main v-else class="flex-1 overflow-y-auto p-4">

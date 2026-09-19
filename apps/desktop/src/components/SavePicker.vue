@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Clock, HardDrive, RefreshCw } from "@lucide/vue";
 import type { SaveSlot } from "../types";
 
 const props = defineProps<{
@@ -44,13 +45,25 @@ function formatSize(size: number): string {
     </select>
     <button
       type="button"
-      class="rounded border border-slate-700 px-2 py-1 text-sm text-slate-300 hover:bg-slate-800"
+      class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-sm text-slate-300 hover:bg-slate-800"
       @click="emit('refresh')"
     >
+      <RefreshCw class="h-3.5 w-3.5" />
       刷新
     </button>
-    <span v-if="selected" class="text-xs text-slate-500">
-      {{ formatSize(selected.size) }} · {{ formatTime(selected.mtimeMs) }} · {{ selected.path }}
+    <span
+      v-if="selected"
+      class="inline-flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500"
+    >
+      <span class="inline-flex items-center gap-1">
+        <HardDrive class="h-3.5 w-3.5" />
+        {{ formatSize(selected.size) }}
+      </span>
+      <span class="inline-flex items-center gap-1">
+        <Clock class="h-3.5 w-3.5" />
+        {{ formatTime(selected.mtimeMs) }}
+      </span>
+      <span>{{ selected.path }}</span>
     </span>
   </section>
 </template>

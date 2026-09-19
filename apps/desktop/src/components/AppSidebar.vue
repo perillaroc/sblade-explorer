@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import type { Analysis } from "../types";
+import { APP_ICON, categoryIcon, SUMMARY_ICON } from "../lib/icons";
 
 const props = defineProps<{
   analysis: Analysis | null;
@@ -23,7 +24,8 @@ function categoryPercent(obtained: number, total: number): number {
 
 <template>
   <aside class="flex w-60 shrink-0 flex-col border-r border-slate-800 bg-slate-900/40">
-    <div class="border-b border-slate-800 px-4 py-3">
+    <div class="flex items-center gap-2 border-b border-slate-800 px-4 py-3">
+      <component :is="APP_ICON" class="h-4 w-4 text-emerald-400" />
       <h1 class="text-sm font-bold tracking-wide">剑星存档分析</h1>
     </div>
     <nav class="flex-1 space-y-1 overflow-y-auto p-2">
@@ -38,7 +40,10 @@ function categoryPercent(obtained: number, total: number): number {
         @click="emit('navigate', 'summary')"
       >
         <div class="flex items-center justify-between gap-2">
-          <span class="font-medium">汇总</span>
+          <span class="inline-flex items-center gap-2 font-medium">
+            <component :is="SUMMARY_ICON" class="h-4 w-4 text-slate-400" />
+            汇总
+          </span>
           <span v-if="analysis" class="text-xs text-slate-400">
             {{ analysis.summary.percent.toFixed(0) }}%
           </span>
@@ -63,7 +68,13 @@ function categoryPercent(obtained: number, total: number): number {
           @click="emit('navigate', category.key)"
         >
           <div class="flex items-center justify-between gap-2">
-            <span class="truncate">{{ category.name }}</span>
+            <span class="inline-flex min-w-0 items-center gap-2">
+              <component
+                :is="categoryIcon(category.key)"
+                class="h-4 w-4 shrink-0 text-slate-400"
+              />
+              <span class="truncate">{{ category.name }}</span>
+            </span>
             <span class="shrink-0 text-xs text-slate-400">
               {{ category.obtained }}/{{ category.total }}
             </span>

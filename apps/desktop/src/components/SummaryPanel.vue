@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { Clock, Gauge, IdCard, Package, Repeat } from "@lucide/vue";
 import type { Analysis } from "../types";
 
 const props = defineProps<{ analysis: Analysis }>();
@@ -26,25 +27,40 @@ const playTimeLabel = computed(() => {
   <section class="rounded-lg border border-slate-800 bg-slate-900/60 p-4">
     <div class="grid grid-cols-2 gap-3 text-sm md:grid-cols-4">
       <div>
-        <div class="text-xs text-slate-500">SteamID</div>
+        <div class="flex items-center gap-1 text-xs text-slate-500">
+          <IdCard class="h-3.5 w-3.5" />
+          SteamID
+        </div>
         <div>{{ analysis.save.steam_id ?? "未知" }}</div>
       </div>
       <div>
-        <div class="text-xs text-slate-500">周目</div>
+        <div class="flex items-center gap-1 text-xs text-slate-500">
+          <Repeat class="h-3.5 w-3.5" />
+          周目
+        </div>
         <div>{{ analysis.save.playthrough }} (NG+{{ analysis.save.ng_plus_count }})</div>
       </div>
       <div>
-        <div class="text-xs text-slate-500">难度</div>
+        <div class="flex items-center gap-1 text-xs text-slate-500">
+          <Gauge class="h-3.5 w-3.5" />
+          难度
+        </div>
         <div>{{ difficultyLabel }}</div>
       </div>
       <div>
-        <div class="text-xs text-slate-500">游玩时间</div>
+        <div class="flex items-center gap-1 text-xs text-slate-500">
+          <Clock class="h-3.5 w-3.5" />
+          游玩时间
+        </div>
         <div>{{ playTimeLabel }}</div>
       </div>
     </div>
     <div class="mt-4">
       <div class="mb-1 flex justify-between text-xs text-slate-400">
-        <span>目录进度 {{ summary.catalog_obtained }}/{{ summary.catalog_total }}</span>
+        <span class="inline-flex items-center gap-1">
+          <Package class="h-3.5 w-3.5" />
+          目录进度 {{ summary.catalog_obtained }}/{{ summary.catalog_total }}
+        </span>
         <span>{{ summary.percent.toFixed(1) }}% · 未收集 {{ summary.missing_total }}</span>
       </div>
       <div class="h-2 overflow-hidden rounded bg-slate-800">

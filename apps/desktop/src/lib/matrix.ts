@@ -46,14 +46,6 @@ export function matrixPeriodLabel(item: AnyItem): string {
   return MATRIX_COLUMNS[matrixColumn(item)] ?? "";
 }
 
-export function statusEmoji(row: ItemRow, ngPlusCount: number): string {
-  if (row.obtained) return "✅";
-  if (row.item.dlc) return "🎁";
-  if (row.item.ng_plus > ngPlusCount) return "🔒";
-  if (row.item.aliases.length === 0) return "➖";
-  return "❌";
-}
-
 export function matrixColumns(rows: ItemRow[]): number[] {
   return Array.from({ length: MATRIX_COLUMN_COUNT }, (_, index) => index).filter((index) =>
     rows.some((row) => matrixColumn(row.item) === index),

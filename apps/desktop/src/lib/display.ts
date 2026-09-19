@@ -52,10 +52,18 @@ interface LocatedItem {
   location_zh?: string | null;
 }
 
-export function locationLine(item: LocatedItem, lang: Lang): string {
-  const area = localized(item.area_zh, item.area, lang);
+export function areaLabel(item: LocatedItem, lang: Lang): string {
+  return localized(item.area_zh, item.area, lang);
+}
+
+export function locationLabel(item: LocatedItem, lang: Lang): string {
+  const area = areaLabel(item, lang);
   const location = localized(item.location_zh, item.location, lang);
-  return [area, location].filter(Boolean).join(" · ");
+  return location === area ? "" : location;
+}
+
+export function locationLine(item: LocatedItem, lang: Lang): string {
+  return [areaLabel(item, lang), locationLabel(item, lang)].filter(Boolean).join(" · ");
 }
 
 export function obtainLabel(

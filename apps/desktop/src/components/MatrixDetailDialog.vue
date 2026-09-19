@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from "vue";
+import { X } from "@lucide/vue";
 import type { Lang } from "../types";
+import { areaAccent } from "../lib/area";
 import { matrixName, obtainLabel } from "../lib/display";
-import { matrixPeriodLabel, statusEmoji, type MatrixUnit } from "../lib/matrix";
+import { matrixPeriodLabel, type MatrixUnit } from "../lib/matrix";
+import MatrixStatusIcon from "./MatrixStatusIcon.vue";
 
 defineProps<{
   unit: MatrixUnit;
+  areaKey: string;
   areaLabel: string;
   locationLabel: string;
   ngPlusCount: number;
@@ -34,13 +38,26 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
         <header class="flex items-start justify-between gap-3 border-b border-slate-800 px-4 py-3">
           <div>
             <h3 class="text-sm font-semibold text-slate-100">{{ unit.name }}</h3>
-            <p class="mt-0.5 text-xs text-slate-500">{{ areaLabel }} · {{ locationLabel }}</p>
+            <div class="mt-1.5 flex flex-wrap items-center gap-2">
+              <span
+                class="inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-semibold"
+                :class="[areaAccent(areaKey).band, areaAccent(areaKey).text]"
+              >
+                <span
+                  class="h-2 w-2 shrink-0 rounded-full"
+                  :class="areaAccent(areaKey).dot"
+                ></span>
+                {{ areaLabel }}
+              </span>
+              <span class="text-sm font-medium text-slate-200">{{ locationLabel }}</span>
+            </div>
           </div>
           <button
             type="button"
-            class="rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:bg-slate-800"
+            class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:bg-slate-800"
             @click="emit('close')"
           >
+            <X class="h-3.5 w-3.5" />
             关闭
           </button>
         </header>
@@ -61,8 +78,9 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
               class="mt-2 rounded border border-slate-800 bg-slate-950/40 px-3 py-2"
             >
               <div class="flex flex-wrap items-baseline gap-2">
-                <span class="text-xs text-slate-200">
-                  {{ statusEmoji(entry, ngPlusCount) }} {{ matrixName(entry.item, lang) }}
+                <span class="inline-flex items-center gap-1 text-xs text-slate-200">
+                  <MatrixStatusIcon :row="entry" :ng-plus-count="ngPlusCount" />
+                  {{ matrixName(entry.item, lang) }}
                 </span>
                 <span class="rounded bg-slate-800 px-1.5 py-0.5 text-[11px] text-slate-400">
                   {{ matrixPeriodLabel(entry.item) }}

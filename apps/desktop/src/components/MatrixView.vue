@@ -1,16 +1,13 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import type { Lang } from "../types";
+import { areaAccent } from "../lib/area";
 import { matrixName } from "../lib/display";
 import type { ItemRow } from "../lib/items";
-import {
-  buildMatrix,
-  MATRIX_COLUMNS,
-  matrixColumns,
-  statusEmoji,
-  type MatrixUnit,
-} from "../lib/matrix";
+import { buildMatrix, MATRIX_COLUMNS, matrixColumns, type MatrixUnit } from "../lib/matrix";
+import { MATRIX_STATUS_LEGEND } from "../lib/status";
 import MatrixDetailDialog from "./MatrixDetailDialog.vue";
+import MatrixStatusIcon from "./MatrixStatusIcon.vue";
 
 const props = defineProps<{
   rows: ItemRow[];
@@ -21,6 +18,7 @@ const props = defineProps<{
 
 interface SelectedUnit {
   unit: MatrixUnit;
+  areaKey: string;
   areaLabel: string;
   locationLabel: string;
 }
@@ -29,14 +27,23 @@ const areas = computed(() => buildMatrix(props.rows, props.allRows, props.lang))
 const columns = computed(() => matrixColumns(props.allRows));
 const selected = ref<SelectedUnit | null>(null);
 
-function selectUnit(areaLabel: string, locationLabel: string, unit: MatrixUnit) {
-  selected.value = { unit, areaLabel, locationLabel };
+function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, unit: MatrixUnit) {
+  selected.value = { unit, areaKey, areaLabel, locationLabel };
 }
 </script>
 
 <template>
   <div class="p-4">
-    <p class="text-xs text-slate-500">✅ 已获得 · ❌ 未获得 · 🔒 需更高周目 · 🎁 DLC/特典 · ➖ 默认外观</p>
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500">
+      <span
+        v-for="status in MATRIX_STATUS_LEGEND"
+        :key="status.label"
+        class="inline-flex items-center gap-1"
+      >
+        <component :is="status.icon" class="h-3.5 w-3.5" :class="status.className" />
+        {{ status.label }}
+      </span>
+    </div>
     <p class="mt-1 text-[11px] text-slate-600">
       同一行为同一获取点：高周目会替换该点的物品，横向对比即可查漏；点击行查看获取方式等详情。
     </p>
@@ -44,7 +51,7 @@ function selectUnit(areaLabel: string, locationLabel: string, unit: MatrixUnit) 
       <table class="w-full text-xs">
         <thead>
           <tr class="text-left text-slate-500">
-            <th class="w-32 py-1 pr-3">地点</th>
+            <th class="w-40 py-1 pr-3 text-sm font-semibold text-slate-300">地点</th>
             <th v-for="index in columns" :key="index" class="py-1 pr-3">
               {{ MATRIX_COLUMNS[index] }}
             </th>
@@ -54,11 +61,17 @@ function selectUnit(areaLabel: string, locationLabel: string, unit: MatrixUnit) 
         <tbody>
           <template v-for="area in areas" :key="area.key">
             <tr>
-              <td
-                :colspan="columns.length + 2"
-                class="pb-1 pt-4 text-xs font-semibold text-slate-300"
-              >
-                {{ area.label }}
+              <td :colspan="columns.length + 2" class="pb-1 pt-4">
+                <div
+                  class="flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-bold"
+                  :class="[areaAccent(area.key).band, areaAccent(area.key).text]"
+                >
+                  <span
+                    class="h-2.5 w-2.5 shrink-0 rounded-full"
+                    :class="areaAccent(area.key).dot"
+                  ></span>
+                  <span>{{ area.label }}</span>
+                </div>
               </td>
             </tr>
             <template v-for="location in area.locations" :key="location.key">
@@ -66,18 +79,24 @@ function selectUnit(areaLabel: string, locationLabel: string, unit: MatrixUnit) 
                 v-for="(unit, unitIndex) in location.units"
                 :key="unit.key"
                 class="cursor-pointer border-t border-slate-800/70 align-top hover:bg-slate-800/20"
-                @click="selectUnit(area.label, location.label, unit)"
+                @click="selectUnit(area.key, area.label, location.label, unit)"
               >
                 <td
                   v-if="unitIndex === 0"
                   :rowspan="location.units.length"
-                  class="py-1.5 pr-3 text-slate-300"
+                  class="border-l-4 py-2 pl-3 pr-3 align-top text-sm font-semibold text-slate-100"
+                  :class="[areaAccent(area.key).border, areaAccent(area.key).cell]"
                 >
                   {{ location.label }}
                 </td>
                 <td v-for="index in columns" :key="index" class="py-1.5 pr-3">
-                  <div v-for="entry in unit.cells[index]" :key="entry.id">
-                    {{ statusEmoji(entry, ngPlusCount) }} {{ matrixName(entry.item, lang) }}
+                  <div
+                    v-for="entry in unit.cells[index]"
+                    :key="entry.id"
+                    class="flex items-start gap-1"
+                  >
+                    <MatrixStatusIcon :row="entry" :ng-plus-count="ngPlusCount" class="mt-px" />
+                    <span>{{ matrixName(entry.item, lang) }}</span>
                   </div>
                   <span v-if="unit.cells[index].length === 0" class="text-slate-600">—</span>
                 </td>
@@ -99,6 +118,7 @@ function selectUnit(areaLabel: string, locationLabel: string, unit: MatrixUnit) 
     <MatrixDetailDialog
       v-if="selected"
       :unit="selected.unit"
+      :area-key="selected.areaKey"
       :area-label="selected.areaLabel"
       :location-label="selected.locationLabel"
       :ng-plus-count="ngPlusCount"

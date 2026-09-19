@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { LayoutGrid, List, ListFilter, Search, SearchX, type LucideIcon } from "@lucide/vue";
 import type { CategoryResult, ItemFilter, Lang } from "../types";
+import { areaAccent } from "../lib/area";
 import { categoryRows, matchesQuery, type ItemRow } from "../lib/items";
 import ItemTable from "./ItemTable.vue";
 import MatrixView from "./MatrixView.vue";
@@ -50,9 +52,9 @@ const FILTER_OPTIONS: { value: ItemFilter; label: string }[] = [
   { value: "missing", label: "未收集" },
 ];
 
-const VIEW_OPTIONS: { value: ViewMode; label: string }[] = [
-  { value: "matrix", label: "周目矩阵" },
-  { value: "list", label: "列表" },
+const VIEW_OPTIONS: { value: ViewMode; label: string; icon: LucideIcon }[] = [
+  { value: "matrix", label: "周目矩阵", icon: LayoutGrid },
+  { value: "list", label: "列表", icon: List },
 ];
 
 const filter = ref<ItemFilter>("all");
@@ -179,7 +181,7 @@ function onInput(event: Event) {
               v-for="option in VIEW_OPTIONS"
               :key="option.value"
               type="button"
-              class="px-2 py-1"
+              class="inline-flex items-center gap-1 px-2 py-1"
               :class="
                 view === option.value
                   ? 'bg-slate-700 text-white'
@@ -187,16 +189,22 @@ function onInput(event: Event) {
               "
               @click="view = option.value"
             >
+              <component :is="option.icon" class="h-3.5 w-3.5" />
               {{ option.label }}
             </button>
           </div>
-          <input
-            class="w-64 rounded border border-slate-700 bg-slate-950 px-2 py-1 text-sm text-slate-100 placeholder:text-slate-600"
-            type="search"
-            placeholder="搜索名称 / 地点 / ID"
-            :value="query"
-            @input="onInput"
-          />
+          <div class="relative">
+            <Search
+              class="pointer-events-none absolute left-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-500"
+            />
+            <input
+              class="w-64 rounded border border-slate-700 bg-slate-950 py-1 pl-7 pr-2 text-sm text-slate-100 placeholder:text-slate-600"
+              type="search"
+              placeholder="搜索名称 / 地点 / ID"
+              :value="query"
+              @input="onInput"
+            />
+          </div>
         </div>
       </div>
 
@@ -204,24 +212,33 @@ function onInput(event: Event) {
         <div class="h-full rounded bg-emerald-500" :style="{ width: `${percent}%` }"></div>
       </div>
 
-      <div class="flex overflow-hidden rounded border border-slate-700 text-xs">
-        <button
-          v-for="option in FILTER_OPTIONS"
-          :key="option.value"
-          type="button"
-          class="px-3 py-1"
-          :class="
-            filter === option.value ? 'bg-slate-700 text-white' : 'text-slate-400 hover:bg-slate-800'
-          "
-          @click="filter = option.value"
-        >
-          {{ option.label }}
-          <span class="ml-1 text-slate-500">{{ count(option.value) }}</span>
-        </button>
+      <div class="flex items-center gap-1.5">
+        <ListFilter class="h-3.5 w-3.5 text-slate-500" />
+        <div class="flex overflow-hidden rounded border border-slate-700 text-xs">
+          <button
+            v-for="option in FILTER_OPTIONS"
+            :key="option.value"
+            type="button"
+            class="px-3 py-1"
+            :class="
+              filter === option.value
+                ? 'bg-slate-700 text-white'
+                : 'text-slate-400 hover:bg-slate-800'
+            "
+            @click="filter = option.value"
+          >
+            {{ option.label }}
+            <span class="ml-1 text-slate-500">{{ count(option.value) }}</span>
+          </button>
+        </div>
       </div>
     </header>
 
-    <p v-if="rows.length === 0" class="px-4 py-10 text-center text-xs text-slate-500">
+    <p
+      v-if="rows.length === 0"
+      class="flex items-center justify-center gap-2 px-4 py-10 text-center text-xs text-slate-500"
+    >
+      <SearchX class="h-4 w-4" />
       没有符合条件的物件
     </p>
     <MatrixView
@@ -244,10 +261,20 @@ function onInput(event: Event) {
         <template v-if="group.areas.length > 0">
           <section v-for="area in group.areas" :key="area.key">
             <header
-              class="flex flex-wrap items-baseline justify-between gap-2 border-t border-slate-800/70 bg-slate-950/40 px-4 py-1.5"
+              class="flex flex-wrap items-center justify-between gap-2 border-t border-slate-800/70 px-4 py-2"
+              :class="areaAccent(area.key).band"
             >
-              <h4 class="text-[11px] font-medium text-slate-300">{{ area.label }}</h4>
-              <span class="text-[11px] text-slate-500">
+              <h4
+                class="flex items-center gap-2 text-sm font-semibold"
+                :class="areaAccent(area.key).text"
+              >
+                <span
+                  class="h-2.5 w-2.5 shrink-0 rounded-full"
+                  :class="areaAccent(area.key).dot"
+                ></span>
+                {{ area.label }}
+              </h4>
+              <span class="text-xs text-slate-400">
                 已收集 {{ area.obtained }}/{{ area.total }}
               </span>
             </header>
