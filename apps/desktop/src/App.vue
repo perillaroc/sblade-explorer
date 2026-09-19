@@ -12,6 +12,7 @@ const SUMMARY_PAGE = "summary";
 
 const MATRIX_CATEGORIES = [
   "nano_suits",
+  "design_patterns",
   "earrings",
   "glasses",
   "drone_seals",

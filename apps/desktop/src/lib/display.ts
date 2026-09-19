@@ -29,6 +29,22 @@ export function itemName(item: NamedItem, lang: Lang): string {
   return item.name;
 }
 
+export function stripDesignPrefix(value: string): string {
+  return value.replace(/^设计图：/, "").replace(/^Design Pattern:\s*/, "").trim();
+}
+
+export function matrixName(item: NamedItem, lang: Lang): string {
+  const zh = stripDesignPrefix(item.name);
+  const en = item.name_en ? stripDesignPrefix(item.name_en) : "";
+  if (lang === "en") {
+    return en || zh;
+  }
+  if (lang === "both" && en && en !== zh) {
+    return `${zh}（${en}）`;
+  }
+  return zh || en;
+}
+
 interface LocatedItem {
   area?: string | null;
   area_zh?: string | null;
@@ -47,4 +63,26 @@ export function obtainLabel(
   lang: Lang,
 ): string {
   return localized(item.obtain_zh, item.obtain, lang);
+}
+
+const REPLACE_LEAD_ZH = /^在\s*NG\+\+?\s*中替换[^。]*。\s*/;
+const REPLACE_LEAD_EN = /^Replaces\s+.+?\s+(?:on|in)\s+NG\+\+?[.!]?\s*/i;
+
+function stripReplaceLead(value: string): string {
+  return value.replace(REPLACE_LEAD_ZH, "").replace(REPLACE_LEAD_EN, "").trim();
+}
+
+export function matrixObtain(
+  item: { obtain?: string | null; obtain_zh?: string | null },
+  lang: Lang,
+): string {
+  const zh = item.obtain_zh ? stripReplaceLead(item.obtain_zh) : "";
+  const en = item.obtain ? stripReplaceLead(item.obtain) : "";
+  if (lang === "en") {
+    return en || zh;
+  }
+  if (lang === "both" && zh && en && en !== zh) {
+    return `${zh}（${en}）`;
+  }
+  return zh || en;
 }

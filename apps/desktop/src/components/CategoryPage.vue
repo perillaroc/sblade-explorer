@@ -33,6 +33,8 @@ const rows = computed(() =>
   categoryRows(props.category, filter.value).filter((row) => matchesQuery(row.item, query.value)),
 );
 
+const allRows = computed(() => categoryRows(props.category, "all"));
+
 const percent = computed(() =>
   props.category.total === 0 ? 0 : (props.category.obtained / props.category.total) * 100,
 );
@@ -116,6 +118,7 @@ function onInput(event: Event) {
     <MatrixView
       v-else-if="matrix && view === 'matrix'"
       :rows="rows"
+      :all-rows="allRows"
       :ng-plus-count="ngPlusCount"
       :lang="lang"
     />
