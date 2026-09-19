@@ -471,18 +471,18 @@
   {
    "site_id": 786,
    "aliases": [
-    "BS_24_E",
-    "BS_24"
+    "BS_24_Var2"
    ],
-   "zh": "通勤装",
+   "zh": "空乘风",
    "confidence": "high"
   },
   {
    "site_id": 787,
    "aliases": [
-    "BS_24_Var2"
+    "BS_24_E",
+    "BS_24"
    ],
-   "zh": "空乘风",
+   "zh": "通勤装",
    "confidence": "high"
   },
   {
@@ -504,7 +504,7 @@
   {
    "site_id": 798,
    "aliases": [
-    "BS_Nikke_05"
+    "BS_Nikke_06"
    ],
    "zh": "清凉装",
    "confidence": "low"
@@ -512,7 +512,7 @@
   {
    "site_id": 799,
    "aliases": [
-    "BS_Nikke_01"
+    "BS_Nikke_02"
    ],
    "zh": "优雅礼服",
    "confidence": "low"
@@ -520,7 +520,7 @@
   {
    "site_id": 800,
    "aliases": [
-    "BS_Nikke_02"
+    "BS_Nikke_03"
    ],
    "zh": "极乐净土战斗服",
    "confidence": "low"
@@ -528,7 +528,7 @@
   {
    "site_id": 801,
    "aliases": [
-    "BS_Nikke_04"
+    "BS_Nikke_05"
    ],
    "zh": "失落之链",
    "confidence": "low"
@@ -536,7 +536,7 @@
   {
    "site_id": 802,
    "aliases": [
-    "BS_Nikke_03"
+    "BS_Nikke_04"
    ],
    "zh": "永不回头",
    "confidence": "low"
@@ -860,7 +860,7 @@
   {
    "site_id": 219,
    "aliases": [
-    "BS_Default"
+    "BS_Default_Var2"
    ],
    "zh": "星球空降服（第6小队）",
    "confidence": "high"
@@ -868,7 +868,7 @@
   {
    "site_id": 220,
    "aliases": [
-    "BS_Default_Var2"
+    "BS_Default"
    ],
    "zh": "星球空降服（第6小队）第2版",
    "confidence": "high"
@@ -1014,7 +1014,7 @@
   {
    "site_id": 59,
    "aliases": [
-    "BS_Nikke_06"
+    "BS_Nikke_01"
    ],
    "zh": "流浪剑客",
    "confidence": "low"
@@ -1177,7 +1177,7 @@
   {
    "site_id": 803,
    "aliases": [
-    "Hair_Nikke_01"
+    "Hair_Nikke_02"
    ],
    "zh": "高贵优雅",
    "category": "hair",
@@ -1186,7 +1186,7 @@
   {
    "site_id": 804,
    "aliases": [
-    "Hair_Nikke_02"
+    "Hair_Nikke_03"
    ],
    "zh": "标准长发",
    "category": "hair",
@@ -1195,7 +1195,7 @@
   {
    "site_id": 805,
    "aliases": [
-    "Hair_Nikke_03"
+    "Hair_Nikke_04"
    ],
    "zh": "元气刘海",
    "category": "hair",
@@ -1204,7 +1204,7 @@
   {
    "site_id": 806,
    "aliases": [
-    "Hair_Nikke_04"
+    "Hair_Nikke_05"
    ],
    "zh": "初恋",
    "category": "hair",
@@ -1213,7 +1213,7 @@
   {
    "site_id": 807,
    "aliases": [
-    "Hair_Nikke_05"
+    "Hair_Nikke_06"
    ],
    "zh": "活力双马尾",
    "category": "hair",
@@ -1222,7 +1222,7 @@
   {
    "site_id": 1057,
    "aliases": [
-    "Hair_Nikke_06"
+    "Hair_Nikke_01"
    ],
    "zh": "月光美人",
    "category": "hair",
@@ -1636,7 +1636,7 @@
   {
    "site_id": 133,
    "aliases": [
-    "DroneSeal_003"
+    "DroneSeal_002"
    ],
    "zh": "装甲包",
    "category": "drone_seals",
@@ -1663,7 +1663,7 @@
   {
    "site_id": 898,
    "aliases": [
-    "DroneSeal_002"
+    "DroneSeal_003"
    ],
    "zh": "占星师套装",
    "category": "drone_seals",

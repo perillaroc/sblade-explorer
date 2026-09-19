@@ -1298,13 +1298,12 @@
    "obtain_zh": "可在埃米尔的商店购买。需要《尼尔：机械纪元》DLC。"
   },
   {
-   "id": "BS_24_E",
-   "name": "通勤装",
-   "name_en": "Office Style",
+   "id": "BS_24_Var2",
+   "name": "空乘风",
+   "name_en": "Crew Style",
    "category": "nano_suits",
    "aliases": [
-    "BS_24_E",
-    "BS_24"
+    "BS_24_Var2"
    ],
    "area": "Wasteland",
    "location": "Great Canyon",
@@ -1320,12 +1319,13 @@
    "obtain_zh": "从阿尔忒斯勒瓦尔入口向东走，穿过大门，攀上你东北方的崖壁。沿悬崖向上并向西前进，然后做一系列借助柱子跳跃的平台动作。到达对面后，在过桥前可找到黑色箱子，里面有纳米战衣——通勤装。"
   },
   {
-   "id": "BS_24_Var2",
-   "name": "空乘风",
-   "name_en": "Crew Style",
+   "id": "BS_24_E",
+   "name": "通勤装",
+   "name_en": "Office Style",
    "category": "nano_suits",
    "aliases": [
-    "BS_24_Var2"
+    "BS_24_E",
+    "BS_24"
    ],
    "area": "Wasteland",
    "location": "Great Canyon",
@@ -1383,33 +1383,12 @@
    "obtain_zh": "在 NG+ 中作为委托《招募密码专家》的奖励替换玫瑰人生。"
   },
   {
-   "id": "BS_Nikke_05",
-   "name": "遗失之链",
-   "name_en": "Missing Link",
+   "id": "BS_Nikke_06",
+   "name": "冷却服",
+   "name_en": "Cooling Suit",
    "category": "nano_suits",
    "aliases": [
-    "BS_Nikke_05"
-   ],
-   "area": "Wasteland",
-   "location": "Great Canyon",
-   "obtain": "Available from [[walkthroughs/nikke-dlc/stellar-blade-x-nikke#finding-scarlet-and-volt|Volt's shop]]. Requires the Goddess of Victory: Nikke DLC.",
-   "ng_plus": 0,
-   "dlc": "nikke",
-   "missable": false,
-   "note": null,
-   "confidence": "high",
-   "source": "game",
-   "area_zh": "废土",
-   "location_zh": "大峡谷",
-   "obtain_zh": "可在伏特的商店购买。需要《胜利女神：妮姬》DLC。"
-  },
-  {
-   "id": "BS_Nikke_01",
-   "name": "浪游剑客服",
-   "name_en": "Wandering Swordfighter Outfit",
-   "category": "nano_suits",
-   "aliases": [
-    "BS_Nikke_01"
+    "BS_Nikke_06"
    ],
    "area": "Wasteland",
    "location": "Great Canyon",
@@ -1446,12 +1425,12 @@
    "obtain_zh": "可在伏特的商店购买。需要《胜利女神：妮姬》DLC。"
   },
   {
-   "id": "BS_Nikke_04",
-   "name": "永不回头",
-   "name_en": "Never Look Back",
+   "id": "BS_Nikke_03",
+   "name": "极乐净土战斗服",
+   "name_en": "Elysion Combat Uniform",
    "category": "nano_suits",
    "aliases": [
-    "BS_Nikke_04"
+    "BS_Nikke_03"
    ],
    "area": "Wasteland",
    "location": "Great Canyon",
@@ -1467,12 +1446,33 @@
    "obtain_zh": "可在伏特的商店购买。需要《胜利女神：妮姬》DLC。"
   },
   {
-   "id": "BS_Nikke_03",
-   "name": "极乐净土战斗服",
-   "name_en": "Elysion Combat Uniform",
+   "id": "BS_Nikke_05",
+   "name": "遗失之链",
+   "name_en": "Missing Link",
    "category": "nano_suits",
    "aliases": [
-    "BS_Nikke_03"
+    "BS_Nikke_05"
+   ],
+   "area": "Wasteland",
+   "location": "Great Canyon",
+   "obtain": "Available from [[walkthroughs/nikke-dlc/stellar-blade-x-nikke#finding-scarlet-and-volt|Volt's shop]]. Requires the Goddess of Victory: Nikke DLC.",
+   "ng_plus": 0,
+   "dlc": "nikke",
+   "missable": false,
+   "note": null,
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "废土",
+   "location_zh": "大峡谷",
+   "obtain_zh": "可在伏特的商店购买。需要《胜利女神：妮姬》DLC。"
+  },
+  {
+   "id": "BS_Nikke_04",
+   "name": "永不回头",
+   "name_en": "Never Look Back",
+   "category": "nano_suits",
+   "aliases": [
+    "BS_Nikke_04"
    ],
    "area": "Wasteland",
    "location": "Great Canyon",
@@ -2311,12 +2311,12 @@
    "obtain_zh": "在 NG++ 中替换星球空降服（第3小队）第2版。位于右侧岔路走廊，穿过激光陷阱和敌人后找到。"
   },
   {
-   "id": "BS_Default",
-   "name": "星球空降服（第6小队）第2版",
-   "name_en": "Planet Diving Suit (6th) V2",
+   "id": "BS_Default_Var2",
+   "name": "星球空降服（第6小队）",
+   "name_en": "Planet Diving Suit (6th)",
    "category": "nano_suits",
    "aliases": [
-    "BS_Default"
+    "BS_Default_Var2"
    ],
    "area": "Eidos 9",
    "location": "Fallen Overpass",
@@ -2332,12 +2332,12 @@
    "obtain_zh": "从第二个茧处沿黄色边沿下落，跳到一处小岛状区域，那里的车顶放着无人机升级模块。由此跳到带柱子的大楼。需要游过一小段水域，水会缓慢扣血，但能在死亡前抵达。过去后从侧面的黄色边沿爬到顶部，上房顶后跳上去穿门，箱子在进门左侧。（如预购了游戏且已从预购箱取得该纳米战衣，此箱只会开出维特币。）"
   },
   {
-   "id": "BS_Default_Var2",
-   "name": "星球空降服（第6小队）",
-   "name_en": "Planet Diving Suit (6th)",
+   "id": "BS_Default",
+   "name": "星球空降服（第6小队）第2版",
+   "name_en": "Planet Diving Suit (6th) V2",
    "category": "nano_suits",
    "aliases": [
-    "BS_Default_Var2"
+    "BS_Default"
    ],
    "area": "Eidos 9",
    "location": "Fallen Overpass",
@@ -2712,12 +2712,12 @@
    "obtain_zh": "在 Boss 挑战模式中以普通或更高难度击败曼恩的奖励。"
   },
   {
-   "id": "BS_Nikke_06",
-   "name": "冷却服",
-   "name_en": "Cooling Suit",
+   "id": "BS_Nikke_01",
+   "name": "浪游剑客服",
+   "name_en": "Wandering Swordfighter Outfit",
    "category": "nano_suits",
    "aliases": [
-    "BS_Nikke_06"
+    "BS_Nikke_01"
    ],
    "area": "Boss Challenge",
    "location": "Boss Challenge",
@@ -2733,12 +2733,12 @@
    "obtain_zh": "在 Boss 挑战模式中击败红莲的奖励。需要妮姬 DLC。"
   },
   {
-   "id": "Can_001",
-   "name": "原味克里欧",
-   "name_en": "Cryo Original",
+   "id": "Can_025",
+   "name": "灵泉胡萝卜汁",
+   "name_en": "Elixir Carrot",
    "category": "cans",
    "aliases": [
-    "Can_001"
+    "Can_025"
    ],
    "area": "Eidos 7",
    "location": "Flooded Commercial Sector",
@@ -2754,12 +2754,12 @@
    "obtain_zh": "在蓝色外墙、门外挂着啤酒桶的建筑内货架上。需在支线任务《遗忘》中降低水位后才能进入。"
   },
   {
-   "id": "Can_002",
-   "name": "克里欧无糖饮料",
-   "name_en": "Cryo Zero",
+   "id": "Can_001",
+   "name": "原味克里欧",
+   "name_en": "Cryo Original",
    "category": "cans",
    "aliases": [
-    "Can_002"
+    "Can_001"
    ],
    "area": "Eidos 7",
    "location": "Flooded Commercial Sector",
@@ -2775,12 +2775,12 @@
    "obtain_zh": "在淹没区下层与 Fiz 自动售货机互动获得。需在支线任务《遗忘》中降低水位后才能进入。"
   },
   {
-   "id": "Can_003",
-   "name": "雪精灵",
-   "name_en": "Pixie",
+   "id": "Can_033",
+   "name": "劲能疾风维他命",
+   "name_en": "Potential Blast",
    "category": "cans",
    "aliases": [
-    "Can_003"
+    "Can_033"
    ],
    "area": "Eidos 7",
    "location": "Construction Zone",
@@ -2796,12 +2796,12 @@
    "obtain_zh": "在施工区东侧，电梯井附近的木坡道旁寻找闪烁的黄灯。爬上去进入上方建筑，再从天花板东南角的洞爬上上面一层。罐子就在红色工具箱旁的工作台上。"
   },
   {
-   "id": "Can_004",
-   "name": "雪精灵无糖饮料",
-   "name_en": "Pixie Zero",
+   "id": "Can_009",
+   "name": "马奇内塔美式咖啡",
+   "name_en": "The Machinetta Americano",
    "category": "cans",
    "aliases": [
-    "Can_004"
+    "Can_009"
    ],
    "area": "Xion",
    "location": "Xion City",
@@ -2817,12 +2817,12 @@
    "obtain_zh": "与 Fiz 自动售货机互动，罐子会从下方掉落。"
   },
   {
-   "id": "Can_005",
-   "name": "新地干姜水",
-   "name_en": "Newfoundland Dry",
+   "id": "Can_039",
+   "name": "勃朗峰气泡水",
+   "name_en": "Mountain Sparkle Mont Blanc",
    "category": "cans",
    "aliases": [
-    "Can_005"
+    "Can_039"
    ],
    "area": "Xion",
    "location": "Xion City",
@@ -2838,12 +2838,12 @@
    "obtain_zh": "与“姐妹废品店”上方的 Fiz 自动售货机互动，罐子会从下方掉落。"
   },
   {
-   "id": "Can_006",
-   "name": "无糖新地干姜水",
-   "name_en": "Newfoundland Dry Zero",
+   "id": "Can_045",
+   "name": "巴伐利亚小麦黑啤酒",
+   "name_en": "Bayern Weissbier Dunkel",
    "category": "cans",
    "aliases": [
-    "Can_006"
+    "Can_045"
    ],
    "area": "Xion",
    "location": "Xion City",
@@ -2859,12 +2859,12 @@
    "obtain_zh": "传送点与布告栏之间的一条小巷，罐子在小巷尽头。"
   },
   {
-   "id": "Can_007",
-   "name": "妙之跃",
-   "name_en": "Milky Pop",
+   "id": "Can_036",
+   "name": "狄俄倪索斯-C",
+   "name_en": "Dionysus C",
    "category": "cans",
    "aliases": [
-    "Can_007"
+    "Can_036"
    ],
    "area": "Xion",
    "location": "Xion City",
@@ -2880,12 +2880,12 @@
    "obtain_zh": "前往布告栏的路上，在地上拾取。"
   },
   {
-   "id": "Can_008",
-   "name": "妙之跃无糖饮料",
-   "name_en": "Milky Pop Zero",
+   "id": "Can_027",
+   "name": "红比蒙狮",
+   "name_en": "Behemoth Red",
    "category": "cans",
    "aliases": [
-    "Can_008"
+    "Can_027"
    ],
    "area": "Xion",
    "location": "Xion City",
@@ -2901,12 +2901,12 @@
    "obtain_zh": "通往“最后一杯”（苏与恩雅所在处）的小巷里，左侧有台 Fiz 自动售货机。"
   },
   {
-   "id": "Can_009",
-   "name": "马奇内塔美式咖啡",
-   "name_en": "The Machinetta Americano",
+   "id": "Can_011",
+   "name": "马奇内塔焦糖玛奇朵",
+   "name_en": "The Machinetta Caramel Macchiato",
    "category": "cans",
    "aliases": [
-    "Can_009"
+    "Can_011"
    ],
    "area": "Xion",
    "location": "Xion City",
@@ -2922,12 +2922,12 @@
    "obtain_zh": "在中央有大型星球雕塑的北部广场最里端，最右侧角落（Delloih 右侧）上几级台阶，有台 Fiz 自动售货机。"
   },
   {
-   "id": "Can_010",
-   "name": "马奇内塔拿铁咖啡",
-   "name_en": "The Machinetta Cafe Latte",
+   "id": "Can_003",
+   "name": "雪精灵",
+   "name_en": "Pixie",
    "category": "cans",
    "aliases": [
-    "Can_010"
+    "Can_003"
    ],
    "area": "Xion",
    "location": "Xion City",
@@ -2943,12 +2943,12 @@
    "obtain_zh": "Delloih 店铺左侧，摆着人体模特橱窗外面、滑板旁。"
   },
   {
-   "id": "Can_011",
-   "name": "马奇内塔焦糖玛奇朵",
-   "name_en": "The Machinetta Caramel Macchiato",
+   "id": "Can_019",
+   "name": "乌龙谷物茶",
+   "name_en": "GrainT Oolong",
    "category": "cans",
    "aliases": [
-    "Can_011"
+    "Can_019"
    ],
    "area": "Xion",
    "location": "Xion City",
@@ -2964,12 +2964,12 @@
    "obtain_zh": "沿绳索再沿梯子下到底部，跳到军团补给箱后方的岩石上。"
   },
   {
-   "id": "Can_012",
-   "name": "克里欧原味咖啡",
-   "name_en": "Cryo Café Original",
+   "id": "Can_034",
+   "name": "劲能暴风维他命",
+   "name_en": "Potential Tempest",
    "category": "cans",
    "aliases": [
-    "Can_012"
+    "Can_034"
    ],
    "area": "Wasteland",
    "location": "Barren Lands",
@@ -2985,12 +2985,12 @@
    "obtain_zh": "打开太阳塔以北区域的 2 台控制台，再把黄色箱子推到区域中央的集装箱处开启最后一台控制台，旁边的宝箱会打开，内有该罐子。"
   },
   {
-   "id": "Can_013",
-   "name": "克里欧香草咖啡",
-   "name_en": "Cryo Café Vanilla",
+   "id": "Can_020",
+   "name": "玉米谷物茶",
+   "name_en": "GrainT Corn",
    "category": "cans",
    "aliases": [
-    "Can_013"
+    "Can_020"
    ],
    "area": "Wasteland",
    "location": "Barren Lands",
@@ -3006,12 +3006,12 @@
    "obtain_zh": "在荒芜之地东侧有两条通往废料平原的路，走东南那条。沿路留意左侧的自动售货机，互动获得罐子。"
   },
   {
-   "id": "Can_014",
-   "name": "克里欧抹茶咖啡",
-   "name_en": "Cryo Café Mocha",
+   "id": "Can_017",
+   "name": "庇佑之地绿茶",
+   "name_en": "The Haven Green Tea",
    "category": "cans",
    "aliases": [
-    "Can_014"
+    "Can_017"
    ],
    "area": "Wasteland",
    "location": "Barren Lands",
@@ -3027,12 +3027,12 @@
    "obtain_zh": "从太阳塔沿路向北再转向东，在原本“狂飙车手”纳米战衣处不要向东，而是向南跳下，沿几处悬崖平台一路向上。只有一条路，沿路走到梯子处即可找到罐子。"
   },
   {
-   "id": "Can_015",
-   "name": "庇佑之地伯爵茶",
-   "name_en": "The Haven Earl Grey",
+   "id": "Can_012",
+   "name": "克里欧原味咖啡",
+   "name_en": "Cryo Café Original",
    "category": "cans",
    "aliases": [
-    "Can_015"
+    "Can_012"
    ],
    "area": "Wasteland",
    "location": "Great Canyon",
@@ -3048,12 +3048,12 @@
    "obtain_zh": "穿过失事飞船到达悬崖边缘，左转走到尽头找到罐子。"
   },
   {
-   "id": "Can_016",
-   "name": "庇佑之地奶茶",
-   "name_en": "The Haven Milk Tea",
+   "id": "Can_028",
+   "name": "绿比蒙狮",
+   "name_en": "Behemoth Green",
    "category": "cans",
    "aliases": [
-    "Can_016"
+    "Can_028"
    ],
    "area": "Wasteland",
    "location": "Great Canyon",
@@ -3069,12 +3069,12 @@
    "obtain_zh": "附近补给营地以西的西南边缘。把两个球滚到冰柜旁的压力开关上。第二个球在开关左侧的崖边角落。"
   },
   {
-   "id": "Can_017",
-   "name": "庇佑之地绿茶",
-   "name_en": "The Haven Green Tea",
+   "id": "Can_002",
+   "name": "克里欧无糖饮料",
+   "name_en": "Cryo Zero",
    "category": "cans",
    "aliases": [
-    "Can_017"
+    "Can_002"
    ],
    "area": "Wasteland",
    "location": "Great Canyon",
@@ -3111,12 +3111,12 @@
    "obtain_zh": "罐子在上锁大门后。从阿尔忒斯勒瓦尔入口以东的路爬上去，再从这些崖顶西侧的柱子与边沿跳下。把 3 辆推车全部放到左侧压力板上解谜，使左侧显示 23、右侧显示 03，与上方标牌一致。从数字前的开口跳下取得罐子。"
   },
   {
-   "id": "Can_019",
-   "name": "乌龙谷物茶",
-   "name_en": "GrainT Oolong",
+   "id": "Can_041",
+   "name": "汉拿山气泡水",
+   "name_en": "Mountain Sparkle Halla",
    "category": "cans",
    "aliases": [
-    "Can_019"
+    "Can_041"
    ],
    "area": "Wasteland",
    "location": "Great Canyon",
@@ -3132,12 +3132,12 @@
    "obtain_zh": "获得二段跳后，快速传送至西部大峡谷补给营地，向北走并攀上北侧悬崖，一路奔跑、跳跃、攀爬直到顶部，有冰柜藏有该罐子。"
   },
   {
-   "id": "Can_020",
-   "name": "玉米谷物茶",
-   "name_en": "GrainT Corn",
+   "id": "Can_021",
+   "name": "橙子甘露",
+   "name_en": "Nectar Orange",
    "category": "cans",
    "aliases": [
-    "Can_020"
+    "Can_021"
    ],
    "area": "Wasteland",
    "location": "Great Canyon",
@@ -3153,12 +3153,12 @@
    "obtain_zh": "中部大峡谷营地旁有块广告牌。把北侧的黄色箱子拉到钢梁旁，二段跳上去，走过广告牌取得罐子。"
   },
   {
-   "id": "Can_021",
-   "name": "橙子甘露",
-   "name_en": "Nectar Orange",
+   "id": "Can_046",
+   "name": "海盗拉格啤酒",
+   "name_en": "Corsair Lager",
    "category": "cans",
    "aliases": [
-    "Can_021"
+    "Can_046"
    ],
    "area": "Wasteland",
    "location": "Scrap Plains",
@@ -3174,12 +3174,12 @@
    "obtain_zh": "位于北部废料平原西侧升降平台顶部的箱子里。先启动北侧拉杆降下平台，再冲刺回到升降台。"
   },
   {
-   "id": "Can_022",
-   "name": "葡萄甘露",
-   "name_en": "Nectar Grape",
+   "id": "Can_004",
+   "name": "雪精灵无糖饮料",
+   "name_en": "Pixie Zero",
    "category": "cans",
    "aliases": [
-    "Can_022"
+    "Can_004"
    ],
    "area": "Wasteland",
    "location": "Scrap Plains",
@@ -3195,12 +3195,12 @@
    "obtain_zh": "走到此处悬崖边用扫描器脉冲。悬崖下方有三根金属梁压着一块废料，里面困着机器人。射断金属梁放出机器人，它会为你丢下罐子。"
   },
   {
-   "id": "Can_023",
-   "name": "苹果甘露",
-   "name_en": "Nectar Apple",
+   "id": "Can_026",
+   "name": "灵泉翠汁",
+   "name_en": "Elixir Green",
    "category": "cans",
    "aliases": [
-    "Can_023"
+    "Can_026"
    ],
    "area": "Wasteland",
    "location": "Scrap Plains",
@@ -3216,12 +3216,12 @@
    "obtain_zh": "在布告栏附近传送点上方的废料建筑群。用左侧金属坡道跳上去，跳到罐子所在处，需要二段跳。"
   },
   {
-   "id": "Can_024",
-   "name": "蔓越莓甘露",
-   "name_en": "Nectar Cranberry",
+   "id": "Can_044",
+   "name": "巴伐利亚酵母小麦白啤酒",
+   "name_en": "Bayern Hefe Weissbier",
    "category": "cans",
    "aliases": [
-    "Can_024"
+    "Can_044"
    ],
    "area": "Wasteland",
    "location": "Wasteland Basin",
@@ -3237,12 +3237,12 @@
    "obtain_zh": "位于悬崖边一小片混凝土废墟旁的 Fiz 自动售货机内。"
   },
   {
-   "id": "Can_025",
-   "name": "灵泉胡萝卜汁",
-   "name_en": "Elixir Carrot",
+   "id": "Can_010",
+   "name": "马奇内塔拿铁咖啡",
+   "name_en": "The Machinetta Cafe Latte",
    "category": "cans",
    "aliases": [
-    "Can_025"
+    "Can_010"
    ],
    "area": "Wasteland",
    "location": "Plant",
@@ -3258,12 +3258,12 @@
    "obtain_zh": "完成推车谜题后落入地面的宝箱内。把三辆推车分别推上各自的平台即可放下箱子：一辆在右侧金属平台上，一辆在入口左侧楼梯旁，最后一辆在后方上层平台。"
   },
   {
-   "id": "Can_026",
-   "name": "灵泉翠汁",
-   "name_en": "Elixir Green",
+   "id": "Can_042",
+   "name": "克里欧纯净水",
+   "name_en": "Cryo The Clear",
    "category": "cans",
    "aliases": [
-    "Can_026"
+    "Can_042"
    ],
    "area": "Wasteland",
    "location": "Forbidden Area",
@@ -3279,12 +3279,12 @@
    "obtain_zh": "位于禁区中段、大门和围栏后方。沿前两条绳索下去，向西找到大门和围栏，利用边缘的碎石到达大门，打开后拾取罐子。"
   },
   {
-   "id": "Can_027",
-   "name": "红比蒙狮",
-   "name_en": "Behemoth Red",
+   "id": "Can_013",
+   "name": "克里欧香草咖啡",
+   "name_en": "Cryo Café Vanilla",
    "category": "cans",
    "aliases": [
-    "Can_027"
+    "Can_013"
    ],
    "area": "Matrix 11",
    "location": "Collapsed Rail Bridge",
@@ -3300,12 +3300,12 @@
    "obtain_zh": "位于调车场西南侧高架轨道段旁的两个蓝色集装箱边。"
   },
   {
-   "id": "Can_028",
-   "name": "绿比蒙狮",
-   "name_en": "Behemoth Green",
+   "id": "Can_005",
+   "name": "新地干姜水",
+   "name_en": "Newfoundland Dry",
    "category": "cans",
    "aliases": [
-    "Can_028"
+    "Can_005"
    ],
    "area": "Matrix 11",
    "location": "Temporary Armoury",
@@ -3321,12 +3321,12 @@
    "obtain_zh": "在巨兽战场西侧燃烧轮胎后的隐藏房间里。从集装箱后的金属楼梯下方钻进去。"
   },
   {
-   "id": "Can_029",
-   "name": "黑比蒙狮",
-   "name_en": "Behemoth Black",
+   "id": "Can_047",
+   "name": "海盗麦芽啤酒",
+   "name_en": "Corsair Ale",
    "category": "cans",
    "aliases": [
-    "Can_029"
+    "Can_047"
    ],
    "area": "Matrix 11",
    "location": "Train Graveyard",
@@ -3342,12 +3342,12 @@
    "obtain_zh": "在淹没隧道北端的小平台上，穿过沉没列车和铁丝网。铁丝网水下有个洞可以游过去。"
   },
   {
-   "id": "Can_030",
-   "name": "焰火能量饮料",
-   "name_en": "Liquid Fire",
+   "id": "Can_048",
+   "name": "乔纳森柠檬味嗨棒",
+   "name_en": "Johnson's Highball Lemon",
    "category": "cans",
    "aliases": [
-    "Can_030"
+    "Can_048"
    ],
    "area": "Great Desert",
    "location": "Collapsed Overpass",
@@ -3363,12 +3363,12 @@
    "obtain_zh": "打开山顶的宝箱获得。把黄色箱子移到边沿旁再爬上去即可到达。进入该区域时，身后会落下巨石将你困住，需击败敌人才能离开。"
   },
   {
-   "id": "Can_031",
-   "name": "闪电能量饮料",
-   "name_en": "Liquid Lightning",
+   "id": "Can_038",
+   "name": "星泉水",
+   "name_en": "Starwell",
    "category": "cans",
    "aliases": [
-    "Can_031"
+    "Can_038"
    ],
    "area": "Great Desert",
    "location": "Buried Ruins",
@@ -3384,12 +3384,12 @@
    "obtain_zh": "就在掩埋遗迹西侧营地旁边。在闪亮的地面上放置智能地雷，等地下的孽奇拔撞上它，就能震出装有罐子的宝箱。"
   },
   {
-   "id": "Can_032",
-   "name": "核子能量饮料",
-   "name_en": "Liquid Nuclear",
+   "id": "Can_035",
+   "name": "劲能冰霜维他命",
+   "name_en": "Potential Frost",
    "category": "cans",
    "aliases": [
-    "Can_032"
+    "Can_035"
    ],
    "area": "Great Desert",
    "location": "Buried Ruins",
@@ -3405,12 +3405,12 @@
    "obtain_zh": "位于你从简易坡道落下处下方小建筑上的宝箱里。在激光之间小心跳跃到达宝箱。"
   },
   {
-   "id": "Can_033",
-   "name": "劲能疾风维他命",
-   "name_en": "Potential Blast",
+   "id": "Can_049",
+   "name": "乔纳森姜味嗨棒",
+   "name_en": "Johnson's Highball Ginger",
    "category": "cans",
    "aliases": [
-    "Can_033"
+    "Can_049"
    ],
    "area": "Great Desert",
    "location": "Buried Ruins",
@@ -3426,12 +3426,12 @@
    "obtain_zh": "与崩塌屋顶营地以东一层的自动售货机互动。靠近时会被两只触手孽奇拔和一只潜伏孽奇拔伏击。"
   },
   {
-   "id": "Can_034",
-   "name": "劲能暴风维他命",
-   "name_en": "Potential Tempest",
+   "id": "Can_016",
+   "name": "庇佑之地奶茶",
+   "name_en": "The Haven Milk Tea",
    "category": "cans",
    "aliases": [
-    "Can_034"
+    "Can_016"
    ],
    "area": "Great Desert",
    "location": "Buried Ruins",
@@ -3447,12 +3447,12 @@
    "obtain_zh": "需要在歌剧院以北解谜。打掉炮塔，把悬浮货箱放到压力板上，使三块板从西到东分别显示 4、6、7。全部变绿后打开东北方的门，里面的宝箱有该罐子。"
   },
   {
-   "id": "Can_035",
-   "name": "劲能冰霜维他命",
-   "name_en": "Potential Frost",
+   "id": "Can_029",
+   "name": "黑比蒙狮",
+   "name_en": "Behemoth Black",
    "category": "cans",
    "aliases": [
-    "Can_035"
+    "Can_029"
    ],
    "area": "Great Desert",
    "location": "Buried Ruins",
@@ -3468,12 +3468,12 @@
    "obtain_zh": "在掩埋遗迹歌剧院东北方有一个小停车场。停车场南墙上写着数字 12、2 和 13。把这里的三个黄色箱子推到标有 12、2、13 的车位上，即可解锁附近的冰柜。"
   },
   {
-   "id": "Can_036",
-   "name": "狄俄倪索斯-C",
-   "name_en": "Dionysus C",
+   "id": "Can_040",
+   "name": "珠穆朗玛峰气泡水",
+   "name_en": "Mountain Sparkle Everest",
    "category": "cans",
    "aliases": [
-    "Can_036"
+    "Can_040"
    ],
    "area": "Great Desert",
    "location": "Buried Ruins",
@@ -3489,12 +3489,12 @@
    "obtain_zh": "位于激光后的宝箱里。从遗迹间小径营地向北沿路前进，将黄色方块向北推，放在激光右侧挡住激光。注意，推方块时会被爬行者和潜伏者孽奇拔伏击。"
   },
   {
-   "id": "Can_037",
-   "name": "月泉水",
-   "name_en": "Moonwell",
+   "id": "Can_032",
+   "name": "核子能量饮料",
+   "name_en": "Liquid Nuclear",
    "category": "cans",
    "aliases": [
-    "Can_037"
+    "Can_032"
    ],
    "area": "Great Desert",
    "location": "Buried Ruins",
@@ -3510,12 +3510,12 @@
    "obtain_zh": "位于遗迹间小径营地附近上锁大门后。攀爬歌剧院对面的脚手架，把黄色箱子移到后方黄色边沿下方，进入内有罐子宝箱的区域。"
   },
   {
-   "id": "Can_038",
-   "name": "星泉水",
-   "name_en": "Starwell",
+   "id": "Can_006",
+   "name": "无糖新地干姜水",
+   "name_en": "Newfoundland Dry Zero",
    "category": "cans",
    "aliases": [
-    "Can_038"
+    "Can_006"
    ],
    "area": "Great Desert",
    "location": "Central Great Desert",
@@ -3531,12 +3531,12 @@
    "obtain_zh": "流放者通道营地附近。射击伸出地面的箱子，罐子就会出现。"
   },
   {
-   "id": "Can_039",
-   "name": "勃朗峰气泡水",
-   "name_en": "Mountain Sparkle Mont Blanc",
+   "id": "Can_024",
+   "name": "蔓越莓甘露",
+   "name_en": "Nectar Cranberry",
    "category": "cans",
    "aliases": [
-    "Can_039"
+    "Can_024"
    ],
    "area": "Great Desert",
    "location": "Central Great Desert",
@@ -3552,12 +3552,12 @@
    "obtain_zh": "位于平台上的宝箱内。攀上边沿升降台，跳上维修机器人到达。"
   },
   {
-   "id": "Can_040",
-   "name": "珠穆朗玛峰气泡水",
-   "name_en": "Mountain Sparkle Everest",
+   "id": "Can_008",
+   "name": "妙之跃无糖饮料",
+   "name_en": "Milky Pop Zero",
    "category": "cans",
    "aliases": [
-    "Can_040"
+    "Can_008"
    ],
    "area": "Great Desert",
    "location": "Central Great Desert",
@@ -3573,12 +3573,12 @@
    "obtain_zh": "攀上黄色边沿，射中无人机目标，然后从树枝荡到绳索上，爬到顶部到达宝箱。"
   },
   {
-   "id": "Can_041",
-   "name": "汉拿山气泡水",
-   "name_en": "Mountain Sparkle Halla",
+   "id": "Can_014",
+   "name": "克里欧抹茶咖啡",
+   "name_en": "Cryo Café Mocha",
    "category": "cans",
    "aliases": [
-    "Can_041"
+    "Can_014"
    ],
    "area": "Great Desert",
    "location": "Northern Great Desert",
@@ -3594,12 +3594,12 @@
    "obtain_zh": "大沙漠外围补给营地东北方有一台冰柜。互动后箱子后会出现 3 个目标，按中央、右、左的顺序射击，箱子就会打开并弹出罐子。"
   },
   {
-   "id": "Can_042",
-   "name": "克里欧纯净水",
-   "name_en": "Cryo The Clear",
+   "id": "Can_030",
+   "name": "焰火能量饮料",
+   "name_en": "Liquid Fire",
    "category": "cans",
    "aliases": [
-    "Can_042"
+    "Can_030"
    ],
    "area": "Great Desert",
    "location": "Northern Great Desert",
@@ -3615,12 +3615,12 @@
    "obtain_zh": "地下密道营地东北方，一栋建筑屋顶上有冰柜。互动后射击飞来的爆炸桶，别让它们击中你即可解锁。请确保弹药充足！"
   },
   {
-   "id": "Can_043",
-   "name": "克里欧麦芽酒",
-   "name_en": "Cryo The Malt",
+   "id": "Can_022",
+   "name": "葡萄甘露",
+   "name_en": "Nectar Grape",
    "category": "cans",
    "aliases": [
-    "Can_043"
+    "Can_022"
    ],
    "area": "Great Desert",
    "location": "Oasis",
@@ -3636,12 +3636,12 @@
    "obtain_zh": "绿洲以南，靠近一座连有缆绳的平台处，有台 Fiz 自动售货机，内有该罐子。"
   },
   {
-   "id": "Can_044",
-   "name": "巴伐利亚酵母小麦白啤酒",
-   "name_en": "Bayern Hefe Weissbier",
+   "id": "Can_015",
+   "name": "庇佑之地伯爵茶",
+   "name_en": "The Haven Earl Grey",
    "category": "cans",
    "aliases": [
-    "Can_044"
+    "Can_015"
    ],
    "area": "Great Desert",
    "location": "Oasis",
@@ -3657,12 +3657,12 @@
    "obtain_zh": "位于高速管道顶部的冰柜中。可从其西侧爬上去。"
   },
   {
-   "id": "Can_045",
-   "name": "巴伐利亚小麦黑啤酒",
-   "name_en": "Bayern Weissbier Dunkel",
+   "id": "Can_043",
+   "name": "克里欧麦芽酒",
+   "name_en": "Cryo The Malt",
    "category": "cans",
    "aliases": [
-    "Can_045"
+    "Can_043"
    ],
    "area": "Great Desert",
    "location": "Oasis",
@@ -3678,12 +3678,12 @@
    "obtain_zh": "掩埋遗迹西侧军团营地东北方有个小游戏。先射中浮空目标放下绳索，再爬上去给发电机供电，然后在时限内依次跑到第二、第三个。完成后脚下方的车库门会打开，里面有一个罐子。"
   },
   {
-   "id": "Can_046",
-   "name": "海盗拉格啤酒",
-   "name_en": "Corsair Lager",
+   "id": "Can_007",
+   "name": "妙之跃",
+   "name_en": "Milky Pop",
    "category": "cans",
    "aliases": [
-    "Can_046"
+    "Can_007"
    ],
    "area": "Spire 4",
    "location": "Hypertube",
@@ -3699,12 +3699,12 @@
    "obtain_zh": "在首次与贝利亚尔战斗后到达的第一个营地后方，可以看到一些伸出的管道。跳上管道走到营地后方的通道，沿通道绕行房间到达一条长路，路的尽头是罐子。"
   },
   {
-   "id": "Can_047",
-   "name": "海盗麦芽啤酒",
-   "name_en": "Corsair Ale",
+   "id": "Can_031",
+   "name": "闪电能量饮料",
+   "name_en": "Liquid Lightning",
    "category": "cans",
    "aliases": [
-    "Can_047"
+    "Can_031"
    ],
    "area": "Spire 4",
    "location": "Space Logistics Complex",
@@ -3720,12 +3720,12 @@
    "obtain_zh": "到达太空物流中心补给营地后，到房间对面、集装箱后方查看。"
   },
   {
-   "id": "Can_048",
-   "name": "乔纳森柠檬味嗨棒",
-   "name_en": "Johnson's Highball Lemon",
+   "id": "Can_023",
+   "name": "苹果甘露",
+   "name_en": "Nectar Apple",
    "category": "cans",
    "aliases": [
-    "Can_048"
+    "Can_023"
    ],
    "area": "Spire 4",
    "location": "Raphael Space Centre",
@@ -3741,12 +3741,12 @@
    "obtain_zh": "进入拉斐尔太空中心后，前方有信息台。右侧是继续前进的门，但暂时上锁。查看锁门左侧的座位区，在座位后方寻找罐子。"
   },
   {
-   "id": "Can_049",
-   "name": "乔纳森姜味嗨棒",
-   "name_en": "Johnson's Highball Ginger",
+   "id": "Can_037",
+   "name": "月泉水",
+   "name_en": "Moonwell",
    "category": "cans",
    "aliases": [
-    "Can_049"
+    "Can_037"
    ],
    "area": "Spire 4",
    "location": "Tower Outer Wall",
@@ -13716,27 +13716,6 @@
    "obtain_zh": "可在埃米尔的商店购买。需要《尼尔：机械纪元》DLC。"
   },
   {
-   "id": "Hair_Nikke_01",
-   "name": "月下美人",
-   "name_en": "Moonlit Beauty",
-   "category": "hair",
-   "aliases": [
-    "Hair_Nikke_01"
-   ],
-   "area": "Wasteland",
-   "location": "Great Canyon",
-   "obtain": "Available from [[walkthroughs/nikke-dlc/stellar-blade-x-nikke#finding-scarlet-and-volt|Volt's shop]]. Requires the Goddess of Victory: Nikke DLC.",
-   "ng_plus": 0,
-   "dlc": "nikke",
-   "missable": false,
-   "note": null,
-   "confidence": "high",
-   "source": "game",
-   "area_zh": "废土",
-   "location_zh": "大峡谷",
-   "obtain_zh": "可在伏特的商店购买。需要《胜利女神：妮姬》DLC。"
-  },
-  {
    "id": "Hair_Nikke_02",
    "name": "高贵典雅",
    "name_en": "Noble Elegance",
@@ -13827,6 +13806,27 @@
    "category": "hair",
    "aliases": [
     "Hair_Nikke_06"
+   ],
+   "area": "Wasteland",
+   "location": "Great Canyon",
+   "obtain": "Available from [[walkthroughs/nikke-dlc/stellar-blade-x-nikke#finding-scarlet-and-volt|Volt's shop]]. Requires the Goddess of Victory: Nikke DLC.",
+   "ng_plus": 0,
+   "dlc": "nikke",
+   "missable": false,
+   "note": null,
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "废土",
+   "location_zh": "大峡谷",
+   "obtain_zh": "可在伏特的商店购买。需要《胜利女神：妮姬》DLC。"
+  },
+  {
+   "id": "Hair_Nikke_01",
+   "name": "月下美人",
+   "name_en": "Moonlit Beauty",
+   "category": "hair",
+   "aliases": [
+    "Hair_Nikke_01"
    ],
    "area": "Boss Challenge",
    "location": "Boss Challenge",
@@ -14787,12 +14787,12 @@
    "obtain_zh": "默认无人机外观，游戏开始时自动装备。"
   },
   {
-   "id": "DroneSeal_003",
-   "name": "占星师套装",
-   "name_en": "Stargazer Pack",
+   "id": "DroneSeal_002",
+   "name": "装甲包",
+   "name_en": "Armored Pack",
    "category": "drone_seals",
    "aliases": [
-    "DroneSeal_003"
+    "DroneSeal_002"
    ],
    "area": "Eidos 7",
    "location": "Flooded Commercial Sector",
@@ -14850,12 +14850,12 @@
    "obtain_zh": "位于希雍安全屋补给营地附近的箱子中。需要完整版或“超光速粒子包”DLC。"
   },
   {
-   "id": "DroneSeal_002",
-   "name": "装甲包",
-   "name_en": "Armored Pack",
+   "id": "DroneSeal_003",
+   "name": "占星师套装",
+   "name_en": "Stargazer Pack",
    "category": "drone_seals",
    "aliases": [
-    "DroneSeal_002"
+    "DroneSeal_003"
    ],
    "area": "Xion",
    "location": "Xion City",
@@ -16026,12 +16026,12 @@
    "obtain_zh": "在 NG++ 中替换极速快感。从太阳塔向东北攀上悬崖到开阔地带，再向东跳落到岩石上。"
   },
   {
-   "id": "DesignPattern_BS_24",
-   "name": "设计图：通勤装",
-   "name_en": "Design Pattern: Office Style",
+   "id": "DesignPattern_BS_24_Var2",
+   "name": "设计图：空乘风",
+   "name_en": "Design Pattern: Crew Style",
    "category": "design_patterns",
    "aliases": [
-    "DesignPattern_BS_24"
+    "DesignPattern_BS_24_Var2"
    ],
    "area": "Wasteland",
    "location": "Great Canyon",
@@ -16047,12 +16047,12 @@
    "obtain_zh": "从阿尔忒斯勒瓦尔入口向东走，穿过大门，攀上你东北方的崖壁。沿悬崖向上并向西前进，然后做一系列借助柱子跳跃的平台动作。到达对面后，在过桥前可找到黑色箱子，里面有纳米战衣——通勤装。"
   },
   {
-   "id": "DesignPattern_BS_24_Var2",
-   "name": "设计图：空乘风",
-   "name_en": "Design Pattern: Crew Style",
+   "id": "DesignPattern_BS_24",
+   "name": "设计图：通勤装",
+   "name_en": "Design Pattern: Office Style",
    "category": "design_patterns",
    "aliases": [
-    "DesignPattern_BS_24_Var2"
+    "DesignPattern_BS_24"
    ],
    "area": "Wasteland",
    "location": "Great Canyon",
@@ -16782,12 +16782,12 @@
    "obtain_zh": "在 NG++ 中替换星球空降服（第3小队）第2版。位于右侧岔路走廊，穿过激光陷阱和敌人后找到。"
   },
   {
-   "id": "DesignPattern_BS_Default",
-   "name": "设计图：星球空降服（第6小队）第2版",
-   "name_en": "Design Pattern: Planet Diving Suit (6th) V2",
+   "id": "DesignPattern_BS_Default_Var2",
+   "name": "设计图：星球空降服（第6小队）",
+   "name_en": "Design Pattern: Planet Diving Suit (6th)",
    "category": "design_patterns",
    "aliases": [
-    "DesignPattern_BS_Default"
+    "DesignPattern_BS_Default_Var2"
    ],
    "area": "Eidos 9",
    "location": "Fallen Overpass",
@@ -16803,12 +16803,12 @@
    "obtain_zh": "从第二个茧处沿黄色边沿下落，跳到一处小岛状区域，那里的车顶放着无人机升级模块。由此跳到带柱子的大楼。需要游过一小段水域，水会缓慢扣血，但能在死亡前抵达。过去后从侧面的黄色边沿爬到顶部，上房顶后跳上去穿门，箱子在进门左侧。（如预购了游戏且已从预购箱取得该纳米战衣，此箱只会开出维特币。）"
   },
   {
-   "id": "DesignPattern_BS_Default_Var2",
-   "name": "设计图：星球空降服（第6小队）",
-   "name_en": "Design Pattern: Planet Diving Suit (6th)",
+   "id": "DesignPattern_BS_Default",
+   "name": "设计图：星球空降服（第6小队）第2版",
+   "name_en": "Design Pattern: Planet Diving Suit (6th) V2",
    "category": "design_patterns",
    "aliases": [
-    "DesignPattern_BS_Default_Var2"
+    "DesignPattern_BS_Default"
    ],
    "area": "Eidos 9",
    "location": "Fallen Overpass",

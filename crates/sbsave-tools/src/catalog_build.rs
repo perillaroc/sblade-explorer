@@ -471,18 +471,145 @@ fn build_appearance(
     Ok(items)
 }
 
-fn build_cans(site: &BTreeMap<i64, SiteItem>, crosswalk: &Crosswalk) -> Vec<CatalogItem> {
+fn fold_diacritic(character: char) -> char {
+    match character {
+        'à' | 'á' | 'â' | 'ã' | 'ä' | 'å' | 'ā' => 'a',
+        'ç' | 'ć' | 'č' => 'c',
+        'è' | 'é' | 'ê' | 'ë' | 'ē' => 'e',
+        'ì' | 'í' | 'î' | 'ï' => 'i',
+        'ñ' | 'ń' => 'n',
+        'ò' | 'ó' | 'ô' | 'õ' | 'ö' | 'ō' => 'o',
+        'ù' | 'ú' | 'û' | 'ü' | 'ū' => 'u',
+        'ý' | 'ÿ' => 'y',
+        'š' => 's',
+        'ž' => 'z',
+        _ => character,
+    }
+}
+
+fn normalize_name(text: &str) -> String {
+    text.chars()
+        .map(fold_diacritic)
+        .collect::<String>()
+        .to_lowercase()
+        .replace('\u{2019}', "'")
+        .split_whitespace()
+        .collect::<Vec<_>>()
+        .join(" ")
+}
+
+// Guide title typos kept on purpose by stellarbladeguide.com.
+const CROSSWALK_TITLE_EXCEPTIONS: [i64; 1] = [1043];
+
+fn crosswalk_title_matches(title: &str, game_name: &str) -> bool {
+    let title = normalize_name(title).replace("demin", "denim");
+    let game_name = normalize_name(game_name).replace("demin", "denim");
+    if title == game_name {
+        return true;
+    }
+    [" earrings", " outfit", " glasses"].iter().any(|suffix| {
+        title
+            .strip_suffix(suffix)
+            .is_some_and(|base| base == game_name)
+            || game_name
+                .strip_suffix(suffix)
+                .is_some_and(|base| base == title)
+    })
+}
+
+fn validate_crosswalk_titles(
+    site: &BTreeMap<i64, SiteItem>,
+    crosswalk: &Crosswalk,
+    game_names: &Value,
+) -> Result<(), String> {
+    let Some(names) = game_names.get("items").and_then(Value::as_object) else {
+        return Ok(());
+    };
+    let entries = crosswalk
+        .nano_suits
+        .iter()
+        .map(|suit| (suit.site_id, &suit.aliases, "纳米战衣"))
+        .chain(
+            crosswalk
+                .appearance
+                .iter()
+                .map(|appearance| (appearance.site_id, &appearance.aliases, "外观")),
+        );
+    for (site_id, aliases, label) in entries {
+        if CROSSWALK_TITLE_EXCEPTIONS.contains(&site_id) {
+            continue;
+        }
+        let Some(info) = site.get(&site_id) else {
+            return Err(format!("{label} site id {site_id} not found"));
+        };
+        let resolved: BTreeSet<&str> = aliases
+            .iter()
+            .filter_map(|alias| names.get(alias))
+            .filter_map(|entry| entry.get("en"))
+            .filter_map(Value::as_str)
+            .collect();
+        if resolved.len() != 1 {
+            continue;
+        }
+        let Some(game_name) = resolved.iter().next() else {
+            continue;
+        };
+        if !crosswalk_title_matches(&info.title, game_name) {
+            return Err(format!(
+                "{label} site id {site_id} 名称不匹配: 攻略「{}」 vs 游戏「{game_name}」（请核对 data/raw/crosswalk.json）",
+                info.title
+            ));
+        }
+    }
+    Ok(())
+}
+
+fn build_cans(
+    site: &BTreeMap<i64, SiteItem>,
+    game_names: &Value,
+    crosswalk: &Crosswalk,
+) -> Result<Vec<CatalogItem>, String> {
+    let items_map = game_names
+        .get("items")
+        .and_then(Value::as_object)
+        .ok_or_else(|| "name_map.json 缺少 items 映射".to_string())?;
+    let mut alias_by_title: BTreeMap<String, String> = BTreeMap::new();
+    for (alias, entry) in items_map {
+        if !alias.starts_with("Can_") {
+            continue;
+        }
+        let Some(name_en) = entry.get("en").and_then(Value::as_str) else {
+            continue;
+        };
+        let title = normalize_name(name_en);
+        if let Some(previous) = alias_by_title.insert(title.clone(), alias.clone()) {
+            return Err(format!(
+                "游戏罐头名称重复: {name_en}（{previous} / {alias}）"
+            ));
+        }
+    }
+
     let mut can_ids: Vec<i64> = site
         .iter()
         .filter(|(_, item)| item.source_file == "collectibles__cans.json")
         .map(|(id, _)| *id)
         .collect();
     can_ids.sort_by_key(|id| site[id].order);
+
     let mut items: Vec<CatalogItem> = Vec::new();
-    for (index, site_id) in can_ids.iter().enumerate() {
-        let number = index + 1;
-        let info = &site[site_id];
-        let alias = format!("Can_{number:03}");
+    let mut matched: BTreeSet<String> = BTreeSet::new();
+    for site_id in can_ids {
+        let info = &site[&site_id];
+        let title = normalize_name(&info.title);
+        let Some(alias) = alias_by_title.get(&title).cloned() else {
+            return Err(format!(
+                "攻略罐头条目未匹配到游戏名称: {}（site id {site_id}）",
+                info.title
+            ));
+        };
+        if !matched.insert(alias.clone()) {
+            return Err(format!("攻略罐头条目重复匹配: {}（{alias}）", info.title));
+        }
         items.push(make_item(
             alias.clone(),
             info.title.clone(),
@@ -491,12 +618,24 @@ fn build_cans(site: &BTreeMap<i64, SiteItem>, crosswalk: &Crosswalk) -> Vec<Cata
             Some(info),
             "medium",
             None,
-            Some("编号按攻略顺序推定，可用游戏内罐子图鉴核对".to_string()),
+            Some("编号按游戏数据名称与攻略条目匹配".to_string()),
             None,
             &crosswalk.site_base_url,
         ));
     }
-    items
+
+    let unmatched: Vec<&str> = alias_by_title
+        .values()
+        .filter(|alias| !matched.contains(*alias))
+        .map(String::as_str)
+        .collect();
+    if !unmatched.is_empty() {
+        return Err(format!(
+            "以下游戏罐头未在攻略条目中找到: {}",
+            unmatched.join(", ")
+        ));
+    }
+    Ok(items)
 }
 
 fn normalize_record_aliases(universe: &Value, suffix_re: &Regex) -> BTreeSet<String> {
@@ -831,10 +970,11 @@ pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
         Value::Object(Map::new())
     };
     let i18n = load_i18n(&api_dir.join("i18n"), &site)?;
+    validate_crosswalk_titles(&site, &crosswalk, &game_names)?;
 
     let mut items: Vec<CatalogItem> = Vec::new();
     items.extend(build_nano_suits(&site, &crosswalk)?);
-    items.extend(build_cans(&site, &crosswalk));
+    items.extend(build_cans(&site, &game_names, &crosswalk)?);
     items.extend(build_records(&universe, &crosswalk)?);
     items.extend(build_fish(&universe, &crosswalk));
     items.extend(build_camps(&universe, &crosswalk));
@@ -896,7 +1036,35 @@ pub fn run(root: &Path) -> Result<(), String> {
 mod tests {
     use std::collections::HashMap;
 
-    use super::zone_label;
+    use super::{crosswalk_title_matches, normalize_name, zone_label};
+
+    #[test]
+    fn normalize_name_folds_accents_and_quotes() {
+        assert_eq!(normalize_name("Cryo Café Original"), "cryo cafe original");
+        assert_eq!(
+            normalize_name("Johnson\u{2019}s  Highball"),
+            "johnson's highball"
+        );
+    }
+
+    #[test]
+    fn crosswalk_title_matches_tolerates_known_variants() {
+        assert!(crosswalk_title_matches(
+            "Crimson Tear Earrings",
+            "Crimson Tear"
+        ));
+        assert!(crosswalk_title_matches(
+            "Wandering Swordfighter",
+            "Wandering Swordfighter Outfit"
+        ));
+        assert!(crosswalk_title_matches("Cat's Eye Glasses", "Cat's Eye"));
+        assert!(crosswalk_title_matches(
+            "FourSeconds Destroyed Demin",
+            "FourSeconds Destroyed Denim"
+        ));
+        assert!(!crosswalk_title_matches("Office Style", "Crew Style"));
+        assert!(!crosswalk_title_matches("Missing Link", "Never Look Back"));
+    }
 
     #[test]
     fn zone_label_uses_table_then_strips_trailing_number() {
