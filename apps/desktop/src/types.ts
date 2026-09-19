@@ -44,6 +44,8 @@ export interface Item {
   confidence: string;
   reason: string | null;
   flags: string[];
+  record_type: string | null;
+  record_type_zh: string | null;
 }
 
 export interface ObtainedItem {
@@ -64,6 +66,8 @@ export interface ObtainedItem {
   confidence: string;
   source: string | null;
   name_en: string | null;
+  record_type: string | null;
+  record_type_zh: string | null;
 }
 
 export interface CategoryResult {

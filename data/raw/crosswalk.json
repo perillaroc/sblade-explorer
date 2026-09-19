@@ -1915,5 +1915,12 @@
   "ETC": "其他",
   "Christmas": "圣诞",
   "Nest": "巢穴"
+ },
+ "record_type_overrides": {
+  "Item_Records_DED20_Memory_08": 154,
+  "Item_Records_WLA_Memory_05": 768,
+  "Item_Records_WLA_Memory_07": 772,
+  "Item_Records_WLB_Memory_64": 418,
+  "Item_Records_Xion_Memory_32": 1027
  }
 }

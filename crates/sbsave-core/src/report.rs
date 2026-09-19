@@ -466,6 +466,14 @@ fn catalog_item_to_dict(item: &CatalogItem) -> Value {
         "name_en".to_string(),
         optional_string(item.name_en.as_deref()),
     );
+    object.insert(
+        "record_type".to_string(),
+        optional_string(item.record_type.as_deref()),
+    );
+    object.insert(
+        "record_type_zh".to_string(),
+        optional_string(item.record_type_zh.as_deref()),
+    );
     Value::Object(object)
 }
 
@@ -526,6 +534,14 @@ fn item_to_dict(status: &ItemStatus) -> Value {
     object.insert(
         "flags".to_string(),
         Value::Array(status.flags().into_iter().map(Value::String).collect()),
+    );
+    object.insert(
+        "record_type".to_string(),
+        optional_string(item.record_type.as_deref()),
+    );
+    object.insert(
+        "record_type_zh".to_string(),
+        optional_string(item.record_type_zh.as_deref()),
     );
     Value::Object(object)
 }

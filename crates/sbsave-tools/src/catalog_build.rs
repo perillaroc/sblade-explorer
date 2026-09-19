@@ -39,6 +39,20 @@ const CATEGORIES: [(&str, &str, i64); 13] = [
     ("fish", "鱼类", 130),
 ];
 
+// In-game Data Bank record types (order follows the game's Records menu).
+const RECORD_TYPES: [(&str, &str); 10] = [
+    ("memorystick", "记忆棒"),
+    ("document_log_data", "文档·日志数据"),
+    ("document_journal", "文档·日志"),
+    ("document_messages", "文档·消息"),
+    ("document_announcements", "文档·公告"),
+    ("document_series", "文档·系列"),
+    ("document_books", "文档·书籍"),
+    ("document_information", "文档·信息"),
+    ("document_promotions", "文档·宣传"),
+    ("document_prayers", "文档·祈祷"),
+];
+
 const FISH_SKIP: [&str; 14] = [
     "Fish_01",
     "Fish_02",
@@ -73,6 +87,8 @@ struct Crosswalk {
     appearance: Vec<CrosswalkAppearance>,
     fish_zh: HashMap<String, String>,
     zone_zh: HashMap<String, String>,
+    #[serde(default)]
+    record_type_overrides: HashMap<String, i64>,
 }
 
 #[derive(Deserialize)]
@@ -101,6 +117,8 @@ struct SiteItem {
     description: String,
     source_file: String,
     order: i64,
+    types: Vec<String>,
+    subtype: Option<String>,
 }
 
 #[derive(Serialize)]
@@ -122,6 +140,8 @@ struct CatalogItem {
     area_zh: Option<String>,
     location_zh: Option<String>,
     obtain_zh: Option<String>,
+    record_type: Option<String>,
+    record_type_zh: Option<String>,
 }
 
 #[derive(Serialize)]
@@ -241,6 +261,17 @@ fn load_site_index(api_dir: &Path) -> Result<BTreeMap<i64, SiteItem>, String> {
                         .and_then(Value::as_str)
                         .unwrap_or_default()
                         .to_string();
+                    let types = item
+                        .get("types")
+                        .and_then(Value::as_array)
+                        .map(|values| {
+                            values
+                                .iter()
+                                .filter_map(Value::as_str)
+                                .map(str::to_string)
+                                .collect()
+                        })
+                        .unwrap_or_default();
                     index.insert(
                         id,
                         SiteItem {
@@ -251,6 +282,8 @@ fn load_site_index(api_dir: &Path) -> Result<BTreeMap<i64, SiteItem>, String> {
                             description,
                             source_file: source_file.clone(),
                             order,
+                            types,
+                            subtype: truthy_string_field(item, "subtype"),
                         },
                     );
                 }
@@ -327,6 +360,8 @@ fn make_item(
         area_zh: None,
         location_zh: None,
         obtain_zh: None,
+        record_type: None,
+        record_type_zh: None,
     }
 }
 
@@ -361,6 +396,8 @@ fn plain_item(
         area_zh: None,
         location_zh: None,
         obtain_zh: None,
+        record_type: None,
+        record_type_zh: None,
     }
 }
 
@@ -496,6 +533,229 @@ fn normalize_name(text: &str) -> String {
         .split_whitespace()
         .collect::<Vec<_>>()
         .join(" ")
+}
+
+fn record_type_from_site(types: &[String], subtype: Option<&str>) -> Option<&'static str> {
+    if types.iter().any(|value| value == "Memorystick") {
+        return Some("memorystick");
+    }
+    if !types.iter().any(|value| value == "Document") {
+        return None;
+    }
+    match subtype? {
+        "Series" => Some("document_series"),
+        "Promotions" => Some("document_promotions"),
+        "Messages" => Some("document_messages"),
+        "Journal" => Some("document_journal"),
+        "Log Data" => Some("document_log_data"),
+        "Books" => Some("document_books"),
+        "Information" => Some("document_information"),
+        "Prayers" => Some("document_prayers"),
+        "Announcements" => Some("document_announcements"),
+        _ => None,
+    }
+}
+
+fn record_type_label(key: &str) -> Option<&'static str> {
+    RECORD_TYPES
+        .iter()
+        .find(|(candidate, _)| *candidate == key)
+        .map(|(_, label)| *label)
+}
+
+/// Normalizes a record title for matching: strips localization markup, folds
+/// diacritics, lowercases and reduces punctuation/whitespace to single spaces.
+fn fold_record_title(text: &str) -> String {
+    let mut stripped = String::new();
+    let mut in_tag = false;
+    for character in text.chars() {
+        match character {
+            '<' => in_tag = true,
+            '>' => in_tag = false,
+            _ if !in_tag => stripped.push(fold_diacritic(character)),
+            _ => {}
+        }
+    }
+    let mut normalized = String::new();
+    let mut pending_space = false;
+    for character in stripped.to_lowercase().chars() {
+        let character = match character {
+            '\u{2019}' | '\u{2018}' => '\'',
+            other => other,
+        };
+        if character.is_ascii_alphanumeric() {
+            normalized.push(character);
+            pending_space = false;
+        } else if !pending_space && !normalized.is_empty() {
+            normalized.push(' ');
+            pending_space = true;
+        }
+    }
+    normalized.trim_end().replace("centre", "center")
+}
+
+fn singularize(text: &str) -> String {
+    text.split_whitespace()
+        .map(|token| {
+            if token.len() > 3 && token.ends_with('s') {
+                &token[..token.len() - 1]
+            } else {
+                token
+            }
+        })
+        .collect::<Vec<_>>()
+        .join(" ")
+}
+
+/// Loose variant of [`fold_record_title`] that additionally drops the
+/// "Information:" prefix, plural word endings and a trailing article number
+/// "1" (guide/game naming differences).
+fn loose_record_title(text: &str) -> String {
+    let folded = fold_record_title(text);
+    let without_information = folded.strip_prefix("information ").unwrap_or(&folded);
+    let singular = singularize(without_information);
+    singular.strip_suffix(" 1").unwrap_or(&singular).to_string()
+}
+
+fn apply_record_types(
+    items: &mut [CatalogItem],
+    site: &BTreeMap<i64, SiteItem>,
+    overrides: &HashMap<String, i64>,
+) -> Result<(), String> {
+    let mut by_fold: HashMap<String, Vec<i64>> = HashMap::new();
+    let mut by_loose: HashMap<String, Vec<i64>> = HashMap::new();
+    for (site_id, info) in site {
+        if record_type_from_site(&info.types, info.subtype.as_deref()).is_none() {
+            continue;
+        }
+        by_fold
+            .entry(fold_record_title(&info.title))
+            .or_default()
+            .push(*site_id);
+        by_loose
+            .entry(loose_record_title(&info.title))
+            .or_default()
+            .push(*site_id);
+    }
+    for site_ids in by_fold.values_mut().chain(by_loose.values_mut()) {
+        site_ids.sort_unstable();
+    }
+
+    let mut used: BTreeSet<i64> = BTreeSet::new();
+    for item in items.iter_mut() {
+        if item.category != "records" {
+            continue;
+        }
+        let Some(site_id) = overrides.get(&item.id) else {
+            continue;
+        };
+        let Some(info) = site.get(site_id) else {
+            return Err(format!(
+                "记录类型覆盖 {} 指向不存在的攻略条目 {site_id}",
+                item.id
+            ));
+        };
+        let Some(key) = record_type_from_site(&info.types, info.subtype.as_deref()) else {
+            return Err(format!(
+                "记录类型覆盖 {} 的攻略条目 {site_id} 缺少类型: {}",
+                item.id, info.title
+            ));
+        };
+        if !used.insert(*site_id) {
+            return Err(format!("记录类型覆盖条目重复: {site_id}"));
+        }
+        item.record_type = Some(key.to_string());
+        item.record_type_zh = record_type_label(key).map(str::to_string);
+    }
+    let missing_overrides: Vec<&str> = overrides
+        .keys()
+        .filter(|alias| {
+            !items
+                .iter()
+                .any(|item| item.id == **alias && item.category == "records")
+        })
+        .map(String::as_str)
+        .collect();
+    if !missing_overrides.is_empty() {
+        return Err(format!(
+            "记录类型覆盖未命中目录条目: {}",
+            missing_overrides.join(", ")
+        ));
+    }
+
+    for item in items.iter_mut() {
+        if item.category != "records" || item.record_type.is_some() {
+            continue;
+        }
+        let Some(name) = item
+            .name_en
+            .as_deref()
+            .filter(|name| !name.is_empty() && *name != item.id)
+        else {
+            continue;
+        };
+        let mut candidates = by_fold
+            .get(&fold_record_title(name))
+            .cloned()
+            .unwrap_or_default();
+        if candidates.iter().all(|site_id| used.contains(site_id)) {
+            candidates = by_loose
+                .get(&loose_record_title(name))
+                .cloned()
+                .unwrap_or_default();
+        }
+        let Some(site_id) = candidates
+            .into_iter()
+            .find(|site_id| !used.contains(site_id))
+        else {
+            continue;
+        };
+        let Some(info) = site.get(&site_id) else {
+            continue;
+        };
+        let Some(key) = record_type_from_site(&info.types, info.subtype.as_deref()) else {
+            continue;
+        };
+        used.insert(site_id);
+        item.record_type = Some(key.to_string());
+        item.record_type_zh = record_type_label(key).map(str::to_string);
+    }
+
+    let inherited: HashMap<String, String> = items
+        .iter()
+        .filter_map(|item| {
+            item.record_type
+                .as_ref()
+                .map(|key| (item.id.clone(), key.clone()))
+        })
+        .collect();
+    for item in items.iter_mut() {
+        if item.category != "records" || item.record_type.is_some() {
+            continue;
+        }
+        let base = item
+            .id
+            .rsplit_once('_')
+            .filter(|(_, suffix)| {
+                !suffix.is_empty() && suffix.chars().all(|value| value.is_ascii_digit())
+            })
+            .map(|(prefix, _)| prefix);
+        let Some(key) = base.and_then(|base| inherited.get(base)) else {
+            continue;
+        };
+        item.record_type = Some(key.clone());
+        item.record_type_zh = record_type_label(key).map(str::to_string);
+    }
+
+    let missing: Vec<&str> = items
+        .iter()
+        .filter(|item| item.category == "records" && item.record_type.is_none())
+        .map(|item| item.id.as_str())
+        .collect();
+    if !missing.is_empty() {
+        return Err(format!("以下记录条目缺少类型映射: {}", missing.join(", ")));
+    }
+    Ok(())
 }
 
 // Guide title typos kept on purpose by stellarbladeguide.com.
@@ -981,6 +1241,7 @@ pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
     items.extend(build_appearance(&site, &crosswalk)?);
     items.extend(build_design_patterns(&site, &universe, &crosswalk));
     apply_game_names(&mut items, &game_names);
+    apply_record_types(&mut items, &site, &crosswalk.record_type_overrides)?;
     apply_i18n(&mut items, &i18n);
 
     let mut seen: HashMap<String, String> = HashMap::new();
@@ -1036,7 +1297,58 @@ pub fn run(root: &Path) -> Result<(), String> {
 mod tests {
     use std::collections::HashMap;
 
-    use super::{crosswalk_title_matches, normalize_name, zone_label};
+    use super::{
+        crosswalk_title_matches, fold_record_title, loose_record_title, normalize_name,
+        record_type_from_site, zone_label,
+    };
+
+    #[test]
+    fn record_type_from_site_splits_documents_and_memorysticks() {
+        let doc = vec!["Document".to_string()];
+        let stick = vec!["Memorystick".to_string()];
+        let dual = vec!["Passcode".to_string(), "Memorystick".to_string()];
+        assert_eq!(
+            record_type_from_site(&doc, Some("Log Data")),
+            Some("document_log_data")
+        );
+        assert_eq!(record_type_from_site(&stick, None), Some("memorystick"));
+        assert_eq!(record_type_from_site(&dual, None), Some("memorystick"));
+        assert_eq!(record_type_from_site(&doc, Some("Unknown")), None);
+        assert_eq!(record_type_from_site(&["Passcode".to_string()], None), None);
+    }
+
+    #[test]
+    fn fold_record_title_normalizes_guide_and_game_spellings() {
+        assert_eq!(
+            fold_record_title("Funding Announcement: Colony-bound Rocket"),
+            "funding announcement colony bound rocket"
+        );
+        assert_eq!(
+            fold_record_title("<StoryTitle_1>: : : WARNING : : :</>"),
+            "warning"
+        );
+        assert_eq!(
+            fold_record_title("Welcome to the Raphael Space Centre!"),
+            "welcome to the raphael space center"
+        );
+    }
+
+    #[test]
+    fn loose_record_title_drops_prefix_plurals_and_article_number() {
+        assert_eq!(
+            loose_record_title("Information: Service Drones"),
+            "service drone"
+        );
+        assert_eq!(
+            loose_record_title("Athena 82's Orders"),
+            "athena 82 s order"
+        );
+        assert_eq!(loose_record_title("Tattered Report 1"), "tattered report");
+        assert_eq!(
+            loose_record_title("Quarantine Failure?"),
+            "quarantine failure"
+        );
+    }
 
     #[test]
     fn normalize_name_folds_accents_and_quotes() {

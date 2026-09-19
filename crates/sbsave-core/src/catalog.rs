@@ -57,6 +57,8 @@ pub struct CatalogItem {
     pub confidence: String,
     pub source: Option<String>,
     pub name_en: Option<String>,
+    pub record_type: Option<String>,
+    pub record_type_zh: Option<String>,
 }
 
 impl CatalogItem {
@@ -190,6 +192,8 @@ fn parse_item(raw: &JsonValue) -> CatalogItem {
         confidence: json_str(raw, "confidence").unwrap_or_else(|| "high".to_string()),
         source: json_str(raw, "source"),
         name_en: json_str(raw, "name_en"),
+        record_type: json_str(raw, "record_type"),
+        record_type_zh: json_str(raw, "record_type_zh"),
     }
 }
 

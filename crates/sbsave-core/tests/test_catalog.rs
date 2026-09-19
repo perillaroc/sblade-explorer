@@ -88,6 +88,82 @@ fn catalog_counts() {
 }
 
 #[test]
+fn record_types_cover_records() {
+    let catalog = load_catalog(None).expect("catalog");
+    let records = catalog.by_category("records");
+    assert_eq!(records.len(), 310);
+    let missing: Vec<&str> = records
+        .iter()
+        .filter(|item| item.record_type.is_none() || item.record_type_zh.is_none())
+        .map(|item| item.id.as_str())
+        .collect();
+    assert!(missing.is_empty(), "{missing:?}");
+
+    let mut counts: HashMap<&str, usize> = HashMap::new();
+    for item in &records {
+        let key = item.record_type.as_deref().unwrap_or("?");
+        *counts.entry(key).or_default() += 1;
+    }
+    assert_eq!(counts["memorystick"], 187);
+    assert_eq!(counts["document_series"], 27);
+    assert_eq!(counts["document_promotions"], 27);
+    assert_eq!(counts["document_messages"], 15);
+    assert_eq!(counts["document_journal"], 12);
+    assert_eq!(counts["document_log_data"], 11);
+    assert_eq!(counts["document_books"], 10);
+    assert_eq!(counts["document_information"], 10);
+    assert_eq!(counts["document_prayers"], 7);
+    assert_eq!(counts["document_announcements"], 4);
+
+    let other_with_type = catalog
+        .items
+        .iter()
+        .filter(|item| item.category != "records" && item.record_type.is_some())
+        .count();
+    assert_eq!(other_with_type, 0);
+}
+
+#[test]
+fn record_type_samples_and_variant_inheritance() {
+    let catalog = load_catalog(None).expect("catalog");
+    let index = catalog.alias_index();
+    let type_of = |id: &str| {
+        (
+            index[id].record_type.as_deref(),
+            index[id].record_type_zh.as_deref(),
+        )
+    };
+    assert_eq!(
+        type_of("Item_Records_DED10_Memory_09"),
+        (Some("document_series"), Some("文档·系列"))
+    );
+    assert_eq!(
+        type_of("Item_Records_Xion_Memory_15"),
+        (Some("document_journal"), Some("文档·日志"))
+    );
+    assert_eq!(
+        type_of("Item_Records_WLB_Memory_52"),
+        (Some("document_messages"), Some("文档·消息"))
+    );
+    assert_eq!(
+        type_of("Item_Records_DED20_Memory_01"),
+        (Some("memorystick"), Some("记忆棒"))
+    );
+    assert_eq!(
+        type_of("Item_Records_Day1_Memory_09_1"),
+        (Some("document_promotions"), Some("文档·宣传"))
+    );
+    assert_eq!(
+        type_of("Item_Records_ME01_Memory_01_2"),
+        (Some("memorystick"), Some("记忆棒"))
+    );
+    assert_eq!(
+        type_of("Item_Records_WLA_Memory_05"),
+        (Some("memorystick"), Some("记忆棒"))
+    );
+}
+
+#[test]
 fn ng_plus_metadata_present() {
     let catalog = load_catalog(None).expect("catalog");
     let ng_items: Vec<_> = catalog
