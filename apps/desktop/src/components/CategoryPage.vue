@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
-import { LayoutGrid, List, ListFilter, Search, SearchX, type LucideIcon } from "@lucide/vue";
+import {
+  ChevronDown,
+  ChevronRight,
+  LayoutGrid,
+  List,
+  ListFilter,
+  Search,
+  SearchX,
+  type LucideIcon,
+} from "@lucide/vue";
 import type { CategoryResult, ItemFilter, Lang } from "../types";
 import { areaAccent } from "../lib/area";
 import { categoryRows, matchesQuery, type ItemRow } from "../lib/items";
@@ -61,6 +70,14 @@ const filter = ref<ItemFilter>("all");
 const query = ref("");
 const view = ref<ViewMode>(props.matrix ? "matrix" : "list");
 const activeRecordType = ref<string | null>(null);
+const collapsedAreas = ref<Set<string>>(new Set());
+
+function toggleArea(key: string) {
+  const next = new Set(collapsedAreas.value);
+  if (next.has(key)) next.delete(key);
+  else next.add(key);
+  collapsedAreas.value = next;
+}
 
 const rows = computed(() =>
   categoryRows(props.category, filter.value).filter((row) => matchesQuery(row.item, query.value)),
@@ -301,25 +318,37 @@ function onInput(event: Event) {
         </p>
         <template v-else-if="activeRecordGroup.areas.length > 0">
           <section v-for="area in activeRecordGroup.areas" :key="area.key">
-            <header
-              class="flex flex-wrap items-center justify-between gap-2 border-t border-slate-800/70 px-4 py-2"
+            <button
+              type="button"
+              class="flex w-full flex-wrap items-center justify-between gap-2 border-t border-slate-800/70 px-4 py-2 text-left"
               :class="areaAccent(area.key).band"
+              :aria-expanded="!collapsedAreas.has(area.key)"
+              @click="toggleArea(area.key)"
             >
-              <h4
+              <span
                 class="flex items-center gap-2 text-sm font-semibold"
                 :class="areaAccent(area.key).text"
               >
+                <component
+                  :is="collapsedAreas.has(area.key) ? ChevronRight : ChevronDown"
+                  class="h-4 w-4 shrink-0"
+                />
                 <span
                   class="h-2.5 w-2.5 shrink-0 rounded-full"
                   :class="areaAccent(area.key).dot"
                 ></span>
                 {{ area.label }}
-              </h4>
+              </span>
               <span class="text-xs text-slate-400">
                 已收集 {{ area.obtained }}/{{ area.total }}
               </span>
-            </header>
-            <ItemTable :rows="area.rows" :lang="lang" hide-location />
+            </button>
+            <ItemTable
+              v-if="!collapsedAreas.has(area.key)"
+              :rows="area.rows"
+              :lang="lang"
+              hide-location
+            />
           </section>
         </template>
         <ItemTable v-else :rows="activeRecordGroup.rows" :lang="lang" />

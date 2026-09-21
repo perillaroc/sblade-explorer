@@ -227,13 +227,27 @@ fn chinese_translations_cover_guide_text() {
         .iter()
         .filter(|item| item.obtain.is_some())
         .collect();
-    assert_eq!(with_obtain.len(), 353);
+    assert_eq!(with_obtain.len(), 686);
     let missing: Vec<&str> = with_obtain
         .iter()
         .filter(|item| item.obtain_zh.is_none())
         .map(|item| item.id.as_str())
         .collect();
     assert!(missing.is_empty(), "{missing:?}");
+
+    let records = catalog.by_category("records");
+    assert_eq!(
+        records.iter().filter(|item| item.obtain.is_some()).count(),
+        records.len()
+    );
+    let passcodes = catalog.by_category("passcodes");
+    assert_eq!(
+        passcodes
+            .iter()
+            .filter(|item| item.obtain.is_some())
+            .count(),
+        passcodes.len()
+    );
 
     let index = catalog.alias_index();
     assert_eq!(index["BS_09_2"].area_zh.as_deref(), Some("埃多斯7号"));
@@ -246,6 +260,23 @@ fn chinese_translations_cover_guide_text() {
         .obtain_zh
         .as_deref()
         .is_some_and(|text| text.starts_with("完成支线任务《第一位顾客》")));
+
+    assert!(index["Item_Records_DED10_Memory_09"]
+        .obtain_zh
+        .as_deref()
+        .is_some_and(|text| text.contains("图书馆")));
+    assert!(index["Item_Records_ATL_Passcode_01"]
+        .obtain_zh
+        .as_deref()
+        .is_some_and(|text| text.contains("蜂巢")));
+    assert_eq!(
+        index["Item_Records_ME01_Memory_01_2"].obtain,
+        index["Item_Records_ME01_Memory_01"].obtain
+    );
+    assert_eq!(
+        index["Item_Records_ME01_Memory_01_2"].obtain_zh,
+        index["Item_Records_ME01_Memory_01"].obtain_zh
+    );
 
     let construction: Vec<_> = catalog
         .items

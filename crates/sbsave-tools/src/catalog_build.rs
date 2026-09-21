@@ -636,11 +636,18 @@ fn loose_record_title(text: &str) -> String {
     singular.strip_suffix(" 1").unwrap_or(&singular).to_string()
 }
 
+fn apply_guide_obtain(item: &mut CatalogItem, info: &SiteItem) {
+    if item.obtain.is_none() && !info.description.is_empty() {
+        item.obtain = Some(info.description.clone());
+    }
+}
+
 fn apply_record_types(
     items: &mut [CatalogItem],
     site: &BTreeMap<i64, SiteItem>,
-    overrides: &HashMap<String, i64>,
+    crosswalk: &Crosswalk,
 ) -> Result<(), String> {
+    let overrides = &crosswalk.record_type_overrides;
     let mut by_fold: HashMap<String, Vec<i64>> = HashMap::new();
     let mut by_loose: HashMap<String, Vec<i64>> = HashMap::new();
     for (site_id, info) in site {
@@ -685,6 +692,7 @@ fn apply_record_types(
         }
         item.record_type = Some(key.to_string());
         item.record_type_zh = record_type_label(key).map(str::to_string);
+        apply_guide_obtain(item, info);
     }
     let missing_overrides: Vec<&str> = overrides
         .keys()
@@ -738,14 +746,15 @@ fn apply_record_types(
         used.insert(site_id);
         item.record_type = Some(key.to_string());
         item.record_type_zh = record_type_label(key).map(str::to_string);
+        apply_guide_obtain(item, info);
     }
 
-    let inherited: HashMap<String, String> = items
+    let inherited: HashMap<String, (String, Option<String>)> = items
         .iter()
         .filter_map(|item| {
             item.record_type
                 .as_ref()
-                .map(|key| (item.id.clone(), key.clone()))
+                .map(|key| (item.id.clone(), (key.clone(), item.obtain.clone())))
         })
         .collect();
     for item in items.iter_mut() {
@@ -759,11 +768,14 @@ fn apply_record_types(
                 !suffix.is_empty() && suffix.chars().all(|value| value.is_ascii_digit())
             })
             .map(|(prefix, _)| prefix);
-        let Some(key) = base.and_then(|base| inherited.get(base)) else {
+        let Some((key, obtain)) = base.and_then(|base| inherited.get(base)) else {
             continue;
         };
         item.record_type = Some(key.clone());
         item.record_type_zh = record_type_label(key).map(str::to_string);
+        if item.obtain.is_none() {
+            item.obtain = obtain.clone();
+        }
     }
 
     let missing: Vec<&str> = items
@@ -773,6 +785,67 @@ fn apply_record_types(
         .collect();
     if !missing.is_empty() {
         return Err(format!("以下记录条目缺少类型映射: {}", missing.join(", ")));
+    }
+    Ok(())
+}
+
+/// Matches passcode collectibles to guide entries by their in-game code token
+/// (the last component of the guide title, e.g. `μηλαμη`) and copies the guide
+/// obtain text. A passcode may share its guide entry with a memorystick
+/// (dual-type collectibles), so no cross-category bookkeeping is needed.
+fn apply_passcode_obtain(
+    items: &mut [CatalogItem],
+    site: &BTreeMap<i64, SiteItem>,
+) -> Result<(), String> {
+    let mut by_token: HashMap<String, Vec<i64>> = HashMap::new();
+    for (site_id, info) in site {
+        if !info.types.iter().any(|value| value == "Passcode") {
+            continue;
+        }
+        let token = info
+            .title
+            .rsplit('/')
+            .next()
+            .unwrap_or(&info.title)
+            .trim()
+            .to_string();
+        by_token.entry(token).or_default().push(*site_id);
+    }
+    for site_ids in by_token.values_mut() {
+        site_ids.sort_unstable();
+    }
+
+    for item in items.iter_mut() {
+        if item.category != "passcodes" || item.obtain.is_some() {
+            continue;
+        }
+        let Some(token) = item
+            .name_en
+            .as_deref()
+            .map(str::trim)
+            .filter(|token| !token.is_empty() && *token != item.id)
+        else {
+            continue;
+        };
+        let Some(site_id) = by_token.get(token).and_then(|site_ids| site_ids.first()) else {
+            continue;
+        };
+        let Some(info) = site.get(site_id) else {
+            continue;
+        };
+        apply_guide_obtain(item, info);
+    }
+
+    let missing: Vec<&str> = items
+        .iter()
+        .filter(|item| item.category == "passcodes" && item.obtain.is_none())
+        .map(|item| item.id.as_str())
+        .collect();
+    if !missing.is_empty() {
+        return Err(format!(
+            "以下密码条目未匹配到攻略条目: {}",
+            missing.join(", ")
+        ));
     }
     Ok(())
 }
@@ -1315,7 +1388,8 @@ pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
     items.extend(build_appearance(&site, &crosswalk)?);
     items.extend(build_design_patterns(&site, &universe, &crosswalk));
     apply_game_names(&mut items, &game_names);
-    apply_record_types(&mut items, &site, &crosswalk.record_type_overrides)?;
+    apply_record_types(&mut items, &site, &crosswalk)?;
+    apply_passcode_obtain(&mut items, &site)?;
     apply_memorystick_order(&mut items, &memorystick_order)?;
     apply_i18n(&mut items, &i18n);
 
