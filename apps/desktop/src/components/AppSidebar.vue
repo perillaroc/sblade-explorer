@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref } from "vue";
+import { Info } from "@lucide/vue";
 import type { Analysis } from "../types";
 import { APP_ICON, categoryIcon, SUMMARY_ICON } from "../lib/icons";
+import AboutDialog from "./AboutDialog.vue";
 
 const props = defineProps<{
   analysis: Analysis | null;
@@ -9,6 +11,8 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{ navigate: [key: string] }>();
+
+const aboutOpen = ref(false);
 
 const overallPercent = computed(() => {
   const summary = props.analysis?.summary;
@@ -88,5 +92,18 @@ function categoryPercent(obtained: number, total: number): number {
         </button>
       </template>
     </nav>
+    <footer class="border-t border-slate-800 p-2">
+      <button
+        type="button"
+        class="flex w-full items-center gap-2 rounded px-3 py-2 text-left text-sm text-slate-400 transition-colors hover:bg-slate-800/60 hover:text-slate-200"
+        title="关于本工具与数据来源"
+        @click="aboutOpen = true"
+      >
+        <Info class="h-4 w-4 shrink-0" />
+        关于
+      </button>
+    </footer>
+
+    <AboutDialog v-if="aboutOpen" @close="aboutOpen = false" />
   </aside>
 </template>
