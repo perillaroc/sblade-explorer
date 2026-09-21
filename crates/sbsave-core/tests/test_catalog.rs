@@ -208,6 +208,103 @@ fn memorysticks_follow_in_game_menu_order() {
 }
 
 #[test]
+fn document_locations_follow_guide() {
+    let catalog = load_catalog(None).expect("catalog");
+    let index = catalog.alias_index();
+
+    let memo = &index["Item_Records_DED10_Memory_07"];
+    assert_eq!(memo.area.as_deref(), Some("Eidos 7"));
+    assert_eq!(memo.area_zh.as_deref(), Some("埃多斯7号"));
+    assert_eq!(memo.location.as_deref(), Some("Parking Tower"));
+    assert_eq!(memo.location_zh.as_deref(), Some("停车塔"));
+
+    let journal = &index["Item_Records_DED20_Memory_13"];
+    assert_eq!(journal.area_zh.as_deref(), Some("埃多斯7号"));
+    assert_eq!(journal.location_zh.as_deref(), Some("淹水商业区"));
+
+    assert_eq!(
+        index["Item_Records_DED40_Memory_12"].area_zh.as_deref(),
+        Some("埃多斯9号")
+    );
+    assert_eq!(
+        index["Item_Records_DED40_Memory_12"].location_zh.as_deref(),
+        Some("工坊")
+    );
+    assert_eq!(
+        index["Item_Records_Day1_Memory_01"].area_zh.as_deref(),
+        Some("希雍")
+    );
+    assert_eq!(
+        index["Item_Records_Day1_Memory_01"].location_zh.as_deref(),
+        Some("希雍城")
+    );
+    assert_eq!(
+        index["Item_Records_ETC_Memory_04"].area_zh.as_deref(),
+        Some("废土")
+    );
+    assert_eq!(
+        index["Item_Records_ETC_Memory_04"].location_zh.as_deref(),
+        Some("大峡谷")
+    );
+    assert_eq!(
+        index["Item_Records_SE06_Memory_10"].area_zh.as_deref(),
+        Some("尖塔4")
+    );
+    assert_eq!(
+        index["Item_Records_SE06_Memory_10"].location_zh.as_deref(),
+        Some("拉斐尔太空中心")
+    );
+    assert_eq!(
+        index["Item_Records_WLB_Memory_42"].area_zh.as_deref(),
+        Some("大沙漠")
+    );
+    assert_eq!(
+        index["Item_Records_WLB_Memory_42"].location_zh.as_deref(),
+        Some("大沙漠中部")
+    );
+
+    assert_eq!(
+        index["Item_Records_Day1_Memory_09_1"].area,
+        index["Item_Records_Day1_Memory_09"].area
+    );
+    assert_eq!(
+        index["Item_Records_Day1_Memory_09_1"].location,
+        index["Item_Records_Day1_Memory_09"].location
+    );
+
+    let stick = &index["Item_Records_DED10_Memory_11"];
+    assert_eq!(stick.area.as_deref(), Some("Eidos 7"));
+    assert_eq!(stick.location, None);
+
+    let passcode = &index["Item_Records_DED10_Passcode_01"];
+    assert_eq!(passcode.area.as_deref(), Some("Eidos 7"));
+    assert_eq!(passcode.area_zh.as_deref(), Some("埃多斯7号"));
+    assert_eq!(passcode.location.as_deref(), Some("Silent Street"));
+    assert_eq!(passcode.location_zh.as_deref(), Some("寂静街"));
+
+    let documents_missing: Vec<&str> = catalog
+        .by_category("records")
+        .iter()
+        .filter(|item| {
+            item.record_type
+                .as_deref()
+                .is_some_and(|key| key.starts_with("document_"))
+        })
+        .filter(|item| item.area.is_none() || item.location.is_none())
+        .map(|item| item.id.as_str())
+        .collect();
+    assert!(documents_missing.is_empty(), "{documents_missing:?}");
+
+    let passcodes_missing: Vec<&str> = catalog
+        .by_category("passcodes")
+        .iter()
+        .filter(|item| item.area.is_none() || item.location.is_none())
+        .map(|item| item.id.as_str())
+        .collect();
+    assert!(passcodes_missing.is_empty(), "{passcodes_missing:?}");
+}
+
+#[test]
 fn ng_plus_metadata_present() {
     let catalog = load_catalog(None).expect("catalog");
     let ng_items: Vec<_> = catalog

@@ -642,6 +642,32 @@ fn apply_guide_obtain(item: &mut CatalogItem, info: &SiteItem) {
     }
 }
 
+/// Copies the guide region/location onto an item.
+fn copy_guide_location(item: &mut CatalogItem, info: &SiteItem) {
+    if !info.level.is_empty() {
+        item.area = Some(info.level.clone());
+    }
+    if !info.location.is_empty() {
+        item.location = Some(info.location.clone());
+    }
+}
+
+/// Documents use the guide region/location (the same model as the other
+/// collectible categories). Memorysticks keep the in-game Data Bank region
+/// assigned later by [`apply_memorystick_order`].
+fn apply_document_location(item: &mut CatalogItem, info: &SiteItem) {
+    if item
+        .record_type
+        .as_deref()
+        .is_some_and(|key| key.starts_with("document_"))
+    {
+        copy_guide_location(item, info);
+    }
+}
+
+/// `(record_type, obtain, area, location)` inherited by version variants.
+type InheritedRecord = (String, Option<String>, Option<String>, Option<String>);
+
 fn apply_record_types(
     items: &mut [CatalogItem],
     site: &BTreeMap<i64, SiteItem>,
@@ -693,6 +719,7 @@ fn apply_record_types(
         item.record_type = Some(key.to_string());
         item.record_type_zh = record_type_label(key).map(str::to_string);
         apply_guide_obtain(item, info);
+        apply_document_location(item, info);
     }
     let missing_overrides: Vec<&str> = overrides
         .keys()
@@ -747,14 +774,25 @@ fn apply_record_types(
         item.record_type = Some(key.to_string());
         item.record_type_zh = record_type_label(key).map(str::to_string);
         apply_guide_obtain(item, info);
+        apply_document_location(item, info);
     }
 
-    let inherited: HashMap<String, (String, Option<String>)> = items
+    let inherited: HashMap<String, InheritedRecord> = items
         .iter()
         .filter_map(|item| {
-            item.record_type
-                .as_ref()
-                .map(|key| (item.id.clone(), (key.clone(), item.obtain.clone())))
+            item.record_type.as_ref().map(|key| {
+                let document = key.starts_with("document_");
+                let area = if document { item.area.clone() } else { None };
+                let location = if document {
+                    item.location.clone()
+                } else {
+                    None
+                };
+                (
+                    item.id.clone(),
+                    (key.clone(), item.obtain.clone(), area, location),
+                )
+            })
         })
         .collect();
     for item in items.iter_mut() {
@@ -768,13 +806,17 @@ fn apply_record_types(
                 !suffix.is_empty() && suffix.chars().all(|value| value.is_ascii_digit())
             })
             .map(|(prefix, _)| prefix);
-        let Some((key, obtain)) = base.and_then(|base| inherited.get(base)) else {
+        let Some((key, obtain, area, location)) = base.and_then(|base| inherited.get(base)) else {
             continue;
         };
         item.record_type = Some(key.clone());
         item.record_type_zh = record_type_label(key).map(str::to_string);
         if item.obtain.is_none() {
             item.obtain = obtain.clone();
+        }
+        if key.starts_with("document_") {
+            item.area = area.clone();
+            item.location = location.clone();
         }
     }
 
@@ -834,6 +876,7 @@ fn apply_passcode_obtain(
             continue;
         };
         apply_guide_obtain(item, info);
+        copy_guide_location(item, info);
     }
 
     let missing: Vec<&str> = items
@@ -1098,7 +1141,7 @@ fn build_records(universe: &Value, crosswalk: &Crosswalk) -> Result<Vec<CatalogI
             category,
             vec![alias],
             Some(label),
-            "按内部 ID 生成名称；文档/记忆棒共享该别名族，位置请参考攻略同区域列表",
+            "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
             "low",
             0,
             None,
@@ -1447,9 +1490,9 @@ mod tests {
     use std::collections::HashMap;
 
     use super::{
-        apply_memorystick_order, crosswalk_title_matches, fold_record_title, loose_record_title,
-        normalize_name, plain_item, record_type_from_site, zone_label, MemorystickOrder,
-        MemorystickRegion,
+        apply_document_location, apply_memorystick_order, crosswalk_title_matches,
+        fold_record_title, loose_record_title, normalize_name, plain_item, record_type_from_site,
+        zone_label, MemorystickOrder, MemorystickRegion, SiteItem,
     };
 
     #[test]
@@ -1540,6 +1583,48 @@ mod tests {
         assert_eq!(zone_label("Unknown_3", &zones), "Unknown_3");
         assert_eq!(zone_label("Unknown", &zones), "Unknown");
         assert_eq!(zone_label("ME_01", &zones), "ME_01");
+    }
+
+    fn site_item(level: &str, location: &str) -> SiteItem {
+        SiteItem {
+            title: "Memo".to_string(),
+            cycle: "Base".to_string(),
+            level: level.to_string(),
+            location: location.to_string(),
+            description: "test".to_string(),
+            source_file: "collectibles__documents.json".to_string(),
+            order: 1,
+            types: vec!["Document".to_string()],
+            subtype: Some("Messages".to_string()),
+        }
+    }
+
+    #[test]
+    fn guide_location_replaces_record_zone_label_only_for_documents() {
+        let info = site_item("Eidos 7", "Parking Tower");
+        let mut document = plain_item(
+            "Item_Records_DED10_Memory_07".to_string(),
+            "备忘录".to_string(),
+            "Memo".to_string(),
+            "records",
+            vec!["Item_Records_DED10_Memory_07".to_string()],
+            Some("大沙漠1".to_string()),
+            "test",
+            "low",
+            0,
+            None,
+        );
+        document.record_type = Some("document_messages".to_string());
+        document.record_type_zh = Some("文档·消息".to_string());
+        apply_document_location(&mut document, &info);
+        assert_eq!(document.area.as_deref(), Some("Eidos 7"));
+        assert_eq!(document.location.as_deref(), Some("Parking Tower"));
+
+        let mut stick = memorystick("Item_Records_DED10_Memory_11");
+        stick.area = Some("大沙漠1".to_string());
+        apply_document_location(&mut stick, &info);
+        assert_eq!(stick.area.as_deref(), Some("大沙漠1"));
+        assert_eq!(stick.location, None);
     }
 
     fn memorystick(id: &str) -> super::CatalogItem {

@@ -4120,8 +4120,8 @@
    "aliases": [
     "Item_Records_ATL_Memory_01"
    ],
-   "area": "阿尔忒斯勒瓦尔",
-   "location": null,
+   "area": "Altess Levoire",
+   "location": "Specimen Preservation Lab",
    "obtain": "Follow the walkway to the right until you see a door with a broken red panel. The document is inside, on the left. Careful of ambushes!",
    "ng_plus": 0,
    "dlc": null,
@@ -4129,8 +4129,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "阿尔忒斯勒瓦尔",
+   "location_zh": "标本保存实验室",
    "obtain_zh": "沿右侧步道前进，直到看到一扇红色面板破损的门。文档就在门内左侧。小心埋伏！",
    "record_type": "document_announcements",
    "record_type_zh": "文档·公告"
@@ -4143,8 +4143,8 @@
    "aliases": [
     "Item_Records_ATL_Memory_02"
    ],
-   "area": "阿尔忒斯勒瓦尔",
-   "location": null,
+   "area": "Altess Levoire",
+   "location": "Purification Scanner",
    "obtain": "After the wallrunning over the fallen floor section, it's on the floor in front of you.",
    "ng_plus": 0,
    "dlc": null,
@@ -4152,8 +4152,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "阿尔忒斯勒瓦尔",
+   "location_zh": "净化扫描仪",
    "obtain_zh": "在坍塌地板段跑墙之后，文档就在你前方的地上。",
    "record_type": "document_log_data",
    "record_type_zh": "文档·日志数据"
@@ -4166,8 +4166,8 @@
    "aliases": [
     "Item_Records_ATL_Memory_03"
    ],
-   "area": "阿尔忒斯勒瓦尔",
-   "location": null,
+   "area": "Altess Levoire",
+   "location": "Research Lab Entrance",
    "obtain": "As you walk down the stairs when Lily says the timelines don't match up. Can't miss this one.",
    "ng_plus": 0,
    "dlc": null,
@@ -4175,8 +4175,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "阿尔忒斯勒瓦尔",
+   "location_zh": "研究实验室入口",
    "obtain_zh": "莉莉说时间线对不上时，你正走下楼梯，这份文档不会错过。",
    "record_type": "document_messages",
    "record_type_zh": "文档·消息"
@@ -4189,8 +4189,8 @@
    "aliases": [
     "Item_Records_ATL_Memory_04"
    ],
-   "area": "阿尔忒斯勒瓦尔",
-   "location": null,
+   "area": "Altess Levoire",
+   "location": "Specimen Preservation Lab",
    "obtain": "In the far left room (as if you were facing the way you came in), there's a robot in there now.",
    "ng_plus": 0,
    "dlc": null,
@@ -4198,8 +4198,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "阿尔忒斯勒瓦尔",
+   "location_zh": "标本保存实验室",
    "obtain_zh": "在最左侧的房间里（以你进来的方向为正面），现在那里有个机器人。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -4212,8 +4212,8 @@
    "aliases": [
     "Item_Records_ATL_Memory_05"
    ],
-   "area": "阿尔忒斯勒瓦尔",
-   "location": null,
+   "area": "Altess Levoire",
+   "location": "Sector A07",
    "obtain": "After the symbol floor puzzle, on the right before you go through the next door.",
    "ng_plus": 0,
    "dlc": null,
@@ -4221,8 +4221,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "阿尔忒斯勒瓦尔",
+   "location_zh": "A07区",
    "obtain_zh": "完成地面符号谜题后，在进入下一道门之前的右侧。",
    "record_type": "document_log_data",
    "record_type_zh": "文档·日志数据"
@@ -4235,8 +4235,8 @@
    "aliases": [
     "Item_Records_ATL_Memory_06"
    ],
-   "area": "阿尔忒斯勒瓦尔",
-   "location": null,
+   "area": "Altess Levoire",
+   "location": "Security Center",
    "obtain": "In the control room where you have to open a door (after getting through the timed door), just interact with the computer on the right.",
    "ng_plus": 0,
    "dlc": null,
@@ -4244,8 +4244,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "阿尔忒斯勒瓦尔",
+   "location_zh": "安全中心",
    "obtain_zh": "在需要通过限时门后、需要打开一道门的控制室里，与右侧的电脑互动即可。",
    "record_type": "document_messages",
    "record_type_zh": "文档·消息"
@@ -4258,8 +4258,8 @@
    "aliases": [
     "Item_Records_ATL_Passcode_01"
    ],
-   "area": "阿尔忒斯勒瓦尔",
-   "location": null,
+   "area": "Altess Levoire",
+   "location": "Deteriorated Lobby",
    "obtain": "Found on corpse just down the hallway from the passcode-locked door in the corridor beyond the first Hive.",
    "ng_plus": 0,
    "dlc": null,
@@ -4267,8 +4267,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "阿尔忒斯勒瓦尔",
+   "location_zh": "破败大厅",
    "obtain_zh": "在第一个蜂巢之后的走廊里，从密码锁门沿走廊往前，尸体上。",
    "record_type": null,
    "record_type_zh": null
@@ -4281,8 +4281,8 @@
    "aliases": [
     "Item_Records_AYL_Memory_01"
    ],
-   "area": "深渊勒瓦尔",
-   "location": null,
+   "area": "Abyss Levoire",
+   "location": "Emergency Exit",
    "obtain": "Once the saw blades have stopped and the fans are off, there is a document near the yellow cube on the left hand side of the room, opposite the legion camp",
    "ng_plus": 0,
    "dlc": null,
@@ -4290,8 +4290,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "深渊勒瓦尔",
+   "location_zh": "紧急出口",
    "obtain_zh": "锯片停止、风扇关闭后，在房间左侧、军团营地对面，黄色方块旁有一份文档。",
    "record_type": "document_journal",
    "record_type_zh": "文档·日志"
@@ -4304,8 +4304,8 @@
    "aliases": [
     "Item_Records_AYL_Memory_02"
    ],
-   "area": "深渊勒瓦尔",
-   "location": null,
+   "area": "Abyss Levoire",
+   "location": "Closed Lobby",
    "obtain": "In the room with both control booths, the one in the right-hand corner has a PC on in the corner. Interact with it for this document.",
    "ng_plus": 0,
    "dlc": null,
@@ -4313,8 +4313,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "深渊勒瓦尔",
+   "location_zh": "封闭大厅",
    "obtain_zh": "在有左右两个控制台的那个房间里，右后角的控制台上有一台亮着的电脑，与其互动即可获得该文档。",
    "record_type": "document_log_data",
    "record_type_zh": "文档·日志数据"
@@ -4327,8 +4327,8 @@
    "aliases": [
     "Item_Records_AYL_Memory_03"
    ],
-   "area": "深渊勒瓦尔",
-   "location": null,
+   "area": "Abyss Levoire",
+   "location": "Underground Passage",
    "obtain": "From the previous camp, go into the next room and jump into the control room through the window. The document is on the floor near the blocked stairs.",
    "ng_plus": 0,
    "dlc": null,
@@ -4336,8 +4336,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "深渊勒瓦尔",
+   "location_zh": "地下通道",
    "obtain_zh": "从上一个营地进入下一个房间，从窗户跳进控制室，文档就在被堵住的楼梯附近的地上。",
    "record_type": "document_log_data",
    "record_type_zh": "文档·日志数据"
@@ -4350,8 +4350,8 @@
    "aliases": [
     "Item_Records_AYL_Memory_04"
    ],
-   "area": "深渊勒瓦尔",
-   "location": null,
+   "area": "Abyss Levoire",
+   "location": "Laboratory Ruins",
    "obtain": "On top of the tall box to the right of the previous supply box",
    "ng_plus": 0,
    "dlc": null,
@@ -4359,8 +4359,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "深渊勒瓦尔",
+   "location_zh": "实验室废墟",
    "obtain_zh": "在上一个补给箱右侧的高箱子上。",
    "record_type": "document_log_data",
    "record_type_zh": "文档·日志数据"
@@ -4373,8 +4373,8 @@
    "aliases": [
     "Item_Records_AYL_Memory_05"
    ],
-   "area": "深渊勒瓦尔",
-   "location": null,
+   "area": "Abyss Levoire",
+   "location": "Laboratory Ruins",
    "obtain": "After making your way through the Laboratory Ruins, there will be a document to the left of the door in the red hallway that leads to the room with the camp.",
    "ng_plus": 0,
    "dlc": null,
@@ -4382,8 +4382,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "深渊勒瓦尔",
+   "location_zh": "实验室废墟",
    "obtain_zh": "穿过实验室废墟后，在红色走廊里通往营地房间的门左侧有一份文档。",
    "record_type": "document_log_data",
    "record_type_zh": "文档·日志数据"
@@ -4396,8 +4396,8 @@
    "aliases": [
     "Item_Records_Christmas_01"
    ],
-   "area": null,
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Found next to the Christmas tree in Xion. Head straight from the entrance and up the stairs, then open the two chests in front of the tree to receive Francis's Letter. Make sure Seasonal Events is enabled in your settings.",
    "ng_plus": 0,
    "dlc": null,
@@ -4405,8 +4405,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "位于希雍的圣诞树旁。从入口直走并上楼梯，打开树前的两个箱子即可获得弗朗西斯的信。请确保设置中已开启季节活动。",
    "record_type": "document_messages",
    "record_type_zh": "文档·消息"
@@ -4419,8 +4419,8 @@
    "aliases": [
     "Item_Records_DED00_Memory_01"
    ],
-   "area": "DED00",
-   "location": null,
+   "area": "Eidos 7",
+   "location": "Parking Tower",
    "obtain": "From the Parking Tower Exit Camp, go west past the Legion 15 pods, and around the corner past the collapsed road. You'll find the document at a news stand under the covered walkway on the right side of the street, opposite the cafe.",
    "ng_plus": 0,
    "dlc": null,
@@ -4428,8 +4428,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "埃多斯7号",
+   "location_zh": "停车塔",
    "obtain_zh": "从停车塔出口营地出发，向西经过军团15号舱，绕过拐角穿过坍塌道路。文档就在街道右侧带顶棚的步道下的报刊亭里，位于咖啡馆对面。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -4586,8 +4586,8 @@
    "aliases": [
     "Item_Records_DED10_Memory_07"
    ],
-   "area": "大沙漠1",
-   "location": null,
+   "area": "Eidos 7",
+   "location": "Parking Tower",
    "obtain": "From the Parking Tower Exit Camp, turn left and head west. Climb the yellow crate at the building corner and jump to the ledges above. Follow them around the edge, climb to the platform, then use the next set of ledges to reach a hole in the wall leading inside. Interact with the pinboard on the wall to receive the document.",
    "ng_plus": 0,
    "dlc": null,
@@ -4595,8 +4595,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "埃多斯7号",
+   "location_zh": "停车塔",
    "obtain_zh": "从停车塔出口营地出发，左转向西。爬上建筑拐角处的黄色箱子，跳到上方的边沿，沿边缘绕行爬到平台上，再利用下一组边沿到达墙上通往内部的洞口。与墙上的布告板互动即可获得该文档。",
    "record_type": "document_messages",
    "record_type_zh": "文档·消息"
@@ -4609,8 +4609,8 @@
    "aliases": [
     "Item_Records_DED10_Memory_08"
    ],
-   "area": "大沙漠1",
-   "location": null,
+   "area": "Eidos 7",
+   "location": "Silent Street",
    "obtain": " As part of “The Words of the Mother Sphere” side quest (from Francis, at the book shop in Xion). In the library near Silent Street.",
    "ng_plus": 0,
    "dlc": null,
@@ -4618,8 +4618,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "埃多斯7号",
+   "location_zh": "寂静街",
    "obtain_zh": "属于支线任务《母球的话语》的一部分（在希雍书店的弗朗西斯处接取）。在寂静街附近的图书馆内。",
    "record_type": "document_books",
    "record_type_zh": "文档·书籍"
@@ -4632,8 +4632,8 @@
    "aliases": [
     "Item_Records_DED10_Memory_09"
    ],
-   "area": "大沙漠1",
-   "location": null,
+   "area": "Eidos 7",
+   "location": "Silent Street",
    "obtain": "After heading through the library door, head left and defeat the Barnacle. This document is on a bookshelf in the corner.",
    "ng_plus": 0,
    "dlc": null,
@@ -4641,8 +4641,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "埃多斯7号",
+   "location_zh": "寂静街",
    "obtain_zh": "穿过图书馆的门后向左走，击败藤壶。文档就在角落的书架上。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -4727,8 +4727,8 @@
    "aliases": [
     "Item_Records_DED10_Passcode_01"
    ],
-   "area": "大沙漠1",
-   "location": null,
+   "area": "Eidos 7",
+   "location": "Silent Street",
    "obtain": "On a corpse on the metal walkway in the swinging section near the end of Silent Street.",
    "ng_plus": 0,
    "dlc": null,
@@ -4736,8 +4736,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "埃多斯7号",
+   "location_zh": "寂静街",
    "obtain_zh": "在寂静街尽头附近的摆荡路段，金属步道上的尸体上。",
    "record_type": null,
    "record_type_zh": null
@@ -4750,8 +4750,8 @@
    "aliases": [
     "Item_Records_DED10_Passcode_02"
    ],
-   "area": "大沙漠1",
-   "location": null,
+   "area": "Eidos 7",
+   "location": "Abandoned Station",
    "obtain": "Found on corpse floating in the water near the Passcode-Locked door. There is a hole in the fence you can swim through to reach it.",
    "ng_plus": 0,
    "dlc": null,
@@ -4759,8 +4759,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "埃多斯7号",
+   "location_zh": "废弃车站",
    "obtain_zh": "在密码锁门附近的水面上漂浮的尸体上。围栏上有个洞，游过去即可到达。",
    "record_type": null,
    "record_type_zh": null
@@ -4773,8 +4773,8 @@
    "aliases": [
     "Item_Records_DED10_Passcode_03"
    ],
-   "area": "大沙漠1",
-   "location": null,
+   "area": "Eidos 7",
+   "location": "Silent Street",
    "obtain": "On the corpse of a soldier in the open building with the “Caliente” sign, near the locked gate.",
    "ng_plus": 0,
    "dlc": null,
@@ -4782,8 +4782,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "埃多斯7号",
+   "location_zh": "寂静街",
    "obtain_zh": "在上锁大门附近、挂着“Caliente”招牌的开放式建筑里，士兵的尸体上。",
    "record_type": null,
    "record_type_zh": null
@@ -5084,8 +5084,8 @@
    "aliases": [
     "Item_Records_DED20_Memory_13"
    ],
-   "area": "大沙漠2",
-   "location": null,
+   "area": "Eidos 7",
+   "location": "Flooded Commercial Sector",
    "obtain": "Part of the “End of the Nightmare” side quest in the previously flooded Commercial District (have to lift the floodgates, fast-travel to a different place, and then return to Eidos 7 for this one to appear).  North side of the river, at the lowest level you can go",
    "ng_plus": 0,
    "dlc": null,
@@ -5093,8 +5093,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "埃多斯7号",
+   "location_zh": "淹水商业区",
    "obtain_zh": "属于此前被淹没的商业区支线任务《噩梦终结》的一部分（需要升起泄洪闸、快速传送到其他地方，再返回埃多斯7号才会出现）。在河流北侧、你能到达的最低层。",
    "record_type": "document_journal",
    "record_type_zh": "文档·日志"
@@ -5107,8 +5107,8 @@
    "aliases": [
     "Item_Records_DED20_Memory_14"
    ],
-   "area": "大沙漠2",
-   "location": null,
+   "area": "Eidos 7",
+   "location": "Memory Tower",
    "obtain": "Head back to the Hall of Records, and interact with the plinth in the plaza, as part of the “Taboo” side quest.",
    "ng_plus": 0,
    "dlc": null,
@@ -5116,8 +5116,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "埃多斯7号",
+   "location_zh": "记忆之塔",
    "obtain_zh": "作为支线任务《禁忌》的一部分，返回记录之厅，与广场上的基座互动。",
    "record_type": "document_announcements",
    "record_type_zh": "文档·公告"
@@ -5226,8 +5226,8 @@
    "aliases": [
     "Item_Records_DED20_Memory_19"
    ],
-   "area": "大沙漠2",
-   "location": null,
+   "area": "Eidos 7",
+   "location": "Flooded Commercial Sector",
    "obtain": "Inside Warehouse 77, also at the bottom of the ladder.",
    "ng_plus": 0,
    "dlc": null,
@@ -5235,8 +5235,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "埃多斯7号",
+   "location_zh": "淹水商业区",
    "obtain_zh": "在77号仓库内，同样在梯子底部。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -5321,8 +5321,8 @@
    "aliases": [
     "Item_Records_DED20_Passcode_02"
    ],
-   "area": "大沙漠2",
-   "location": null,
+   "area": "Eidos 7",
+   "location": "Memory Tower",
    "obtain": "To the east of the pillar in the plaza is another corpse.",
    "ng_plus": 0,
    "dlc": null,
@@ -5330,8 +5330,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "埃多斯7号",
+   "location_zh": "记忆之塔",
    "obtain_zh": "广场上柱子的东侧还有一具尸体。",
    "record_type": null,
    "record_type_zh": null
@@ -5344,8 +5344,8 @@
    "aliases": [
     "Item_Records_DED20_Passcode_05"
    ],
-   "area": "大沙漠2",
-   "location": null,
+   "area": "Eidos 7",
+   "location": "Flooded Commercial Sector",
    "obtain": "From the Flooded Commercial Sector camp, head left and cross the bridge to the hotel with the red tarp. Go right an climb up the ledges. A corpse found behind the petrified Naytibas holds the Passcode..",
    "ng_plus": 0,
    "dlc": null,
@@ -5353,8 +5353,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "埃多斯7号",
+   "location_zh": "淹水商业区",
    "obtain_zh": "从淹水商业区营地出发，向左过桥前往挂着红色篷布的旅馆。向右走并爬上边沿，在石化的孽奇拔后面有一具尸体，密码就在上面。",
    "record_type": null,
    "record_type_zh": null
@@ -5679,8 +5679,8 @@
    "aliases": [
     "Item_Records_DED40_Memory_11"
    ],
-   "area": "大沙漠4",
-   "location": null,
+   "area": "Eidos 9",
+   "location": "Fallen Overpass",
    "obtain": "There's also a robot here that drops a document.",
    "ng_plus": 0,
    "dlc": null,
@@ -5688,8 +5688,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "埃多斯9号",
+   "location_zh": "倒塌高架桥",
    "obtain_zh": "这里还有个机器人，会掉落一份文档。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -5702,8 +5702,8 @@
    "aliases": [
     "Item_Records_DED40_Memory_12"
    ],
-   "area": "大沙漠4",
-   "location": null,
+   "area": "Eidos 9",
+   "location": "Atelier",
    "obtain": "On the ground inside the Atelier.",
    "ng_plus": 0,
    "dlc": null,
@@ -5711,8 +5711,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "埃多斯9号",
+   "location_zh": "工坊",
    "obtain_zh": "在工坊内的地上。",
    "record_type": "document_messages",
    "record_type_zh": "文档·消息"
@@ -5725,8 +5725,8 @@
    "aliases": [
     "Item_Records_DED40_Memory_13"
    ],
-   "area": "大沙漠4",
-   "location": null,
+   "area": "Eidos 9",
+   "location": "Fallen Overpass",
    "obtain": "On the same rooftop, next to the previous memorystick.",
    "ng_plus": 0,
    "dlc": null,
@@ -5734,8 +5734,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "埃多斯9号",
+   "location_zh": "倒塌高架桥",
    "obtain_zh": "在同一个屋顶上，就在上一根记忆棒旁边。",
    "record_type": "document_messages",
    "record_type_zh": "文档·消息"
@@ -5748,8 +5748,8 @@
    "aliases": [
     "Item_Records_DED40_Memory_14"
    ],
-   "area": "大沙漠4",
-   "location": null,
+   "area": "Eidos 9",
+   "location": "Submerged City",
    "obtain": "From the previous crate, climb back up and follow the pathway and you'll have to climb up some vents. Once you're done climbing the vents, the document will be on the ground ahead.",
    "ng_plus": 0,
    "dlc": null,
@@ -5757,8 +5757,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "埃多斯9号",
+   "location_zh": "淹没之城",
    "obtain_zh": "从上一个箱子处爬回上方，沿小路前进，需要攀爬几处通风口。爬完通风口后，文档就在前方的地上。",
    "record_type": "document_books",
    "record_type_zh": "文档·书籍"
@@ -5771,8 +5771,8 @@
    "aliases": [
     "Item_Records_Day1_Memory_01"
    ],
-   "area": "第一天",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "On your way back to the safehouse, on the final bridge, before you start to cross it. On the side on the right.",
    "ng_plus": 0,
    "dlc": null,
@@ -5780,8 +5780,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "返回安全屋的路上，在最后一座桥开始过桥前的右侧。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -5794,8 +5794,8 @@
    "aliases": [
     "Item_Records_Day1_Memory_02"
    ],
-   "area": "第一天",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Available to purchase from Lyle.",
    "ng_plus": 0,
    "dlc": null,
@@ -5803,8 +5803,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "可在莱尔处购买。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -5817,8 +5817,8 @@
    "aliases": [
     "Item_Records_Day1_Memory_03"
    ],
-   "area": "第一天",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Available to purchase from Roxanne.",
    "ng_plus": 0,
    "dlc": null,
@@ -5826,8 +5826,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "可在罗克珊处购买。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -5840,8 +5840,8 @@
    "aliases": [
     "Item_Records_Day1_Memory_04"
    ],
-   "area": "第一天",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Solar Tower",
    "obtain": "West of the supply camp, by some rubble.",
    "ng_plus": 0,
    "dlc": null,
@@ -5849,8 +5849,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "太阳塔",
    "obtain_zh": "在补给营地以西的碎石堆旁。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -5863,8 +5863,8 @@
    "aliases": [
     "Item_Records_Day1_Memory_05"
    ],
-   "area": "第一天",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "On the bench opposite Roxanne and the Bulletin Board.",
    "ng_plus": 0,
    "dlc": null,
@@ -5872,8 +5872,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "在罗克珊和布告栏对面的长椅上。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -5886,8 +5886,8 @@
    "aliases": [
     "Item_Records_Day1_Memory_06"
    ],
-   "area": "第一天",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "To the left of Sisters' Junk is this book.",
    "ng_plus": 0,
    "dlc": null,
@@ -5895,8 +5895,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "在姐妹废品店左侧可以找到这本书。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -5909,8 +5909,8 @@
    "aliases": [
     "Item_Records_Day1_Memory_07"
    ],
-   "area": "第一天",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "In the alleyway to the right of the exit (as if you're leaving Xion to head back to the ship), at the end of said alleyway is a book store. You'll find this book on the shelves.",
    "ng_plus": 0,
    "dlc": null,
@@ -5918,8 +5918,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "在出口右侧的小巷里（即离开希雍返回飞船的方向），小巷尽头有家书店，书就在书架上。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -5932,8 +5932,8 @@
    "aliases": [
     "Item_Records_Day1_Memory_08"
    ],
-   "area": "第一天",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Opposite the southernmost Waypoint in Xion (triggered by some completion of a side quest, we imagine).",
    "ng_plus": 0,
    "dlc": null,
@@ -5941,8 +5941,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "在希雍最南端传送点的对面（推测需完成某个支线任务后触发）。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -5955,8 +5955,8 @@
    "aliases": [
     "Item_Records_Day1_Memory_09"
    ],
-   "area": "第一天",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Before going down the stairs to Sisters' Junk, head up the stairs to the right of them. The poster is on a metal shutter up the stairs to the right.",
    "ng_plus": 0,
    "dlc": null,
@@ -5964,8 +5964,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "在下楼梯去姐妹废品店之前，先走上其右侧的楼梯。海报就在右侧楼梯上去的金属卷帘门上。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -5978,17 +5978,17 @@
    "aliases": [
     "Item_Records_Day1_Memory_09_1"
    ],
-   "area": "第一天",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Before going down the stairs to Sisters' Junk, head up the stairs to the right of them. The poster is on a metal shutter up the stairs to the right.",
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；文档/记忆棒共享该别名族，位置请参考攻略同区域列表",
+   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
    "confidence": "low",
    "source": null,
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "在下楼梯去姐妹废品店之前，先走上其右侧的楼梯。海报就在右侧楼梯上去的金属卷帘门上。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -6001,8 +6001,8 @@
    "aliases": [
     "Item_Records_Day1_Memory_10"
    ],
-   "area": "第一天",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "From the waypoint, turn 180 degrees and run forward. On a metal shutter, to the right of a blue work desk.",
    "ng_plus": 0,
    "dlc": null,
@@ -6010,8 +6010,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "从传送点转身180度向前跑，在蓝色工作台右侧的金属卷帘门上。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -6024,17 +6024,17 @@
    "aliases": [
     "Item_Records_Day1_Memory_10_1"
    ],
-   "area": "第一天",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "From the waypoint, turn 180 degrees and run forward. On a metal shutter, to the right of a blue work desk.",
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；文档/记忆棒共享该别名族，位置请参考攻略同区域列表",
+   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
    "confidence": "low",
    "source": null,
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "从传送点转身180度向前跑，在蓝色工作台右侧的金属卷帘门上。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -6047,8 +6047,8 @@
    "aliases": [
     "Item_Records_Day1_Memory_11"
    ],
-   "area": "第一天",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "On the wall by the body for the Missing Husband Request, near The Last Gulp.",
    "ng_plus": 0,
    "dlc": null,
@@ -6056,8 +6056,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "在“最后一杯”附近、委托《失踪的丈夫》尸体旁的墙上。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -6070,17 +6070,17 @@
    "aliases": [
     "Item_Records_Day1_Memory_11_1"
    ],
-   "area": "第一天",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "On the wall by the body for the Missing Husband Request, near The Last Gulp.",
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；文档/记忆棒共享该别名族，位置请参考攻略同区域列表",
+   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
    "confidence": "low",
    "source": null,
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "在“最后一杯”附近、委托《失踪的丈夫》尸体旁的墙上。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -6093,8 +6093,8 @@
    "aliases": [
     "Item_Records_Day1_Memory_12"
    ],
-   "area": "第一天",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "From the previous chest, go down the stairs and head right. The poster is on a metal shutter to the right.",
    "ng_plus": 0,
    "dlc": null,
@@ -6102,8 +6102,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "从上一个箱子处下楼梯后向右，海报就在右侧的金属卷帘门上。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -6116,17 +6116,17 @@
    "aliases": [
     "Item_Records_Day1_Memory_12_1"
    ],
-   "area": "第一天",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "From the previous chest, go down the stairs and head right. The poster is on a metal shutter to the right.",
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；文档/记忆棒共享该别名族，位置请参考攻略同区域列表",
+   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
    "confidence": "low",
    "source": null,
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "从上一个箱子处下楼梯后向右，海报就在右侧的金属卷帘门上。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -6139,8 +6139,8 @@
    "aliases": [
     "Item_Records_Day1_Memory_13"
    ],
-   "area": "第一天",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "After heading up the stairs to Sisters' Junk, take a left and there's another poster there, in the corner near the fence.",
    "ng_plus": 0,
    "dlc": null,
@@ -6148,8 +6148,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "上楼梯到姐妹废品店后左转，围栏旁的角落里还有一张海报。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -6162,17 +6162,17 @@
    "aliases": [
     "Item_Records_Day1_Memory_13_1"
    ],
-   "area": "第一天",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "After heading up the stairs to Sisters' Junk, take a left and there's another poster there, in the corner near the fence.",
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；文档/记忆棒共享该别名族，位置请参考攻略同区域列表",
+   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
    "confidence": "low",
    "source": null,
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "上楼梯到姐妹废品店后左转，围栏旁的角落里还有一张海报。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -6185,8 +6185,8 @@
    "aliases": [
     "Item_Records_ETC_Memory_01"
    ],
-   "area": "其他",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Northern Great Desert",
    "obtain": "East of the previous memorysticks are a load of dilapidated buildings. This is one floor up in one of the western ones.",
    "ng_plus": 0,
    "dlc": null,
@@ -6194,8 +6194,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "大沙漠北部",
    "obtain_zh": "在上几根记忆棒以东有一片破败建筑。文档在其中一栋西侧建筑的上层。",
    "record_type": "document_prayers",
    "record_type_zh": "文档·祈祷"
@@ -6208,8 +6208,8 @@
    "aliases": [
     "Item_Records_ETC_Memory_02"
    ],
-   "area": "其他",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Solar Tower",
    "obtain": "Head east out the gate and then head into the building to the north. This collectible is there, in a box on the shrine.",
    "ng_plus": 0,
    "dlc": null,
@@ -6217,8 +6217,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "太阳塔",
    "obtain_zh": "出大门后向东，再进入北侧的建筑。该收集品就在那里祭坛上的箱子里。",
    "record_type": "document_prayers",
    "record_type_zh": "文档·祈祷"
@@ -6231,8 +6231,8 @@
    "aliases": [
     "Item_Records_ETC_Memory_03"
    ],
-   "area": "其他",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Northern Great Desert",
    "obtain": "Head south out of the water and climb onto land. There's a shrine at the end with this prayer.",
    "ng_plus": 0,
    "dlc": null,
@@ -6240,8 +6240,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "大沙漠北部",
    "obtain_zh": "从水中向南上岸，尽头的祭坛上放着这份祈祷文。",
    "record_type": "document_prayers",
    "record_type_zh": "文档·祈祷"
@@ -6254,8 +6254,8 @@
    "aliases": [
     "Item_Records_ETC_Memory_04"
    ],
-   "area": "其他",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Great Canyon",
    "obtain": "East of the supply camp, in the closest cliffface is a small cave with a shrine in it.",
    "ng_plus": 0,
    "dlc": null,
@@ -6263,8 +6263,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "大峡谷",
    "obtain_zh": "在补给营地以东最近的崖壁上有个小洞穴，里面有一座祭坛。",
    "record_type": "document_prayers",
    "record_type_zh": "文档·祈祷"
@@ -6277,8 +6277,8 @@
    "aliases": [
     "Item_Records_ETC_Memory_05"
    ],
-   "area": "其他",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Great Canyon",
    "obtain": "From the elevator, heading northwest, before the path goes directly west, on the right (east) is a dead end. In that southern wall is a small cave with a shrine in it.",
    "ng_plus": 0,
    "dlc": null,
@@ -6286,8 +6286,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "大峡谷",
    "obtain_zh": "从电梯向西北走，在小路转为正西之前，右侧（东侧）是个死胡同。其南面墙上有个小洞穴，里面有一座祭坛。",
    "record_type": "document_prayers",
    "record_type_zh": "文档·祈祷"
@@ -6300,8 +6300,8 @@
    "aliases": [
     "Item_Records_ETC_Memory_06"
    ],
-   "area": "其他",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Great Canyon",
    "obtain": "In the same container as the previous Nano Suit.",
    "ng_plus": 0,
    "dlc": null,
@@ -6309,8 +6309,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "大峡谷",
    "obtain_zh": "在与上一件纳米战衣相同的集装箱里。",
    "record_type": "document_prayers",
    "record_type_zh": "文档·祈祷"
@@ -6323,8 +6323,8 @@
    "aliases": [
     "Item_Records_ETC_Memory_07"
    ],
-   "area": "其他",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Just to the left of the Fiz machine is this document.",
    "ng_plus": 0,
    "dlc": null,
@@ -6332,8 +6332,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "就在 Fiz 自动售货机左侧。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -6346,8 +6346,8 @@
    "aliases": [
     "Item_Records_ETC_Memory_08"
    ],
-   "area": "其他",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Barren Lands",
    "obtain": "East of the supply camp is a robot who drops this document.",
    "ng_plus": 0,
    "dlc": null,
@@ -6355,8 +6355,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "荒芜之地",
    "obtain_zh": "补给营地以东有个机器人，会掉落这份文档。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -6369,8 +6369,8 @@
    "aliases": [
     "Item_Records_ETC_Memory_09"
    ],
-   "area": "其他",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "After coming out of the Presence Chamber (and a load of cutscenes), head to the left-hand corner of the room you enter into.",
    "ng_plus": 0,
    "dlc": null,
@@ -6378,8 +6378,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "从谒见厅出来（经过一连串过场动画）后，进入房间后前往左角。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -6392,8 +6392,8 @@
    "aliases": [
     "Item_Records_ETC_Memory_10"
    ],
-   "area": "其他",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Central Great Desert",
    "obtain": "West of the previous can, in some rocks.",
    "ng_plus": 0,
    "dlc": null,
@@ -6401,8 +6401,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "大沙漠中部",
    "obtain_zh": "在上一个罐子以西的岩石堆里。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -6415,8 +6415,8 @@
    "aliases": [
     "Item_Records_ETC_Memory_11"
    ],
-   "area": "其他",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "By the fence at the end of the same alley as the previous document and memorystick.",
    "ng_plus": 0,
    "dlc": null,
@@ -6424,8 +6424,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "在与上一份文档和记忆棒同一条小巷尽头的围栏旁。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -6438,8 +6438,8 @@
    "aliases": [
     "Item_Records_ETC_Memory_12"
    ],
-   "area": "其他",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Northern Great Desert",
    "obtain": "West of the Hypertube legion camp, on the east side of a massive statue, is a robot with this document in.",
    "ng_plus": 0,
    "dlc": null,
@@ -6447,8 +6447,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "大沙漠北部",
    "obtain_zh": "在高速管道军团营地以西、一座巨大雕像的东侧，有个机器人带着这份文档。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -6461,8 +6461,8 @@
    "aliases": [
     "Item_Records_ETC_Memory_13"
    ],
-   "area": "其他",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Head down the stairs next to the last collectible, until you hit Gwen Hair Salon. Then take a left down the stairs. The collectible is on a barrel down that corridor (that has a dead-end with a red banner).",
    "ng_plus": 0,
    "dlc": null,
@@ -6470,8 +6470,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "从上一个收集品旁的楼梯下去，直到格温理发店，然后左转下楼。收集品就在那条走廊尽头的油桶上（走廊尽头是挂着红色横幅的死胡同）。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -6508,8 +6508,8 @@
    "aliases": [
     "Item_Records_ETC_Memory_15"
    ],
-   "area": "其他",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "In the Gwen Hair Salon (which opens up after you agree to go to the Wasteland on foot), which is in the centre of Xion, near the stairs that leads to Sisters' Junk.",
    "ng_plus": 0,
    "dlc": null,
@@ -6517,8 +6517,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "在希雍中心的格温理发店内（同意步行前往废土后开放），靠近通往姐妹废品店的楼梯。",
    "record_type": "document_messages",
    "record_type_zh": "文档·消息"
@@ -6561,7 +6561,7 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；文档/记忆棒共享该别名族，位置请参考攻略同区域列表",
+   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
    "confidence": "low",
    "source": null,
    "area_zh": "矩阵11",
@@ -6699,8 +6699,8 @@
    "aliases": [
     "Item_Records_ME01_Memory_07"
    ],
-   "area": "矩阵11-1",
-   "location": null,
+   "area": "Matrix 11",
+   "location": "Closed Off Platform",
    "obtain": "Crash through the wooden struts down the stairs and the robot is right ahead.",
    "ng_plus": 0,
    "dlc": null,
@@ -6708,8 +6708,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "矩阵11",
+   "location_zh": "封锁站台",
    "obtain_zh": "撞破木撑沿楼梯下去，机器人就在正前方。",
    "record_type": "document_announcements",
    "record_type_zh": "文档·公告"
@@ -6722,8 +6722,8 @@
    "aliases": [
     "Item_Records_ME01_Passcode_01"
    ],
-   "area": "矩阵11-1",
-   "location": null,
+   "area": "Matrix 11",
+   "location": "Closed Off Platform",
    "obtain": "In the hallway beyond the crashed train carriage, go all the way to the end and look right to find a corpse holding a memorystick and passcode.",
    "ng_plus": 0,
    "dlc": null,
@@ -6731,8 +6731,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "矩阵11",
+   "location_zh": "封锁站台",
    "obtain_zh": "在坠毁列车车厢后面的走廊里一直走到尽头，向右看，会发现一具拿着记忆棒和密码的尸体。",
    "record_type": null,
    "record_type_zh": null
@@ -6985,8 +6985,8 @@
    "aliases": [
     "Item_Records_ME04_Memory_09"
    ],
-   "area": "矩阵11-4",
-   "location": null,
+   "area": "Matrix 11",
+   "location": "Rotten Labyrinth",
    "obtain": "In the room where the survivors were, head left and interact with the bookcase.",
    "ng_plus": 0,
    "dlc": null,
@@ -6994,8 +6994,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "矩阵11",
+   "location_zh": "腐朽迷宫",
    "obtain_zh": "在幸存者曾待过的房间里，向左走，与书架互动。",
    "record_type": "document_journal",
    "record_type_zh": "文档·日志"
@@ -7008,8 +7008,8 @@
    "aliases": [
     "Item_Records_ME04_Memory_10"
    ],
-   "area": "矩阵11-4",
-   "location": null,
+   "area": "Matrix 11",
+   "location": "Rotten Labyrinth",
    "obtain": "Interact with the notice board near the neon Liquor sign downstairs in the same area.",
    "ng_plus": 0,
    "dlc": null,
@@ -7017,8 +7017,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "矩阵11",
+   "location_zh": "腐朽迷宫",
    "obtain_zh": "在同一区域楼下，与霓虹酒铺招牌旁的告示板互动。",
    "record_type": "document_messages",
    "record_type_zh": "文档·消息"
@@ -7103,8 +7103,8 @@
    "aliases": [
     "Item_Records_ME04_Memory_14"
    ],
-   "area": "矩阵11-4",
-   "location": null,
+   "area": "Matrix 11",
+   "location": "Rotten Labyrinth",
    "obtain": "On the actual memorial.",
    "ng_plus": 0,
    "dlc": null,
@@ -7112,8 +7112,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "矩阵11",
+   "location_zh": "腐朽迷宫",
    "obtain_zh": "就在纪念碑上。",
    "record_type": "document_prayers",
    "record_type_zh": "文档·祈祷"
@@ -7126,8 +7126,8 @@
    "aliases": [
     "Item_Records_ME04_Memory_15"
    ],
-   "area": "矩阵11-4",
-   "location": null,
+   "area": "Matrix 11",
+   "location": "Underground Sewer",
    "obtain": "Head southwest and into the floodgate control room. Firstly, however, head upstairs and there is a robot above it.",
    "ng_plus": 0,
    "dlc": null,
@@ -7135,8 +7135,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "矩阵11",
+   "location_zh": "地下下水道",
    "obtain_zh": "向西南进入泄洪闸控制室。不过要先去楼上，控制室上方有个机器人。",
    "record_type": "document_log_data",
    "record_type_zh": "文档·日志数据"
@@ -7149,8 +7149,8 @@
    "aliases": [
     "Item_Records_ME04_Memory_16"
    ],
-   "area": "矩阵11-4",
-   "location": null,
+   "area": "Matrix 11",
+   "location": "Rotten Labyrinth",
    "obtain": "Head back to the main corridor and then head west. Opposite the Fusion Cell locked door, there's a machine there with this journal.",
    "ng_plus": 0,
    "dlc": null,
@@ -7158,8 +7158,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "矩阵11",
+   "location_zh": "腐朽迷宫",
    "obtain_zh": "回到主走廊后向西，在聚变电池上锁门的对面有台机器，上面放着这本日志。",
    "record_type": "document_journal",
    "record_type_zh": "文档·日志"
@@ -7196,8 +7196,8 @@
    "aliases": [
     "Item_Records_ME04_Passcode_01"
    ],
-   "area": "矩阵11-4",
-   "location": null,
+   "area": "Matrix 11",
+   "location": "Underground Sewer",
    "obtain": "Found on a corpse kneeling in the shallow water on the lower level of the Underground Sewer.",
    "ng_plus": 0,
    "dlc": null,
@@ -7205,8 +7205,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "矩阵11",
+   "location_zh": "地下下水道",
    "obtain_zh": "在地下下水道下层，跪在浅水中的尸体上。",
    "record_type": null,
    "record_type_zh": null
@@ -7267,8 +7267,8 @@
    "aliases": [
     "Item_Records_ME05_Passcode_01"
    ],
-   "area": "矩阵11-5",
-   "location": null,
+   "area": "Matrix 11",
+   "location": "Train Graveyard",
    "obtain": "Found on a corpse in the sunken train carriage towards the north end of the flooded tunnel. There are two Skull Gunner and a Hive above it.",
    "ng_plus": 0,
    "dlc": null,
@@ -7276,8 +7276,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "矩阵11",
+   "location_zh": "列车坟场",
    "obtain_zh": "在被淹隧道的北端附近，沉没的列车车厢里有一具尸体，其上方有两只骷髅枪手和一个蜂巢。",
    "record_type": null,
    "record_type_zh": null
@@ -7314,8 +7314,8 @@
    "aliases": [
     "Item_Records_Quest_Request_001_01"
    ],
-   "area": null,
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Visit the console in The Cradle, underneath Xion after accepting the Sleeping Beauty Request and you'll get this document.",
    "ng_plus": 0,
    "dlc": null,
@@ -7323,8 +7323,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "接受布告栏委托《睡美人》后，前往希雍地下的摇篮，查看控制台即可获得该文档。",
    "record_type": "document_log_data",
    "record_type_zh": "文档·日志数据"
@@ -7409,8 +7409,8 @@
    "aliases": [
     "Item_Records_Quest_Request_008_01"
    ],
-   "area": null,
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Submerged in the small pond by the exit to the Wasteland. If you picked up the Lost Device request from the Bulletin Board, just follow the quest marker.",
    "ng_plus": 0,
    "dlc": null,
@@ -7418,8 +7418,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "沉在通往废土的出口旁的小水池里。如果已从布告栏接取《丢失的设备》委托，跟随任务标记即可。",
    "record_type": "document_journal",
    "record_type_zh": "文档·日志"
@@ -7576,8 +7576,8 @@
    "aliases": [
     "Item_Records_SE01_Passcode_01"
    ],
-   "area": "尖塔1",
-   "location": null,
+   "area": "Spire 4",
+   "location": "Orca Space Complex",
    "obtain": "Enter the door behind the where the water had been flowing at the dam area. Defeat the Broken Droid that attempts to ambush you and then loot the corpse",
    "ng_plus": 0,
    "dlc": null,
@@ -7585,8 +7585,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "尖塔4",
+   "location_zh": "奥卡太空综合体",
    "obtain_zh": "进入水坝区域原本水流处的门。击败试图伏击你的损坏机器人，然后搜刮尸体。",
    "record_type": null,
    "record_type_zh": null
@@ -7935,8 +7935,8 @@
    "aliases": [
     "Item_Records_SE06_Memory_10"
    ],
-   "area": "尖塔6",
-   "location": null,
+   "area": "Spire 4",
+   "location": "Raphael Space Centre",
    "obtain": "Actually in the information kiosk in the middle of the area.",
    "ng_plus": 0,
    "dlc": null,
@@ -7944,8 +7944,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "尖塔4",
+   "location_zh": "拉斐尔太空中心",
    "obtain_zh": "就在该区域中央的信息亭里。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -7958,8 +7958,8 @@
    "aliases": [
     "Item_Records_SE06_Memory_11"
    ],
-   "area": "尖塔6",
-   "location": null,
+   "area": "Spire 4",
+   "location": "Space Logistics Complex",
    "obtain": "Just to the north of the Legion Camp, before you go through the door into the next area.",
    "ng_plus": 0,
    "dlc": null,
@@ -7967,8 +7967,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "尖塔4",
+   "location_zh": "太空物流综合体",
    "obtain_zh": "就在军团营地以北，进入下一区域的门之前。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -8029,8 +8029,8 @@
    "aliases": [
     "Item_Records_SE06_Passcode_01"
    ],
-   "area": "尖塔6",
-   "location": null,
+   "area": "Spire 4",
+   "location": "Raphael Space Centre",
    "obtain": "After entering the Raphael Space Center, head to the left from the initial entry point to spot a door with 'GATE 03' above it in the distance. In the seating area off to the right of the door, there is a Broken Droid to defeat and a corpse to loot with this memorystick and passcode.",
    "ng_plus": 0,
    "dlc": null,
@@ -8038,8 +8038,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "尖塔4",
+   "location_zh": "拉斐尔太空中心",
    "obtain_zh": "进入拉斐尔太空中心后，从初始入口向左看，远处有一扇上方标着“GATE 03”的门。门右侧的座位区有只损坏的机器人，击败后搜刮尸体即可获得这根记忆棒和密码。",
    "record_type": null,
    "record_type_zh": null
@@ -8796,8 +8796,8 @@
    "aliases": [
     "Item_Records_WLA_Memory_26"
    ],
-   "area": "废土A",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Barren Lands",
    "obtain": "Also part of the side quest, “Keeping Secrets” - part of the Su and Enya storyline. Northeast of the Solar Tower.",
    "ng_plus": 0,
    "dlc": null,
@@ -8805,8 +8805,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "荒芜之地",
    "obtain_zh": "同样属于支线任务《保守秘密》的一部分——苏与恩雅剧情线。在太阳塔东北方。",
    "record_type": "document_journal",
    "record_type_zh": "文档·日志"
@@ -8819,8 +8819,8 @@
    "aliases": [
     "Item_Records_WLA_Memory_27"
    ],
-   "area": "废土A",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Barren Lands",
    "obtain": "You'll find this as part of the side quest, “Keeping Secrets” - part of the Su and Enya storyline. North of the Solar Tower.",
    "ng_plus": 0,
    "dlc": null,
@@ -8828,8 +8828,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "荒芜之地",
    "obtain_zh": "属于支线任务《保守秘密》的一部分——苏与恩雅剧情线。在太阳塔以北可以找到。",
    "record_type": "document_journal",
    "record_type_zh": "文档·日志"
@@ -8866,8 +8866,8 @@
    "aliases": [
     "Item_Records_WLA_Memory_29"
    ],
-   "area": "废土A",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Scrap Yard",
    "obtain": "Available to purchase from D1G-g2r.",
    "ng_plus": 0,
    "dlc": null,
@@ -8875,8 +8875,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "废料场",
    "obtain_zh": "可在 D1G-g2r 处购买。",
    "record_type": "document_information",
    "record_type_zh": "文档·信息"
@@ -8889,8 +8889,8 @@
    "aliases": [
     "Item_Records_WLA_Memory_30"
    ],
-   "area": "废土A",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Scrap Yard",
    "obtain": "After finishing D1g-g2r's side quests he'll leave to go to Xion. When he does, return to the Wasteland and head to the Scrapyard. On a large computer screen to the east of the entrance (under a box and by a ladder), you'll be able to interact with the screen to grab this collectible.",
    "ng_plus": 0,
    "dlc": null,
@@ -8898,8 +8898,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "废料场",
    "obtain_zh": "完成 D1G-g2r 的支线任务后，他会离开前往希雍。之后返回废土并前往废料场，在入口以东（一个箱子下方、梯子旁）有一块大型电脑屏幕，与其互动即可取得该收集品。",
    "record_type": "document_messages",
    "record_type_zh": "文档·消息"
@@ -8912,8 +8912,8 @@
    "aliases": [
     "Item_Records_WLA_Memory_31"
    ],
-   "area": "废土A",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Scrap Yard",
    "obtain": "Available to purchase from D1G-g2r.",
    "ng_plus": 0,
    "dlc": null,
@@ -8921,8 +8921,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "废料场",
    "obtain_zh": "可在 D1G-g2r 处购买。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -8935,8 +8935,8 @@
    "aliases": [
     "Item_Records_WLA_Memory_32"
    ],
-   "area": "废土A",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Great Canyon",
    "obtain": "Drop down a level and head east to the end where you will see a newspaper dispenser. Interact with it for this document. There's also a Drone Upgrade Module beside it.",
    "ng_plus": 0,
    "dlc": null,
@@ -8944,8 +8944,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "大峡谷",
    "obtain_zh": "下到下一层后向东走到尽头，可以看到一个报刊箱，与其互动即可获得该文档。旁边还有无人机升级模块。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -8958,8 +8958,8 @@
    "aliases": [
     "Item_Records_WLA_Memory_33"
    ],
-   "area": "废土A",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Wasteland Basin",
    "obtain": "Continue on the path west from the Fiz machine until you come to a small open-area, on the north side, next to a vending machine, is a blue newspaper dispensary. Interact to get this document.",
    "ng_plus": 0,
    "dlc": null,
@@ -8967,8 +8967,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "废土盆地",
    "obtain_zh": "从 Fiz 自动售货机沿小路继续向西，来到一小片空地，北侧自动售货机旁有一个蓝色报刊箱，互动即可获得该文档。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -8981,8 +8981,8 @@
    "aliases": [
     "Item_Records_WLA_Memory_34"
    ],
-   "area": "废土A",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Scrap Yard",
    "obtain": "Available to purchase from D1G-g2r.",
    "ng_plus": 0,
    "dlc": null,
@@ -8990,8 +8990,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "废料场",
    "obtain_zh": "可在 D1G-g2r 处购买。",
    "record_type": "document_information",
    "record_type_zh": "文档·信息"
@@ -9004,8 +9004,8 @@
    "aliases": [
     "Item_Records_WLA_Memory_35"
    ],
-   "area": "废土A",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Scrap Plains",
    "obtain": "On the front of the building east of the previous collectible. Near the ladder.",
    "ng_plus": 0,
    "dlc": null,
@@ -9013,8 +9013,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "废料平原",
    "obtain_zh": "在上一个收集品以东的建筑正面，靠近梯子。",
    "record_type": "document_messages",
    "record_type_zh": "文档·消息"
@@ -9027,8 +9027,8 @@
    "aliases": [
     "Item_Records_WLA_Memory_36"
    ],
-   "area": "废土A",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Scrap Plains",
    "obtain": "Southeast of the supply camp is a small yellow droid. Interact with it to unlock this log.",
    "ng_plus": 0,
    "dlc": null,
@@ -9036,8 +9036,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "废料平原",
    "obtain_zh": "补给营地东南方有个黄色小机器人，与其互动即可解锁这份日志。",
    "record_type": "document_log_data",
    "record_type_zh": "文档·日志数据"
@@ -9122,8 +9122,8 @@
    "aliases": [
     "Item_Records_WLA_Memory_40"
    ],
-   "area": "废土A",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Scrap Plains",
    "obtain": "During “Stolen Treasure,” you'll have to head to the Villa in the Scrap Plains (east of the Central Scrap Plains Supply Camp). Upstairs near the bot. Part of the quest.",
    "ng_plus": 0,
    "dlc": null,
@@ -9131,8 +9131,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "废料平原",
    "obtain_zh": "在支线任务《被偷走的宝物》中，需要前往废料平原的别墅（中央废料平原补给营地以东），在楼上机器人附近。属于任务的一部分。",
    "record_type": "document_journal",
    "record_type_zh": "文档·日志"
@@ -9289,8 +9289,8 @@
    "aliases": [
     "Item_Records_WLA_Memory_47"
    ],
-   "area": "废土A",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Scrap Yard",
    "obtain": "Obtained during the [[walkthroughs/bulletin-board-requests/strange-signal|Strange Signal]] bulletin board request, which appears in Xion after you complete D1G-g2r's questlines. Fast travel to the Scrap Yard Entrance Supply Camp and interact with the console on the right as you enter to add Strange Information to your databank, then return to the bulletin board in Xion to turn the request in.",
    "ng_plus": 0,
    "dlc": null,
@@ -9298,8 +9298,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "废料场",
    "obtain_zh": "在完成 D1G-g2r 的任务线后，希雍会出现布告栏委托《奇怪信号》，完成该委托即可获得。快速传送到废料场入口补给营地，进入后与右侧的控制台互动，将“奇怪情报”加入数据库，然后返回希雍的布告栏交付委托。",
    "record_type": "document_messages",
    "record_type_zh": "文档·消息"
@@ -9312,8 +9312,8 @@
    "aliases": [
     "Item_Records_WLA_Passcode_01"
    ],
-   "area": "废土A",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Scrap Plains",
    "obtain": "Located on Aaron's corpse beneath the trapdoor. Use the nearby switch and shoot the targets to gain access to it.",
    "ng_plus": 0,
    "dlc": null,
@@ -9321,8 +9321,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "废料平原",
    "obtain_zh": "在活板门下方亚伦的尸体上。使用附近的开关并射击目标即可进入。",
    "record_type": null,
    "record_type_zh": null
@@ -9983,8 +9983,8 @@
    "aliases": [
     "Item_Records_WLB_Memory_28"
    ],
-   "area": "废土B",
-   "location": null,
+   "area": "Matrix 11",
+   "location": "Closed Off Platform",
    "obtain": "You'll find this one on the floor by the fast-travel phone booth in the Supply Camp.",
    "ng_plus": 0,
    "dlc": null,
@@ -9992,8 +9992,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "矩阵11",
+   "location_zh": "封锁站台",
    "obtain_zh": "在补给营地的快速传送电话亭旁的地上可以找到。",
    "record_type": "document_announcements",
    "record_type_zh": "文档·公告"
@@ -10054,8 +10054,8 @@
    "aliases": [
     "Item_Records_WLB_Memory_31"
    ],
-   "area": "废土B",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Solar Tower",
    "obtain": "Just slightly north of the South of Buried Ruins Legion Camp.",
    "ng_plus": 0,
    "dlc": null,
@@ -10063,8 +10063,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "太阳塔",
    "obtain_zh": "就在掩埋遗迹南部军团营地稍北处。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -10077,8 +10077,8 @@
    "aliases": [
     "Item_Records_WLB_Memory_32"
    ],
-   "area": "废土B",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Buried Ruins",
    "obtain": "Just to the northeast of the supply box is a newspaper dispenser with this newspaper in.",
    "ng_plus": 0,
    "dlc": null,
@@ -10086,8 +10086,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "掩埋遗迹",
    "obtain_zh": "补给箱东北方不远处有个报刊箱，里面放着这份报纸。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -10100,8 +10100,8 @@
    "aliases": [
     "Item_Records_WLB_Memory_33"
    ],
-   "area": "废土B",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Solar Tower",
    "obtain": "East from the previous supply chest in the ruined city area.",
    "ng_plus": 0,
    "dlc": null,
@@ -10109,8 +10109,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "太阳塔",
    "obtain_zh": "从废墟城区里的上一个补给箱向东。",
    "record_type": "document_log_data",
    "record_type_zh": "文档·日志数据"
@@ -10123,8 +10123,8 @@
    "aliases": [
     "Item_Records_WLB_Memory_34"
    ],
-   "area": "废土B",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Buried Ruins",
    "obtain": "From the Legion Camp, go forward under the green light, and to the right is a bot with this document on it.",
    "ng_plus": 0,
    "dlc": null,
@@ -10132,8 +10132,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "掩埋遗迹",
    "obtain_zh": "从军团营地出发，在绿光下向前走，右侧有个机器人身上带着这份文档。",
    "record_type": "document_log_data",
    "record_type_zh": "文档·日志数据"
@@ -10266,8 +10266,8 @@
    "aliases": [
     "Item_Records_WLB_Memory_40"
    ],
-   "area": "废土B",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Northern Great Desert",
    "obtain": "As part of the \"A United People Cannot be Defeated\" side quest, just a bit further north and you'll have to shoot down some crates with these documents in them.",
    "ng_plus": 0,
    "dlc": null,
@@ -10275,8 +10275,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "大沙漠北部",
    "obtain_zh": "属于支线任务《团结的人民不可战胜》的一部分，再往北走一段，需要击落几个装有这些文档的箱子。",
    "record_type": "document_messages",
    "record_type_zh": "文档·消息"
@@ -10289,8 +10289,8 @@
    "aliases": [
     "Item_Records_WLB_Memory_41"
    ],
-   "area": "废土B",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Northern Great Desert",
    "obtain": "As part of the \"A United People Cannot be Defeated\" side quest, just a bit further north and you'll have to shoot down some crates with these documents in them.",
    "ng_plus": 0,
    "dlc": null,
@@ -10298,8 +10298,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "大沙漠北部",
    "obtain_zh": "属于支线任务《团结的人民不可战胜》的一部分，再往北走一段，需要击落几个装有这些文档的箱子。",
    "record_type": "document_messages",
    "record_type_zh": "文档·消息"
@@ -10312,8 +10312,8 @@
    "aliases": [
     "Item_Records_WLB_Memory_42"
    ],
-   "area": "废土B",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Central Great Desert",
    "obtain": "Next to the aforementioned corpse is a bookcase with this book, as part of the “Let There Be Light Again” side quest.",
    "ng_plus": 0,
    "dlc": null,
@@ -10321,8 +10321,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "大沙漠中部",
    "obtain_zh": "前面提到的尸体旁有个书架，上面放着这本书，属于支线任务《让光明重现》的一部分。",
    "record_type": "document_books",
    "record_type_zh": "文档·书籍"
@@ -10335,8 +10335,8 @@
    "aliases": [
     "Item_Records_WLB_Memory_43"
    ],
-   "area": "废土B",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Northern Great Desert",
    "obtain": "Northwest of the Hypertube Legion Camp is a pod. Next to it is a document. As part of \"Let There Be Light Again\" side quest.",
    "ng_plus": 0,
    "dlc": null,
@@ -10344,8 +10344,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "大沙漠北部",
    "obtain_zh": "高速管道军团营地西北方有一个舱体，旁边就是这份文档。属于支线任务《让光明重现》的一部分。",
    "record_type": "document_journal",
    "record_type_zh": "文档·日志"
@@ -10502,8 +10502,8 @@
    "aliases": [
     "Item_Records_WLB_Memory_50"
    ],
-   "area": "废土B",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Northern Great Desert",
    "obtain": "East of the Supply Camp, midway up the remains of a building - use the rocks around the edge to get up to this level.",
    "ng_plus": 0,
    "dlc": null,
@@ -10511,8 +10511,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "大沙漠北部",
    "obtain_zh": "在补给营地以东的一座建筑残骸半腰处——利用边缘的岩石爬到这一层。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -10549,8 +10549,8 @@
    "aliases": [
     "Item_Records_WLB_Memory_52"
    ],
-   "area": "废土B",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Northern Great Desert",
    "obtain": "On a corpse lying on top of the shipping containers near the Hypertube opening in the Northern Great Desert. The document contains the cipher μθλδβλκαλζζληζλγβλ - every third character decodes to λλλλλλ. This passcode opens the locked chest behind the goddess statue nearby.",
    "ng_plus": 0,
    "dlc": null,
@@ -10558,8 +10558,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "大沙漠北部",
    "obtain_zh": "在大沙漠北部高速管道入口附近的集装箱顶上，一具尸体上。文档中写有密码 μθλδβλκαλζζληζλγβλ——每隔三个字符可解出 λλλλλλ。该密码可打开附近女神像后面的上锁宝箱。",
    "record_type": "document_messages",
    "record_type_zh": "文档·消息"
@@ -10620,8 +10620,8 @@
    "aliases": [
     "Item_Records_WLB_Memory_55"
    ],
-   "area": "废土B",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Northern Great Desert",
    "obtain": "As part of \"The King of the Tunnel\" side quest, after jumping into the Hyperspace tunnel, you'll end up on the other side of the map. When in the water, dive down to the bottom to find a body with this document.",
    "ng_plus": 0,
    "dlc": null,
@@ -10629,8 +10629,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "大沙漠北部",
    "obtain_zh": "属于支线任务《隧道之王》的一部分，跳入超空间隧道后会到达地图另一端。在水中潜到水底，可以找到一具带着这份文档的尸体。",
    "record_type": "document_journal",
    "record_type_zh": "文档·日志"
@@ -10811,8 +10811,8 @@
    "aliases": [
     "Item_Records_WLB_Memory_63"
    ],
-   "area": "废土B",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Oasis",
    "obtain": "This is dropped by the same person you got the previous memorystick off.",
    "ng_plus": 0,
    "dlc": null,
@@ -10820,8 +10820,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "绿洲",
    "obtain_zh": "由掉落上一根记忆棒的同一个人掉落。",
    "record_type": "document_journal",
    "record_type_zh": "文档·日志"
@@ -10858,8 +10858,8 @@
    "aliases": [
     "Item_Records_WLB_Passcode_01"
    ],
-   "area": "废土B",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Solar Tower",
    "obtain": "Located on Teddy's corpse. Although this passcode is found in the Great Desert, it appears in the Xion databank and opens Teddy's Locker in Xion.",
    "ng_plus": 0,
    "dlc": null,
@@ -10867,8 +10867,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "太阳塔",
    "obtain_zh": "在泰迪的尸体上。虽然该密码是在大沙漠找到的，但它会出现在希雍的数据库中，可打开希雍的泰迪储物柜。",
    "record_type": null,
    "record_type_zh": null
@@ -10881,8 +10881,8 @@
    "aliases": [
     "Item_Records_WLB_Passcode_02"
    ],
-   "area": "废土B",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Central Great Desert",
    "obtain": "Located on the corpse leaning up against the bed in the small room accessed by taking the numerous traversal aids around the building. Unlocks a chest in the Oasis.",
    "ng_plus": 0,
    "dlc": null,
@@ -10890,8 +10890,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "大沙漠中部",
    "obtain_zh": "在通过建筑周围众多移动辅助设施到达的小房间里，靠在床边的尸体上。可解锁绿洲的一个宝箱。",
    "record_type": null,
    "record_type_zh": null
@@ -10904,8 +10904,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_01"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Available to purchase from Roxanne's shop after restoring the second Hyper Cell.",
    "ng_plus": 0,
    "dlc": null,
@@ -10913,8 +10913,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "修复第二个超能电池后，可在罗克珊的商店购买。",
    "record_type": "document_information",
    "record_type_zh": "文档·信息"
@@ -10927,8 +10927,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_03"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Available to purchase from Roxanne's shop in Xion for 300G during Bulletin Board Request: \"Where Is the Fantastic Bait?\".",
    "ng_plus": 0,
    "dlc": null,
@@ -10936,8 +10936,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "在布告栏委托《神奇鱼饵在哪里？》期间，可在希雍罗克珊的商店以 300G 购买。",
    "record_type": "document_information",
    "record_type_zh": "文档·信息"
@@ -10950,8 +10950,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_04"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Available to purchase from Roxanne's shop after restoring the second Hyper Cell.",
    "ng_plus": 0,
    "dlc": null,
@@ -10959,8 +10959,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "修复第二个超能电池后，可在罗克珊的商店购买。",
    "record_type": "document_information",
    "record_type_zh": "文档·信息"
@@ -10973,8 +10973,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_05"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Available to purchase from Roxanne.",
    "ng_plus": 0,
    "dlc": null,
@@ -10982,8 +10982,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "可在罗克珊处购买。",
    "record_type": "document_information",
    "record_type_zh": "文档·信息"
@@ -10996,8 +10996,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_06"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Available to purchase from Roxanne.",
    "ng_plus": 0,
    "dlc": null,
@@ -11005,8 +11005,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "可在罗克珊处购买。",
    "record_type": "document_information",
    "record_type_zh": "文档·信息"
@@ -11019,8 +11019,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_07"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Available to purchase from Roxanne.",
    "ng_plus": 0,
    "dlc": null,
@@ -11028,8 +11028,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "可在罗克珊处购买。",
    "record_type": "document_information",
    "record_type_zh": "文档·信息"
@@ -11042,8 +11042,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_08"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Available to purchase from Roxanne.",
    "ng_plus": 0,
    "dlc": null,
@@ -11051,8 +11051,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "可在罗克珊处购买。",
    "record_type": "document_information",
    "record_type_zh": "文档·信息"
@@ -11065,8 +11065,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_09"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Speak to Mann after returning from Altess Levoire to start the \"Lost Ark\" side mission. Follow the waypoint to the northeast of Xion, and you will come across the body of the radical.",
    "ng_plus": 0,
    "dlc": null,
@@ -11074,8 +11074,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "从阿尔忒斯勒瓦尔返回后与曼恩交谈，开启支线任务《失落方舟》。跟随希雍东北方的任务标记，即可找到激进分子的尸体。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -11088,8 +11088,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_10"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "After investigating the body, head over to the second location that has just been marked on your map. Check at the device next to the entrance of the Ark for this document.",
    "ng_plus": 0,
    "dlc": null,
@@ -11097,8 +11097,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "调查尸体后，前往地图上新标记的第二个地点。查看方舟入口旁的设备即可获得该文档。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -11135,8 +11135,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_12"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Speak to the young girl to the south of the entrance to Xion (down the ladder). She'll give you this document, which will start the \"Oblivion\" side quest.",
    "ng_plus": 0,
    "dlc": null,
@@ -11144,8 +11144,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "与希雍入口南侧（下梯子后）的小女孩交谈，她会给你这份文档，并开启支线任务《遗忘》。",
    "record_type": "document_messages",
    "record_type_zh": "文档·消息"
@@ -11158,8 +11158,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_13"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Leave the alleyway and head towards Sisters' Junk. When you see the Liquor neon sign, there's a collectible to the left of it, near a doorway (down a few steps).",
    "ng_plus": 0,
    "dlc": null,
@@ -11167,8 +11167,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "离开小巷前往姐妹废品店，看到霓虹酒铺招牌时，其左侧、一处门口旁（下几级台阶）有该收集品。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -11181,8 +11181,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_14"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Down the stairs from Sisters' Junk, take a right (south) until you reach a steam grate on the floor, and then head left. The poster is on a metal shutter in the thin alleyway.",
    "ng_plus": 0,
    "dlc": null,
@@ -11190,8 +11190,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "从姐妹废品店下楼梯后向右（南）走，直到地上出现蒸汽格栅，然后向左。海报就在狭窄小巷的金属卷帘门上。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -11204,17 +11204,17 @@
    "aliases": [
     "Item_Records_Xion_Memory_14_1"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Down the stairs from Sisters' Junk, take a right (south) until you reach a steam grate on the floor, and then head left. The poster is on a metal shutter in the thin alleyway.",
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；文档/记忆棒共享该别名族，位置请参考攻略同区域列表",
+   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
    "confidence": "low",
    "source": null,
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "从姐妹废品店下楼梯后向右（南）走，直到地上出现蒸汽格栅，然后向左。海报就在狭窄小巷的金属卷帘门上。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -11227,17 +11227,17 @@
    "aliases": [
     "Item_Records_Xion_Memory_14_4"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Down the stairs from Sisters' Junk, take a right (south) until you reach a steam grate on the floor, and then head left. The poster is on a metal shutter in the thin alleyway.",
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；文档/记忆棒共享该别名族，位置请参考攻略同区域列表",
+   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
    "confidence": "low",
    "source": null,
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "从姐妹废品店下楼梯后向右（南）走，直到地上出现蒸汽格栅，然后向左。海报就在狭窄小巷的金属卷帘门上。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -11250,8 +11250,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_15"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Return to the area where the \"Angel of Death\" side quest ambush took place and you can enter the garage now with the αζαζαζ passcode (which can be found in the Scrap Plains area in the Wasteland).",
    "ng_plus": 0,
    "dlc": null,
@@ -11259,8 +11259,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "回到支线任务《死亡天使》遭遇伏击的区域，现在可以用密码 αζαζαζ 打开车库（该密码可在废土的废料平原区域找到）。",
    "record_type": "document_journal",
    "record_type_zh": "文档·日志"
@@ -11273,8 +11273,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_16"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Available to purchase from Roxanne's shop after reaching Wasteland for the first time.",
    "ng_plus": 0,
    "dlc": null,
@@ -11282,8 +11282,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "首次到达废土后，可在罗克珊的商店购买。",
    "record_type": "document_information",
    "record_type_zh": "文档·信息"
@@ -11296,8 +11296,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_17"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Available to purchase from Roxanne.",
    "ng_plus": 0,
    "dlc": null,
@@ -11305,8 +11305,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "可在罗克珊处购买。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -11319,8 +11319,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_18"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Available to purchase from Roxanne.",
    "ng_plus": 0,
    "dlc": null,
@@ -11328,8 +11328,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "可在罗克珊处购买。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -11342,8 +11342,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_19"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Do another 180 and head towards the vending machines behind you. To its left is a blue newspaper box. Interact with it. It's opposite the stairs up to Sisters' Junk.",
    "ng_plus": 0,
    "dlc": null,
@@ -11351,8 +11351,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "再转身180度，朝身后的自动售货机走去，其左侧有个蓝色报刊箱，互动即可。它就在通往姐妹废品店的楼梯对面。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -11365,8 +11365,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_20"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Check the large monitor inside the same room, it's just up the steps from the pile of bodies.",
    "ng_plus": 0,
    "dlc": null,
@@ -11374,8 +11374,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "查看同一房间内的大型显示器，就在尸堆上几级台阶处。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -11388,8 +11388,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_21"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Available to purchase from Lyle.",
    "ng_plus": 0,
    "dlc": null,
@@ -11397,8 +11397,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "可在莱尔处购买。",
    "record_type": "document_books",
    "record_type_zh": "文档·书籍"
@@ -11411,8 +11411,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_22"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Available to purchase from Lyle.",
    "ng_plus": 0,
    "dlc": null,
@@ -11420,8 +11420,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "可在莱尔处购买。",
    "record_type": "document_books",
    "record_type_zh": "文档·书籍"
@@ -11434,8 +11434,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_23"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Available to purchase from Lyle.",
    "ng_plus": 0,
    "dlc": null,
@@ -11443,8 +11443,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "可在莱尔处购买。",
    "record_type": "document_books",
    "record_type_zh": "文档·书籍"
@@ -11457,8 +11457,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_24"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Available to purchase from Lyle.",
    "ng_plus": 0,
    "dlc": null,
@@ -11466,8 +11466,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "可在莱尔处购买。",
    "record_type": "document_books",
    "record_type_zh": "文档·书籍"
@@ -11480,8 +11480,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_25"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Available to purchase from Lyle.",
    "ng_plus": 0,
    "dlc": null,
@@ -11489,8 +11489,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "可在莱尔处购买。",
    "record_type": "document_books",
    "record_type_zh": "文档·书籍"
@@ -11503,8 +11503,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_26"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Just south of the Gwen Hair Salon, at some point, you'll find a document, which will start the side quest \"A United People Cannot be Defended.\" Didn't show up until we returned from a prolonged stint in the Great Desert.",
    "ng_plus": 0,
    "dlc": null,
@@ -11512,8 +11512,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "在格温理发店以南，稍后会找到一份文档，开启支线任务《团结的人民不可战胜》。我们在大沙漠长时间探索后返回时才出现。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -11526,8 +11526,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_27"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "In the alleyway to the right of the exit (as if you're leaving Xion to head back to the ship), at the end of said alleyway is a book store. You'll find this book on the shelves.",
    "ng_plus": 0,
    "dlc": null,
@@ -11535,8 +11535,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "在出口右侧的小巷里（即离开希雍返回飞船的方向），小巷尽头有家书店，书就在书架上。",
    "record_type": "document_series",
    "record_type_zh": "文档·系列"
@@ -11549,8 +11549,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_28"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "In the alleyway to the right of the exit (as if you're leaving Xion to head back to the ship), at the end of said alleyway is a book store. You'll find this book on the shelves.",
    "ng_plus": 0,
    "dlc": null,
@@ -11558,8 +11558,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "在出口右侧的小巷里（即离开希雍返回飞船的方向），小巷尽头有家书店，书就在书架上。",
    "record_type": "document_books",
    "record_type_zh": "文档·书籍"
@@ -11572,8 +11572,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_29"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Available to purchase from Lyle.",
    "ng_plus": 0,
    "dlc": null,
@@ -11581,8 +11581,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "可在莱尔处购买。",
    "record_type": "document_books",
    "record_type_zh": "文档·书籍"
@@ -11667,8 +11667,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_33"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Just to the right of the waypoint.",
    "ng_plus": 0,
    "dlc": null,
@@ -11676,8 +11676,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "就在传送点右侧。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -11690,17 +11690,17 @@
    "aliases": [
     "Item_Records_Xion_Memory_33_2"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Just to the right of the waypoint.",
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；文档/记忆棒共享该别名族，位置请参考攻略同区域列表",
+   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
    "confidence": "low",
    "source": null,
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "就在传送点右侧。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -11713,8 +11713,8 @@
    "aliases": [
     "Item_Records_Xion_Memory_34"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "A few steps left of the waypoint near where Adam and Lily parted ways with you outside of the Presence Chamber.",
    "ng_plus": 0,
    "dlc": null,
@@ -11722,8 +11722,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "在谒见厅外亚当和莉莉与你分别处的传送点向左几步。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -11736,17 +11736,17 @@
    "aliases": [
     "Item_Records_Xion_Memory_34_2"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "A few steps left of the waypoint near where Adam and Lily parted ways with you outside of the Presence Chamber.",
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；文档/记忆棒共享该别名族，位置请参考攻略同区域列表",
+   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
    "confidence": "low",
    "source": null,
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "在谒见厅外亚当和莉莉与你分别处的传送点向左几步。",
    "record_type": "document_promotions",
    "record_type_zh": "文档·宣传"
@@ -11759,8 +11759,8 @@
    "aliases": [
     "Item_Records_Xion_Passcode_01"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Eidos 7",
+   "location": "Flooded Commercial Sector",
    "obtain": "Destroy the Relic Robot found in the mid-level part of the flooded sector. Only accessible after lowering the water level during the side quest Oblivion.",
    "ng_plus": 0,
    "dlc": null,
@@ -11768,8 +11768,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "埃多斯7号",
+   "location_zh": "淹水商业区",
    "obtain_zh": "摧毁淹水区域中层部位的遗物机器人。需在支线任务《遗忘》中降低水位后才能到达。",
    "record_type": null,
    "record_type_zh": null
@@ -11782,8 +11782,8 @@
    "aliases": [
     "Item_Records_Xion_Passcode_02"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Xion",
+   "location": "Xion City",
    "obtain": "Look inside the dumpster to find a robot, destroy it to get the passcode. This opens the nearby chest",
    "ng_plus": 0,
    "dlc": null,
@@ -11791,8 +11791,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
    "obtain_zh": "查看垃圾箱内部，会发现一个机器人，摧毁它即可获得密码。该密码可打开附近的宝箱。",
    "record_type": null,
    "record_type_zh": null
@@ -11805,8 +11805,8 @@
    "aliases": [
     "Item_Records_Xion_Passcode_03"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Scrap Plains",
    "obtain": "Dropped by the robot on the slim rocky ridge on the winding path on the western edge of the Northern Scrap Plains.",
    "ng_plus": 0,
    "dlc": null,
@@ -11814,8 +11814,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "废料平原",
    "obtain_zh": "由北部废料平原西缘蜿蜒小路上、狭窄岩石山脊处的机器人掉落。",
    "record_type": null,
    "record_type_zh": null
@@ -11828,8 +11828,8 @@
    "aliases": [
     "Item_Records_Xion_Passcode_04"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Great Canyon",
    "obtain": "Go through the container where the body was to find a robot, defeat it to get this passcode. This opens a chest in the Scrap Plains.",
    "ng_plus": 0,
    "dlc": null,
@@ -11837,8 +11837,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "大峡谷",
    "obtain_zh": "穿过有尸体的集装箱，会发现一个机器人，击败它即可获得该密码。该密码可打开废料平原的一个宝箱。",
    "record_type": null,
    "record_type_zh": null
@@ -11851,8 +11851,8 @@
    "aliases": [
     "Item_Records_Xion_Passcode_05"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Wasteland",
+   "location": "Scrap Plains",
    "obtain": "Destroy the robot located behind the wall of the dilapidated building to obtain the passcode.",
    "ng_plus": 0,
    "dlc": null,
@@ -11860,8 +11860,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "废土",
+   "location_zh": "废料平原",
    "obtain_zh": "摧毁破败建筑墙后的机器人即可获得该密码。",
    "record_type": null,
    "record_type_zh": null
@@ -11874,8 +11874,8 @@
    "aliases": [
     "Item_Records_Xion_Passcode_06"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Northern Great Desert",
    "obtain": "Just to the north of the Buried Ruins Outskirt Supply Camp is a robot. Destroy it for the passcode.",
    "ng_plus": 0,
    "dlc": null,
@@ -11883,8 +11883,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "大沙漠北部",
    "obtain_zh": "掩埋遗迹外围补给营地正北处有个机器人，摧毁它即可获得密码。",
    "record_type": null,
    "record_type_zh": null
@@ -11897,8 +11897,8 @@
    "aliases": [
     "Item_Records_Xion_Passcode_07"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Solar Tower",
    "obtain": "Located on the ground floor of the dilapidated building. In the corner is a chain-link fence with crates obscuring a hole. Here, you'll find a robot with the passcode upon being destroyed.",
    "ng_plus": 0,
    "dlc": null,
@@ -11906,8 +11906,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "太阳塔",
    "obtain_zh": "在破败建筑的底层。角落里有一道铁丝网围栏，箱子挡住了后面的洞口。摧毁这里的机器人即可获得密码。",
    "record_type": null,
    "record_type_zh": null
@@ -11920,8 +11920,8 @@
    "aliases": [
     "Item_Records_Xion_Passcode_08"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Great Desert",
+   "location": "Buried Ruins",
    "obtain": "Located inside the Opera House on the ground floor. Destroy the robot to get the passcode for the locked chest back near the camp.",
    "ng_plus": 0,
    "dlc": null,
@@ -11929,8 +11929,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "大沙漠",
+   "location_zh": "掩埋遗迹",
    "obtain_zh": "在歌剧院底层。摧毁机器人即可获得密码，用于打开营地附近的上锁宝箱。",
    "record_type": null,
    "record_type_zh": null
@@ -11943,8 +11943,8 @@
    "aliases": [
     "Item_Records_Xion_Passcode_09"
    ],
-   "area": "希雍",
-   "location": null,
+   "area": "Matrix 11",
+   "location": "Rotten Labyrinth",
    "obtain": "Destroy the robot on the small walkway in the tunnel that has two ladders and a Fusion Drive. There's a swing bar suspended from a pipe on the ceiling to allow you to reach the other side.",
    "ng_plus": 0,
    "dlc": null,
@@ -11952,8 +11952,8 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": null,
-   "location_zh": null,
+   "area_zh": "矩阵11",
+   "location_zh": "腐朽迷宫",
    "obtain_zh": "在有两架梯子和一个聚变驱动器的隧道里，摧毁小步道上的机器人。天花板管道上悬着一根摆荡横杆，可借此到达另一侧。",
    "record_type": null,
    "record_type_zh": null

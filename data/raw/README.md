@@ -21,6 +21,8 @@
 - <https://stellarbladeguide.com> —— 英文名称、位置、描述、Base/NG+/NG++/DLC 标签
 - <https://mapgenie.io/stellar-blade/guides/memory-sticks>、<https://www.gamersky.com/handbook/202507/1953527.shtml>
   —— 记忆棒的游戏内数据库选单顺序（`memorystick_order.json`，两份来源顺序一致）
+- 文档与密码的区域/地点直接取自攻略条目（与其它收集物同一套区域/地点模型）；记忆棒区域以
+  `memorystick_order.json` 为准（攻略与游戏内数据库存在个别归类差异）
 - `api/i18n/` —— 上述英文攻略文案的手工简体中文翻译（名称仍以游戏本地化为准）
 - <https://github.com/wuxiao00j/stellar-blade-macos-save-editor> —— 简体中文名称
 - <https://github.com/lecher-wang/Stellar-Blade-100-completion-save-file> —— 别名全集校验
