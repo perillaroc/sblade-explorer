@@ -262,6 +262,9 @@ function onInput(event: Event) {
             <span class="ml-1 text-slate-500">{{ count(option.value) }}</span>
           </button>
         </div>
+        <span v-if="!matrix || view === 'list'" class="ml-auto text-[11px] text-slate-600">
+          点击条目查看完整详情
+        </span>
       </div>
     </header>
 

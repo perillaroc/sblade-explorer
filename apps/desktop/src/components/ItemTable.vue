@@ -1,15 +1,19 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { CircleCheck, CircleX, TriangleAlert } from "@lucide/vue";
 import type { Lang } from "../types";
 import { areaAccent } from "../lib/area";
 import { areaLabel, itemName, locationLabel, obtainLabel } from "../lib/display";
 import type { ItemRow } from "../lib/items";
+import ItemDetailDialog from "./ItemDetailDialog.vue";
 
 const props = defineProps<{
   rows: ItemRow[];
   lang: Lang;
   hideLocation?: boolean;
 }>();
+
+const selected = ref<ItemRow | null>(null);
 
 function areaText(row: ItemRow): string {
   return areaLabel(row.item, props.lang);
@@ -36,8 +40,9 @@ function locationText(row: ItemRow): string {
         <tr
           v-for="row in rows"
           :key="row.id"
-          class="border-t border-slate-800/70 align-top"
+          class="cursor-pointer border-t border-slate-800/70 align-top transition-colors hover:bg-slate-800/20"
           :class="row.obtained ? '' : 'bg-slate-950/30'"
+          @click="selected = row"
         >
           <td class="px-4 py-2">
             <span
@@ -103,5 +108,7 @@ function locationText(row: ItemRow): string {
         </tr>
       </tbody>
     </table>
+
+    <ItemDetailDialog v-if="selected" :row="selected" :lang="lang" @close="selected = null" />
   </div>
 </template>
