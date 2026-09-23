@@ -23,9 +23,11 @@ fn catalog_build_attaches_guide_links() {
     let items = payload["items"].as_array().expect("items");
     let mut with_web = 0;
     let mut with_video = 0;
+    let mut without_guides: Vec<&str> = Vec::new();
     for item in items {
         let Some(guides) = item.get("guides") else {
-            panic!("条目缺少攻略链接: {}", item["id"]);
+            without_guides.push(item["id"].as_str().expect("item id"));
+            continue;
         };
         for key in ["web", "video"] {
             if let Some(link) = guides.get(key) {
@@ -44,5 +46,7 @@ fn catalog_build_attaches_guide_links() {
     }
     // Regression sentinels: keep the Chinese guide coverage from shrinking.
     assert_eq!(with_web, 804);
-    assert_eq!(with_video, 683);
+    assert_eq!(with_video, 696);
+    // 仅默认外观类条目没有可链接的攻略（发型：默认马尾与首领挑战奖励）
+    assert_eq!(without_guides, ["Hair_000", "Hair_Nikke_01"]);
 }

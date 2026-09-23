@@ -329,10 +329,10 @@ fn guide_links_cover_catalog() {
             assert!(!link.title.is_empty(), "{}", link.url);
         }
     }
-    assert!(missing.is_empty(), "{missing:?}");
+    // 仅默认外观类条目没有可链接的攻略（发型：默认马尾与首领挑战奖励）
+    assert_eq!(missing, ["Hair_000", "Hair_Nikke_01"]);
     assert_eq!(with_web, 804);
-    assert_eq!(with_video, 683);
-
+    assert_eq!(with_video, 696);
     let index = catalog.alias_index();
     let can = index["Can_011"].guides.as_ref().expect("can guides");
     assert_eq!(
@@ -378,6 +378,14 @@ fn guide_links_cover_catalog() {
         pattern.web.as_ref().map(|link| link.url.as_str()),
         suit.web.as_ref().map(|link| link.url.as_str())
     );
+    // 战衣视频逐套对应 B 站「126 套纳米服全收集」分 P
+    let suit_video = suit.video.as_ref().expect("suit video");
+    assert!(
+        suit_video.url.contains("BV1Wfj1ztEuj"),
+        "{}",
+        suit_video.url
+    );
+    assert!(suit_video.url.ends_with("?p=71"), "{}", suit_video.url);
 }
 
 #[test]

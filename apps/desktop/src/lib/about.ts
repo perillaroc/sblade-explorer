@@ -41,10 +41,11 @@ export const DATA_SOURCES: AboutSource[] = [
   {
     name: "游民星空与哔哩哔哩（中文攻略链接）",
     detail:
-      "data/raw/guides.json：详情页「中文攻略」按钮指向的游民星空图文攻略与 B 站「喂狗组-文轩」全收集视频；仅在点击时由系统浏览器打开。",
+      "data/raw/guides.json：详情页「中文攻略」按钮指向的游民星空图文攻略（含《剑星》女主服装图鉴）与 B 站视频（126 套纳米服全收集、喂狗组-文轩全收集系列）；仅在点击时由系统浏览器打开。",
     urls: [
       "https://www.gamersky.com/handbook/202404/1738505.shtml",
       "https://www.gamersky.com/handbook/202404/1737082.shtml",
+      "https://www.bilibili.com/video/BV1Wfj1ztEuj",
       "https://www.bilibili.com/video/BV1or421L7XQ",
     ],
   },

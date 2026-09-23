@@ -7,6 +7,7 @@
     "https://www.gamersky.com/handbook/202405/1747789.shtml",
     "https://www.gamersky.com/handbook/202507/1959957.shtml",
     "https://www.gamersky.com/handbook/202404/1737082.shtml",
+    "https://www.bilibili.com/video/BV1Wfj1ztEuj",
     "https://space.bilibili.com/ (喂狗组-文轩 剑星全收集合集)"
   ],
   "regions": {
@@ -306,13 +307,6 @@
         }
       }
     },
-    "nano_suits": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=2"},
-      "web": {"title": "游民星空《剑星》女主服装图鉴", "url": "https://www.gamersky.com/handbook/202404/1737082.shtml"}
-    },
-    "hair": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=2"}
-    },
     "glasses": {
       "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=2"}
     },
@@ -327,6 +321,10 @@
     },
     "lily_costumes": {
       "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=2"}
+    },
+    "nano_suits": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj"},
+      "web": {"title": "游民星空《剑星》女主服装图鉴", "url": "https://www.gamersky.com/handbook/202404/1737082.shtml"}
     },
     "design_patterns": {
       "web": {"title": "游民星空《剑星》女主服装图鉴", "url": "https://www.gamersky.com/handbook/202404/1737082.shtml"}
@@ -623,14 +621,16 @@
       "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=32"}
     },
     "BS_Green_Suit": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·星球空降服（第7小队）", "url": "https://www.gamersky.com/handbook/202404/1737082_2.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·星球空降服（第7小队）", "url": "https://www.gamersky.com/handbook/202404/1737082_2.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=1"}
     },
     "BS_102": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·活肤紧身服", "url": "https://www.gamersky.com/handbook/202404/1737082.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·活肤紧身服", "url": "https://www.gamersky.com/handbook/202404/1737082.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=24"}
     },
     "BS_08": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·墨黑忍者装", "url": "https://www.gamersky.com/handbook/202404/1737082_41.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=2"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=43"}
     },
     "BS_08_Var2": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·洁白忍者装", "url": "https://www.gamersky.com/handbook/202404/1737082_42.shtml"},
@@ -638,523 +638,579 @@
     },
     "BS_OneMillion_01": {
       "web": {"title": "游民星空《剑星》服装图鉴·绯红之翼", "url": "https://www.gamersky.com/handbook/202506/1943736.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=68"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=66"}
     },
     "BS_Raven": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·渡鸦装", "url": "https://www.gamersky.com/handbook/202404/1737082_40.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=51"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=6"}
     },
     "BS_09_2": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·星球空降服（第7小队）第2版", "url": "https://www.gamersky.com/handbook/202404/1737082_3.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=3"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=1"}
     },
     "BS_09_2_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第7小队）第3版", "url": "https://www.gamersky.com/handbook/202506/1942231_56.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第7小队）第3版", "url": "https://www.gamersky.com/handbook/202506/1942231_56.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=1"}
     },
     "BS_05_E": {
       "web": {"title": "游民星空《剑星》服装图鉴·星球空降防护服（第7小队）", "url": "https://www.gamersky.com/handbook/202506/1943736_3.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=71"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=2"}
     },
     "BS_41": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·废土冒险家", "url": "https://www.gamersky.com/handbook/202404/1737082_20.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=22"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=71"}
     },
     "BS_41_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·废土探索者", "url": "https://www.gamersky.com/handbook/202506/1942231_81.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·废土探索者", "url": "https://www.gamersky.com/handbook/202506/1942231_81.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=71"}
     },
     "BS_15_Var2_E": {
       "web": {"title": "游民星空《剑星》服装图鉴·乌莲", "url": "https://www.gamersky.com/handbook/202506/1943736_18.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=73"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=49"}
     },
     "BS_38": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·赤血丹心", "url": "https://www.gamersky.com/handbook/202404/1737082_21.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=6"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=72"}
     },
     "BS_38_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·翡翠热情", "url": "https://www.gamersky.com/handbook/202506/1942231_69.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·翡翠热情", "url": "https://www.gamersky.com/handbook/202506/1942231_69.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=72"}
     },
     "BS_14_E": {
       "web": {"title": "游民星空《剑星》服装图鉴·芍药独酌", "url": "https://www.gamersky.com/handbook/202506/1943736_16.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=72"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=46"}
     },
     "BS_01_Var2": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·占星服", "url": "https://www.gamersky.com/handbook/202404/1737082_14.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·占星服", "url": "https://www.gamersky.com/handbook/202404/1737082_14.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=4"}
     },
     "BS_Christmas_01": {
       "web": {"title": "游民星空《剑星》服装图鉴·圣诞裙装", "url": "https://www.gamersky.com/handbook/202506/1942231_5.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=62"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=80"}
     },
     "BS_02": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·星球空降服（第2小队）", "url": "https://www.gamersky.com/handbook/202404/1737082_7.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=20"}
     },
     "BS_02_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第2小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_57.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第2小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_57.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=20"}
     },
     "BS_48": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·奥卡探索者", "url": "https://www.gamersky.com/handbook/202404/1737082_19.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=69"}
     },
     "BS_48_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·奥卡探路者", "url": "https://www.gamersky.com/handbook/202506/1942231_58.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·奥卡探路者", "url": "https://www.gamersky.com/handbook/202506/1942231_58.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=69"}
     },
     "BS_01_Var3": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·镂空裙装", "url": "https://www.gamersky.com/handbook/202404/1737082_13.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·镂空裙装", "url": "https://www.gamersky.com/handbook/202404/1737082_13.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=5"}
     },
     "BS_32": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·“四秒钟”破洞牛仔布套装", "url": "https://www.gamersky.com/handbook/202404/1737082_46.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·“四秒钟”破洞牛仔布套装", "url": "https://www.gamersky.com/handbook/202404/1737082_46.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=35"}
     },
     "BS_56": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·盛夏爱丽丝", "url": "https://www.gamersky.com/handbook/202404/1737082_44.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=9"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=41"}
     },
     "BS_57": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·盛夏小红帽", "url": "https://www.gamersky.com/handbook/202404/1737082_45.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=9"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=42"}
     },
     "BS_15": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·国色牡丹", "url": "https://www.gamersky.com/handbook/202404/1737082_15.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=48"}
     },
     "BS_03": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·赛博裙装", "url": "https://www.gamersky.com/handbook/202404/1737082_26.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=57"}
     },
     "BS_03_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·赛博服装", "url": "https://www.gamersky.com/handbook/202506/1942231_74.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·赛博服装", "url": "https://www.gamersky.com/handbook/202506/1942231_74.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=57"}
     },
     "BS_17": {
       "web": {"title": "游民星空《剑星》服装图鉴·赛博兔女郎", "url": "https://www.gamersky.com/handbook/202506/1943736_21.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=70"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=61"}
     },
     "BS_Yellow_Suit": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·星球空降服原型", "url": "https://www.gamersky.com/handbook/202404/1737082_38.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=39"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=19"}
     },
     "BS_Yellow_Suit_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服原型第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_75.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服原型第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_75.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=19"}
     },
     "BS_Leather_Jean": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·休闲车手服", "url": "https://www.gamersky.com/handbook/202404/1737082_10.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=21"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=32"}
     },
     "BS_Leather_Jean_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·“四秒钟”车手服", "url": "https://www.gamersky.com/handbook/202506/1942231_77.shtml"}
     },
     "BS_11": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·黑礼服", "url": "https://www.gamersky.com/handbook/202404/1737082_24.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=21"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=76"}
     },
     "BS_10": {
-      "web": {"title": "游民星空《剑星》服装图鉴·白礼服", "url": "https://www.gamersky.com/handbook/202506/1942231_86.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·白礼服", "url": "https://www.gamersky.com/handbook/202506/1942231_86.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=76"}
     },
     "BS_23": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·废料机械师", "url": "https://www.gamersky.com/handbook/202404/1737082_23.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·废料机械师", "url": "https://www.gamersky.com/handbook/202404/1737082_23.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=75"}
     },
     "BS_23_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·废品工程师", "url": "https://www.gamersky.com/handbook/202506/1942231_87.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·废品工程师", "url": "https://www.gamersky.com/handbook/202506/1942231_87.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=75"}
     },
     "BS_EVE_04": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·牛仔布休闲装", "url": "https://www.gamersky.com/handbook/202404/1737082_12.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·牛仔布休闲装", "url": "https://www.gamersky.com/handbook/202404/1737082_12.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=34"}
     },
     "BS_EVE_04_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·“四秒钟”牛仔布套装", "url": "https://www.gamersky.com/handbook/202506/1942231_78.shtml"}
     },
     "BS_Bear": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·毛绒熊熊", "url": "https://www.gamersky.com/handbook/202404/1737082_4.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=29"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=7"}
     },
     "BS_30": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·空中王牌", "url": "https://www.gamersky.com/handbook/202404/1737082_5.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=36"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=8"}
     },
     "BS_30_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·天骄王牌", "url": "https://www.gamersky.com/handbook/202506/1942231_84.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·天骄王牌", "url": "https://www.gamersky.com/handbook/202506/1942231_84.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=8"}
     },
     "BS_19": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·黑珍珠", "url": "https://www.gamersky.com/handbook/202404/1737082_28.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=50"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=12"}
     },
     "BS_19_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·赤色珍珠", "url": "https://www.gamersky.com/handbook/202506/1942231_85.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=53"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=12"}
     },
     "BS_26": {
       "web": {"title": "游民星空《剑星》服装图鉴·“四秒钟”休闲装", "url": "https://www.gamersky.com/handbook/202506/1942231.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=57"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=36"}
     },
     "BS_53": {
       "web": {"title": "游民星空《剑星》服装图鉴·神经元链接紧身服", "url": "https://www.gamersky.com/handbook/202506/1942231_3.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=58"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=23"}
     },
     "BS_33": {
       "web": {"title": "游民星空《剑星》服装图鉴·“四秒钟”黑色牛仔布套装", "url": "https://www.gamersky.com/handbook/202506/1942231_2.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=59"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=38"}
     },
     "BS_55": {
       "web": {"title": "游民星空《剑星》服装图鉴·烽火裙装", "url": "https://www.gamersky.com/handbook/202506/1942231_4.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=60"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=59"}
     },
     "BS_45": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·狂飙车手", "url": "https://www.gamersky.com/handbook/202404/1737082_16.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=13"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=52"}
     },
     "BS_45_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·极速快感", "url": "https://www.gamersky.com/handbook/202506/1942231_67.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·极速快感", "url": "https://www.gamersky.com/handbook/202506/1942231_67.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=52"}
     },
     "BS_53_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·知觉活肤紧身服", "url": "https://www.gamersky.com/handbook/202506/1943736_7.shtml"},
       "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=77"}
     },
     "BS_Nier_01": {
-      "web": {"title": "游民星空《剑星》服装图鉴·寄叶二号B型制服（2B）", "url": "https://www.gamersky.com/handbook/202411/1848445.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·寄叶二号B型制服（2B）", "url": "https://www.gamersky.com/handbook/202411/1848445.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=81"}
     },
     "BS_Nier_02": {
-      "web": {"title": "游民星空《剑星》服装图鉴·寄叶制服I", "url": "https://www.gamersky.com/handbook/202506/1942231_8.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·寄叶制服I", "url": "https://www.gamersky.com/handbook/202506/1942231_8.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=81"}
     },
     "BS_Nier_03": {
-      "web": {"title": "游民星空《剑星》服装图鉴·寄叶非正式礼仪着装", "url": "https://www.gamersky.com/handbook/202506/1942231_9.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·寄叶非正式礼仪着装", "url": "https://www.gamersky.com/handbook/202506/1942231_9.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=81"}
     },
     "BS_Nier_04": {
-      "web": {"title": "游民星空《剑星》服装图鉴·寄叶A型二号制服（A2）", "url": "https://www.gamersky.com/handbook/202411/1848445_2.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·寄叶A型二号制服（A2）", "url": "https://www.gamersky.com/handbook/202411/1848445_2.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=81"}
     },
     "BS_24_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·空乘风", "url": "https://www.gamersky.com/handbook/202506/1942231_63.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=52"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=74"}
     },
     "BS_24_E": {
       "web": {"title": "游民星空《剑星》服装图鉴·通勤装", "url": "https://www.gamersky.com/handbook/202506/1943736_13.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=80"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=40"}
     },
     "BS_37_Var2": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·玫瑰人生", "url": "https://www.gamersky.com/handbook/202404/1737082_29.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=37"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=10"}
     },
     "BS_33_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·“四秒钟”条纹牛仔布套装", "url": "https://www.gamersky.com/handbook/202506/1943736_12.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=76"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=39"}
     },
     "BS_16": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·假日兔", "url": "https://www.gamersky.com/handbook/202404/1737082_17.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=14"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=53"}
     },
     "BS_16_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·假日兔女郎", "url": "https://www.gamersky.com/handbook/202506/1942231_66.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·假日兔女郎", "url": "https://www.gamersky.com/handbook/202506/1942231_66.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=53"}
     },
     "BS_50": {
       "web": {"title": "游民星空《剑星》服装图鉴·神经元链接套装原型", "url": "https://www.gamersky.com/handbook/202506/1943736_8.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=78"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=26"}
     },
     "BS_44": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·赛博魔法师", "url": "https://www.gamersky.com/handbook/202404/1737082_27.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=15"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=55"}
     },
     "BS_44_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·赛博诡术士", "url": "https://www.gamersky.com/handbook/202506/1942231_68.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·赛博诡术士", "url": "https://www.gamersky.com/handbook/202506/1942231_68.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=55"}
     },
     "BS_21": {
-      "web": {"title": "游民星空《剑星》服装图鉴·莹白珍珠", "url": "https://www.gamersky.com/handbook/202506/1943736_22.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·莹白珍珠", "url": "https://www.gamersky.com/handbook/202506/1943736_22.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=62"}
     },
     "BS_34": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·黄色运动服", "url": "https://www.gamersky.com/handbook/202404/1737082_22.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=20"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=73"}
     },
     "BS_34_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·活力运动服", "url": "https://www.gamersky.com/handbook/202506/1942231_80.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·活力运动服", "url": "https://www.gamersky.com/handbook/202506/1942231_80.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=73"}
     },
     "BS_43_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·极致兔女郎", "url": "https://www.gamersky.com/handbook/202506/1943736_25.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=81"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=65"}
     },
     "BS_04": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·休闲针织裙装", "url": "https://www.gamersky.com/handbook/202404/1737082_25.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·休闲针织裙装", "url": "https://www.gamersky.com/handbook/202404/1737082_25.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=77"}
     },
     "BS_04_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·舒适针织裙装", "url": "https://www.gamersky.com/handbook/202506/1942231_60.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·舒适针织裙装", "url": "https://www.gamersky.com/handbook/202506/1942231_60.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=77"}
     },
     "BS_21_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·水珍珠", "url": "https://www.gamersky.com/handbook/202506/1943736_23.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=83"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=63"}
     },
     "BS_13": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·休闲吉祥物装", "url": "https://www.gamersky.com/handbook/202404/1737082_8.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=27"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=30"}
     },
     "BS_13_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·舒适吉祥物装", "url": "https://www.gamersky.com/handbook/202506/1942231_61.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·舒适吉祥物装", "url": "https://www.gamersky.com/handbook/202506/1942231_61.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=30"}
     },
     "BS_SilverKunoichi_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·暗影忍者装", "url": "https://www.gamersky.com/handbook/202506/1943736_15.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=84"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=45"}
     },
     "BS_SilverKunoichi": {
       "web": {"title": "游民星空《剑星》服装图鉴·亮银忍者装", "url": "https://www.gamersky.com/handbook/202506/1943736_14.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=94"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=44"}
     },
     "BS_31": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·休闲活力装", "url": "https://www.gamersky.com/handbook/202404/1737082_9.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=28"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=31"}
     },
     "BS_31_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·舒适活力装", "url": "https://www.gamersky.com/handbook/202506/1942231_62.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·舒适活力装", "url": "https://www.gamersky.com/handbook/202506/1942231_62.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=31"}
     },
     "BS_Blue_Suit_E": {
       "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第5小队）", "url": "https://www.gamersky.com/handbook/202506/1943736_6.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=85"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=17"}
     },
     "BS_20": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·碧蓝季风", "url": "https://www.gamersky.com/handbook/202404/1737082_18.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=35"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=11"}
     },
     "BS_20_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·纯白季风", "url": "https://www.gamersky.com/handbook/202506/1942231_83.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·纯白季风", "url": "https://www.gamersky.com/handbook/202506/1942231_83.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=11"}
     },
     "BS_26_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·“四秒钟”基本造型", "url": "https://www.gamersky.com/handbook/202506/1943736_11.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=86"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=37"}
     },
     "BS_Black_Leather_bikini": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·墨色波浪", "url": "https://www.gamersky.com/handbook/202404/1737082_30.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=32"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=54"}
     },
     "BS_Black_Leather_bikini_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·怒涛", "url": "https://www.gamersky.com/handbook/202506/1942231_71.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·怒涛", "url": "https://www.gamersky.com/handbook/202506/1942231_71.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=54"}
     },
     "BS_54": {
       "web": {"title": "游民星空《剑星》服装图鉴·烽火神盾", "url": "https://www.gamersky.com/handbook/202506/1943736_10.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=87"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=28"}
     },
     "BS_Sailor_Jean": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·休闲水手服", "url": "https://www.gamersky.com/handbook/202404/1737082_11.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=34"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=33"}
     },
     "BS_Sailor_Jean_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·舒适水手服", "url": "https://www.gamersky.com/handbook/202506/1942231_72.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·舒适水手服", "url": "https://www.gamersky.com/handbook/202506/1942231_72.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=33"}
     },
     "BS_50_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·知觉套装原型", "url": "https://www.gamersky.com/handbook/202506/1943736_9.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=89"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=27"}
     },
     "BS_40": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·赛博绑带装", "url": "https://www.gamersky.com/handbook/202404/1737082_31.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·赛博绑带装", "url": "https://www.gamersky.com/handbook/202404/1737082_31.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=50"}
     },
     "BS_40_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·自动绑带装", "url": "https://www.gamersky.com/handbook/202506/1942231_70.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·自动绑带装", "url": "https://www.gamersky.com/handbook/202506/1942231_70.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=50"}
     },
     "BS_40_Var3_E": {
       "web": {"title": "游民星空《剑星》服装图鉴·神经元回路绑带装", "url": "https://www.gamersky.com/handbook/202506/1943736_19.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=88"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=51"}
     },
     "BS_22": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·海的女仆", "url": "https://www.gamersky.com/handbook/202404/1737082_39.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=49"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=13"}
     },
     "BS_22_Var2_E": {
       "web": {"title": "游民星空《剑星》服装图鉴·海潮女仆", "url": "https://www.gamersky.com/handbook/202506/1943736_26.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=98"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=14"}
     },
     "BS_58": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·“波浪”潜水比基尼", "url": "https://www.gamersky.com/handbook/202404/1737082_48.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·“波浪”潜水比基尼", "url": "https://www.gamersky.com/handbook/202404/1737082_48.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=78"}
     },
     "BS_60": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·“波浪”斜款连体比基尼", "url": "https://www.gamersky.com/handbook/202404/1737082_49.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·“波浪”斜款连体比基尼", "url": "https://www.gamersky.com/handbook/202404/1737082_49.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=79"}
     },
     "BS_Yellow_Suit_Jacket": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·星球空降服（第3小队）", "url": "https://www.gamersky.com/handbook/202404/1737082_6.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=38"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=18"}
     },
     "BS_Yellow_Suit_Jacket_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第3小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_73.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第3小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_73.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=18"}
     },
     "BS_05_Var2_E": {
       "web": {"title": "游民星空《剑星》服装图鉴·星球空降防护服（第7小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1943736_4.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=90"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=3"}
     },
     "BS_Default_Var2": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·星球空降服（第6小队）", "url": "https://www.gamersky.com/handbook/202404/1737082_32.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·星球空降服（第6小队）", "url": "https://www.gamersky.com/handbook/202404/1737082_32.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=15"}
     },
     "BS_Default": {
-      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第6小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_89.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第6小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_89.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=15"}
     },
     "BS_Default_Var3": {
       "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第6小队）第3版", "url": "https://www.gamersky.com/handbook/202506/1943736_5.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=91"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=16"}
     },
     "BS_White_Jean": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·朋克炸街服", "url": "https://www.gamersky.com/handbook/202404/1737082_33.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=41"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=68"}
     },
     "BS_White_Jean_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·朋克风", "url": "https://www.gamersky.com/handbook/202506/1942231_79.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·朋克风", "url": "https://www.gamersky.com/handbook/202506/1942231_79.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=68"}
     },
     "BS_14_Var2_E": {
       "web": {"title": "游民星空《剑星》服装图鉴·绣球花", "url": "https://www.gamersky.com/handbook/202506/1943736_17.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=92"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=47"}
     },
     "BS_42": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·动力十足", "url": "https://www.gamersky.com/handbook/202404/1737082_34.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=42"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=58"}
     },
     "BS_42_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·共鸣", "url": "https://www.gamersky.com/handbook/202506/1942231_82.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·共鸣", "url": "https://www.gamersky.com/handbook/202506/1942231_82.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=58"}
     },
     "BS_55_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·烽火装", "url": "https://www.gamersky.com/handbook/202506/1943736_20.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=93"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=60"}
     },
     "BS_07": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·奥卡工程师", "url": "https://www.gamersky.com/handbook/202404/1737082_35.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=44"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=70"}
     },
     "BS_07_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·奥卡技术员", "url": "https://www.gamersky.com/handbook/202506/1942231_88.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·奥卡技术员", "url": "https://www.gamersky.com/handbook/202506/1942231_88.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=70"}
     },
     "BS_37": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·黑玫瑰", "url": "https://www.gamersky.com/handbook/202404/1737082_36.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=45"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=9"}
     },
     "BS_37_Var3": {
-      "web": {"title": "游民星空《剑星》服装图鉴·天使玫瑰", "url": "https://www.gamersky.com/handbook/202506/1942231_92.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·天使玫瑰", "url": "https://www.gamersky.com/handbook/202506/1942231_92.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=9"}
     },
     "BS_43": {
       "web": {"title": "游民星空《剑星》服装图鉴·终极兔女郎", "url": "https://www.gamersky.com/handbook/202506/1943736_24.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=95"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=64"}
     },
     "BS_47": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·目光焦点", "url": "https://www.gamersky.com/handbook/202404/1737082_37.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=48"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=29"}
     },
     "BS_47_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·丽影", "url": "https://www.gamersky.com/handbook/202506/1942231_64.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·丽影", "url": "https://www.gamersky.com/handbook/202506/1942231_64.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=29"}
     },
     "BS_52": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·神经元链接套装", "url": "https://www.gamersky.com/handbook/202404/1737082_43.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=54"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=22"}
     },
     "BS_44_Var3_E": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·赛博幻术师", "url": "https://www.gamersky.com/handbook/202404/1737082_47.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=55"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=56"}
     },
     "BS_RoyalGuard_01": {
       "web": {"title": "游民星空《剑星》服装图鉴·神圣护卫套装", "url": "https://www.gamersky.com/handbook/202506/1943736_2.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=69"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=25"}
     },
     "DesignPattern_BS_09_2": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·星球空降服（第7小队）第2版", "url": "https://www.gamersky.com/handbook/202404/1737082_3.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=3"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=1"}
     },
     "DesignPattern_BS_09_2_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第7小队）第3版", "url": "https://www.gamersky.com/handbook/202506/1942231_56.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第7小队）第3版", "url": "https://www.gamersky.com/handbook/202506/1942231_56.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=1"}
     },
     "DesignPattern_BS_05": {
       "web": {"title": "游民星空《剑星》服装图鉴·星球空降防护服（第7小队）", "url": "https://www.gamersky.com/handbook/202506/1943736_3.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=71"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=2"}
     },
     "DesignPattern_BS_41": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·废土冒险家", "url": "https://www.gamersky.com/handbook/202404/1737082_20.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=22"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=71"}
     },
     "DesignPattern_BS_41_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·废土探索者", "url": "https://www.gamersky.com/handbook/202506/1942231_81.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·废土探索者", "url": "https://www.gamersky.com/handbook/202506/1942231_81.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=71"}
     },
     "DesignPattern_BS_15_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·乌莲", "url": "https://www.gamersky.com/handbook/202506/1943736_18.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=73"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=49"}
     },
     "DesignPattern_BS_38": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·赤血丹心", "url": "https://www.gamersky.com/handbook/202404/1737082_21.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=6"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=72"}
     },
     "DesignPattern_BS_38_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·翡翠热情", "url": "https://www.gamersky.com/handbook/202506/1942231_69.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·翡翠热情", "url": "https://www.gamersky.com/handbook/202506/1942231_69.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=72"}
     },
     "DesignPattern_BS_14": {
       "web": {"title": "游民星空《剑星》服装图鉴·芍药独酌", "url": "https://www.gamersky.com/handbook/202506/1943736_16.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=72"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=46"}
     },
     "DesignPattern_BS_02": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·星球空降服（第2小队）", "url": "https://www.gamersky.com/handbook/202404/1737082_7.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=20"}
     },
     "DesignPattern_BS_02_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第2小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_57.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第2小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_57.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=20"}
     },
     "DesignPattern_BS_48": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·奥卡探索者", "url": "https://www.gamersky.com/handbook/202404/1737082_19.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=69"}
     },
     "DesignPattern_BS_48_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·奥卡探路者", "url": "https://www.gamersky.com/handbook/202506/1942231_58.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·奥卡探路者", "url": "https://www.gamersky.com/handbook/202506/1942231_58.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=69"}
     },
     "DesignPattern_BS_01_Var3": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·镂空裙装", "url": "https://www.gamersky.com/handbook/202404/1737082_13.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·镂空裙装", "url": "https://www.gamersky.com/handbook/202404/1737082_13.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=5"}
     },
     "DesignPattern_BS_32": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·“四秒钟”破洞牛仔布套装", "url": "https://www.gamersky.com/handbook/202404/1737082_46.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·“四秒钟”破洞牛仔布套装", "url": "https://www.gamersky.com/handbook/202404/1737082_46.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=35"}
     },
     "DesignPattern_BS_56": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·盛夏爱丽丝", "url": "https://www.gamersky.com/handbook/202404/1737082_44.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=9"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=41"}
     },
     "DesignPattern_BS_57": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·盛夏小红帽", "url": "https://www.gamersky.com/handbook/202404/1737082_45.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=9"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=42"}
     },
     "DesignPattern_BS_15": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·国色牡丹", "url": "https://www.gamersky.com/handbook/202404/1737082_15.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=48"}
     },
     "DesignPattern_BS_03": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·赛博裙装", "url": "https://www.gamersky.com/handbook/202404/1737082_26.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=57"}
     },
     "DesignPattern_BS_03_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·赛博服装", "url": "https://www.gamersky.com/handbook/202506/1942231_74.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·赛博服装", "url": "https://www.gamersky.com/handbook/202506/1942231_74.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=57"}
     },
     "DesignPattern_BS_17": {
       "web": {"title": "游民星空《剑星》服装图鉴·赛博兔女郎", "url": "https://www.gamersky.com/handbook/202506/1943736_21.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=70"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=61"}
     },
     "DesignPattern_BS_Yellow_Suit": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·星球空降服原型", "url": "https://www.gamersky.com/handbook/202404/1737082_38.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=39"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=19"}
     },
     "DesignPattern_BS_Yellow_Suit_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服原型第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_75.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服原型第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_75.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=19"}
     },
     "DesignPattern_BS_Leather_Jean": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·休闲车手服", "url": "https://www.gamersky.com/handbook/202404/1737082_10.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=21"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=32"}
     },
     "DesignPattern_BS_Leather_Jean_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·“四秒钟”车手服", "url": "https://www.gamersky.com/handbook/202506/1942231_77.shtml"}
     },
     "DesignPattern_BS_11": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·黑礼服", "url": "https://www.gamersky.com/handbook/202404/1737082_24.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=21"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=76"}
     },
     "DesignPattern_BS_10": {
-      "web": {"title": "游民星空《剑星》服装图鉴·白礼服", "url": "https://www.gamersky.com/handbook/202506/1942231_86.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·白礼服", "url": "https://www.gamersky.com/handbook/202506/1942231_86.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=76"}
     },
     "DesignPattern_BS_23_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·废品工程师", "url": "https://www.gamersky.com/handbook/202506/1942231_87.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·废品工程师", "url": "https://www.gamersky.com/handbook/202506/1942231_87.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=75"}
     },
     "DesignPattern_BS_EVE_04": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·牛仔布休闲装", "url": "https://www.gamersky.com/handbook/202404/1737082_12.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·牛仔布休闲装", "url": "https://www.gamersky.com/handbook/202404/1737082_12.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=34"}
     },
     "DesignPattern_BS_EVE_04_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·“四秒钟”牛仔布套装", "url": "https://www.gamersky.com/handbook/202506/1942231_78.shtml"}
     },
     "DesignPattern_BS_19_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·赤色珍珠", "url": "https://www.gamersky.com/handbook/202506/1942231_85.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=53"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=12"}
     },
     "DesignPattern_BS_45": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·狂飙车手", "url": "https://www.gamersky.com/handbook/202404/1737082_16.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=13"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=52"}
     },
     "DesignPattern_BS_45_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·极速快感", "url": "https://www.gamersky.com/handbook/202506/1942231_67.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·极速快感", "url": "https://www.gamersky.com/handbook/202506/1942231_67.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=52"}
     },
     "DesignPattern_BS_53_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·知觉活肤紧身服", "url": "https://www.gamersky.com/handbook/202506/1943736_7.shtml"},
@@ -1162,230 +1218,330 @@
     },
     "DesignPattern_BS_24_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·空乘风", "url": "https://www.gamersky.com/handbook/202506/1942231_63.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=52"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=74"}
     },
     "DesignPattern_BS_24": {
       "web": {"title": "游民星空《剑星》服装图鉴·通勤装", "url": "https://www.gamersky.com/handbook/202506/1943736_13.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=80"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=40"}
     },
     "DesignPattern_BS_16": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·假日兔", "url": "https://www.gamersky.com/handbook/202404/1737082_17.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=14"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=53"}
     },
     "DesignPattern_BS_16_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·假日兔女郎", "url": "https://www.gamersky.com/handbook/202506/1942231_66.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·假日兔女郎", "url": "https://www.gamersky.com/handbook/202506/1942231_66.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=53"}
     },
     "DesignPattern_BS_50": {
       "web": {"title": "游民星空《剑星》服装图鉴·神经元链接套装原型", "url": "https://www.gamersky.com/handbook/202506/1943736_8.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=78"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=26"}
     },
     "DesignPattern_BS_44": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·赛博魔法师", "url": "https://www.gamersky.com/handbook/202404/1737082_27.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=15"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=55"}
     },
     "DesignPattern_BS_44_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·赛博诡术士", "url": "https://www.gamersky.com/handbook/202506/1942231_68.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·赛博诡术士", "url": "https://www.gamersky.com/handbook/202506/1942231_68.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=55"}
     },
     "DesignPattern_BS_21": {
-      "web": {"title": "游民星空《剑星》服装图鉴·莹白珍珠", "url": "https://www.gamersky.com/handbook/202506/1943736_22.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·莹白珍珠", "url": "https://www.gamersky.com/handbook/202506/1943736_22.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=62"}
     },
     "DesignPattern_BS_34": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·黄色运动服", "url": "https://www.gamersky.com/handbook/202404/1737082_22.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=20"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=73"}
     },
     "DesignPattern_BS_34_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·活力运动服", "url": "https://www.gamersky.com/handbook/202506/1942231_80.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·活力运动服", "url": "https://www.gamersky.com/handbook/202506/1942231_80.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=73"}
     },
     "DesignPattern_BS_43_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·极致兔女郎", "url": "https://www.gamersky.com/handbook/202506/1943736_25.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=81"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=65"}
     },
     "DesignPattern_BS_04": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·休闲针织裙装", "url": "https://www.gamersky.com/handbook/202404/1737082_25.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·休闲针织裙装", "url": "https://www.gamersky.com/handbook/202404/1737082_25.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=77"}
     },
     "DesignPattern_BS_04_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·舒适针织裙装", "url": "https://www.gamersky.com/handbook/202506/1942231_60.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·舒适针织裙装", "url": "https://www.gamersky.com/handbook/202506/1942231_60.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=77"}
     },
     "DesignPattern_BS_21_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·水珍珠", "url": "https://www.gamersky.com/handbook/202506/1943736_23.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=83"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=63"}
     },
     "DesignPattern_BS_13": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·休闲吉祥物装", "url": "https://www.gamersky.com/handbook/202404/1737082_8.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=27"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=30"}
     },
     "DesignPattern_BS_13_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·舒适吉祥物装", "url": "https://www.gamersky.com/handbook/202506/1942231_61.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·舒适吉祥物装", "url": "https://www.gamersky.com/handbook/202506/1942231_61.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=30"}
     },
     "DesignPattern_BS_SilverKunoichi_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·暗影忍者装", "url": "https://www.gamersky.com/handbook/202506/1943736_15.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=84"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=45"}
     },
     "DesignPattern_BS_SilverKunoichi": {
       "web": {"title": "游民星空《剑星》服装图鉴·亮银忍者装", "url": "https://www.gamersky.com/handbook/202506/1943736_14.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=94"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=44"}
     },
     "DesignPattern_BS_31": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·休闲活力装", "url": "https://www.gamersky.com/handbook/202404/1737082_9.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=28"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=31"}
     },
     "DesignPattern_BS_31_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·舒适活力装", "url": "https://www.gamersky.com/handbook/202506/1942231_62.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·舒适活力装", "url": "https://www.gamersky.com/handbook/202506/1942231_62.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=31"}
     },
     "DesignPattern_BS_Blue_Suit": {
       "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第5小队）", "url": "https://www.gamersky.com/handbook/202506/1943736_6.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=85"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=17"}
     },
     "DesignPattern_BS_Black_Leather_bikini": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·墨色波浪", "url": "https://www.gamersky.com/handbook/202404/1737082_30.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=32"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=54"}
     },
     "DesignPattern_BS_Black_Leather_bikini_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·怒涛", "url": "https://www.gamersky.com/handbook/202506/1942231_71.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·怒涛", "url": "https://www.gamersky.com/handbook/202506/1942231_71.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=54"}
     },
     "DesignPattern_BS_54": {
       "web": {"title": "游民星空《剑星》服装图鉴·烽火神盾", "url": "https://www.gamersky.com/handbook/202506/1943736_10.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=87"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=28"}
     },
     "DesignPattern_BS_Sailor_Jean": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·休闲水手服", "url": "https://www.gamersky.com/handbook/202404/1737082_11.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=34"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=33"}
     },
     "DesignPattern_BS_Sailor_Jean_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·舒适水手服", "url": "https://www.gamersky.com/handbook/202506/1942231_72.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·舒适水手服", "url": "https://www.gamersky.com/handbook/202506/1942231_72.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=33"}
     },
     "DesignPattern_BS_50_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·知觉套装原型", "url": "https://www.gamersky.com/handbook/202506/1943736_9.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=89"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=27"}
     },
     "DesignPattern_BS_40": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·赛博绑带装", "url": "https://www.gamersky.com/handbook/202404/1737082_31.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·赛博绑带装", "url": "https://www.gamersky.com/handbook/202404/1737082_31.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=50"}
     },
     "DesignPattern_BS_40_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·自动绑带装", "url": "https://www.gamersky.com/handbook/202506/1942231_70.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·自动绑带装", "url": "https://www.gamersky.com/handbook/202506/1942231_70.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=50"}
     },
     "DesignPattern_BS_40_Var3": {
       "web": {"title": "游民星空《剑星》服装图鉴·神经元回路绑带装", "url": "https://www.gamersky.com/handbook/202506/1943736_19.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=88"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=51"}
     },
     "DesignPattern_BS_22_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·海潮女仆", "url": "https://www.gamersky.com/handbook/202506/1943736_26.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=98"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=14"}
     },
     "DesignPattern_BS_58": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·“波浪”潜水比基尼", "url": "https://www.gamersky.com/handbook/202404/1737082_48.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·“波浪”潜水比基尼", "url": "https://www.gamersky.com/handbook/202404/1737082_48.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=78"}
     },
     "DesignPattern_BS_60": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·“波浪”斜款连体比基尼", "url": "https://www.gamersky.com/handbook/202404/1737082_49.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·“波浪”斜款连体比基尼", "url": "https://www.gamersky.com/handbook/202404/1737082_49.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=79"}
     },
     "DesignPattern_BS_Yellow_Suit_Jacket": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·星球空降服（第3小队）", "url": "https://www.gamersky.com/handbook/202404/1737082_6.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=38"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=18"}
     },
     "DesignPattern_BS_Yellow_Suit_Jacket_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第3小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_73.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第3小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_73.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=18"}
     },
     "DesignPattern_BS_05_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·星球空降防护服（第7小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1943736_4.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=90"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=3"}
     },
     "DesignPattern_BS_Default_Var2": {
-      "web": {"title": "游民星空《剑星》女主服装图鉴·星球空降服（第6小队）", "url": "https://www.gamersky.com/handbook/202404/1737082_32.shtml"}
+      "web": {"title": "游民星空《剑星》女主服装图鉴·星球空降服（第6小队）", "url": "https://www.gamersky.com/handbook/202404/1737082_32.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=15"}
     },
     "DesignPattern_BS_Default": {
-      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第6小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_89.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第6小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_89.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=15"}
     },
     "DesignPattern_BS_White_Jean": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·朋克炸街服", "url": "https://www.gamersky.com/handbook/202404/1737082_33.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=41"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=68"}
     },
     "DesignPattern_BS_White_Jean_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·朋克风", "url": "https://www.gamersky.com/handbook/202506/1942231_79.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·朋克风", "url": "https://www.gamersky.com/handbook/202506/1942231_79.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=68"}
     },
     "DesignPattern_BS_14_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·绣球花", "url": "https://www.gamersky.com/handbook/202506/1943736_17.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=92"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=47"}
     },
     "DesignPattern_BS_42": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·动力十足", "url": "https://www.gamersky.com/handbook/202404/1737082_34.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=42"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=58"}
     },
     "DesignPattern_BS_42_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·共鸣", "url": "https://www.gamersky.com/handbook/202506/1942231_82.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·共鸣", "url": "https://www.gamersky.com/handbook/202506/1942231_82.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=58"}
     },
     "DesignPattern_BS_55_Var2": {
       "web": {"title": "游民星空《剑星》服装图鉴·烽火装", "url": "https://www.gamersky.com/handbook/202506/1943736_20.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=93"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=60"}
     },
     "DesignPattern_BS_07": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·奥卡工程师", "url": "https://www.gamersky.com/handbook/202404/1737082_35.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=44"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=70"}
     },
     "DesignPattern_BS_07_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·奥卡技术员", "url": "https://www.gamersky.com/handbook/202506/1942231_88.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·奥卡技术员", "url": "https://www.gamersky.com/handbook/202506/1942231_88.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=70"}
     },
     "DesignPattern_BS_37": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·黑玫瑰", "url": "https://www.gamersky.com/handbook/202404/1737082_36.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=45"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=9"}
     },
     "DesignPattern_BS_37_Var3": {
-      "web": {"title": "游民星空《剑星》服装图鉴·天使玫瑰", "url": "https://www.gamersky.com/handbook/202506/1942231_92.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·天使玫瑰", "url": "https://www.gamersky.com/handbook/202506/1942231_92.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=9"}
     },
     "DesignPattern_BS_43": {
       "web": {"title": "游民星空《剑星》服装图鉴·终极兔女郎", "url": "https://www.gamersky.com/handbook/202506/1943736_24.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=95"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=64"}
     },
     "DesignPattern_BS_47": {
       "web": {"title": "游民星空《剑星》女主服装图鉴·目光焦点", "url": "https://www.gamersky.com/handbook/202404/1737082_37.shtml"},
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=48"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=29"}
     },
     "DesignPattern_BS_47_Var2": {
-      "web": {"title": "游民星空《剑星》服装图鉴·丽影", "url": "https://www.gamersky.com/handbook/202506/1942231_64.shtml"}
+      "web": {"title": "游民星空《剑星》服装图鉴·丽影", "url": "https://www.gamersky.com/handbook/202506/1942231_64.shtml"},
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=29"}
+    },
+    "BS_99": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=21"}
     },
     "BS_01": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=5"}
+    },
+    "BS_Bear_Var2": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=7"}
+    },
+    "BS_Nikke_06": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=83"}
+    },
+    "BS_Nikke_02": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=83"}
+    },
+    "BS_Nikke_03": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=83"}
+    },
+    "BS_Nikke_05": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=83"}
+    },
+    "BS_Nikke_04": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=83"}
+    },
+    "BS_18": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=67"}
+    },
+    "BS_Nikke_01": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=83"}
     },
     "Hair_Christmas_01": {
       "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=66"}
     },
     "FaceAccessory_012": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=7"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=112"}
     },
     "FaceAccessory_Christmas_01": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=64"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=114"}
+    },
+    "FaceAccessory_Nier_001": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=115"}
+    },
+    "FaceAccessory_001": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=116"}
+    },
+    "FaceAccessory_005": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=16"}
     },
     "FaceAccessory_006": {
       "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=16"}
     },
+    "FaceAccessory_004": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=116"}
+    },
+    "FaceAccessory_007": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=116"}
+    },
+    "FaceAccessory_010": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=17"}
+    },
+    "FaceAccessory_011": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=116"}
+    },
     "FaceAccessory_026": {
       "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=97"}
+    },
+    "FaceAccessory_003": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=18"}
     },
     "FaceAccessory_008": {
       "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=18"}
     },
+    "FaceAccessory_009": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=18"}
+    },
+    "FaceAccessory_013": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=116"}
+    },
     "FaceAccessory_028": {
       "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=97"}
     },
+    "FaceAccessory_027": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=116"}
+    },
     "FaceAccessory_029": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=30"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=113"}
+    },
+    "FaceAccessory_002": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=111"}
+    },
+    "FaceAccessory_002_Var2": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=116"}
+    },
+    "Earring_018": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=107"}
     },
     "Earring_001": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=5"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=99"}
+    },
+    "Earring_001_Var2": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=99"}
     },
     "Earring_012": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=74"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=100"}
     },
     "Earring_008": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=23"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=104"}
+    },
+    "Earring_008_Var2": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=104"}
     },
     "Earring_014": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=75"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=105"}
+    },
+    "Earring_011": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=106"}
     },
     "Earring_Christmas_02": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=65"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=109"}
     },
     "Earring_Christmas_01": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=63"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=108"}
     },
     "Earring_004": {
       "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=11"}
@@ -1415,31 +1571,85 @@
       "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=11"}
     },
     "Earring_002": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=24"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=101"}
+    },
+    "Earring_002_Var2": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=101"}
     },
     "Earring_013": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=82"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=102"}
     },
     "Earring_003": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=47"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=103"}
+    },
+    "Earring_003_Var2": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=103"}
     },
     "DroneSeal_002": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=4"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=93"}
+    },
+    "DroneSeal_002_Var2": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=93"}
+    },
+    "DroneSeal_005": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=98"}
+    },
+    "DroneSeal_003": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=95"}
+    },
+    "DroneSeal_Christmas_01": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=96"}
+    },
+    "DroneSeal_Nier_001": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=97"}
+    },
+    "DroneSeal_004": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=94"}
+    },
+    "DroneSeal_004_Var2": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=94"}
+    },
+    "AdamCostume_002": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=87"}
     },
     "AdamCostume_Christmas_01": {
       "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=67"}
     },
+    "AdamCostume_Nier_001": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=88"}
+    },
+    "AdamCostume_003": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=84"}
+    },
+    "AdamCostume_003_Var2": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=84"}
+    },
     "AdamCostume_004": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=26"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=85"}
+    },
+    "AdamCostume_004_Var2": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=85"}
+    },
+    "LilyCostume_002": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=89"}
     },
     "LilyCostume_003": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=12"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=90"}
+    },
+    "LilyCostume_003_Var2": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=90"}
+    },
+    "LilyCostume_Nier_001": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=92"}
     },
     "LilyCostume_004": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=31"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=91"}
+    },
+    "LilyCostume_004_Var2": {
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=91"}
     },
     "DesignPattern_BS_01": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
+      "video": {"title": "B站·摩尔寄居蟹 剑星126套纳米服全收集", "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=5"}
     }
   }
 }

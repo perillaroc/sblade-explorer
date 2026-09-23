@@ -162,7 +162,7 @@ mod tests {
     fn guide_links_returns_chinese_guides() {
         let links = guide_links().expect("guide links");
         let links = links.as_object().expect("object");
-        assert_eq!(links.len(), 810);
+        assert_eq!(links.len(), 808);
         let can = links.get("Can_001").expect("can guide");
         assert!(can["web"]["url"]
             .as_str()
