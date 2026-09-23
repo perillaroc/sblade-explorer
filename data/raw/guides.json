@@ -6,6 +6,7 @@
     "https://www.gamersky.com/handbook/202404/1737659.shtml",
     "https://www.gamersky.com/handbook/202405/1747789.shtml",
     "https://www.gamersky.com/handbook/202507/1959957.shtml",
+    "https://www.gamersky.com/handbook/202506/1942231.shtml",
     "https://space.bilibili.com/ (喂狗组-文轩 剑星全收集合集)"
   ],
   "regions": {
@@ -306,25 +307,29 @@
       }
     },
     "nano_suits": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ"}
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=2"},
+      "web": {"title": "游民星空《剑星》服装图鉴（本体及二周目）", "url": "https://www.gamersky.com/handbook/202506/1942231.shtml"}
     },
     "hair": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ"}
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=2"}
     },
     "glasses": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ"}
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=2"}
     },
     "earrings": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ"}
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=2"}
     },
     "drone_seals": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ"}
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=2"}
     },
     "adam_costumes": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ"}
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=2"}
     },
     "lily_costumes": {
-      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ"}
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=2"}
+    },
+    "design_patterns": {
+      "web": {"title": "游民星空《剑星》服装图鉴（本体及二周目）", "url": "https://www.gamersky.com/handbook/202506/1942231.shtml"}
     }
   },
   "items": {
@@ -616,6 +621,825 @@
     },
     "Fish_Nikke_Glasses": {
       "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=32"}
+    },
+    "BS_Green_Suit": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第7小队）", "url": "https://www.gamersky.com/handbook/202506/1942231_11.shtml"}
+    },
+    "BS_102": {
+      "web": {"title": "游民星空《剑星》服装图鉴·活肤紧身服", "url": "https://www.gamersky.com/handbook/202506/1942231_10.shtml"}
+    },
+    "BS_08": {
+      "web": {"title": "游民星空《剑星》服装图鉴·墨黑忍者装", "url": "https://www.gamersky.com/handbook/202506/1942231_49.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=2"}
+    },
+    "BS_08_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·洁白忍者装", "url": "https://www.gamersky.com/handbook/202506/1942231_50.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=2"}
+    },
+    "BS_OneMillion_01": {
+      "web": {"title": "游民星空《剑星》服装图鉴·绯红之翼", "url": "https://www.gamersky.com/handbook/202506/1943736.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=68"}
+    },
+    "BS_Raven": {
+      "web": {"title": "游民星空《剑星》服装图鉴·渡鸦装", "url": "https://www.gamersky.com/handbook/202506/1942231_59.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=51"}
+    },
+    "BS_09_2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第7小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_12.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=3"}
+    },
+    "BS_09_2_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第7小队）第3版", "url": "https://www.gamersky.com/handbook/202506/1942231_56.shtml"}
+    },
+    "BS_05_E": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降防护服（第7小队）", "url": "https://www.gamersky.com/handbook/202506/1943736_3.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=71"}
+    },
+    "BS_41": {
+      "web": {"title": "游民星空《剑星》服装图鉴·废土冒险家", "url": "https://www.gamersky.com/handbook/202506/1942231_41.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=22"}
+    },
+    "BS_41_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·废土探索者", "url": "https://www.gamersky.com/handbook/202506/1942231_81.shtml"}
+    },
+    "BS_15_Var2_E": {
+      "web": {"title": "游民星空《剑星》服装图鉴·乌莲", "url": "https://www.gamersky.com/handbook/202506/1943736_18.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=73"}
+    },
+    "BS_38": {
+      "web": {"title": "游民星空《剑星》服装图鉴·赤血丹心", "url": "https://www.gamersky.com/handbook/202506/1942231_42.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=6"}
+    },
+    "BS_38_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·翡翠热情", "url": "https://www.gamersky.com/handbook/202506/1942231_69.shtml"}
+    },
+    "BS_14_E": {
+      "web": {"title": "游民星空《剑星》服装图鉴·芍药独酌", "url": "https://www.gamersky.com/handbook/202506/1943736_16.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=72"}
+    },
+    "BS_01_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·占星服", "url": "https://www.gamersky.com/handbook/202506/1942231_13.shtml"}
+    },
+    "BS_Christmas_01": {
+      "web": {"title": "游民星空《剑星》服装图鉴·圣诞裙装", "url": "https://www.gamersky.com/handbook/202506/1942231_5.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=62"}
+    },
+    "BS_02": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第2小队）", "url": "https://www.gamersky.com/handbook/202506/1942231_24.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
+    },
+    "BS_02_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第2小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_57.shtml"}
+    },
+    "BS_48": {
+      "web": {"title": "游民星空《剑星》服装图鉴·奥卡探索者", "url": "https://www.gamersky.com/handbook/202506/1942231_39.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
+    },
+    "BS_48_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·奥卡探路者", "url": "https://www.gamersky.com/handbook/202506/1942231_58.shtml"}
+    },
+    "BS_01_Var3": {
+      "web": {"title": "游民星空《剑星》服装图鉴·镂空裙装", "url": "https://www.gamersky.com/handbook/202506/1942231_14.shtml"}
+    },
+    "BS_32": {
+      "web": {"title": "游民星空《剑星》服装图鉴·“四秒钟”破洞牛仔布套装", "url": "https://www.gamersky.com/handbook/202506/1942231_53.shtml"}
+    },
+    "BS_56": {
+      "web": {"title": "游民星空《剑星》服装图鉴·盛夏爱丽丝", "url": "https://www.gamersky.com/handbook/202506/1942231_51.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=9"}
+    },
+    "BS_57": {
+      "web": {"title": "游民星空《剑星》服装图鉴·盛夏小红帽", "url": "https://www.gamersky.com/handbook/202506/1942231_52.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=9"}
+    },
+    "BS_15": {
+      "web": {"title": "游民星空《剑星》服装图鉴·国色牡丹", "url": "https://www.gamersky.com/handbook/202506/1942231_30.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
+    },
+    "BS_03": {
+      "web": {"title": "游民星空《剑星》服装图鉴·赛博裙装", "url": "https://www.gamersky.com/handbook/202506/1942231_36.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
+    },
+    "BS_03_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·赛博服装", "url": "https://www.gamersky.com/handbook/202506/1942231_74.shtml"}
+    },
+    "BS_17": {
+      "web": {"title": "游民星空《剑星》服装图鉴·赛博兔女郎", "url": "https://www.gamersky.com/handbook/202506/1943736_21.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=70"}
+    },
+    "BS_Yellow_Suit": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服原型", "url": "https://www.gamersky.com/handbook/202506/1942231_23.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=39"}
+    },
+    "BS_Yellow_Suit_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服原型第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_75.shtml"}
+    },
+    "BS_Leather_Jean": {
+      "web": {"title": "游民星空《剑星》服装图鉴·休闲车手服", "url": "https://www.gamersky.com/handbook/202506/1942231_27.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=21"}
+    },
+    "BS_Leather_Jean_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·“四秒钟”车手服", "url": "https://www.gamersky.com/handbook/202506/1942231_77.shtml"}
+    },
+    "BS_11": {
+      "web": {"title": "游民星空《剑星》服装图鉴·黑礼服", "url": "https://www.gamersky.com/handbook/202506/1942231_45.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=21"}
+    },
+    "BS_10": {
+      "web": {"title": "游民星空《剑星》服装图鉴·白礼服", "url": "https://www.gamersky.com/handbook/202506/1942231_86.shtml"}
+    },
+    "BS_23": {
+      "web": {"title": "游民星空《剑星》服装图鉴·废料机械师", "url": "https://www.gamersky.com/handbook/202506/1942231_44.shtml"}
+    },
+    "BS_23_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·废品工程师", "url": "https://www.gamersky.com/handbook/202506/1942231_87.shtml"}
+    },
+    "BS_EVE_04": {
+      "web": {"title": "游民星空《剑星》服装图鉴·牛仔布休闲装", "url": "https://www.gamersky.com/handbook/202506/1942231_29.shtml"}
+    },
+    "BS_EVE_04_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·“四秒钟”牛仔布套装", "url": "https://www.gamersky.com/handbook/202506/1942231_78.shtml"}
+    },
+    "BS_Bear": {
+      "web": {"title": "游民星空《剑星》服装图鉴·毛绒熊熊", "url": "https://www.gamersky.com/handbook/202506/1942231_15.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=29"}
+    },
+    "BS_30": {
+      "web": {"title": "游民星空《剑星》服装图鉴·空中王牌", "url": "https://www.gamersky.com/handbook/202506/1942231_16.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=36"}
+    },
+    "BS_30_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·天骄王牌", "url": "https://www.gamersky.com/handbook/202506/1942231_84.shtml"}
+    },
+    "BS_19": {
+      "web": {"title": "游民星空《剑星》服装图鉴·黑珍珠", "url": "https://www.gamersky.com/handbook/202506/1942231_48.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=50"}
+    },
+    "BS_19_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·赤色珍珠", "url": "https://www.gamersky.com/handbook/202506/1942231_85.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=53"}
+    },
+    "BS_26": {
+      "web": {"title": "游民星空《剑星》服装图鉴·“四秒钟”休闲装", "url": "https://www.gamersky.com/handbook/202506/1942231.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=57"}
+    },
+    "BS_53": {
+      "web": {"title": "游民星空《剑星》服装图鉴·神经元链接紧身服", "url": "https://www.gamersky.com/handbook/202506/1942231_3.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=58"}
+    },
+    "BS_33": {
+      "web": {"title": "游民星空《剑星》服装图鉴·“四秒钟”黑色牛仔布套装", "url": "https://www.gamersky.com/handbook/202506/1942231_2.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=59"}
+    },
+    "BS_55": {
+      "web": {"title": "游民星空《剑星》服装图鉴·烽火裙装", "url": "https://www.gamersky.com/handbook/202506/1942231_4.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=60"}
+    },
+    "BS_45": {
+      "web": {"title": "游民星空《剑星》服装图鉴·狂飙车手", "url": "https://www.gamersky.com/handbook/202506/1942231_32.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=13"}
+    },
+    "BS_45_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·极速快感", "url": "https://www.gamersky.com/handbook/202506/1942231_67.shtml"}
+    },
+    "BS_53_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·知觉活肤紧身服", "url": "https://www.gamersky.com/handbook/202506/1943736_7.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=77"}
+    },
+    "BS_Nier_01": {
+      "web": {"title": "游民星空《剑星》服装图鉴·寄叶二号B型制服（2B）", "url": "https://www.gamersky.com/handbook/202411/1848445.shtml"}
+    },
+    "BS_Nier_02": {
+      "web": {"title": "游民星空《剑星》服装图鉴·寄叶制服I", "url": "https://www.gamersky.com/handbook/202506/1942231_8.shtml"}
+    },
+    "BS_Nier_03": {
+      "web": {"title": "游民星空《剑星》服装图鉴·寄叶非正式礼仪着装", "url": "https://www.gamersky.com/handbook/202506/1942231_9.shtml"}
+    },
+    "BS_Nier_04": {
+      "web": {"title": "游民星空《剑星》服装图鉴·寄叶A型二号制服（A2）", "url": "https://www.gamersky.com/handbook/202411/1848445_2.shtml"}
+    },
+    "BS_24_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·空乘风", "url": "https://www.gamersky.com/handbook/202506/1942231_63.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=52"}
+    },
+    "BS_24_E": {
+      "web": {"title": "游民星空《剑星》服装图鉴·通勤装", "url": "https://www.gamersky.com/handbook/202506/1943736_13.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=80"}
+    },
+    "BS_37_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·玫瑰人生", "url": "https://www.gamersky.com/handbook/202506/1942231_18.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=37"}
+    },
+    "BS_33_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·“四秒钟”条纹牛仔布套装", "url": "https://www.gamersky.com/handbook/202506/1943736_12.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=76"}
+    },
+    "BS_16": {
+      "web": {"title": "游民星空《剑星》服装图鉴·假日兔", "url": "https://www.gamersky.com/handbook/202506/1942231_33.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=14"}
+    },
+    "BS_16_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·假日兔女郎", "url": "https://www.gamersky.com/handbook/202506/1942231_66.shtml"}
+    },
+    "BS_50": {
+      "web": {"title": "游民星空《剑星》服装图鉴·神经元链接套装原型", "url": "https://www.gamersky.com/handbook/202506/1943736_8.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=78"}
+    },
+    "BS_44": {
+      "web": {"title": "游民星空《剑星》服装图鉴·赛博魔法师", "url": "https://www.gamersky.com/handbook/202506/1942231_35.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=15"}
+    },
+    "BS_44_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·赛博诡术士", "url": "https://www.gamersky.com/handbook/202506/1942231_68.shtml"}
+    },
+    "BS_21": {
+      "web": {"title": "游民星空《剑星》服装图鉴·莹白珍珠", "url": "https://www.gamersky.com/handbook/202506/1943736_22.shtml"}
+    },
+    "BS_34": {
+      "web": {"title": "游民星空《剑星》服装图鉴·黄色运动服", "url": "https://www.gamersky.com/handbook/202506/1942231_43.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=20"}
+    },
+    "BS_34_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·活力运动服", "url": "https://www.gamersky.com/handbook/202506/1942231_80.shtml"}
+    },
+    "BS_43_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·极致兔女郎", "url": "https://www.gamersky.com/handbook/202506/1943736_25.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=81"}
+    },
+    "BS_04": {
+      "web": {"title": "游民星空《剑星》服装图鉴·休闲针织裙装", "url": "https://www.gamersky.com/handbook/202506/1942231_46.shtml"}
+    },
+    "BS_04_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·舒适针织裙装", "url": "https://www.gamersky.com/handbook/202506/1942231_60.shtml"}
+    },
+    "BS_21_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·水珍珠", "url": "https://www.gamersky.com/handbook/202506/1943736_23.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=83"}
+    },
+    "BS_13": {
+      "web": {"title": "游民星空《剑星》服装图鉴·休闲吉祥物装", "url": "https://www.gamersky.com/handbook/202506/1942231_25.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=27"}
+    },
+    "BS_13_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·舒适吉祥物装", "url": "https://www.gamersky.com/handbook/202506/1942231_61.shtml"}
+    },
+    "BS_SilverKunoichi_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·暗影忍者装", "url": "https://www.gamersky.com/handbook/202506/1943736_15.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=84"}
+    },
+    "BS_SilverKunoichi": {
+      "web": {"title": "游民星空《剑星》服装图鉴·亮银忍者装", "url": "https://www.gamersky.com/handbook/202506/1943736_14.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=94"}
+    },
+    "BS_31": {
+      "web": {"title": "游民星空《剑星》服装图鉴·休闲活力装", "url": "https://www.gamersky.com/handbook/202506/1942231_26.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=28"}
+    },
+    "BS_31_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·舒适活力装", "url": "https://www.gamersky.com/handbook/202506/1942231_62.shtml"}
+    },
+    "BS_Blue_Suit_E": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第5小队）", "url": "https://www.gamersky.com/handbook/202506/1943736_6.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=85"}
+    },
+    "BS_20": {
+      "web": {"title": "游民星空《剑星》服装图鉴·碧蓝季风", "url": "https://www.gamersky.com/handbook/202506/1942231_19.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=35"}
+    },
+    "BS_20_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·纯白季风", "url": "https://www.gamersky.com/handbook/202506/1942231_83.shtml"}
+    },
+    "BS_26_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·“四秒钟”基本造型", "url": "https://www.gamersky.com/handbook/202506/1943736_11.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=86"}
+    },
+    "BS_Black_Leather_bikini": {
+      "web": {"title": "游民星空《剑星》服装图鉴·墨色波浪", "url": "https://www.gamersky.com/handbook/202506/1942231_34.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=32"}
+    },
+    "BS_Black_Leather_bikini_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·怒涛", "url": "https://www.gamersky.com/handbook/202506/1942231_71.shtml"}
+    },
+    "BS_54": {
+      "web": {"title": "游民星空《剑星》服装图鉴·烽火神盾", "url": "https://www.gamersky.com/handbook/202506/1943736_10.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=87"}
+    },
+    "BS_Sailor_Jean": {
+      "web": {"title": "游民星空《剑星》服装图鉴·休闲水手服", "url": "https://www.gamersky.com/handbook/202506/1942231_28.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=34"}
+    },
+    "BS_Sailor_Jean_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·舒适水手服", "url": "https://www.gamersky.com/handbook/202506/1942231_72.shtml"}
+    },
+    "BS_50_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·知觉套装原型", "url": "https://www.gamersky.com/handbook/202506/1943736_9.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=89"}
+    },
+    "BS_40": {
+      "web": {"title": "游民星空《剑星》服装图鉴·赛博绑带装", "url": "https://www.gamersky.com/handbook/202506/1942231_31.shtml"}
+    },
+    "BS_40_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·自动绑带装", "url": "https://www.gamersky.com/handbook/202506/1942231_70.shtml"}
+    },
+    "BS_40_Var3_E": {
+      "web": {"title": "游民星空《剑星》服装图鉴·神经元回路绑带装", "url": "https://www.gamersky.com/handbook/202506/1943736_19.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=88"}
+    },
+    "BS_22": {
+      "web": {"title": "游民星空《剑星》服装图鉴·海的女仆", "url": "https://www.gamersky.com/handbook/202506/1942231_20.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=49"}
+    },
+    "BS_22_Var2_E": {
+      "web": {"title": "游民星空《剑星》服装图鉴·海潮女仆", "url": "https://www.gamersky.com/handbook/202506/1943736_26.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=98"}
+    },
+    "BS_58": {
+      "web": {"title": "游民星空《剑星》服装图鉴·“波浪”潜水比基尼", "url": "https://www.gamersky.com/handbook/202506/1942231_55.shtml"}
+    },
+    "BS_60": {
+      "web": {"title": "游民星空《剑星》服装图鉴·“波浪”斜款连体比基尼", "url": "https://www.gamersky.com/handbook/202506/1942231_54.shtml"}
+    },
+    "BS_Yellow_Suit_Jacket": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第3小队）", "url": "https://www.gamersky.com/handbook/202506/1942231_22.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=38"}
+    },
+    "BS_Yellow_Suit_Jacket_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第3小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_73.shtml"}
+    },
+    "BS_05_Var2_E": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降防护服（第7小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1943736_4.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=90"}
+    },
+    "BS_Default_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第6小队）", "url": "https://www.gamersky.com/handbook/202506/1942231_21.shtml"}
+    },
+    "BS_Default": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第6小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_89.shtml"}
+    },
+    "BS_Default_Var3": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第6小队）第3版", "url": "https://www.gamersky.com/handbook/202506/1943736_5.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=91"}
+    },
+    "BS_White_Jean": {
+      "web": {"title": "游民星空《剑星》服装图鉴·朋克炸街服", "url": "https://www.gamersky.com/handbook/202506/1942231_38.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=41"}
+    },
+    "BS_White_Jean_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·朋克风", "url": "https://www.gamersky.com/handbook/202506/1942231_79.shtml"}
+    },
+    "BS_14_Var2_E": {
+      "web": {"title": "游民星空《剑星》服装图鉴·绣球花", "url": "https://www.gamersky.com/handbook/202506/1943736_17.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=92"}
+    },
+    "BS_42": {
+      "web": {"title": "游民星空《剑星》服装图鉴·动力十足", "url": "https://www.gamersky.com/handbook/202506/1942231_37.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=42"}
+    },
+    "BS_42_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·共鸣", "url": "https://www.gamersky.com/handbook/202506/1942231_82.shtml"}
+    },
+    "BS_55_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·烽火装", "url": "https://www.gamersky.com/handbook/202506/1943736_20.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=93"}
+    },
+    "BS_07": {
+      "web": {"title": "游民星空《剑星》服装图鉴·奥卡工程师", "url": "https://www.gamersky.com/handbook/202506/1942231_40.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=44"}
+    },
+    "BS_07_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·奥卡技术员", "url": "https://www.gamersky.com/handbook/202506/1942231_88.shtml"}
+    },
+    "BS_37": {
+      "web": {"title": "游民星空《剑星》服装图鉴·黑玫瑰", "url": "https://www.gamersky.com/handbook/202506/1942231_17.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=45"}
+    },
+    "BS_37_Var3": {
+      "web": {"title": "游民星空《剑星》服装图鉴·天使玫瑰", "url": "https://www.gamersky.com/handbook/202506/1942231_92.shtml"}
+    },
+    "BS_43": {
+      "web": {"title": "游民星空《剑星》服装图鉴·终极兔女郎", "url": "https://www.gamersky.com/handbook/202506/1943736_24.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=95"}
+    },
+    "BS_47": {
+      "web": {"title": "游民星空《剑星》服装图鉴·目光焦点", "url": "https://www.gamersky.com/handbook/202506/1942231_47.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=48"}
+    },
+    "BS_47_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·丽影", "url": "https://www.gamersky.com/handbook/202506/1942231_64.shtml"}
+    },
+    "BS_52": {
+      "web": {"title": "游民星空《剑星》服装图鉴·神经元链接套装", "url": "https://www.gamersky.com/handbook/202506/1942231_90.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=54"}
+    },
+    "BS_44_Var3_E": {
+      "web": {"title": "游民星空《剑星》服装图鉴·赛博幻术师", "url": "https://www.gamersky.com/handbook/202506/1942231_91.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=55"}
+    },
+    "BS_RoyalGuard_01": {
+      "web": {"title": "游民星空《剑星》服装图鉴·神圣护卫套装", "url": "https://www.gamersky.com/handbook/202506/1943736_2.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=69"}
+    },
+    "DesignPattern_BS_09_2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第7小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_12.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=3"}
+    },
+    "DesignPattern_BS_09_2_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第7小队）第3版", "url": "https://www.gamersky.com/handbook/202506/1942231_56.shtml"}
+    },
+    "DesignPattern_BS_05": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降防护服（第7小队）", "url": "https://www.gamersky.com/handbook/202506/1943736_3.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=71"}
+    },
+    "DesignPattern_BS_41": {
+      "web": {"title": "游民星空《剑星》服装图鉴·废土冒险家", "url": "https://www.gamersky.com/handbook/202506/1942231_41.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=22"}
+    },
+    "DesignPattern_BS_41_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·废土探索者", "url": "https://www.gamersky.com/handbook/202506/1942231_81.shtml"}
+    },
+    "DesignPattern_BS_15_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·乌莲", "url": "https://www.gamersky.com/handbook/202506/1943736_18.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=73"}
+    },
+    "DesignPattern_BS_38": {
+      "web": {"title": "游民星空《剑星》服装图鉴·赤血丹心", "url": "https://www.gamersky.com/handbook/202506/1942231_42.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=6"}
+    },
+    "DesignPattern_BS_38_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·翡翠热情", "url": "https://www.gamersky.com/handbook/202506/1942231_69.shtml"}
+    },
+    "DesignPattern_BS_14": {
+      "web": {"title": "游民星空《剑星》服装图鉴·芍药独酌", "url": "https://www.gamersky.com/handbook/202506/1943736_16.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=72"}
+    },
+    "DesignPattern_BS_02": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第2小队）", "url": "https://www.gamersky.com/handbook/202506/1942231_24.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
+    },
+    "DesignPattern_BS_02_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第2小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_57.shtml"}
+    },
+    "DesignPattern_BS_48": {
+      "web": {"title": "游民星空《剑星》服装图鉴·奥卡探索者", "url": "https://www.gamersky.com/handbook/202506/1942231_39.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
+    },
+    "DesignPattern_BS_48_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·奥卡探路者", "url": "https://www.gamersky.com/handbook/202506/1942231_58.shtml"}
+    },
+    "DesignPattern_BS_01_Var3": {
+      "web": {"title": "游民星空《剑星》服装图鉴·镂空裙装", "url": "https://www.gamersky.com/handbook/202506/1942231_14.shtml"}
+    },
+    "DesignPattern_BS_32": {
+      "web": {"title": "游民星空《剑星》服装图鉴·“四秒钟”破洞牛仔布套装", "url": "https://www.gamersky.com/handbook/202506/1942231_53.shtml"}
+    },
+    "DesignPattern_BS_56": {
+      "web": {"title": "游民星空《剑星》服装图鉴·盛夏爱丽丝", "url": "https://www.gamersky.com/handbook/202506/1942231_51.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=9"}
+    },
+    "DesignPattern_BS_57": {
+      "web": {"title": "游民星空《剑星》服装图鉴·盛夏小红帽", "url": "https://www.gamersky.com/handbook/202506/1942231_52.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=9"}
+    },
+    "DesignPattern_BS_15": {
+      "web": {"title": "游民星空《剑星》服装图鉴·国色牡丹", "url": "https://www.gamersky.com/handbook/202506/1942231_30.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
+    },
+    "DesignPattern_BS_03": {
+      "web": {"title": "游民星空《剑星》服装图鉴·赛博裙装", "url": "https://www.gamersky.com/handbook/202506/1942231_36.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
+    },
+    "DesignPattern_BS_03_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·赛博服装", "url": "https://www.gamersky.com/handbook/202506/1942231_74.shtml"}
+    },
+    "DesignPattern_BS_17": {
+      "web": {"title": "游民星空《剑星》服装图鉴·赛博兔女郎", "url": "https://www.gamersky.com/handbook/202506/1943736_21.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=70"}
+    },
+    "DesignPattern_BS_Yellow_Suit": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服原型", "url": "https://www.gamersky.com/handbook/202506/1942231_23.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=39"}
+    },
+    "DesignPattern_BS_Yellow_Suit_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服原型第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_75.shtml"}
+    },
+    "DesignPattern_BS_Leather_Jean": {
+      "web": {"title": "游民星空《剑星》服装图鉴·休闲车手服", "url": "https://www.gamersky.com/handbook/202506/1942231_27.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=21"}
+    },
+    "DesignPattern_BS_Leather_Jean_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·“四秒钟”车手服", "url": "https://www.gamersky.com/handbook/202506/1942231_77.shtml"}
+    },
+    "DesignPattern_BS_11": {
+      "web": {"title": "游民星空《剑星》服装图鉴·黑礼服", "url": "https://www.gamersky.com/handbook/202506/1942231_45.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=21"}
+    },
+    "DesignPattern_BS_10": {
+      "web": {"title": "游民星空《剑星》服装图鉴·白礼服", "url": "https://www.gamersky.com/handbook/202506/1942231_86.shtml"}
+    },
+    "DesignPattern_BS_23_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·废品工程师", "url": "https://www.gamersky.com/handbook/202506/1942231_87.shtml"}
+    },
+    "DesignPattern_BS_EVE_04": {
+      "web": {"title": "游民星空《剑星》服装图鉴·牛仔布休闲装", "url": "https://www.gamersky.com/handbook/202506/1942231_29.shtml"}
+    },
+    "DesignPattern_BS_EVE_04_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·“四秒钟”牛仔布套装", "url": "https://www.gamersky.com/handbook/202506/1942231_78.shtml"}
+    },
+    "DesignPattern_BS_19_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·赤色珍珠", "url": "https://www.gamersky.com/handbook/202506/1942231_85.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=53"}
+    },
+    "DesignPattern_BS_45": {
+      "web": {"title": "游民星空《剑星》服装图鉴·狂飙车手", "url": "https://www.gamersky.com/handbook/202506/1942231_32.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=13"}
+    },
+    "DesignPattern_BS_45_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·极速快感", "url": "https://www.gamersky.com/handbook/202506/1942231_67.shtml"}
+    },
+    "DesignPattern_BS_53_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·知觉活肤紧身服", "url": "https://www.gamersky.com/handbook/202506/1943736_7.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=77"}
+    },
+    "DesignPattern_BS_24_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·空乘风", "url": "https://www.gamersky.com/handbook/202506/1942231_63.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=52"}
+    },
+    "DesignPattern_BS_24": {
+      "web": {"title": "游民星空《剑星》服装图鉴·通勤装", "url": "https://www.gamersky.com/handbook/202506/1943736_13.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=80"}
+    },
+    "DesignPattern_BS_16": {
+      "web": {"title": "游民星空《剑星》服装图鉴·假日兔", "url": "https://www.gamersky.com/handbook/202506/1942231_33.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=14"}
+    },
+    "DesignPattern_BS_16_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·假日兔女郎", "url": "https://www.gamersky.com/handbook/202506/1942231_66.shtml"}
+    },
+    "DesignPattern_BS_50": {
+      "web": {"title": "游民星空《剑星》服装图鉴·神经元链接套装原型", "url": "https://www.gamersky.com/handbook/202506/1943736_8.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=78"}
+    },
+    "DesignPattern_BS_44": {
+      "web": {"title": "游民星空《剑星》服装图鉴·赛博魔法师", "url": "https://www.gamersky.com/handbook/202506/1942231_35.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=15"}
+    },
+    "DesignPattern_BS_44_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·赛博诡术士", "url": "https://www.gamersky.com/handbook/202506/1942231_68.shtml"}
+    },
+    "DesignPattern_BS_21": {
+      "web": {"title": "游民星空《剑星》服装图鉴·莹白珍珠", "url": "https://www.gamersky.com/handbook/202506/1943736_22.shtml"}
+    },
+    "DesignPattern_BS_34": {
+      "web": {"title": "游民星空《剑星》服装图鉴·黄色运动服", "url": "https://www.gamersky.com/handbook/202506/1942231_43.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=20"}
+    },
+    "DesignPattern_BS_34_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·活力运动服", "url": "https://www.gamersky.com/handbook/202506/1942231_80.shtml"}
+    },
+    "DesignPattern_BS_43_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·极致兔女郎", "url": "https://www.gamersky.com/handbook/202506/1943736_25.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=81"}
+    },
+    "DesignPattern_BS_04": {
+      "web": {"title": "游民星空《剑星》服装图鉴·休闲针织裙装", "url": "https://www.gamersky.com/handbook/202506/1942231_46.shtml"}
+    },
+    "DesignPattern_BS_04_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·舒适针织裙装", "url": "https://www.gamersky.com/handbook/202506/1942231_60.shtml"}
+    },
+    "DesignPattern_BS_21_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·水珍珠", "url": "https://www.gamersky.com/handbook/202506/1943736_23.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=83"}
+    },
+    "DesignPattern_BS_13": {
+      "web": {"title": "游民星空《剑星》服装图鉴·休闲吉祥物装", "url": "https://www.gamersky.com/handbook/202506/1942231_25.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=27"}
+    },
+    "DesignPattern_BS_13_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·舒适吉祥物装", "url": "https://www.gamersky.com/handbook/202506/1942231_61.shtml"}
+    },
+    "DesignPattern_BS_SilverKunoichi_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·暗影忍者装", "url": "https://www.gamersky.com/handbook/202506/1943736_15.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=84"}
+    },
+    "DesignPattern_BS_SilverKunoichi": {
+      "web": {"title": "游民星空《剑星》服装图鉴·亮银忍者装", "url": "https://www.gamersky.com/handbook/202506/1943736_14.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=94"}
+    },
+    "DesignPattern_BS_31": {
+      "web": {"title": "游民星空《剑星》服装图鉴·休闲活力装", "url": "https://www.gamersky.com/handbook/202506/1942231_26.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=28"}
+    },
+    "DesignPattern_BS_31_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·舒适活力装", "url": "https://www.gamersky.com/handbook/202506/1942231_62.shtml"}
+    },
+    "DesignPattern_BS_Blue_Suit": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第5小队）", "url": "https://www.gamersky.com/handbook/202506/1943736_6.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=85"}
+    },
+    "DesignPattern_BS_Black_Leather_bikini": {
+      "web": {"title": "游民星空《剑星》服装图鉴·墨色波浪", "url": "https://www.gamersky.com/handbook/202506/1942231_34.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=32"}
+    },
+    "DesignPattern_BS_Black_Leather_bikini_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·怒涛", "url": "https://www.gamersky.com/handbook/202506/1942231_71.shtml"}
+    },
+    "DesignPattern_BS_54": {
+      "web": {"title": "游民星空《剑星》服装图鉴·烽火神盾", "url": "https://www.gamersky.com/handbook/202506/1943736_10.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=87"}
+    },
+    "DesignPattern_BS_Sailor_Jean": {
+      "web": {"title": "游民星空《剑星》服装图鉴·休闲水手服", "url": "https://www.gamersky.com/handbook/202506/1942231_28.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=34"}
+    },
+    "DesignPattern_BS_Sailor_Jean_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·舒适水手服", "url": "https://www.gamersky.com/handbook/202506/1942231_72.shtml"}
+    },
+    "DesignPattern_BS_50_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·知觉套装原型", "url": "https://www.gamersky.com/handbook/202506/1943736_9.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=89"}
+    },
+    "DesignPattern_BS_40": {
+      "web": {"title": "游民星空《剑星》服装图鉴·赛博绑带装", "url": "https://www.gamersky.com/handbook/202506/1942231_31.shtml"}
+    },
+    "DesignPattern_BS_40_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·自动绑带装", "url": "https://www.gamersky.com/handbook/202506/1942231_70.shtml"}
+    },
+    "DesignPattern_BS_40_Var3": {
+      "web": {"title": "游民星空《剑星》服装图鉴·神经元回路绑带装", "url": "https://www.gamersky.com/handbook/202506/1943736_19.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=88"}
+    },
+    "DesignPattern_BS_22_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·海潮女仆", "url": "https://www.gamersky.com/handbook/202506/1943736_26.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=98"}
+    },
+    "DesignPattern_BS_58": {
+      "web": {"title": "游民星空《剑星》服装图鉴·“波浪”潜水比基尼", "url": "https://www.gamersky.com/handbook/202506/1942231_55.shtml"}
+    },
+    "DesignPattern_BS_60": {
+      "web": {"title": "游民星空《剑星》服装图鉴·“波浪”斜款连体比基尼", "url": "https://www.gamersky.com/handbook/202506/1942231_54.shtml"}
+    },
+    "DesignPattern_BS_Yellow_Suit_Jacket": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第3小队）", "url": "https://www.gamersky.com/handbook/202506/1942231_22.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=38"}
+    },
+    "DesignPattern_BS_Yellow_Suit_Jacket_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第3小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_73.shtml"}
+    },
+    "DesignPattern_BS_05_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降防护服（第7小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1943736_4.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=90"}
+    },
+    "DesignPattern_BS_Default_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第6小队）", "url": "https://www.gamersky.com/handbook/202506/1942231_21.shtml"}
+    },
+    "DesignPattern_BS_Default": {
+      "web": {"title": "游民星空《剑星》服装图鉴·星球空降服（第6小队）第2版", "url": "https://www.gamersky.com/handbook/202506/1942231_89.shtml"}
+    },
+    "DesignPattern_BS_White_Jean": {
+      "web": {"title": "游民星空《剑星》服装图鉴·朋克炸街服", "url": "https://www.gamersky.com/handbook/202506/1942231_38.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=41"}
+    },
+    "DesignPattern_BS_White_Jean_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·朋克风", "url": "https://www.gamersky.com/handbook/202506/1942231_79.shtml"}
+    },
+    "DesignPattern_BS_14_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·绣球花", "url": "https://www.gamersky.com/handbook/202506/1943736_17.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=92"}
+    },
+    "DesignPattern_BS_42": {
+      "web": {"title": "游民星空《剑星》服装图鉴·动力十足", "url": "https://www.gamersky.com/handbook/202506/1942231_37.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=42"}
+    },
+    "DesignPattern_BS_42_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·共鸣", "url": "https://www.gamersky.com/handbook/202506/1942231_82.shtml"}
+    },
+    "DesignPattern_BS_55_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·烽火装", "url": "https://www.gamersky.com/handbook/202506/1943736_20.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=93"}
+    },
+    "DesignPattern_BS_07": {
+      "web": {"title": "游民星空《剑星》服装图鉴·奥卡工程师", "url": "https://www.gamersky.com/handbook/202506/1942231_40.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=44"}
+    },
+    "DesignPattern_BS_07_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·奥卡技术员", "url": "https://www.gamersky.com/handbook/202506/1942231_88.shtml"}
+    },
+    "DesignPattern_BS_37": {
+      "web": {"title": "游民星空《剑星》服装图鉴·黑玫瑰", "url": "https://www.gamersky.com/handbook/202506/1942231_17.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=45"}
+    },
+    "DesignPattern_BS_37_Var3": {
+      "web": {"title": "游民星空《剑星》服装图鉴·天使玫瑰", "url": "https://www.gamersky.com/handbook/202506/1942231_92.shtml"}
+    },
+    "DesignPattern_BS_43": {
+      "web": {"title": "游民星空《剑星》服装图鉴·终极兔女郎", "url": "https://www.gamersky.com/handbook/202506/1943736_24.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=95"}
+    },
+    "DesignPattern_BS_47": {
+      "web": {"title": "游民星空《剑星》服装图鉴·目光焦点", "url": "https://www.gamersky.com/handbook/202506/1942231_47.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=48"}
+    },
+    "DesignPattern_BS_47_Var2": {
+      "web": {"title": "游民星空《剑星》服装图鉴·丽影", "url": "https://www.gamersky.com/handbook/202506/1942231_64.shtml"}
+    },
+    "BS_01": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
+    },
+    "Hair_Christmas_01": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=66"}
+    },
+    "FaceAccessory_012": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=7"}
+    },
+    "FaceAccessory_Christmas_01": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=64"}
+    },
+    "FaceAccessory_006": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=16"}
+    },
+    "FaceAccessory_026": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=97"}
+    },
+    "FaceAccessory_008": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=18"}
+    },
+    "FaceAccessory_028": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=97"}
+    },
+    "FaceAccessory_029": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=30"}
+    },
+    "Earring_001": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=5"}
+    },
+    "Earring_012": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=74"}
+    },
+    "Earring_008": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=23"}
+    },
+    "Earring_014": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=75"}
+    },
+    "Earring_Christmas_02": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=65"}
+    },
+    "Earring_Christmas_01": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=63"}
+    },
+    "Earring_004": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=11"}
+    },
+    "Earring_006": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=11"}
+    },
+    "Earring_007": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=11"}
+    },
+    "Earring_017": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=96"}
+    },
+    "Earring_009": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=11"}
+    },
+    "Earring_010": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=11"}
+    },
+    "Earring_015": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=96"}
+    },
+    "Earring_016": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=96"}
+    },
+    "Earring_005": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=11"}
+    },
+    "Earring_002": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=24"}
+    },
+    "Earring_013": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=82"}
+    },
+    "Earring_003": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=47"}
+    },
+    "DroneSeal_002": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=4"}
+    },
+    "AdamCostume_Christmas_01": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=67"}
+    },
+    "AdamCostume_004": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=26"}
+    },
+    "LilyCostume_003": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=12"}
+    },
+    "LilyCostume_004": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=31"}
+    },
+    "DesignPattern_BS_01": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=8"}
     }
   }
 }

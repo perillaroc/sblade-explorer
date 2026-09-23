@@ -12,7 +12,7 @@
 | `universe/aliases.json` | 从参考存档与本地存档提取的物品别名全集（不含未解锁 ID） |
 | `crosswalk.json` | 手工维护的别名对照（site id -> 别名 -> 中文名，目录库生成器的唯一事实来源）；`record_type_overrides` 覆盖无法按名称自动匹配的记录类型 |
 | `memorystick_order.json` | 记忆棒的游戏内数据库选单顺序（按区域分组、组内顺序，覆盖全部 186 条；据 Map Genie 与游民星空列表整理） |
-| `guides.json` | 手工维护的中文攻略链接快照（游民星空图文 + B 站「喂狗组-文轩」全收集视频）；`catalog build` 解析为每条物品的 `guides.web` / `guides.video` |
+| `guides.json` | 手工维护的中文攻略链接快照（游民星空图文 + B 站「喂狗组-文轩」全收集视频）；`catalog build` 解析为每条物品的 `guides.web` / `guides.video`；纳米战衣与设计图逐件对应游民星空服装图鉴分页 |
 | `game/name_map.json` | 游戏数据表 + `Game.locres` 提取的内部别名→官方名称映射（生成物） |
 | `reference/Sources_TrainerCore_*.swift` | 中文名称对照（来自 stellar-blade-macos-save-editor） |
 | `reference/*.sav` | 参考存档（仅本地校验用，已在 .gitignore 中忽略） |
@@ -37,8 +37,11 @@
 
 `guides.json` 按 `物品 > 地点 > 区域 > 品类` 逐级覆盖，可写 `web`（图文）与 `video`（视频）两类链接；
 `catalog build` 会校验链接必须为 https 且域名在 `www.gamersky.com` / `www.bilibili.com` 白名单内，
-同时校验键名必须能在目录库中匹配到（拼写错误会直接让构建失败）。桌面端详情弹窗据此显示
-「图文攻略」「视频攻略」按钮，缺少链接时回退为必应 / B 站搜索。
+同时校验键名必须能在目录库中匹配到（拼写错误会直接让构建失败）。桌面端列表与周目矩阵的详情弹窗
+据此显示「图文攻略」「视频攻略」按钮，缺少链接时回退为必应 / B 站搜索。
+
+纳米战衣、设计图逐件链接到游民星空《剑星》服装图鉴（本体及二周目 1942231 / 完整版新增 1943736 /
+尼尔 DLC 1848445 / 妮姬 DLC 1942435）的具体分页；设计图沿用同名服装的获取页与视频分 P。
 
 ## 重新生成目录库
 

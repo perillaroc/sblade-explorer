@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted } from "vue";
-import { X } from "@lucide/vue";
+import { computed, onMounted, onUnmounted } from "vue";
+import { Image, Search, Video, X } from "@lucide/vue";
 import type { Lang } from "../types";
 import { areaAccent } from "../lib/area";
 import { matrixName, obtainLabel } from "../lib/display";
+import { guideFor, openGuide, searchVideoUrl, searchWebUrl } from "../lib/guides";
 import { matrixPeriodLabel, type MatrixUnit } from "../lib/matrix";
 import MatrixStatusIcon from "./MatrixStatusIcon.vue";
 
-defineProps<{
+const props = defineProps<{
   unit: MatrixUnit;
   areaKey: string;
   areaLabel: string;
@@ -17,6 +18,24 @@ defineProps<{
 }>();
 
 const emit = defineEmits<{ close: [] }>();
+
+// Guide links follow the unit root (base playthrough item); fall back to the
+// first variant that has links when the root is unmapped.
+const guides = computed(() => {
+  const direct = guideFor(props.unit.key);
+  if (direct) return direct;
+  for (const cell of props.unit.cells) {
+    for (const row of cell) {
+      const found = guideFor(row.id);
+      if (found) return found;
+    }
+  }
+  return null;
+});
+const webLink = computed(() => guides.value?.web ?? null);
+const videoLink = computed(() => guides.value?.video ?? null);
+const webSearchUrl = computed(() => searchWebUrl(props.unit.name));
+const videoSearchUrl = computed(() => searchVideoUrl(props.unit.name));
 
 function onKeydown(event: KeyboardEvent) {
   if (event.key === "Escape") emit("close");
@@ -67,6 +86,55 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
             <h4 class="text-xs font-semibold text-slate-400">获取方式</h4>
             <p class="mt-1 whitespace-pre-wrap text-xs leading-5 text-slate-300">
               {{ unit.obtain || "—" }}
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-semibold text-slate-400">中文攻略</h4>
+            <div class="mt-1.5 flex flex-wrap gap-2">
+              <button
+                v-if="webLink"
+                type="button"
+                class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-200 hover:border-sky-600 hover:bg-slate-800"
+                :title="webLink.title"
+                @click="openGuide(webLink.url)"
+              >
+                <Image class="h-3.5 w-3.5" />
+                图文攻略
+              </button>
+              <button
+                v-if="videoLink"
+                type="button"
+                class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-200 hover:border-rose-600 hover:bg-slate-800"
+                :title="videoLink.title"
+                @click="openGuide(videoLink.url)"
+              >
+                <Video class="h-3.5 w-3.5" />
+                视频攻略
+              </button>
+              <button
+                v-if="!webLink"
+                type="button"
+                class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:bg-slate-800"
+                title="在必应搜索该收集物的中文图文攻略"
+                @click="openGuide(webSearchUrl)"
+              >
+                <Search class="h-3.5 w-3.5" />
+                搜索图文攻略
+              </button>
+              <button
+                v-if="!videoLink"
+                type="button"
+                class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:bg-slate-800"
+                title="在 B 站搜索该收集物的全收集视频"
+                @click="openGuide(videoSearchUrl)"
+              >
+                <Search class="h-3.5 w-3.5" />
+                搜索视频攻略
+              </button>
+            </div>
+            <p v-if="webLink" class="mt-1.5 text-[11px] leading-4 text-slate-500">
+              图文来源：{{ webLink.title }}
             </p>
           </div>
 

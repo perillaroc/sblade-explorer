@@ -43,6 +43,6 @@ fn catalog_build_attaches_guide_links() {
         }
     }
     // Regression sentinels: keep the Chinese guide coverage from shrinking.
-    assert_eq!(with_web, 794);
-    assert_eq!(with_video, 634);
+    assert_eq!(with_web, 804);
+    assert_eq!(with_video, 683);
 }

@@ -330,8 +330,8 @@ fn guide_links_cover_catalog() {
         }
     }
     assert!(missing.is_empty(), "{missing:?}");
-    assert_eq!(with_web, 794);
-    assert_eq!(with_video, 634);
+    assert_eq!(with_web, 804);
+    assert_eq!(with_video, 683);
 
     let index = catalog.alias_index();
     let can = index["Can_011"].guides.as_ref().expect("can guides");
@@ -363,6 +363,21 @@ fn guide_links_cover_catalog() {
         .expect("camp guides");
     assert!(camp.web.is_some());
     assert!(camp.video.is_none());
+
+    // 纳米战衣与设计图逐件指向游民星空服装图鉴的具体分页
+    let suit = index["BS_41"].guides.as_ref().expect("suit guides");
+    assert_eq!(
+        suit.web.as_ref().map(|link| link.url.as_str()),
+        Some("https://www.gamersky.com/handbook/202506/1942231_41.shtml")
+    );
+    let pattern = index["DesignPattern_BS_41"]
+        .guides
+        .as_ref()
+        .expect("pattern guides");
+    assert_eq!(
+        pattern.web.as_ref().map(|link| link.url.as_str()),
+        suit.web.as_ref().map(|link| link.url.as_str())
+    );
 }
 
 #[test]
