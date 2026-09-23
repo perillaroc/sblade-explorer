@@ -22,7 +22,7 @@
   别名、数据来源与映射置信度），覆盖全部 13 类收集物。
 - **中文攻略链接**：详情弹窗（列表视图与周目矩阵）按「图文攻略 / 视频攻略」打开游民星空图文与
   B 站「喂狗组-文轩」全收集视频；罐子/鱼类精确到单个物品，记录/密码精确到区域分 P，
-  纳米战衣与设计图逐件指向游民星空服装图鉴的具体分页；缺少链接时回退为必应 / B 站搜索。
+  纳米战衣与设计图逐件指向游民星空《剑星》女主服装图鉴的具体分页；缺少链接时回退为必应 / B 站搜索。
   链接数据随程序内置，运行时不联网，点击后由系统浏览器打开。
 - **周目矩阵视图**：纳米战衣、设计图案、耳饰、眼镜/面饰、无人机外观、亚当/莉莉服装
   支持「周目矩阵 / 列表」切换；以 区域 × 地点 × 周目 矩阵展示（首周目 / 二周目(NG+) /
@@ -195,7 +195,7 @@ cargo run -p sbsave-tools -- mine-names `
 - [mapgenie.io](https://mapgenie.io/stellar-blade/guides/memory-sticks) 与
   [游民星空](https://www.gamersky.com/handbook/202507/1953527.shtml) —— 记忆棒游戏内选单顺序
 - [游民星空](https://www.gamersky.com/handbook/202404/1738505.shtml)（全收集图文攻略、饮料罐、钓鱼点、
-  密码、[服装图鉴](https://www.gamersky.com/handbook/202506/1942231.shtml)）与
+  密码、[女主服装图鉴](https://www.gamersky.com/handbook/202404/1737082.shtml)）与
   [哔哩哔哩](https://www.bilibili.com/video/BV1or421L7XQ)（喂狗组-文轩「剑星全收集」分 P 视频）
   —— `data/raw/guides.json` 中的中文攻略链接，仅由系统浏览器打开
 

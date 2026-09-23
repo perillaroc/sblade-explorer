@@ -44,7 +44,7 @@ export const DATA_SOURCES: AboutSource[] = [
       "data/raw/guides.json：详情页「中文攻略」按钮指向的游民星空图文攻略与 B 站「喂狗组-文轩」全收集视频；仅在点击时由系统浏览器打开。",
     urls: [
       "https://www.gamersky.com/handbook/202404/1738505.shtml",
-      "https://www.gamersky.com/handbook/202506/1942231.shtml",
+      "https://www.gamersky.com/handbook/202404/1737082.shtml",
       "https://www.bilibili.com/video/BV1or421L7XQ",
     ],
   },

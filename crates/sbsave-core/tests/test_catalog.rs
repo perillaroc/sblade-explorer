@@ -364,11 +364,11 @@ fn guide_links_cover_catalog() {
     assert!(camp.web.is_some());
     assert!(camp.video.is_none());
 
-    // 纳米战衣与设计图逐件指向游民星空服装图鉴的具体分页
+    // 纳米战衣与设计图逐件指向游民星空女主服装图鉴的具体分页
     let suit = index["BS_41"].guides.as_ref().expect("suit guides");
     assert_eq!(
         suit.web.as_ref().map(|link| link.url.as_str()),
-        Some("https://www.gamersky.com/handbook/202506/1942231_41.shtml")
+        Some("https://www.gamersky.com/handbook/202404/1737082_20.shtml")
     );
     let pattern = index["DesignPattern_BS_41"]
         .guides
