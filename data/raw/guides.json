@@ -1,0 +1,621 @@
+{
+  "version": 1,
+  "note": "中文攻略链接快照（人工维护）：游民星空图文 + B站视频；由 sbsave-tools catalog build 合并进 data/catalog.json，运行时不联网。",
+  "sources": [
+    "https://www.gamersky.com/handbook/202404/1738505.shtml",
+    "https://www.gamersky.com/handbook/202404/1737659.shtml",
+    "https://www.gamersky.com/handbook/202405/1747789.shtml",
+    "https://www.gamersky.com/handbook/202507/1959957.shtml",
+    "https://space.bilibili.com/ (喂狗组-文轩 剑星全收集合集)"
+  ],
+  "regions": {
+    "Eidos 7": {
+      "web": {"title": "游民星空《剑星》全收集攻略·埃多斯7号", "url": "https://www.gamersky.com/handbook/202404/1738505.shtml"}
+    },
+    "Xion": {
+      "web": {"title": "游民星空《剑星》全收集攻略·希雍", "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"}
+    },
+    "Wasteland": {
+      "web": {"title": "游民星空《剑星》全收集攻略·废土", "url": "https://www.gamersky.com/handbook/202404/1738505_13.shtml"}
+    },
+    "Great Desert": {
+      "web": {"title": "游民星空《剑星》全收集攻略·大沙漠", "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"}
+    },
+    "Matrix 11": {
+      "web": {"title": "游民星空《剑星》全收集攻略·11号矩阵", "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"}
+    },
+    "Spire 4": {
+      "web": {"title": "游民星空《剑星》全收集攻略·4号高塔", "url": "https://www.gamersky.com/handbook/202404/1738505_37.shtml"}
+    },
+    "Eidos 9": {
+      "web": {"title": "游民星空《剑星》全收集攻略·埃多斯9号", "url": "https://www.gamersky.com/handbook/202404/1738505_35.shtml"}
+    },
+    "Abyss Levoire": {
+      "web": {"title": "游民星空《剑星》全收集攻略·卢瓦底层", "url": "https://www.gamersky.com/handbook/202404/1738505_34.shtml"}
+    },
+    "Altess Levoire": {
+      "web": {"title": "游民星空《剑星》全收集攻略·卢瓦高层", "url": "https://www.gamersky.com/handbook/202404/1738505_20.shtml"}
+    },
+    "深渊勒瓦尔": {
+      "web": {"title": "游民星空《剑星》全收集攻略·卢瓦底层", "url": "https://www.gamersky.com/handbook/202404/1738505_34.shtml"}
+    },
+    "阿尔忒斯勒瓦尔": {
+      "web": {"title": "游民星空《剑星》全收集攻略·卢瓦高层", "url": "https://www.gamersky.com/handbook/202404/1738505_20.shtml"}
+    },
+    "废土A": {
+      "web": {"title": "游民星空《剑星》全收集攻略·废土", "url": "https://www.gamersky.com/handbook/202404/1738505_13.shtml"}
+    },
+    "废土B": {
+      "web": {"title": "游民星空《剑星》全收集攻略·废土", "url": "https://www.gamersky.com/handbook/202404/1738505_13.shtml"}
+    },
+    "大沙漠1": {
+      "web": {"title": "游民星空《剑星》全收集攻略·大沙漠", "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"}
+    },
+    "大沙漠2": {
+      "web": {"title": "游民星空《剑星》全收集攻略·大沙漠", "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"}
+    },
+    "大沙漠3": {
+      "web": {"title": "游民星空《剑星》全收集攻略·大沙漠", "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"}
+    },
+    "大沙漠4": {
+      "web": {"title": "游民星空《剑星》全收集攻略·大沙漠", "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"}
+    },
+    "矩阵11-1": {
+      "web": {"title": "游民星空《剑星》全收集攻略·11号矩阵", "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"}
+    },
+    "矩阵11-3": {
+      "web": {"title": "游民星空《剑星》全收集攻略·11号矩阵", "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"}
+    },
+    "矩阵11-4": {
+      "web": {"title": "游民星空《剑星》全收集攻略·11号矩阵", "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"}
+    },
+    "矩阵11-5": {
+      "web": {"title": "游民星空《剑星》全收集攻略·11号矩阵", "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"}
+    },
+    "矩阵11-6": {
+      "web": {"title": "游民星空《剑星》全收集攻略·11号矩阵", "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"}
+    },
+    "尖塔4(推测)": {
+      "web": {"title": "游民星空《剑星》全收集攻略·4号高塔", "url": "https://www.gamersky.com/handbook/202404/1738505_37.shtml"}
+    },
+    "巢穴": {
+      "web": {"title": "游民星空《剑星》全收集攻略·埃多斯7号", "url": "https://www.gamersky.com/handbook/202404/1738505.shtml"}
+    }
+  },
+  "locations": {
+    "Silent Street": {
+      "web": {"title": "游民星空《剑星》全收集攻略·寂静街道", "url": "https://www.gamersky.com/handbook/202404/1738505.shtml"}
+    },
+    "Parking Tower": {
+      "web": {"title": "游民星空《剑星》全收集攻略·立体停车场", "url": "https://www.gamersky.com/handbook/202404/1738505_2.shtml"}
+    },
+    "Flooded Commercial Sector": {
+      "web": {"title": "游民星空《剑星》全收集攻略·淹水商业区", "url": "https://www.gamersky.com/handbook/202404/1738505_3.shtml"}
+    },
+    "Memory Tower": {
+      "web": {"title": "游民星空《剑星》全收集攻略·记忆之塔", "url": "https://www.gamersky.com/handbook/202404/1738505_4.shtml"}
+    },
+    "Construction Zone": {
+      "web": {"title": "游民星空《剑星》全收集攻略·工地", "url": "https://www.gamersky.com/handbook/202404/1738505_5.shtml"}
+    },
+    "Abandoned Station": {
+      "web": {"title": "游民星空《剑星》全收集攻略·寂静街道", "url": "https://www.gamersky.com/handbook/202404/1738505.shtml"}
+    },
+    "Crater": {
+      "web": {"title": "游民星空《剑星》全收集攻略·环形山", "url": "https://www.gamersky.com/handbook/202404/1738505_7.shtml"}
+    }
+  },
+  "categories": {
+    "cans": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R"}
+    },
+    "fish": {
+      "web": {"title": "游民星空《剑星》全钓鱼点位置及可钓鱼类一览", "url": "https://www.gamersky.com/handbook/202405/1747789.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2"}
+    },
+    "passcodes": {
+      "web": {"title": "游民星空《剑星》全宝箱密码与祷文收集攻略", "url": "https://www.gamersky.com/handbook/202507/1959957.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集06 密码&祷文篇", "url": "https://www.bilibili.com/video/BV1W1421B7KZ"},
+      "areas": {
+        "Eidos 7": {
+          "video": {"title": "B站·喂狗组-文轩 剑星全收集06 密码&祷文篇", "url": "https://www.bilibili.com/video/BV1W1421B7KZ?p=2"}
+        },
+        "Xion": {
+          "video": {"title": "B站·喂狗组-文轩 剑星全收集06 密码&祷文篇", "url": "https://www.bilibili.com/video/BV1W1421B7KZ?p=12"}
+        },
+        "Wasteland": {
+          "video": {"title": "B站·喂狗组-文轩 剑星全收集06 密码&祷文篇", "url": "https://www.bilibili.com/video/BV1W1421B7KZ?p=23"}
+        },
+        "Great Desert": {
+          "video": {"title": "B站·喂狗组-文轩 剑星全收集06 密码&祷文篇", "url": "https://www.bilibili.com/video/BV1W1421B7KZ?p=39"}
+        },
+        "Matrix 11": {
+          "video": {"title": "B站·喂狗组-文轩 剑星全收集06 密码&祷文篇", "url": "https://www.bilibili.com/video/BV1W1421B7KZ?p=32"}
+        },
+        "Spire 4": {
+          "video": {"title": "B站·喂狗组-文轩 剑星全收集06 密码&祷文篇", "url": "https://www.bilibili.com/video/BV1W1421B7KZ?p=47"}
+        },
+        "Altess Levoire": {
+          "video": {"title": "B站·喂狗组-文轩 剑星全收集06 密码&祷文篇", "url": "https://www.bilibili.com/video/BV1W1421B7KZ?p=31"}
+        }
+      }
+    },
+    "records": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD"},
+      "areas": {
+        "Eidos 7": {
+          "record_types": {
+            "memorystick": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集08 全记忆棒 前篇", "url": "https://www.bilibili.com/video/BV1WD421A76w?p=1"}
+            },
+            "document_messages": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集08 全记忆棒 前篇", "url": "https://www.bilibili.com/video/BV1WD421A76w?p=1"}
+            },
+            "document_journal": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=12"}
+            },
+            "document_announcements": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=37"}
+            },
+            "document_series": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=43"}
+            },
+            "document_books": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=67"}
+            }
+          }
+        },
+        "Xion": {
+          "record_types": {
+            "memorystick": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集08 全记忆棒 前篇", "url": "https://www.bilibili.com/video/BV1WD421A76w?p=31"}
+            },
+            "document_log_data": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=11"}
+            },
+            "document_journal": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=18"}
+            },
+            "document_information": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=30"}
+            },
+            "document_series": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=42"}
+            },
+            "document_books": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=71"}
+            },
+            "document_promotions": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=84"}
+            }
+          }
+        },
+        "Wasteland": {
+          "record_types": {
+            "memorystick": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集08 全记忆棒 前篇", "url": "https://www.bilibili.com/video/BV1WD421A76w?p=33"}
+            },
+            "document_log_data": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=1"}
+            },
+            "document_journal": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=13"}
+            },
+            "document_information": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=26"}
+            },
+            "document_series": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=41"}
+            },
+            "document_prayers": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=53"}
+            }
+          }
+        },
+        "Great Desert": {
+          "record_types": {
+            "memorystick": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集09 全记忆棒 后篇", "url": "https://www.bilibili.com/video/BV1kr421L74V?p=1"}
+            },
+            "document_log_data": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=5"}
+            },
+            "document_journal": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=19"}
+            },
+            "document_series": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=44"}
+            },
+            "document_books": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=73"}
+            },
+            "document_prayers": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=50"}
+            },
+            "document_promotions": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=83"}
+            }
+          }
+        },
+        "Matrix 11": {
+          "record_types": {
+            "memorystick": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集08 全记忆棒 前篇", "url": "https://www.bilibili.com/video/BV1WD421A76w?p=68"}
+            },
+            "document_log_data": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=2"}
+            },
+            "document_journal": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=16"}
+            },
+            "document_announcements": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=39"}
+            },
+            "document_prayers": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=49"}
+            }
+          }
+        },
+        "Spire 4": {
+          "record_types": {
+            "memorystick": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集09 全记忆棒 后篇", "url": "https://www.bilibili.com/video/BV1kr421L74V?p=52"}
+            },
+            "document_promotions": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=96"}
+            }
+          }
+        },
+        "Eidos 9": {
+          "record_types": {
+            "memorystick": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集09 全记忆棒 后篇", "url": "https://www.bilibili.com/video/BV1kr421L74V?p=45"}
+            },
+            "document_books": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=69"}
+            },
+            "document_promotions": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=95"}
+            }
+          }
+        },
+        "Abyss Levoire": {
+          "record_types": {
+            "document_log_data": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=7"}
+            },
+            "document_journal": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=22"}
+            }
+          }
+        },
+        "Altess Levoire": {
+          "record_types": {
+            "document_log_data": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=3"}
+            },
+            "document_announcements": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=38"}
+            },
+            "document_promotions": {
+              "video": {"title": "B站·喂狗组-文轩 剑星全收集07 全文档篇", "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=93"}
+            }
+          }
+        }
+      }
+    },
+    "nano_suits": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ"}
+    },
+    "hair": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ"}
+    },
+    "glasses": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ"}
+    },
+    "earrings": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ"}
+    },
+    "drone_seals": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ"}
+    },
+    "adam_costumes": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ"}
+    },
+    "lily_costumes": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇", "url": "https://www.bilibili.com/video/BV1or421L7XQ"}
+    }
+  },
+  "items": {
+    "Can_001": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=1"}
+    },
+    "Can_002": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=2"}
+    },
+    "Can_003": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=3"}
+    },
+    "Can_004": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=4"}
+    },
+    "Can_005": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=5"}
+    },
+    "Can_006": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=6"}
+    },
+    "Can_007": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=7"}
+    },
+    "Can_008": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=8"}
+    },
+    "Can_009": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=9"}
+    },
+    "Can_010": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=10"}
+    },
+    "Can_011": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_2.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=11"}
+    },
+    "Can_012": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_2.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=12"}
+    },
+    "Can_013": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_2.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=13"}
+    },
+    "Can_014": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_2.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=14"}
+    },
+    "Can_015": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_2.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=15"}
+    },
+    "Can_016": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_2.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=16"}
+    },
+    "Can_017": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_2.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=17"}
+    },
+    "Can_018": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_2.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=18"}
+    },
+    "Can_019": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_2.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=19"}
+    },
+    "Can_020": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_2.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=20"}
+    },
+    "Can_021": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_3.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=21"}
+    },
+    "Can_022": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_3.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=22"}
+    },
+    "Can_023": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_3.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=23"}
+    },
+    "Can_024": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_3.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=24"}
+    },
+    "Can_025": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_3.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=25"}
+    },
+    "Can_026": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_3.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=26"}
+    },
+    "Can_027": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_3.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=27"}
+    },
+    "Can_028": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_3.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=28"}
+    },
+    "Can_029": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_3.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=29"}
+    },
+    "Can_030": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_3.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=30"}
+    },
+    "Can_031": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_4.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=31"}
+    },
+    "Can_032": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_4.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=32"}
+    },
+    "Can_033": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_4.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=33"}
+    },
+    "Can_034": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_4.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=34"}
+    },
+    "Can_035": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_4.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=35"}
+    },
+    "Can_036": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_4.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=36"}
+    },
+    "Can_037": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_4.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=37"}
+    },
+    "Can_038": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_4.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=38"}
+    },
+    "Can_039": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_4.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=39"}
+    },
+    "Can_040": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_4.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=40"}
+    },
+    "Can_041": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_5.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=41"}
+    },
+    "Can_042": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_5.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=42"}
+    },
+    "Can_043": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_5.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=43"}
+    },
+    "Can_044": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_5.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=44"}
+    },
+    "Can_045": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_5.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=45"}
+    },
+    "Can_046": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_5.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=46"}
+    },
+    "Can_047": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_5.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=47"}
+    },
+    "Can_048": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_5.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=48"}
+    },
+    "Can_049": {
+      "web": {"title": "游民星空《剑星》全饮料罐收集攻略", "url": "https://www.gamersky.com/handbook/202404/1737659_5.shtml"},
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集02 全罐子收集篇", "url": "https://www.bilibili.com/video/BV1oD421A74R?p=49"}
+    },
+    "Fish_PorcupineFish": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=2"}
+    },
+    "Fish_Goby": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=3"}
+    },
+    "Fish_ButterflyFish": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=4"}
+    },
+    "Fish_Lobster": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=5"}
+    },
+    "Fish_Goldfish": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=6"}
+    },
+    "Fish_Betta": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=7"}
+    },
+    "Fish_Triggerfish": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=8"}
+    },
+    "Fish_FlyingFish": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=9"}
+    },
+    "Fish_Salmon": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=10"}
+    },
+    "Fish_FootBallfish": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=11"}
+    },
+    "Fish_SeaBass": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=12"}
+    },
+    "Fish_FancyCarp": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=13"}
+    },
+    "Fish_ChannelCatfish": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=14"}
+    },
+    "Fish_SeaBream": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=15"}
+    },
+    "Fish_mackerel": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=16"}
+    },
+    "Fish_Halibut": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=17"}
+    },
+    "Fish_MolaMola": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=18"}
+    },
+    "Fish_MahiMahi": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=19"}
+    },
+    "Fish_SailFish": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=20"}
+    },
+    "Fish_Tuna": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=21"}
+    },
+    "Fish_GreatWhiteShark": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=22"}
+    },
+    "Fish_Arowana": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=23"}
+    },
+    "Fish_Pirarucu": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=24"}
+    },
+    "Fish_WhaleShark": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=25"}
+    },
+    "Fish_Dunkleosteus": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=26"}
+    },
+    "Fish_Nikke_Poli": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=27"}
+    },
+    "Fish_Nikke_Laplace": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=28"}
+    },
+    "Fish_Nikke_Rapunzel": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=29"}
+    },
+    "Fish_Nikke_SnowWhite": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=30"}
+    },
+    "Fish_Nikke_Tape": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=31"}
+    },
+    "Fish_Nikke_Glasses": {
+      "video": {"title": "B站·喂狗组-文轩 剑星全收集03 钓鱼全攻略篇", "url": "https://www.bilibili.com/video/BV1aC41177x2?p=32"}
+    }
+  }
+}

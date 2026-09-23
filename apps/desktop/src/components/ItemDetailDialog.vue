@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted } from "vue";
-import { CircleCheck, CircleX, X } from "@lucide/vue";
+import { CircleCheck, CircleX, Image, Search, Video, X } from "@lucide/vue";
 import type { Lang } from "../types";
 import { areaAccent } from "../lib/area";
 import { areaLabel, itemName, locationLabel, obtainLabel } from "../lib/display";
+import { guideFor, openGuide, searchVideoUrl, searchWebUrl } from "../lib/guides";
 import type { ItemRow } from "../lib/items";
 
 const props = defineProps<{
@@ -28,6 +29,11 @@ const name = computed(() => itemName(item.value, props.lang));
 const area = computed(() => areaLabel(item.value, props.lang));
 const location = computed(() => locationLabel(item.value, props.lang));
 const obtain = computed(() => obtainLabel(item.value, props.lang));
+const guides = computed(() => guideFor(props.row.id));
+const webLink = computed(() => guides.value?.web ?? null);
+const videoLink = computed(() => guides.value?.video ?? null);
+const webSearchUrl = computed(() => searchWebUrl(itemName(item.value, "zh")));
+const videoSearchUrl = computed(() => searchVideoUrl(itemName(item.value, "zh")));
 const ngPlus = computed(() => NG_PLUS_LABELS[item.value.ng_plus] ?? `NG+${item.value.ng_plus}`);
 const dlc = computed(() =>
   item.value.dlc ? (DLC_LABELS[item.value.dlc] ?? item.value.dlc) : null,
@@ -113,6 +119,55 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
             <h4 class="text-xs font-semibold text-slate-400">获取方式</h4>
             <p class="mt-1 whitespace-pre-wrap text-xs leading-5 text-slate-300">
               {{ obtain || "—" }}
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-semibold text-slate-400">中文攻略</h4>
+            <div class="mt-1.5 flex flex-wrap gap-2">
+              <button
+                v-if="webLink"
+                type="button"
+                class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-200 hover:border-sky-600 hover:bg-slate-800"
+                :title="webLink.title"
+                @click="openGuide(webLink.url)"
+              >
+                <Image class="h-3.5 w-3.5" />
+                图文攻略
+              </button>
+              <button
+                v-if="videoLink"
+                type="button"
+                class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-200 hover:border-rose-600 hover:bg-slate-800"
+                :title="videoLink.title"
+                @click="openGuide(videoLink.url)"
+              >
+                <Video class="h-3.5 w-3.5" />
+                视频攻略
+              </button>
+              <button
+                v-if="!webLink"
+                type="button"
+                class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:bg-slate-800"
+                title="在必应搜索该收集物的中文图文攻略"
+                @click="openGuide(webSearchUrl)"
+              >
+                <Search class="h-3.5 w-3.5" />
+                搜索图文攻略
+              </button>
+              <button
+                v-if="!videoLink"
+                type="button"
+                class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:bg-slate-800"
+                title="在 B 站搜索该收集物的全收集视频"
+                @click="openGuide(videoSearchUrl)"
+              >
+                <Search class="h-3.5 w-3.5" />
+                搜索视频攻略
+              </button>
+            </div>
+            <p v-if="webLink" class="mt-1.5 text-[11px] leading-4 text-slate-500">
+              图文来源：{{ webLink.title }}
             </p>
           </div>
 

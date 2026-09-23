@@ -5,6 +5,15 @@
   "windows": ["main"],
   "permissions": [
     "core:default",
-    "dialog:default"
+    "dialog:default",
+    {
+      "identifier": "opener:allow-open-url",
+      "allow": [
+        { "url": "https://www.gamersky.com/*" },
+        { "url": "https://www.bilibili.com/*" },
+        { "url": "https://search.bilibili.com/*" },
+        { "url": "https://www.bing.com/*" }
+      ]
+    }
   ]
 }

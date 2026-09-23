@@ -305,6 +305,67 @@ fn document_locations_follow_guide() {
 }
 
 #[test]
+fn guide_links_cover_catalog() {
+    let catalog = load_catalog(None).expect("catalog");
+    let mut with_web = 0;
+    let mut with_video = 0;
+    let mut missing: Vec<&str> = Vec::new();
+    for item in &catalog.items {
+        let Some(guides) = &item.guides else {
+            missing.push(item.id.as_str());
+            continue;
+        };
+        if guides.web.is_some() {
+            with_web += 1;
+        }
+        if guides.video.is_some() {
+            with_video += 1;
+        }
+        for link in [guides.web.as_ref(), guides.video.as_ref()]
+            .into_iter()
+            .flatten()
+        {
+            assert!(link.url.starts_with("https://"), "{}", link.url);
+            assert!(!link.title.is_empty(), "{}", link.url);
+        }
+    }
+    assert!(missing.is_empty(), "{missing:?}");
+    assert_eq!(with_web, 794);
+    assert_eq!(with_video, 634);
+
+    let index = catalog.alias_index();
+    let can = index["Can_011"].guides.as_ref().expect("can guides");
+    assert_eq!(
+        can.web.as_ref().map(|link| link.url.as_str()),
+        Some("https://www.gamersky.com/handbook/202404/1737659_2.shtml")
+    );
+    assert!(can
+        .video
+        .as_ref()
+        .is_some_and(|link| link.url.ends_with("?p=11")));
+
+    let nikke_fish = index["Fish_Nikke_Poli"].guides.as_ref().expect("fish");
+    assert!(nikke_fish
+        .video
+        .as_ref()
+        .is_some_and(|link| link.url.ends_with("?p=27")));
+
+    let memory = index["Item_Records_WLB_Memory_64"]
+        .guides
+        .as_ref()
+        .and_then(|guides| guides.video.as_ref())
+        .expect("memorystick video");
+    assert!(memory.url.contains("BV1kr421L74V"), "{}", memory.url);
+
+    let camp = index["ChangeState_ZoneEnv_AYL_01_EnvS_005_Camp"]
+        .guides
+        .as_ref()
+        .expect("camp guides");
+    assert!(camp.web.is_some());
+    assert!(camp.video.is_none());
+}
+
+#[test]
 fn ng_plus_metadata_present() {
     let catalog = load_catalog(None).expect("catalog");
     let ng_items: Vec<_> = catalog

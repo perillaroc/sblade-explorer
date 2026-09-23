@@ -136,6 +136,65 @@ struct SiteItem {
     subtype: Option<String>,
 }
 
+/// One external guide link: a Chinese page (article or video part) plus a label
+/// shown as the button tooltip in the desktop app.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct GuideLink {
+    title: String,
+    url: String,
+}
+
+/// Resolved guide links for a single catalog item. Fields are optional so that
+/// rules can override only the image/text or only the video link.
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+struct GuideSet {
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    web: Option<GuideLink>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    video: Option<GuideLink>,
+}
+
+/// `data/raw/guides.json`: hand maintained Chinese guide link snapshot.
+#[derive(Debug, Default, Deserialize)]
+struct GuidesFile {
+    #[serde(default)]
+    #[allow(dead_code)]
+    version: i64,
+    #[serde(default)]
+    #[allow(dead_code)]
+    note: String,
+    #[serde(default)]
+    #[allow(dead_code)]
+    sources: Vec<String>,
+    #[serde(default)]
+    regions: HashMap<String, GuideSet>,
+    #[serde(default)]
+    locations: HashMap<String, GuideSet>,
+    #[serde(default)]
+    categories: HashMap<String, CategoryGuides>,
+    #[serde(default)]
+    items: HashMap<String, GuideSet>,
+}
+
+#[derive(Debug, Default, Deserialize)]
+struct CategoryGuides {
+    #[serde(flatten)]
+    base: GuideSet,
+    #[serde(default)]
+    areas: HashMap<String, AreaGuides>,
+    #[serde(default)]
+    locations: HashMap<String, GuideSet>,
+}
+
+#[derive(Debug, Default, Deserialize)]
+struct AreaGuides {
+    #[serde(flatten)]
+    base: GuideSet,
+    #[serde(default)]
+    record_types: HashMap<String, GuideSet>,
+}
+
 #[derive(Serialize)]
 struct CatalogItem {
     id: String,
@@ -159,6 +218,8 @@ struct CatalogItem {
     record_type_zh: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     order: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    guides: Option<GuideSet>,
 }
 
 #[derive(Serialize)]
@@ -380,6 +441,7 @@ fn make_item(
         record_type: None,
         record_type_zh: None,
         order: None,
+        guides: None,
     }
 }
 
@@ -417,6 +479,7 @@ fn plain_item(
         record_type: None,
         record_type_zh: None,
         order: None,
+        guides: None,
     }
 }
 
@@ -1397,6 +1460,189 @@ fn apply_i18n(items: &mut [CatalogItem], i18n: &I18n) {
     }
 }
 
+/// Allowed hosts for external guide links (Chinese guide sites only).
+const GUIDE_HOSTS: [&str; 2] = ["www.gamersky.com", "www.bilibili.com"];
+
+fn validate_guide_link(link: &GuideLink, context: &str) -> Result<(), String> {
+    if link.title.trim().is_empty() {
+        return Err(format!("{context}: 攻略链接缺少标题（{}）", link.url));
+    }
+    let Some(host) = link.url.strip_prefix("https://") else {
+        return Err(format!("{context}: 攻略链接必须使用 https（{}）", link.url));
+    };
+    let host = host.split('/').next().unwrap_or_default();
+    if !GUIDE_HOSTS.contains(&host) {
+        return Err(format!("{context}: 攻略链接域名不在白名单（{}）", link.url));
+    }
+    Ok(())
+}
+
+fn validate_guide_set(set: &GuideSet, context: &str) -> Result<(), String> {
+    if let Some(link) = &set.web {
+        validate_guide_link(link, &format!("{context}.web"))?;
+    }
+    if let Some(link) = &set.video {
+        validate_guide_link(link, &format!("{context}.video"))?;
+    }
+    Ok(())
+}
+
+fn merge_guide_set(target: &mut GuideSet, source: &GuideSet) {
+    if source.web.is_some() {
+        target.web = source.web.clone();
+    }
+    if source.video.is_some() {
+        target.video = source.video.clone();
+    }
+}
+
+/// Resolves one item's guide links: region page, location page, category
+/// defaults, per area / record type overrides, then per item overrides.
+fn resolve_guides(item: &CatalogItem, guides: &GuidesFile) -> Option<GuideSet> {
+    let mut resolved = GuideSet::default();
+    if let Some(area) = item.area.as_deref() {
+        if let Some(set) = guides.regions.get(area) {
+            merge_guide_set(&mut resolved, set);
+        }
+    }
+    if let Some(location) = item.location.as_deref() {
+        if let Some(set) = guides.locations.get(location) {
+            merge_guide_set(&mut resolved, set);
+        }
+    }
+    if let Some(category) = guides.categories.get(&item.category) {
+        merge_guide_set(&mut resolved, &category.base);
+        if let Some(area) = item.area.as_deref() {
+            if let Some(area_guides) = category.areas.get(area) {
+                merge_guide_set(&mut resolved, &area_guides.base);
+                if let Some(record_type) = item.record_type.as_deref() {
+                    if let Some(set) = area_guides.record_types.get(record_type) {
+                        merge_guide_set(&mut resolved, set);
+                    }
+                }
+            }
+        }
+        if let Some(location) = item.location.as_deref() {
+            if let Some(set) = category.locations.get(location) {
+                merge_guide_set(&mut resolved, set);
+            }
+        }
+    }
+    if let Some(set) = guides.items.get(&item.id) {
+        merge_guide_set(&mut resolved, set);
+    }
+    if resolved.web.is_none() && resolved.video.is_none() {
+        return None;
+    }
+    Some(resolved)
+}
+
+fn load_guides(root: &Path) -> Result<GuidesFile, String> {
+    let path = root.join("data/raw/guides.json");
+    let text = std::fs::read_to_string(&path)
+        .map_err(|error| format!("读取 {} 失败: {error}", path.display()))?;
+    serde_json::from_str(&text).map_err(|error| format!("解析 {} 失败: {error}", path.display()))
+}
+
+/// Applies `data/raw/guides.json` to every item and rejects keys that do not
+/// exist in the catalog (typo guard for the hand maintained snapshot).
+fn apply_guides(items: &mut [CatalogItem], guides: &GuidesFile) -> Result<(), String> {
+    let mut problems: Vec<String> = Vec::new();
+
+    for (area, set) in &guides.regions {
+        if !items.iter().any(|item| item.area.as_deref() == Some(area)) {
+            problems.push(format!("regions 中的区域不存在: {area}"));
+        }
+        if let Err(error) = validate_guide_set(set, &format!("regions.{area}")) {
+            problems.push(error);
+        }
+    }
+    for (location, set) in &guides.locations {
+        if !items
+            .iter()
+            .any(|item| item.location.as_deref() == Some(location))
+        {
+            problems.push(format!("locations 中的地点不存在: {location}"));
+        }
+        if let Err(error) = validate_guide_set(set, &format!("locations.{location}")) {
+            problems.push(error);
+        }
+    }
+    for (category, entry) in &guides.categories {
+        if !items.iter().any(|item| item.category == *category) {
+            problems.push(format!("categories 中的分类不存在: {category}"));
+        }
+        if let Err(error) = validate_guide_set(&entry.base, &format!("categories.{category}")) {
+            problems.push(error);
+        }
+        for (area, area_guides) in &entry.areas {
+            if !items.iter().any(|item| item.area.as_deref() == Some(area)) {
+                problems.push(format!(
+                    "categories.{category}.areas 中的区域不存在: {area}"
+                ));
+            }
+            if let Err(error) = validate_guide_set(
+                &area_guides.base,
+                &format!("categories.{category}.areas.{area}"),
+            ) {
+                problems.push(error);
+            }
+            for (record_type, set) in &area_guides.record_types {
+                if !items
+                    .iter()
+                    .any(|item| item.record_type.as_deref() == Some(record_type))
+                {
+                    problems.push(format!(
+                        "categories.{category}.areas.{area}.record_types 中的记录类型不存在: {record_type}"
+                    ));
+                }
+                if let Err(error) = validate_guide_set(
+                    set,
+                    &format!("categories.{category}.areas.{area}.record_types.{record_type}"),
+                ) {
+                    problems.push(error);
+                }
+            }
+        }
+        for (location, set) in &entry.locations {
+            if !items
+                .iter()
+                .any(|item| item.location.as_deref() == Some(location))
+            {
+                problems.push(format!(
+                    "categories.{category}.locations 中的地点不存在: {location}"
+                ));
+            }
+            if let Err(error) =
+                validate_guide_set(set, &format!("categories.{category}.locations.{location}"))
+            {
+                problems.push(error);
+            }
+        }
+    }
+    for (id, set) in &guides.items {
+        if !items.iter().any(|item| item.id == *id) {
+            problems.push(format!("items 中的物品不存在: {id}"));
+        }
+        if let Err(error) = validate_guide_set(set, &format!("items.{id}")) {
+            problems.push(error);
+        }
+    }
+
+    if !problems.is_empty() {
+        return Err(format!(
+            "data/raw/guides.json 校验失败（{} 处）:\n{}",
+            problems.len(),
+            problems.join("\n")
+        ));
+    }
+
+    for item in items.iter_mut() {
+        item.guides = resolve_guides(item, guides);
+    }
+    Ok(())
+}
+
 pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
     let api_dir = root.join("data/raw/api");
     let site = load_site_index(&api_dir)?;
@@ -1421,6 +1667,7 @@ pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
     .map_err(|error| format!("解析 {} 失败: {error}", memorystick_order_path.display()))?;
     let i18n = load_i18n(&api_dir.join("i18n"), &site)?;
     validate_crosswalk_titles(&site, &crosswalk, &game_names)?;
+    let guides = load_guides(root)?;
 
     let mut items: Vec<CatalogItem> = Vec::new();
     items.extend(build_nano_suits(&site, &crosswalk)?);
@@ -1435,6 +1682,7 @@ pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
     apply_passcode_obtain(&mut items, &site)?;
     apply_memorystick_order(&mut items, &memorystick_order)?;
     apply_i18n(&mut items, &i18n);
+    apply_guides(&mut items, &guides)?;
 
     let mut seen: HashMap<String, String> = HashMap::new();
     for item in &items {
@@ -1490,10 +1738,158 @@ mod tests {
     use std::collections::HashMap;
 
     use super::{
-        apply_document_location, apply_memorystick_order, crosswalk_title_matches,
+        apply_document_location, apply_guides, apply_memorystick_order, crosswalk_title_matches,
         fold_record_title, loose_record_title, normalize_name, plain_item, record_type_from_site,
-        zone_label, MemorystickOrder, MemorystickRegion, SiteItem,
+        resolve_guides, zone_label, AreaGuides, CategoryGuides, GuideLink, GuideSet, GuidesFile,
+        MemorystickOrder, MemorystickRegion, SiteItem,
     };
+
+    fn link(title: &str, url: &str) -> GuideLink {
+        GuideLink {
+            title: title.to_string(),
+            url: url.to_string(),
+        }
+    }
+
+    fn web(title: &str, url: &str) -> GuideSet {
+        GuideSet {
+            web: Some(link(title, url)),
+            video: None,
+        }
+    }
+
+    fn video(title: &str, url: &str) -> GuideSet {
+        GuideSet {
+            web: None,
+            video: Some(link(title, url)),
+        }
+    }
+
+    #[test]
+    fn resolve_guides_applies_specific_rules_last() {
+        let mut item = plain_item(
+            "Can_001".to_string(),
+            "原味克里欧".to_string(),
+            "Elixir Carrot".to_string(),
+            "cans",
+            vec!["Can_001".to_string()],
+            Some("Eidos 7".to_string()),
+            "test",
+            "high",
+            0,
+            None,
+        );
+        item.location = Some("Silent Street".to_string());
+
+        let mut guides = GuidesFile::default();
+        guides.regions.insert(
+            "Eidos 7".to_string(),
+            web("region", "https://www.gamersky.com/a"),
+        );
+        guides.locations.insert(
+            "Silent Street".to_string(),
+            web("location", "https://www.gamersky.com/b"),
+        );
+        let mut category = CategoryGuides {
+            base: web("category", "https://www.gamersky.com/c"),
+            ..CategoryGuides::default()
+        };
+        category.areas.insert(
+            "Eidos 7".to_string(),
+            AreaGuides {
+                base: video("area-video", "https://www.bilibili.com/area"),
+                record_types: HashMap::new(),
+            },
+        );
+        guides.categories.insert("cans".to_string(), category);
+        guides.items.insert(
+            "Can_001".to_string(),
+            video("item-video", "https://www.bilibili.com/item"),
+        );
+
+        let resolved = resolve_guides(&item, &guides).expect("guides");
+        assert_eq!(
+            resolved.web.as_ref().map(|link| link.title.as_str()),
+            Some("category")
+        );
+        assert_eq!(
+            resolved.video.as_ref().map(|link| link.title.as_str()),
+            Some("item-video")
+        );
+    }
+
+    #[test]
+    fn resolve_guides_uses_record_type_override() {
+        let mut item = plain_item(
+            "Item_Records_DED10_Memory_11".to_string(),
+            "记忆".to_string(),
+            "Memo".to_string(),
+            "records",
+            vec!["Item_Records_DED10_Memory_11".to_string()],
+            Some("Eidos 7".to_string()),
+            "test",
+            "high",
+            0,
+            None,
+        );
+        item.record_type = Some("memorystick".to_string());
+
+        let mut guides = GuidesFile::default();
+        let mut category = CategoryGuides {
+            base: video("doc", "https://www.bilibili.com/doc"),
+            ..CategoryGuides::default()
+        };
+        let mut record_types = HashMap::new();
+        record_types.insert(
+            "memorystick".to_string(),
+            video("stick", "https://www.bilibili.com/stick"),
+        );
+        category.areas.insert(
+            "Eidos 7".to_string(),
+            AreaGuides {
+                base: GuideSet::default(),
+                record_types,
+            },
+        );
+        guides.categories.insert("records".to_string(), category);
+
+        let resolved = resolve_guides(&item, &guides).expect("guides");
+        assert_eq!(
+            resolved.video.as_ref().map(|link| link.title.as_str()),
+            Some("stick")
+        );
+    }
+
+    #[test]
+    fn apply_guides_rejects_unknown_keys_and_foreign_hosts() {
+        let mut items = vec![plain_item(
+            "Can_001".to_string(),
+            "原味克里欧".to_string(),
+            "Elixir Carrot".to_string(),
+            "cans",
+            vec!["Can_001".to_string()],
+            Some("Eidos 7".to_string()),
+            "test",
+            "high",
+            0,
+            None,
+        )];
+        let mut guides = GuidesFile::default();
+        guides
+            .items
+            .insert("Can_999".to_string(), web("bad", "https://example.com/x"));
+        let error = apply_guides(&mut items, &guides).expect_err("must reject");
+        assert!(error.contains("items 中的物品不存在: Can_999"));
+        assert!(error.contains("域名不在白名单"));
+
+        let mut guides = GuidesFile::default();
+        guides.items.insert(
+            "Can_001".to_string(),
+            web("http", "http://www.gamersky.com/a"),
+        );
+        let error = apply_guides(&mut items, &guides).expect_err("must reject");
+        assert!(error.contains("必须使用 https"));
+    }
 
     #[test]
     fn record_type_from_site_splits_documents_and_memorysticks() {

@@ -14,6 +14,7 @@ import AppSidebar from "./components/AppSidebar.vue";
 import CategoryPage from "./components/CategoryPage.vue";
 import SavePicker from "./components/SavePicker.vue";
 import SummaryPage from "./components/SummaryPage.vue";
+import { loadGuides } from "./lib/guides";
 import type { Analysis, Lang, SaveSlot } from "./types";
 
 const SUMMARY_PAGE = "summary";
@@ -105,7 +106,10 @@ async function exportReport(format: "json" | "markdown") {
   }
 }
 
-onMounted(refreshSaves);
+onMounted(() => {
+  void loadGuides();
+  void refreshSaves();
+});
 </script>
 
 <template>

@@ -39,6 +39,18 @@ pub struct Category {
 }
 
 #[derive(Debug, Clone)]
+pub struct GuideLink {
+    pub title: String,
+    pub url: String,
+}
+
+#[derive(Debug, Clone, Default)]
+pub struct Guides {
+    pub web: Option<GuideLink>,
+    pub video: Option<GuideLink>,
+}
+
+#[derive(Debug, Clone)]
 pub struct CatalogItem {
     pub id: String,
     pub name: String,
@@ -60,6 +72,7 @@ pub struct CatalogItem {
     pub record_type: Option<String>,
     pub record_type_zh: Option<String>,
     pub order: i64,
+    pub guides: Option<Guides>,
 }
 
 impl CatalogItem {
@@ -156,6 +169,26 @@ fn json_str(raw: &JsonValue, key: &str) -> Option<String> {
     raw.get(key).and_then(JsonValue::as_str).map(str::to_string)
 }
 
+fn parse_guide_link(raw: &JsonValue) -> Option<GuideLink> {
+    let title = json_str(raw, "title")?;
+    let url = json_str(raw, "url")?;
+    if title.is_empty() || url.is_empty() {
+        return None;
+    }
+    Some(GuideLink { title, url })
+}
+
+fn parse_guides(raw: &JsonValue) -> Option<Guides> {
+    let guides = Guides {
+        web: raw.get("web").and_then(parse_guide_link),
+        video: raw.get("video").and_then(parse_guide_link),
+    };
+    if guides.web.is_none() && guides.video.is_none() {
+        return None;
+    }
+    Some(guides)
+}
+
 fn parse_item(raw: &JsonValue) -> CatalogItem {
     let id = json_str(raw, "id").unwrap_or_default();
     let name = json_str(raw, "name")
@@ -196,6 +229,7 @@ fn parse_item(raw: &JsonValue) -> CatalogItem {
         record_type: json_str(raw, "record_type"),
         record_type_zh: json_str(raw, "record_type_zh"),
         order: raw.get("order").and_then(JsonValue::as_i64).unwrap_or(0),
+        guides: raw.get("guides").and_then(parse_guides),
     }
 }
 

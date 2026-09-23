@@ -12,6 +12,7 @@
 | `universe/aliases.json` | 从参考存档与本地存档提取的物品别名全集（不含未解锁 ID） |
 | `crosswalk.json` | 手工维护的别名对照（site id -> 别名 -> 中文名，目录库生成器的唯一事实来源）；`record_type_overrides` 覆盖无法按名称自动匹配的记录类型 |
 | `memorystick_order.json` | 记忆棒的游戏内数据库选单顺序（按区域分组、组内顺序，覆盖全部 186 条；据 Map Genie 与游民星空列表整理） |
+| `guides.json` | 手工维护的中文攻略链接快照（游民星空图文 + B 站「喂狗组-文轩」全收集视频）；`catalog build` 解析为每条物品的 `guides.web` / `guides.video` |
 | `game/name_map.json` | 游戏数据表 + `Game.locres` 提取的内部别名→官方名称映射（生成物） |
 | `reference/Sources_TrainerCore_*.swift` | 中文名称对照（来自 stellar-blade-macos-save-editor） |
 | `reference/*.sav` | 参考存档（仅本地校验用，已在 .gitignore 中忽略） |
@@ -28,6 +29,16 @@
 - <https://github.com/lecher-wang/Stellar-Blade-100-completion-save-file> —— 别名全集校验
 - 游戏本体数据表（`ItemTable`、`ZoneCampTable`）与 `Game.locres`（zh-Hans/en）——
   内部别名到官方名称的精确映射，经 `cargo run -p sbsave-tools -- mine-names` 生成 `game/name_map.json`
+- <https://www.gamersky.com>（《剑星》全收集攻略、全饮料罐、全钓鱼点、全宝箱密码等）与
+  <https://www.bilibili.com>（喂狗组-文轩「剑星全收集」分 P 视频）—— `guides.json` 的中文攻略链接；
+  仅在桌面端点按按钮时由系统浏览器打开，程序运行时不联网
+
+## 中文攻略链接（guides.json）
+
+`guides.json` 按 `物品 > 地点 > 区域 > 品类` 逐级覆盖，可写 `web`（图文）与 `video`（视频）两类链接；
+`catalog build` 会校验链接必须为 https 且域名在 `www.gamersky.com` / `www.bilibili.com` 白名单内，
+同时校验键名必须能在目录库中匹配到（拼写错误会直接让构建失败）。桌面端详情弹窗据此显示
+「图文攻略」「视频攻略」按钮，缺少链接时回退为必应 / B 站搜索。
 
 ## 重新生成目录库
 

@@ -39,6 +39,15 @@ export const DATA_SOURCES: AboutSource[] = [
       "游戏数据表（ItemTable、ZoneCampTable）与 Game.locres（zh-Hans/en）提取的内部别名与官方简中名称。",
   },
   {
+    name: "游民星空与哔哩哔哩（中文攻略链接）",
+    detail:
+      "data/raw/guides.json：详情页「中文攻略」按钮指向的游民星空图文攻略与 B 站「喂狗组-文轩」全收集视频；仅在点击时由系统浏览器打开。",
+    urls: [
+      "https://www.gamersky.com/handbook/202404/1738505.shtml",
+      "https://www.bilibili.com/video/BV1or421L7XQ",
+    ],
+  },
+  {
     name: "本项目手工翻译",
     detail:
       "data/raw/api/i18n：攻略区域、地点与获取描述的简体中文翻译（名称仍以游戏本地化为准）。",
@@ -51,7 +60,7 @@ export const DATA_SOURCES: AboutSource[] = [
 ];
 
 export const SOURCES_NOTE =
-  "以上第三方数据与工具版权归各自作者所有。目录库与全部数据内置于程序，运行时不联网。";
+  "以上第三方数据与工具版权归各自作者所有。目录库与全部数据内置于程序，运行时不联网；「中文攻略」按钮仅在点击后由系统浏览器打开外部网页。";
 
 export const DISCLAIMER =
   "本工具为个人非商业项目，与 Shift Up / Sony Interactive Entertainment 无关；《剑星》名称、物品名称与游戏文本版权归原权利人所有，仅供个人存档分析使用。工具只读，绝不修改存档。";

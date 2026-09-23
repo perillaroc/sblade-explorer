@@ -1,7 +1,7 @@
 use std::time::UNIX_EPOCH;
 
 use sbsave_core::analyze::analyze;
-use sbsave_core::catalog::load_catalog;
+use sbsave_core::catalog::{load_catalog, GuideLink};
 use sbsave_core::report::{analysis_to_dict, write_json, write_markdown};
 use sbsave_core::savegame::{discover_saves, load_save, pick_default_save, SaveData};
 use serde::Serialize;
@@ -86,14 +86,41 @@ fn export_report(
     Ok(out_path)
 }
 
+#[tauri::command]
+fn guide_links() -> Result<serde_json::Value, String> {
+    let catalog = load_catalog(None).map_err(|error| error.to_string())?;
+    let mut links = serde_json::Map::new();
+    for item in &catalog.items {
+        let Some(guides) = &item.guides else { continue };
+        let mut entry = serde_json::Map::new();
+        if let Some(web) = &guides.web {
+            entry.insert("web".to_string(), guide_link_to_dict(web));
+        }
+        if let Some(video) = &guides.video {
+            entry.insert("video".to_string(), guide_link_to_dict(video));
+        }
+        links.insert(item.id.clone(), serde_json::Value::Object(entry));
+    }
+    Ok(serde_json::Value::Object(links))
+}
+
+fn guide_link_to_dict(link: &GuideLink) -> serde_json::Value {
+    serde_json::json!({
+        "title": link.title,
+        "url": link.url,
+    })
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_dialog::init())
+        .plugin(tauri_plugin_opener::init())
         .invoke_handler(tauri::generate_handler![
             list_saves,
             analyze_save,
-            export_report
+            export_report,
+            guide_links
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
@@ -129,6 +156,61 @@ mod tests {
         assert!(value["categories"]
             .as_array()
             .is_some_and(|categories| categories.len() == 13));
+    }
+
+    #[test]
+    fn guide_links_returns_chinese_guides() {
+        let links = guide_links().expect("guide links");
+        let links = links.as_object().expect("object");
+        assert_eq!(links.len(), 810);
+        let can = links.get("Can_001").expect("can guide");
+        assert!(can["web"]["url"]
+            .as_str()
+            .is_some_and(|url| url.starts_with("https://www.gamersky.com/")));
+        assert!(can["video"]["url"]
+            .as_str()
+            .is_some_and(|url| url.starts_with("https://www.bilibili.com/")));
+        let camp = links
+            .get("ChangeState_ZoneEnv_AYL_01_EnvS_005_Camp")
+            .expect("camp guide");
+        assert!(camp["web"]["title"]
+            .as_str()
+            .is_some_and(|title| !title.is_empty()));
+        assert!(camp.get("video").is_none());
+    }
+
+    #[test]
+    fn guide_urls_are_allowed_by_capability_scope() {
+        let manifest_dir = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+        let capability: serde_json::Value = serde_json::from_str(
+            &std::fs::read_to_string(manifest_dir.join("capabilities/default.json"))
+                .expect("read capability"),
+        )
+        .expect("parse capability");
+        let mut patterns = Vec::new();
+        for permission in capability["permissions"].as_array().expect("permissions") {
+            if permission["identifier"] == "opener:allow-open-url" {
+                for entry in permission["allow"].as_array().expect("allow") {
+                    patterns.push(
+                        glob::Pattern::new(entry["url"].as_str().expect("scope url"))
+                            .expect("scope pattern"),
+                    );
+                }
+            }
+        }
+        assert!(!patterns.is_empty(), "能力文件缺少 opener 链接白名单");
+
+        let links = guide_links().expect("guide links");
+        for (id, guides) in links.as_object().expect("object") {
+            for key in ["web", "video"] {
+                if let Some(url) = guides.get(key).and_then(|link| link["url"].as_str()) {
+                    assert!(
+                        patterns.iter().any(|pattern| pattern.matches(url)),
+                        "攻略链接不在能力白名单内: {id} {key} {url}"
+                    );
+                }
+            }
+        }
     }
 
     #[test]
