@@ -1,0 +1,85 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 已存在的 tag（如 v0.2.0）
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+env:
+  CARGO_TERM_COLOR: always
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  verify:
+    # Runs the full CI gate (fmt / clippy / test / frontend) before shipping.
+    uses: ./.github/workflows/ci.yml
+
+  publish:
+    name: 构建并发布（Windows）
+    needs: verify
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # A manual run must build the tagged tree, not the branch tip.
+          ref: ${{ inputs.tag || github.ref }}
+      - name: 校验 tag 与版本号一致
+        shell: pwsh
+        env:
+          TAG: ${{ inputs.tag || github.ref_name }}
+        run: |
+          $version = (Get-Content apps/desktop/src-tauri/tauri.conf.json -Raw | ConvertFrom-Json).version
+          if ($env:TAG -ne "v$version") {
+            throw "tag $env:TAG 与 tauri.conf.json 版本 $version 不一致，请先在 apps/desktop 运行 pnpm bump $version"
+          }
+          "APP_TAG=$env:TAG" >> $env:GITHUB_ENV
+          "APP_VERSION=$version" >> $env:GITHUB_ENV
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          package_json_file: apps/desktop/package.json
+          cache: true
+          cache_dependency_path: apps/desktop/pnpm-lock.yaml
+      - name: 安装 Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: 安装 Rust 工具链
+        uses: dtolnay/rust-toolchain@stable
+      - name: 缓存 Rust 构建产物
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: .
+      - name: 安装前端依赖
+        working-directory: apps/desktop
+        run: pnpm install --frozen-lockfile
+      - name: 构建并上传桌面安装包
+        uses: tauri-apps/tauri-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          projectPath: apps/desktop
+          tagName: ${{ env.APP_TAG }}
+          releaseName: 剑星存档分析 v__VERSION__
+          releaseDraft: true
+          prerelease: false
+          generateReleaseNotes: true
+          # The updater is not wired up yet; keep releases free of latest.json.
+          uploadUpdaterJson: false
+          args: --bundles nsis,msi
+      - name: 构建 CLI
+        run: cargo build --release -p sbsave-cli
+      - name: 打包并上传 CLI
+        shell: pwsh
+        run: |
+          $zip = "sbsave-$env:APP_TAG-x86_64-pc-windows-msvc.zip"
+          Compress-Archive -Path target/release/sbsave.exe -DestinationPath $zip
+          gh release upload $env:APP_TAG $zip --clobber
