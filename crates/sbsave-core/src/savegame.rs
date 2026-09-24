@@ -1,3 +1,4 @@
+use std::cmp::Reverse;
 use std::collections::{HashMap, HashSet};
 use std::fmt;
 use std::path::{Path, PathBuf};
@@ -273,7 +274,7 @@ pub fn discover_saves(extra_dirs: Option<&[PathBuf]>) -> Vec<SaveSlot> {
             });
         }
     }
-    found.sort_by(|left, right| right.mtime.cmp(&left.mtime));
+    found.sort_by_key(|slot| Reverse(slot.mtime));
     found
 }
 
