@@ -59,17 +59,19 @@
 
 ### 桌面应用（Windows）
 
-**桌面应用是主要发布物**，安装包发布在 [GitHub Releases](https://github.com/perillaroc/sblade-explorer/releases)：
+**桌面应用是主要发布物**，发布在 [GitHub Releases](https://github.com/perillaroc/sblade-explorer/releases)：
 
-- `sblade-explorer_<版本>_x64-setup.exe`（NSIS，推荐；按用户安装，无需管理员权限）
-- `sblade-explorer_<版本>_x64_en-US.msi`（MSI，适合批量部署）
+- `sblade-explorer-<tag>-x86_64-pc-windows-msvc.zip`（便携版：解压后直接运行 `sblade-explorer.exe`）
+- `sbsave-<tag>-x86_64-pc-windows-msvc.zip`（CLI：解压后运行 `sbsave.exe`）
 
-两者选其一安装即可（混装会在系统里留下两个卸载项）。CLI 随每个版本以
-`sbsave-v<版本>-x86_64-pc-windows-msvc.zip` 附带发布；本地构建由 `pnpm tauri build` 生成，
-产物位于 `target/release/bundle/{nsis,msi}/`。
+便携版不含安装程序，因此没有开始菜单快捷方式与卸载项，升级即替换 exe（程序本体只读、不写注册表）。
 
-系统要求 Windows 10/11；WebView2 由安装包按 Tauri 默认引导方式处理。首次打开自动探测最新
+系统要求 Windows 10/11，且需要系统已安装 **WebView2 运行时**（Win10/11 通常随 Edge 自带；
+若提示缺失，从微软官网安装 Evergreen Runtime 即可）。首次打开自动探测最新
 存档并分析；未找到存档时可将存档放入下方默认目录后点击刷新。
+
+本地构建：`pnpm tauri build --no-bundle` 只出 exe（`target/release/sblade-explorer.exe`）；
+需要 NSIS/MSI 安装包时用 `pnpm tauri build`，产物在 `target/release/bundle/{nsis,msi}/`。
 
 ### CLI
 
@@ -160,7 +162,7 @@ GitHub Actions 两个工作流（`.github/workflows/`）：
 | 工作流 | 触发 | 内容 |
 | --- | --- | --- |
 | `ci.yml` | push `main` / PR / 手动 | Rust 作业（**windows-latest**）：`cargo fmt --all --check`、`clippy --workspace --all-targets -- -D warnings`、`cargo test --workspace`、CLI 冒烟；前端作业（ubuntu）：`pnpm install --frozen-lockfile` + `pnpm build` |
-| `release.yml` | push tag `v*` / 手动 | 先复用 `ci.yml` 全量把关，再构建 NSIS/MSI 与 CLI zip，创建 **draft** Release；人工复核后 Publish |
+| `release.yml` | push tag `v*` / 手动 | 先复用 `ci.yml` 全量把关，再校验 tag 与 `tauri.conf.json` 版本一致，构建桌面便携版 zip 与 CLI zip，用 `gh release create` 创建 **draft** Release；人工复核后 Publish |
 
 发布流程：
 

@@ -41,7 +41,6 @@ jobs:
             throw "tag $env:TAG 与 tauri.conf.json 版本 $version 不一致，请先在 apps/desktop 运行 pnpm bump $version"
           }
           "APP_TAG=$env:TAG" >> $env:GITHUB_ENV
-          "APP_VERSION=$version" >> $env:GITHUB_ENV
       - name: 安装 pnpm
         uses: pnpm/action-setup@v6
         with:
@@ -61,25 +60,30 @@ jobs:
       - name: 安装前端依赖
         working-directory: apps/desktop
         run: pnpm install --frozen-lockfile
-      - name: 构建并上传桌面安装包
-        uses: tauri-apps/tauri-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          projectPath: apps/desktop
-          tagName: ${{ env.APP_TAG }}
-          releaseName: 剑星存档分析 v__VERSION__
-          releaseDraft: true
-          prerelease: false
-          generateReleaseNotes: true
-          # The updater is not wired up yet; keep releases free of latest.json.
-          uploadUpdaterJson: false
-          args: --bundles nsis,msi
+      - name: 构建桌面应用（便携版，不打包安装器）
+        working-directory: apps/desktop
+        run: pnpm tauri build --no-bundle
       - name: 构建 CLI
         run: cargo build --release -p sbsave-cli
-      - name: 打包并上传 CLI
+      - name: 打包 zip
         shell: pwsh
         run: |
-          $zip = "sbsave-$env:APP_TAG-x86_64-pc-windows-msvc.zip"
-          Compress-Archive -Path target/release/sbsave.exe -DestinationPath $zip
-          gh release upload $env:APP_TAG $zip --clobber
+          $suffix = "$env:APP_TAG-x86_64-pc-windows-msvc"
+          Compress-Archive -Path target/release/sblade-explorer.exe -DestinationPath "sblade-explorer-$suffix.zip"
+          Compress-Archive -Path target/release/sbsave.exe -DestinationPath "sbsave-$suffix.zip"
+      - name: 创建或更新 draft Release
+        shell: pwsh
+        run: |
+          $tag = $env:APP_TAG
+          $assets = "sblade-explorer-$tag-x86_64-pc-windows-msvc.zip", "sbsave-$tag-x86_64-pc-windows-msvc.zip"
+          $notes = "Windows 便携版：解压后直接运行 sblade-explorer.exe（需要系统已安装 WebView2 运行时，Windows 10/11 通常自带）。CLI：解压 sbsave zip 后运行 sbsave.exe，用法见 README。"
+          $releaseExists = & {
+            $ErrorActionPreference = 'Continue'
+            gh release view $tag 2>$null | Out-Null
+            $LASTEXITCODE -eq 0
+          }
+          if ($releaseExists) {
+            gh release upload $tag $assets --clobber
+          } else {
+            gh release create $tag --draft --title "剑星存档分析 $tag" --generate-notes --notes $notes $assets
+          }
