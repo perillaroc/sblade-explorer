@@ -3006,7 +3006,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "sblade-desktop"
+name = "sblade-explorer"
 version = "0.1.0"
 dependencies = [
  "glob",

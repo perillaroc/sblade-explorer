@@ -1,5 +1,5 @@
 [package]
-name = "sblade-desktop"
+name = "sblade-explorer"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -7,7 +7,7 @@ description = "剑星存档分析桌面应用"
 authors = ["perillaroc"]
 
 [lib]
-name = "sblade_desktop_lib"
+name = "sblade_explorer_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]

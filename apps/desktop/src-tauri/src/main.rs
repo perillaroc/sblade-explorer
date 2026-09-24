@@ -2,5 +2,5 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-    sblade_desktop_lib::run()
+    sblade_explorer_lib::run()
 }
