@@ -1,5 +1,7 @@
 # sblade-explorer（剑星存档收集度分析）
 
+[![CI](https://github.com/perillaroc/sblade-explorer/actions/workflows/ci.yml/badge.svg)](https://github.com/perillaroc/sblade-explorer/actions/workflows/ci.yml)
+
 读取 Steam《剑星》(Stellar Blade) 存档并报告缺失的收集物，支持 Windows 桌面应用与 `sbsave` CLI：
 
 - **13 类收集物**：纳米战衣、罐子、记录（文档/记忆棒）、密码、营地、发型、眼镜/面饰、耳饰、
@@ -57,10 +59,14 @@
 
 ### 桌面应用（Windows）
 
-安装包由 `pnpm tauri build` 生成，位于：
+**桌面应用是主要发布物**，安装包发布在 [GitHub Releases](https://github.com/perillaroc/sblade-explorer/releases)：
 
-- `target/release/bundle/nsis/sblade-explorer_0.1.0_x64-setup.exe`（NSIS）
-- `target/release/bundle/msi/sblade-explorer_0.1.0_x64_en-US.msi`（MSI）
+- `sblade-explorer_<版本>_x64-setup.exe`（NSIS，推荐；按用户安装，无需管理员权限）
+- `sblade-explorer_<版本>_x64_en-US.msi`（MSI，适合批量部署）
+
+两者选其一安装即可（混装会在系统里留下两个卸载项）。CLI 随每个版本以
+`sbsave-v<版本>-x86_64-pc-windows-msvc.zip` 附带发布；本地构建由 `pnpm tauri build` 生成，
+产物位于 `target/release/bundle/{nsis,msi}/`。
 
 系统要求 Windows 10/11；WebView2 由安装包按 Tauri 默认引导方式处理。首次打开自动探测最新
 存档并分析；未找到存档时可将存档放入下方默认目录后点击刷新。
@@ -147,6 +153,35 @@ pnpm tauri dev      # 桌面应用开发
 pnpm tauri build    # Windows 安装包（NSIS + MSI）
 ```
 
+### CI 与发布
+
+GitHub Actions 两个工作流（`.github/workflows/`）：
+
+| 工作流 | 触发 | 内容 |
+| --- | --- | --- |
+| `ci.yml` | push `main` / PR / 手动 | Rust 作业（**windows-latest**）：`cargo fmt --all --check`、`clippy --workspace --all-targets -- -D warnings`、`cargo test --workspace`、CLI 冒烟；前端作业（ubuntu）：`pnpm install --frozen-lockfile` + `pnpm build` |
+| `release.yml` | push tag `v*` / 手动 | 先复用 `ci.yml` 全量把关，再构建 NSIS/MSI 与 CLI zip，创建 **draft** Release；人工复核后 Publish |
+
+发布流程：
+
+```powershell
+cd apps/desktop
+pnpm bump 0.2.0        # 同步 tauri.conf.json / package.json / Cargo.toml，并刷新 Cargo.lock
+cd ..\..
+git commit -am ":bookmark: 发布 v0.2.0"
+git tag v0.2.0
+git push --follow-tags
+```
+
+`release.yml` 会校验 tag 与 `tauri.conf.json` 的版本一致，不一致直接失败。
+
+> Rust 作业必须跑 Windows：`sbsave-tools` 的集成测试对 `data/catalog.json` 做逐字节比对，
+> 而生成结果按平台换行（Windows CRLF）。`.gitattributes` 已把该文件的换行固定为 CRLF。
+
+**布局不变量**（调整目录结构前必读）：`crates/` 必须在仓库根下（`sbsave-tools::repo_root()`
+上溯两级）；`data/catalog.json` 必须在 `crates/sbsave-core` 上溯三级（`include_str!` 编译期嵌入）；
+`apps/desktop/src-tauri` 必须列在 workspace `members` 中（tauri-action 依此解析 workspace 的 `target/`）。
+
 ### 项目结构
 
 ```text
@@ -210,7 +245,8 @@ cargo run -p sbsave-tools -- mine-names `
   （版本变体继承基础条目）；文档与密码带攻略区域/地点，密码 23 条全部带攻略获取方式。
 - 迁移验收（2026-09-14）：与原 Python 版 `report --json` 逐节点一致、Markdown 归一化后逐字一致；
   Python 参考实现已于 2026-09-15 删除，代码历史保留在 repo git（提交 `33cb981`）。
-- 无 CI；`cargo fmt/clippy/test` + 前端 `pnpm build` 是关卡。GVAS 解析器保持只读与防御性：
+- CI 关卡（`.github/workflows/ci.yml`）：Rust `cargo fmt/clippy/test` + 前端 `pnpm build`；Rust 作业固定
+  Windows（目录库逐字节比对依赖 CRLF）。GVAS 解析器保持只读与防御性：
   无法解析的 struct/array/map/set 回退为 `RawValue`，reader 始终重同步到 `tag_start + size`；
   测试使用逐字节构造的合成档案，绝不修改真实存档。
 
