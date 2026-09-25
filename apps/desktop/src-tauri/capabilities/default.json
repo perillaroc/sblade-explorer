@@ -9,10 +9,12 @@
     {
       "identifier": "opener:allow-open-url",
       "allow": [
-        { "url": "https://www.gamersky.com/*" },
-        { "url": "https://www.bilibili.com/*" },
-        { "url": "https://search.bilibili.com/*" },
-        { "url": "https://www.bing.com/*" }
+        { "url": "https://www.gamersky.com/*", "app": true },
+        { "url": "https://www.bilibili.com/*", "app": true },
+        { "url": "https://search.bilibili.com/*", "app": true },
+        { "url": "https://www.bing.com/*", "app": true },
+        { "url": "https://www.baidu.com/*", "app": true },
+        { "url": "https://www.google.com/*", "app": true }
       ]
     }
   ]

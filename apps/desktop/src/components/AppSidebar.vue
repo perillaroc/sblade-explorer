@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { Info } from "@lucide/vue";
+import { Info, Settings } from "@lucide/vue";
 import type { Analysis } from "../types";
 import { APP_ICON, categoryIcon, SUMMARY_ICON } from "../lib/icons";
 import AboutDialog from "./AboutDialog.vue";
+import SettingsDialog from "./SettingsDialog.vue";
 
 const props = defineProps<{
   analysis: Analysis | null;
@@ -13,6 +14,7 @@ const props = defineProps<{
 const emit = defineEmits<{ navigate: [key: string] }>();
 
 const aboutOpen = ref(false);
+const settingsOpen = ref(false);
 
 const overallPercent = computed(() => {
   const summary = props.analysis?.summary;
@@ -92,7 +94,16 @@ function categoryPercent(obtained: number, total: number): number {
         </button>
       </template>
     </nav>
-    <footer class="border-t border-slate-800 p-2">
+    <footer class="space-y-1 border-t border-slate-800 p-2">
+      <button
+        type="button"
+        class="flex w-full items-center gap-2 rounded px-3 py-2 text-left text-sm text-slate-400 transition-colors hover:bg-slate-800/60 hover:text-slate-200"
+        title="设置默认搜索引擎与打开链接的浏览器"
+        @click="settingsOpen = true"
+      >
+        <Settings class="h-4 w-4 shrink-0" />
+        设置
+      </button>
       <button
         type="button"
         class="flex w-full items-center gap-2 rounded px-3 py-2 text-left text-sm text-slate-400 transition-colors hover:bg-slate-800/60 hover:text-slate-200"
@@ -105,5 +116,6 @@ function categoryPercent(obtained: number, total: number): number {
     </footer>
 
     <AboutDialog v-if="aboutOpen" @close="aboutOpen = false" />
+    <SettingsDialog v-if="settingsOpen" @close="settingsOpen = false" />
   </aside>
 </template>

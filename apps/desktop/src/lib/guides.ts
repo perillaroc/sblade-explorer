@@ -1,6 +1,7 @@
 import { reactive } from "vue";
 import { invoke } from "@tauri-apps/api/core";
 import { openUrl } from "@tauri-apps/plugin-opener";
+import { searchEngine, settings } from "./settings";
 
 export interface GuideLink {
   title: string;
@@ -48,23 +49,40 @@ export function guideFor(id: string): Guides | null {
   return state.links[id] ?? null;
 }
 
-const WEB_SEARCH = "https://www.bing.com/search?q=";
 const VIDEO_SEARCH = "https://search.bilibili.com/all?keyword=";
 
+// The web search engine is configurable in the settings dialog; the video
+// search always goes to Bilibili's own search page.
 export function searchWebUrl(name: string): string {
-  return WEB_SEARCH + encodeURIComponent(`剑星 ${name} 攻略`);
+  return searchEngine().url + encodeURIComponent(`剑星 ${name} 攻略`);
 }
 
 export function searchVideoUrl(name: string): string {
   return VIDEO_SEARCH + encodeURIComponent(`剑星 ${name} 全收集`);
 }
 
-/** Opens a guide page in the system browser, falling back to a new tab. */
+/**
+ * Opens a guide page in the browser chosen in the settings dialog. When no
+ * browser is configured (or it fails to launch) the system default is used;
+ * the browser-only dev server falls back to a new tab.
+ */
 export async function openGuide(url: string): Promise<void> {
   if (!url.startsWith("https://")) return;
+  const browser = settings.browserPath;
   try {
+    if (browser) {
+      try {
+        await openUrl(url, browser);
+        return;
+      } catch (reason) {
+        console.warn(`用指定浏览器打开失败（${browser}），回退系统默认浏览器`, reason);
+      }
+    }
     await openUrl(url);
-  } catch {
-    window.open(url, "_blank", "noopener,noreferrer");
+  } catch (reason) {
+    console.warn("打开外部链接失败", reason);
+    if (!("__TAURI_INTERNALS__" in window)) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
   }
 }

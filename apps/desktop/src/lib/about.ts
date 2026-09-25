@@ -41,7 +41,7 @@ export const DATA_SOURCES: AboutSource[] = [
   {
     name: "游民星空与哔哩哔哩（中文攻略链接）",
     detail:
-      "data/raw/guides.json：详情页「中文攻略」按钮指向的游民星空图文攻略（含《剑星》女主服装图鉴）与 B 站视频（126 套纳米服全收集、喂狗组-文轩全收集系列）；仅在点击时由系统浏览器打开。",
+      "data/raw/guides.json：详情页「中文攻略」按钮指向的游民星空图文攻略（含《剑星》女主服装图鉴）与 B 站视频（126 套纳米服全收集、喂狗组-文轩全收集系列）；另有「搜索图文攻略」（可在设置中选择必应 / 百度 / 谷歌）与「搜索视频攻略」（B 站）按钮按物品名称检索；仅在点击时由本机浏览器打开。",
     urls: [
       "https://www.gamersky.com/handbook/202404/1738505.shtml",
       "https://www.gamersky.com/handbook/202404/1737082.shtml",
@@ -62,7 +62,7 @@ export const DATA_SOURCES: AboutSource[] = [
 ];
 
 export const SOURCES_NOTE =
-  "以上第三方数据与工具版权归各自作者所有。目录库与全部数据内置于程序，运行时不联网；「中文攻略」按钮仅在点击后由系统浏览器打开外部网页。";
+  "以上第三方数据与工具版权归各自作者所有。目录库与全部数据内置于程序，运行时不联网；「中文攻略」与「搜索攻略」按钮仅在点击后由本机浏览器打开外部网页。";
 
 export const DISCLAIMER =
   "本工具为个人非商业项目，与 Shift Up / Sony Interactive Entertainment 无关；《剑星》名称、物品名称与游戏文本版权归原权利人所有，仅供个人存档分析使用。工具只读，绝不修改存档。";

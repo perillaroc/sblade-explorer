@@ -111,6 +111,138 @@ fn guide_link_to_dict(link: &GuideLink) -> serde_json::Value {
     })
 }
 
+/// A browser that can be selected in the settings dialog as a link target.
+#[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
+struct BrowserInfo {
+    id: String,
+    name: String,
+    path: String,
+}
+
+#[cfg(windows)]
+mod browsers {
+    use std::path::Path;
+
+    use winreg::enums::{HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE};
+    use winreg::RegKey;
+
+    use super::BrowserInfo;
+
+    const CLIENTS_KEY: &str = r"SOFTWARE\Clients\StartMenuInternet";
+
+    /// Lists the browsers registered as `StartMenuInternet` clients (Edge, Chrome, Firefox, ...).
+    /// Registry entries whose executable is missing are skipped so the dialog never offers a
+    /// browser that cannot be launched.
+    pub fn detect() -> Vec<BrowserInfo> {
+        let mut found: Vec<BrowserInfo> = Vec::new();
+        for hive in [
+            RegKey::predef(HKEY_LOCAL_MACHINE),
+            RegKey::predef(HKEY_CURRENT_USER),
+        ] {
+            let Ok(clients) = hive.open_subkey(CLIENTS_KEY) else {
+                continue;
+            };
+            for key_name in clients.enum_keys().flatten() {
+                let Ok(client) = clients.open_subkey(&key_name) else {
+                    continue;
+                };
+                let name: String = client.get_value("").unwrap_or_else(|_| key_name.clone());
+                let Ok(command) = client.open_subkey(r"shell\open\command") else {
+                    continue;
+                };
+                let Ok(command_text) = command.get_value::<String, _>("") else {
+                    continue;
+                };
+                let Some(path) = parse_executable(&command_text) else {
+                    continue;
+                };
+                if !Path::new(&path).is_file() {
+                    continue;
+                }
+                if found
+                    .iter()
+                    .any(|browser| browser.path.eq_ignore_ascii_case(&path))
+                {
+                    continue;
+                }
+                found.push(BrowserInfo {
+                    id: key_name.to_lowercase(),
+                    name,
+                    path,
+                });
+            }
+        }
+        found.sort_by_key(|browser| browser.name.to_lowercase());
+        found
+    }
+
+    /// Extracts the executable from a `shell\open\command` value such as
+    /// `"C:\Program Files\Google\Chrome\Application\chrome.exe" -- "%1"`.
+    fn parse_executable(command: &str) -> Option<String> {
+        let trimmed = command.trim();
+        if trimmed.is_empty() {
+            return None;
+        }
+        if let Some(rest) = trimmed.strip_prefix('"') {
+            let end = rest.find('"')?;
+            let path = &rest[..end];
+            return (!path.is_empty()).then(|| path.to_string());
+        }
+        trimmed.split_whitespace().next().map(str::to_string)
+    }
+
+    #[cfg(test)]
+    mod tests {
+        use super::{detect, parse_executable};
+
+        #[test]
+        fn parse_executable_strips_arguments_and_quotes() {
+            assert_eq!(
+                parse_executable(
+                    r#""C:\Program Files\Google\Chrome\Application\chrome.exe" -- "%1""#
+                )
+                .as_deref(),
+                Some(r"C:\Program Files\Google\Chrome\Application\chrome.exe")
+            );
+            assert_eq!(
+                parse_executable(r"C:\browsers\firefox.exe %1").as_deref(),
+                Some(r"C:\browsers\firefox.exe")
+            );
+            assert_eq!(parse_executable("   "), None);
+            assert_eq!(parse_executable("\"unterminated"), None);
+        }
+
+        #[test]
+        fn detect_returns_existing_browser_executables() {
+            for browser in detect() {
+                assert!(!browser.id.is_empty());
+                assert!(!browser.name.is_empty());
+                assert!(
+                    std::path::Path::new(&browser.path).is_file(),
+                    "浏览器可执行文件不存在: {}",
+                    browser.path
+                );
+            }
+        }
+    }
+}
+
+/// Lists the browsers registered on this machine for the settings dialog.
+/// Non-Windows platforms have no such registry list; the dialog then only
+/// offers the system default browser and a manually picked executable.
+#[tauri::command]
+fn list_browsers() -> Vec<BrowserInfo> {
+    #[cfg(windows)]
+    {
+        browsers::detect()
+    }
+    #[cfg(not(windows))]
+    {
+        Vec::new()
+    }
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -120,7 +252,8 @@ pub fn run() {
             list_saves,
             analyze_save,
             export_report,
-            guide_links
+            guide_links,
+            list_browsers
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
@@ -191,6 +324,13 @@ mod tests {
         for permission in capability["permissions"].as_array().expect("permissions") {
             if permission["identifier"] == "opener:allow-open-url" {
                 for entry in permission["allow"].as_array().expect("allow") {
+                    // `app: true` lets the settings dialog open whitelisted links with a
+                    // browser chosen by the user instead of the system default.
+                    assert_eq!(
+                        entry["app"].as_bool(),
+                        Some(true),
+                        "opener 链接条目必须允许指定浏览器打开: {entry}"
+                    );
                     patterns.push(
                         glob::Pattern::new(entry["url"].as_str().expect("scope url"))
                             .expect("scope pattern"),

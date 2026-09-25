@@ -30,7 +30,7 @@ crates/sbsave-core/    # Rust 核心库：GVAS/EVAS 解析、存档提取、目�
 crates/sbsave-cli/     # clap CLI（二进制 sbsave），命令与输出沿用原 Python 版约定
 crates/sbsave-tools/   # 构建期数据管线（二进制 sbsave-tools）：catalog build / mine-names
 apps/desktop/          # Tauri 2 桌面应用：前端 Vue 3 + Vite + TS + Tailwind CSS v4（工程根）
-apps/desktop/src-tauri # Tauri shell：list_saves / analyze_save / export_report 三个 command
+apps/desktop/src-tauri # Tauri shell：list_saves / analyze_save / export_report / guide_links / list_browsers
 data/raw/              # 已提交的数据快照（含手工维护的 crosswalk.json）；运行时绝不联网
 data/catalog.json      # 由 sbsave-tools catalog build 生成的目录库；禁止手改
 ```

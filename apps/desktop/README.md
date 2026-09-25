@@ -5,11 +5,13 @@
 ## 结构
 
 - `src/` —— Vue 3 前端（Vite + TypeScript + Tailwind CSS v4）：
-  - `components/` —— 汇总页、分类页、周目矩阵、详情弹窗、存档选择、关于对话框等
-  - `lib/` —— 前端辅助逻辑（展示、区域、矩阵、状态、攻略链接等）
+  - `components/` —— 汇总页、分类页、周目矩阵、详情弹窗、存档选择、关于/设置对话框等
+  - `lib/` —— 前端辅助逻辑（展示、区域、矩阵、状态、攻略链接、设置等）
   - `App.vue` / `main.ts` / `types.ts` / `styles.css`
 - `src-tauri/` —— Tauri shell：
-  - `src/lib.rs` —— 三个 command：`list_saves` / `analyze_save` / `export_report`
+  - `src/lib.rs` —— command：`list_saves` / `analyze_save` / `export_report` / `guide_links` /
+    `list_browsers`（从注册表读取本机已安装浏览器）
+  - `capabilities/default.json` —— opener 链接白名单（`app: true` 允许用设置中选择的浏览器打开）
   - `tauri.conf.json` —— 应用标识、窗口与打包配置（版本号由 `pnpm bump` 同步）
 - `scripts/bump-version.mjs` —— 发版时同步版本号
 

@@ -5,6 +5,7 @@ import type { Lang } from "../types";
 import { areaAccent } from "../lib/area";
 import { matrixName, obtainLabel } from "../lib/display";
 import { guideFor, openGuide, searchVideoUrl, searchWebUrl } from "../lib/guides";
+import { searchEngine } from "../lib/settings";
 import { matrixPeriodLabel, type MatrixUnit } from "../lib/matrix";
 import MatrixStatusIcon from "./MatrixStatusIcon.vue";
 
@@ -34,8 +35,10 @@ const guides = computed(() => {
 });
 const webLink = computed(() => guides.value?.web ?? null);
 const videoLink = computed(() => guides.value?.video ?? null);
-const webSearchUrl = computed(() => searchWebUrl(props.unit.name));
-const videoSearchUrl = computed(() => searchVideoUrl(props.unit.name));
+const searchName = computed(() => props.unit.name);
+const engineName = computed(() => searchEngine().name);
+const webSearchUrl = computed(() => searchWebUrl(searchName.value));
+const videoSearchUrl = computed(() => searchVideoUrl(searchName.value));
 
 function onKeydown(event: KeyboardEvent) {
   if (event.key === "Escape") emit("close");
@@ -112,21 +115,24 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
                 <Video class="h-3.5 w-3.5" />
                 视频攻略
               </button>
+              <span
+                v-if="webLink || videoLink"
+                class="mx-0.5 h-5 w-px self-center bg-slate-700"
+                aria-hidden="true"
+              ></span>
               <button
-                v-if="!webLink"
                 type="button"
-                class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:bg-slate-800"
-                title="在必应搜索该收集物的中文图文攻略"
+                class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:border-sky-600 hover:bg-slate-800"
+                :title="`在${engineName}搜索「${searchName}」的图文攻略`"
                 @click="openGuide(webSearchUrl)"
               >
                 <Search class="h-3.5 w-3.5" />
                 搜索图文攻略
               </button>
               <button
-                v-if="!videoLink"
                 type="button"
-                class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:bg-slate-800"
-                title="在 B 站搜索该收集物的全收集视频"
+                class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:border-rose-600 hover:bg-slate-800"
+                :title="`在 B 站搜索「${searchName}」的视频攻略`"
                 @click="openGuide(videoSearchUrl)"
               >
                 <Search class="h-3.5 w-3.5" />
