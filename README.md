@@ -1,12 +1,13 @@
 # sblade-explorer（剑星存档收集度分析）
 
 [![CI](https://github.com/perillaroc/sblade-explorer/actions/workflows/ci.yml/badge.svg)](https://github.com/perillaroc/sblade-explorer/actions/workflows/ci.yml)
+![100% Vibe Coded](https://img.shields.io/badge/100%25-Vibe_Coded-blueviolet)
 
 读取 Steam《剑星》(Stellar Blade) 存档，报告尚未收集的收集物。**Windows 桌面应用是主要发布形式**，
 另提供 `sbsave` 命令行工具。只读、离线：绝不修改存档，解析与统计全部在内存中完成，运行时不联网。
 
-> 本项目为 AI 大模型开发项目：全部代码、目录库数据管线与文档均由 AI 大模型生成，
-> 人类负责提出需求、提供数据与最终审阅。
+> [!IMPORTANT] 
+> 本项目采用 100% Vibe Coding 开发：由 AI Agent 负责具体实现。
 
 ## 下载与使用（桌面应用）
 
