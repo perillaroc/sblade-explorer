@@ -3,6 +3,11 @@ export const APP_ID = "sblade-explorer";
 export const APP_LICENSE = "Apache License 2.0";
 export const APP_COPYRIGHT = "Copyright 2026 perillaroc";
 
+// 仓库地址与 src-tauri/capabilities/default.json 的 opener 白名单保持一致。
+export const APP_REPO_LABEL = "GitHub 仓库";
+export const APP_REPO_URL = "https://github.com/perillaroc/sblade-explorer";
+export const APP_REPO_DETAIL = "源代码、问题反馈与版本发布。";
+
 export interface AboutSource {
   name: string;
   detail: string;

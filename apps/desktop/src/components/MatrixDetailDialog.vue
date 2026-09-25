@@ -4,7 +4,8 @@ import { Image, Search, Video, X } from "@lucide/vue";
 import type { Lang } from "../types";
 import { areaAccent } from "../lib/area";
 import { matrixName, obtainLabel } from "../lib/display";
-import { guideFor, openGuide, searchVideoUrl, searchWebUrl } from "../lib/guides";
+import { guideFor, searchVideoUrl, searchWebUrl } from "../lib/guides";
+import { openExternalUrl } from "../lib/links";
 import { searchEngine } from "../lib/settings";
 import { matrixPeriodLabel, type MatrixUnit } from "../lib/matrix";
 import MatrixStatusIcon from "./MatrixStatusIcon.vue";
@@ -100,7 +101,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
                 type="button"
                 class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-200 hover:border-sky-600 hover:bg-slate-800"
                 :title="webLink.title"
-                @click="openGuide(webLink.url)"
+                @click="openExternalUrl(webLink.url)"
               >
                 <Image class="h-3.5 w-3.5" />
                 图文攻略
@@ -110,7 +111,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
                 type="button"
                 class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-200 hover:border-rose-600 hover:bg-slate-800"
                 :title="videoLink.title"
-                @click="openGuide(videoLink.url)"
+                @click="openExternalUrl(videoLink.url)"
               >
                 <Video class="h-3.5 w-3.5" />
                 视频攻略
@@ -124,7 +125,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
                 type="button"
                 class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:border-sky-600 hover:bg-slate-800"
                 :title="`在${engineName}搜索「${searchName}」的图文攻略`"
-                @click="openGuide(webSearchUrl)"
+                @click="openExternalUrl(webSearchUrl)"
               >
                 <Search class="h-3.5 w-3.5" />
                 搜索图文攻略
@@ -133,7 +134,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
                 type="button"
                 class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:border-rose-600 hover:bg-slate-800"
                 :title="`在 B 站搜索「${searchName}」的视频攻略`"
-                @click="openGuide(videoSearchUrl)"
+                @click="openExternalUrl(videoSearchUrl)"
               >
                 <Search class="h-3.5 w-3.5" />
                 搜索视频攻略

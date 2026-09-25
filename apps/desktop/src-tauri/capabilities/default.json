@@ -9,6 +9,7 @@
     {
       "identifier": "opener:allow-open-url",
       "allow": [
+        { "url": "https://github.com/perillaroc/sblade-explorer*", "app": true },
         { "url": "https://www.gamersky.com/*", "app": true },
         { "url": "https://www.bilibili.com/*", "app": true },
         { "url": "https://search.bilibili.com/*", "app": true },

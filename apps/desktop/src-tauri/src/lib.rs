@@ -314,7 +314,7 @@ mod tests {
     }
 
     #[test]
-    fn guide_urls_are_allowed_by_capability_scope() {
+    fn external_urls_are_allowed_by_capability_scope() {
         let manifest_dir = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"));
         let capability: serde_json::Value = serde_json::from_str(
             &std::fs::read_to_string(manifest_dir.join("capabilities/default.json"))
@@ -352,6 +352,13 @@ mod tests {
                 }
             }
         }
+
+        // 关于对话框中的 GitHub 项目链接也走同一白名单，缺失时点击无反应。
+        let repo = "https://github.com/perillaroc/sblade-explorer";
+        assert!(
+            patterns.iter().any(|pattern| pattern.matches(repo)),
+            "项目链接不在能力白名单内: {repo}"
+        );
     }
 
     #[test]
