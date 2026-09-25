@@ -87,6 +87,8 @@ const allRows = computed(() => categoryRows(props.category, "all"));
 
 const isRecords = computed(() => props.category.key === "records");
 
+const isNaytiba = computed(() => props.category.key === "naytiba");
+
 function orderOf(row: ItemRow): number {
   return row.item.order > 0 ? row.item.order : Number.MAX_SAFE_INTEGER;
 }
@@ -95,7 +97,7 @@ function compareOrder(left: ItemRow, right: ItemRow): number {
   return orderOf(left) - orderOf(right) || left.id.localeCompare(right.id);
 }
 
-function memorystickAreas(allRows: ItemRow[], visibleRows: ItemRow[]): RecordAreaGroup[] {
+function groupRowsByArea(allRows: ItemRow[], visibleRows: ItemRow[]): RecordAreaGroup[] {
   const areas = new Map<string, RecordAreaGroup>();
   const ensure = (row: ItemRow) => {
     const key = row.item.area ?? "";
@@ -155,7 +157,7 @@ const recordGroups = computed<RecordGroup[]>(() => {
   for (const row of rows.value) ensure(row).rows.push(row);
   for (const group of groups.values()) {
     if (group.key === "memorystick") {
-      group.areas = memorystickAreas(allByGroup.get(group.key) ?? [], group.rows);
+      group.areas = groupRowsByArea(allByGroup.get(group.key) ?? [], group.rows);
     }
   }
   const order = new Map(RECORD_TYPE_ORDER.map((key, index) => [key, index]));
@@ -167,6 +169,11 @@ const recordGroups = computed<RecordGroup[]>(() => {
 const activeRecordGroup = computed<RecordGroup | null>(() => {
   const groups = recordGroups.value;
   return groups.find((group) => group.key === activeRecordType.value) ?? groups[0] ?? null;
+});
+
+const naytibaGroups = computed<RecordAreaGroup[]>(() => {
+  if (!isNaytiba.value) return [];
+  return groupRowsByArea(allRows.value, rows.value);
 });
 
 watch(recordGroups, (groups) => {
@@ -356,6 +363,41 @@ function onInput(event: Event) {
         </template>
         <ItemTable v-else :rows="activeRecordGroup.rows" :lang="lang" />
       </template>
+    </template>
+    <template v-else-if="isNaytiba">
+      <section v-for="area in naytibaGroups" :key="area.key">
+        <button
+          type="button"
+          class="flex w-full flex-wrap items-center justify-between gap-2 border-t border-slate-800/70 px-4 py-2 text-left"
+          :class="areaAccent(area.key).band"
+          :aria-expanded="!collapsedAreas.has(area.key)"
+          @click="toggleArea(area.key)"
+        >
+          <span
+            class="flex items-center gap-2 text-sm font-semibold"
+            :class="areaAccent(area.key).text"
+          >
+            <component
+              :is="collapsedAreas.has(area.key) ? ChevronRight : ChevronDown"
+              class="h-4 w-4 shrink-0"
+            />
+            <span
+              class="h-2.5 w-2.5 shrink-0 rounded-full"
+              :class="areaAccent(area.key).dot"
+            ></span>
+            {{ area.label }}
+          </span>
+          <span class="text-xs text-slate-400">
+            已收集 {{ area.obtained }}/{{ area.total }}
+          </span>
+        </button>
+        <ItemTable
+          v-if="!collapsedAreas.has(area.key)"
+          :rows="area.rows"
+          :lang="lang"
+          hide-location
+        />
+      </section>
     </template>
     <ItemTable v-else :rows="rows" :lang="lang" />
   </section>
