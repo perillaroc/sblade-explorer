@@ -22,6 +22,10 @@ export interface Summary {
   catalog_obtained: number;
   missing_total: number;
   percent: number;
+  album_total: number;
+  album_obtained: number;
+  album_missing_total: number;
+  album_percent: number;
   obtained_aliases: number;
   unmapped_aliases: number;
 }
@@ -47,6 +51,8 @@ export interface Item {
   record_type: string | null;
   record_type_zh: string | null;
   order: number;
+  desc_zh: string | null;
+  desc_en: string | null;
 }
 
 export interface ObtainedItem {
@@ -70,11 +76,14 @@ export interface ObtainedItem {
   record_type: string | null;
   record_type_zh: string | null;
   order: number;
+  desc_zh: string | null;
+  desc_en: string | null;
 }
 
 export interface CategoryResult {
   key: string;
   name: string;
+  section: string;
   total: number;
   obtained: number;
   missing: Item[];

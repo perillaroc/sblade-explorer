@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { Clock, Gauge, IdCard, Package, Repeat } from "@lucide/vue";
+import { BookOpen, Clock, Gauge, IdCard, Package, Repeat } from "@lucide/vue";
 import type { Analysis } from "../types";
 
 const props = defineProps<{ analysis: Analysis }>();
@@ -68,6 +68,20 @@ const playTimeLabel = computed(() => {
       </div>
       <div class="mt-2 text-xs text-slate-500">
         已获得别名 {{ summary.obtained_aliases }} · 未映射 {{ summary.unmapped_aliases }}
+      </div>
+    </div>
+    <div class="mt-3">
+      <div class="mb-1 flex justify-between text-xs text-slate-400">
+        <span class="inline-flex items-center gap-1">
+          <BookOpen class="h-3.5 w-3.5" />
+          图鉴进度 {{ summary.album_obtained }}/{{ summary.album_total }}
+        </span>
+        <span>
+          {{ summary.album_percent.toFixed(1) }}% · 未收集 {{ summary.album_missing_total }}（不计入目录进度）
+        </span>
+      </div>
+      <div class="h-2 overflow-hidden rounded bg-slate-800">
+        <div class="h-full rounded bg-sky-500" :style="{ width: `${summary.album_percent}%` }"></div>
       </div>
     </div>
   </section>

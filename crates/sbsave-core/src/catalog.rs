@@ -35,6 +35,7 @@ pub struct Category {
     pub key: String,
     pub name: String,
     pub order: i64,
+    pub section: String,
     pub aliases: Vec<String>,
 }
 
@@ -73,6 +74,8 @@ pub struct CatalogItem {
     pub record_type_zh: Option<String>,
     pub order: i64,
     pub guides: Option<Guides>,
+    pub desc_zh: Option<String>,
+    pub desc_en: Option<String>,
 }
 
 impl CatalogItem {
@@ -230,6 +233,8 @@ fn parse_item(raw: &JsonValue) -> CatalogItem {
         record_type_zh: json_str(raw, "record_type_zh"),
         order: raw.get("order").and_then(JsonValue::as_i64).unwrap_or(0),
         guides: raw.get("guides").and_then(parse_guides),
+        desc_zh: json_str(raw, "desc_zh"),
+        desc_en: json_str(raw, "desc_en"),
     }
 }
 
@@ -242,12 +247,14 @@ fn parse_catalog(payload: &JsonValue) -> Catalog {
                 .filter(|name| !name.is_empty())
                 .unwrap_or_else(|| key.clone());
             let order = raw.get("order").and_then(JsonValue::as_i64).unwrap_or(100);
+            let section = json_str(raw, "section").unwrap_or_else(|| "collection".to_string());
             categories.insert(
                 key.clone(),
                 Category {
                     key,
                     name,
                     order,
+                    section,
                     aliases: Vec::new(),
                 },
             );
@@ -265,6 +272,7 @@ fn parse_catalog(payload: &JsonValue) -> Catalog {
                 key: item.category.clone(),
                 name: item.category.clone(),
                 order: 100,
+                section: "collection".to_string(),
                 aliases: Vec::new(),
             });
     }
@@ -327,6 +335,8 @@ fn merge(catalog: &mut Catalog, payload: &JsonValue) {
                             key,
                             name,
                             order,
+                            section: json_str(raw, "section")
+                                .unwrap_or_else(|| "collection".to_string()),
                             aliases: Vec::new(),
                         },
                     );
@@ -354,6 +364,7 @@ fn merge(catalog: &mut Catalog, payload: &JsonValue) {
                     key: category.clone(),
                     name: category,
                     order: 100,
+                    section: "collection".to_string(),
                     aliases: Vec::new(),
                 });
         }

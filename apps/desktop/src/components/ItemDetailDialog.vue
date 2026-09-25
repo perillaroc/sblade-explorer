@@ -3,7 +3,7 @@ import { computed, onMounted, onUnmounted } from "vue";
 import { CircleCheck, CircleX, Image, Search, Video, X } from "@lucide/vue";
 import type { Lang } from "../types";
 import { areaAccent } from "../lib/area";
-import { areaLabel, itemName, locationLabel, obtainLabel } from "../lib/display";
+import { areaLabel, descLabel, itemName, locationLabel, obtainLabel } from "../lib/display";
 import { guideFor, openGuide, searchVideoUrl, searchWebUrl } from "../lib/guides";
 import { searchEngine } from "../lib/settings";
 import type { ItemRow } from "../lib/items";
@@ -30,6 +30,7 @@ const name = computed(() => itemName(item.value, props.lang));
 const area = computed(() => areaLabel(item.value, props.lang));
 const location = computed(() => locationLabel(item.value, props.lang));
 const obtain = computed(() => obtainLabel(item.value, props.lang));
+const desc = computed(() => descLabel(item.value, props.lang));
 const guides = computed(() => guideFor(props.row.id));
 const webLink = computed(() => guides.value?.web ?? null);
 const videoLink = computed(() => guides.value?.video ?? null);
@@ -118,6 +119,13 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
         </header>
 
         <div class="space-y-4 px-4 py-3">
+          <div v-if="desc">
+            <h4 class="text-xs font-semibold text-slate-400">图鉴说明</h4>
+            <p class="mt-1 whitespace-pre-wrap text-xs leading-5 text-slate-300">
+              {{ desc }}
+            </p>
+          </div>
+
           <div>
             <h4 class="text-xs font-semibold text-slate-400">获取方式</h4>
             <p class="mt-1 whitespace-pre-wrap text-xs leading-5 text-slate-300">

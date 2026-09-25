@@ -26,6 +26,20 @@ function categoryPercent(obtained: number, total: number): number {
   if (total === 0) return 0;
   return (obtained / total) * 100;
 }
+
+const categoryGroups = computed(() => {
+  const categories = props.analysis?.categories ?? [];
+  return [
+    {
+      label: "可收集物分类",
+      categories: categories.filter((category) => category.section !== "album"),
+    },
+    {
+      label: "图鉴（不计入总进度）",
+      categories: categories.filter((category) => category.section === "album"),
+    },
+  ];
+});
 </script>
 
 <template>
@@ -60,38 +74,41 @@ function categoryPercent(obtained: number, total: number): number {
       </button>
 
       <template v-if="analysis">
-        <div class="px-3 pb-1 pt-3 text-[11px] text-slate-500">可收集物分类</div>
-        <button
-          v-for="category in analysis.categories"
-          :key="category.key"
-          type="button"
-          class="w-full rounded px-3 py-2 text-left text-sm transition-colors"
-          :class="
-            active === category.key
-              ? 'bg-slate-800 text-white'
-              : 'text-slate-300 hover:bg-slate-800/60'
-          "
-          @click="emit('navigate', category.key)"
-        >
-          <div class="flex items-center justify-between gap-2">
-            <span class="inline-flex min-w-0 items-center gap-2">
-              <component
-                :is="categoryIcon(category.key)"
-                class="h-4 w-4 shrink-0 text-slate-400"
-              />
-              <span class="truncate">{{ category.name }}</span>
-            </span>
-            <span class="shrink-0 text-xs text-slate-400">
-              {{ category.obtained }}/{{ category.total }}
-            </span>
-          </div>
-          <div class="mt-1.5 h-1 overflow-hidden rounded bg-slate-800">
-            <div
-              class="h-full rounded bg-emerald-500"
-              :style="{ width: `${categoryPercent(category.obtained, category.total)}%` }"
-            ></div>
-          </div>
-        </button>
+        <template v-for="group in categoryGroups" :key="group.label">
+          <div class="px-3 pb-1 pt-3 text-[11px] text-slate-500">{{ group.label }}</div>
+          <button
+            v-for="category in group.categories"
+            :key="category.key"
+            type="button"
+            class="w-full rounded px-3 py-2 text-left text-sm transition-colors"
+            :class="
+              active === category.key
+                ? 'bg-slate-800 text-white'
+                : 'text-slate-300 hover:bg-slate-800/60'
+            "
+            @click="emit('navigate', category.key)"
+          >
+            <div class="flex items-center justify-between gap-2">
+              <span class="inline-flex min-w-0 items-center gap-2">
+                <component
+                  :is="categoryIcon(category.key)"
+                  class="h-4 w-4 shrink-0 text-slate-400"
+                />
+                <span class="truncate">{{ category.name }}</span>
+              </span>
+              <span class="shrink-0 text-xs text-slate-400">
+                {{ category.obtained }}/{{ category.total }}
+              </span>
+            </div>
+            <div class="mt-1.5 h-1 overflow-hidden rounded bg-slate-800">
+              <div
+                class="h-full rounded"
+                :class="category.section === 'album' ? 'bg-sky-500' : 'bg-emerald-500'"
+                :style="{ width: `${categoryPercent(category.obtained, category.total)}%` }"
+              ></div>
+            </div>
+          </button>
+        </template>
       </template>
     </nav>
     <footer class="space-y-1 border-t border-slate-800 p-2">

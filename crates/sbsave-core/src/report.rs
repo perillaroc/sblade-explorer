@@ -227,6 +227,10 @@ fn is_matrix_category(key: &str) -> bool {
     MATRIX_CATEGORIES.contains(&key)
 }
 
+fn is_album_category(result: &CategoryResult) -> bool {
+    result.category.section == "album"
+}
+
 fn print_item_matrix(result: &CategoryResult, save: &SaveData, lang: &str) -> String {
     let mut out = String::new();
     out.push_str(&format!(
@@ -321,11 +325,21 @@ pub fn print_report(analysis: &Analysis, show_all: bool, lang: &str) -> String {
         analysis.percent(),
         analysis.missing_total()
     ));
+    out.push_str(&format!(
+        "图鉴进度: {}/{} ({:.1}%) | 未收集: {}（不计入目录进度）\n",
+        analysis.album_obtained,
+        analysis.album_total,
+        analysis.album_percent(),
+        analysis.album_missing_total()
+    ));
     out.push('\n');
 
     out.push_str("分类汇总\n");
     out.push_str("分类 | 进度 | 缺失 | 其中需多周目/DLC | 未映射别名\n");
     for result in &analysis.categories {
+        if is_album_category(result) {
+            continue;
+        }
         out.push_str(&format!(
             "{} | {}/{} ({:.0}%) | {} | {} | {}\n",
             result.category.name,
@@ -335,6 +349,22 @@ pub fn print_report(analysis: &Analysis, show_all: bool, lang: &str) -> String {
             result.missing.len(),
             result.blocked_count,
             result.extra_obtained.len()
+        ));
+    }
+
+    out.push_str("\n图鉴汇总（不计入目录进度）\n");
+    out.push_str("图鉴 | 进度 | 缺失\n");
+    for result in &analysis.categories {
+        if !is_album_category(result) {
+            continue;
+        }
+        out.push_str(&format!(
+            "{} | {}/{} ({:.0}%) | {}\n",
+            result.category.name,
+            result.obtained_count,
+            result.total,
+            result.percent(),
+            result.missing.len()
         ));
     }
 
@@ -474,6 +504,14 @@ fn catalog_item_to_dict(item: &CatalogItem) -> Value {
         "record_type_zh".to_string(),
         optional_string(item.record_type_zh.as_deref()),
     );
+    object.insert(
+        "desc_zh".to_string(),
+        optional_string(item.desc_zh.as_deref()),
+    );
+    object.insert(
+        "desc_en".to_string(),
+        optional_string(item.desc_en.as_deref()),
+    );
     object.insert("order".to_string(), Value::from(item.order));
     Value::Object(object)
 }
@@ -544,6 +582,14 @@ fn item_to_dict(status: &ItemStatus) -> Value {
         "record_type_zh".to_string(),
         optional_string(item.record_type_zh.as_deref()),
     );
+    object.insert(
+        "desc_zh".to_string(),
+        optional_string(item.desc_zh.as_deref()),
+    );
+    object.insert(
+        "desc_en".to_string(),
+        optional_string(item.desc_en.as_deref()),
+    );
     object.insert("order".to_string(), Value::from(item.order));
     Value::Object(object)
 }
@@ -557,6 +603,10 @@ fn category_to_dict(result: &CategoryResult, include_obtained: bool) -> Value {
     object.insert(
         "name".to_string(),
         Value::String(result.category.name.clone()),
+    );
+    object.insert(
+        "section".to_string(),
+        Value::String(result.category.section.clone()),
     );
     object.insert("total".to_string(), Value::from(result.total));
     object.insert("obtained".to_string(), Value::from(result.obtained_count));
@@ -637,6 +687,19 @@ pub fn analysis_to_dict(analysis: &Analysis, include_obtained: bool) -> Value {
         "percent".to_string(),
         Value::from(round2(analysis.percent())),
     );
+    summary.insert("album_total".to_string(), Value::from(analysis.album_total));
+    summary.insert(
+        "album_obtained".to_string(),
+        Value::from(analysis.album_obtained),
+    );
+    summary.insert(
+        "album_missing_total".to_string(),
+        Value::from(analysis.album_missing_total()),
+    );
+    summary.insert(
+        "album_percent".to_string(),
+        Value::from(round2(analysis.album_percent())),
+    );
     summary.insert(
         "obtained_aliases".to_string(),
         Value::from(save.all_obtained().len()),
@@ -695,7 +758,7 @@ pub fn render_markdown(analysis: &Analysis, lang: &str) -> String {
     ));
     lines.push(String::new());
     lines.push(format!(
-        "- SteamID: {}\n- 周目: {} (NG+{})\n- 难度: {}\n- 游玩时间: {}\n- 目录进度: {}/{} ({:.1}%)\n- 未收集: {}",
+        "- SteamID: {}\n- 周目: {} (NG+{})\n- 难度: {}\n- 游玩时间: {}\n- 目录进度: {}/{} ({:.1}%)\n- 图鉴进度: {}/{} ({:.1}%)\n- 未收集: {}（图鉴 {}）",
         save.steam_id.as_deref().unwrap_or("未知"),
         save.playthrough_label(),
         save.ng_plus_count(),
@@ -704,7 +767,11 @@ pub fn render_markdown(analysis: &Analysis, lang: &str) -> String {
         analysis.catalog_obtained,
         analysis.catalog_total,
         analysis.percent(),
-        analysis.missing_total()
+        analysis.album_obtained,
+        analysis.album_total,
+        analysis.album_percent(),
+        analysis.missing_total(),
+        analysis.album_missing_total()
     ));
     lines.push(String::new());
     lines.push("## 分类汇总".to_string());
@@ -712,6 +779,9 @@ pub fn render_markdown(analysis: &Analysis, lang: &str) -> String {
     lines.push("| 分类 | 进度 | 缺失 | 需多周目/DLC |".to_string());
     lines.push("| --- | ---: | ---: | ---: |".to_string());
     for result in &analysis.categories {
+        if is_album_category(result) {
+            continue;
+        }
         lines.push(format!(
             "| {} | {}/{} ({:.0}%) | {} | {} |",
             result.category.name,
@@ -720,6 +790,24 @@ pub fn render_markdown(analysis: &Analysis, lang: &str) -> String {
             result.percent(),
             result.missing.len(),
             result.blocked_count
+        ));
+    }
+    lines.push(String::new());
+    lines.push("## 图鉴汇总（不计入目录进度）".to_string());
+    lines.push(String::new());
+    lines.push("| 图鉴 | 进度 | 缺失 |".to_string());
+    lines.push("| --- | ---: | ---: |".to_string());
+    for result in &analysis.categories {
+        if !is_album_category(result) {
+            continue;
+        }
+        lines.push(format!(
+            "| {} | {}/{} ({:.0}%) | {} |",
+            result.category.name,
+            result.obtained_count,
+            result.total,
+            result.percent(),
+            result.missing.len()
         ));
     }
     for result in &analysis.categories {

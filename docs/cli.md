@@ -22,6 +22,10 @@ cargo run -p sbsave-cli -- saves
 
 分析并输出中文控制台报告，可导出 JSON/Markdown；支持指定存档/槽位/分类/语言，并可列出已收集物品。
 
+报告分两段：**收集品**（13 类，计入目录进度）与**图鉴**（孽奇拔 67 + 角色 55，单列、不计入目录进度）。
+JSON 的 `summary` 同时包含 `catalog_*`（收集品）与 `album_*`（图鉴）字段，每个分类带
+`section`（`collection`/`album`）；图鉴条目另带 `desc_zh`/`desc_en` 官方说明。
+
 ```powershell
 cargo run -p sbsave-cli -- report
 cargo run -p sbsave-cli -- report --save "C:\...\StellarBladeSave00.sav" --slot 0

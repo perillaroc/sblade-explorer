@@ -286,9 +286,10 @@ mod tests {
         };
         let value = analyze_save(Some(path), None, None).expect("analyze");
         assert_eq!(value["summary"]["catalog_total"].as_u64(), Some(810));
+        assert_eq!(value["summary"]["album_total"].as_u64(), Some(122));
         assert!(value["categories"]
             .as_array()
-            .is_some_and(|categories| categories.len() == 13));
+            .is_some_and(|categories| categories.len() == 15));
     }
 
     #[test]

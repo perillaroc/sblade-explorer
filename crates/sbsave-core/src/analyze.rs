@@ -58,12 +58,29 @@ pub struct Analysis<'a> {
     pub unmapped_obtained: Vec<String>,
     pub catalog_total: usize,
     pub catalog_obtained: usize,
+    pub album_total: usize,
+    pub album_obtained: usize,
+}
+
+fn is_album(category: &Category) -> bool {
+    category.section == "album"
 }
 
 impl Analysis<'_> {
+    /// Missing entries of the collectible categories (excludes the album).
     pub fn missing_total(&self) -> usize {
         self.categories
             .iter()
+            .filter(|result| !is_album(result.category))
+            .map(|result| result.missing.len())
+            .sum()
+    }
+
+    /// Missing entries of the album categories (图鉴).
+    pub fn album_missing_total(&self) -> usize {
+        self.categories
+            .iter()
+            .filter(|result| is_album(result.category))
             .map(|result| result.missing.len())
             .sum()
     }
@@ -73,6 +90,14 @@ impl Analysis<'_> {
             0.0
         } else {
             self.catalog_obtained as f64 / self.catalog_total as f64 * 100.0
+        }
+    }
+
+    pub fn album_percent(&self) -> f64 {
+        if self.album_total == 0 {
+            0.0
+        } else {
+            self.album_obtained as f64 / self.album_total as f64 * 100.0
         }
     }
 }
@@ -165,7 +190,7 @@ pub fn analyze<'a>(
             let is_obtained = item
                 .satisfy_aliases()
                 .iter()
-                .any(|alias| obtained.contains(*alias));
+                .any(|alias| obtained.contains(*alias) || save.achievements.contains_key(*alias));
             let reason = if is_obtained {
                 None
             } else {
@@ -214,13 +239,33 @@ pub fn analyze<'a>(
         .collect();
     unmapped_obtained.sort();
 
-    let catalog_total = results.iter().map(|result| result.total).sum();
-    let catalog_obtained = results.iter().map(|result| result.obtained_count).sum();
+    let catalog_total = results
+        .iter()
+        .filter(|result| !is_album(result.category))
+        .map(|result| result.total)
+        .sum();
+    let catalog_obtained = results
+        .iter()
+        .filter(|result| !is_album(result.category))
+        .map(|result| result.obtained_count)
+        .sum();
+    let album_total = results
+        .iter()
+        .filter(|result| is_album(result.category))
+        .map(|result| result.total)
+        .sum();
+    let album_obtained = results
+        .iter()
+        .filter(|result| is_album(result.category))
+        .map(|result| result.obtained_count)
+        .sum();
     Analysis {
         save,
         categories: results,
         unmapped_obtained,
         catalog_total,
         catalog_obtained,
+        album_total,
+        album_obtained,
     }
 }

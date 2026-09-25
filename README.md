@@ -33,9 +33,12 @@
 
 ## 主要功能
 
-- **汇总页**：SteamID、周目/难度/游玩时间、总进度条与 13 类收集物的分类汇总。
+- **汇总页**：SteamID、周目/难度/游玩时间、总进度条、13 类收集物的分类汇总与独立的图鉴进度
+  （孽奇拔 67 + 角色 55，不计入目录进度）。
 - **13 类收集物**：纳米战衣、罐子、记录（文档/记忆棒）、密码、营地、发型、眼镜/面饰、耳饰、
   无人机外观、亚当服装、莉莉服装、设计图案、鱼类；每类独立页面显示进度条。
+- **图鉴页**：孽奇拔 67 条（按小兵/战士/精锐/阿尔法/上古分组）与角色 55 页
+  （`艾德姆（资料 3/5）` 形式），详情显示游戏内官方说明（怪物「生态情报/战斗情报」、角色剧情资料）。
 - **筛选与搜索**：按已收集/未收集/全部筛选，按名称/地点/ID 搜索；列表条目点击弹出详情。
 - **详情弹窗**：获取方式、中文攻略链接（游民星空图文 / B 站视频）与「搜索图文攻略 / 搜索视频攻略」
   按钮（必应 / B 站检索）、未收集原因、周目/DLC/可错过标记、记录类型、备注、别名、数据来源与映射置信度。
@@ -48,15 +51,17 @@
   「搜索图文攻略」使用的搜索引擎（必应 / 百度 / 谷歌），设置仅保存在本机。
 - **关于**：左下角「关于」对话框列明外部数据来源、版权与免责声明。
 
-统计口径：物品任一别名出现在存档物品集合或成就派生别名中即视为已收集。目录库共 810 条 / 13 分类
-（纳米战衣 126、罐子 49、营地 89、记录 310、设计图案 87、鱼类 35 等），详见 [docs/data.md](docs/data.md)。
+统计口径：物品任一别名出现在存档物品集合或成就派生别名中即视为已收集；图鉴条目以
+`Ach_Album_Unlock_*` 成就出现即视为已解锁。目录库共 932 条 / 15 分类：13 类收集品 810 条
+（纳米战衣 126、罐子 49、营地 89、记录 310、设计图案 87、鱼类 35 等，计入总进度）+ 图鉴 122 条
+（孽奇拔 67、角色 55，单列不计入总进度），详见 [docs/data.md](docs/data.md)。
 
 ## 数据来源
 
 - [stellarbladeguide.com](https://stellarbladeguide.com) —— 物品英文名称、位置描述、周目标签
 - [stellar-blade-macos-save-editor](https://github.com/wuxiao00j/stellar-blade-macos-save-editor) —— 简体中文物品名称与别名映射
 - [Stellar-Blade-100-completion-save-file](https://github.com/lecher-wang/Stellar-Blade-100-completion-save-file) —— 别名全集与数据校验
-- 游戏本体数据表（`ItemTable`、`ZoneCampTable`）与 `Game.locres`（zh-Hans/en）—— 内部别名到官方名称的精确映射
+- 游戏本体数据表（`ItemTable`、`ZoneCampTable`、`AlbumTable`）与 `Game.locres`（zh-Hans/en）—— 内部别名到官方名称的精确映射
 - [mapgenie.io](https://mapgenie.io/stellar-blade/guides/memory-sticks) 与 [游民星空](https://www.gamersky.com/handbook/202507/1953527.shtml) —— 记忆棒的游戏内数据库选单顺序
 - [游民星空](https://www.gamersky.com/handbook/202404/1738505.shtml) 与 [哔哩哔哩](https://www.bilibili.com/video/BV1Wfj1ztEuj) —— 内置中文攻略链接（仅由系统浏览器打开）
 

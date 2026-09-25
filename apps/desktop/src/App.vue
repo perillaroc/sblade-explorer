@@ -126,7 +126,9 @@ onMounted(() => {
           </h2>
           <span v-if="analysis" class="text-xs text-slate-500">
             目录进度 {{ analysis.summary.catalog_obtained }}/{{ analysis.summary.catalog_total }}
-            ({{ analysis.summary.percent.toFixed(1) }}%)
+            ({{ analysis.summary.percent.toFixed(1) }}%) · 图鉴
+            {{ analysis.summary.album_obtained }}/{{ analysis.summary.album_total }}
+            ({{ analysis.summary.album_percent.toFixed(1) }}%)
           </span>
         </div>
         <div class="flex items-center gap-2">

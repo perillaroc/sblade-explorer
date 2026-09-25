@@ -4,7 +4,7 @@ use std::path::PathBuf;
 use sbsave_core::analyze::analyze;
 use sbsave_core::catalog::load_catalog;
 use sbsave_core::gvas::{EngineVersion, GvasFile, GvasHeader};
-use sbsave_core::savegame::SaveData;
+use sbsave_core::savegame::{AchievementRecord, SaveData};
 
 fn make_header() -> GvasHeader {
     GvasHeader {
@@ -45,6 +45,19 @@ fn make_save(obtained: &[&str], derived: &[&str], ng_plus: i64) -> SaveData {
         shop_purchases: HashMap::new(),
         friendships: HashMap::new(),
     }
+}
+
+fn with_achievements(mut save: SaveData, aliases: &[&str]) -> SaveData {
+    for alias in aliases {
+        save.achievements.insert(
+            alias.to_string(),
+            AchievementRecord {
+                alias: alias.to_string(),
+                ..AchievementRecord::default()
+            },
+        );
+    }
+    save
 }
 
 #[test]
@@ -129,4 +142,46 @@ fn unmapped_aliases() {
         result.unmapped_obtained,
         vec!["Weird_Alias_123".to_string()]
     );
+}
+
+#[test]
+fn album_achievements_count_as_obtained() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = with_achievements(
+        make_save(&[], &[], 0),
+        &["Ach_Album_Unlock_ThornHead", "Ach_Album_Unlock_Adam_3"],
+    );
+    let result = analyze(&save, &catalog, None);
+
+    let naytiba = result
+        .categories
+        .iter()
+        .find(|category| category.category.key == "naytiba")
+        .expect("naytiba");
+    assert_eq!(naytiba.total, 67);
+    assert_eq!(naytiba.obtained_count, 1);
+    assert_eq!(naytiba.missing.len(), 66);
+
+    let characters = result
+        .categories
+        .iter()
+        .find(|category| category.category.key == "characters")
+        .expect("characters");
+    assert_eq!(characters.total, 55);
+    assert_eq!(characters.obtained_count, 1);
+
+    // 图鉴不计入目录进度
+    assert_eq!(result.catalog_total, 810);
+    assert_eq!(result.catalog_obtained, 0);
+    assert_eq!(result.missing_total(), 810);
+    assert_eq!(result.album_total, 122);
+    assert_eq!(result.album_obtained, 2);
+    assert_eq!(result.album_missing_total(), 120);
+    assert!(result.unmapped_obtained.is_empty());
+
+    let filter = vec!["naytiba".to_string()];
+    let album_only = analyze(&save, &catalog, Some(filter.as_slice()));
+    assert_eq!(album_only.catalog_total, 0);
+    assert_eq!(album_only.album_total, 67);
+    assert_eq!(album_only.album_obtained, 1);
 }

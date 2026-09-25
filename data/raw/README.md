@@ -13,7 +13,7 @@
 | `crosswalk.json` | 手工维护的别名对照（site id -> 别名 -> 中文名，目录库生成器的唯一事实来源）；`record_type_overrides` 覆盖无法按名称自动匹配的记录类型 |
 | `memorystick_order.json` | 记忆棒的游戏内数据库选单顺序（按区域分组、组内顺序，覆盖全部 186 条；据 Map Genie 与游民星空列表整理） |
 | `guides.json` | 手工维护的中文攻略链接快照（游民星空图文 + B 站「喂狗组-文轩」全收集视频）；`catalog build` 解析为每条物品的 `guides.web` / `guides.video`；纳米战衣与设计图逐件对应游民星空服装图鉴分页 |
-| `game/name_map.json` | 游戏数据表 + `Game.locres` 提取的内部别名→官方名称映射（生成物） |
+| `game/name_map.json` | 游戏数据表 + `Game.locres` 提取的内部别名→官方名称映射（生成物；含 `items`、`camps`、`album` 三段） |
 | `reference/Sources_TrainerCore_*.swift` | 中文名称对照（来自 stellar-blade-macos-save-editor） |
 | `reference/*.sav` | 参考存档（仅本地校验用，已在 .gitignore 中忽略） |
 
@@ -27,8 +27,9 @@
 - `api/i18n/` —— 上述英文攻略文案的手工简体中文翻译（名称仍以游戏本地化为准）
 - <https://github.com/wuxiao00j/stellar-blade-macos-save-editor> —— 简体中文名称
 - <https://github.com/lecher-wang/Stellar-Blade-100-completion-save-file> —— 别名全集校验
-- 游戏本体数据表（`ItemTable`、`ZoneCampTable`）与 `Game.locres`（zh-Hans/en）——
-  内部别名到官方名称的精确映射，经 `cargo run -p sbsave-tools -- mine-names` 生成 `game/name_map.json`
+- 游戏本体数据表（`ItemTable`、`ZoneCampTable`、`AlbumTable`）与 `Game.locres`（zh-Hans/en）——
+  内部别名到官方名称的精确映射，经 `cargo run -p sbsave-tools -- mine-names` 生成 `game/name_map.json`；
+  `album` 段收录图鉴数据表的孽奇拔（67）与角色（55 页）条目，含官方说明文字
 - <https://www.gamersky.com>（《剑星》全收集攻略、全饮料罐、全钓鱼点、全宝箱密码等）与
   <https://www.bilibili.com>（喂狗组-文轩「剑星全收集」分 P 视频）—— `guides.json` 的中文攻略链接；
   仅在桌面端点按按钮时由系统浏览器打开，程序运行时不联网
@@ -70,9 +71,13 @@ cargo run -p sbsave-tools -- mine-names `
   --tools path\to\tools
 ```
 
-`--game` 会把数据表导出到 `data/raw/game/dump`（已在 .gitignore 中忽略）并解包
-`Game.{zh-Hans,en}.locres`，然后写出 `data/raw/game/name_map.json`。也可以先用
+`--game` 会把 `ItemTable`、`ZoneCampTable`、`AlbumTable` 导出到 `data/raw/game/dump`
+（已在 .gitignore 中忽略）并解包 `Game.{zh-Hans,en}.locres`，然后写出
+`data/raw/game/name_map.json`（`items`/`camps`/`album` 三段）。也可以先用
 `retoc`/`cue4parse` 自行导出，再用 `--dump 目录` 离线运行。
+
+> `repak` 解包 Oodle 压缩的 pak 需要 `oo2core_9_win64.dll`：放在 tools 目录即可；
+> 若首次运行自动下载失败，可设置 `HTTP_PROXY`/`HTTPS_PROXY` 走本机代理。
 
 ## 刷新 API 数据（需要可访问外网）
 

@@ -10,8 +10,8 @@ fn catalog_build_matches_committed_file() {
         output.bytes, committed,
         "data/catalog.json 与生成结果不一致，请运行 cargo run -p sbsave-tools -- catalog build"
     );
-    assert_eq!(output.item_count, 810);
-    assert_eq!(output.alias_count, 820);
+    assert_eq!(output.item_count, 932);
+    assert_eq!(output.alias_count, 942);
 }
 
 #[test]
@@ -24,7 +24,23 @@ fn catalog_build_attaches_guide_links() {
     let mut with_web = 0;
     let mut with_video = 0;
     let mut without_guides: Vec<&str> = Vec::new();
+    let mut album_items = 0;
     for item in items {
+        let category = item["category"].as_str().unwrap_or_default();
+        if category == "naytiba" || category == "characters" {
+            album_items += 1;
+            assert!(
+                item.get("desc_zh").is_some(),
+                "图鉴条目缺少说明文字: {}",
+                item["id"]
+            );
+            assert!(
+                item.get("guides").is_none(),
+                "图鉴条目不应有攻略链接: {}",
+                item["id"]
+            );
+            continue;
+        }
         let Some(guides) = item.get("guides") else {
             without_guides.push(item["id"].as_str().expect("item id"));
             continue;
@@ -47,6 +63,8 @@ fn catalog_build_attaches_guide_links() {
     // Regression sentinels: keep the Chinese guide coverage from shrinking.
     assert_eq!(with_web, 804);
     assert_eq!(with_video, 696);
+    // 图鉴条目（孽奇拔 67 + 角色 55）没有攻略链接、但有官方说明
+    assert_eq!(album_items, 122);
     // 仅默认外观类条目没有可链接的攻略（发型：默认马尾与首领挑战奖励）
     assert_eq!(without_guides, ["Hair_000", "Hair_Nikke_01"]);
 }

@@ -73,6 +73,13 @@ export function obtainLabel(
   return localized(item.obtain_zh, item.obtain, lang);
 }
 
+export function descLabel(
+  item: { desc_zh?: string | null; desc_en?: string | null },
+  lang: Lang,
+): string {
+  return localized(item.desc_zh, item.desc_en, lang);
+}
+
 const REPLACE_LEAD_ZH = /^在\s*NG\+\+?\s*中替换[^。]*。\s*/;
 const REPLACE_LEAD_EN = /^Replaces\s+.+?\s+(?:on|in)\s+NG\+\+?[.!]?\s*/i;
 

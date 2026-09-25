@@ -20,25 +20,36 @@ const SOURCES: [&str; 6] = [
     "https://stellarbladeguide.com (collectibles, cosmetics, locations, cycles)",
     "https://github.com/wuxiao00j/stellar-blade-macos-save-editor (Simplified Chinese names)",
     "https://github.com/lecher-wang/Stellar-Blade-100-completion-save-file (alias universe)",
-    "Stellar Blade game tables + zh-Hans/en Game.locres (mined names, data/raw/game/name_map.json)",
+    "Stellar Blade game tables (ItemTable, ZoneCampTable, AlbumTable) + zh-Hans/en Game.locres (mined names, data/raw/game/name_map.json)",
     "data/raw/api/i18n (hand maintained Chinese translations of guide region/location/obtain text)",
     "https://mapgenie.io + https://www.gamersky.com (in-game Data Bank order of memorysticks)",
 ];
 
-const CATEGORIES: [(&str, &str, i64); 13] = [
-    ("nano_suits", "纳米战衣", 10),
-    ("cans", "罐子", 20),
-    ("records", "记录(文档/记忆棒)", 30),
-    ("passcodes", "密码", 40),
-    ("camps", "营地", 50),
-    ("hair", "发型", 60),
-    ("glasses", "眼镜/面饰", 70),
-    ("earrings", "耳饰", 80),
-    ("drone_seals", "无人机外观", 90),
-    ("adam_costumes", "亚当服装", 100),
-    ("lily_costumes", "莉莉服装", 110),
-    ("design_patterns", "设计图案", 120),
-    ("fish", "鱼类", 130),
+const CATEGORIES: [(&str, &str, i64, &str); 15] = [
+    ("nano_suits", "纳米战衣", 10, "collection"),
+    ("cans", "罐子", 20, "collection"),
+    ("records", "记录(文档/记忆棒)", 30, "collection"),
+    ("passcodes", "密码", 40, "collection"),
+    ("camps", "营地", 50, "collection"),
+    ("hair", "发型", 60, "collection"),
+    ("glasses", "眼镜/面饰", 70, "collection"),
+    ("earrings", "耳饰", 80, "collection"),
+    ("drone_seals", "无人机外观", 90, "collection"),
+    ("adam_costumes", "亚当服装", 100, "collection"),
+    ("lily_costumes", "莉莉服装", 110, "collection"),
+    ("design_patterns", "设计图案", 120, "collection"),
+    ("fish", "鱼类", 130, "collection"),
+    ("naytiba", "孽奇拔", 140, "album"),
+    ("characters", "角色", 150, "album"),
+];
+
+// In-game album (`AlbumTable`) groups used for the 孽奇拔 category order.
+const NATIVE_GROUPS: [(&str, i64); 5] = [
+    ("UI_Album_Native_Category_Minion", 1),
+    ("UI_Album_Native_Category_Warrior", 2),
+    ("UI_Album_Native_Category_Elite", 3),
+    ("UI_Album_Native_Category_Alpha", 4),
+    ("UI_Album_Native_Category_Elder", 5),
 ];
 
 // In-game Data Bank record types (order follows the game's Records menu).
@@ -220,6 +231,10 @@ struct CatalogItem {
     order: Option<i64>,
     #[serde(skip_serializing_if = "Option::is_none")]
     guides: Option<GuideSet>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    desc_zh: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    desc_en: Option<String>,
 }
 
 #[derive(Serialize)]
@@ -227,6 +242,7 @@ struct CategoryEntry {
     key: &'static str,
     name: &'static str,
     order: i64,
+    section: &'static str,
 }
 
 #[derive(Serialize)]
@@ -442,6 +458,8 @@ fn make_item(
         record_type_zh: None,
         order: None,
         guides: None,
+        desc_zh: None,
+        desc_en: None,
     }
 }
 
@@ -480,6 +498,8 @@ fn plain_item(
         record_type_zh: None,
         order: None,
         guides: None,
+        desc_zh: None,
+        desc_en: None,
     }
 }
 
@@ -1069,6 +1089,139 @@ fn validate_crosswalk_titles(
         }
     }
     Ok(())
+}
+
+fn build_album(game_names: &Value) -> Result<Vec<CatalogItem>, String> {
+    let album = game_names
+        .get("album")
+        .and_then(Value::as_object)
+        .ok_or_else(|| "name_map.json 缺少 album 映射".to_string())?;
+    let page_re = Regex::new(r"_(\d+)$").expect("page regex");
+
+    let mut page_totals: HashMap<String, i64> = HashMap::new();
+    for entry in album.values() {
+        if entry.get("type").and_then(Value::as_str) != Some("Character") {
+            continue;
+        }
+        let Some(entity) = entry.get("entity").and_then(Value::as_str) else {
+            continue;
+        };
+        *page_totals.entry(entity.to_string()).or_default() += 1;
+    }
+
+    let mut natives: Vec<(i64, &String, &Value)> = Vec::new();
+    let mut characters: Vec<(i64, &String, &Value)> = Vec::new();
+    for (key, entry) in album {
+        let kind = entry
+            .get("type")
+            .and_then(Value::as_str)
+            .unwrap_or_default();
+        let id = entry.get("id").and_then(Value::as_i64).unwrap_or(0);
+        match kind {
+            "Native" => {
+                let group = entry
+                    .get("group")
+                    .and_then(Value::as_str)
+                    .unwrap_or_default();
+                let rank = NATIVE_GROUPS
+                    .iter()
+                    .find(|(name, _)| *name == group)
+                    .map(|(_, rank)| *rank)
+                    .unwrap_or(9);
+                natives.push((rank * 100_000 + id, key, entry));
+            }
+            "Character" => characters.push((id, key, entry)),
+            _ => {}
+        }
+    }
+    natives.sort_by_key(|(order, _, _)| *order);
+    characters.sort_by_key(|(order, _, _)| *order);
+
+    let mut items: Vec<CatalogItem> = Vec::new();
+    for (index, (_, key, entry)) in natives.iter().enumerate() {
+        items.push(album_item(key, entry, "naytiba", None, index as i64 + 1)?);
+    }
+    for (index, (_, key, entry)) in characters.iter().enumerate() {
+        let entity = entry
+            .get("entity")
+            .and_then(Value::as_str)
+            .unwrap_or_default();
+        let page = page_re
+            .captures(key)
+            .and_then(|captures| captures[1].parse::<i64>().ok())
+            .unwrap_or(1);
+        let total = page_totals.get(entity).copied().unwrap_or(1);
+        items.push(album_item(
+            key,
+            entry,
+            "characters",
+            Some((page, total)),
+            index as i64 + 1,
+        )?);
+    }
+    Ok(items)
+}
+
+fn album_item(
+    key: &str,
+    entry: &Value,
+    category: &str,
+    page: Option<(i64, i64)>,
+    order: i64,
+) -> Result<CatalogItem, String> {
+    let zh = entry.get("zh").and_then(Value::as_str).unwrap_or_default();
+    let en = entry.get("en").and_then(Value::as_str).unwrap_or_default();
+    let unlocked = entry
+        .get("unlocked")
+        .and_then(Value::as_str)
+        .unwrap_or_default();
+    if zh.is_empty() || unlocked.is_empty() {
+        return Err(format!("图鉴条目 {key} 缺少名称或成就别名"));
+    }
+    let (name, name_en) = match page {
+        Some((page, total)) => (
+            format!("{zh}（资料 {page}/{total}）"),
+            format!("{en} (Entry {page}/{total})"),
+        ),
+        None => (zh.to_string(), en.to_string()),
+    };
+    Ok(CatalogItem {
+        id: format!("Album_{key}"),
+        name,
+        name_en: Some(name_en),
+        category: category.to_string(),
+        aliases: vec![unlocked.to_string()],
+        area: entry
+            .get("group_en")
+            .and_then(Value::as_str)
+            .map(str::to_string),
+        location: None,
+        obtain: None,
+        ng_plus: 0,
+        dlc: None,
+        missable: false,
+        note: None,
+        confidence: "high".to_string(),
+        source: Some("game".to_string()),
+        area_zh: entry
+            .get("group_zh")
+            .and_then(Value::as_str)
+            .map(str::to_string),
+        location_zh: None,
+        obtain_zh: None,
+        record_type: None,
+        record_type_zh: None,
+        order: Some(order),
+        guides: None,
+        desc_zh: entry
+            .get("desc_zh")
+            .and_then(Value::as_str)
+            .map(str::to_string),
+        desc_en: entry
+            .get("desc_en")
+            .and_then(Value::as_str)
+            .map(str::to_string),
+    })
 }
 
 fn build_cans(
@@ -1683,6 +1836,7 @@ pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
     apply_memorystick_order(&mut items, &memorystick_order)?;
     apply_i18n(&mut items, &i18n);
     apply_guides(&mut items, &guides)?;
+    items.extend(build_album(&game_names)?);
 
     let mut seen: HashMap<String, String> = HashMap::new();
     for item in &items {
@@ -1702,10 +1856,11 @@ pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
         sources: &SOURCES,
         categories: CATEGORIES
             .iter()
-            .map(|(key, name, order)| CategoryEntry {
+            .map(|(key, name, order, section)| CategoryEntry {
                 key,
                 name,
                 order: *order,
+                section,
             })
             .collect(),
         items,

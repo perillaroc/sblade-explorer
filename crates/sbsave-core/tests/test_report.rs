@@ -4,7 +4,7 @@ use std::path::PathBuf;
 use sbsave_core::analyze::analyze;
 use sbsave_core::catalog::load_catalog;
 use sbsave_core::gvas::{EngineVersion, GvasFile, GvasHeader};
-use sbsave_core::report::{print_report, render_markdown};
+use sbsave_core::report::{analysis_to_dict, print_report, render_markdown};
 use sbsave_core::savegame::SaveData;
 
 fn make_header() -> GvasHeader {
@@ -171,4 +171,46 @@ fn non_matrix_categories_keep_flat_list() {
     let text = render_markdown(&analyze(&save, &catalog, Some(filter.as_slice())), "zh");
     assert!(!text.contains("## 设计图案获取一览"));
     assert!(text.contains("### 设计图案 (0/87)"));
+}
+
+#[test]
+fn album_sections_in_report() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = make_save(&[], &[], 0);
+    let analysis = analyze(&save, &catalog, None);
+
+    let text = print_report(&analysis, false, "zh");
+    assert!(text.contains("图鉴汇总（不计入目录进度）"));
+    assert!(text.contains("图鉴进度: 0/122 (0.0%)"));
+    assert!(text.contains("孽奇拔 | 0/67 (0%) | 67"));
+    assert!(text.contains("角色 | 0/55 (0%) | 55"));
+
+    let markdown = render_markdown(&analysis, "zh");
+    assert!(markdown.contains("## 图鉴汇总（不计入目录进度）"));
+    assert!(markdown.contains("- 图鉴进度: 0/122 (0.0%)"));
+    assert!(markdown.contains("| 孽奇拔 | 0/67 (0%) | 67 |"));
+
+    let payload = analysis_to_dict(&analysis, false);
+    assert_eq!(payload["summary"]["catalog_total"], 810);
+    assert_eq!(payload["summary"]["album_total"], 122);
+    assert_eq!(payload["summary"]["album_obtained"], 0);
+    assert_eq!(payload["summary"]["album_missing_total"], 122);
+    let categories = payload["categories"].as_array().expect("categories");
+    let naytiba = categories
+        .iter()
+        .find(|category| category["key"] == "naytiba")
+        .expect("naytiba");
+    assert_eq!(naytiba["section"], "album");
+    let thorn = naytiba["missing"]
+        .as_array()
+        .expect("missing")
+        .iter()
+        .find(|item| item["id"] == "Album_ThornHead")
+        .expect("thorn");
+    assert!(thorn["desc_zh"]
+        .as_str()
+        .is_some_and(|text| text.contains("生态情报")));
+    assert!(thorn["desc_en"]
+        .as_str()
+        .is_some_and(|text| text.contains("Ecological Information")));
 }

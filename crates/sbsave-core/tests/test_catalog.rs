@@ -15,6 +15,8 @@ fn bundled_catalog_loads() {
         "hair",
         "fish",
         "design_patterns",
+        "naytiba",
+        "characters",
     ] {
         assert!(catalog.categories.contains_key(key), "{key}");
         assert!(!catalog.by_category(key).is_empty(), "{key}");
@@ -76,15 +78,79 @@ fn game_data_names_applied() {
 #[test]
 fn catalog_counts() {
     let catalog = load_catalog(None).expect("catalog");
+    assert_eq!(catalog.items.len(), 932);
+    assert_eq!(catalog.categories.len(), 15);
     assert_eq!(catalog.by_category("nano_suits").len(), 126);
     assert_eq!(catalog.by_category("cans").len(), 49);
     assert_eq!(catalog.by_category("camps").len(), 89);
+    assert_eq!(catalog.by_category("naytiba").len(), 67);
+    assert_eq!(catalog.by_category("characters").len(), 55);
     let low_confidence = catalog
         .items
         .iter()
         .filter(|item| item.confidence != "high")
         .count();
     assert_eq!(low_confidence, 69);
+}
+
+#[test]
+fn album_categories_cover_game_album() {
+    let catalog = load_catalog(None).expect("catalog");
+    assert_eq!(catalog.categories["naytiba"].section, "album");
+    assert_eq!(catalog.categories["characters"].section, "album");
+    assert_eq!(catalog.categories["cans"].section, "collection");
+
+    let index = catalog.alias_index();
+    let thorn = &index["Ach_Album_Unlock_ThornHead"];
+    assert_eq!(thorn.id, "Album_ThornHead");
+    assert_eq!(thorn.name, "棘蛇兽");
+    assert_eq!(thorn.name_en.as_deref(), Some("Thornhead"));
+    assert_eq!(thorn.category, "naytiba");
+    assert_eq!(thorn.area_zh.as_deref(), Some("孽奇拔小兵"));
+    assert!(thorn
+        .desc_zh
+        .as_deref()
+        .is_some_and(|text| text.contains("生态情报")));
+    assert_eq!(thorn.order, 1);
+
+    let adam = &index["Ach_Album_Unlock_Adam_3"];
+    assert_eq!(adam.name, "艾德姆（资料 3/5）");
+    assert_eq!(adam.name_en.as_deref(), Some("Adam (Entry 3/5)"));
+    assert_eq!(adam.category, "characters");
+    assert_eq!(adam.area_zh.as_deref(), Some("角色"));
+    assert!(adam
+        .desc_zh
+        .as_deref()
+        .is_some_and(|text| text.contains("轨道电梯")));
+
+    let nikke = &index["Ach_Album_Unlock_Scarlet_1"];
+    assert_eq!(
+        nikke.area_zh.as_deref(),
+        Some("《剑星》X《胜利女神：妮姬》")
+    );
+
+    let mut group_counts: HashMap<&str, usize> = HashMap::new();
+    for item in catalog.by_category("naytiba") {
+        *group_counts
+            .entry(item.area_zh.as_deref().unwrap_or("?"))
+            .or_default() += 1;
+    }
+    assert_eq!(group_counts["孽奇拔小兵"], 12);
+    assert_eq!(group_counts["孽奇拔战士"], 36);
+    assert_eq!(group_counts["精锐孽奇拔"], 10);
+    assert_eq!(group_counts["阿尔法孽奇拔"], 6);
+    assert_eq!(group_counts["上古孽奇拔"], 3);
+
+    // 每个角色页都有页序，页数与游戏图鉴一致（Adam 5 页、迅驰 3 页、母主领域 1 页）
+    let names: Vec<&str> = catalog
+        .by_category("characters")
+        .iter()
+        .map(|item| item.name.as_str())
+        .collect();
+    assert!(names.contains(&"艾德姆（资料 5/5）"));
+    assert!(names.contains(&"迅驰（资料 3/3）"));
+    assert!(names.contains(&"母主领域（资料 1/1）"));
+    assert!(names.iter().all(|name| name.contains("（资料 ")));
 }
 
 #[test]
@@ -311,6 +377,10 @@ fn guide_links_cover_catalog() {
     let mut with_video = 0;
     let mut missing: Vec<&str> = Vec::new();
     for item in &catalog.items {
+        if item.category == "naytiba" || item.category == "characters" {
+            assert!(item.guides.is_none(), "图鉴条目不应有攻略链接: {}", item.id);
+            continue;
+        }
         let Some(guides) = &item.guides else {
             missing.push(item.id.as_str());
             continue;

@@ -457,16 +457,17 @@ fn command_catalog_list(catalog_path: Option<PathBuf>) -> i32 {
         }
     };
     println!("目录库 v{}", catalog.version);
-    println!("分类键 | 分类名 | 条目数 | 已映射别名 | 需多周目 | DLC");
+    println!("分类键 | 分类名 | 段 | 条目数 | 已映射别名 | 需多周目 | DLC");
     for category in catalog.category_list() {
         let items = catalog.by_category(&category.key);
         let mapped: usize = items.iter().map(|item| item.satisfy_aliases().len()).sum();
         let ng_plus = items.iter().filter(|item| item.ng_plus > 0).count();
         let dlc = items.iter().filter(|item| item.dlc.is_some()).count();
         println!(
-            "{} | {} | {} | {} | {} | {}",
+            "{} | {} | {} | {} | {} | {} | {}",
             category.key,
             category.name,
+            category.section,
             items.len(),
             mapped,
             ng_plus,

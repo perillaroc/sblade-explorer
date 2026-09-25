@@ -36,7 +36,7 @@ export const DATA_SOURCES: AboutSource[] = [
   {
     name: "《剑星》游戏数据（Shift Up）",
     detail:
-      "游戏数据表（ItemTable、ZoneCampTable）与 Game.locres（zh-Hans/en）提取的内部别名与官方简中名称。",
+      "游戏数据表（ItemTable、ZoneCampTable、AlbumTable）与 Game.locres（zh-Hans/en）提取的内部别名与官方简中名称；AlbumTable 用于图鉴（孽奇拔 67、角色 55 页）及官方说明文字。",
   },
   {
     name: "游民星空与哔哩哔哩（中文攻略链接）",
