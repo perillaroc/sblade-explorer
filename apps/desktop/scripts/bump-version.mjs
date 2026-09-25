@@ -6,7 +6,7 @@
 //
 // Cargo.lock is refreshed here so `cargo test` does not leave the tree dirty.
 //
-// Usage: pnpm bump 0.2.0
+// Usage: pnpm bump 0.2.0 | pnpm bump 1.0.0-rc.1
 import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
@@ -20,9 +20,16 @@ const JSON_VERSION = /("version"\s*:\s*)"([^"]*)"/;
 const CARGO_WORKSPACE_VERSION =
   /(\[workspace\.package\][\s\S]*?\nversion\s*=\s*)"([^"]*)"/;
 
+// SemVer 2.0.0 core version plus an optional pre-release suffix. Build metadata
+// (`+...`) is rejected: it adds nothing for users and breaks file names.
+const VERSION =
+  /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9]\d*|\d*[A-Za-z-][0-9A-Za-z-]*))*))?$/;
+
 const version = process.argv[2] ?? "";
-if (!/^\d+\.\d+\.\d+$/.test(version)) {
-  console.error("用法: pnpm bump <x.y.z>，例如 pnpm bump 0.2.0");
+if (!VERSION.test(version)) {
+  console.error(
+    "用法: pnpm bump <x.y.z> 或 <x.y.z-预发布号>，例如 pnpm bump 0.2.0、pnpm bump 1.0.0-rc.1",
+  );
   process.exit(1);
 }
 

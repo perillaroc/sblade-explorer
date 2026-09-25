@@ -92,6 +92,9 @@ git push --follow-tags
 
 `release.yml` 会校验 tag 与 `tauri.conf.json` 的版本一致，不一致直接失败。
 
+版本号遵循 SemVer：`pnpm bump` 接受 `x.y.z` 与 `x.y.z-预发布号`（如 `1.0.0-rc.1`，用于测试版），
+不接受 build metadata（`+...`）；预发布版流程完全相同，tag 写 `v1.0.0-rc.1` 即可。
+
 > Rust 作业必须跑 Windows：`sbsave-tools` 的集成测试对 `data/catalog.json` 做逐字节比对，
 > 而生成结果按平台换行（Windows CRLF）。`.gitattributes` 已把该文件的换行固定为 CRLF。
 
