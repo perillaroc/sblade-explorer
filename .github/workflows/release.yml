@@ -76,7 +76,7 @@ jobs:
         run: |
           $tag = $env:APP_TAG
           $assets = "sblade-explorer-$tag-x86_64-pc-windows-msvc.zip", "sbsave-$tag-x86_64-pc-windows-msvc.zip"
-          $notes = "Windows 便携版：解压后直接运行 sblade-explorer.exe（需要系统已安装 WebView2 运行时，Windows 10/11 通常自带）。CLI：解压 sbsave zip 后运行 sbsave.exe，用法见 README。"
+          $notes = "Windows 便携版：解压后直接运行 sblade-explorer.exe（需要系统已安装 WebView2 运行时，Windows 10/11 通常自带）。CLI：解压 sbsave zip 后运行 sbsave.exe，用法见 README 与 docs/cli.md。"
           $releaseExists = & {
             $ErrorActionPreference = 'Continue'
             gh release view $tag 2>$null | Out-Null
