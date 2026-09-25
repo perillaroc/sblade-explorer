@@ -6,8 +6,8 @@
 读取 Steam《剑星》(Stellar Blade) 存档，报告尚未收集的收集物。**Windows 桌面应用是主要发布形式**，
 另提供 `sbsave` 命令行工具。只读、离线：绝不修改存档，解析与统计全部在内存中完成，运行时不联网。
 
-> [!IMPORTANT] 
-> 本项目采用 100% Vibe Coding 开发：由 AI Agent 负责具体实现。
+> [!IMPORTANT]
+> 本项目采用 Vibe Coding 方式开发，主要由 AI Agent 完成代码实现、测试与文档编写。
 
 ## 下载与使用（桌面应用）
 
