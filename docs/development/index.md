@@ -37,7 +37,7 @@ data/catalog.json      # 由 sbsave-tools catalog build 生成的目录库；禁
 
 `crates/sbsave-core` 的模块划分：`gvas`（GVAS/EVAS 解析）、`savegame`（存档探测与提取）、
 `catalog`（目录库）、`analyze`（差集与 NG+/DLC 逻辑）、`report`（JSON 契约/Markdown/控制台）。
-桌面应用自身的结构与命令见 [../apps/desktop/README.md](../apps/desktop/README.md)。
+桌面应用自身的结构与命令见 [apps/desktop/README.md](https://github.com/perillaroc/sblade-explorer/blob/main/apps/desktop/README.md)。
 
 ## 数据管线
 
@@ -68,7 +68,7 @@ cargo run -p sbsave-tools -- mine-names `
   reader 始终重同步到 `tag_start + size`。
 - 迁移验收（2026-09-14）：与原 Python 版 `report --json` 逐节点一致、Markdown 归一化后逐字一致；
   Python 参考实现已于 2026-09-15 删除，代码历史保留在 repo git（提交 `33cb981`）。
-- 目录库回归哨兵见 [data.md](data.md#回归哨兵)。
+- 目录库回归哨兵见 [data.md](../reference/data.md#回归哨兵)。
 
 ## CI 与发布
 

@@ -13,7 +13,7 @@
 - `data/raw/` - 已提交的数据快照（`api/`、`api/i18n/` 手工中文翻译、`crosswalk.json` 手工别名映射、`universe/aliases.json`、`game/name_map.json`、`reference/`）。运行时绝不联网。
 - `data/catalog.json` - 由 `sbsave-tools catalog build` 生成的目录库；禁止手改。
 - 根 `README.md` - 面向用户的总说明（精简版：下载与使用、功能、数据来源、限制）。
-- `docs/cli.md`、`docs/data.md`、`docs/development.md` - CLI、数据与目录库、开发与发布的详细说明；`apps/desktop/README.md` - 桌面应用开发说明。
+- `docs/cli/index.md`、`docs/reference/data.md`、`docs/development/index.md` - CLI、数据与目录库、开发与发布的详细说明；`apps/desktop/README.md` - 桌面应用开发说明。
 
 ## 环境与命令
 
@@ -95,4 +95,4 @@ Python 参考实现已于 2026-09-15 删除，代码历史保留在 git 中。
 - 绝不修改存档文件；需要测试解析时使用合成档案（逐字节构造，沿用原 Python 测试用例）。
 - `crates/sbsave-tools` 的集成测试断言 `cargo run -p sbsave-tools -- catalog build` 的结果与已提交 `data/catalog.json` 逐字节一致；改动数据源或生成逻辑后必须重新生成并让该测试通过。
 - 行为约定以迁移时的决策为准；原 Python 实现可从 git 历史（`33cb981`）查回。
-- 文档与数据来源说明在 `README.md`、`docs/`（cli/data/development）与 `data/raw/README.md`。
+- 文档与数据来源说明在 `README.md`、`docs/`（cli/reference/development）与 `data/raw/README.md`。

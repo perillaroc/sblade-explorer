@@ -16,7 +16,7 @@
 | 发布物 | 说明 |
 | --- | --- |
 | `sblade-explorer-<tag>-x86_64-pc-windows-msvc.zip` | 桌面应用便携版：解压后直接运行 `sblade-explorer.exe` |
-| `sbsave-<tag>-x86_64-pc-windows-msvc.zip` | 命令行工具：解压后运行 `sbsave.exe`，用法见 [docs/cli.md](docs/cli.md) |
+| `sbsave-<tag>-x86_64-pc-windows-msvc.zip` | 命令行工具：解压后运行 `sbsave.exe`，用法见 [docs/cli/index.md](docs/cli/index.md) |
 
 - 系统要求 Windows 10/11，需要系统已安装 **WebView2 运行时**（通常随 Edge 自带；若提示缺失，
   从微软官网安装 Evergreen Runtime 即可）。
@@ -45,7 +45,7 @@
 
 统计口径：物品任一别名出现在存档物品集合或成就派生别名中即视为已收集，图鉴条目以
 `Ach_Album_Unlock_*` 成就判定是否解锁。目录库共 932 条 / 15 分类，其中图鉴 122 条单列、
-不计入总进度，详见 [docs/data.md](docs/data.md)。
+不计入总进度，详见 [docs/reference/data.md](docs/reference/data.md)。
 
 ## 数据来源
 
@@ -57,7 +57,7 @@
 - [游民星空](https://www.gamersky.com/handbook/202404/1738505.shtml) 与 [哔哩哔哩](https://www.bilibili.com/video/BV1Wfj1ztEuj) —— 内置中文攻略链接（仅由系统浏览器打开）
 
 完整来源清单、原始数据快照与刷新方式见 [data/raw/README.md](data/raw/README.md)，
-目录库与别名模型见 [docs/data.md](docs/data.md)。
+目录库与别名模型见 [docs/reference/data.md](docs/reference/data.md)。
 
 ## 已知限制
 
@@ -70,9 +70,9 @@
 
 | 内容 | 位置 |
 | --- | --- |
-| CLI 命令与参数 | [docs/cli.md](docs/cli.md) |
-| 数据来源、目录库与别名、自定义覆盖、回归哨兵 | [docs/data.md](docs/data.md) |
-| 开发环境、项目结构、数据管线、CI 与发布 | [docs/development.md](docs/development.md) |
+| CLI 命令与参数 | [docs/cli/index.md](docs/cli/index.md) |
+| 数据来源、目录库与别名、自定义覆盖、回归哨兵 | [docs/reference/data.md](docs/reference/data.md) |
+| 开发环境、项目结构、数据管线、CI 与发布 | [docs/development/index.md](docs/development/index.md) |
 | 原始数据说明与刷新 | [data/raw/README.md](data/raw/README.md) |
 | 桌面应用开发 | [apps/desktop/README.md](apps/desktop/README.md) |
 

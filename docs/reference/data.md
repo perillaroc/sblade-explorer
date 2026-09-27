@@ -21,7 +21,7 @@
   `data/raw/guides.json` 中的中文攻略链接
 - `data/raw/api/i18n/` —— 上述英文攻略文案的手工简体中文翻译（名称仍以游戏本地化为准）
 
-原始数据快照的逐项说明与刷新方式（API 抓取、`mine-names`）见 [../data/raw/README.md](../data/raw/README.md)。
+原始数据快照的逐项说明与刷新方式（API 抓取、`mine-names`）见 [data/raw/README.md](https://github.com/perillaroc/sblade-explorer/blob/main/data/raw/README.md)。
 程序运行时不联网，全部数据内置于程序。
 
 ## 目录库与别名模型
@@ -88,7 +88,7 @@ CLI 亦可用 `--catalog 路径.json` 临时附加；条目内 `area_zh`/`locati
 切换百度 / 谷歌）与「搜索视频攻略」（B 站）按钮，内置链接缺失时也能检索到对应条目。
 纳米战衣与设计图逐件指向游民星空《剑星》女主服装图鉴的具体分页，战衣视频逐套指向 B 站
 「126 套纳米服全收集」的对应分 P；罐子/鱼类精确到单个物品，记录/密码精确到区域分 P。
-完整规则见 [../data/raw/README.md](../data/raw/README.md)。
+完整规则见 [data/raw/README.md](https://github.com/perillaroc/sblade-explorer/blob/main/data/raw/README.md)。
 
 ## 回归哨兵
 

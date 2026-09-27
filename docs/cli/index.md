@@ -58,5 +58,5 @@ cargo run -p sbsave-cli -- catalog check
 | `dump` | `--save/-s`、`--slot`、`--json`（摘要）、`--tree`（完整解析树）、`--obtained`（别名） |
 | `catalog` | `list` / `check`，均支持 `--catalog` 附加覆盖文件 |
 
-`--catalog` 用于临时附加用户覆盖文件，格式说明见 [data.md](data.md#自定义目录库)。
-报告中的「已获得」判定、NG+/DLC 标注与低置信度条目说明见 [data.md](data.md)。
+`--catalog` 用于临时附加用户覆盖文件，格式说明见 [data.md](../reference/data.md#自定义目录库)。
+报告中的「已获得」判定、NG+/DLC 标注与低置信度条目说明见 [data.md](../reference/data.md)。

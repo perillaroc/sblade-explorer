@@ -28,6 +28,6 @@ pnpm tauri build               # NSIS/MSI 安装包：target/release/bundle/{nsi
 
 ## 相关文档
 
-- 开发环境、CI 与发布、布局不变量：[../../docs/development.md](../../docs/development.md)
-- 数据来源与目录库：[../../docs/data.md](../../docs/data.md)
-- CLI：[../../docs/cli.md](../../docs/cli.md)
+- 开发环境、CI 与发布、布局不变量：[../../docs/development/index.md](../../docs/development/index.md)
+- 数据来源与目录库：[../../docs/reference/data.md](../../docs/reference/data.md)
+- CLI：[../../docs/cli/index.md](../../docs/cli/index.md)

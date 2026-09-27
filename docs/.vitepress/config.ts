@@ -11,24 +11,33 @@ export default defineConfig({
   base: "/",
   cleanUrls: true,
 
-  // D02：现有 docs/*.md 暂不迁移（属 D03），且其链接指向 docs/ 之外，先排除出站点构建；
-  // D03 迁移完成后移除此项。
-  srcExclude: ["cli.md", "data.md", "development.md", "documentation-inventory.md"],
+  // D01 盘点产物（内部工作文档）不发布到站点，留待 D13 整理时处理。
+  srcExclude: ["documentation-inventory.md"],
 
   themeConfig: {
     nav: [
       { text: "首页", link: "/" },
-      // TODO(D03)：迁移现有文档后补全 指南 / CLI / 数据 / 开发
+      { text: "指南", link: "/guide/getting-started" },
+      { text: "CLI", link: "/cli/" },
+      { text: "数据", link: "/reference/data" },
+      { text: "开发", link: "/development/" },
       { text: "GitHub", link: "https://github.com/perillaroc/sblade-explorer" },
     ],
 
-    // TODO(D03)：按目标信息架构（指南 / CLI / 数据 / 开发）补充
-    sidebar: [
-      {
-        text: "开始",
-        items: [{ text: "首页", link: "/" }],
-      },
-    ],
+    sidebar: {
+      "/guide/": [
+        { text: "快速开始", link: "/guide/getting-started" },
+        { text: "下载与安装", link: "/guide/installation" },
+        { text: "存档位置", link: "/guide/save-location" },
+        { text: "收集度分析", link: "/guide/collections" },
+        { text: "周目与收集矩阵", link: "/guide/collections#周目与收集矩阵" },
+        { text: "导出报告", link: "/guide/export" },
+        { text: "FAQ", link: "/guide/faq" },
+      ],
+      "/cli/": [{ text: "sbsave CLI", link: "/cli/" }],
+      "/reference/": [{ text: "数据来源与目录库", link: "/reference/data" }],
+      "/development/": [{ text: "开发", link: "/development/" }],
+    },
 
     socialLinks: [
       { icon: "github", link: "https://github.com/perillaroc/sblade-explorer" },
