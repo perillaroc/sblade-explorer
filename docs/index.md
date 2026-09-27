@@ -5,6 +5,9 @@ hero:
   name: sblade-explorer
   text: 剑星存档收集度分析工具
   tagline: 读取 Stellar Blade PC 存档，快速发现尚未收集的服装、记录、罐子、营地等内容。
+  image:
+    src: /screenshots/overview.webp
+    alt: sblade-explorer 汇总页：目录进度、图鉴进度与分类汇总
   actions:
     - theme: brand
       text: 下载最新版
