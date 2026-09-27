@@ -15,6 +15,11 @@ interface SearchEngine {
 
 export type SearchEngineId = "bing" | "baidu" | "google";
 
+/** UI appearance; `system` follows the OS light/dark setting. */
+export type ThemeMode = "dark" | "light" | "system";
+
+const THEME_MODES: readonly ThemeMode[] = ["dark", "light", "system"];
+
 export const SEARCH_ENGINES: readonly SearchEngine[] = [
   { id: "bing", name: "必应", url: "https://www.bing.com/search?q=" },
   { id: "baidu", name: "百度", url: "https://www.baidu.com/s?wd=" },
@@ -22,6 +27,7 @@ export const SEARCH_ENGINES: readonly SearchEngine[] = [
 ];
 
 export interface Settings {
+  theme: ThemeMode;
   searchEngine: SearchEngineId;
   /** Executable of the browser used to open links; empty means the system default. */
   browserPath: string;
@@ -32,7 +38,7 @@ export interface Settings {
 const STORAGE_KEY = "sbsave.settings.v1";
 
 function defaultSettings(): Settings {
-  return { searchEngine: "bing", browserPath: "", browserName: "" };
+  return { theme: "dark", searchEngine: "bing", browserPath: "", browserName: "" };
 }
 
 function load(): Settings {
@@ -42,7 +48,9 @@ function load(): Settings {
     if (!raw) return fallback;
     const parsed = JSON.parse(raw) as Partial<Settings>;
     const engine = SEARCH_ENGINES.find((candidate) => candidate.id === parsed.searchEngine);
+    const theme = THEME_MODES.find((candidate) => candidate === parsed.theme);
     return {
+      theme: theme ?? fallback.theme,
       searchEngine: engine ? engine.id : fallback.searchEngine,
       browserPath: typeof parsed.browserPath === "string" ? parsed.browserPath : "",
       browserName: typeof parsed.browserName === "string" ? parsed.browserName : "",

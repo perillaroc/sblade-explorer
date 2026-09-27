@@ -52,15 +52,15 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
 <template>
   <Teleport to="body">
     <div
-      class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 p-4"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/30 dark:bg-slate-950/70 p-4"
       @click.self="emit('close')"
     >
       <section
-        class="max-h-[80vh] w-[44rem] max-w-full overflow-y-auto rounded-lg border border-slate-700 bg-slate-900 shadow-xl"
+        class="max-h-[80vh] w-[44rem] max-w-full overflow-y-auto rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-xl"
       >
-        <header class="flex items-start justify-between gap-3 border-b border-slate-800 px-4 py-3">
+        <header class="flex items-start justify-between gap-3 border-b border-slate-200 dark:border-slate-800 px-4 py-3">
           <div>
-            <h3 class="text-sm font-semibold text-slate-100">{{ unit.name }}</h3>
+            <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-100">{{ unit.name }}</h3>
             <div class="mt-1.5 flex flex-wrap items-center gap-2">
               <span
                 class="inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-semibold"
@@ -72,12 +72,12 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
                 ></span>
                 {{ areaLabel }}
               </span>
-              <span class="text-sm font-medium text-slate-200">{{ locationLabel }}</span>
+              <span class="text-sm font-medium text-slate-800 dark:text-slate-200">{{ locationLabel }}</span>
             </div>
           </div>
           <button
             type="button"
-            class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:bg-slate-800"
+            class="inline-flex items-center gap-1 rounded border border-slate-300 dark:border-slate-700 px-2 py-1 text-xs text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
             @click="emit('close')"
           >
             <X class="h-3.5 w-3.5" />
@@ -87,19 +87,19 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
 
         <div class="space-y-4 px-4 py-3">
           <div>
-            <h4 class="text-xs font-semibold text-slate-400">获取方式</h4>
-            <p class="mt-1 whitespace-pre-wrap text-xs leading-5 text-slate-300">
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">获取方式</h4>
+            <p class="mt-1 whitespace-pre-wrap text-xs leading-5 text-slate-700 dark:text-slate-300">
               {{ unit.obtain || "—" }}
             </p>
           </div>
 
           <div>
-            <h4 class="text-xs font-semibold text-slate-400">中文攻略</h4>
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">中文攻略</h4>
             <div class="mt-1.5 flex flex-wrap gap-2">
               <button
                 v-if="webLink"
                 type="button"
-                class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-200 hover:border-sky-600 hover:bg-slate-800"
+                class="inline-flex items-center gap-1 rounded border border-slate-300 dark:border-slate-700 px-2 py-1 text-xs text-slate-800 dark:text-slate-200 hover:border-sky-600 hover:bg-slate-100 dark:hover:bg-slate-800"
                 :title="webLink.title"
                 @click="openExternalUrl(webLink.url)"
               >
@@ -109,7 +109,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
               <button
                 v-if="videoLink"
                 type="button"
-                class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-200 hover:border-rose-600 hover:bg-slate-800"
+                class="inline-flex items-center gap-1 rounded border border-slate-300 dark:border-slate-700 px-2 py-1 text-xs text-slate-800 dark:text-slate-200 hover:border-rose-600 hover:bg-slate-100 dark:hover:bg-slate-800"
                 :title="videoLink.title"
                 @click="openExternalUrl(videoLink.url)"
               >
@@ -118,12 +118,12 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
               </button>
               <span
                 v-if="webLink || videoLink"
-                class="mx-0.5 h-5 w-px self-center bg-slate-700"
+                class="mx-0.5 h-5 w-px self-center bg-slate-200 dark:bg-slate-700"
                 aria-hidden="true"
               ></span>
               <button
                 type="button"
-                class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:border-sky-600 hover:bg-slate-800"
+                class="inline-flex items-center gap-1 rounded border border-slate-300 dark:border-slate-700 px-2 py-1 text-xs text-slate-700 dark:text-slate-300 hover:border-sky-600 hover:bg-slate-100 dark:hover:bg-slate-800"
                 :title="`在${engineName}搜索「${searchName}」的图文攻略`"
                 @click="openExternalUrl(webSearchUrl)"
               >
@@ -132,7 +132,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
               </button>
               <button
                 type="button"
-                class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:border-rose-600 hover:bg-slate-800"
+                class="inline-flex items-center gap-1 rounded border border-slate-300 dark:border-slate-700 px-2 py-1 text-xs text-slate-700 dark:text-slate-300 hover:border-rose-600 hover:bg-slate-100 dark:hover:bg-slate-800"
                 :title="`在 B 站搜索「${searchName}」的视频攻略`"
                 @click="openExternalUrl(videoSearchUrl)"
               >
@@ -146,42 +146,42 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
           </div>
 
           <div>
-            <h4 class="text-xs font-semibold text-slate-400">周目变体</h4>
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">周目变体</h4>
             <div
               v-for="entry in unit.cells.flat()"
               :key="entry.id"
-              class="mt-2 rounded border border-slate-800 bg-slate-950/40 px-3 py-2"
+              class="mt-2 rounded border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 px-3 py-2"
             >
               <div class="flex flex-wrap items-baseline gap-2">
-                <span class="inline-flex items-center gap-1 text-xs text-slate-200">
+                <span class="inline-flex items-center gap-1 text-xs text-slate-800 dark:text-slate-200">
                   <MatrixStatusIcon :row="entry" :ng-plus-count="ngPlusCount" />
                   {{ matrixName(entry.item, lang) }}
                 </span>
-                <span class="rounded bg-slate-800 px-1.5 py-0.5 text-[11px] text-slate-400">
+                <span class="rounded bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 text-[11px] text-slate-600 dark:text-slate-400">
                   {{ matrixPeriodLabel(entry.item) }}
                 </span>
-                <span class="text-[11px] text-slate-600">{{ entry.id }}</span>
+                <span class="text-[11px] text-slate-500 dark:text-slate-600">{{ entry.id }}</span>
                 <span
                   v-for="flag in entry.flags"
                   :key="flag"
-                  class="rounded bg-slate-800 px-1.5 py-0.5 text-[11px] text-amber-300"
+                  class="rounded bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 text-[11px] text-amber-700 dark:text-amber-300"
                 >
                   {{ flag }}
                 </span>
                 <span
                   v-if="entry.reason"
-                  class="rounded bg-amber-900/40 px-1.5 py-0.5 text-[11px] text-amber-200"
+                  class="rounded bg-amber-100 dark:bg-amber-900/40 px-1.5 py-0.5 text-[11px] text-amber-700 dark:text-amber-200"
                 >
                   {{ entry.reason }}
                 </span>
                 <span
                   v-if="entry.obtained && entry.item.missable"
-                  class="rounded bg-slate-800 px-1.5 py-0.5 text-[11px] text-slate-400"
+                  class="rounded bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 text-[11px] text-slate-600 dark:text-slate-400"
                 >
                   可错过
                 </span>
               </div>
-              <p class="mt-1 whitespace-pre-wrap text-[11px] leading-5 text-slate-400">
+              <p class="mt-1 whitespace-pre-wrap text-[11px] leading-5 text-slate-600 dark:text-slate-400">
                 {{ obtainLabel(entry.item, lang) }}
               </p>
             </div>

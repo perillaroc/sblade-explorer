@@ -24,7 +24,7 @@ const playTimeLabel = computed(() => {
 </script>
 
 <template>
-  <section class="rounded-lg border border-slate-800 bg-slate-900/60 p-4">
+  <section class="rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-4">
     <div class="grid grid-cols-2 gap-3 text-sm md:grid-cols-4">
       <div>
         <div class="flex items-center gap-1 text-xs text-slate-500">
@@ -56,14 +56,14 @@ const playTimeLabel = computed(() => {
       </div>
     </div>
     <div class="mt-4">
-      <div class="mb-1 flex justify-between text-xs text-slate-400">
+      <div class="mb-1 flex justify-between text-xs text-slate-600 dark:text-slate-400">
         <span class="inline-flex items-center gap-1">
           <Package class="h-3.5 w-3.5" />
           目录进度 {{ summary.catalog_obtained }}/{{ summary.catalog_total }}
         </span>
         <span>{{ summary.percent.toFixed(1) }}% · 未收集 {{ summary.missing_total }}</span>
       </div>
-      <div class="h-2 overflow-hidden rounded bg-slate-800">
+      <div class="h-2 overflow-hidden rounded bg-slate-200 dark:bg-slate-800">
         <div class="h-full rounded bg-emerald-500" :style="{ width: `${summary.percent}%` }"></div>
       </div>
       <div class="mt-2 text-xs text-slate-500">
@@ -71,7 +71,7 @@ const playTimeLabel = computed(() => {
       </div>
     </div>
     <div class="mt-3">
-      <div class="mb-1 flex justify-between text-xs text-slate-400">
+      <div class="mb-1 flex justify-between text-xs text-slate-600 dark:text-slate-400">
         <span class="inline-flex items-center gap-1">
           <BookOpen class="h-3.5 w-3.5" />
           图鉴进度 {{ summary.album_obtained }}/{{ summary.album_total }}
@@ -80,7 +80,7 @@ const playTimeLabel = computed(() => {
           {{ summary.album_percent.toFixed(1) }}% · 未收集 {{ summary.album_missing_total }}（不计入目录进度）
         </span>
       </div>
-      <div class="h-2 overflow-hidden rounded bg-slate-800">
+      <div class="h-2 overflow-hidden rounded bg-slate-200 dark:bg-slate-800">
         <div class="h-full rounded bg-sky-500" :style="{ width: `${summary.album_percent}%` }"></div>
       </div>
     </div>

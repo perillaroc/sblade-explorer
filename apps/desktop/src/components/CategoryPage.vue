@@ -200,12 +200,12 @@ function onInput(event: Event) {
 </script>
 
 <template>
-  <section class="rounded-lg border border-slate-800 bg-slate-900/60">
-    <header class="space-y-3 border-b border-slate-800 px-4 py-3">
+  <section class="rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60">
+    <header class="space-y-3 border-b border-slate-200 dark:border-slate-800 px-4 py-3">
       <div class="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h2 class="text-base font-semibold">{{ category.name }}</h2>
-          <p class="mt-0.5 text-xs text-slate-400">
+          <p class="mt-0.5 text-xs text-slate-600 dark:text-slate-400">
             已收集 {{ category.obtained }}/{{ category.total }} · 未收集
             {{ category.missing.length }} · {{ percent.toFixed(0) }}%
           </p>
@@ -213,7 +213,7 @@ function onInput(event: Event) {
         <div class="flex flex-wrap items-center gap-2">
           <div
             v-if="matrix"
-            class="flex overflow-hidden rounded border border-slate-700 text-xs"
+            class="flex overflow-hidden rounded border border-slate-300 dark:border-slate-700 text-xs"
           >
             <button
               v-for="option in VIEW_OPTIONS"
@@ -222,8 +222,8 @@ function onInput(event: Event) {
               class="inline-flex items-center gap-1 px-2 py-1"
               :class="
                 view === option.value
-                  ? 'bg-slate-700 text-white'
-                  : 'text-slate-400 hover:bg-slate-800'
+                  ? 'bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white'
+                  : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
               "
               @click="view = option.value"
             >
@@ -236,7 +236,7 @@ function onInput(event: Event) {
               class="pointer-events-none absolute left-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-500"
             />
             <input
-              class="w-64 rounded border border-slate-700 bg-slate-950 py-1 pl-7 pr-2 text-sm text-slate-100 placeholder:text-slate-600"
+              class="w-64 rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 py-1 pl-7 pr-2 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-600"
               type="search"
               placeholder="搜索名称 / 地点 / ID"
               :value="query"
@@ -246,13 +246,13 @@ function onInput(event: Event) {
         </div>
       </div>
 
-      <div class="h-1.5 overflow-hidden rounded bg-slate-800">
+      <div class="h-1.5 overflow-hidden rounded bg-slate-200 dark:bg-slate-800">
         <div class="h-full rounded bg-emerald-500" :style="{ width: `${percent}%` }"></div>
       </div>
 
       <div class="flex items-center gap-1.5">
         <ListFilter class="h-3.5 w-3.5 text-slate-500" />
-        <div class="flex overflow-hidden rounded border border-slate-700 text-xs">
+        <div class="flex overflow-hidden rounded border border-slate-300 dark:border-slate-700 text-xs">
           <button
             v-for="option in FILTER_OPTIONS"
             :key="option.value"
@@ -260,8 +260,8 @@ function onInput(event: Event) {
             class="px-3 py-1"
             :class="
               filter === option.value
-                ? 'bg-slate-700 text-white'
-                : 'text-slate-400 hover:bg-slate-800'
+                ? 'bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white'
+                : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
             "
             @click="filter = option.value"
           >
@@ -269,7 +269,7 @@ function onInput(event: Event) {
             <span class="ml-1 text-slate-500">{{ count(option.value) }}</span>
           </button>
         </div>
-        <span v-if="!matrix || view === 'list'" class="ml-auto text-[11px] text-slate-600">
+        <span v-if="!matrix || view === 'list'" class="ml-auto text-[11px] text-slate-500 dark:text-slate-600">
           点击条目查看完整详情
         </span>
       </div>
@@ -291,7 +291,7 @@ function onInput(event: Event) {
     />
     <template v-else-if="isRecords">
       <nav
-        class="flex gap-0.5 overflow-x-auto border-b border-slate-800 bg-slate-950/40 px-2"
+        class="flex gap-0.5 overflow-x-auto border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 px-2"
         role="tablist"
       >
         <button
@@ -303,8 +303,8 @@ function onInput(event: Event) {
           class="flex shrink-0 items-baseline gap-1.5 border-b-2 px-3 py-2 text-xs transition-colors"
           :class="[
             activeRecordGroup?.key === group.key
-              ? 'border-emerald-500 bg-slate-900/80 text-slate-100'
-              : 'border-transparent text-slate-400 hover:bg-slate-900/50 hover:text-slate-200',
+              ? 'border-emerald-500 bg-white dark:bg-slate-900/80 text-slate-900 dark:text-slate-100'
+              : 'border-transparent text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900/50 hover:text-slate-800 dark:hover:text-slate-200',
             group.rows.length === 0 ? 'opacity-40' : '',
           ]"
           @click="activeRecordType = group.key"
@@ -312,7 +312,7 @@ function onInput(event: Event) {
           {{ group.name }}
           <span
             class="text-[11px]"
-            :class="activeRecordGroup?.key === group.key ? 'text-emerald-400' : 'text-slate-500'"
+            :class="activeRecordGroup?.key === group.key ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-500'"
           >
             {{ group.obtained }}/{{ group.total }}
           </span>
@@ -330,7 +330,7 @@ function onInput(event: Event) {
           <section v-for="area in activeRecordGroup.areas" :key="area.key">
             <button
               type="button"
-              class="flex w-full flex-wrap items-center justify-between gap-2 border-t border-slate-800/70 px-4 py-2 text-left"
+              class="flex w-full flex-wrap items-center justify-between gap-2 border-t border-slate-200 dark:border-slate-800/70 px-4 py-2 text-left"
               :class="areaAccent(area.key).band"
               :aria-expanded="!collapsedAreas.has(area.key)"
               @click="toggleArea(area.key)"
@@ -349,7 +349,7 @@ function onInput(event: Event) {
                 ></span>
                 {{ area.label }}
               </span>
-              <span class="text-xs text-slate-400">
+              <span class="text-xs text-slate-600 dark:text-slate-400">
                 已收集 {{ area.obtained }}/{{ area.total }}
               </span>
             </button>
@@ -368,7 +368,7 @@ function onInput(event: Event) {
       <section v-for="area in naytibaGroups" :key="area.key">
         <button
           type="button"
-          class="flex w-full flex-wrap items-center justify-between gap-2 border-t border-slate-800/70 px-4 py-2 text-left"
+          class="flex w-full flex-wrap items-center justify-between gap-2 border-t border-slate-200 dark:border-slate-800/70 px-4 py-2 text-left"
           :class="areaAccent(area.key).band"
           :aria-expanded="!collapsedAreas.has(area.key)"
           @click="toggleArea(area.key)"
@@ -387,7 +387,7 @@ function onInput(event: Event) {
             ></span>
             {{ area.label }}
           </span>
-          <span class="text-xs text-slate-400">
+          <span class="text-xs text-slate-600 dark:text-slate-400">
             已收集 {{ area.obtained }}/{{ area.total }}
           </span>
         </button>

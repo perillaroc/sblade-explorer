@@ -7,11 +7,11 @@ export interface MatrixStatus {
   className: string;
 }
 
-const OBTAINED: MatrixStatus = { icon: CircleCheck, label: "已获得", className: "text-emerald-400" };
-const MISSING: MatrixStatus = { icon: CircleX, label: "未获得", className: "text-rose-400" };
+const OBTAINED: MatrixStatus = { icon: CircleCheck, label: "已获得", className: "text-emerald-600 dark:text-emerald-400" };
+const MISSING: MatrixStatus = { icon: CircleX, label: "未获得", className: "text-rose-600 dark:text-rose-400" };
 const LOCKED: MatrixStatus = { icon: Lock, label: "需更高周目", className: "text-slate-500" };
-const DLC: MatrixStatus = { icon: Gift, label: "DLC/特典", className: "text-violet-400" };
-const DEFAULT: MatrixStatus = { icon: Minus, label: "默认外观", className: "text-slate-600" };
+const DLC: MatrixStatus = { icon: Gift, label: "DLC/特典", className: "text-violet-600 dark:text-violet-400" };
+const DEFAULT: MatrixStatus = { icon: Minus, label: "默认外观", className: "text-slate-400 dark:text-slate-600" };
 
 export const MATRIX_STATUS_LEGEND: MatrixStatus[] = [OBTAINED, MISSING, LOCKED, DLC, DEFAULT];
 

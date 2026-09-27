@@ -15,6 +15,8 @@ import CategoryPage from "./components/CategoryPage.vue";
 import SavePicker from "./components/SavePicker.vue";
 import SummaryPage from "./components/SummaryPage.vue";
 import { loadGuides } from "./lib/guides";
+import { settings } from "./lib/settings";
+import { THEME_OPTIONS } from "./lib/theme";
 import type { Analysis, Lang, SaveSlot } from "./types";
 
 const SUMMARY_PAGE = "summary";
@@ -113,12 +115,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex h-screen bg-slate-950 text-slate-100">
+  <div class="flex h-screen bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
     <AppSidebar :analysis="analysis" :active="page" @navigate="page = $event" />
 
     <div class="flex min-w-0 flex-1 flex-col">
       <header
-        class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 px-4 py-3"
+        class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-800 px-4 py-3"
       >
         <div class="flex items-baseline gap-3">
           <h2 class="text-sm font-semibold">
@@ -133,23 +135,42 @@ onMounted(() => {
         </div>
         <div class="flex items-center gap-2">
           <Languages class="h-4 w-4 text-slate-500" />
-          <div class="flex overflow-hidden rounded border border-slate-700 text-xs">
+          <div class="flex overflow-hidden rounded border border-slate-300 dark:border-slate-700 text-xs">
             <button
               v-for="option in LANG_OPTIONS"
               :key="option.value"
               type="button"
               class="px-2 py-1"
               :class="
-                lang === option.value ? 'bg-slate-700 text-white' : 'text-slate-400 hover:bg-slate-800'
+                lang === option.value ? 'bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
               "
               @click="lang = option.value"
             >
               {{ option.label }}
             </button>
           </div>
+          <div class="flex overflow-hidden rounded border border-slate-300 dark:border-slate-700">
+            <button
+              v-for="option in THEME_OPTIONS"
+              :key="option.value"
+              type="button"
+              class="inline-flex items-center px-2 py-1"
+              :class="
+                settings.theme === option.value
+                  ? 'bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white'
+                  : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+              "
+              :title="option.label"
+              :aria-label="`外观：${option.label}`"
+              :aria-pressed="settings.theme === option.value"
+              @click="settings.theme = option.value"
+            >
+              <component :is="option.icon" class="h-3.5 w-3.5" />
+            </button>
+          </div>
           <button
             type="button"
-            class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:bg-slate-800"
+            class="inline-flex items-center gap-1 rounded border border-slate-300 dark:border-slate-700 px-2 py-1 text-xs text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
             @click="exportReport('json')"
           >
             <FileJson class="h-3.5 w-3.5" />
@@ -157,7 +178,7 @@ onMounted(() => {
           </button>
           <button
             type="button"
-            class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:bg-slate-800"
+            class="inline-flex items-center gap-1 rounded border border-slate-300 dark:border-slate-700 px-2 py-1 text-xs text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
             @click="exportReport('markdown')"
           >
             <FileText class="h-3.5 w-3.5" />
@@ -168,22 +189,22 @@ onMounted(() => {
 
       <SavePicker :saves="saves" :selected="selected" @select="selectSave" @refresh="refreshSaves" />
 
-      <p v-if="notice" class="px-4 py-1 text-xs text-emerald-400">{{ notice }}</p>
+      <p v-if="notice" class="px-4 py-1 text-xs text-emerald-600 dark:text-emerald-400">{{ notice }}</p>
 
-      <main v-if="loading" class="flex flex-1 items-center justify-center text-sm text-slate-400">
+      <main v-if="loading" class="flex flex-1 items-center justify-center text-sm text-slate-600 dark:text-slate-400">
         <LoaderCircle class="mr-2 h-4 w-4 animate-spin" />
         读取存档中…
       </main>
       <main
         v-else-if="error"
-        class="flex flex-1 items-center justify-center text-sm text-rose-400"
+        class="flex flex-1 items-center justify-center text-sm text-rose-600 dark:text-rose-400"
       >
         <TriangleAlert class="mr-2 h-4 w-4" />
         读取存档失败: {{ error }}
       </main>
       <main
         v-else-if="!analysis"
-        class="flex flex-1 items-center justify-center text-sm text-slate-400"
+        class="flex flex-1 items-center justify-center text-sm text-slate-600 dark:text-slate-400"
       >
         <FolderSearch class="mr-2 h-4 w-4" />
         未找到存档，请将存档放入默认目录后点击刷新。

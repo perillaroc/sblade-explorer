@@ -10,6 +10,7 @@ import {
   type BrowserInfo,
   type SearchEngineId,
 } from "../lib/settings";
+import { THEME_OPTIONS } from "../lib/theme";
 
 const emit = defineEmits<{ close: [] }>();
 
@@ -79,23 +80,23 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
 <template>
   <Teleport to="body">
     <div
-      class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 p-4"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/30 dark:bg-slate-950/70 p-4"
       @click.self="emit('close')"
     >
       <section
-        class="flex max-h-[85vh] w-[36rem] max-w-full flex-col rounded-lg border border-slate-700 bg-slate-900 shadow-xl"
+        class="flex max-h-[85vh] w-[36rem] max-w-full flex-col rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-xl"
       >
-        <header class="flex items-start justify-between gap-3 border-b border-slate-800 px-4 py-3">
+        <header class="flex items-start justify-between gap-3 border-b border-slate-200 dark:border-slate-800 px-4 py-3">
           <div class="flex items-start gap-2">
-            <Settings class="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
+            <Settings class="mt-0.5 h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
             <div>
-              <h3 class="text-sm font-semibold text-slate-100">设置</h3>
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-100">设置</h3>
               <p class="mt-0.5 text-xs text-slate-500">仅保存在本机，不会写入存档</p>
             </div>
           </div>
           <button
             type="button"
-            class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-300 hover:bg-slate-800"
+            class="inline-flex items-center gap-1 rounded border border-slate-300 dark:border-slate-700 px-2 py-1 text-xs text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
             @click="emit('close')"
           >
             <X class="h-3.5 w-3.5" />
@@ -105,7 +106,31 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
 
         <div class="space-y-5 overflow-y-auto px-4 py-3">
           <section>
-            <h4 class="text-xs font-semibold text-slate-400">默认搜索引擎</h4>
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">外观</h4>
+            <p class="mt-1 text-[11px] leading-5 text-slate-500">
+              「跟随系统」随 Windows 的浅色/深色设置自动切换。
+            </p>
+            <div class="mt-2 grid grid-cols-3 gap-2">
+              <button
+                v-for="option in THEME_OPTIONS"
+                :key="option.value"
+                type="button"
+                class="inline-flex items-center justify-center gap-1.5 rounded border px-2 py-1.5 text-xs"
+                :class="
+                  settings.theme === option.value
+                    ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-200'
+                    : 'border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800'
+                "
+                @click="settings.theme = option.value"
+              >
+                <component :is="option.icon" class="h-3.5 w-3.5" />
+                {{ option.label }}
+              </button>
+            </div>
+          </section>
+
+          <section>
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">默认搜索引擎</h4>
             <p class="mt-1 text-[11px] leading-5 text-slate-500">
               「搜索图文攻略」使用所选引擎检索收集物；视频搜索始终使用 B 站。
             </p>
@@ -117,8 +142,8 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
                 class="inline-flex items-center justify-center gap-1.5 rounded border px-2 py-1.5 text-xs"
                 :class="
                   settings.searchEngine === engine.id
-                    ? 'border-emerald-600 bg-emerald-900/30 text-emerald-200'
-                    : 'border-slate-700 text-slate-300 hover:border-slate-600 hover:bg-slate-800'
+                    ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-200'
+                    : 'border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800'
                 "
                 @click="selectEngine(engine.id)"
               >
@@ -129,7 +154,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
           </section>
 
           <section>
-            <h4 class="text-xs font-semibold text-slate-400">打开链接的浏览器</h4>
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">打开链接的浏览器</h4>
             <p class="mt-1 text-[11px] leading-5 text-slate-500">
               图文攻略、视频攻略与搜索链接都在所选浏览器中打开；启动失败时自动回退到系统默认浏览器。
             </p>
@@ -139,8 +164,8 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
                 class="flex w-full items-center justify-between gap-2 rounded border px-3 py-2 text-left text-xs"
                 :class="
                   settings.browserPath === ''
-                    ? 'border-emerald-600 bg-emerald-900/30 text-emerald-200'
-                    : 'border-slate-700 text-slate-300 hover:border-slate-600 hover:bg-slate-800'
+                    ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-200'
+                    : 'border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800'
                 "
                 @click="selectSystemDefault"
               >
@@ -155,8 +180,8 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
                 class="flex w-full items-center justify-between gap-2 rounded border px-3 py-2 text-left text-xs"
                 :class="
                   isSelected(browser.path)
-                    ? 'border-emerald-600 bg-emerald-900/30 text-emerald-200'
-                    : 'border-slate-700 text-slate-300 hover:border-slate-600 hover:bg-slate-800'
+                    ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-200'
+                    : 'border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800'
                 "
                 @click="selectBrowser(browser)"
               >
@@ -171,13 +196,13 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
 
               <div
                 v-if="settings.browserPath !== '' && !browsers.some((b) => b.path === settings.browserPath)"
-                class="flex w-full items-center justify-between gap-2 rounded border border-emerald-600 bg-emerald-900/30 px-3 py-2 text-left text-xs text-emerald-200"
+                class="flex w-full items-center justify-between gap-2 rounded border border-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-3 py-2 text-left text-xs text-emerald-700 dark:text-emerald-200"
               >
                 <span class="min-w-0">
                   <span class="block truncate font-medium">
                     {{ settings.browserName || "自定义浏览器" }}
                   </span>
-                  <span class="mt-0.5 block truncate font-mono text-[10px] text-emerald-300/70">
+                  <span class="mt-0.5 block truncate font-mono text-[10px] text-emerald-700/70 dark:text-emerald-300/70">
                     {{ settings.browserPath }}
                   </span>
                 </span>
@@ -186,7 +211,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
 
               <button
                 type="button"
-                class="flex w-full items-center justify-between gap-2 rounded border border-dashed border-slate-700 px-3 py-2 text-left text-xs text-slate-400 hover:border-slate-600 hover:bg-slate-800"
+                class="flex w-full items-center justify-between gap-2 rounded border border-dashed border-slate-300 dark:border-slate-700 px-3 py-2 text-left text-xs text-slate-600 dark:text-slate-400 hover:border-slate-400 dark:hover:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800"
                 @click="pickCustomBrowser"
               >
                 <span>
@@ -200,10 +225,10 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
             </p>
           </section>
 
-          <div class="flex items-center justify-between border-t border-slate-800 pt-3">
+          <div class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 pt-3">
             <button
               type="button"
-              class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-xs text-slate-400 hover:bg-slate-800"
+              class="inline-flex items-center gap-1 rounded border border-slate-300 dark:border-slate-700 px-2 py-1 text-xs text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
               @click="resetSettings"
             >
               <RotateCcw class="h-3.5 w-3.5" />
@@ -211,7 +236,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
             </button>
             <button
               type="button"
-              class="rounded border border-emerald-700 px-3 py-1 text-xs text-emerald-200 hover:bg-emerald-900/30"
+              class="rounded border border-emerald-700 px-3 py-1 text-xs text-emerald-700 dark:text-emerald-200 hover:bg-emerald-50 dark:hover:bg-emerald-900/30"
               @click="emit('close')"
             >
               完成

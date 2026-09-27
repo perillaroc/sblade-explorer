@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+/*
+ * `appearance` 设置通过 <html> 上的 `dark` 类切换主题（见 src/lib/theme.ts），
+ * 因此这里覆盖 Tailwind 默认的 `prefers-color-scheme` 暗色变体。
+ */
+@custom-variant dark (&:where(.dark, .dark *));

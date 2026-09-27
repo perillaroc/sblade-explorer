@@ -27,7 +27,7 @@ function locationText(row: ItemRow): string {
 <template>
   <div class="overflow-x-auto">
     <table class="w-full text-xs">
-      <thead class="sticky top-0 bg-slate-900">
+      <thead class="sticky top-0 bg-white dark:bg-slate-900">
         <tr class="text-left text-slate-500">
           <th class="px-4 py-2">状态</th>
           <th class="px-4 py-2">物品</th>
@@ -40,8 +40,8 @@ function locationText(row: ItemRow): string {
         <tr
           v-for="row in rows"
           :key="row.id"
-          class="cursor-pointer border-t border-slate-800/70 align-top transition-colors hover:bg-slate-800/20"
-          :class="row.obtained ? '' : 'bg-slate-950/30'"
+          class="cursor-pointer border-t border-slate-200 dark:border-slate-800/70 align-top transition-colors hover:bg-slate-100 dark:hover:bg-slate-800/20"
+          :class="row.obtained ? '' : 'bg-slate-50 dark:bg-slate-950/30'"
           @click="selected = row"
         >
           <td class="px-4 py-2">
@@ -49,8 +49,8 @@ function locationText(row: ItemRow): string {
               class="inline-flex items-center gap-0.5 rounded px-1.5 py-0.5 text-[11px]"
               :class="
                 row.obtained
-                  ? 'bg-emerald-900/40 text-emerald-300'
-                  : 'bg-rose-900/40 text-rose-300'
+                  ? 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300'
+                  : 'bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300'
               "
             >
               <CircleCheck v-if="row.obtained" class="h-3 w-3" />
@@ -59,7 +59,7 @@ function locationText(row: ItemRow): string {
             </span>
           </td>
           <td class="px-4 py-2">
-            <div class="text-slate-100">{{ itemName(row.item, lang) }}</div>
+            <div class="text-slate-900 dark:text-slate-100">{{ itemName(row.item, lang) }}</div>
             <div class="text-[11px] text-slate-500">{{ row.id }}</div>
           </td>
           <td v-if="!hideLocation" class="px-4 py-2">
@@ -71,7 +71,7 @@ function locationText(row: ItemRow): string {
                 <span class="text-[11px] font-semibold" :class="areaAccent(row.item.area).text">
                   {{ areaText(row) || "未分类" }}
                 </span>
-                <span class="text-sm font-medium text-slate-100">{{ locationText(row) }}</span>
+                <span class="text-sm font-medium text-slate-900 dark:text-slate-100">{{ locationText(row) }}</span>
               </template>
               <span
                 v-else
@@ -82,24 +82,24 @@ function locationText(row: ItemRow): string {
               </span>
             </div>
           </td>
-          <td class="px-4 py-2 text-slate-400">{{ obtainLabel(row.item, lang) || "—" }}</td>
+          <td class="px-4 py-2 text-slate-600 dark:text-slate-400">{{ obtainLabel(row.item, lang) || "—" }}</td>
           <td class="px-4 py-2">
             <span
               v-for="flag in row.flags"
               :key="flag"
-              class="mr-1 inline-block rounded bg-slate-800 px-1.5 py-0.5 text-[11px] text-amber-300"
+              class="mr-1 inline-block rounded bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 text-[11px] text-amber-700 dark:text-amber-300"
             >
               {{ flag }}
             </span>
             <span
               v-if="row.reason"
-              class="mr-1 inline-block rounded bg-amber-900/40 px-1.5 py-0.5 text-[11px] text-amber-200"
+              class="mr-1 inline-block rounded bg-amber-100 dark:bg-amber-900/40 px-1.5 py-0.5 text-[11px] text-amber-700 dark:text-amber-200"
             >
               {{ row.reason }}
             </span>
             <span
               v-if="row.obtained && row.item.missable"
-              class="mr-1 inline-flex items-center gap-0.5 rounded bg-slate-800 px-1.5 py-0.5 text-[11px] text-slate-400"
+              class="mr-1 inline-flex items-center gap-0.5 rounded bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 text-[11px] text-slate-600 dark:text-slate-400"
             >
               <TriangleAlert class="h-3 w-3" />
               可错过

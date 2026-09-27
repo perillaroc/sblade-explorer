@@ -72,14 +72,14 @@ function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, u
         {{ status.label }}
       </span>
     </div>
-    <p class="mt-1 text-[11px] text-slate-600">
+    <p class="mt-1 text-[11px] text-slate-500 dark:text-slate-600">
       同一行为同一获取点：高周目会替换该点的物品，横向对比即可查漏；点击行查看获取方式等详情。
     </p>
     <div class="mt-2 overflow-x-auto">
       <table class="w-full text-xs">
         <thead>
           <tr class="text-left text-slate-500">
-            <th class="w-40 py-1 pr-3 text-sm font-semibold text-slate-300">地点</th>
+            <th class="w-40 py-1 pr-3 text-sm font-semibold text-slate-700 dark:text-slate-300">地点</th>
             <th v-for="index in columns" :key="index" class="py-1 pr-3">
               {{ MATRIX_COLUMNS[index] }}
             </th>
@@ -106,7 +106,7 @@ function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, u
                     :class="areaAccent(area.key).dot"
                   ></span>
                   <span>{{ area.label }}</span>
-                  <span class="ml-auto text-xs font-normal text-slate-400">
+                  <span class="ml-auto text-xs font-normal text-slate-600 dark:text-slate-400">
                     {{ areaUnitCount(area) }} 项
                   </span>
                 </button>
@@ -116,7 +116,7 @@ function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, u
               <template v-for="location in area.locations" :key="location.key">
                 <tr
                   v-if="collapsedLocations.has(location.key)"
-                  class="cursor-pointer border-t border-slate-800/70 align-top hover:bg-slate-800/20"
+                  class="cursor-pointer border-t border-slate-200 dark:border-slate-800/70 align-top hover:bg-slate-100 dark:hover:bg-slate-800/20"
                   @click="toggleLocation(location.key)"
                 >
                   <td
@@ -125,11 +125,11 @@ function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, u
                   >
                     <button
                       type="button"
-                      class="flex w-full items-start gap-1.5 px-3 py-2 text-left text-sm font-semibold text-slate-100"
+                      class="flex w-full items-start gap-1.5 px-3 py-2 text-left text-sm font-semibold text-slate-900 dark:text-slate-100"
                       :aria-expanded="false"
                       @click.stop="toggleLocation(location.key)"
                     >
-                      <ChevronRight class="mt-0.5 h-3.5 w-3.5 shrink-0 text-slate-400" />
+                      <ChevronRight class="mt-0.5 h-3.5 w-3.5 shrink-0 text-slate-600 dark:text-slate-400" />
                       <span>{{ location.label }}</span>
                     </button>
                   </td>
@@ -141,7 +141,7 @@ function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, u
                   <tr
                     v-for="(unit, unitIndex) in location.units"
                     :key="unit.key"
-                    class="cursor-pointer border-t border-slate-800/70 align-top hover:bg-slate-800/20"
+                    class="cursor-pointer border-t border-slate-200 dark:border-slate-800/70 align-top hover:bg-slate-100 dark:hover:bg-slate-800/20"
                     @click="selectUnit(area.key, area.label, location.label, unit)"
                   >
                     <td
@@ -153,11 +153,11 @@ function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, u
                     >
                       <button
                         type="button"
-                        class="flex w-full items-start gap-1.5 px-3 py-2 text-left text-sm font-semibold text-slate-100"
+                        class="flex w-full items-start gap-1.5 px-3 py-2 text-left text-sm font-semibold text-slate-900 dark:text-slate-100"
                         :aria-expanded="true"
                         @click.stop="toggleLocation(location.key)"
                       >
-                        <ChevronDown class="mt-0.5 h-3.5 w-3.5 shrink-0 text-slate-400" />
+                        <ChevronDown class="mt-0.5 h-3.5 w-3.5 shrink-0 text-slate-600 dark:text-slate-400" />
                         <span>{{ location.label }}</span>
                       </button>
                     </td>
@@ -174,13 +174,13 @@ function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, u
                         />
                         <span>{{ matrixName(entry.item, lang) }}</span>
                       </div>
-                      <span v-if="unit.cells[index].length === 0" class="text-slate-600">—</span>
+                      <span v-if="unit.cells[index].length === 0" class="text-slate-500 dark:text-slate-600">—</span>
                     </td>
                     <td class="py-1.5 pr-3">
                       <div class="flex items-start gap-1">
-                        <span class="mt-px text-slate-600">▸</span>
+                        <span class="mt-px text-slate-500 dark:text-slate-600">▸</span>
                         <p
-                          class="line-clamp-2 max-w-72 text-slate-400"
+                          class="line-clamp-2 max-w-72 text-slate-600 dark:text-slate-400"
                           :title="unit.obtain || undefined"
                         >
                           {{ unit.obtain || "—" }}

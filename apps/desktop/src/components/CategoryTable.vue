@@ -39,11 +39,11 @@ function blocked(category: CategoryResult): number {
     <section
       v-for="group in groups"
       :key="group.title"
-      class="rounded-lg border border-slate-800 bg-slate-900/60"
+      class="rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60"
     >
-      <header class="flex items-center justify-between border-b border-slate-800 px-4 py-2">
+      <header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-4 py-2">
         <h2 class="flex items-center gap-1.5 text-sm font-semibold">
-          <component :is="group.icon" class="h-4 w-4 text-slate-400" />
+          <component :is="group.icon" class="h-4 w-4 text-slate-600 dark:text-slate-400" />
           {{ group.title }}
         </h2>
         <span class="text-xs text-slate-500">{{ group.hint }}</span>
@@ -62,20 +62,20 @@ function blocked(category: CategoryResult): number {
           <tr
             v-for="category in group.categories"
             :key="category.key"
-            class="cursor-pointer border-t border-slate-800/70 hover:bg-slate-800/40"
+            class="cursor-pointer border-t border-slate-200 dark:border-slate-800/70 hover:bg-slate-100 dark:hover:bg-slate-800/40"
             @click="emit('navigate', category.key)"
           >
             <td class="px-4 py-2">{{ category.name }}</td>
             <td class="px-4 py-2">
               <div class="flex items-center gap-2">
-                <div class="h-1.5 w-24 overflow-hidden rounded bg-slate-800">
+                <div class="h-1.5 w-24 overflow-hidden rounded bg-slate-200 dark:bg-slate-800">
                   <div
                     class="h-full rounded"
                     :class="category.section === 'album' ? 'bg-sky-500' : 'bg-emerald-500'"
                     :style="{ width: `${percent(category)}%` }"
                   ></div>
                 </div>
-                <span class="text-xs text-slate-400">
+                <span class="text-xs text-slate-600 dark:text-slate-400">
                   {{ category.obtained }}/{{ category.total }} ({{ percent(category).toFixed(0) }}%)
                 </span>
               </div>

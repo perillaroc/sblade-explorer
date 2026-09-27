@@ -30,11 +30,11 @@ function formatSize(size: number): string {
 </script>
 
 <template>
-  <section class="flex flex-wrap items-center gap-3 border-b border-slate-800 bg-slate-900/60 px-4 py-3">
-    <label class="text-xs text-slate-400" for="save-select">存档</label>
+  <section class="flex flex-wrap items-center gap-3 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 px-4 py-3">
+    <label class="text-xs text-slate-600 dark:text-slate-400" for="save-select">存档</label>
     <select
       id="save-select"
-      class="min-w-80 rounded border border-slate-700 bg-slate-950 px-2 py-1 text-sm text-slate-100"
+      class="min-w-80 rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 px-2 py-1 text-sm text-slate-900 dark:text-slate-100"
       :value="selected?.path ?? ''"
       @change="onChange"
     >
@@ -45,7 +45,7 @@ function formatSize(size: number): string {
     </select>
     <button
       type="button"
-      class="inline-flex items-center gap-1 rounded border border-slate-700 px-2 py-1 text-sm text-slate-300 hover:bg-slate-800"
+      class="inline-flex items-center gap-1 rounded border border-slate-300 dark:border-slate-700 px-2 py-1 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
       @click="emit('refresh')"
     >
       <RefreshCw class="h-3.5 w-3.5" />
