@@ -38,7 +38,7 @@ export interface Settings {
 const STORAGE_KEY = "sbsave.settings.v1";
 
 function defaultSettings(): Settings {
-  return { theme: "dark", searchEngine: "bing", browserPath: "", browserName: "" };
+  return { theme: "system", searchEngine: "bing", browserPath: "", browserName: "" };
 }
 
 function load(): Settings {
