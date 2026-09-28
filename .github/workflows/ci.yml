@@ -67,3 +67,27 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: 类型检查与构建
         run: pnpm build
+
+  docs:
+    name: 文档
+    # Netlify owns deployment; CI only gates that the VitePress site builds.
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: docs
+    steps:
+      - uses: actions/checkout@v7
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          package_json_file: docs/package.json
+          cache: true
+          cache_dependency_path: docs/pnpm-lock.yaml
+      - name: 安装 Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: 安装文档依赖
+        run: pnpm install --frozen-lockfile
+      - name: 构建文档
+        run: pnpm build

@@ -47,7 +47,8 @@ Python 参考实现已于 2026-09-15 删除，代码历史保留在 git 中。
 
 - `.github/workflows/ci.yml`：push `main` / PR / 手动 —— Rust 作业跑在 **windows-latest**（必须：`sbsave-tools`
   的集成测试对 `data/catalog.json` 逐字节比对，生成结果按平台换行），执行 fmt / clippy `-D warnings` /
-  `cargo test` / CLI 冒烟；前端作业跑在 ubuntu，执行 `pnpm install --frozen-lockfile` + `pnpm build`。
+  `cargo test` / CLI 冒烟；前端作业与文档作业跑在 ubuntu，各自执行 `pnpm install --frozen-lockfile` +
+  `pnpm build`（文档只校验构建，部署由 Netlify 负责）。
   声明了 `workflow_call` 供发布复用。
 - `.github/workflows/release.yml`：push tag `v*` 或手动 —— 先复用 `ci.yml` 把关，再校验 tag 与
   `tauri.conf.json` 版本一致（不一致直接失败），然后 `pnpm tauri build --no-bundle` 出便携版 exe、

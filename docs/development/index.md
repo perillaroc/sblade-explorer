@@ -76,7 +76,7 @@ GitHub Actions 两个工作流（`.github/workflows/`）：
 
 | 工作流 | 触发 | 内容 |
 | --- | --- | --- |
-| `ci.yml` | push `main` / PR / 手动 | Rust 作业（**windows-latest**）：`cargo fmt --all --check`、`clippy --workspace --all-targets -- -D warnings`、`cargo test --workspace`、CLI 冒烟；前端作业（ubuntu）：`pnpm install --frozen-lockfile` + `pnpm build` |
+| `ci.yml` | push `main` / PR / 手动 | Rust 作业（**windows-latest**）：`cargo fmt --all --check`、`clippy --workspace --all-targets -- -D warnings`、`cargo test --workspace`、CLI 冒烟；前端作业（ubuntu）：`pnpm install --frozen-lockfile` + `pnpm build`；文档作业（ubuntu，`docs/`）：`pnpm install --frozen-lockfile` + `pnpm build`，构建 VitePress 站点（死链会使构建失败），部署由 Netlify 负责 |
 | `release.yml` | push tag `v*` / 手动 | 先复用 `ci.yml` 全量把关，再校验 tag 与 `tauri.conf.json` 版本一致，构建桌面便携版 zip 与 CLI zip，用 `gh release create` 创建 **draft** Release；人工复核后 Publish |
 
 发布流程：
