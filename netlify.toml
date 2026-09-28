@@ -1,0 +1,9 @@
+# Netlify build for the VitePress site in docs/.
+# `publish` is resolved relative to `base`, so it stays `.vitepress/dist`.
+[build]
+  base = "docs"
+  command = "pnpm build"
+  publish = ".vitepress/dist"
+
+[build.environment]
+  NODE_VERSION = "22"
