@@ -3,10 +3,28 @@ export const APP_ID = "sblade-explorer";
 export const APP_LICENSE = "Apache License 2.0";
 export const APP_COPYRIGHT = "Copyright 2026 perillaroc";
 
-// 仓库地址与 src-tauri/capabilities/default.json 的 opener 白名单保持一致。
-export const APP_REPO_LABEL = "GitHub 仓库";
-export const APP_REPO_URL = "https://github.com/perillaroc/sblade-explorer";
-export const APP_REPO_DETAIL = "源代码、问题反馈与版本发布。";
+// 项目链接与 src-tauri/capabilities/default.json 的 opener 白名单保持一致。
+export interface AboutProjectLink {
+  label: string;
+  detail: string;
+  url: string;
+  action: string;
+}
+
+export const PROJECT_LINKS: AboutProjectLink[] = [
+  {
+    label: "GitHub 仓库",
+    detail: "源代码、问题反馈与版本发布。",
+    url: "https://github.com/perillaroc/sblade-explorer",
+    action: "打开仓库",
+  },
+  {
+    label: "在线文档",
+    detail: "使用指南、CLI 参数、数据来源与开发说明。",
+    url: "https://sblade-explorer.perillaroc.wang/",
+    action: "打开文档",
+  },
+];
 
 export interface AboutSource {
   name: string;
