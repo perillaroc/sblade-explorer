@@ -76,4 +76,7 @@
 
 [Apache License 2.0](LICENSE) · Copyright 2026 perillaroc
 
+界面与应用图标使用 [Lucide](https://lucide.dev)（ISC 许可），应用图标说明见
+[apps/desktop/src-tauri/icons/README.md](apps/desktop/src-tauri/icons/README.md)。
+
 本项目与 Shift Up / Sony Interactive Entertainment 无关，仅供个人存档分析使用。

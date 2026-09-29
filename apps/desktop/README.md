@@ -7,6 +7,8 @@
 - `src/` —— Vue 3 前端（Vite + TypeScript + Tailwind CSS v4）：
   - `components/` —— 汇总页、分类页、周目矩阵、详情弹窗、存档选择、关于/设置对话框等
   - `lib/` —— 前端辅助逻辑（展示、区域、矩阵、状态、攻略链接、设置、主题等）
+  - `assets/app-icon.svg` —— 应用图标 master，`pnpm icon` 由它生成 `src-tauri/icons/`
+    （造型、许可与重新生成说明见 `src-tauri/icons/README.md`）
   - `App.vue` / `main.ts` / `types.ts` / `styles.css`
 - `src-tauri/` —— Tauri shell：
   - `src/lib.rs` —— command：`list_saves` / `save_sources` / `inspect_save` / `open_save_dir` /
@@ -21,6 +23,7 @@
 pnpm install
 pnpm dev                       # 仅前端（Vite）
 pnpm build                     # vue-tsc --noEmit + vite build
+pnpm icon                      # 由 src/assets/app-icon.svg 重新生成 src-tauri/icons/
 pnpm tauri dev                 # 桌面应用开发
 pnpm tauri build --no-bundle   # 只出便携版 exe：target/release/sblade-explorer.exe
 pnpm tauri build               # NSIS/MSI 安装包：target/release/bundle/{nsis,msi}/

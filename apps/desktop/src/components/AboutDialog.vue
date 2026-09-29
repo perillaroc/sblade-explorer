@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 import { getVersion } from "@tauri-apps/api/app";
-import { ExternalLink, Info, X } from "@lucide/vue";
+import { ExternalLink, X } from "@lucide/vue";
+import appIcon from "../assets/app-icon.svg";
 import {
   APP_COPYRIGHT,
   APP_ID,
@@ -45,7 +46,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
       >
         <header class="flex items-start justify-between gap-3 border-b border-slate-200 dark:border-slate-800 px-4 py-3">
           <div class="flex items-start gap-2">
-            <Info class="mt-0.5 h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
+            <img :src="appIcon" class="h-5 w-5 shrink-0" alt="" />
             <div>
               <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-100">关于 {{ APP_NAME }}</h3>
               <p class="mt-0.5 text-xs text-slate-500">

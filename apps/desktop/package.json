@@ -9,6 +9,7 @@
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "tauri": "tauri",
+    "icon": "tauri icon src/assets/app-icon.svg",
     "bump": "node scripts/bump-version.mjs"
   },
   "dependencies": {
