@@ -15,6 +15,11 @@ pnpm icon   # = tauri icon src/assets/app-icon.svg
 桌面项目已在 `src-tauri/.gitignore` 中忽略）。改动图标后重新打包即可看到新图标：
 窗口/任务栏、便携版 exe（`pnpm tauri build --no-bundle`）与 NSIS/MSI 安装包。
 
+> **换图标后必须强制重编一次**：窗口与 exe 图标是编译期嵌入的（Windows 取本目录的
+> `icon.ico`，代码里走 `include_bytes!(<OUT_DIR>/<sha256>)`），而 `tauri-build` 没有为
+> 图标发出 `rerun-if-changed` —— 直接 `pnpm tauri dev` 会复用旧二进制、继续显示旧图标。
+> 执行 `cargo clean -p sblade-explorer`（在 `src-tauri/` 下）后再构建即可。
+
 ## 设计与许可
 
 - 造型：深靛 → 紫渐变圆角方底 + 白色剑形；`sword` 字形取自
