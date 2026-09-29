@@ -1,23 +1,17 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from "vue";
 import { invoke } from "@tauri-apps/api/core";
-import { save } from "@tauri-apps/plugin-dialog";
-import {
-  FileJson,
-  FileText,
-  FolderSearch,
-  Languages,
-  LoaderCircle,
-  TriangleAlert,
-} from "@lucide/vue";
+import { open, save } from "@tauri-apps/plugin-dialog";
+import { FileJson, FileText, Languages, LoaderCircle } from "@lucide/vue";
 import AppSidebar from "./components/AppSidebar.vue";
 import CategoryPage from "./components/CategoryPage.vue";
+import SaveGuide from "./components/SaveGuide.vue";
 import SavePicker from "./components/SavePicker.vue";
 import SummaryPage from "./components/SummaryPage.vue";
 import { loadGuides } from "./lib/guides";
 import { settings } from "./lib/settings";
 import { THEME_OPTIONS } from "./lib/theme";
-import type { Analysis, Lang, SaveSlot } from "./types";
+import type { Analysis, Lang, SaveSlot, SaveSource } from "./types";
 
 const SUMMARY_PAGE = "summary";
 
@@ -38,13 +32,23 @@ const LANG_OPTIONS: { value: Lang; label: string }[] = [
 ];
 
 const saves = ref<SaveSlot[]>([]);
+const manualSlots = ref<SaveSlot[]>([]);
+const sources = ref<SaveSource[]>([]);
 const selected = ref<SaveSlot | null>(null);
 const analysis = ref<Analysis | null>(null);
+const scanning = ref(false);
 const loading = ref(false);
 const error = ref("");
 const lang = ref<Lang>("zh");
 const page = ref(SUMMARY_PAGE);
 const notice = ref("");
+const noticeError = ref(false);
+
+/** Automatically discovered slots plus files picked manually this session. */
+const allSaves = computed(() => {
+  const discovered = new Set(saves.value.map((slot) => slot.path));
+  return [...saves.value, ...manualSlots.value.filter((slot) => !discovered.has(slot.path))];
+});
 
 const activeCategory = computed(
   () => analysis.value?.categories.find((category) => category.key === page.value) ?? null,
@@ -60,30 +64,124 @@ watch(analysis, (value) => {
   }
 });
 
+function showNotice(message: string, isError = false) {
+  notice.value = message;
+  noticeError.value = isError;
+}
+
+/** Re-checks slots picked manually; files that vanished are dropped. */
+async function syncManualSlots() {
+  const kept: SaveSlot[] = [];
+  for (const slot of manualSlots.value) {
+    if (saves.value.some((candidate) => candidate.path === slot.path)) {
+      continue;
+    }
+    try {
+      kept.push(await invoke<SaveSlot>("inspect_save", { path: slot.path }));
+    } catch {
+      if (selected.value?.path === slot.path) {
+        selected.value = null;
+        analysis.value = null;
+        if (settings.lastSavePath === slot.path) {
+          settings.lastSavePath = "";
+        }
+      }
+    }
+  }
+  manualSlots.value = kept;
+}
+
 async function refreshSaves() {
+  scanning.value = true;
   try {
-    saves.value = await invoke<SaveSlot[]>("list_saves");
+    const [discovered, sourceList] = await Promise.all([
+      invoke<SaveSlot[]>("list_saves"),
+      invoke<SaveSource[]>("save_sources"),
+    ]);
+    saves.value = discovered;
+    sources.value = sourceList;
   } catch (reason) {
     error.value = String(reason);
     return;
+  } finally {
+    scanning.value = false;
   }
-  if (selected.value === null && saves.value.length > 0) {
-    await selectSave(saves.value[0]);
+  await syncManualSlots();
+  if (selected.value === null) {
+    // A scan error would leave a stale message, so clear it before selecting.
+    error.value = "";
+    await selectPreferredSave();
   }
 }
 
-async function selectSave(slot: SaveSlot) {
+/** Opens the remembered save when it still exists, else the newest slot. */
+async function selectPreferredSave() {
+  const remembered = settings.lastSavePath;
+  if (remembered) {
+    const known = allSaves.value.find((slot) => slot.path === remembered);
+    if (known) {
+      await selectSave(known);
+      return;
+    }
+    try {
+      const slot = await invoke<SaveSlot>("inspect_save", { path: remembered });
+      manualSlots.value.push(slot);
+      await selectSave(slot);
+      return;
+    } catch {
+      settings.lastSavePath = "";
+    }
+  }
+  const first = allSaves.value[0];
+  if (first) {
+    await selectSave(first, false);
+  }
+}
+
+async function selectSave(slot: SaveSlot, remember = true) {
   selected.value = slot;
   loading.value = true;
   error.value = "";
-  notice.value = "";
+  showNotice("");
   try {
     analysis.value = await invoke<Analysis>("analyze_save", { path: slot.path });
+    if (remember) {
+      settings.lastSavePath = slot.path;
+    }
   } catch (reason) {
     analysis.value = null;
     error.value = String(reason);
   } finally {
     loading.value = false;
+  }
+}
+
+async function pickSaveFile() {
+  try {
+    const existing = sources.value.find((source) => source.exists);
+    const picked = await open({
+      multiple: false,
+      directory: false,
+      title: "选择剑星存档文件",
+      defaultPath: existing?.path,
+      filters: [{ name: "剑星存档", extensions: ["sav"] }],
+    });
+    if (typeof picked !== "string") return;
+    const slot = await invoke<SaveSlot>("inspect_save", { path: picked });
+    if (!allSaves.value.some((candidate) => candidate.path === slot.path)) {
+      manualSlots.value.push(slot);
+    }
+    await selectSave(slot);
+  } catch (reason) {
+    showNotice(`无法读取所选文件: ${String(reason)}`, true);
+  }
+}
+
+async function openSaveDir(path: string) {
+  try {
+    await invoke("open_save_dir", { path });
+  } catch (reason) {
+    showNotice(`打开目录失败: ${String(reason)}`, true);
   }
 }
 
@@ -102,9 +200,9 @@ async function exportReport(format: "json" | "markdown") {
       format,
       outPath: target,
     });
-    notice.value = `已导出 ${target}`;
+    showNotice(`已导出 ${target}`);
   } catch (reason) {
-    error.value = String(reason);
+    showNotice(`导出失败: ${String(reason)}`, true);
   }
 }
 
@@ -187,27 +285,44 @@ onMounted(() => {
         </div>
       </header>
 
-      <SavePicker :saves="saves" :selected="selected" @select="selectSave" @refresh="refreshSaves" />
+      <SavePicker
+        :saves="allSaves"
+        :selected="selected"
+        :scanning="scanning"
+        @select="selectSave"
+        @refresh="refreshSaves"
+        @pick="pickSaveFile"
+      />
 
-      <p v-if="notice" class="px-4 py-1 text-xs text-emerald-600 dark:text-emerald-400">{{ notice }}</p>
+      <p
+        v-if="notice"
+        class="px-4 py-1 text-xs"
+        :class="noticeError ? 'text-rose-600 dark:text-rose-400' : 'text-emerald-600 dark:text-emerald-400'"
+      >
+        {{ notice }}
+      </p>
 
       <main v-if="loading" class="flex flex-1 items-center justify-center text-sm text-slate-600 dark:text-slate-400">
         <LoaderCircle class="mr-2 h-4 w-4 animate-spin" />
         读取存档中…
       </main>
       <main
-        v-else-if="error"
-        class="flex flex-1 items-center justify-center text-sm text-rose-600 dark:text-rose-400"
-      >
-        <TriangleAlert class="mr-2 h-4 w-4" />
-        读取存档失败: {{ error }}
-      </main>
-      <main
-        v-else-if="!analysis"
+        v-else-if="scanning && !analysis"
         class="flex flex-1 items-center justify-center text-sm text-slate-600 dark:text-slate-400"
       >
-        <FolderSearch class="mr-2 h-4 w-4" />
-        未找到存档，请将存档放入默认目录后点击刷新。
+        <LoaderCircle class="mr-2 h-4 w-4 animate-spin" />
+        正在查找存档…
+      </main>
+      <main v-else-if="error || !analysis" class="flex-1 overflow-y-auto p-4">
+        <SaveGuide
+          :sources="sources"
+          :error="error"
+          :scanning="scanning"
+          :active-path="selected?.path ?? null"
+          @pick="pickSaveFile"
+          @refresh="refreshSaves"
+          @open="openSaveDir"
+        />
       </main>
       <main v-else class="flex-1 overflow-y-auto p-4">
         <SummaryPage

@@ -1,12 +1,15 @@
+use std::path::{Path, PathBuf};
 use std::time::UNIX_EPOCH;
 
 use sbsave_core::analyze::analyze;
 use sbsave_core::catalog::{load_catalog, GuideLink};
 use sbsave_core::report::{analysis_to_dict, write_json, write_markdown};
-use sbsave_core::savegame::{discover_saves, load_save, pick_default_save, SaveData};
+use sbsave_core::savegame::{
+    discover_saves, load_save, pick_default_save, save_dirs, SaveData, SaveSlot,
+};
 use serde::Serialize;
 
-#[derive(Serialize)]
+#[derive(Debug, Serialize)]
 #[serde(rename_all = "camelCase")]
 struct SaveSlotInfo {
     path: String,
@@ -39,6 +42,50 @@ fn slot_info(slot: &sbsave_core::savegame::SaveSlot) -> SaveSlotInfo {
 #[tauri::command]
 fn list_saves() -> Vec<SaveSlotInfo> {
     discover_saves(None).iter().map(slot_info).collect()
+}
+
+/// Directories scanned by `list_saves`; the UI shows them so users know where
+/// saves are read from.
+#[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
+struct SaveSourceInfo {
+    path: String,
+    exists: bool,
+}
+
+#[tauri::command]
+fn save_sources() -> Vec<SaveSourceInfo> {
+    save_dirs()
+        .into_iter()
+        .map(|path| SaveSourceInfo {
+            exists: path.is_dir(),
+            path: path.to_string_lossy().into_owned(),
+        })
+        .collect()
+}
+
+/// Builds slot metadata for an arbitrary save file, used when the user picks a
+/// file from outside the default directories.
+#[tauri::command]
+fn inspect_save(path: String) -> Result<SaveSlotInfo, String> {
+    SaveSlot::from_path(&path)
+        .map(|slot| slot_info(&slot))
+        .ok_or_else(|| format!("无法读取存档文件: {path}"))
+}
+
+fn is_save_dir(path: &Path) -> bool {
+    save_dirs().iter().any(|dir| dir == path)
+}
+
+/// Opens one of the scanned save directories in the file explorer. Only paths
+/// reported by `save_sources` are accepted.
+#[tauri::command]
+fn open_save_dir(path: String) -> Result<(), String> {
+    let target = PathBuf::from(&path);
+    if !is_save_dir(&target) {
+        return Err("不是已扫描的存档目录".to_string());
+    }
+    tauri_plugin_opener::open_path(&target, None::<&str>).map_err(|error| error.to_string())
 }
 
 fn load_for(path: Option<String>, slot: Option<u32>) -> Result<SaveData, String> {
@@ -250,6 +297,9 @@ pub fn run() {
         .plugin(tauri_plugin_opener::init())
         .invoke_handler(tauri::generate_handler![
             list_saves,
+            save_sources,
+            inspect_save,
+            open_save_dir,
             analyze_save,
             export_report,
             guide_links,
@@ -277,6 +327,41 @@ mod tests {
             assert!(!slot.path.is_empty());
             assert!(!slot.label.is_empty());
         }
+    }
+
+    #[test]
+    fn save_sources_lists_scan_dirs() {
+        let sources = save_sources();
+        assert!(!sources.is_empty(), "至少应报告一个扫描目录");
+        for source in sources {
+            assert!(!source.path.is_empty());
+            assert_eq!(source.exists, std::path::Path::new(&source.path).is_dir());
+        }
+    }
+
+    #[test]
+    fn save_dir_validation_only_accepts_scan_dirs() {
+        assert!(save_dirs().iter().all(|dir| is_save_dir(dir)));
+        assert!(!is_save_dir(std::path::Path::new(r"C:\Windows")));
+        assert!(!is_save_dir(std::path::Path::new(".")));
+    }
+
+    #[test]
+    fn inspect_save_returns_slot_info() {
+        let Some(path) = first_save_path() else {
+            return;
+        };
+        let slot = inspect_save(path).expect("inspect save");
+        assert!(!slot.label.is_empty());
+        assert!(slot.size > 0);
+        assert!(slot.path.ends_with(".sav"));
+    }
+
+    #[test]
+    fn inspect_save_rejects_missing_files() {
+        let missing = std::env::temp_dir().join("sbsave-missing-save.sav");
+        let error = inspect_save(missing.to_string_lossy().into_owned()).expect_err("missing file");
+        assert!(error.contains("无法读取存档文件"));
     }
 
     #[test]

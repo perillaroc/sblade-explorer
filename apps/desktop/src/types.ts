@@ -7,6 +7,12 @@ export interface SaveSlot {
   label: string;
 }
 
+/** A directory scanned by the backend when looking for saves. */
+export interface SaveSource {
+  path: string;
+  exists: boolean;
+}
+
 export interface SaveInfo {
   path: string;
   steam_id: string | null;

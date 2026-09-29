@@ -1,5 +1,6 @@
 use std::cmp::Reverse;
 use std::collections::{HashMap, HashSet};
+use std::ffi::OsStr;
 use std::fmt;
 use std::path::{Path, PathBuf};
 use std::time::SystemTime;
@@ -67,11 +68,45 @@ pub struct SaveSlot {
 
 impl SaveSlot {
     pub fn label(&self) -> String {
+        let file_name = self
+            .path
+            .file_name()
+            .and_then(|name| name.to_str())
+            .unwrap_or_default();
+        if slot_from_name(file_name).is_none() {
+            // Manually picked files may not follow the game's naming scheme;
+            // show the file name instead of a misleading "StellarBladeSave00".
+            return file_name.to_string();
+        }
         format!(
             "StellarBladeSave{:02} ({})",
             self.slot,
             self.steam_id.as_deref().unwrap_or("unknown")
         )
+    }
+
+    /// Builds a slot for an arbitrary file path, e.g. a save picked manually in
+    /// the desktop UI from outside the default directories.
+    pub fn from_path(path: impl AsRef<Path>) -> Option<Self> {
+        let path = path.as_ref();
+        let metadata = path.metadata().ok()?;
+        if !metadata.is_file() {
+            return None;
+        }
+        let mtime = metadata.modified().ok()?;
+        let file_name = path.file_name().and_then(|name| name.to_str())?;
+        let steam_id = path
+            .parent()
+            .and_then(|parent| parent.file_name())
+            .and_then(|name| name.to_str())
+            .filter(|name| is_steam_id(name))
+            .map(str::to_string);
+        Some(Self {
+            path: path.to_path_buf(),
+            steam_id,
+            slot: slot_from_name(file_name).unwrap_or(0),
+            mtime,
+        })
     }
 }
 
@@ -196,7 +231,7 @@ pub fn derive_aliases(alias: &str) -> Option<String> {
     Some(base)
 }
 
-fn appdata_paths() -> Vec<PathBuf> {
+fn default_save_dirs() -> Vec<PathBuf> {
     let home = paths::home_dir();
     let local = paths::local_app_data();
     vec![
@@ -204,6 +239,24 @@ fn appdata_paths() -> Vec<PathBuf> {
         home.join("Documents").join("StellarBlade"),
         local.join("SB_Demo").join("Saved").join("SaveGames"),
     ]
+}
+
+/// Directories searched by [`discover_saves`].
+///
+/// `SBSAVE_SAVE_DIRS` (semicolon separated) replaces the defaults when set; it
+/// exists to test the "no saves" flow on machines that do have saves.
+pub fn save_dirs() -> Vec<PathBuf> {
+    std::env::var_os("SBSAVE_SAVE_DIRS")
+        .filter(|value| !value.is_empty())
+        .map(|value| split_dirs(&value))
+        .filter(|dirs| !dirs.is_empty())
+        .unwrap_or_else(default_save_dirs)
+}
+
+fn split_dirs(value: &OsStr) -> Vec<PathBuf> {
+    std::env::split_paths(value)
+        .filter(|path| !path.as_os_str().is_empty())
+        .collect()
 }
 
 fn slot_from_name(name: &str) -> Option<u32> {
@@ -224,7 +277,7 @@ fn is_steam_id(name: &str) -> bool {
 
 pub fn discover_saves(extra_dirs: Option<&[PathBuf]>) -> Vec<SaveSlot> {
     let mut dirs: Vec<PathBuf> = extra_dirs.map(<[PathBuf]>::to_vec).unwrap_or_default();
-    dirs.extend(appdata_paths());
+    dirs.extend(save_dirs());
 
     let mut found: Vec<SaveSlot> = Vec::new();
     for directory in dirs {
@@ -539,4 +592,39 @@ pub fn pick_default_save(saves: Option<Vec<SaveSlot>>) -> Result<SaveSlot, SaveE
     }
     let main = saves.iter().find(|slot| slot.slot == 0);
     Ok(main.unwrap_or(&saves[0]).clone())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::split_dirs;
+    use std::ffi::OsString;
+    use std::path::PathBuf;
+
+    fn separator() -> char {
+        if cfg!(windows) {
+            ';'
+        } else {
+            ':'
+        }
+    }
+
+    #[test]
+    fn split_dirs_parses_platform_separated_paths() {
+        let separator = separator();
+        let value = OsString::from(format!("a{separator}b"));
+        assert_eq!(
+            split_dirs(&value),
+            vec![PathBuf::from("a"), PathBuf::from("b")]
+        );
+    }
+
+    #[test]
+    fn split_dirs_skips_empty_segments() {
+        let separator = separator();
+        let value = OsString::from(format!("a{separator}{separator}b"));
+        assert_eq!(
+            split_dirs(&value),
+            vec![PathBuf::from("a"), PathBuf::from("b")]
+        );
+    }
 }

@@ -33,12 +33,20 @@ export interface Settings {
   browserPath: string;
   /** Display name of `browserPath` (used when it is not in the detected browser list). */
   browserName: string;
+  /** Save opened last time; empty means "pick the newest save on startup". */
+  lastSavePath: string;
 }
 
 const STORAGE_KEY = "sbsave.settings.v1";
 
 function defaultSettings(): Settings {
-  return { theme: "system", searchEngine: "bing", browserPath: "", browserName: "" };
+  return {
+    theme: "system",
+    searchEngine: "bing",
+    browserPath: "",
+    browserName: "",
+    lastSavePath: "",
+  };
 }
 
 function load(): Settings {
@@ -54,6 +62,7 @@ function load(): Settings {
       searchEngine: engine ? engine.id : fallback.searchEngine,
       browserPath: typeof parsed.browserPath === "string" ? parsed.browserPath : "",
       browserName: typeof parsed.browserName === "string" ? parsed.browserName : "",
+      lastSavePath: typeof parsed.lastSavePath === "string" ? parsed.lastSavePath : "",
     };
   } catch (reason) {
     console.warn("读取设置失败，使用默认设置", reason);

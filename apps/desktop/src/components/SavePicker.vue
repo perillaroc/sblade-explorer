@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import { Clock, HardDrive, RefreshCw } from "@lucide/vue";
+import { Clock, FileSearch, HardDrive, RefreshCw } from "@lucide/vue";
 import type { SaveSlot } from "../types";
 
 const props = defineProps<{
   saves: SaveSlot[];
   selected: SaveSlot | null;
+  scanning: boolean;
 }>();
 
 const emit = defineEmits<{
   select: [slot: SaveSlot];
   refresh: [];
+  pick: [];
 }>();
 
 function onChange(event: Event) {
@@ -34,22 +36,34 @@ function formatSize(size: number): string {
     <label class="text-xs text-slate-600 dark:text-slate-400" for="save-select">存档</label>
     <select
       id="save-select"
-      class="min-w-80 rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 px-2 py-1 text-sm text-slate-900 dark:text-slate-100"
+      class="min-w-80 rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 px-2 py-1 text-sm text-slate-900 dark:text-slate-100 disabled:opacity-50"
       :value="selected?.path ?? ''"
+      :disabled="scanning"
       @change="onChange"
     >
-      <option v-if="saves.length === 0" value="" disabled>未找到存档</option>
+      <option v-if="saves.length === 0" value="" disabled>
+        {{ scanning ? "正在查找存档…" : "未找到存档" }}
+      </option>
       <option v-for="slot in saves" :key="slot.path" :value="slot.path">
         {{ slot.label }}
       </option>
     </select>
     <button
       type="button"
-      class="inline-flex items-center gap-1 rounded border border-slate-300 dark:border-slate-700 px-2 py-1 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+      class="inline-flex items-center gap-1 rounded border border-slate-300 dark:border-slate-700 px-2 py-1 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
+      :disabled="scanning"
       @click="emit('refresh')"
     >
-      <RefreshCw class="h-3.5 w-3.5" />
+      <RefreshCw class="h-3.5 w-3.5" :class="scanning ? 'animate-spin' : ''" />
       刷新
+    </button>
+    <button
+      type="button"
+      class="inline-flex items-center gap-1 rounded border border-slate-300 dark:border-slate-700 px-2 py-1 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+      @click="emit('pick')"
+    >
+      <FileSearch class="h-3.5 w-3.5" />
+      选择存档文件…
     </button>
     <span
       v-if="selected"

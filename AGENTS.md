@@ -96,4 +96,5 @@ Python 参考实现已于 2026-09-15 删除，代码历史保留在 git 中。
 - 绝不修改存档文件；需要测试解析时使用合成档案（逐字节构造，沿用原 Python 测试用例）。
 - `crates/sbsave-tools` 的集成测试断言 `cargo run -p sbsave-tools -- catalog build` 的结果与已提交 `data/catalog.json` 逐字节一致；改动数据源或生成逻辑后必须重新生成并让该测试通过。
 - 行为约定以迁移时的决策为准；原 Python 实现可从 git 历史（`33cb981`）查回。
+- `SBSAVE_SAVE_DIRS`（分号分隔）仅供测试：设置后替换默认存档探测目录，便于验证「未找到存档」界面；见 `docs/development/index.md`。
 - 文档与数据来源说明在 `README.md`、`docs/`（cli/reference/development）与 `data/raw/README.md`。

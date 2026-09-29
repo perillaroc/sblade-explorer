@@ -30,7 +30,7 @@ crates/sbsave-core/    # Rust 核心库：GVAS/EVAS 解析、存档提取、目�
 crates/sbsave-cli/     # clap CLI（二进制 sbsave），命令与输出沿用原 Python 版约定
 crates/sbsave-tools/   # 构建期数据管线（二进制 sbsave-tools）：catalog build / mine-names
 apps/desktop/          # Tauri 2 桌面应用：前端 Vue 3 + Vite + TS + Tailwind CSS v4（工程根）
-apps/desktop/src-tauri # Tauri shell：list_saves / analyze_save / export_report / guide_links / list_browsers
+apps/desktop/src-tauri # Tauri shell：list_saves / save_sources / inspect_save / open_save_dir / analyze_save / export_report / guide_links / list_browsers
 data/raw/              # 已提交的数据快照（含手工维护的 crosswalk.json）；运行时绝不联网
 data/catalog.json      # 由 sbsave-tools catalog build 生成的目录库；禁止手改
 ```
@@ -69,6 +69,20 @@ cargo run -p sbsave-tools -- mine-names `
 - 迁移验收（2026-09-14）：与原 Python 版 `report --json` 逐节点一致、Markdown 归一化后逐字一致；
   Python 参考实现已于 2026-09-15 删除，代码历史保留在 repo git（提交 `33cb981`）。
 - 目录库回归哨兵见 [data.md](../reference/data.md#回归哨兵)。
+
+## 测试技巧
+
+验证桌面应用的「未找到存档」界面（本机已有存档时）：`SBSAVE_SAVE_DIRS`（分号分隔）会
+**替换**默认存档探测目录，对桌面应用与 CLI 同样生效：
+
+```powershell
+$env:SBSAVE_SAVE_DIRS = "$env:TEMP\sbsave-empty"   # 目录存在 / 不存在可分别验证两种提示
+cd apps/desktop
+pnpm tauri dev
+```
+
+该变量仅用于本地测试。程序会记住上次选择的存档，测试空状态前先在设置中点
+「改为自动选择」或「恢复默认」。
 
 ## CI 与发布
 
