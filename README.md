@@ -1,6 +1,7 @@
 # sblade-explorer（剑星存档收集度分析）
 
 [![CI](https://github.com/perillaroc/sblade-explorer/actions/workflows/ci.yml/badge.svg)](https://github.com/perillaroc/sblade-explorer/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/perillaroc/sblade-explorer)](https://github.com/perillaroc/sblade-explorer/releases)
 ![100% Vibe Coded](https://img.shields.io/badge/100%25-Vibe_Coded-blueviolet)
 
 读取 Steam《剑星》(Stellar Blade) 存档，报告尚未收集的收集物。**Windows 桌面应用是主要发布形式**，
