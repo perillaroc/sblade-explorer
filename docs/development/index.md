@@ -101,8 +101,11 @@ pnpm bump 0.2.0        # 同步 tauri.conf.json / package.json / Cargo.toml，�
 cd ..\..
 git commit -am ":bookmark: 发布 v0.2.0"
 git tag v0.2.0
-git push --follow-tags
+git push origin main v0.2.0
 ```
+
+> 发布用轻量标签（与 `v0.1.0`、`v0.2.0` 一致）：`git push --follow-tags` 不会推送轻量标签，所以 tag 必须显式写进 push。
+> 如改用附注标签（`git tag -a v0.2.0 -m ":bookmark: 发布 v0.2.0"`），才可以用 `--follow-tags`。
 
 `release.yml` 会校验 tag 与 `tauri.conf.json` 的版本一致，不一致直接失败。
 

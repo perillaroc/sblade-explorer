@@ -55,7 +55,8 @@ Python 参考实现已于 2026-09-15 删除，代码历史保留在 git 中。
   `cargo build --release -p sbsave-cli` 出 CLI，两者各打包 zip，用 `gh release create --draft`
   创建 **draft** Release（未使用 tauri-action，也未接入自动升级）。
 - 发版：`cd apps/desktop && pnpm bump <x.y.z>`（同步 tauri.conf.json / package.json / Cargo.toml，并刷新
-  Cargo.lock）→ 提交 → `git tag v<x.y.z>` → `git push --follow-tags` → 复核 draft 后 Publish。
+  Cargo.lock）→ 提交 → `git tag v<x.y.z>` → `git push origin main v<x.y.z>` → 复核 draft 后 Publish。
+  标签沿用轻量标签（与 v0.1.0 / v0.2.0 一致）；`--follow-tags` 只推附注标签，轻量标签必须显式推送。
 - 仓库公开（`perillaroc/sblade-explorer`），Actions 免费；发布不需要额外 secret，只用 `GITHUB_TOKEN`。
 - **布局不变量**：`crates/` 必须在仓库根下（`sbsave-tools::repo_root()` 上溯两级）；`data/catalog.json`
   必须在 `crates/sbsave-core` 上溯三级（`include_str!` 编译期嵌入）；`apps/desktop/src-tauri` 必须列在

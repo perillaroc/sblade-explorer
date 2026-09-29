@@ -73,4 +73,6 @@ execFileSync(cargo, ["update", "--workspace"], { cwd: repoRoot, stdio: "inherit"
 console.log(`\n全部版本号已更新为 ${version}。下一步：`);
 console.log(`  git commit -am ":bookmark: 发布 v${version}"`);
 console.log(`  git tag v${version}`);
-console.log(`  git push --follow-tags`);
+// Lightweight tags (the project convention) are not pushed by `--follow-tags`,
+// so the hint pushes the tag explicitly.
+console.log(`  git push origin main v${version}`);
