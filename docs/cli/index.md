@@ -20,7 +20,7 @@ cargo run -p sbsave-cli -- saves
 
 ### `report`
 
-分析并输出中文控制台报告，可导出 JSON/Markdown；支持指定存档/槽位/分类/语言，并可列出已收集物品。
+分析并输出控制台报告（默认中文，可用 `--ui-lang` 切换），可导出 JSON/Markdown；支持指定存档/槽位/分类/语言，并可列出已收集物品。
 
 报告分两段：**收集品**（13 类，计入目录进度）与**图鉴**（孽奇拔 67 + 角色 55，单列、不计入目录进度）。
 JSON 的 `summary` 同时包含 `catalog_*`（收集品）与 `album_*`（图鉴）字段，每个分类带
@@ -54,9 +54,11 @@ cargo run -p sbsave-cli -- catalog check
 
 | 命令 | 参数 |
 | --- | --- |
-| `report` | `--save/-s`、`--slot`、`--category/-c`（分类键或中文名，逗号分隔）、`--lang`（`zh` 默认 / `en` / `both`）、`--all`（列出已收集）、`--json`、`--markdown`、`--catalog` |
+| `report` | `--save/-s`、`--slot`、`--category/-c`（分类键、中文名或英文名，逗号分隔）、`--lang`（物品文本：`zh` 默认 / `en` / `both`）、`--all`（列出已收集）、`--json`、`--markdown`、`--catalog` |
 | `dump` | `--save/-s`、`--slot`、`--json`（摘要）、`--tree`（完整解析树）、`--obtained`（别名） |
 | `catalog` | `list` / `check`，均支持 `--catalog` 附加覆盖文件 |
+
+所有命令都接受全局 `--ui-lang zh|en`：控制帮助、表头、错误等界面文字；不指定时读取系统语言，无法识别时回退中文。`--lang` 只影响物品文本与导出报告内容。
 
 `--catalog` 用于临时附加用户覆盖文件，格式说明见 [data.md](../reference/data.md#自定义目录库)。
 报告中的「已获得」判定、NG+/DLC 标注与低置信度条目说明见 [data.md](../reference/data.md)。

@@ -1,14 +1,25 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useI18n } from "vue-i18n";
 import { CircleCheck, CircleX, TriangleAlert } from "@lucide/vue";
 import type { Lang } from "../types";
 import { areaAccent } from "../lib/area";
-import { areaLabel, itemName, locationLabel, obtainLabel } from "../lib/display";
+import {
+  areaLabel,
+  flagLabels,
+  itemName,
+  locationLabel,
+  obtainLabel,
+  reasonLabel,
+} from "../lib/display";
 import type { ItemRow } from "../lib/items";
 import ItemDetailDialog from "./ItemDetailDialog.vue";
 
+const { t } = useI18n({ useScope: "global" });
+
 const props = defineProps<{
   rows: ItemRow[];
+  ngPlusCount: number;
   lang: Lang;
   hideLocation?: boolean;
 }>();
@@ -22,6 +33,14 @@ function areaText(row: ItemRow): string {
 function locationText(row: ItemRow): string {
   return locationLabel(row.item, props.lang);
 }
+
+function flags(row: ItemRow): string[] {
+  return flagLabels(row.item);
+}
+
+function reason(row: ItemRow): string | null {
+  return row.obtained ? null : reasonLabel(row.item, props.ngPlusCount);
+}
 </script>
 
 <template>
@@ -29,11 +48,11 @@ function locationText(row: ItemRow): string {
     <table class="w-full text-xs">
       <thead class="sticky top-0 bg-white dark:bg-slate-900">
         <tr class="text-left text-slate-500">
-          <th class="px-4 py-2">状态</th>
-          <th class="px-4 py-2">物品</th>
-          <th v-if="!hideLocation" class="px-4 py-2">位置</th>
-          <th class="px-4 py-2">获取</th>
-          <th class="px-4 py-2">标记</th>
+          <th class="px-4 py-2">{{ t("itemTable.status") }}</th>
+          <th class="px-4 py-2">{{ t("itemTable.item") }}</th>
+          <th v-if="!hideLocation" class="px-4 py-2">{{ t("itemTable.location") }}</th>
+          <th class="px-4 py-2">{{ t("itemTable.obtain") }}</th>
+          <th class="px-4 py-2">{{ t("itemTable.flags") }}</th>
         </tr>
       </thead>
       <tbody>
@@ -55,7 +74,7 @@ function locationText(row: ItemRow): string {
             >
               <CircleCheck v-if="row.obtained" class="h-3 w-3" />
               <CircleX v-else class="h-3 w-3" />
-              {{ row.obtained ? "已收集" : "未收集" }}
+              {{ row.obtained ? t("itemTable.obtained") : t("itemTable.missing") }}
             </span>
           </td>
           <td class="px-4 py-2">
@@ -69,7 +88,7 @@ function locationText(row: ItemRow): string {
             >
               <template v-if="locationText(row)">
                 <span class="text-[11px] font-semibold" :class="areaAccent(row.item.area).text">
-                  {{ areaText(row) || "未分类" }}
+                  {{ areaText(row) || t("common.uncategorized") }}
                 </span>
                 <span class="text-sm font-medium text-slate-900 dark:text-slate-100">{{ locationText(row) }}</span>
               </template>
@@ -78,37 +97,43 @@ function locationText(row: ItemRow): string {
                 class="text-sm font-semibold"
                 :class="areaAccent(row.item.area).text"
               >
-                {{ areaText(row) || "未分类" }}
+                {{ areaText(row) || t("common.uncategorized") }}
               </span>
             </div>
           </td>
           <td class="px-4 py-2 text-slate-600 dark:text-slate-400">{{ obtainLabel(row.item, lang) || "—" }}</td>
           <td class="px-4 py-2">
             <span
-              v-for="flag in row.flags"
+              v-for="flag in flags(row)"
               :key="flag"
               class="mr-1 inline-block rounded bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 text-[11px] text-amber-700 dark:text-amber-300"
             >
               {{ flag }}
             </span>
             <span
-              v-if="row.reason"
+              v-if="reason(row)"
               class="mr-1 inline-block rounded bg-amber-100 dark:bg-amber-900/40 px-1.5 py-0.5 text-[11px] text-amber-700 dark:text-amber-200"
             >
-              {{ row.reason }}
+              {{ reason(row) }}
             </span>
             <span
               v-if="row.obtained && row.item.missable"
               class="mr-1 inline-flex items-center gap-0.5 rounded bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 text-[11px] text-slate-600 dark:text-slate-400"
             >
               <TriangleAlert class="h-3 w-3" />
-              可错过
+              {{ t("itemTable.missable") }}
             </span>
           </td>
         </tr>
       </tbody>
     </table>
 
-    <ItemDetailDialog v-if="selected" :row="selected" :lang="lang" @close="selected = null" />
+    <ItemDetailDialog
+      v-if="selected"
+      :row="selected"
+      :ng-plus-count="ngPlusCount"
+      :lang="lang"
+      @close="selected = null"
+    />
   </div>
 </template>

@@ -4,6 +4,7 @@ use std::path::PathBuf;
 use sbsave_core::analyze::analyze;
 use sbsave_core::catalog::load_catalog;
 use sbsave_core::gvas::{EngineVersion, GvasFile, GvasHeader};
+use sbsave_core::i18n::Locale;
 use sbsave_core::savegame::{AchievementRecord, SaveData};
 
 fn make_header() -> GvasHeader {
@@ -92,7 +93,14 @@ fn ng_plus_reason() {
         .iter()
         .find(|status| status.item.id == ng_item.id)
         .expect("ng missing");
-    assert_eq!(missing.reason.as_deref(), Some("需要二周目(NG+)"));
+    assert_eq!(
+        missing.reason_label(Locale::Zh).as_deref(),
+        Some("需要二周目(NG+)")
+    );
+    assert_eq!(
+        missing.reason_label(Locale::En).as_deref(),
+        Some("Requires NG+")
+    );
 
     let save_ng = make_save(&[], &[], 1);
     let result_ng = analyze(&save_ng, &catalog, Some(filter.as_slice()));

@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
 import { FileSearch, FolderOpen, FolderX, RefreshCw, TriangleAlert } from "@lucide/vue";
 import type { SaveSource } from "../types";
+
+const { t } = useI18n({ useScope: "global" });
 
 defineProps<{
   sources: SaveSource[];
@@ -28,19 +31,20 @@ const emit = defineEmits<{
         />
         <FolderX v-else class="mt-0.5 h-4 w-4 shrink-0 text-amber-500 dark:text-amber-400" />
         <div class="min-w-0">
-          <h3 class="text-sm font-semibold">{{ error ? "读取存档失败" : "未找到存档" }}</h3>
+          <h3 class="text-sm font-semibold">{{ error ? t("saveGuide.readError") : t("saveGuide.notFound") }}</h3>
           <p
             v-if="error"
             class="mt-1 break-all font-mono text-xs text-rose-600 dark:text-rose-400"
           >
             {{ error }}
           </p>
-          <p v-else class="mt-1 text-xs leading-5 text-slate-600 dark:text-slate-400">
-            程序会递归扫描下列目录中的 <code>StellarBladeSave*.sav</code>，名为
-            <code>Backup</code> 的目录会被忽略。
-          </p>
+          <p
+            v-else
+            class="mt-1 text-xs leading-5 text-slate-600 dark:text-slate-400"
+            v-html="t('saveGuide.hint')"
+          ></p>
           <p v-if="activePath" class="mt-1 break-all font-mono text-[11px] text-slate-500">
-            当前文件：{{ activePath }}
+            {{ t("saveGuide.currentFile", { path: activePath }) }}
           </p>
         </div>
       </div>
@@ -63,7 +67,7 @@ const emit = defineEmits<{
             >
               <FolderOpen v-if="source.exists" class="h-3.5 w-3.5 shrink-0" />
               <FolderX v-else class="h-3.5 w-3.5 shrink-0" />
-              {{ source.exists ? "目录存在" : "目录不存在" }}
+              {{ source.exists ? t("saveGuide.directoryExists") : t("saveGuide.directoryMissing") }}
             </div>
             <div class="mt-0.5 break-all font-mono text-[11px] text-slate-500">
               {{ source.path }}
@@ -76,11 +80,11 @@ const emit = defineEmits<{
             @click="emit('open', source.path)"
           >
             <FolderOpen class="h-3.5 w-3.5" />
-            打开
+            {{ t("saveGuide.open") }}
           </button>
         </li>
         <li v-if="sources.length === 0" class="px-3 py-2 text-xs text-slate-500">
-          正在读取扫描目录…
+          {{ t("saveGuide.loadingDirs") }}
         </li>
       </ul>
     </section>
@@ -92,7 +96,7 @@ const emit = defineEmits<{
         @click="emit('pick')"
       >
         <FileSearch class="h-3.5 w-3.5" />
-        选择存档文件…
+        {{ t("saveGuide.pick") }}
       </button>
       <button
         type="button"
@@ -101,10 +105,10 @@ const emit = defineEmits<{
         @click="emit('refresh')"
       >
         <RefreshCw class="h-3.5 w-3.5" :class="scanning ? 'animate-spin' : ''" />
-        重新扫描
+        {{ t("saveGuide.rescan") }}
       </button>
       <span class="text-[11px] leading-5 text-slate-500">
-        存档不在默认目录时，可直接选择文件（只读打开）。
+        {{ t("saveGuide.note") }}
       </span>
     </div>
   </div>

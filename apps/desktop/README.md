@@ -6,7 +6,11 @@
 
 - `src/` —— Vue 3 前端（Vite + TypeScript + Tailwind CSS v4）：
   - `components/` —— 汇总页、分类页、周目矩阵、详情弹窗、存档选择、关于/设置对话框等
-  - `lib/` —— 前端辅助逻辑（展示、区域、矩阵、状态、攻略链接、设置、主题等）
+  - `lib/` —— 前端辅助逻辑（展示、区域、矩阵、状态、攻略链接、设置、主题、i18n 等）
+  - `locales/zh.ts` / `locales/en.ts` —— vue-i18n 语言包（`zh.ts` 是 `MessageSchema` 事实来源，
+    `en.ts` 用 `satisfies` 约束；新增文案必须同时补两份）
+  - `lib/i18n.ts` —— i18n 初始化、`<html lang>` 与窗口标题同步；`settings.uiLocale`（界面语言）
+    与 `settings.contentLang`（内容语言）相互独立并持久化
   - `assets/app-icon.svg` —— 应用图标 master，`pnpm icon` 由它生成 `src-tauri/icons/`
     （造型、许可与重新生成说明见 `src-tauri/icons/README.md`）
   - `App.vue` / `main.ts` / `types.ts` / `styles.css`
@@ -23,6 +27,7 @@
 pnpm install
 pnpm dev                       # 仅前端（Vite）
 pnpm build                     # vue-tsc --noEmit + vite build
+pnpm test                      # vitest：语言包 key 对齐、插值与文案
 pnpm icon                      # 由 src/assets/app-icon.svg 重新生成 src-tauri/icons/
 pnpm tauri dev                 # 桌面应用开发
 pnpm tauri build --no-bundle   # 只出便携版 exe：target/release/sblade-explorer.exe

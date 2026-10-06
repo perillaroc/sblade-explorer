@@ -13,3 +13,4 @@ clap = { version = "4", features = ["derive"] }
 serde_json = { workspace = true }
 time = { workspace = true }
 sbsave-core = { path = "../sbsave-core" }
+sys-locale = "0.3"

@@ -37,7 +37,7 @@ features:
     details: 支持 NG+ / NG++ 内容分析
   - icon: 🌐
     title: 双语数据
-    details: 支持简体中文和英文名称
+    details: 界面与物品名称支持中文 / English
 ---
 
 ## 下载

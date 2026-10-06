@@ -34,9 +34,12 @@
 - 读取存档中的 `NewGamePlusPlayCount`，标注「需要二周目(NG+)」/「需要三周目(NG++)」。
 - 记录/密码/罐子/设计图案/外观名称由游戏数据挖掘覆盖为官方简中名称并置 `confidence="high"`；
   少量记录版本变体与未关联营地保留低置信度（共 69 条），报告中标记「映射待确认」。
-- 分类参数（CLI `--category` 与 UI 筛选）同时接受分类键（`nano_suits`）和中文名（`纳米战衣`）。
+- 分类参数（CLI `--category` 与 UI 筛选）同时接受分类键（`nano_suits`）、中文名（`纳米战衣`）与英文名（`Nano Suits`）。
 - 分类分两段：`section=collection`（13 类收集品，计入目录进度）与 `section=album`
   （图鉴：孽奇拔 67、角色 55，**不计入目录进度**，在报告/UI 中单列）。
+- 分类带 `name`（中文）与 `name_en`（英文），记录条目带 `record_type`/`record_type_zh`/`record_type_en`；
+  英文名在 `crates/sbsave-tools/src/catalog_build.rs` 的 `CATEGORIES` / `RECORD_TYPES` 中维护，
+  随目录库一起生成；analysis JSON 同样输出这些字段，供桌面端按内容语言显示。
 
 ## 图鉴（AlbumTable）
 

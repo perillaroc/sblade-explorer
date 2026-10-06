@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted } from "vue";
+import { useI18n } from "vue-i18n";
 import { Image, Search, Video, X } from "@lucide/vue";
 import type { Lang } from "../types";
 import { areaAccent } from "../lib/area";
-import { matrixName, obtainLabel } from "../lib/display";
+import { flagLabels, matrixName, obtainLabel, reasonLabel } from "../lib/display";
 import { guideFor, searchVideoUrl, searchWebUrl } from "../lib/guides";
 import { openExternalUrl } from "../lib/links";
 import { searchEngine } from "../lib/settings";
 import { matrixPeriodLabel, type MatrixUnit } from "../lib/matrix";
+import type { ItemRow } from "../lib/items";
 import MatrixStatusIcon from "./MatrixStatusIcon.vue";
+
+const { t } = useI18n({ useScope: "global" });
 
 const props = defineProps<{
   unit: MatrixUnit;
@@ -37,9 +41,17 @@ const guides = computed(() => {
 const webLink = computed(() => guides.value?.web ?? null);
 const videoLink = computed(() => guides.value?.video ?? null);
 const searchName = computed(() => props.unit.name);
-const engineName = computed(() => searchEngine().name);
+const engineName = computed(() => t(`settings.engines.${searchEngine().id}`));
 const webSearchUrl = computed(() => searchWebUrl(searchName.value));
 const videoSearchUrl = computed(() => searchVideoUrl(searchName.value));
+
+function flags(entry: ItemRow): string[] {
+  return flagLabels(entry.item);
+}
+
+function reason(entry: ItemRow): string | null {
+  return entry.obtained ? null : reasonLabel(entry.item, props.ngPlusCount);
+}
 
 function onKeydown(event: KeyboardEvent) {
   if (event.key === "Escape") emit("close");
@@ -81,20 +93,20 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
             @click="emit('close')"
           >
             <X class="h-3.5 w-3.5" />
-            关闭
+            {{ t("common.close") }}
           </button>
         </header>
 
         <div class="space-y-4 px-4 py-3">
           <div>
-            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">获取方式</h4>
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">{{ t("itemDetail.obtain") }}</h4>
             <p class="mt-1 whitespace-pre-wrap text-xs leading-5 text-slate-700 dark:text-slate-300">
               {{ unit.obtain || "—" }}
             </p>
           </div>
 
           <div>
-            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">中文攻略</h4>
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">{{ t("itemDetail.chineseGuides") }}</h4>
             <div class="mt-1.5 flex flex-wrap gap-2">
               <button
                 v-if="webLink"
@@ -104,7 +116,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
                 @click="openExternalUrl(webLink.url)"
               >
                 <Image class="h-3.5 w-3.5" />
-                图文攻略
+                {{ t("itemDetail.imageGuide") }}
               </button>
               <button
                 v-if="videoLink"
@@ -114,7 +126,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
                 @click="openExternalUrl(videoLink.url)"
               >
                 <Video class="h-3.5 w-3.5" />
-                视频攻略
+                {{ t("itemDetail.videoGuide") }}
               </button>
               <span
                 v-if="webLink || videoLink"
@@ -124,29 +136,29 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
               <button
                 type="button"
                 class="inline-flex items-center gap-1 rounded border border-slate-300 dark:border-slate-700 px-2 py-1 text-xs text-slate-700 dark:text-slate-300 hover:border-sky-600 hover:bg-slate-100 dark:hover:bg-slate-800"
-                :title="`在${engineName}搜索「${searchName}」的图文攻略`"
+                :title="t('itemDetail.searchWebTitle', { engine: engineName, name: searchName })"
                 @click="openExternalUrl(webSearchUrl)"
               >
                 <Search class="h-3.5 w-3.5" />
-                搜索图文攻略
+                {{ t("itemDetail.searchWeb") }}
               </button>
               <button
                 type="button"
                 class="inline-flex items-center gap-1 rounded border border-slate-300 dark:border-slate-700 px-2 py-1 text-xs text-slate-700 dark:text-slate-300 hover:border-rose-600 hover:bg-slate-100 dark:hover:bg-slate-800"
-                :title="`在 B 站搜索「${searchName}」的视频攻略`"
+                :title="t('itemDetail.searchVideoTitle', { name: searchName })"
                 @click="openExternalUrl(videoSearchUrl)"
               >
                 <Search class="h-3.5 w-3.5" />
-                搜索视频攻略
+                {{ t("itemDetail.searchVideo") }}
               </button>
             </div>
             <p v-if="webLink" class="mt-1.5 text-[11px] leading-4 text-slate-500">
-              图文来源：{{ webLink.title }}
+              {{ t("itemDetail.guideSource", { title: webLink.title }) }}
             </p>
           </div>
 
           <div>
-            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">周目变体</h4>
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">{{ t("itemDetail.cycleVariants") }}</h4>
             <div
               v-for="entry in unit.cells.flat()"
               :key="entry.id"
@@ -162,23 +174,23 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
                 </span>
                 <span class="text-[11px] text-slate-500 dark:text-slate-600">{{ entry.id }}</span>
                 <span
-                  v-for="flag in entry.flags"
+                  v-for="flag in flags(entry)"
                   :key="flag"
                   class="rounded bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 text-[11px] text-amber-700 dark:text-amber-300"
                 >
                   {{ flag }}
                 </span>
                 <span
-                  v-if="entry.reason"
+                  v-if="reason(entry)"
                   class="rounded bg-amber-100 dark:bg-amber-900/40 px-1.5 py-0.5 text-[11px] text-amber-700 dark:text-amber-200"
                 >
-                  {{ entry.reason }}
+                  {{ reason(entry) }}
                 </span>
                 <span
                   v-if="entry.obtained && entry.item.missable"
                   class="rounded bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 text-[11px] text-slate-600 dark:text-slate-400"
                 >
-                  可错过
+                  {{ t("itemTable.missable") }}
                 </span>
               </div>
               <p class="mt-1 whitespace-pre-wrap text-[11px] leading-5 text-slate-600 dark:text-slate-400">

@@ -2,15 +2,25 @@ import { watch } from "vue";
 import { isTauri } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
 import { Monitor, Moon, Sun, type LucideIcon } from "@lucide/vue";
+import { translate } from "./i18n";
 import { settings, type ThemeMode } from "./settings";
 
-type ResolvedTheme = "dark" | "light";
+export interface ThemeOption {
+  value: ThemeMode;
+  label: string;
+  icon: LucideIcon;
+}
 
-export const THEME_OPTIONS: readonly { value: ThemeMode; label: string; icon: LucideIcon }[] = [
-  { value: "dark", label: "暗色", icon: Moon },
-  { value: "light", label: "浅色", icon: Sun },
-  { value: "system", label: "跟随系统", icon: Monitor },
-];
+/** Theme choices with labels in the current interface language. */
+export function themeOptions(): ThemeOption[] {
+  return [
+    { value: "dark", label: translate("theme.dark"), icon: Moon },
+    { value: "light", label: translate("theme.light"), icon: Sun },
+    { value: "system", label: translate("theme.system"), icon: Monitor },
+  ];
+}
+
+type ResolvedTheme = "dark" | "light";
 
 const DARK_SCHEME = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -24,7 +34,7 @@ function syncWindowTheme(theme: ResolvedTheme): void {
   if (!isTauri()) return;
   getCurrentWindow()
     .setTheme(settings.theme === "system" ? null : theme)
-    .catch((reason) => console.warn("同步窗口主题失败", reason));
+    .catch((reason) => console.warn(translate("errors.themeSyncFailed"), reason));
 }
 
 export function applyTheme(): void {

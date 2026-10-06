@@ -67,6 +67,8 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: 类型检查与构建
         run: pnpm build
+      - name: 单元测试
+        run: pnpm test
 
   docs:
     name: 文档

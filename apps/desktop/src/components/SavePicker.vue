@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
 import { Clock, FileSearch, HardDrive, RefreshCw } from "@lucide/vue";
+import { settings } from "../lib/settings";
 import type { SaveSlot } from "../types";
+
+const { t } = useI18n({ useScope: "global" });
 
 const props = defineProps<{
   saves: SaveSlot[];
@@ -23,7 +27,8 @@ function onChange(event: Event) {
 }
 
 function formatTime(mtimeMs: number): string {
-  return new Date(mtimeMs).toLocaleString("zh-CN", { hour12: false });
+  const locale = settings.uiLocale === "zh" ? "zh-CN" : "en-US";
+  return new Date(mtimeMs).toLocaleString(locale, { hour12: false });
 }
 
 function formatSize(size: number): string {
@@ -33,7 +38,7 @@ function formatSize(size: number): string {
 
 <template>
   <section class="flex flex-wrap items-center gap-3 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 px-4 py-3">
-    <label class="text-xs text-slate-600 dark:text-slate-400" for="save-select">存档</label>
+    <label class="text-xs text-slate-600 dark:text-slate-400" for="save-select">{{ t("savePicker.label") }}</label>
     <select
       id="save-select"
       class="min-w-80 rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 px-2 py-1 text-sm text-slate-900 dark:text-slate-100 disabled:opacity-50"
@@ -42,7 +47,7 @@ function formatSize(size: number): string {
       @change="onChange"
     >
       <option v-if="saves.length === 0" value="" disabled>
-        {{ scanning ? "正在查找存档…" : "未找到存档" }}
+        {{ scanning ? t("savePicker.scanning") : t("savePicker.notFound") }}
       </option>
       <option v-for="slot in saves" :key="slot.path" :value="slot.path">
         {{ slot.label }}
@@ -55,7 +60,7 @@ function formatSize(size: number): string {
       @click="emit('refresh')"
     >
       <RefreshCw class="h-3.5 w-3.5" :class="scanning ? 'animate-spin' : ''" />
-      刷新
+      {{ t("savePicker.refresh") }}
     </button>
     <button
       type="button"
@@ -63,7 +68,7 @@ function formatSize(size: number): string {
       @click="emit('pick')"
     >
       <FileSearch class="h-3.5 w-3.5" />
-      选择存档文件…
+      {{ t("savePicker.pick") }}
     </button>
     <span
       v-if="selected"

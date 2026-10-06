@@ -6,6 +6,7 @@ use std::path::{Path, PathBuf};
 use std::time::SystemTime;
 
 use crate::gvas::{GvasError, GvasFile, Property, Value};
+use crate::i18n::{Locale, Messages};
 use crate::paths;
 
 pub const SAVE_GAME_CLASS: &str = "/Script/SB.SBSaveGame";
@@ -167,29 +168,16 @@ impl SaveData {
         self.counters.get("Version").copied().unwrap_or(1)
     }
 
-    pub fn playthrough_label(&self) -> String {
-        let count = self.ng_plus_count();
-        if count <= 0 {
-            "一周目".to_string()
-        } else {
-            format!("NG+{count}")
-        }
+    pub fn playthrough_label(&self, locale: Locale) -> String {
+        Messages::new(locale).playthrough_label(self.ng_plus_count())
     }
 
-    pub fn play_time_label(&self) -> String {
-        let seconds = self.play_time_seconds();
-        let hours = seconds / 3600;
-        let minutes = (seconds % 3600) / 60;
-        format!("{hours}小时{minutes:02}分")
+    pub fn play_time_label(&self, locale: Locale) -> String {
+        Messages::new(locale).play_time_label(self.play_time_seconds())
     }
 
-    pub fn difficulty_label(&self) -> String {
-        match self.difficulty() {
-            0 => "简单".to_string(),
-            1 => "普通".to_string(),
-            2 => "困难".to_string(),
-            other => format!("未知({other})"),
-        }
+    pub fn difficulty_label(&self, locale: Locale) -> String {
+        Messages::new(locale).difficulty_label(self.difficulty())
     }
 
     pub fn has_item(&self, alias: &str) -> bool {

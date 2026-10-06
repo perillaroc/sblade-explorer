@@ -1,4 +1,5 @@
 import { openUrl } from "@tauri-apps/plugin-opener";
+import { translate } from "./i18n";
 import { settings } from "./settings";
 
 /**
@@ -15,12 +16,12 @@ export async function openExternalUrl(url: string): Promise<void> {
         await openUrl(url, browser);
         return;
       } catch (reason) {
-        console.warn(`用指定浏览器打开失败（${browser}），回退系统默认浏览器`, reason);
+        console.warn(translate("errors.browserOpenFailed", { browser }), reason);
       }
     }
     await openUrl(url);
   } catch (reason) {
-    console.warn("打开外部链接失败", reason);
+    console.warn(translate("errors.openUrlFailed"), reason);
     if (!("__TAURI_INTERNALS__" in window)) {
       window.open(url, "_blank", "noopener,noreferrer");
     }

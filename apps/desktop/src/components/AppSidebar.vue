@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { useI18n } from "vue-i18n";
 import { Info, Settings } from "@lucide/vue";
 import type { Analysis } from "../types";
+import { categoryName } from "../lib/display";
 import { APP_ICON, categoryIcon, SUMMARY_ICON } from "../lib/icons";
+import { settings } from "../lib/settings";
 import AboutDialog from "./AboutDialog.vue";
 import SettingsDialog from "./SettingsDialog.vue";
+
+const { t } = useI18n({ useScope: "global" });
 
 const props = defineProps<{
   analysis: Analysis | null;
@@ -31,11 +36,11 @@ const categoryGroups = computed(() => {
   const categories = props.analysis?.categories ?? [];
   return [
     {
-      label: "可收集物分类",
+      label: t("sidebar.collectionsGroup"),
       categories: categories.filter((category) => category.section !== "album"),
     },
     {
-      label: "图鉴（不计入总进度）",
+      label: t("sidebar.albumGroup"),
       categories: categories.filter((category) => category.section === "album"),
     },
   ];
@@ -46,7 +51,7 @@ const categoryGroups = computed(() => {
   <aside class="flex w-60 shrink-0 flex-col border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40">
     <div class="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 px-4 py-3">
       <component :is="APP_ICON" class="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
-      <h1 class="text-sm font-bold tracking-wide">剑星存档分析</h1>
+      <h1 class="text-sm font-bold tracking-wide">{{ t("common.appName") }}</h1>
     </div>
     <nav class="flex-1 space-y-1 overflow-y-auto p-2">
       <button
@@ -62,7 +67,7 @@ const categoryGroups = computed(() => {
         <div class="flex items-center justify-between gap-2">
           <span class="inline-flex items-center gap-2 font-medium">
             <component :is="SUMMARY_ICON" class="h-4 w-4 text-slate-600 dark:text-slate-400" />
-            汇总
+            {{ t("app.summary") }}
           </span>
           <span v-if="analysis" class="text-xs text-slate-600 dark:text-slate-400">
             {{ analysis.summary.percent.toFixed(0) }}%
@@ -94,7 +99,7 @@ const categoryGroups = computed(() => {
                   :is="categoryIcon(category.key)"
                   class="h-4 w-4 shrink-0 text-slate-600 dark:text-slate-400"
                 />
-                <span class="truncate">{{ category.name }}</span>
+                <span class="truncate">{{ categoryName(category, settings.contentLang) }}</span>
               </span>
               <span class="shrink-0 text-xs text-slate-600 dark:text-slate-400">
                 {{ category.obtained }}/{{ category.total }}
@@ -115,20 +120,20 @@ const categoryGroups = computed(() => {
       <button
         type="button"
         class="flex w-full items-center gap-2 rounded px-3 py-2 text-left text-sm text-slate-600 dark:text-slate-400 transition-colors hover:bg-slate-200/60 dark:hover:bg-slate-800/60 hover:text-slate-800 dark:hover:text-slate-200"
-        title="设置外观、默认搜索引擎与打开链接的浏览器"
+        :title="t('sidebar.settingsTitle')"
         @click="settingsOpen = true"
       >
         <Settings class="h-4 w-4 shrink-0" />
-        设置
+        {{ t("sidebar.settings") }}
       </button>
       <button
         type="button"
         class="flex w-full items-center gap-2 rounded px-3 py-2 text-left text-sm text-slate-600 dark:text-slate-400 transition-colors hover:bg-slate-200/60 dark:hover:bg-slate-800/60 hover:text-slate-800 dark:hover:text-slate-200"
-        title="关于本工具与数据来源"
+        :title="t('sidebar.aboutTitle')"
         @click="aboutOpen = true"
       >
         <Info class="h-4 w-4 shrink-0" />
-        关于
+        {{ t("sidebar.about") }}
       </button>
     </footer>
 

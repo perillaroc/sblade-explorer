@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { useI18n } from "vue-i18n";
 import { ChevronDown, ChevronRight } from "@lucide/vue";
 import type { Lang } from "../types";
 import { areaAccent } from "../lib/area";
@@ -7,14 +8,16 @@ import { matrixName } from "../lib/display";
 import type { ItemRow } from "../lib/items";
 import {
   buildMatrix,
-  MATRIX_COLUMNS,
+  matrixColumnLabels,
   matrixColumns,
   type MatrixArea,
   type MatrixUnit,
 } from "../lib/matrix";
-import { MATRIX_STATUS_LEGEND } from "../lib/status";
+import { matrixStatusLegend } from "../lib/status";
 import MatrixDetailDialog from "./MatrixDetailDialog.vue";
 import MatrixStatusIcon from "./MatrixStatusIcon.vue";
+
+const { t } = useI18n({ useScope: "global" });
 
 const props = defineProps<{
   rows: ItemRow[];
@@ -32,6 +35,8 @@ interface SelectedUnit {
 
 const areas = computed(() => buildMatrix(props.rows, props.allRows, props.lang));
 const columns = computed(() => matrixColumns(props.allRows));
+const columnLabels = computed(() => matrixColumnLabels());
+const legend = computed(() => matrixStatusLegend());
 const selected = ref<SelectedUnit | null>(null);
 const collapsedAreas = ref<Set<string>>(new Set());
 const collapsedLocations = ref<Set<string>>(new Set());
@@ -64,7 +69,7 @@ function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, u
   <div class="p-4">
     <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500">
       <span
-        v-for="status in MATRIX_STATUS_LEGEND"
+        v-for="status in legend"
         :key="status.label"
         class="inline-flex items-center gap-1"
       >
@@ -73,17 +78,17 @@ function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, u
       </span>
     </div>
     <p class="mt-1 text-[11px] text-slate-500 dark:text-slate-600">
-      同一行为同一获取点：高周目会替换该点的物品，横向对比即可查漏；点击行查看获取方式等详情。
+      {{ t("matrix.hint") }}
     </p>
     <div class="mt-2 overflow-x-auto">
       <table class="w-full text-xs">
         <thead>
           <tr class="text-left text-slate-500">
-            <th class="w-40 py-1 pr-3 text-sm font-semibold text-slate-700 dark:text-slate-300">地点</th>
+            <th class="w-40 py-1 pr-3 text-sm font-semibold text-slate-700 dark:text-slate-300">{{ t("matrix.location") }}</th>
             <th v-for="index in columns" :key="index" class="py-1 pr-3">
-              {{ MATRIX_COLUMNS[index] }}
+              {{ columnLabels[index] }}
             </th>
-            <th class="w-72 py-1 pr-3">获取方式</th>
+            <th class="w-72 py-1 pr-3">{{ t("matrix.obtain") }}</th>
           </tr>
         </thead>
         <tbody>
@@ -107,7 +112,7 @@ function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, u
                   ></span>
                   <span>{{ area.label }}</span>
                   <span class="ml-auto text-xs font-normal text-slate-600 dark:text-slate-400">
-                    {{ areaUnitCount(area) }} 项
+                    {{ t("matrix.itemCount", { count: areaUnitCount(area) }) }}
                   </span>
                 </button>
               </td>
@@ -134,7 +139,7 @@ function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, u
                     </button>
                   </td>
                   <td :colspan="columns.length + 1" class="py-2 pr-3 text-xs text-slate-500">
-                    已折叠 {{ location.units.length }} 项
+                    {{ t("matrix.collapsedCount", { count: location.units.length }) }}
                   </td>
                 </tr>
                 <template v-else>

@@ -1,5 +1,6 @@
 import { reactive } from "vue";
 import { invoke } from "@tauri-apps/api/core";
+import { translate } from "./i18n";
 import { searchEngine } from "./settings";
 
 export interface GuideLink {
@@ -40,7 +41,7 @@ export async function loadGuides(): Promise<void> {
     state.links = links;
   } catch (reason) {
     // Browser-only dev server has no Tauri IPC; fall back to search links.
-    console.warn("读取攻略链接失败", reason);
+    console.warn(translate("errors.guideLinksFailed"), reason);
   }
 }
 
@@ -53,9 +54,9 @@ const VIDEO_SEARCH = "https://search.bilibili.com/all?keyword=";
 // The web search engine is configurable in the settings dialog; the video
 // search always goes to Bilibili's own search page.
 export function searchWebUrl(name: string): string {
-  return searchEngine().url + encodeURIComponent(`剑星 ${name} 攻略`);
+  return searchEngine().url + encodeURIComponent(translate("guides.webQuery", { name }));
 }
 
 export function searchVideoUrl(name: string): string {
-  return VIDEO_SEARCH + encodeURIComponent(`剑星 ${name} 全收集`);
+  return VIDEO_SEARCH + encodeURIComponent(translate("guides.videoQuery", { name }));
 }

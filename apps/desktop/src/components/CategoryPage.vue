@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
 import {
   ChevronDown,
   ChevronRight,
@@ -12,9 +13,12 @@ import {
 } from "@lucide/vue";
 import type { CategoryResult, ItemFilter, Lang } from "../types";
 import { areaAccent } from "../lib/area";
+import { areaLabel, categoryName, recordTypeLabel } from "../lib/display";
 import { categoryRows, matchesQuery, type ItemRow } from "../lib/items";
 import ItemTable from "./ItemTable.vue";
 import MatrixView from "./MatrixView.vue";
+
+const { t } = useI18n({ useScope: "global" });
 
 type ViewMode = "matrix" | "list";
 
@@ -55,16 +59,16 @@ const props = defineProps<{
   matrix: boolean;
 }>();
 
-const FILTER_OPTIONS: { value: ItemFilter; label: string }[] = [
-  { value: "all", label: "全部" },
-  { value: "obtained", label: "已收集" },
-  { value: "missing", label: "未收集" },
-];
+const FILTER_OPTIONS = computed<{ value: ItemFilter; label: string }[]>(() => [
+  { value: "all", label: t("categoryPage.filterAll") },
+  { value: "obtained", label: t("categoryPage.filterObtained") },
+  { value: "missing", label: t("categoryPage.filterMissing") },
+]);
 
-const VIEW_OPTIONS: { value: ViewMode; label: string; icon: LucideIcon }[] = [
-  { value: "matrix", label: "周目矩阵", icon: LayoutGrid },
-  { value: "list", label: "列表", icon: List },
-];
+const VIEW_OPTIONS = computed<{ value: ViewMode; label: string; icon: LucideIcon }[]>(() => [
+  { value: "matrix", label: t("categoryPage.viewMatrix"), icon: LayoutGrid },
+  { value: "list", label: t("categoryPage.viewList"), icon: List },
+]);
 
 const filter = ref<ItemFilter>("all");
 const query = ref("");
@@ -105,7 +109,7 @@ function groupRowsByArea(allRows: ItemRow[], visibleRows: ItemRow[]): RecordArea
     if (!area) {
       area = {
         key,
-        label: row.item.area_zh || row.item.area || "未分类",
+        label: areaLabel(row.item, props.lang) || t("common.uncategorized"),
         obtained: 0,
         total: 0,
         rows: [],
@@ -135,7 +139,7 @@ const recordGroups = computed<RecordGroup[]>(() => {
     if (!group) {
       group = {
         key,
-        name: row.item.record_type_zh ?? "未分类",
+        name: recordTypeLabel(row.item, props.lang),
         obtained: 0,
         total: 0,
         rows: [],
@@ -204,10 +208,9 @@ function onInput(event: Event) {
     <header class="space-y-3 border-b border-slate-200 dark:border-slate-800 px-4 py-3">
       <div class="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h2 class="text-base font-semibold">{{ category.name }}</h2>
+          <h2 class="text-base font-semibold">{{ categoryName(category, lang) }}</h2>
           <p class="mt-0.5 text-xs text-slate-600 dark:text-slate-400">
-            已收集 {{ category.obtained }}/{{ category.total }} · 未收集
-            {{ category.missing.length }} · {{ percent.toFixed(0) }}%
+            {{ t("categoryPage.progress", { obtained: category.obtained, total: category.total, missing: category.missing.length, percent: percent.toFixed(0) }) }}
           </p>
         </div>
         <div class="flex flex-wrap items-center gap-2">
@@ -238,7 +241,7 @@ function onInput(event: Event) {
             <input
               class="w-64 rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 py-1 pl-7 pr-2 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-600"
               type="search"
-              placeholder="搜索名称 / 地点 / ID"
+              :placeholder="t('categoryPage.searchPlaceholder')"
               :value="query"
               @input="onInput"
             />
@@ -270,7 +273,7 @@ function onInput(event: Event) {
           </button>
         </div>
         <span v-if="!matrix || view === 'list'" class="ml-auto text-[11px] text-slate-500 dark:text-slate-600">
-          点击条目查看完整详情
+          {{ t("categoryPage.clickHint") }}
         </span>
       </div>
     </header>
@@ -280,7 +283,7 @@ function onInput(event: Event) {
       class="flex items-center justify-center gap-2 px-4 py-10 text-center text-xs text-slate-500"
     >
       <SearchX class="h-4 w-4" />
-      没有符合条件的物件
+      {{ t("categoryPage.empty") }}
     </p>
     <MatrixView
       v-else-if="matrix && view === 'matrix'"
@@ -324,7 +327,7 @@ function onInput(event: Event) {
           class="flex items-center justify-center gap-2 px-4 py-10 text-center text-xs text-slate-500"
         >
           <SearchX class="h-4 w-4" />
-          没有符合条件的物件
+          {{ t("categoryPage.empty") }}
         </p>
         <template v-else-if="activeRecordGroup.areas.length > 0">
           <section v-for="area in activeRecordGroup.areas" :key="area.key">
@@ -350,18 +353,19 @@ function onInput(event: Event) {
                 {{ area.label }}
               </span>
               <span class="text-xs text-slate-600 dark:text-slate-400">
-                已收集 {{ area.obtained }}/{{ area.total }}
+                {{ t("categoryPage.areaProgress", { obtained: area.obtained, total: area.total }) }}
               </span>
             </button>
             <ItemTable
               v-if="!collapsedAreas.has(area.key)"
               :rows="area.rows"
+              :ng-plus-count="ngPlusCount"
               :lang="lang"
               hide-location
             />
           </section>
         </template>
-        <ItemTable v-else :rows="activeRecordGroup.rows" :lang="lang" />
+        <ItemTable v-else :rows="activeRecordGroup.rows" :ng-plus-count="ngPlusCount" :lang="lang" />
       </template>
     </template>
     <template v-else-if="isNaytiba">
@@ -388,21 +392,22 @@ function onInput(event: Event) {
             {{ area.label }}
           </span>
           <span class="text-xs text-slate-600 dark:text-slate-400">
-            已收集 {{ area.obtained }}/{{ area.total }}
+            {{ t("categoryPage.areaProgress", { obtained: area.obtained, total: area.total }) }}
           </span>
         </button>
         <ItemTable
           v-if="!collapsedAreas.has(area.key)"
           :rows="area.rows"
+          :ng-plus-count="ngPlusCount"
           :lang="lang"
           hide-location
         />
       </section>
     </template>
-    <ItemTable v-else :rows="rows" :lang="lang" />
+    <ItemTable v-else :rows="rows" :ng-plus-count="ngPlusCount" :lang="lang" />
   </section>
 
   <p v-if="category.extra_obtained_aliases.length > 0" class="mt-2 px-1 text-[11px] text-slate-500">
-    另有 {{ category.extra_obtained_aliases.length }} 个已获得别名未关联到目录条目。
+    {{ t("categoryPage.extraAliases", { count: category.extra_obtained_aliases.length }) }}
   </p>
 </template>

@@ -1,68 +1,59 @@
 use std::collections::HashMap;
 use std::path::PathBuf;
 
-use clap::{Parser, Subcommand};
+use clap::{CommandFactory, FromArgMatches, Parser, Subcommand};
 use sbsave_core::analyze::analyze;
 use sbsave_core::catalog::{load_catalog, Catalog};
 use sbsave_core::gvas::to_jsonable;
+use sbsave_core::i18n::{Locale, Messages};
 use sbsave_core::report::{print_report, write_json, write_markdown, LANGUAGES};
 use sbsave_core::savegame::{
     discover_saves, load_save, pick_default_save, SaveData, SaveError, SaveSlot,
 };
 
 #[derive(Parser)]
-#[command(
-    name = "sbsave",
-    version,
-    about = "剑星 (Stellar Blade) Steam 存档收集度分析工具",
-    arg_required_else_help = true
-)]
+#[command(name = "sbsave", version, arg_required_else_help = true)]
 struct Cli {
+    /// Localized at runtime; see `localize_command`.
+    #[arg(long, global = true, value_name = "LANG")]
+    ui_lang: Option<String>,
     #[command(subcommand)]
     command: Command,
 }
 
 #[derive(Subcommand)]
 enum Command {
-    #[command(about = "列出自动探测到的存档。")]
     Saves,
-    #[command(about = "分析存档收集情况并输出报告。")]
     Report {
-        #[arg(long, short = 's', value_name = "SAVE", help = "指定 .sav 存档路径")]
+        #[arg(long, short = 's', value_name = "SAVE")]
         save: Option<PathBuf>,
-        #[arg(long, help = "存档槽位编号")]
+        #[arg(long)]
         slot: Option<u32>,
-        #[arg(long, short = 'c', help = "只分析指定分类，逗号分隔")]
+        #[arg(long, short = 'c')]
         category: Option<String>,
-        #[arg(
-            long,
-            default_value = "zh",
-            help = "文本语言：zh（中文，默认）、en（英文）、both（中英对照）"
-        )]
+        #[arg(long, default_value = "zh")]
         lang: String,
-        #[arg(long, help = "同时列出已收集的物品")]
+        #[arg(long)]
         all: bool,
-        #[arg(long, help = "导出 JSON 报告")]
+        #[arg(long)]
         json: Option<PathBuf>,
-        #[arg(long, help = "导出 Markdown 报告")]
+        #[arg(long)]
         markdown: Option<PathBuf>,
-        #[arg(long, help = "附加的目录覆盖 JSON 文件")]
+        #[arg(long)]
         catalog: Option<PathBuf>,
     },
-    #[command(about = "解析存档并输出结构信息（调试用）。")]
     Dump {
-        #[arg(long, short = 's', value_name = "SAVE", help = "指定 .sav 存档路径")]
+        #[arg(long, short = 's', value_name = "SAVE")]
         save: Option<PathBuf>,
-        #[arg(long, help = "存档槽位编号")]
+        #[arg(long)]
         slot: Option<u32>,
-        #[arg(long, help = "导出存档结构摘要 JSON")]
+        #[arg(long)]
         json: Option<PathBuf>,
-        #[arg(long, help = "导出完整解析树 JSON（可能很大）")]
+        #[arg(long)]
         tree: Option<PathBuf>,
-        #[arg(long, help = "列出已获得物品别名")]
+        #[arg(long)]
         obtained: bool,
     },
-    #[command(about = "查看/校验目录数据库")]
     Catalog {
         #[command(subcommand)]
         command: CatalogCommand,
@@ -71,26 +62,100 @@ enum Command {
 
 #[derive(Subcommand)]
 enum CatalogCommand {
-    #[command(about = "列出目录库分类与数量。")]
     List {
-        #[arg(long, help = "附加的目录覆盖 JSON 文件")]
+        #[arg(long)]
         catalog: Option<PathBuf>,
     },
-    #[command(about = "校验目录库（重复别名、缺失分类等）。")]
     Check {
-        #[arg(long, help = "附加的目录覆盖 JSON 文件")]
+        #[arg(long)]
         catalog: Option<PathBuf>,
     },
+}
+
+/// Scans the raw arguments for `--ui-lang` so the help text can be localized
+/// before clap parses (and validates) the command line.
+fn scan_ui_lang(args: &[String]) -> Option<String> {
+    let mut iter = args.iter();
+    while let Some(arg) = iter.next() {
+        if arg == "--ui-lang" {
+            return iter.next().cloned();
+        }
+        if let Some(value) = arg.strip_prefix("--ui-lang=") {
+            return Some(value.to_string());
+        }
+    }
+    None
+}
+
+fn resolve_locale(args: &[String]) -> Locale {
+    if let Some(value) = scan_ui_lang(args) {
+        return Locale::parse(&value).unwrap_or_default();
+    }
+    sys_locale::get_locale()
+        .as_deref()
+        .and_then(Locale::parse)
+        .unwrap_or_default()
+}
+
+/// Replaces the clap help text with the selected locale. Built-in clap errors
+/// (unknown arguments, ...) stay in English.
+fn localize_command(command: clap::Command, messages: &Messages) -> clap::Command {
+    command
+        .about(messages.cli_about())
+        .mut_arg("ui_lang", |arg| arg.help(messages.cli_ui_lang_help()))
+        .mut_subcommand("saves", |sub| sub.about(messages.cli_saves_about()))
+        .mut_subcommand("report", |sub| {
+            sub.about(messages.cli_report_about())
+                .mut_arg("save", |arg| arg.help(messages.help_save()))
+                .mut_arg("slot", |arg| arg.help(messages.help_slot()))
+                .mut_arg("category", |arg| arg.help(messages.help_category()))
+                .mut_arg("lang", |arg| arg.help(messages.help_lang()))
+                .mut_arg("all", |arg| arg.help(messages.help_all()))
+                .mut_arg("json", |arg| arg.help(messages.help_json()))
+                .mut_arg("markdown", |arg| arg.help(messages.help_markdown()))
+                .mut_arg("catalog", |arg| arg.help(messages.help_catalog()))
+        })
+        .mut_subcommand("dump", |sub| {
+            sub.about(messages.cli_dump_about())
+                .mut_arg("save", |arg| arg.help(messages.help_save()))
+                .mut_arg("slot", |arg| arg.help(messages.help_slot()))
+                .mut_arg("json", |arg| arg.help(messages.help_json()))
+                .mut_arg("tree", |arg| arg.help(messages.help_tree()))
+                .mut_arg("obtained", |arg| arg.help(messages.help_obtained()))
+        })
+        .mut_subcommand("catalog", |sub| {
+            sub.about(messages.cli_catalog_about())
+                .mut_subcommand("list", |list| {
+                    list.about(messages.cli_catalog_list_about())
+                        .mut_arg("catalog", |arg| arg.help(messages.help_catalog()))
+                })
+                .mut_subcommand("check", |check| {
+                    check
+                        .about(messages.cli_catalog_check_about())
+                        .mut_arg("catalog", |arg| arg.help(messages.help_catalog()))
+                })
+        })
 }
 
 fn main() {
-    let cli = Cli::parse();
-    std::process::exit(run(cli));
+    let args: Vec<String> = std::env::args().collect();
+    let messages = Messages::new(resolve_locale(&args));
+    let matches = localize_command(Cli::command(), &messages)
+        .try_get_matches_from(&args)
+        .unwrap_or_else(|error| error.exit());
+    let cli = Cli::from_arg_matches(&matches).unwrap_or_else(|error| error.exit());
+    if let Some(value) = cli.ui_lang.as_deref() {
+        if Locale::parse(value).is_none() {
+            eprintln!("{}", messages.error_unknown_language(value, "zh, en"));
+            std::process::exit(2);
+        }
+    }
+    std::process::exit(run(cli, messages));
 }
 
-fn run(cli: Cli) -> i32 {
+fn run(cli: Cli, messages: Messages) -> i32 {
     match cli.command {
-        Command::Saves => command_saves(),
+        Command::Saves => command_saves(messages),
         Command::Report {
             save,
             slot,
@@ -100,26 +165,29 @@ fn run(cli: Cli) -> i32 {
             json,
             markdown,
             catalog,
-        } => command_report(ReportArgs {
-            save,
-            slot,
-            category,
-            lang,
-            all,
-            json,
-            markdown,
-            catalog,
-        }),
+        } => command_report(
+            ReportArgs {
+                save,
+                slot,
+                category,
+                lang,
+                all,
+                json,
+                markdown,
+                catalog,
+            },
+            messages,
+        ),
         Command::Dump {
             save,
             slot,
             json,
             tree,
             obtained,
-        } => command_dump(save, slot, json, tree, obtained),
+        } => command_dump(save, slot, json, tree, obtained, messages),
         Command::Catalog { command } => match command {
-            CatalogCommand::List { catalog } => command_catalog_list(catalog),
-            CatalogCommand::Check { catalog } => command_catalog_check(catalog),
+            CatalogCommand::List { catalog } => command_catalog_list(catalog, messages),
+            CatalogCommand::Check { catalog } => command_catalog_check(catalog, messages),
         },
     }
 }
@@ -129,13 +197,16 @@ enum LoadFailure {
     Save(SaveError),
 }
 
-fn resolve_slots(save: &Option<PathBuf>, slot: Option<u32>) -> Result<Vec<SaveSlot>, LoadFailure> {
+fn resolve_slots(
+    save: &Option<PathBuf>,
+    slot: Option<u32>,
+    messages: &Messages,
+) -> Result<Vec<SaveSlot>, LoadFailure> {
     if let Some(path) = save {
         if !path.is_file() {
-            return Err(LoadFailure::Usage(format!(
-                "存档不存在: {}",
-                path.display()
-            )));
+            return Err(LoadFailure::Usage(
+                messages.error_save_not_found(&path.display().to_string()),
+            ));
         }
         let steam_id = path
             .parent()
@@ -157,16 +228,18 @@ fn resolve_slots(save: &Option<PathBuf>, slot: Option<u32>) -> Result<Vec<SaveSl
         slots.retain(|candidate| candidate.slot == slot);
     }
     if slots.is_empty() {
-        return Err(LoadFailure::Usage(
-            "没有找到存档，请用 --save 指定".to_string(),
-        ));
+        return Err(LoadFailure::Usage(messages.error_no_saves().to_string()));
     }
     Ok(slots)
 }
 
-fn load_selected(save: &Option<PathBuf>, slot: Option<u32>) -> Result<SaveData, LoadFailure> {
+fn load_selected(
+    save: &Option<PathBuf>,
+    slot: Option<u32>,
+    messages: &Messages,
+) -> Result<SaveData, LoadFailure> {
     if save.is_some() || slot.is_some() {
-        let slots = resolve_slots(save, slot)?;
+        let slots = resolve_slots(save, slot, messages)?;
         let chosen = pick_default_save(Some(slots)).map_err(LoadFailure::Save)?;
         load_save(&chosen.path, chosen.steam_id).map_err(LoadFailure::Save)
     } else {
@@ -175,20 +248,24 @@ fn load_selected(save: &Option<PathBuf>, slot: Option<u32>) -> Result<SaveData, 
     }
 }
 
-fn print_load_failure(failure: &LoadFailure) -> i32 {
+fn print_load_failure(failure: &LoadFailure, messages: &Messages) -> i32 {
     match failure {
         LoadFailure::Usage(message) => {
             eprintln!("{message}");
             2
         }
         LoadFailure::Save(error) => {
-            eprintln!("读取存档失败: {error}");
+            eprintln!("{}", messages.error_load_save(&error.to_string()));
             1
         }
     }
 }
 
-fn resolve_categories(catalog: &Catalog, raw: Option<&str>) -> Result<Option<Vec<String>>, String> {
+fn resolve_categories(
+    catalog: &Catalog,
+    raw: Option<&str>,
+    messages: &Messages,
+) -> Result<Option<Vec<String>>, String> {
     let Some(raw) = raw else {
         return Ok(None);
     };
@@ -206,10 +283,10 @@ fn resolve_categories(catalog: &Catalog, raw: Option<&str>) -> Result<Option<Vec
         match catalog
             .categories
             .values()
-            .find(|category| category.name == token)
+            .find(|category| category.name == token || category.name_en.as_deref() == Some(token))
         {
             Some(category) => keys.push(category.key.clone()),
-            None => return Err(format!("未知分类: {token}")),
+            None => return Err(messages.error_unknown_category(token)),
         }
     }
     Ok(Some(keys))
@@ -229,14 +306,14 @@ fn format_mtime(mtime: std::time::SystemTime) -> String {
     )
 }
 
-fn command_saves() -> i32 {
+fn command_saves(messages: Messages) -> i32 {
     let slots = discover_saves(None);
     if slots.is_empty() {
-        println!("未找到存档");
+        println!("{}", messages.no_saves_found());
         return 0;
     }
-    println!("检测到的存档");
-    println!("槽位 | SteamID | 大小 | 修改时间 | 路径");
+    println!("{}", messages.detected_saves());
+    println!("{}", messages.saves_header());
     for item in &slots {
         let size = std::fs::metadata(&item.path)
             .map(|meta| meta.len())
@@ -264,7 +341,7 @@ struct ReportArgs {
     catalog: Option<PathBuf>,
 }
 
-fn command_report(args: ReportArgs) -> i32 {
+fn command_report(args: ReportArgs, messages: Messages) -> i32 {
     let ReportArgs {
         save,
         slot,
@@ -276,22 +353,25 @@ fn command_report(args: ReportArgs) -> i32 {
         catalog,
     } = args;
     if !LANGUAGES.contains(&lang.as_str()) {
-        eprintln!("未知语言: {lang}（可选 {}）", LANGUAGES.join(", "));
+        eprintln!(
+            "{}",
+            messages.error_unknown_language(&lang, &LANGUAGES.join(", "))
+        );
         return 2;
     }
-    let save_data = match load_selected(&save, slot) {
+    let save_data = match load_selected(&save, slot, &messages) {
         Ok(save_data) => save_data,
-        Err(failure) => return print_load_failure(&failure),
+        Err(failure) => return print_load_failure(&failure, &messages),
     };
     let extras = catalog.map(|path| vec![path]);
     let catalog = match load_catalog(extras.as_deref()) {
         Ok(catalog) => catalog,
         Err(error) => {
-            eprintln!("读取目录库失败: {error}");
+            eprintln!("{}", messages.error_load_catalog(&error.to_string()));
             return 1;
         }
     };
-    let keys = match resolve_categories(&catalog, category.as_deref()) {
+    let keys = match resolve_categories(&catalog, category.as_deref(), &messages) {
         Ok(keys) => keys,
         Err(message) => {
             eprintln!("{message}");
@@ -299,20 +379,23 @@ fn command_report(args: ReportArgs) -> i32 {
         }
     };
     let analysis = analyze(&save_data, &catalog, keys.as_deref());
-    print!("{}", print_report(&analysis, all, &lang));
+    print!("{}", print_report(&analysis, all, &lang, messages.locale()));
     if let Some(path) = json {
         if let Err(error) = write_json(&analysis, &path, true) {
-            eprintln!("写入 JSON 失败: {error}");
+            eprintln!("{}", messages.error_write_json(&error.to_string()));
             return 1;
         }
-        println!("JSON 报告已写入 {}", path.display());
+        println!("{}", messages.write_json_ok(&path.display().to_string()));
     }
     if let Some(path) = markdown {
-        if let Err(error) = write_markdown(&analysis, &path, &lang) {
-            eprintln!("写入 Markdown 失败: {error}");
+        if let Err(error) = write_markdown(&analysis, &path, &lang, messages.locale()) {
+            eprintln!("{}", messages.error_write_markdown(&error.to_string()));
             return 1;
         }
-        println!("Markdown 报告已写入 {}", path.display());
+        println!(
+            "{}",
+            messages.write_markdown_ok(&path.display().to_string())
+        );
     }
     0
 }
@@ -323,35 +406,36 @@ fn command_dump(
     json: Option<PathBuf>,
     tree: Option<PathBuf>,
     obtained: bool,
+    messages: Messages,
 ) -> i32 {
-    let save_data = match load_selected(&save, slot) {
+    let save_data = match load_selected(&save, slot, &messages) {
         Ok(save_data) => save_data,
-        Err(failure) => return print_load_failure(&failure),
+        Err(failure) => return print_load_failure(&failure, &messages),
     };
     let gvas = &save_data.gvas;
     println!("{}", save_data.path.display());
     println!(
-        "引擎: {} | 类: {} | EVAS: {} | 顶层属性: {}",
-        gvas.header.engine,
-        gvas.header.save_game_class_name,
-        if gvas.header.has_evas_prefix {
-            "True"
-        } else {
-            "False"
-        },
-        gvas.properties.len()
+        "{}",
+        messages.dump_engine_line(
+            &gvas.header.engine.to_string(),
+            &gvas.header.save_game_class_name,
+            gvas.header.has_evas_prefix,
+            gvas.properties.len(),
+        )
     );
-    println!("顶层属性");
-    println!("名称 | 类型 | 大小");
+    println!("{}", messages.dump_top_properties());
+    println!("{}", messages.dump_properties_header());
     for (name, property) in &gvas.properties {
         println!("{} | {} | {}", name, property.prop_type, property.size);
     }
     println!(
-        "已获得别名: {} | 成就记录: {} | 购买记录: {} | NG+ 次数: {}",
-        save_data.obtained_items.len(),
-        save_data.achievements.len(),
-        save_data.shop_purchases.len(),
-        save_data.ng_plus_count()
+        "{}",
+        messages.dump_obtained_counts(
+            save_data.obtained_items.len(),
+            save_data.achievements.len(),
+            save_data.shop_purchases.len(),
+            save_data.ng_plus_count(),
+        )
     );
     if obtained {
         let mut aliases: Vec<&String> = save_data.obtained_items.iter().collect();
@@ -426,10 +510,10 @@ fn command_dump(
         let text = serde_json::to_string_pretty(&serde_json::Value::Object(summary))
             .unwrap_or_else(|_| "{}".to_string());
         if let Err(error) = std::fs::write(&path, text) {
-            eprintln!("写入摘要失败: {error}");
+            eprintln!("{}", messages.error_write_summary(&error.to_string()));
             return 1;
         }
-        println!("摘要已写入 {}", path.display());
+        println!("{}", messages.summary_written(&path.display().to_string()));
     }
     if let Some(path) = tree {
         let mut tree_map = serde_json::Map::new();
@@ -439,25 +523,25 @@ fn command_dump(
         let text = serde_json::to_string_pretty(&serde_json::Value::Object(tree_map))
             .unwrap_or_else(|_| "{}".to_string());
         if let Err(error) = std::fs::write(&path, text) {
-            eprintln!("写入解析树失败: {error}");
+            eprintln!("{}", messages.error_write_tree(&error.to_string()));
             return 1;
         }
-        println!("完整解析树已写入 {}", path.display());
+        println!("{}", messages.tree_written(&path.display().to_string()));
     }
     0
 }
 
-fn command_catalog_list(catalog_path: Option<PathBuf>) -> i32 {
+fn command_catalog_list(catalog_path: Option<PathBuf>, messages: Messages) -> i32 {
     let extras = catalog_path.map(|path| vec![path]);
     let catalog = match load_catalog(extras.as_deref()) {
         Ok(catalog) => catalog,
         Err(error) => {
-            eprintln!("读取目录库失败: {error}");
+            eprintln!("{}", messages.error_load_catalog(&error.to_string()));
             return 1;
         }
     };
-    println!("目录库 v{}", catalog.version);
-    println!("分类键 | 分类名 | 段 | 条目数 | 已映射别名 | 需多周目 | DLC");
+    println!("{}", messages.catalog_version(catalog.version));
+    println!("{}", messages.catalog_list_header());
     for category in catalog.category_list() {
         let items = catalog.by_category(&category.key);
         let mapped: usize = items.iter().map(|item| item.satisfy_aliases().len()).sum();
@@ -466,7 +550,7 @@ fn command_catalog_list(catalog_path: Option<PathBuf>) -> i32 {
         println!(
             "{} | {} | {} | {} | {} | {} | {}",
             category.key,
-            category.name,
+            category.localized_name(messages.locale()),
             category.section,
             items.len(),
             mapped,
@@ -477,12 +561,12 @@ fn command_catalog_list(catalog_path: Option<PathBuf>) -> i32 {
     0
 }
 
-fn command_catalog_check(catalog_path: Option<PathBuf>) -> i32 {
+fn command_catalog_check(catalog_path: Option<PathBuf>, messages: Messages) -> i32 {
     let extras = catalog_path.map(|path| vec![path]);
     let catalog = match load_catalog(extras.as_deref()) {
         Ok(catalog) => catalog,
         Err(error) => {
-            eprintln!("读取目录库失败: {error}");
+            eprintln!("{}", messages.error_load_catalog(&error.to_string()));
             return 1;
         }
     };
@@ -492,14 +576,27 @@ fn command_catalog_check(catalog_path: Option<PathBuf>) -> i32 {
         for alias in item.satisfy_aliases() {
             if let Some(previous) = seen.get(alias) {
                 if previous != &item.id {
-                    problems.push(format!("别名 {alias} 同时映射到 {previous} 和 {}", item.id));
+                    problems.push(messages.check_alias_duplicate(alias, previous, &item.id));
                 }
             }
             seen.insert(alias.to_string(), item.id.clone());
         }
         if !catalog.categories.contains_key(&item.category) {
-            problems.push(format!("条目 {} 的分类 {} 未定义", item.id, item.category));
+            problems.push(messages.check_category_undefined(&item.id, &item.category));
         }
+    }
+    let missing_name_en = catalog
+        .categories
+        .values()
+        .filter(|category| {
+            category
+                .name_en
+                .as_deref()
+                .is_none_or(|name| name.trim().is_empty())
+        })
+        .count();
+    if missing_name_en > 0 {
+        problems.push(messages.check_missing_name_en(missing_name_en));
     }
     let low = catalog
         .items
@@ -513,10 +610,8 @@ fn command_catalog_check(catalog_path: Option<PathBuf>) -> i32 {
         return 1;
     }
     println!(
-        "[OK] 目录库正常：{} 个条目，{} 个别名映射（低置信度 {} 条）",
-        catalog.items.len(),
-        seen.len(),
-        low
+        "{}",
+        messages.check_ok(catalog.items.len(), seen.len(), low)
     );
     0
 }

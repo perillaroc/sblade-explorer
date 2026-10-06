@@ -1,30 +1,34 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted } from "vue";
+import { useI18n } from "vue-i18n";
 import { CircleCheck, CircleX, Image, Search, Video, X } from "@lucide/vue";
 import type { Lang } from "../types";
 import { areaAccent } from "../lib/area";
-import { areaLabel, descLabel, itemName, locationLabel, obtainLabel } from "../lib/display";
+import {
+  areaLabel,
+  cycleLabel,
+  descLabel,
+  dlcLabel,
+  itemName,
+  locationLabel,
+  obtainLabel,
+  reasonLabel,
+  recordTypeLabel,
+} from "../lib/display";
 import { guideFor, searchVideoUrl, searchWebUrl } from "../lib/guides";
 import { openExternalUrl } from "../lib/links";
 import { searchEngine } from "../lib/settings";
 import type { ItemRow } from "../lib/items";
 
+const { t } = useI18n({ useScope: "global" });
+
 const props = defineProps<{
   row: ItemRow;
+  ngPlusCount: number;
   lang: Lang;
 }>();
 
 const emit = defineEmits<{ close: [] }>();
-
-const NG_PLUS_LABELS = ["首周目", "二周目(NG+)", "三周目(NG++)"];
-
-const DLC_LABELS: Record<string, string> = {
-  nier: "尼尔 DLC",
-  nikke: "NIKKE DLC",
-  deluxe: "豪华版",
-  preorder: "预购特典",
-  summer: "夏日更新",
-};
 
 const item = computed(() => props.row.item);
 const name = computed(() => itemName(item.value, props.lang));
@@ -36,16 +40,19 @@ const guides = computed(() => guideFor(props.row.id));
 const webLink = computed(() => guides.value?.web ?? null);
 const videoLink = computed(() => guides.value?.video ?? null);
 const searchName = computed(() => itemName(item.value, "zh"));
-const engineName = computed(() => searchEngine().name);
+const engineName = computed(() => t(`settings.engines.${searchEngine().id}`));
 const webSearchUrl = computed(() => searchWebUrl(searchName.value));
 const videoSearchUrl = computed(() => searchVideoUrl(searchName.value));
-const ngPlus = computed(() => NG_PLUS_LABELS[item.value.ng_plus] ?? `NG+${item.value.ng_plus}`);
-const dlc = computed(() =>
-  item.value.dlc ? (DLC_LABELS[item.value.dlc] ?? item.value.dlc) : null,
-);
-const recordType = computed(() => item.value.record_type_zh ?? item.value.record_type ?? "");
+const ngPlus = computed(() => cycleLabel(item.value.ng_plus));
+const dlc = computed(() => (item.value.dlc ? dlcLabel(item.value.dlc) : null));
+const recordType = computed(() => recordTypeLabel(item.value, props.lang));
 const confidence = computed(() =>
-  item.value.confidence === "high" ? "高" : "低（映射待确认）",
+  item.value.confidence === "high"
+    ? t("itemDetail.confidenceHigh")
+    : t("itemDetail.confidenceLow"),
+);
+const reason = computed(() =>
+  props.row.obtained ? null : reasonLabel(item.value, props.ngPlusCount),
 );
 const aliases = computed(() =>
   (item.value.aliases.length > 0 ? item.value.aliases : [item.value.id]).filter(
@@ -55,9 +62,9 @@ const aliases = computed(() =>
 const source = computed(() => {
   const raw = props.row.source;
   if (!raw) return "";
-  if (raw === "game") return "游戏数据（官方简中名称）";
+  if (raw === "game") return t("itemDetail.sourceGame");
   const host = /^https?:\/\/([^/]+)/.exec(raw);
-  return host ? `攻略站数据（${host[1]}）` : raw;
+  return host ? t("itemDetail.sourceGuideSite", { host: host[1] }) : raw;
 });
 
 function onKeydown(event: KeyboardEvent) {
@@ -92,7 +99,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
               >
                 <CircleCheck v-if="row.obtained" class="h-3 w-3" />
                 <CircleX v-else class="h-3 w-3" />
-                {{ row.obtained ? "已收集" : "未收集" }}
+                {{ row.obtained ? t("itemTable.obtained") : t("itemTable.missing") }}
               </span>
               <span
                 class="inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-semibold"
@@ -102,7 +109,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
                   class="h-2 w-2 shrink-0 rounded-full"
                   :class="areaAccent(item.area).dot"
                 ></span>
-                {{ area || "未分类" }}
+                {{ area || t("common.uncategorized") }}
               </span>
               <span v-if="location" class="text-sm font-medium text-slate-800 dark:text-slate-200">
                 {{ location }}
@@ -115,27 +122,27 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
             @click="emit('close')"
           >
             <X class="h-3.5 w-3.5" />
-            关闭
+            {{ t("common.close") }}
           </button>
         </header>
 
         <div class="space-y-4 px-4 py-3">
           <div v-if="desc">
-            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">图鉴说明</h4>
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">{{ t("itemDetail.albumDescription") }}</h4>
             <p class="mt-1 whitespace-pre-wrap text-xs leading-5 text-slate-700 dark:text-slate-300">
               {{ desc }}
             </p>
           </div>
 
           <div>
-            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">获取方式</h4>
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">{{ t("itemDetail.obtain") }}</h4>
             <p class="mt-1 whitespace-pre-wrap text-xs leading-5 text-slate-700 dark:text-slate-300">
               {{ obtain || "—" }}
             </p>
           </div>
 
           <div>
-            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">中文攻略</h4>
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">{{ t("itemDetail.chineseGuides") }}</h4>
             <div class="mt-1.5 flex flex-wrap gap-2">
               <button
                 v-if="webLink"
@@ -145,7 +152,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
                 @click="openExternalUrl(webLink.url)"
               >
                 <Image class="h-3.5 w-3.5" />
-                图文攻略
+                {{ t("itemDetail.imageGuide") }}
               </button>
               <button
                 v-if="videoLink"
@@ -155,7 +162,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
                 @click="openExternalUrl(videoLink.url)"
               >
                 <Video class="h-3.5 w-3.5" />
-                视频攻略
+                {{ t("itemDetail.videoGuide") }}
               </button>
               <span
                 v-if="webLink || videoLink"
@@ -165,62 +172,62 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
               <button
                 type="button"
                 class="inline-flex items-center gap-1 rounded border border-slate-300 dark:border-slate-700 px-2 py-1 text-xs text-slate-700 dark:text-slate-300 hover:border-sky-600 hover:bg-slate-100 dark:hover:bg-slate-800"
-                :title="`在${engineName}搜索「${searchName}」的图文攻略`"
+                :title="t('itemDetail.searchWebTitle', { engine: engineName, name: searchName })"
                 @click="openExternalUrl(webSearchUrl)"
               >
                 <Search class="h-3.5 w-3.5" />
-                搜索图文攻略
+                {{ t("itemDetail.searchWeb") }}
               </button>
               <button
                 type="button"
                 class="inline-flex items-center gap-1 rounded border border-slate-300 dark:border-slate-700 px-2 py-1 text-xs text-slate-700 dark:text-slate-300 hover:border-rose-600 hover:bg-slate-100 dark:hover:bg-slate-800"
-                :title="`在 B 站搜索「${searchName}」的视频攻略`"
+                :title="t('itemDetail.searchVideoTitle', { name: searchName })"
                 @click="openExternalUrl(videoSearchUrl)"
               >
                 <Search class="h-3.5 w-3.5" />
-                搜索视频攻略
+                {{ t("itemDetail.searchVideo") }}
               </button>
             </div>
             <p v-if="webLink" class="mt-1.5 text-[11px] leading-4 text-slate-500">
-              图文来源：{{ webLink.title }}
+              {{ t("itemDetail.guideSource", { title: webLink.title }) }}
             </p>
           </div>
 
-          <div v-if="row.reason">
-            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">未收集原因</h4>
-            <p class="mt-1 text-xs leading-5 text-amber-700 dark:text-amber-200">{{ row.reason }}</p>
+          <div v-if="reason">
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">{{ t("itemDetail.missingReason") }}</h4>
+            <p class="mt-1 text-xs leading-5 text-amber-700 dark:text-amber-200">{{ reason }}</p>
           </div>
 
           <div>
-            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">详情</h4>
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">{{ t("itemDetail.details") }}</h4>
             <dl class="mt-1.5 grid grid-cols-[5.5rem_1fr] gap-x-3 gap-y-1.5 text-xs">
-              <dt class="text-slate-500">周目</dt>
+              <dt class="text-slate-500">{{ t("itemDetail.playthrough") }}</dt>
               <dd class="text-slate-700 dark:text-slate-300">{{ ngPlus }}</dd>
               <template v-if="dlc">
-                <dt class="text-slate-500">DLC</dt>
+                <dt class="text-slate-500">{{ t("itemDetail.dlc") }}</dt>
                 <dd class="text-slate-700 dark:text-slate-300">{{ dlc }}</dd>
               </template>
               <template v-if="item.missable">
-                <dt class="text-slate-500">可错过</dt>
-                <dd class="text-amber-700 dark:text-amber-200">是</dd>
+                <dt class="text-slate-500">{{ t("itemDetail.missable") }}</dt>
+                <dd class="text-amber-700 dark:text-amber-200">{{ t("common.yes") }}</dd>
               </template>
               <template v-if="recordType">
-                <dt class="text-slate-500">记录类型</dt>
+                <dt class="text-slate-500">{{ t("itemDetail.recordType") }}</dt>
                 <dd class="text-slate-700 dark:text-slate-300">{{ recordType }}</dd>
               </template>
-              <dt class="text-slate-500">映射置信度</dt>
+              <dt class="text-slate-500">{{ t("itemDetail.confidence") }}</dt>
               <dd :class="item.confidence === 'high' ? 'text-slate-700 dark:text-slate-300' : 'text-amber-700 dark:text-amber-200'">
                 {{ confidence }}
               </dd>
               <template v-if="source">
-                <dt class="text-slate-500">数据来源</dt>
+                <dt class="text-slate-500">{{ t("itemDetail.source") }}</dt>
                 <dd class="text-slate-700 dark:text-slate-300">{{ source }}</dd>
               </template>
             </dl>
           </div>
 
           <div v-if="aliases.length > 0">
-            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">别名</h4>
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">{{ t("itemDetail.aliases") }}</h4>
             <div class="mt-1.5 flex flex-wrap gap-1">
               <span
                 v-for="alias in aliases"
@@ -233,7 +240,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
           </div>
 
           <div v-if="item.note">
-            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">备注</h4>
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">{{ t("itemDetail.note") }}</h4>
             <p class="mt-1 whitespace-pre-wrap text-xs leading-5 text-slate-600 dark:text-slate-400">
               {{ item.note }}
             </p>

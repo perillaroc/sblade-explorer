@@ -1,6 +1,7 @@
 pub mod analyze;
 pub mod catalog;
 pub mod gvas;
+pub mod i18n;
 mod paths;
 pub mod report;
 pub mod savegame;

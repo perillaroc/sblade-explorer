@@ -4,6 +4,7 @@ use std::path::PathBuf;
 use sbsave_core::analyze::analyze;
 use sbsave_core::catalog::load_catalog;
 use sbsave_core::gvas::{EngineVersion, GvasFile, GvasHeader};
+use sbsave_core::i18n::Locale;
 use sbsave_core::report::{analysis_to_dict, print_report, render_markdown};
 use sbsave_core::savegame::SaveData;
 
@@ -53,7 +54,11 @@ fn suit_matrix_markdown() {
     let catalog = load_catalog(None).expect("catalog");
     let save = make_save(&["BS_09_2"], &[], 0);
     let filter = vec!["nano_suits".to_string()];
-    let text = render_markdown(&analyze(&save, &catalog, Some(filter.as_slice())), "zh");
+    let text = render_markdown(
+        &analyze(&save, &catalog, Some(filter.as_slice())),
+        "zh",
+        Locale::Zh,
+    );
     assert!(text.contains("## 纳米战衣获取一览"));
     assert!(text.contains("### 埃多斯7号"));
     assert!(text.contains("✅ 星球空降服（第7小队）第2版"));
@@ -67,9 +72,17 @@ fn suit_matrix_unlocks_with_ng_plus() {
     let catalog = load_catalog(None).expect("catalog");
     let filter = vec!["nano_suits".to_string()];
     let save0 = make_save(&[], &[], 0);
-    let text_ng0 = render_markdown(&analyze(&save0, &catalog, Some(filter.as_slice())), "zh");
+    let text_ng0 = render_markdown(
+        &analyze(&save0, &catalog, Some(filter.as_slice())),
+        "zh",
+        Locale::Zh,
+    );
     let save1 = make_save(&[], &[], 1);
-    let text_ng1 = render_markdown(&analyze(&save1, &catalog, Some(filter.as_slice())), "zh");
+    let text_ng1 = render_markdown(
+        &analyze(&save1, &catalog, Some(filter.as_slice())),
+        "zh",
+        Locale::Zh,
+    );
     assert!(text_ng0.contains("🔒 星球空降服（第7小队）第3版"));
     assert!(text_ng1.contains("❌ 星球空降服（第7小队）第3版"));
 }
@@ -79,7 +92,11 @@ fn suit_matrix_dlc_column() {
     let catalog = load_catalog(None).expect("catalog");
     let save = make_save(&[], &[], 0);
     let filter = vec!["nano_suits".to_string()];
-    let text = render_markdown(&analyze(&save, &catalog, Some(filter.as_slice())), "zh");
+    let text = render_markdown(
+        &analyze(&save, &catalog, Some(filter.as_slice())),
+        "zh",
+        Locale::Zh,
+    );
     assert!(text.contains("| 地点 | 首周目 | 二周目(NG+) | 三周目(NG++) | DLC/特典 |"));
     assert!(text.contains("🎁 寄叶二号B型制服"));
 }
@@ -88,7 +105,7 @@ fn suit_matrix_dlc_column() {
 fn print_report_suit_table() {
     let catalog = load_catalog(None).expect("catalog");
     let save = make_save(&["BS_09_2"], &[], 0);
-    let output = print_report(&analyze(&save, &catalog, None), false, "zh");
+    let output = print_report(&analyze(&save, &catalog, None), false, "zh", Locale::Zh);
     assert!(output.contains("纳米战衣"));
     assert!(output.contains("耳饰"));
     assert!(output.contains("✅"));
@@ -102,9 +119,9 @@ fn language_option() {
     let save = make_save(&[], &[], 0);
     let filter = vec!["nano_suits".to_string()];
     let analysis = analyze(&save, &catalog, Some(filter.as_slice()));
-    let zh = render_markdown(&analysis, "zh");
-    let en = render_markdown(&analysis, "en");
-    let both = render_markdown(&analysis, "both");
+    let zh = render_markdown(&analysis, "zh", Locale::Zh);
+    let en = render_markdown(&analysis, "en", Locale::Zh);
+    let both = render_markdown(&analysis, "both", Locale::Zh);
     assert!(zh.contains("### 埃多斯7号") && !zh.contains("Flooded Commercial Sector"));
     assert!(en.contains("### Eidos 7") && !en.contains("### 埃多斯7号"));
     assert!(en.contains("Flooded Commercial Sector"));
@@ -118,9 +135,9 @@ fn missing_list_uses_chinese_obtain() {
     let save = make_save(&[], &[], 0);
     let filter = vec!["cans".to_string()];
     let analysis = analyze(&save, &catalog, Some(filter.as_slice()));
-    let zh = render_markdown(&analysis, "zh");
-    let en = render_markdown(&analysis, "en");
-    let both = render_markdown(&analysis, "both");
+    let zh = render_markdown(&analysis, "zh", Locale::Zh);
+    let en = render_markdown(&analysis, "en", Locale::Zh);
+    let both = render_markdown(&analysis, "both", Locale::Zh);
     assert!(zh.contains("在施工区东侧"));
     assert!(en.contains("On the east side of the Construction Zone"));
     assert!(!zh.contains("On the east side of the Construction Zone"));
@@ -133,14 +150,22 @@ fn earring_matrix_markdown() {
     let catalog = load_catalog(None).expect("catalog");
     let filter = vec!["earrings".to_string()];
     let save0 = make_save(&[], &[], 0);
-    let text_ng0 = render_markdown(&analyze(&save0, &catalog, Some(filter.as_slice())), "zh");
+    let text_ng0 = render_markdown(
+        &analyze(&save0, &catalog, Some(filter.as_slice())),
+        "zh",
+        Locale::Zh,
+    );
     assert!(text_ng0.contains("## 耳饰获取一览"));
     assert!(text_ng0.contains("### 埃多斯7号"));
     assert!(text_ng0.contains("❌ 绯红泪珠"));
     assert!(text_ng0.contains("🔒 高贵泪珠"));
     assert!(text_ng0.contains("🔒 黄金之心"));
     let save2 = make_save(&[], &[], 2);
-    let text_ng2 = render_markdown(&analyze(&save2, &catalog, Some(filter.as_slice())), "zh");
+    let text_ng2 = render_markdown(
+        &analyze(&save2, &catalog, Some(filter.as_slice())),
+        "zh",
+        Locale::Zh,
+    );
     assert!(text_ng2.contains("❌ 高贵泪珠"));
     assert!(text_ng2.contains("❌ 黄金之心"));
 }
@@ -157,7 +182,11 @@ fn other_matrix_categories() {
     ];
     for (key, heading, needle) in cases {
         let filter = vec![key.to_string()];
-        let text = render_markdown(&analyze(&save, &catalog, Some(filter.as_slice())), "zh");
+        let text = render_markdown(
+            &analyze(&save, &catalog, Some(filter.as_slice())),
+            "zh",
+            Locale::Zh,
+        );
         assert!(text.contains(heading), "{key}");
         assert!(text.contains(needle), "{key}");
     }
@@ -168,9 +197,57 @@ fn non_matrix_categories_keep_flat_list() {
     let catalog = load_catalog(None).expect("catalog");
     let save = make_save(&[], &[], 0);
     let filter = vec!["design_patterns".to_string()];
-    let text = render_markdown(&analyze(&save, &catalog, Some(filter.as_slice())), "zh");
+    let text = render_markdown(
+        &analyze(&save, &catalog, Some(filter.as_slice())),
+        "zh",
+        Locale::Zh,
+    );
     assert!(!text.contains("## 设计图案获取一览"));
     assert!(text.contains("### 设计图案 (0/87)"));
+}
+
+#[test]
+fn english_chrome_and_catalog_names() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = make_save(&[], &[], 0);
+    let filter = vec!["cans".to_string()];
+    let analysis = analyze(&save, &catalog, Some(filter.as_slice()));
+
+    let markdown = render_markdown(&analysis, "en", Locale::En);
+    assert!(markdown.contains("## Category summary"));
+    assert!(markdown.contains("## Missing items"));
+    assert!(markdown.contains("| Cans | 0/49 (0%) | 49 |"));
+    assert!(markdown.contains("- Catalog progress:"));
+
+    let console = print_report(&analysis, false, "en", Locale::En);
+    assert!(console.contains("Category summary"));
+    assert!(console.contains("Cans"));
+
+    let payload = analysis_to_dict(&analysis, false);
+    let category = payload["categories"]
+        .as_array()
+        .expect("categories")
+        .iter()
+        .find(|category| category["key"] == "cans")
+        .expect("cans");
+    assert_eq!(category["name_en"], "Cans");
+}
+
+#[test]
+fn record_type_en_in_contract() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = make_save(&[], &[], 0);
+    let filter = vec!["records".to_string()];
+    let analysis = analyze(&save, &catalog, Some(filter.as_slice()));
+    let payload = analysis_to_dict(&analysis, false);
+    let message = payload["categories"][0]["missing"]
+        .as_array()
+        .expect("missing")
+        .iter()
+        .find(|item| item["record_type"] == "document_messages")
+        .expect("document_messages item");
+    assert_eq!(message["record_type_zh"], "文档·消息");
+    assert_eq!(message["record_type_en"], "Documents · Messages");
 }
 
 #[test]
@@ -179,13 +256,13 @@ fn album_sections_in_report() {
     let save = make_save(&[], &[], 0);
     let analysis = analyze(&save, &catalog, None);
 
-    let text = print_report(&analysis, false, "zh");
+    let text = print_report(&analysis, false, "zh", Locale::Zh);
     assert!(text.contains("图鉴汇总（不计入目录进度）"));
     assert!(text.contains("图鉴进度: 0/122 (0.0%)"));
     assert!(text.contains("孽奇拔 | 0/67 (0%) | 67"));
     assert!(text.contains("角色 | 0/55 (0%) | 55"));
 
-    let markdown = render_markdown(&analysis, "zh");
+    let markdown = render_markdown(&analysis, "zh", Locale::Zh);
     assert!(markdown.contains("## 图鉴汇总（不计入目录进度）"));
     assert!(markdown.contains("- 图鉴进度: 0/122 (0.0%)"));
     assert!(markdown.contains("| 孽奇拔 | 0/67 (0%) | 67 |"));

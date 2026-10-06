@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 import { BookOpen, ChevronRight, ListChecks } from "@lucide/vue";
 import type { Analysis, CategoryResult } from "../types";
+import { categoryName } from "../lib/display";
+import { settings } from "../lib/settings";
+
+const { t } = useI18n({ useScope: "global" });
 
 const props = defineProps<{ analysis: Analysis }>();
 
@@ -9,15 +14,15 @@ const emit = defineEmits<{ navigate: [key: string] }>();
 
 const groups = computed(() => [
   {
-    title: "分类汇总",
-    hint: "点击分类查看明细",
+    title: t("categoryTable.collectionsTitle"),
+    hint: t("categoryTable.collectionsHint"),
     icon: ListChecks,
     showBlocked: true,
     categories: props.analysis.categories.filter((category) => category.section !== "album"),
   },
   {
-    title: "图鉴汇总",
-    hint: "不计入目录进度 · 点击查看明细",
+    title: t("categoryTable.albumTitle"),
+    hint: t("categoryTable.albumHint"),
     icon: BookOpen,
     showBlocked: false,
     categories: props.analysis.categories.filter((category) => category.section === "album"),
@@ -51,10 +56,10 @@ function blocked(category: CategoryResult): number {
       <table class="w-full text-sm">
         <thead>
           <tr class="text-left text-xs text-slate-500">
-            <th class="px-4 py-2">分类</th>
-            <th class="px-4 py-2">进度</th>
-            <th class="px-4 py-2 text-right">缺失</th>
-            <th v-if="group.showBlocked" class="px-4 py-2 text-right">多周目/DLC</th>
+            <th class="px-4 py-2">{{ t("categoryTable.category") }}</th>
+            <th class="px-4 py-2">{{ t("categoryTable.progress") }}</th>
+            <th class="px-4 py-2 text-right">{{ t("categoryTable.missing") }}</th>
+            <th v-if="group.showBlocked" class="px-4 py-2 text-right">{{ t("categoryTable.blocked") }}</th>
             <th class="px-4 py-2"></th>
           </tr>
         </thead>
@@ -65,7 +70,7 @@ function blocked(category: CategoryResult): number {
             class="cursor-pointer border-t border-slate-200 dark:border-slate-800/70 hover:bg-slate-100 dark:hover:bg-slate-800/40"
             @click="emit('navigate', category.key)"
           >
-            <td class="px-4 py-2">{{ category.name }}</td>
+            <td class="px-4 py-2">{{ categoryName(category, settings.contentLang) }}</td>
             <td class="px-4 py-2">
               <div class="flex items-center gap-2">
                 <div class="h-1.5 w-24 overflow-hidden rounded bg-slate-200 dark:bg-slate-800">
@@ -86,7 +91,7 @@ function blocked(category: CategoryResult): number {
             </td>
             <td class="px-4 py-2 text-right text-xs text-slate-500">
               <span class="inline-flex items-center gap-0.5">
-                查看
+                {{ t("common.view") }}
                 <ChevronRight class="h-3.5 w-3.5" />
               </span>
             </td>

@@ -56,6 +56,7 @@ export interface Item {
   flags: string[];
   record_type: string | null;
   record_type_zh: string | null;
+  record_type_en: string | null;
   order: number;
   desc_zh: string | null;
   desc_en: string | null;
@@ -81,6 +82,7 @@ export interface ObtainedItem {
   name_en: string | null;
   record_type: string | null;
   record_type_zh: string | null;
+  record_type_en: string | null;
   order: number;
   desc_zh: string | null;
   desc_en: string | null;
@@ -89,6 +91,7 @@ export interface ObtainedItem {
 export interface CategoryResult {
   key: string;
   name: string;
+  name_en: string | null;
   section: string;
   total: number;
   obtained: number;

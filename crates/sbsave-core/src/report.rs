@@ -4,12 +4,11 @@ use serde_json::{Map, Value};
 
 use crate::analyze::{Analysis, CategoryResult, ItemStatus};
 use crate::catalog::CatalogItem;
+use crate::i18n::{Locale, Messages};
 use crate::savegame::SaveData;
 
 pub const LANGUAGES: [&str; 3] = ["zh", "en", "both"];
 
-const MATRIX_LEGEND: &str = "✅ 已获得 · ❌ 未获得 · 🔒 需更高周目 · 🎁 DLC/特典 · ➖ 默认外观";
-const MATRIX_COLUMNS: [&str; 4] = ["首周目", "二周目(NG+)", "三周目(NG++)", "DLC/特典"];
 const MATRIX_CATEGORIES: [&str; 6] = [
     "nano_suits",
     "earrings",
@@ -72,7 +71,7 @@ fn location_label(status: &ItemStatus, lang: &str) -> String {
         .join(" · ")
 }
 
-fn obtain_label(status: &ItemStatus, lang: &str) -> String {
+fn obtain_label(status: &ItemStatus, lang: &str, locale: Locale) -> String {
     let item = status.item;
     let mut parts: Vec<String> = Vec::new();
     let obtain = localized(item.obtain_zh.as_deref(), item.obtain.as_deref(), lang);
@@ -82,8 +81,8 @@ fn obtain_label(status: &ItemStatus, lang: &str) -> String {
     if let Some(note) = non_empty(item.note.as_deref()) {
         parts.push(note.to_string());
     }
-    if let Some(reason) = &status.reason {
-        parts.push(reason.clone());
+    if let Some(reason) = status.reason_label(locale) {
+        parts.push(reason);
     }
     parts.join(" | ")
 }
@@ -124,7 +123,12 @@ fn area_order(area: &str) -> i32 {
 type AreaMatrix = Vec<(String, Vec<(String, Vec<String>)>)>;
 type RawAreaEntry = (String, String, Vec<(String, Vec<String>)>);
 
-fn item_matrix(statuses: &[ItemStatus], save: &SaveData, lang: &str) -> AreaMatrix {
+fn item_matrix(
+    statuses: &[ItemStatus],
+    save: &SaveData,
+    lang: &str,
+    messages: &Messages,
+) -> AreaMatrix {
     let mut labels: HashMap<String, String> = HashMap::new();
     let mut raw_areas: Vec<String> = Vec::new();
     let mut area_index: HashMap<String, usize> = HashMap::new();
@@ -133,16 +137,19 @@ fn item_matrix(statuses: &[ItemStatus], save: &SaveData, lang: &str) -> AreaMatr
 
     for status in statuses {
         let item = status.item;
-        let area = item.area.clone().unwrap_or_else(|| "未分类".to_string());
+        let area = item
+            .area
+            .clone()
+            .unwrap_or_else(|| messages.uncategorized().to_string());
         let location = item
             .location
             .clone()
-            .unwrap_or_else(|| "未分类".to_string());
+            .unwrap_or_else(|| messages.uncategorized().to_string());
 
         labels.entry(area.clone()).or_insert_with(|| {
             let label = localized(item.area_zh.as_deref(), item.area.as_deref(), lang);
             if label.is_empty() {
-                "未分类".to_string()
+                messages.uncategorized().to_string()
             } else {
                 label
             }
@@ -150,7 +157,7 @@ fn item_matrix(statuses: &[ItemStatus], save: &SaveData, lang: &str) -> AreaMatr
         labels.entry(location.clone()).or_insert_with(|| {
             let label = localized(item.location_zh.as_deref(), item.location.as_deref(), lang);
             if label.is_empty() {
-                "未分类".to_string()
+                messages.uncategorized().to_string()
             } else {
                 label
             }
@@ -165,8 +172,10 @@ fn item_matrix(statuses: &[ItemStatus], save: &SaveData, lang: &str) -> AreaMatr
         let location_slot = *location_index[area_slot]
             .entry(location.clone())
             .or_insert_with(|| {
-                areas[area_slot]
-                    .push((location.clone(), vec![String::new(); MATRIX_COLUMNS.len()]));
+                areas[area_slot].push((
+                    location.clone(),
+                    vec![String::new(); messages.matrix_columns().len()],
+                ));
                 areas[area_slot].len() - 1
             });
 
@@ -192,14 +201,14 @@ fn item_matrix(statuses: &[ItemStatus], save: &SaveData, lang: &str) -> AreaMatr
             let label = labels
                 .get(raw_area)
                 .cloned()
-                .unwrap_or_else(|| "未分类".to_string());
+                .unwrap_or_else(|| messages.uncategorized().to_string());
             let locations = areas[index]
                 .iter()
                 .map(|(raw_location, cells)| {
                     let location = labels
                         .get(raw_location)
                         .cloned()
-                        .unwrap_or_else(|| "未分类".to_string());
+                        .unwrap_or_else(|| messages.uncategorized().to_string());
                     (location, cells.clone())
                 })
                 .collect();
@@ -217,8 +226,8 @@ fn item_matrix(statuses: &[ItemStatus], save: &SaveData, lang: &str) -> AreaMatr
         .collect()
 }
 
-fn used_matrix_columns(locations: &[(String, Vec<String>)]) -> Vec<usize> {
-    (0..MATRIX_COLUMNS.len())
+fn used_matrix_columns(locations: &[(String, Vec<String>)], messages: &Messages) -> Vec<usize> {
+    (0..messages.matrix_columns().len())
         .filter(|index| locations.iter().any(|(_, cells)| !cells[*index].is_empty()))
         .collect()
 }
@@ -231,17 +240,30 @@ fn is_album_category(result: &CategoryResult) -> bool {
     result.category.section == "album"
 }
 
-fn print_item_matrix(result: &CategoryResult, save: &SaveData, lang: &str) -> String {
+fn print_item_matrix(
+    result: &CategoryResult,
+    save: &SaveData,
+    lang: &str,
+    messages: &Messages,
+) -> String {
+    let name = result.category.localized_name(messages.locale());
     let mut out = String::new();
     out.push_str(&format!(
-        "{} 已获得 {}/{} · 图例：{}\n",
-        result.category.name, result.obtained_count, result.total, MATRIX_LEGEND
+        "{}\n",
+        messages.category_matrix_line(name, result.obtained_count, result.total)
     ));
-    for (area, locations) in item_matrix(&result.statuses, save, lang) {
-        let used = used_matrix_columns(&locations);
+    for (area, locations) in item_matrix(&result.statuses, save, lang, messages) {
+        let used = used_matrix_columns(&locations, messages);
         out.push_str(&format!("{area}\n"));
-        let headers: Vec<&str> = used.iter().map(|index| MATRIX_COLUMNS[*index]).collect();
-        out.push_str(&format!("地点 | {}\n", headers.join(" | ")));
+        let headers: Vec<&str> = used
+            .iter()
+            .map(|index| messages.matrix_columns()[*index])
+            .collect();
+        out.push_str(&format!(
+            "{} | {}\n",
+            messages.location_header(),
+            headers.join(" | ")
+        ));
         for (location, cells) in locations {
             let values: Vec<String> = used
                 .iter()
@@ -260,22 +282,25 @@ fn print_item_matrix(result: &CategoryResult, save: &SaveData, lang: &str) -> St
     out
 }
 
-fn item_markdown(result: &CategoryResult, save: &SaveData, lang: &str) -> Vec<String> {
-    let mut lines = vec![
-        format!("## {}获取一览", result.category.name),
-        String::new(),
-    ];
-    lines.push(format!(
-        "已获得 {}/{} · 图例：{}",
-        result.obtained_count, result.total, MATRIX_LEGEND
-    ));
-    for (area, locations) in item_matrix(&result.statuses, save, lang) {
-        let used = used_matrix_columns(&locations);
+fn item_markdown(
+    result: &CategoryResult,
+    save: &SaveData,
+    lang: &str,
+    messages: &Messages,
+) -> Vec<String> {
+    let name = result.category.localized_name(messages.locale());
+    let mut lines = vec![messages.markdown_category_heading(name), String::new()];
+    lines.push(messages.markdown_legend_line(result.obtained_count, result.total));
+    for (area, locations) in item_matrix(&result.statuses, save, lang, messages) {
+        let used = used_matrix_columns(&locations, messages);
         lines.push(String::new());
         lines.push(format!("### {area}"));
         lines.push(String::new());
-        let mut headers = vec!["地点".to_string()];
-        headers.extend(used.iter().map(|index| MATRIX_COLUMNS[*index].to_string()));
+        let mut headers = vec![messages.location_header().to_string()];
+        headers.extend(
+            used.iter()
+                .map(|index| messages.matrix_columns()[*index].to_string()),
+        );
         lines.push(format!("| {} |", headers.join(" | ")));
         lines.push(format!(
             "| --- | {} |",
@@ -299,50 +324,57 @@ fn item_markdown(result: &CategoryResult, save: &SaveData, lang: &str) -> Vec<St
     lines
 }
 
-pub fn print_report(analysis: &Analysis, show_all: bool, lang: &str) -> String {
+pub fn print_report(analysis: &Analysis, show_all: bool, lang: &str, locale: Locale) -> String {
     let save = analysis.save;
+    let messages = Messages::new(locale);
     let mut out = String::new();
+    let file_name = save.path.file_name().map_or_else(
+        || save.path.display().to_string(),
+        |name| name.to_string_lossy().into_owned(),
+    );
+    out.push_str(&format!("{}\n", messages.report_title(&file_name)));
     out.push_str(&format!(
-        "剑星存档分析 — {}\n",
-        save.path.file_name().map_or_else(
-            || save.path.display().to_string(),
-            |name| name.to_string_lossy().into_owned()
+        "{}\n",
+        messages.report_save_line(
+            save.steam_id.as_deref().unwrap_or(messages.unknown()),
+            &save.playthrough_label(locale),
+            save.ng_plus_count(),
+            &save.difficulty_label(locale),
+            &save.play_time_label(locale),
         )
     ));
     out.push_str(&format!(
-        "SteamID: {} | 周目: {} (NG+{}) | 难度: {} | 游玩时间: {}\n",
-        save.steam_id.as_deref().unwrap_or("未知"),
-        save.playthrough_label(),
-        save.ng_plus_count(),
-        save.difficulty_label(),
-        save.play_time_label()
+        "{}\n",
+        messages.report_progress_line(
+            save.all_obtained().len(),
+            analysis.catalog_obtained,
+            analysis.catalog_total,
+            analysis.percent(),
+            analysis.missing_total(),
+        )
     ));
     out.push_str(&format!(
-        "已获得物品别名: {} | 目录进度: {}/{} ({:.1}%) | 未收集: {}\n",
-        save.all_obtained().len(),
-        analysis.catalog_obtained,
-        analysis.catalog_total,
-        analysis.percent(),
-        analysis.missing_total()
-    ));
-    out.push_str(&format!(
-        "图鉴进度: {}/{} ({:.1}%) | 未收集: {}（不计入目录进度）\n",
-        analysis.album_obtained,
-        analysis.album_total,
-        analysis.album_percent(),
-        analysis.album_missing_total()
+        "{}\n",
+        messages.report_album_line(
+            analysis.album_obtained,
+            analysis.album_total,
+            analysis.album_percent(),
+            analysis.album_missing_total(),
+        )
     ));
     out.push('\n');
 
-    out.push_str("分类汇总\n");
-    out.push_str("分类 | 进度 | 缺失 | 其中需多周目/DLC | 未映射别名\n");
+    out.push_str(messages.category_summary());
+    out.push('\n');
+    out.push_str(messages.category_summary_header());
+    out.push('\n');
     for result in &analysis.categories {
         if is_album_category(result) {
             continue;
         }
         out.push_str(&format!(
             "{} | {}/{} ({:.0}%) | {} | {} | {}\n",
-            result.category.name,
+            result.category.localized_name(locale),
             result.obtained_count,
             result.total,
             result.percent(),
@@ -352,15 +384,18 @@ pub fn print_report(analysis: &Analysis, show_all: bool, lang: &str) -> String {
         ));
     }
 
-    out.push_str("\n图鉴汇总（不计入目录进度）\n");
-    out.push_str("图鉴 | 进度 | 缺失\n");
+    out.push('\n');
+    out.push_str(messages.album_summary());
+    out.push('\n');
+    out.push_str(messages.album_summary_header());
+    out.push('\n');
     for result in &analysis.categories {
         if !is_album_category(result) {
             continue;
         }
         out.push_str(&format!(
             "{} | {}/{} ({:.0}%) | {}\n",
-            result.category.name,
+            result.category.localized_name(locale),
             result.obtained_count,
             result.total,
             result.percent(),
@@ -373,7 +408,7 @@ pub fn print_report(analysis: &Analysis, show_all: bool, lang: &str) -> String {
             continue;
         }
         out.push('\n');
-        out.push_str(&print_item_matrix(result, save, lang));
+        out.push_str(&print_item_matrix(result, save, lang, &messages));
     }
 
     for result in &analysis.categories {
@@ -382,21 +417,23 @@ pub fn print_report(analysis: &Analysis, show_all: bool, lang: &str) -> String {
         }
         out.push('\n');
         out.push_str(&format!(
-            "{} {}/{} · 缺 {}\n",
-            result.category.name,
-            result.obtained_count,
-            result.total,
-            result.missing.len()
+            "{}\n",
+            messages.category_missing_line(
+                result.category.localized_name(locale),
+                result.obtained_count,
+                result.total,
+                result.missing.len(),
+            )
         ));
         for status in &result.missing {
-            let flags = status.flags();
+            let flags = status.flags(locale);
             let flag_text = if flags.is_empty() {
                 String::new()
             } else {
                 format!(" [{}]", flags.join("/"))
             };
             let location = location_label(status, lang);
-            let obtain = obtain_label(status, lang);
+            let obtain = obtain_label(status, lang, locale);
             let mut line = format!("  {} {}", status.item.id, display_name(status.item, lang));
             if !location.is_empty() {
                 line.push_str(&format!("  {location}"));
@@ -416,7 +453,10 @@ pub fn print_report(analysis: &Analysis, show_all: bool, lang: &str) -> String {
                 continue;
             }
             out.push('\n');
-            out.push_str(&format!("{} 已收集:\n", result.category.name));
+            out.push_str(&format!(
+                "{}\n",
+                messages.obtained_heading(result.category.localized_name(locale))
+            ));
             for item in &result.obtained_items {
                 out.push_str(&format!("  ✓ {} {}\n", item.id, display_name(item, lang)));
             }
@@ -426,8 +466,8 @@ pub fn print_report(analysis: &Analysis, show_all: bool, lang: &str) -> String {
     if !analysis.unmapped_obtained.is_empty() {
         out.push('\n');
         out.push_str(&format!(
-            "有 {} 个已获得别名不在目录库中（不影响已收集判定，可补充到用户覆盖文件）\n",
-            analysis.unmapped_obtained.len()
+            "{}\n",
+            messages.unmapped_note(analysis.unmapped_obtained.len())
         ));
         for (prefix, count) in crate::analyze::unmapped_summary(&analysis.unmapped_obtained)
             .into_iter()
@@ -505,6 +545,10 @@ fn catalog_item_to_dict(item: &CatalogItem) -> Value {
         optional_string(item.record_type_zh.as_deref()),
     );
     object.insert(
+        "record_type_en".to_string(),
+        optional_string(item.record_type_en.as_deref()),
+    );
+    object.insert(
         "desc_zh".to_string(),
         optional_string(item.desc_zh.as_deref()),
     );
@@ -565,14 +609,20 @@ fn item_to_dict(status: &ItemStatus) -> Value {
     );
     object.insert(
         "reason".to_string(),
-        match &status.reason {
-            Some(reason) => Value::String(reason.clone()),
+        match status.reason_label(Locale::Zh) {
+            Some(reason) => Value::String(reason),
             None => Value::Null,
         },
     );
     object.insert(
         "flags".to_string(),
-        Value::Array(status.flags().into_iter().map(Value::String).collect()),
+        Value::Array(
+            status
+                .flags(Locale::Zh)
+                .into_iter()
+                .map(Value::String)
+                .collect(),
+        ),
     );
     object.insert(
         "record_type".to_string(),
@@ -581,6 +631,10 @@ fn item_to_dict(status: &ItemStatus) -> Value {
     object.insert(
         "record_type_zh".to_string(),
         optional_string(item.record_type_zh.as_deref()),
+    );
+    object.insert(
+        "record_type_en".to_string(),
+        optional_string(item.record_type_en.as_deref()),
     );
     object.insert(
         "desc_zh".to_string(),
@@ -603,6 +657,10 @@ fn category_to_dict(result: &CategoryResult, include_obtained: bool) -> Value {
     object.insert(
         "name".to_string(),
         Value::String(result.category.name.clone()),
+    );
+    object.insert(
+        "name_en".to_string(),
+        optional_string(result.category.name_en.as_deref()),
     );
     object.insert(
         "section".to_string(),
@@ -658,7 +716,7 @@ pub fn analysis_to_dict(analysis: &Analysis, include_obtained: bool) -> Value {
     save_object.insert("slot".to_string(), Value::from(save.slot));
     save_object.insert(
         "playthrough".to_string(),
-        Value::String(save.playthrough_label()),
+        Value::String(save.playthrough_label(Locale::Zh)),
     );
     save_object.insert(
         "ng_plus_count".to_string(),
@@ -746,24 +804,22 @@ pub fn write_json(
     std::fs::write(path, text)
 }
 
-pub fn render_markdown(analysis: &Analysis, lang: &str) -> String {
+pub fn render_markdown(analysis: &Analysis, lang: &str, locale: Locale) -> String {
     let save = analysis.save;
+    let messages = Messages::new(locale);
     let mut lines: Vec<String> = Vec::new();
-    lines.push(format!(
-        "# 剑星存档分析 — {}",
-        save.path.file_name().map_or_else(
-            || save.path.display().to_string(),
-            |name| name.to_string_lossy().into_owned()
-        )
-    ));
+    let file_name = save.path.file_name().map_or_else(
+        || save.path.display().to_string(),
+        |name| name.to_string_lossy().into_owned(),
+    );
+    lines.push(format!("# {}", messages.report_title(&file_name)));
     lines.push(String::new());
-    lines.push(format!(
-        "- SteamID: {}\n- 周目: {} (NG+{})\n- 难度: {}\n- 游玩时间: {}\n- 目录进度: {}/{} ({:.1}%)\n- 图鉴进度: {}/{} ({:.1}%)\n- 未收集: {}（图鉴 {}）",
-        save.steam_id.as_deref().unwrap_or("未知"),
-        save.playthrough_label(),
+    lines.push(messages.markdown_save_block(
+        save.steam_id.as_deref().unwrap_or(messages.unknown()),
+        &save.playthrough_label(locale),
         save.ng_plus_count(),
-        save.difficulty_label(),
-        save.play_time_label(),
+        &save.difficulty_label(locale),
+        &save.play_time_label(locale),
         analysis.catalog_obtained,
         analysis.catalog_total,
         analysis.percent(),
@@ -771,12 +827,12 @@ pub fn render_markdown(analysis: &Analysis, lang: &str) -> String {
         analysis.album_total,
         analysis.album_percent(),
         analysis.missing_total(),
-        analysis.album_missing_total()
+        analysis.album_missing_total(),
     ));
     lines.push(String::new());
-    lines.push("## 分类汇总".to_string());
+    lines.push(messages.markdown_summary_heading().to_string());
     lines.push(String::new());
-    lines.push("| 分类 | 进度 | 缺失 | 需多周目/DLC |".to_string());
+    lines.push(messages.markdown_summary_header().to_string());
     lines.push("| --- | ---: | ---: | ---: |".to_string());
     for result in &analysis.categories {
         if is_album_category(result) {
@@ -784,7 +840,7 @@ pub fn render_markdown(analysis: &Analysis, lang: &str) -> String {
         }
         lines.push(format!(
             "| {} | {}/{} ({:.0}%) | {} | {} |",
-            result.category.name,
+            result.category.localized_name(locale),
             result.obtained_count,
             result.total,
             result.percent(),
@@ -793,9 +849,9 @@ pub fn render_markdown(analysis: &Analysis, lang: &str) -> String {
         ));
     }
     lines.push(String::new());
-    lines.push("## 图鉴汇总（不计入目录进度）".to_string());
+    lines.push(messages.markdown_album_heading().to_string());
     lines.push(String::new());
-    lines.push("| 图鉴 | 进度 | 缺失 |".to_string());
+    lines.push(messages.markdown_album_header().to_string());
     lines.push("| --- | ---: | ---: |".to_string());
     for result in &analysis.categories {
         if !is_album_category(result) {
@@ -803,7 +859,7 @@ pub fn render_markdown(analysis: &Analysis, lang: &str) -> String {
         }
         lines.push(format!(
             "| {} | {}/{} ({:.0}%) | {} |",
-            result.category.name,
+            result.category.localized_name(locale),
             result.obtained_count,
             result.total,
             result.percent(),
@@ -815,10 +871,10 @@ pub fn render_markdown(analysis: &Analysis, lang: &str) -> String {
             continue;
         }
         lines.push(String::new());
-        lines.extend(item_markdown(result, save, lang));
+        lines.extend(item_markdown(result, save, lang, &messages));
     }
     lines.push(String::new());
-    lines.push("## 未收集清单".to_string());
+    lines.push(messages.markdown_missing_heading().to_string());
     for result in &analysis.categories {
         if is_matrix_category(&result.category.key) || result.missing.is_empty() {
             continue;
@@ -826,7 +882,9 @@ pub fn render_markdown(analysis: &Analysis, lang: &str) -> String {
         lines.push(String::new());
         lines.push(format!(
             "### {} ({}/{})",
-            result.category.name, result.obtained_count, result.total
+            result.category.localized_name(locale),
+            result.obtained_count,
+            result.total
         ));
         lines.push(String::new());
         for status in &result.missing {
@@ -843,10 +901,10 @@ pub fn render_markdown(analysis: &Analysis, lang: &str) -> String {
             if let Some(note) = non_empty(item.note.as_deref()) {
                 details.push(note.to_string());
             }
-            if let Some(reason) = &status.reason {
-                details.push(reason.clone());
+            if let Some(reason) = status.reason_label(locale) {
+                details.push(reason);
             }
-            let flags = status.flags();
+            let flags = status.flags(locale);
             let suffix = if flags.is_empty() {
                 String::new()
             } else {
@@ -855,7 +913,7 @@ pub fn render_markdown(analysis: &Analysis, lang: &str) -> String {
             let mut line = format!("- **{}** (`{}`)", display_name(item, lang), item.id);
             if !details.is_empty() {
                 line.push_str(" — ");
-                line.push_str(&details.join("；"));
+                line.push_str(&details.join(messages.list_separator()));
             }
             line.push_str(&suffix);
             lines.push(line);
@@ -863,10 +921,7 @@ pub fn render_markdown(analysis: &Analysis, lang: &str) -> String {
     }
     if !analysis.unmapped_obtained.is_empty() {
         lines.push(String::new());
-        lines.push(format!(
-            "## 未映射别名 ({})",
-            analysis.unmapped_obtained.len()
-        ));
+        lines.push(messages.markdown_unmapped_heading(analysis.unmapped_obtained.len()));
         lines.push(String::new());
         lines.push(
             analysis
@@ -874,7 +929,7 @@ pub fn render_markdown(analysis: &Analysis, lang: &str) -> String {
                 .iter()
                 .map(|alias| format!("`{alias}`"))
                 .collect::<Vec<_>>()
-                .join("，"),
+                .join(messages.inline_separator()),
         );
     }
     lines.push(String::new());
@@ -885,6 +940,7 @@ pub fn write_markdown(
     analysis: &Analysis,
     path: impl AsRef<std::path::Path>,
     lang: &str,
+    locale: Locale,
 ) -> Result<(), std::io::Error> {
-    std::fs::write(path, render_markdown(analysis, lang))
+    std::fs::write(path, render_markdown(analysis, lang, locale))
 }

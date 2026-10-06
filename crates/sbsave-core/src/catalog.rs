@@ -5,38 +5,37 @@ use std::path::{Path, PathBuf};
 
 use serde_json::Value as JsonValue;
 
+use crate::i18n::{Locale, Messages};
 use crate::paths;
 
 const CATALOG_JSON: &str = include_str!("../../../data/catalog.json");
 
-pub fn ng_plus_label(ng_plus: i64) -> String {
-    match ng_plus {
-        0 => "首周目".to_string(),
-        1 => "二周目(NG+)".to_string(),
-        2 => "三周目(NG++)".to_string(),
-        other => format!("NG+{other}"),
-    }
+pub fn ng_plus_label(ng_plus: i64, locale: Locale) -> String {
+    Messages::new(locale).ng_plus_label(ng_plus)
 }
 
-pub fn dlc_label(dlc: &str) -> String {
-    match dlc {
-        "nier" => "尼尔 DLC",
-        "nikke" => "NIKKE DLC",
-        "deluxe" => "豪华版",
-        "preorder" => "预购特典",
-        "summer" => "夏日更新",
-        other => other,
-    }
-    .to_string()
+pub fn dlc_label(dlc: &str, locale: Locale) -> String {
+    Messages::new(locale).dlc_label(dlc)
 }
 
 #[derive(Debug, Clone)]
 pub struct Category {
     pub key: String,
     pub name: String,
+    pub name_en: Option<String>,
     pub order: i64,
     pub section: String,
     pub aliases: Vec<String>,
+}
+
+impl Category {
+    /// Display name in the requested UI locale, falling back to Chinese.
+    pub fn localized_name(&self, locale: Locale) -> &str {
+        match locale {
+            Locale::En => self.name_en.as_deref().unwrap_or(&self.name),
+            Locale::Zh => &self.name,
+        }
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -72,6 +71,7 @@ pub struct CatalogItem {
     pub name_en: Option<String>,
     pub record_type: Option<String>,
     pub record_type_zh: Option<String>,
+    pub record_type_en: Option<String>,
     pub order: i64,
     pub guides: Option<Guides>,
     pub desc_zh: Option<String>,
@@ -87,12 +87,28 @@ impl CatalogItem {
         }
     }
 
-    pub fn ng_plus_label(&self) -> String {
-        ng_plus_label(self.ng_plus)
+    pub fn ng_plus_label(&self, locale: Locale) -> String {
+        ng_plus_label(self.ng_plus, locale)
     }
 
-    pub fn dlc_label(&self) -> Option<String> {
-        self.dlc.as_deref().map(dlc_label)
+    pub fn dlc_label(&self, locale: Locale) -> Option<String> {
+        self.dlc.as_deref().map(|dlc| dlc_label(dlc, locale))
+    }
+
+    /// Record type display label for the requested locale, falling back to
+    /// Chinese and then to the raw record type key.
+    pub fn record_type_label(&self, locale: Locale) -> Option<&str> {
+        match locale {
+            Locale::En => self
+                .record_type_en
+                .as_deref()
+                .or(self.record_type_zh.as_deref())
+                .or(self.record_type.as_deref()),
+            Locale::Zh => self
+                .record_type_zh
+                .as_deref()
+                .or(self.record_type.as_deref()),
+        }
     }
 }
 
@@ -231,6 +247,7 @@ fn parse_item(raw: &JsonValue) -> CatalogItem {
         name_en: json_str(raw, "name_en"),
         record_type: json_str(raw, "record_type"),
         record_type_zh: json_str(raw, "record_type_zh"),
+        record_type_en: json_str(raw, "record_type_en"),
         order: raw.get("order").and_then(JsonValue::as_i64).unwrap_or(0),
         guides: raw.get("guides").and_then(parse_guides),
         desc_zh: json_str(raw, "desc_zh"),
@@ -248,11 +265,13 @@ fn parse_catalog(payload: &JsonValue) -> Catalog {
                 .unwrap_or_else(|| key.clone());
             let order = raw.get("order").and_then(JsonValue::as_i64).unwrap_or(100);
             let section = json_str(raw, "section").unwrap_or_else(|| "collection".to_string());
+            let name_en = json_str(raw, "name_en");
             categories.insert(
                 key.clone(),
                 Category {
                     key,
                     name,
+                    name_en,
                     order,
                     section,
                     aliases: Vec::new(),
@@ -271,6 +290,7 @@ fn parse_catalog(payload: &JsonValue) -> Catalog {
             .or_insert_with(|| Category {
                 key: item.category.clone(),
                 name: item.category.clone(),
+                name_en: None,
                 order: 100,
                 section: "collection".to_string(),
                 aliases: Vec::new(),
@@ -322,10 +342,14 @@ fn merge(catalog: &mut Catalog, payload: &JsonValue) {
                 .filter(|name| !name.is_empty())
                 .unwrap_or_else(|| key.clone());
             let order = raw.get("order").and_then(JsonValue::as_i64).unwrap_or(100);
+            let name_en = json_str(raw, "name_en");
             match catalog.categories.get_mut(&key) {
                 Some(existing) => {
                     if raw.get("name").is_some() {
                         existing.name = name;
+                    }
+                    if name_en.is_some() {
+                        existing.name_en = name_en.clone();
                     }
                 }
                 None => {
@@ -334,6 +358,7 @@ fn merge(catalog: &mut Catalog, payload: &JsonValue) {
                         Category {
                             key,
                             name,
+                            name_en,
                             order,
                             section: json_str(raw, "section")
                                 .unwrap_or_else(|| "collection".to_string()),
@@ -363,6 +388,7 @@ fn merge(catalog: &mut Catalog, payload: &JsonValue) {
                 .or_insert_with(|| Category {
                     key: category.clone(),
                     name: category,
+                    name_en: None,
                     order: 100,
                     section: "collection".to_string(),
                     aliases: Vec::new(),

@@ -1,10 +1,15 @@
 import type { Lang } from "../types";
+import { translate } from "./i18n";
 import type { AnyItem, ItemRow } from "./items";
 import { localized, matrixObtain, stripDesignPrefix } from "./display";
 
-export const MATRIX_COLUMNS = ["首周目", "二周目(NG+)", "三周目(NG++)", "DLC/特典"];
+const MATRIX_COLUMN_KEYS = ["base", "ngPlus", "ngPlusPlus", "dlc"] as const;
 
-const MATRIX_COLUMN_COUNT = MATRIX_COLUMNS.length;
+export function matrixColumnLabels(): string[] {
+  return MATRIX_COLUMN_KEYS.map((key) => translate(`matrix.columns.${key}`));
+}
+
+const MATRIX_COLUMN_COUNT = MATRIX_COLUMN_KEYS.length;
 
 const AREA_ORDER: Record<string, number> = {
   Default: 0,
@@ -43,7 +48,7 @@ export function matrixColumn(item: AnyItem): number {
 }
 
 export function matrixPeriodLabel(item: AnyItem): string {
-  return MATRIX_COLUMNS[matrixColumn(item)] ?? "";
+  return matrixColumnLabels()[matrixColumn(item)] ?? "";
 }
 
 export function matrixColumns(rows: ItemRow[]): number[] {
@@ -112,7 +117,7 @@ function findPredecessor(candidates: AnyItem[], phrases: string[]): AnyItem | nu
 }
 
 function locationKey(item: AnyItem): string {
-  return `${item.area ?? "未分类"}\u0000${item.location ?? "未分类"}`;
+  return `${item.area ?? ""}\u0000${item.location ?? ""}`;
 }
 
 function displayName(item: AnyItem, lang: Lang): string {
@@ -185,12 +190,12 @@ export function buildMatrix(rows: ItemRow[], allRows: ItemRow[], lang: Lang): Ma
 
     const root = component.find((row) => !predecessor.has(row.id)) ?? component[0];
     const item = root.item;
-    const areaRaw = item.area ?? "未分类";
-    const locationRaw = item.location ?? "未分类";
+    const areaRaw = item.area ?? "";
+    const locationRaw = item.location ?? "";
     let area = areaMap.get(areaRaw);
     if (!area) {
       area = {
-        label: localized(item.area_zh, item.area, lang) || "未分类",
+        label: localized(item.area_zh, item.area, lang) || translate("common.uncategorized"),
         locations: new Map(),
       };
       areaMap.set(areaRaw, area);
@@ -199,7 +204,7 @@ export function buildMatrix(rows: ItemRow[], allRows: ItemRow[], lang: Lang): Ma
     if (!location) {
       location = {
         key: `${areaRaw}\u0000${locationRaw}`,
-        label: localized(item.location_zh, item.location, lang) || "未分类",
+        label: localized(item.location_zh, item.location, lang) || translate("common.uncategorized"),
         units: [],
       };
       area.locations.set(locationRaw, location);

@@ -3,11 +3,17 @@ use std::time::UNIX_EPOCH;
 
 use sbsave_core::analyze::analyze;
 use sbsave_core::catalog::{load_catalog, GuideLink};
+use sbsave_core::i18n::{Locale, Messages};
 use sbsave_core::report::{analysis_to_dict, write_json, write_markdown};
 use sbsave_core::savegame::{
     discover_saves, load_save, pick_default_save, save_dirs, SaveData, SaveSlot,
 };
 use serde::Serialize;
+
+/// Resolves the UI locale passed by the frontend; defaults to Chinese.
+fn locale_of(value: Option<String>) -> Locale {
+    value.as_deref().and_then(Locale::parse).unwrap_or_default()
+}
 
 #[derive(Debug, Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -67,10 +73,10 @@ fn save_sources() -> Vec<SaveSourceInfo> {
 /// Builds slot metadata for an arbitrary save file, used when the user picks a
 /// file from outside the default directories.
 #[tauri::command]
-fn inspect_save(path: String) -> Result<SaveSlotInfo, String> {
+fn inspect_save(path: String, locale: Option<String>) -> Result<SaveSlotInfo, String> {
     SaveSlot::from_path(&path)
         .map(|slot| slot_info(&slot))
-        .ok_or_else(|| format!("无法读取存档文件: {path}"))
+        .ok_or_else(|| Messages::new(locale_of(locale)).error_inspect_save(&path))
 }
 
 fn is_save_dir(path: &Path) -> bool {
@@ -80,10 +86,12 @@ fn is_save_dir(path: &Path) -> bool {
 /// Opens one of the scanned save directories in the file explorer. Only paths
 /// reported by `save_sources` are accepted.
 #[tauri::command]
-fn open_save_dir(path: String) -> Result<(), String> {
+fn open_save_dir(path: String, locale: Option<String>) -> Result<(), String> {
     let target = PathBuf::from(&path);
     if !is_save_dir(&target) {
-        return Err("不是已扫描的存档目录".to_string());
+        return Err(Messages::new(locale_of(locale))
+            .error_not_scanned_dir()
+            .to_string());
     }
     tauri_plugin_opener::open_path(&target, None::<&str>).map_err(|error| error.to_string())
 }
@@ -105,9 +113,12 @@ fn analyze_save(
     path: Option<String>,
     slot: Option<u32>,
     categories: Option<Vec<String>>,
+    locale: Option<String>,
 ) -> Result<serde_json::Value, String> {
-    let save = load_for(path, slot)?;
-    let catalog = load_catalog(None).map_err(|error| error.to_string())?;
+    let messages = Messages::new(locale_of(locale));
+    let save = load_for(path, slot).map_err(|error| messages.error_load_save(&error))?;
+    let catalog =
+        load_catalog(None).map_err(|error| messages.error_load_catalog(&error.to_string()))?;
     let analysis = analyze(&save, &catalog, categories.as_deref());
     Ok(analysis_to_dict(&analysis, true))
 }
@@ -120,22 +131,27 @@ fn export_report(
     lang: String,
     format: String,
     out_path: String,
+    locale: Option<String>,
 ) -> Result<String, String> {
-    let save = load_for(path, slot)?;
-    let catalog = load_catalog(None).map_err(|error| error.to_string())?;
+    let messages = Messages::new(locale_of(locale));
+    let save = load_for(path, slot).map_err(|error| messages.error_load_save(&error))?;
+    let catalog =
+        load_catalog(None).map_err(|error| messages.error_load_catalog(&error.to_string()))?;
     let analysis = analyze(&save, &catalog, categories.as_deref());
     match format.as_str() {
         "json" => write_json(&analysis, &out_path, true),
-        "markdown" => write_markdown(&analysis, &out_path, &lang),
-        other => return Err(format!("未知导出格式: {other}")),
+        "markdown" => write_markdown(&analysis, &out_path, &lang, messages.locale()),
+        other => return Err(messages.error_unknown_export_format(other)),
     }
     .map_err(|error| error.to_string())?;
     Ok(out_path)
 }
 
 #[tauri::command]
-fn guide_links() -> Result<serde_json::Value, String> {
-    let catalog = load_catalog(None).map_err(|error| error.to_string())?;
+fn guide_links(locale: Option<String>) -> Result<serde_json::Value, String> {
+    let messages = Messages::new(locale_of(locale));
+    let catalog =
+        load_catalog(None).map_err(|error| messages.error_load_catalog(&error.to_string()))?;
     let mut links = serde_json::Map::new();
     for item in &catalog.items {
         let Some(guides) = &item.guides else { continue };
@@ -351,7 +367,7 @@ mod tests {
         let Some(path) = first_save_path() else {
             return;
         };
-        let slot = inspect_save(path).expect("inspect save");
+        let slot = inspect_save(path, None).expect("inspect save");
         assert!(!slot.label.is_empty());
         assert!(slot.size > 0);
         assert!(slot.path.ends_with(".sav"));
@@ -360,8 +376,20 @@ mod tests {
     #[test]
     fn inspect_save_rejects_missing_files() {
         let missing = std::env::temp_dir().join("sbsave-missing-save.sav");
-        let error = inspect_save(missing.to_string_lossy().into_owned()).expect_err("missing file");
+        let error =
+            inspect_save(missing.to_string_lossy().into_owned(), None).expect_err("missing file");
         assert!(error.contains("无法读取存档文件"));
+    }
+
+    #[test]
+    fn inspect_save_localizes_errors() {
+        let missing = std::env::temp_dir().join("sbsave-missing-save-en.sav");
+        let error = inspect_save(
+            missing.to_string_lossy().into_owned(),
+            Some("en".to_string()),
+        )
+        .expect_err("missing file");
+        assert!(error.contains("Cannot read save file"));
     }
 
     #[test]
@@ -369,7 +397,7 @@ mod tests {
         let Some(path) = first_save_path() else {
             return;
         };
-        let value = analyze_save(Some(path), None, None).expect("analyze");
+        let value = analyze_save(Some(path), None, None, None).expect("analyze");
         assert_eq!(value["summary"]["catalog_total"].as_u64(), Some(810));
         assert_eq!(value["summary"]["album_total"].as_u64(), Some(122));
         assert!(value["categories"]
@@ -379,7 +407,7 @@ mod tests {
 
     #[test]
     fn guide_links_returns_chinese_guides() {
-        let links = guide_links().expect("guide links");
+        let links = guide_links(None).expect("guide links");
         let links = links.as_object().expect("object");
         assert_eq!(links.len(), 808);
         let can = links.get("Can_001").expect("can guide");
@@ -426,7 +454,7 @@ mod tests {
         }
         assert!(!patterns.is_empty(), "能力文件缺少 opener 链接白名单");
 
-        let links = guide_links().expect("guide links");
+        let links = guide_links(None).expect("guide links");
         for (id, guides) in links.as_object().expect("object") {
             for key in ["web", "video"] {
                 if let Some(url) = guides.get(key).and_then(|link| link["url"].as_str()) {
@@ -460,10 +488,34 @@ mod tests {
             "zh".to_string(),
             "markdown".to_string(),
             target_text,
+            None,
         )
         .expect("export");
         let text = std::fs::read_to_string(&written).expect("read export");
         assert!(text.contains("# 剑星存档分析"));
+        let _ = std::fs::remove_file(&written);
+    }
+
+    #[test]
+    fn export_report_localizes_markdown_chrome() {
+        let Some(path) = first_save_path() else {
+            return;
+        };
+        let target = std::env::temp_dir().join("sbsave-ui-export-test-en.md");
+        let target_text = target.to_string_lossy().into_owned();
+        let written = export_report(
+            Some(path),
+            None,
+            None,
+            "en".to_string(),
+            "markdown".to_string(),
+            target_text,
+            Some("en".to_string()),
+        )
+        .expect("export");
+        let text = std::fs::read_to_string(&written).expect("read export");
+        assert!(text.contains("# Stellar Blade save analysis"));
+        assert!(text.contains("## Category summary"));
         let _ = std::fs::remove_file(&written);
     }
 }

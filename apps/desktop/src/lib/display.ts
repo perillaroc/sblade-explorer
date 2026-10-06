@@ -1,4 +1,5 @@
 import type { Lang } from "../types";
+import { translate } from "./i18n";
 
 export function localized(
   zh: string | null | undefined,
@@ -78,6 +79,75 @@ export function descLabel(
   lang: Lang,
 ): string {
   return localized(item.desc_zh, item.desc_en, lang);
+}
+
+interface NamedCategory {
+  name: string;
+  name_en?: string | null;
+}
+
+/** Category display name for the content language. */
+export function categoryName(category: NamedCategory, lang: Lang): string {
+  return localized(category.name, category.name_en, lang);
+}
+
+interface TypedItem {
+  record_type?: string | null;
+  record_type_zh?: string | null;
+  record_type_en?: string | null;
+}
+
+/** Record type group label for the content language. */
+export function recordTypeLabel(item: TypedItem, lang: Lang): string {
+  const zh = item.record_type_zh ?? item.record_type ?? "";
+  const en = item.record_type_en ?? item.record_type ?? "";
+  return localized(zh, en, lang) || translate("common.uncategorized");
+}
+
+/** Cycle label used in flags and details (interface locale). */
+export function cycleLabel(ngPlus: number): string {
+  if (ngPlus <= 0) return translate("cycles.base");
+  if (ngPlus === 1) return translate("cycles.ngPlus");
+  if (ngPlus === 2) return translate("cycles.ngPlusPlus");
+  return translate("cycles.ngPlusN", { count: ngPlus });
+}
+
+const KNOWN_DLC = ["nier", "nikke", "deluxe", "preorder", "summer"] as const;
+
+/** DLC label used in flags and details (interface locale). */
+export function dlcLabel(dlc: string): string {
+  return (KNOWN_DLC as readonly string[]).includes(dlc) ? translate(`dlc.${dlc}`) : dlc;
+}
+
+interface FlagItem {
+  dlc?: string | null;
+  ng_plus: number;
+  missable?: boolean;
+  confidence?: string;
+}
+
+/** Localized flags for a missing item (mirrors the Rust report). */
+export function flagLabels(item: FlagItem): string[] {
+  const flags: string[] = [];
+  if (item.dlc) flags.push(dlcLabel(item.dlc));
+  if (item.ng_plus > 0) flags.push(cycleLabel(item.ng_plus));
+  if (item.missable) flags.push(translate("itemTable.missable"));
+  if (item.confidence && item.confidence !== "high") {
+    flags.push(translate("itemTable.mappingUnconfirmed"));
+  }
+  return flags;
+}
+
+/** Localized explanation of why the item is missing. */
+export function reasonLabel(item: FlagItem, ngPlusCount: number): string | null {
+  if (item.ng_plus > ngPlusCount) {
+    return translate("reasons.requires", { label: cycleLabel(item.ng_plus) });
+  }
+  if (item.dlc) {
+    return translate("reasons.dlcOnly", { label: dlcLabel(item.dlc) });
+  }
+  if (item.missable) return translate("reasons.missable");
+  return null;
 }
 
 const REPLACE_LEAD_ZH = /^在\s*NG\+\+?\s*中替换[^。]*。\s*/;

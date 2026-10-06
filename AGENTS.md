@@ -2,7 +2,7 @@
 
 读取 Steam《剑星》存档并报告缺失收集物的工具，已完成 **Python CLI → Rust + Tauri 桌面应用** 迁移：
 主实现为 Rust workspace + Tauri 2 桌面应用；原 Python 参考实现已删除，代码历史保留在 git 中。
-只读：绝不写入存档。所有面向用户的输出、错误信息、目录库名称与备注均为中文；代码标识符/注释用英文。
+只读：绝不写入存档。默认输出为中文，桌面 UI 与 CLI 支持中英切换（见「多语言」）；代码标识符/注释用英文。
 
 ## 仓库与目录结构
 
@@ -28,6 +28,7 @@ cargo run -p sbsave-cli -- --version
 pnpm install
 pnpm dev                 # 仅前端
 pnpm build               # vue-tsc --noEmit + vite build
+pnpm test                # vitest：语言包 key 对齐与插值
 pnpm tauri dev           # 桌面应用开发
 pnpm tauri build         # Windows 打包（输出 target/release/bundle/{nsis,msi}）
 
@@ -71,6 +72,16 @@ Python 参考实现已于 2026-09-15 删除，代码历史保留在 git 中。
 - 分类参数（CLI `--category` 与 UI 筛选）同时接受分类键（`nano_suits`）和中文名（`纳米战衣`）。
 - 桌面端图鉴展示约定：孽奇拔按五种图鉴类型分组（小兵/战士/精锐/阿尔法/上古，可折叠 + 组内进度），角色按页平铺（`艾德姆（资料 3/5）`）；图鉴官方说明在详情弹窗「图鉴说明」中显示（`zh|en|both`）。
 - 攻略文案翻译在 `data/raw/api/i18n/`；`sbsave-tools catalog build` 合并为 `area_zh`/`location_zh`/`obtain_zh`；语言模式 `zh|en|both`（默认 zh，缺翻译回退英文），JSON 始终双语。
+- 分类英文名与记录类型英文名由 `crates/sbsave-tools/src/catalog_build.rs` 的 `CATEGORIES` / `RECORD_TYPES` 维护，写入 `data/catalog.json` 的 `categories[].name_en` 与条目的 `record_type_en`；analysis JSON 同步输出 `name_en`/`record_type_en`（附加字段）。
+
+## 多语言
+
+- 界面语言 `uiLocale`（`zh`/`en`）与内容语言 `contentLang`（`zh`/`en`/`both`）分离：前者控制菜单、弹窗、错误与窗口标题，后者控制收集物名称/位置/说明（顶部语言按钮）。
+- 文案统一用「界面语言 / 内容语言」二分：顶部控件显示「内容」（`contentShort`）+ 完整 tooltip（`contentHint`），设置内为「界面语言」并在 `interfaceHint` 中说明顶部按钮；两处 hint 必须互相指向，避免出现第二个「语言」控件时产生歧义。
+- 前端用 vue-i18n：消息在 `apps/desktop/src/locales/zh.ts`（`MessageSchema` 事实来源）与 `en.ts`（`satisfies MessageSchema`，缺 key 时 `pnpm build` 失败）；`src/lib/i18n.ts` 负责初始化、`<html lang>` 与窗口标题同步；组件内一律用 `t("...")`，禁止硬编码用户可见文案；lib 模块用 `translate(...)`。`settings.uiLocale`/`settings.contentLang` 持久化在 localStorage（`sbsave.settings.v1`），首次按系统语言推断界面语言。
+- Rust 侧文案集中在 `crates/sbsave-core/src/i18n.rs`（`Locale` + `Messages`），供 CLI、报告与 Tauri 命令共用；报告 chrome 用 `Locale`、物品文本用 `lang`，两参数保持分离。
+- CLI 用全局 `--ui-lang zh|en` 控制 chrome（默认读系统语言，兜底 zh），`--lang` 仍是内容语言；clap 帮助在解析前按 locale 替换，clap 内建报错保持英文。Tauri 命令新增可选 `locale` 参数（前端传 `settings.uiLocale`）。
+- 新增界面文案必须同时补 `zh.ts` 与 `en.ts`；改动用户可见的 CLI/报告文案时同步更新 `sbsave-core` 测试与 `crates/sbsave-cli/tests/test_cli.rs`。
 
 ## Git 提交规范
 
@@ -93,7 +104,7 @@ Python 参考实现已于 2026-09-15 删除，代码历史保留在 git 中。
   `.github/workflows/ci.yml`（Rust 作业固定 Windows，原因见「CI 与发布」）。
 - GVAS 解析器保持只读与防御性：无法解析的 struct/array/map/set 回退为 `RawValue`，reader 始终重同步到 `tag_start + size`。
 - JSON 契约冻结为原 Python 版 `report.py::analysis_to_dict`（`save`/`summary`/`categories`/`unmapped_obtained`，条目含中英两套字段），供 CLI、UI 与导出共用。
-- CLI/报告输出为中文且被测试断言 - 保持消息稳定，或同步更新测试。
+- CLI/报告默认输出中文（CLI 用 `--ui-lang`、报告物品文本用 `--lang` 切换）且被测试断言 - 保持消息稳定，或同步更新测试。
 - 绝不修改存档文件；需要测试解析时使用合成档案（逐字节构造，沿用原 Python 测试用例）。
 - `crates/sbsave-tools` 的集成测试断言 `cargo run -p sbsave-tools -- catalog build` 的结果与已提交 `data/catalog.json` 逐字节一致；改动数据源或生成逻辑后必须重新生成并让该测试通过。
 - 行为约定以迁移时的决策为准；原 Python 实现可从 git 历史（`33cb981`）查回。

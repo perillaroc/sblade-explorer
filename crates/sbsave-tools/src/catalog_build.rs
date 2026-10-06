@@ -25,22 +25,52 @@ const SOURCES: [&str; 6] = [
     "https://mapgenie.io + https://www.gamersky.com (in-game Data Bank order of memorysticks)",
 ];
 
-const CATEGORIES: [(&str, &str, i64, &str); 15] = [
-    ("nano_suits", "纳米战衣", 10, "collection"),
-    ("cans", "罐子", 20, "collection"),
-    ("records", "记录(文档/记忆棒)", 30, "collection"),
-    ("passcodes", "密码", 40, "collection"),
-    ("camps", "营地", 50, "collection"),
-    ("hair", "发型", 60, "collection"),
-    ("glasses", "眼镜/面饰", 70, "collection"),
-    ("earrings", "耳饰", 80, "collection"),
-    ("drone_seals", "无人机外观", 90, "collection"),
-    ("adam_costumes", "亚当服装", 100, "collection"),
-    ("lily_costumes", "莉莉服装", 110, "collection"),
-    ("design_patterns", "设计图案", 120, "collection"),
-    ("fish", "鱼类", 130, "collection"),
-    ("naytiba", "孽奇拔", 140, "album"),
-    ("characters", "角色", 150, "album"),
+const CATEGORIES: [(&str, &str, &str, i64, &str); 15] = [
+    ("nano_suits", "纳米战衣", "Nano Suits", 10, "collection"),
+    ("cans", "罐子", "Cans", 20, "collection"),
+    (
+        "records",
+        "记录(文档/记忆棒)",
+        "Records (Documents/Memory Sticks)",
+        30,
+        "collection",
+    ),
+    ("passcodes", "密码", "Passcodes", 40, "collection"),
+    ("camps", "营地", "Camps", 50, "collection"),
+    ("hair", "发型", "Hairstyles", 60, "collection"),
+    (
+        "glasses",
+        "眼镜/面饰",
+        "Glasses & Face Accessories",
+        70,
+        "collection",
+    ),
+    ("earrings", "耳饰", "Earrings", 80, "collection"),
+    ("drone_seals", "无人机外观", "Drone Skins", 90, "collection"),
+    (
+        "adam_costumes",
+        "亚当服装",
+        "Adam's Outfits",
+        100,
+        "collection",
+    ),
+    (
+        "lily_costumes",
+        "莉莉服装",
+        "Lily's Outfits",
+        110,
+        "collection",
+    ),
+    (
+        "design_patterns",
+        "设计图案",
+        "Design Patterns",
+        120,
+        "collection",
+    ),
+    ("fish", "鱼类", "Fish", 130, "collection"),
+    ("naytiba", "孽奇拔", "Naytiba", 140, "album"),
+    ("characters", "角色", "Characters", 150, "album"),
 ];
 
 // In-game album (`AlbumTable`) groups used for the 孽奇拔 category order.
@@ -53,17 +83,25 @@ const NATIVE_GROUPS: [(&str, i64); 5] = [
 ];
 
 // In-game Data Bank record types (order follows the game's Records menu).
-const RECORD_TYPES: [(&str, &str); 10] = [
-    ("memorystick", "记忆棒"),
-    ("document_log_data", "文档·日志数据"),
-    ("document_journal", "文档·日志"),
-    ("document_messages", "文档·消息"),
-    ("document_announcements", "文档·公告"),
-    ("document_series", "文档·系列"),
-    ("document_books", "文档·书籍"),
-    ("document_information", "文档·信息"),
-    ("document_promotions", "文档·宣传"),
-    ("document_prayers", "文档·祈祷"),
+const RECORD_TYPES: [(&str, &str, &str); 10] = [
+    ("memorystick", "记忆棒", "Memory Sticks"),
+    ("document_log_data", "文档·日志数据", "Documents · Log Data"),
+    ("document_journal", "文档·日志", "Documents · Journal"),
+    ("document_messages", "文档·消息", "Documents · Messages"),
+    (
+        "document_announcements",
+        "文档·公告",
+        "Documents · Announcements",
+    ),
+    ("document_series", "文档·系列", "Documents · Series"),
+    ("document_books", "文档·书籍", "Documents · Books"),
+    (
+        "document_information",
+        "文档·信息",
+        "Documents · Information",
+    ),
+    ("document_promotions", "文档·宣传", "Documents · Promotions"),
+    ("document_prayers", "文档·祈祷", "Documents · Prayers"),
 ];
 
 const FISH_SKIP: [&str; 14] = [
@@ -227,6 +265,7 @@ struct CatalogItem {
     obtain_zh: Option<String>,
     record_type: Option<String>,
     record_type_zh: Option<String>,
+    record_type_en: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     order: Option<i64>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -241,6 +280,7 @@ struct CatalogItem {
 struct CategoryEntry {
     key: &'static str,
     name: &'static str,
+    name_en: &'static str,
     order: i64,
     section: &'static str,
 }
@@ -456,6 +496,7 @@ fn make_item(
         obtain_zh: None,
         record_type: None,
         record_type_zh: None,
+        record_type_en: None,
         order: None,
         guides: None,
         desc_zh: None,
@@ -496,6 +537,7 @@ fn plain_item(
         obtain_zh: None,
         record_type: None,
         record_type_zh: None,
+        record_type_en: None,
         order: None,
         guides: None,
         desc_zh: None,
@@ -658,11 +700,11 @@ fn record_type_from_site(types: &[String], subtype: Option<&str>) -> Option<&'st
     }
 }
 
-fn record_type_label(key: &str) -> Option<&'static str> {
+fn record_type_labels(key: &str) -> Option<(&'static str, &'static str)> {
     RECORD_TYPES
         .iter()
-        .find(|(candidate, _)| *candidate == key)
-        .map(|(_, label)| *label)
+        .find(|(candidate, ..)| *candidate == key)
+        .map(|(_, zh, en)| (*zh, *en))
 }
 
 /// Normalizes a record title for matching: strips localization markup, folds
@@ -800,7 +842,10 @@ fn apply_record_types(
             return Err(format!("记录类型覆盖条目重复: {site_id}"));
         }
         item.record_type = Some(key.to_string());
-        item.record_type_zh = record_type_label(key).map(str::to_string);
+        if let Some((zh, en)) = record_type_labels(key) {
+            item.record_type_zh = Some(zh.to_string());
+            item.record_type_en = Some(en.to_string());
+        }
         apply_guide_obtain(item, info);
         apply_document_location(item, info);
     }
@@ -855,7 +900,10 @@ fn apply_record_types(
         };
         used.insert(site_id);
         item.record_type = Some(key.to_string());
-        item.record_type_zh = record_type_label(key).map(str::to_string);
+        if let Some((zh, en)) = record_type_labels(key) {
+            item.record_type_zh = Some(zh.to_string());
+            item.record_type_en = Some(en.to_string());
+        }
         apply_guide_obtain(item, info);
         apply_document_location(item, info);
     }
@@ -893,7 +941,10 @@ fn apply_record_types(
             continue;
         };
         item.record_type = Some(key.clone());
-        item.record_type_zh = record_type_label(key).map(str::to_string);
+        if let Some((zh, en)) = record_type_labels(key) {
+            item.record_type_zh = Some(zh.to_string());
+            item.record_type_en = Some(en.to_string());
+        }
         if item.obtain.is_none() {
             item.obtain = obtain.clone();
         }
@@ -1211,6 +1262,7 @@ fn album_item(
         obtain_zh: None,
         record_type: None,
         record_type_zh: None,
+        record_type_en: None,
         order: Some(order),
         guides: None,
         desc_zh: entry
@@ -1856,9 +1908,10 @@ pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
         sources: &SOURCES,
         categories: CATEGORIES
             .iter()
-            .map(|(key, name, order, section)| CategoryEntry {
+            .map(|(key, name, name_en, order, section)| CategoryEntry {
                 key,
                 name,
+                name_en,
                 order: *order,
                 section,
             })

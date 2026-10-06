@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from "vue";
+import { computed, onMounted, onUnmounted, ref } from "vue";
+import { useI18n } from "vue-i18n";
 import { invoke } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
 import { Check, RotateCcw, Search, Settings, X } from "@lucide/vue";
@@ -10,18 +11,27 @@ import {
   type BrowserInfo,
   type SearchEngineId,
 } from "../lib/settings";
-import { THEME_OPTIONS } from "../lib/theme";
+import { themeOptions } from "../lib/theme";
+import { UI_LOCALES, type UiLocale } from "../locales";
+
+const { t } = useI18n({ useScope: "global" });
 
 const emit = defineEmits<{ close: [] }>();
 
 const browsers = ref<BrowserInfo[]>([]);
 const browsersLoaded = ref(false);
 
+const themeChoices = computed(() => themeOptions());
+
+const localeOptions = computed<{ value: UiLocale; label: string }[]>(() =>
+  UI_LOCALES.map((value) => ({ value, label: t(`language.${value}`) })),
+);
+
 async function loadBrowsers() {
   try {
     browsers.value = await invoke<BrowserInfo[]>("list_browsers");
   } catch (reason) {
-    console.warn("读取浏览器列表失败", reason);
+    console.warn(t("errors.browserListFailed"), reason);
   } finally {
     browsersLoaded.value = true;
   }
@@ -58,15 +68,15 @@ async function pickCustomBrowser() {
     const picked = await open({
       multiple: false,
       directory: false,
-      title: "选择浏览器可执行文件",
-      filters: [{ name: "可执行文件", extensions: ["exe"] }],
+      title: t("settings.pickBrowserTitle"),
+      filters: [{ name: t("settings.pickBrowserFilter"), extensions: ["exe"] }],
     });
     if (typeof picked === "string") {
       settings.browserPath = picked;
       settings.browserName = fileName(picked);
     }
   } catch (reason) {
-    console.warn("选择浏览器失败", reason);
+    console.warn(t("errors.browserPickFailed"), reason);
   }
 }
 
@@ -94,8 +104,8 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
           <div class="flex items-start gap-2">
             <Settings class="mt-0.5 h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
             <div>
-              <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-100">设置</h3>
-              <p class="mt-0.5 text-xs text-slate-500">仅保存在本机，不会写入存档</p>
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-100">{{ t("settings.title") }}</h3>
+              <p class="mt-0.5 text-xs text-slate-500">{{ t("settings.note") }}</p>
             </div>
           </div>
           <button
@@ -104,19 +114,42 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
             @click="emit('close')"
           >
             <X class="h-3.5 w-3.5" />
-            关闭
+            {{ t("common.close") }}
           </button>
         </header>
 
         <div class="space-y-5 overflow-y-auto px-4 py-3">
           <section>
-            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">外观</h4>
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">{{ t("language.interface") }}</h4>
             <p class="mt-1 text-[11px] leading-5 text-slate-500">
-              「跟随系统」随 Windows 的浅色/深色设置自动切换。
+              {{ t("language.interfaceHint") }}
             </p>
             <div class="mt-2 grid grid-cols-3 gap-2">
               <button
-                v-for="option in THEME_OPTIONS"
+                v-for="option in localeOptions"
+                :key="option.value"
+                type="button"
+                class="inline-flex items-center justify-center gap-1.5 rounded border px-2 py-1.5 text-xs"
+                :class="
+                  settings.uiLocale === option.value
+                    ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-200'
+                    : 'border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-slate-400 dark:hover:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800'
+                "
+                @click="settings.uiLocale = option.value"
+              >
+                {{ option.label }}
+              </button>
+            </div>
+          </section>
+
+          <section>
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">{{ t("settings.appearance") }}</h4>
+            <p class="mt-1 text-[11px] leading-5 text-slate-500">
+              {{ t("settings.appearanceHint") }}
+            </p>
+            <div class="mt-2 grid grid-cols-3 gap-2">
+              <button
+                v-for="option in themeChoices"
                 :key="option.value"
                 type="button"
                 class="inline-flex items-center justify-center gap-1.5 rounded border px-2 py-1.5 text-xs"
@@ -134,16 +167,16 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
           </section>
 
           <section>
-            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">启动时打开</h4>
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">{{ t("settings.startup") }}</h4>
             <p class="mt-1 text-[11px] leading-5 text-slate-500">
-              默认自动选择最新写入的主槽位；手动选择的存档会被记住，文件不存在时自动回退。
+              {{ t("settings.startupHint") }}
             </p>
             <div
               class="mt-2 flex items-center justify-between gap-3 rounded border border-slate-300 dark:border-slate-700 px-3 py-2 text-xs"
             >
               <span class="min-w-0">
                 <span class="block text-slate-700 dark:text-slate-300">
-                  {{ settings.lastSavePath ? "已记住上次选择的存档" : "自动选择最新存档" }}
+                  {{ settings.lastSavePath ? t("settings.remembered") : t("settings.autoSelect") }}
                 </span>
                 <span
                   v-if="settings.lastSavePath"
@@ -158,15 +191,15 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
                 class="shrink-0 rounded border border-slate-300 dark:border-slate-700 px-2 py-1 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
                 @click="forgetLastSave"
               >
-                改为自动选择
+                {{ t("settings.switchToAuto") }}
               </button>
             </div>
           </section>
 
           <section>
-            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">默认搜索引擎</h4>
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">{{ t("settings.searchEngine") }}</h4>
             <p class="mt-1 text-[11px] leading-5 text-slate-500">
-              「搜索图文攻略」使用所选引擎检索收集物；视频搜索始终使用 B 站。
+              {{ t("settings.searchEngineHint") }}
             </p>
             <div class="mt-2 grid grid-cols-3 gap-2">
               <button
@@ -182,15 +215,15 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
                 @click="selectEngine(engine.id)"
               >
                 <Search class="h-3.5 w-3.5" />
-                {{ engine.name }}
+                {{ t(`settings.engines.${engine.id}`) }}
               </button>
             </div>
           </section>
 
           <section>
-            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">打开链接的浏览器</h4>
+            <h4 class="text-xs font-semibold text-slate-600 dark:text-slate-400">{{ t("settings.browser") }}</h4>
             <p class="mt-1 text-[11px] leading-5 text-slate-500">
-              图文攻略、视频攻略与搜索链接都在所选浏览器中打开；启动失败时自动回退到系统默认浏览器。
+              {{ t("settings.browserHint") }}
             </p>
             <div class="mt-2 space-y-1.5">
               <button
@@ -203,7 +236,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
                 "
                 @click="selectSystemDefault"
               >
-                <span>系统默认浏览器</span>
+                <span>{{ t("settings.systemDefault") }}</span>
                 <Check v-if="settings.browserPath === ''" class="h-3.5 w-3.5 shrink-0" />
               </button>
 
@@ -234,7 +267,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
               >
                 <span class="min-w-0">
                   <span class="block truncate font-medium">
-                    {{ settings.browserName || "自定义浏览器" }}
+                    {{ settings.browserName || t("settings.customBrowser") }}
                   </span>
                   <span class="mt-0.5 block truncate font-mono text-[10px] text-emerald-700/70 dark:text-emerald-300/70">
                     {{ settings.browserPath }}
@@ -249,13 +282,13 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
                 @click="pickCustomBrowser"
               >
                 <span>
-                  {{ settings.browserPath !== '' ? "重新选择浏览器可执行文件…" : "选择自定义浏览器…" }}
+                  {{ settings.browserPath !== '' ? t("settings.repickBrowser") : t("settings.pickBrowser") }}
                 </span>
                 <span class="shrink-0 text-[10px] text-slate-500">.exe</span>
               </button>
             </div>
             <p v-if="browsersLoaded && browsers.length === 0" class="mt-1.5 text-[11px] leading-4 text-slate-500">
-              未检测到已注册的浏览器，可选择系统默认或手动指定可执行文件。
+              {{ t("settings.noBrowsers") }}
             </p>
           </section>
 
@@ -266,14 +299,14 @@ onUnmounted(() => window.removeEventListener("keydown", onKeydown));
               @click="resetSettings"
             >
               <RotateCcw class="h-3.5 w-3.5" />
-              恢复默认
+              {{ t("settings.reset") }}
             </button>
             <button
               type="button"
               class="rounded border border-emerald-700 px-3 py-1 text-xs text-emerald-700 dark:text-emerald-200 hover:bg-emerald-50 dark:hover:bg-emerald-900/30"
               @click="emit('close')"
             >
-              完成
+              {{ t("settings.done") }}
             </button>
           </div>
         </div>

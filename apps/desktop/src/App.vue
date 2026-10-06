@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
 import { invoke } from "@tauri-apps/api/core";
 import { open, save } from "@tauri-apps/plugin-dialog";
 import { FileJson, FileText, Languages, LoaderCircle } from "@lucide/vue";
@@ -8,10 +9,13 @@ import CategoryPage from "./components/CategoryPage.vue";
 import SaveGuide from "./components/SaveGuide.vue";
 import SavePicker from "./components/SavePicker.vue";
 import SummaryPage from "./components/SummaryPage.vue";
+import { categoryName } from "./lib/display";
 import { loadGuides } from "./lib/guides";
 import { settings } from "./lib/settings";
-import { THEME_OPTIONS } from "./lib/theme";
+import { themeOptions } from "./lib/theme";
 import type { Analysis, Lang, SaveSlot, SaveSource } from "./types";
+
+const { t } = useI18n({ useScope: "global" });
 
 const SUMMARY_PAGE = "summary";
 
@@ -25,11 +29,20 @@ const MATRIX_CATEGORIES = [
   "lily_costumes",
 ];
 
-const LANG_OPTIONS: { value: Lang; label: string }[] = [
-  { value: "zh", label: "中文" },
-  { value: "en", label: "English" },
-  { value: "both", label: "双语" },
-];
+const lang = computed<Lang>({
+  get: () => settings.contentLang,
+  set: (value) => {
+    settings.contentLang = value;
+  },
+});
+
+const langOptions = computed<{ value: Lang; label: string }[]>(() => [
+  { value: "zh", label: t("language.zh") },
+  { value: "en", label: t("language.en") },
+  { value: "both", label: t("language.both") },
+]);
+
+const themeChoices = computed(() => themeOptions());
 
 const saves = ref<SaveSlot[]>([]);
 const manualSlots = ref<SaveSlot[]>([]);
@@ -39,7 +52,6 @@ const analysis = ref<Analysis | null>(null);
 const scanning = ref(false);
 const loading = ref(false);
 const error = ref("");
-const lang = ref<Lang>("zh");
 const page = ref(SUMMARY_PAGE);
 const notice = ref("");
 const noticeError = ref(false);
@@ -52,6 +64,10 @@ const allSaves = computed(() => {
 
 const activeCategory = computed(
   () => analysis.value?.categories.find((category) => category.key === page.value) ?? null,
+);
+
+const pageTitle = computed(() =>
+  activeCategory.value ? categoryName(activeCategory.value, lang.value) : t("app.summary"),
 );
 
 watch(analysis, (value) => {
@@ -77,7 +93,9 @@ async function syncManualSlots() {
       continue;
     }
     try {
-      kept.push(await invoke<SaveSlot>("inspect_save", { path: slot.path }));
+      kept.push(
+        await invoke<SaveSlot>("inspect_save", { path: slot.path, locale: settings.uiLocale }),
+      );
     } catch {
       if (selected.value?.path === slot.path) {
         selected.value = null;
@@ -124,7 +142,10 @@ async function selectPreferredSave() {
       return;
     }
     try {
-      const slot = await invoke<SaveSlot>("inspect_save", { path: remembered });
+      const slot = await invoke<SaveSlot>("inspect_save", {
+        path: remembered,
+        locale: settings.uiLocale,
+      });
       manualSlots.value.push(slot);
       await selectSave(slot);
       return;
@@ -144,7 +165,10 @@ async function selectSave(slot: SaveSlot, remember = true) {
   error.value = "";
   showNotice("");
   try {
-    analysis.value = await invoke<Analysis>("analyze_save", { path: slot.path });
+    analysis.value = await invoke<Analysis>("analyze_save", {
+      path: slot.path,
+      locale: settings.uiLocale,
+    });
     if (remember) {
       settings.lastSavePath = slot.path;
     }
@@ -162,26 +186,29 @@ async function pickSaveFile() {
     const picked = await open({
       multiple: false,
       directory: false,
-      title: "选择剑星存档文件",
+      title: t("app.pickTitle"),
       defaultPath: existing?.path,
-      filters: [{ name: "剑星存档", extensions: ["sav"] }],
+      filters: [{ name: t("app.pickFilter"), extensions: ["sav"] }],
     });
     if (typeof picked !== "string") return;
-    const slot = await invoke<SaveSlot>("inspect_save", { path: picked });
+    const slot = await invoke<SaveSlot>("inspect_save", {
+      path: picked,
+      locale: settings.uiLocale,
+    });
     if (!allSaves.value.some((candidate) => candidate.path === slot.path)) {
       manualSlots.value.push(slot);
     }
     await selectSave(slot);
   } catch (reason) {
-    showNotice(`无法读取所选文件: ${String(reason)}`, true);
+    showNotice(t("app.pickError", { reason: String(reason) }), true);
   }
 }
 
 async function openSaveDir(path: string) {
   try {
-    await invoke("open_save_dir", { path });
+    await invoke("open_save_dir", { path, locale: settings.uiLocale });
   } catch (reason) {
-    showNotice(`打开目录失败: ${String(reason)}`, true);
+    showNotice(t("app.openDirError", { reason: String(reason) }), true);
   }
 }
 
@@ -199,10 +226,11 @@ async function exportReport(format: "json" | "markdown") {
       lang: lang.value,
       format,
       outPath: target,
+      locale: settings.uiLocale,
     });
-    showNotice(`已导出 ${target}`);
+    showNotice(t("app.exported", { path: target }));
   } catch (reason) {
-    showNotice(`导出失败: ${String(reason)}`, true);
+    showNotice(t("app.exportError", { reason: String(reason) }), true);
   }
 }
 
@@ -222,20 +250,30 @@ onMounted(() => {
       >
         <div class="flex items-baseline gap-3">
           <h2 class="text-sm font-semibold">
-            {{ activeCategory ? activeCategory.name : "汇总" }}
+            {{ pageTitle }}
           </h2>
           <span v-if="analysis" class="text-xs text-slate-500">
-            目录进度 {{ analysis.summary.catalog_obtained }}/{{ analysis.summary.catalog_total }}
-            ({{ analysis.summary.percent.toFixed(1) }}%) · 图鉴
-            {{ analysis.summary.album_obtained }}/{{ analysis.summary.album_total }}
+            {{ t("app.catalogProgress", { obtained: analysis.summary.catalog_obtained, total: analysis.summary.catalog_total }) }}
+            ({{ analysis.summary.percent.toFixed(1) }}%) ·
+            {{ t("app.albumProgressShort", { obtained: analysis.summary.album_obtained, total: analysis.summary.album_total }) }}
             ({{ analysis.summary.album_percent.toFixed(1) }}%)
           </span>
         </div>
         <div class="flex items-center gap-2">
-          <Languages class="h-4 w-4 text-slate-500" />
-          <div class="flex overflow-hidden rounded border border-slate-300 dark:border-slate-700 text-xs">
+          <span
+            class="inline-flex items-center gap-1.5"
+            :title="t('language.contentHint')"
+          >
+            <Languages class="h-4 w-4 text-slate-500" />
+            <span class="text-xs text-slate-500">{{ t("language.contentShort") }}</span>
+          </span>
+          <div
+            class="flex overflow-hidden rounded border border-slate-300 dark:border-slate-700 text-xs"
+            :title="t('language.contentHint')"
+            :aria-label="t('language.contentLabel')"
+          >
             <button
-              v-for="option in LANG_OPTIONS"
+              v-for="option in langOptions"
               :key="option.value"
               type="button"
               class="px-2 py-1"
@@ -249,7 +287,7 @@ onMounted(() => {
           </div>
           <div class="flex overflow-hidden rounded border border-slate-300 dark:border-slate-700">
             <button
-              v-for="option in THEME_OPTIONS"
+              v-for="option in themeChoices"
               :key="option.value"
               type="button"
               class="inline-flex items-center px-2 py-1"
@@ -259,7 +297,7 @@ onMounted(() => {
                   : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
               "
               :title="option.label"
-              :aria-label="`外观：${option.label}`"
+              :aria-label="t('app.appearance', { name: option.label })"
               :aria-pressed="settings.theme === option.value"
               @click="settings.theme = option.value"
             >
@@ -272,7 +310,7 @@ onMounted(() => {
             @click="exportReport('json')"
           >
             <FileJson class="h-3.5 w-3.5" />
-            导出 JSON
+            {{ t("app.exportJson") }}
           </button>
           <button
             type="button"
@@ -280,7 +318,7 @@ onMounted(() => {
             @click="exportReport('markdown')"
           >
             <FileText class="h-3.5 w-3.5" />
-            导出 Markdown
+            {{ t("app.exportMarkdown") }}
           </button>
         </div>
       </header>
@@ -304,14 +342,14 @@ onMounted(() => {
 
       <main v-if="loading" class="flex flex-1 items-center justify-center text-sm text-slate-600 dark:text-slate-400">
         <LoaderCircle class="mr-2 h-4 w-4 animate-spin" />
-        读取存档中…
+        {{ t("common.loading") }}
       </main>
       <main
         v-else-if="scanning && !analysis"
         class="flex flex-1 items-center justify-center text-sm text-slate-600 dark:text-slate-400"
       >
         <LoaderCircle class="mr-2 h-4 w-4 animate-spin" />
-        正在查找存档…
+        {{ t("app.scanning") }}
       </main>
       <main v-else-if="error || !analysis" class="flex-1 overflow-y-auto p-4">
         <SaveGuide

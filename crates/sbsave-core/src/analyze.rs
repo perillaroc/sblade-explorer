@@ -1,31 +1,51 @@
 use std::collections::HashMap;
 
 use crate::catalog::{Catalog, CatalogItem, Category};
+use crate::i18n::{Locale, Messages};
 use crate::savegame::SaveData;
+
+/// Why a missing item cannot be obtained in the current playthrough.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum BlockReason {
+    NgPlus(i64),
+    Dlc(String),
+    Missable,
+}
 
 #[derive(Debug, Clone)]
 pub struct ItemStatus<'a> {
     pub item: &'a CatalogItem,
     pub obtained: bool,
-    pub reason: Option<String>,
+    pub reason: Option<BlockReason>,
 }
 
 impl ItemStatus<'_> {
-    pub fn flags(&self) -> Vec<String> {
+    pub fn flags(&self, locale: Locale) -> Vec<String> {
+        let messages = Messages::new(locale);
         let mut flags = Vec::new();
         if self.item.dlc.is_some() {
-            flags.push(self.item.dlc_label().unwrap_or_default());
+            flags.push(self.item.dlc_label(locale).unwrap_or_default());
         }
         if self.item.ng_plus > 0 {
-            flags.push(self.item.ng_plus_label());
+            flags.push(self.item.ng_plus_label(locale));
         }
         if self.item.missable {
-            flags.push("可错过".to_string());
+            flags.push(messages.flag_missable().to_string());
         }
         if self.item.confidence != "high" {
-            flags.push("映射待确认".to_string());
+            flags.push(messages.flag_unconfirmed().to_string());
         }
         flags
+    }
+
+    /// Localized explanation of why the item is missing.
+    pub fn reason_label(&self, locale: Locale) -> Option<String> {
+        let messages = Messages::new(locale);
+        self.reason.as_ref().map(|reason| match reason {
+            BlockReason::NgPlus(ng_plus) => messages.reason_ng_plus(*ng_plus),
+            BlockReason::Dlc(dlc) => messages.reason_dlc(dlc),
+            BlockReason::Missable => messages.reason_missable().to_string(),
+        })
     }
 }
 
@@ -102,15 +122,15 @@ impl Analysis<'_> {
     }
 }
 
-fn blocked_reason(item: &CatalogItem, save: &SaveData) -> Option<String> {
+fn blocked_reason(item: &CatalogItem, save: &SaveData) -> Option<BlockReason> {
     if item.ng_plus > save.ng_plus_count() {
-        return Some(format!("需要{}", item.ng_plus_label()));
+        return Some(BlockReason::NgPlus(item.ng_plus));
     }
-    if item.dlc.is_some() {
-        return Some(format!("{}限定", item.dlc_label().unwrap_or_default()));
+    if let Some(dlc) = item.dlc.as_deref() {
+        return Some(BlockReason::Dlc(dlc.to_string()));
     }
     if item.missable {
-        return Some("可错过(注意节点)".to_string());
+        return Some(BlockReason::Missable);
     }
     None
 }

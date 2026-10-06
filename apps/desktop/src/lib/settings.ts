@@ -1,4 +1,7 @@
 import { reactive, watch } from "vue";
+import type { UiLocale } from "../locales";
+import { UI_LOCALES } from "../locales";
+import type { Lang } from "../types";
 
 /** A browser detected on this machine by the `list_browsers` command. */
 export interface BrowserInfo {
@@ -9,7 +12,6 @@ export interface BrowserInfo {
 
 interface SearchEngine {
   id: SearchEngineId;
-  name: string;
   url: string;
 }
 
@@ -20,13 +22,19 @@ export type ThemeMode = "dark" | "light" | "system";
 
 const THEME_MODES: readonly ThemeMode[] = ["dark", "light", "system"];
 
+const LANG_MODES: readonly Lang[] = ["zh", "en", "both"];
+
 export const SEARCH_ENGINES: readonly SearchEngine[] = [
-  { id: "bing", name: "必应", url: "https://www.bing.com/search?q=" },
-  { id: "baidu", name: "百度", url: "https://www.baidu.com/s?wd=" },
-  { id: "google", name: "谷歌", url: "https://www.google.com/search?q=" },
+  { id: "bing", url: "https://www.bing.com/search?q=" },
+  { id: "baidu", url: "https://www.baidu.com/s?wd=" },
+  { id: "google", url: "https://www.google.com/search?q=" },
 ];
 
 export interface Settings {
+  /** Language of menus, dialogs, errors and the window title. */
+  uiLocale: UiLocale;
+  /** Language of collectible names, locations and descriptions. */
+  contentLang: Lang;
   theme: ThemeMode;
   searchEngine: SearchEngineId;
   /** Executable of the browser used to open links; empty means the system default. */
@@ -39,8 +47,15 @@ export interface Settings {
 
 const STORAGE_KEY = "sbsave.settings.v1";
 
+function detectUiLocale(): UiLocale {
+  const language = typeof navigator === "undefined" ? "" : navigator.language;
+  return language.toLowerCase().startsWith("zh") ? "zh" : "en";
+}
+
 function defaultSettings(): Settings {
   return {
+    uiLocale: detectUiLocale(),
+    contentLang: "zh",
     theme: "system",
     searchEngine: "bing",
     browserPath: "",
@@ -57,7 +72,11 @@ function load(): Settings {
     const parsed = JSON.parse(raw) as Partial<Settings>;
     const engine = SEARCH_ENGINES.find((candidate) => candidate.id === parsed.searchEngine);
     const theme = THEME_MODES.find((candidate) => candidate === parsed.theme);
+    const uiLocale = UI_LOCALES.find((candidate) => candidate === parsed.uiLocale);
+    const contentLang = LANG_MODES.find((candidate) => candidate === parsed.contentLang);
     return {
+      uiLocale: uiLocale ?? fallback.uiLocale,
+      contentLang: contentLang ?? fallback.contentLang,
       theme: theme ?? fallback.theme,
       searchEngine: engine ? engine.id : fallback.searchEngine,
       browserPath: typeof parsed.browserPath === "string" ? parsed.browserPath : "",
@@ -65,7 +84,7 @@ function load(): Settings {
       lastSavePath: typeof parsed.lastSavePath === "string" ? parsed.lastSavePath : "",
     };
   } catch (reason) {
-    console.warn("读取设置失败，使用默认设置", reason);
+    console.warn("Failed to load settings; using defaults", reason);
     return fallback;
   }
 }
@@ -82,7 +101,7 @@ watch(
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(value));
     } catch (reason) {
-      console.warn("保存设置失败", reason);
+      console.warn("Failed to save settings", reason);
     }
   },
   { deep: true },

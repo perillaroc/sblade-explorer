@@ -63,6 +63,7 @@ export function matchesQuery(item: AnyItem, query: string): boolean {
     item.obtain_zh,
     item.record_type,
     item.record_type_zh,
+    item.record_type_en,
     item.desc_zh,
     item.desc_en,
     ...item.aliases,

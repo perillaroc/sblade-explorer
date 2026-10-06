@@ -1,4 +1,5 @@
 import { CircleCheck, CircleX, Gift, Lock, Minus, type LucideIcon } from "@lucide/vue";
+import { translate } from "./i18n";
 import type { ItemRow } from "./items";
 
 export interface MatrixStatus {
@@ -7,18 +8,39 @@ export interface MatrixStatus {
   className: string;
 }
 
-const OBTAINED: MatrixStatus = { icon: CircleCheck, label: "已获得", className: "text-emerald-600 dark:text-emerald-400" };
-const MISSING: MatrixStatus = { icon: CircleX, label: "未获得", className: "text-rose-600 dark:text-rose-400" };
-const LOCKED: MatrixStatus = { icon: Lock, label: "需更高周目", className: "text-slate-500" };
-const DLC: MatrixStatus = { icon: Gift, label: "DLC/特典", className: "text-violet-600 dark:text-violet-400" };
-const DEFAULT: MatrixStatus = { icon: Minus, label: "默认外观", className: "text-slate-400 dark:text-slate-600" };
+const STYLES = {
+  obtained: "text-emerald-600 dark:text-emerald-400",
+  missing: "text-rose-600 dark:text-rose-400",
+  locked: "text-slate-500",
+  dlc: "text-violet-600 dark:text-violet-400",
+  defaultAppearance: "text-slate-400 dark:text-slate-600",
+} as const;
 
-export const MATRIX_STATUS_LEGEND: MatrixStatus[] = [OBTAINED, MISSING, LOCKED, DLC, DEFAULT];
+const ICONS: Record<keyof typeof STYLES, LucideIcon> = {
+  obtained: CircleCheck,
+  missing: CircleX,
+  locked: Lock,
+  dlc: Gift,
+  defaultAppearance: Minus,
+};
+
+function status(key: keyof typeof STYLES): MatrixStatus {
+  return {
+    icon: ICONS[key],
+    label: translate(`obtainedStatus.${key}`),
+    className: STYLES[key],
+  };
+}
+
+/** Legend for the cycle matrix (labels follow the interface language). */
+export function matrixStatusLegend(): MatrixStatus[] {
+  return (Object.keys(STYLES) as (keyof typeof STYLES)[]).map(status);
+}
 
 export function matrixStatus(row: ItemRow, ngPlusCount: number): MatrixStatus {
-  if (row.obtained) return OBTAINED;
-  if (row.item.dlc) return DLC;
-  if (row.item.ng_plus > ngPlusCount) return LOCKED;
-  if (row.item.aliases.length === 0) return DEFAULT;
-  return MISSING;
+  if (row.obtained) return status("obtained");
+  if (row.item.dlc) return status("dlc");
+  if (row.item.ng_plus > ngPlusCount) return status("locked");
+  if (row.item.aliases.length === 0) return status("defaultAppearance");
+  return status("missing");
 }
