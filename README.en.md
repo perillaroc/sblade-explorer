@@ -59,7 +59,7 @@ A more detailed walkthrough is in
 
 Complete documentation (Chinese / English, English site by default below):
 
-**https://sblade-explorer.perillaroc.wang/en/**（[简体中文](https://sblade-explorer.perillaroc.wang/)）
+**<https://sblade-explorer.perillaroc.wang/en/>**（[简体中文](https://sblade-explorer.perillaroc.wang/)）
 
 - [User guide](https://sblade-explorer.perillaroc.wang/en/guide/getting-started): download and
   installation, save locations, completion analysis, exporting and FAQ
