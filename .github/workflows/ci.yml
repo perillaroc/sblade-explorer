@@ -13,7 +13,10 @@ permissions:
 
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  # 只取消 PR 的旧运行：push 运行始终跑完。GitHub 偶尔会为同一次 push 创建两条 run，
+  # 若将其一并取消，被取消的那条会以 cancelled 结论污染默认分支的 badge（badge 取“最新 run”，
+  # created_at 相同时排序不稳定，可能选中被取消的那条）。
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
   CARGO_TERM_COLOR: always
