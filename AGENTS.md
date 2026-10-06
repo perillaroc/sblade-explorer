@@ -12,7 +12,7 @@
 - `apps/desktop/` - Tauri 2 桌面应用：前端 Vue 3 + Vite + TypeScript + Tailwind CSS v4 在工程根，Rust 在 `src-tauri/`。
 - `data/raw/` - 已提交的数据快照（`api/`、`api/i18n/` 手工中文翻译、`crosswalk.json` 手工别名映射、`universe/aliases.json`、`game/name_map.json`、`reference/`）。运行时绝不联网。
 - `data/catalog.json` - 由 `sbsave-tools catalog build` 生成的目录库；禁止手改。
-- 根 `README.md` - 面向用户的总说明（精简版：下载与使用、功能、数据来源、限制）。
+- 根 `README.md` - 面向用户的总说明（精简版：下载与使用、功能、数据来源、限制）；英文版 `README.en.md` 与之同步，两份顶部语言互链，英文版文档链接指向 `/en/` 页面。
 - `docs/cli/index.md`、`docs/reference/data.md`、`docs/development/index.md` - CLI、数据与目录库、开发与发布的详细说明；`apps/desktop/README.md` - 桌面应用开发说明。
 
 ## 环境与命令

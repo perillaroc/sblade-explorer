@@ -1,5 +1,7 @@
 # sblade-explorer（剑星存档收集度分析）
 
+**[简体中文](README.md) | [English](README.en.md)**
+
 [![CI](https://github.com/perillaroc/sblade-explorer/actions/workflows/ci.yml/badge.svg)](https://github.com/perillaroc/sblade-explorer/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/perillaroc/sblade-explorer)](https://github.com/perillaroc/sblade-explorer/releases)
 ![100% Vibe Coded](https://img.shields.io/badge/100%25-Vibe_Coded-blueviolet)
