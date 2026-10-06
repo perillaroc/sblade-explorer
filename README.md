@@ -42,9 +42,9 @@
 
 ## 文档
 
-完整使用文档：
+完整使用文档（中文 / English 双语）：
 
-**https://sblade-explorer.perillaroc.wang/**
+**https://sblade-explorer.perillaroc.wang/**（[English](https://sblade-explorer.perillaroc.wang/en/)）
 
 - [用户指南](https://sblade-explorer.perillaroc.wang/guide/getting-started)：下载与安装、存档位置、收集度分析、导出报告与 FAQ
 - [数据说明](https://sblade-explorer.perillaroc.wang/reference/data)：数据来源、目录库与别名模型、自定义覆盖

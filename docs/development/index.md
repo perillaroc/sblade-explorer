@@ -85,6 +85,22 @@ pnpm tauri dev
 该变量仅用于本地测试。程序会记住上次选择的存档，测试空状态前先在设置中点
 「改为自动选择」或「恢复默认」。
 
+## 文档站点
+
+在线文档是 VitePress 站点（`docs/`，中文为默认语言，英文在 `docs/en/`），本地预览与构建：
+
+```powershell
+cd docs
+pnpm dev        # 本地预览（默认 http://localhost:5173）
+pnpm build      # 构建，死链会直接失败（CI 与 Netlify 使用同一命令）
+```
+
+新增或修改页面时必须同步两种语言：改动中文页后更新 `docs/en/` 的对应文件，并在英文页
+使用英文界面术语（与 `apps/desktop/src/locales/en.ts` 保持一致）；英文页内部链接用
+`/en/...` 或同目录相对路径。站点语言切换、导航、侧栏与页脚配置在
+`docs/.vitepress/config.ts` 顶层的 `locales[...].themeConfig` 中。`documentation-inventory.md`
+是内部工作文档（`srcExclude`），不发布也不翻译。
+
 ## CI 与发布
 
 GitHub Actions 两个工作流（`.github/workflows/`）：

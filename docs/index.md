@@ -52,5 +52,6 @@ features:
 - [CLI](./cli/index.md)：`sbsave` 命令与参数
 - [数据说明](./reference/data.md)：数据来源、目录库与别名模型
 - [开发](./development/index.md)：开发环境、数据管线、CI 与发布
+- [English documentation](/en/)：the same documentation in English
 
 项目源码、问题反馈与全部版本见 [GitHub 仓库](https://github.com/perillaroc/sblade-explorer)。
