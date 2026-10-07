@@ -99,8 +99,7 @@ pnpm build      # 构建，死链会直接失败（CI 与 Netlify 使用同一�
 新增或修改页面时必须同步两种语言：改动中文页后更新 `docs/en/` 的对应文件，并在英文页
 使用英文界面术语（与 `apps/desktop/src/locales/en.ts` 保持一致）；英文页内部链接用
 `/en/...` 或同目录相对路径。站点语言切换、导航、侧栏与页脚配置在
-`docs/.vitepress/config.ts` 顶层的 `locales[...].themeConfig` 中。`documentation-inventory.md`
-是内部工作文档（`srcExclude`），不发布也不翻译。
+`docs/.vitepress/config.ts` 顶层的 `locales[...].themeConfig` 中。
 
 ## CI 与发布
 

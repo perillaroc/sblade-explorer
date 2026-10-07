@@ -83,7 +83,7 @@ Python 参考实现已于 2026-09-15 删除，代码历史保留在 git 中。
 - Rust 侧文案集中在 `crates/sbsave-core/src/i18n.rs`（`Locale` + `Messages`），供 CLI、报告与 Tauri 命令共用；报告 chrome 用 `Locale`、物品文本用 `lang`，两参数保持分离。
 - CLI 用全局 `--ui-lang zh|en` 控制 chrome（默认读系统语言，兜底 zh），`--lang` 仍是内容语言；clap 帮助在解析前按 locale 替换，clap 内建报错保持英文。Tauri 命令新增可选 `locale` 参数（前端传 `settings.uiLocale`）。
 - 新增界面文案必须同时补 `zh.ts` 与 `en.ts`；改动用户可见的 CLI/报告文案时同步更新 `sbsave-core` 测试与 `crates/sbsave-cli/tests/test_cli.rs`。
-- Web 文档（VitePress）同样双语：中文在 `docs/` 根，英文在 `docs/en/` 对应路径；站点配置在 `docs/.vitepress/config.ts`，英文导航/侧栏/页脚放在**顶层 `locales.en.themeConfig`**（VitePress 实际读取 `locales[lang].themeConfig`，不是 `themeConfig.locales`）。改中文页必须同步 `docs/en/` 对应页面，英文页内部链接使用 `/en/...` 或同目录相对路径，界面元素名称与 `apps/desktop/src/locales/en.ts` 保持一致；`documentation-inventory.md` 为内部文档，不翻译也不发布。
+- Web 文档（VitePress）同样双语：中文在 `docs/` 根，英文在 `docs/en/` 对应路径；站点配置在 `docs/.vitepress/config.ts`，英文导航/侧栏/页脚放在**顶层 `locales.en.themeConfig`**（VitePress 实际读取 `locales[lang].themeConfig`，不是 `themeConfig.locales`）。改中文页必须同步 `docs/en/` 对应页面，英文页内部链接使用 `/en/...` 或同目录相对路径，界面元素名称与 `apps/desktop/src/locales/en.ts` 保持一致。
 
 ## Git 提交规范
 

@@ -84,9 +84,6 @@ export default defineConfig({
   // 站点图标（与桌面应用同一标记，见 public/logo.svg）。
   head: [["link", { rel: "icon", type: "image/svg+xml", href: "/logo.svg" }]],
 
-  // D01 盘点产物（内部工作文档）不发布到站点，留待 D13 整理时处理。
-  srcExclude: ["documentation-inventory.md"],
-
   themeConfig: {
     logo: { src: "/logo.svg", width: 24, height: 24 },
 

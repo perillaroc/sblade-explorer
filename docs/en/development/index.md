@@ -107,8 +107,7 @@ New or changed pages must be kept in sync across both languages: after editing a
 update the matching file under `docs/en/` and use the English UI terms from
 `apps/desktop/src/locales/en.ts`; internal links in English pages use `/en/...` or relative paths.
 Locale switching, navigation, sidebar and footer are configured through the top-level
-`locales[...].themeConfig` in `docs/.vitepress/config.ts`. `documentation-inventory.md` is an
-internal document (`srcExclude`): it is neither published nor translated.
+`locales[...].themeConfig` in `docs/.vitepress/config.ts`.
 
 ## CI and releases
 
