@@ -54,7 +54,7 @@
 | 重复主题 | 出现位置 | 说明与建议 |
 | --- | --- | --- |
 | 数据来源清单 | `README.md`、`docs/data.md`、`data/raw/README.md` | 三处均列来源：README 最简（外链）、`data.md` 中等（带 `data/raw` 路径）、`raw/README.md` 最全（逐文件+刷新）。README 应缩减为摘要并指向站点 |
-| 目录库数量 / 统计口径 | `README.md`（统计口径段）、`docs/data.md`（回归哨兵）、`AGENTS.md`（哨兵数量） | 932 条 / 15 分类、图鉴 122、纳米战衣 126 等数字多处出现。站点版只保留 `reference/` 一处 |
+| 目录库数量 / 统计口径 | `README.md`（统计口径段）、`docs/data.md`（回归哨兵）、`AGENTS.md`（哨兵数量） | 922 条 / 15 分类、图鉴 122、纳米战衣 126 等数字多处出现。站点版只保留 `reference/` 一处 |
 | 环境与常用命令 | `docs/development.md`、`AGENTS.md`、`apps/desktop/README.md` | 三处命令块高度相似（cargo / pnpm）。站点以 `development/` 为准 |
 | 项目结构 | `docs/development.md`、`AGENTS.md` | 目录树与一句话说明接近完全重复 |
 | CI 与发布 | `docs/development.md`、`AGENTS.md` | 工作流、发版流程、Windows 作业原因近乎一致 |

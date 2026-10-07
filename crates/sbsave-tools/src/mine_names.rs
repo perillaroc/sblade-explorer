@@ -1,14 +1,15 @@
 //! Game name miner: port of the former Python `tools/mine_game_names.py`.
 //!
 //! Reads exported game tables and `Game.{zh-Hans,en}.locres` to build
-//! `data/raw/game/name_map.json`.
+//! `data/raw/game/name_map.json`. Camp aliases that the tables do not reference
+//! directly are resolved through `data/raw/game/camp_alias_rows.json`.
 
-use std::collections::{BTreeMap, HashMap};
+use std::collections::{BTreeMap, BTreeSet, HashMap};
 use std::path::{Path, PathBuf};
 use std::process::Command;
 
 use regex::Regex;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use serde_json::{Map, Value};
 
 use crate::jsonio;
@@ -75,6 +76,30 @@ struct NameMapPayload {
     album: BTreeMap<String, AlbumEntry>,
 }
 
+/// `data/raw/game/camp_alias_rows.json`: alias -> `ZoneCampTable` row crosswalk
+/// for camps whose env alias is not referenced by the table itself. Entries
+/// with confidence `low` are unverified guesses and are not merged.
+#[derive(Deserialize)]
+struct CampAliasRows {
+    #[allow(dead_code)]
+    version: i64,
+    #[allow(dead_code)]
+    generated_by: String,
+    #[allow(dead_code)]
+    source: String,
+    aliases: BTreeMap<String, CampAliasRow>,
+}
+
+#[derive(Deserialize)]
+struct CampAliasRow {
+    row: String,
+    confidence: String,
+    #[allow(dead_code)]
+    method: String,
+    #[allow(dead_code)]
+    detail: String,
+}
+
 pub fn run(options: &Options) -> Result<(), String> {
     let root = crate::repo_root();
     let dump = options
@@ -124,8 +149,27 @@ pub fn run(options: &Options) -> Result<(), String> {
     )
     .map_err(|error| format!("解析 {} 失败: {error}", universe_path.display()))?;
 
+    let alias_rows = load_camp_alias_rows(&root)?;
+    let universe_camps: BTreeSet<&str> = universe
+        .get("camps")
+        .and_then(Value::as_array)
+        .map(|camps| camps.iter().filter_map(Value::as_str).collect())
+        .unwrap_or_default();
+    let unknown: Vec<&str> = alias_rows
+        .aliases
+        .keys()
+        .map(String::as_str)
+        .filter(|alias| !universe_camps.contains(alias))
+        .collect();
+    if !unknown.is_empty() {
+        return Err(format!(
+            "camp_alias_rows.json 中存在未知营地别名: {}",
+            unknown.join(", ")
+        ));
+    }
+
     let items = build_items(&load_rows(&item_table)?, &zh, &en, &universe);
-    let camps = build_camps(&load_rows(&camp_table)?, &zh, &en);
+    let camps = build_camps(&load_rows(&camp_table)?, &zh, &en, &alias_rows)?;
     let album = build_album(&load_rows(&album_table)?, &zh, &en);
 
     let payload = NameMapPayload {
@@ -345,11 +389,19 @@ fn build_items(
     names
 }
 
+fn load_camp_alias_rows(root: &Path) -> Result<CampAliasRows, String> {
+    let path = root.join("data/raw/game/camp_alias_rows.json");
+    let text = std::fs::read_to_string(&path)
+        .map_err(|error| format!("读取 {} 失败: {error}", path.display()))?;
+    serde_json::from_str(&text).map_err(|error| format!("解析 {} 失败: {error}", path.display()))
+}
+
 fn build_camps(
     camp_rows: &Map<String, Value>,
     zh: &HashMap<String, String>,
     en: &HashMap<String, String>,
-) -> BTreeMap<String, NameEntry> {
+    alias_rows: &CampAliasRows,
+) -> Result<BTreeMap<String, NameEntry>, String> {
     let env_re = Regex::new(r"^(.+?)_(\d+)_EnvS_(\d+)$").expect("env regex");
     let mut camps: BTreeMap<String, NameEntry> = BTreeMap::new();
     for row in camp_rows.values() {
@@ -392,7 +444,62 @@ fn build_camps(
             camps.entry(alias).or_insert_with(|| entry.clone());
         }
     }
-    camps
+
+    // Camps whose env alias is absent from the tables are resolved through the
+    // hand maintained crosswalk (`camp_alias_rows.json`); `low` entries are
+    // unverified guesses and stay out of the name map.
+    let mut used_rows: BTreeSet<&str> = BTreeSet::new();
+    for (alias, mapping) in &alias_rows.aliases {
+        match mapping.confidence.as_str() {
+            "high" | "medium" => {}
+            "low" => continue,
+            other => {
+                return Err(format!(
+                    "camp_alias_rows.json 中 {alias} 的置信度非法: {other}"
+                ));
+            }
+        }
+        let Some(row) = camp_rows.get(&mapping.row).and_then(Value::as_object) else {
+            return Err(format!(
+                "camp_alias_rows.json 中 {alias} 指向不存在的行: {}",
+                mapping.row
+            ));
+        };
+        let name_key = row
+            .get("CampName")
+            .and_then(Value::as_str)
+            .unwrap_or_default()
+            .trim()
+            .to_string();
+        let lower = name_key.to_lowercase();
+        let Some(text) = zh.get(&lower) else {
+            return Err(format!(
+                "camp_alias_rows.json 中 {alias} 的行 {} 缺少名称: {name_key}",
+                mapping.row
+            ));
+        };
+        let entry = NameEntry {
+            zh: text.clone(),
+            en: en.get(&lower).cloned().unwrap_or_default(),
+        };
+        if let Some(existing) = camps.get(alias) {
+            if existing.zh != entry.zh {
+                return Err(format!(
+                    "营地 {alias} 的表内名称与 camp_alias_rows.json 不一致: {} vs {}",
+                    existing.zh, entry.zh
+                ));
+            }
+            continue;
+        }
+        if !used_rows.insert(mapping.row.as_str()) {
+            return Err(format!(
+                "camp_alias_rows.json 中行 {} 被多个别名使用",
+                mapping.row
+            ));
+        }
+        camps.insert(alias.clone(), entry);
+    }
+    Ok(camps)
 }
 
 /// Strips Unreal rich-text markup from album descriptions (`<NewLine></>` is a
@@ -486,11 +593,29 @@ fn build_album(
 
 #[cfg(test)]
 mod tests {
-    use std::collections::HashMap;
+    use std::collections::{BTreeMap, HashMap};
 
     use serde_json::json;
 
-    use super::{build_album, build_camps, build_items, load_rows};
+    use super::{build_album, build_camps, build_items, load_rows, CampAliasRow, CampAliasRows};
+
+    fn empty_alias_rows() -> CampAliasRows {
+        CampAliasRows {
+            version: 1,
+            generated_by: String::new(),
+            source: String::new(),
+            aliases: BTreeMap::new(),
+        }
+    }
+
+    fn alias_row(row: &str, confidence: &str) -> CampAliasRow {
+        CampAliasRow {
+            row: row.to_string(),
+            confidence: confidence.to_string(),
+            method: String::new(),
+            detail: String::new(),
+        }
+    }
 
     #[test]
     fn build_items_reads_names_and_record_titles() {
@@ -520,11 +645,78 @@ mod tests {
         });
         let zh = HashMap::from([("campnamekey".to_string(), "隐秘之路".to_string())]);
         let en = HashMap::new();
-        let camps = build_camps(rows.as_object().unwrap(), &zh, &en);
+        let camps = build_camps(rows.as_object().unwrap(), &zh, &en, &empty_alias_rows()).unwrap();
         assert_eq!(
             camps["ChangeState_ZoneEnv_WLA_10_EnvS_001_Camp"].zh,
             "隐秘之路"
         );
+    }
+
+    #[test]
+    fn build_camps_merges_alias_rows() {
+        let rows = json!({
+            "DED10_Camp_01": { "CampName": "StatueCamp" },
+            "DED10_Camp_02": { "CampName": "DowntownCamp" }
+        });
+        let zh = HashMap::from([
+            ("statuecamp".to_string(), "女神雕像下的巷子".to_string()),
+            ("downtowncamp".to_string(), "闹市区".to_string()),
+        ]);
+        let en = HashMap::from([
+            (
+                "statuecamp".to_string(),
+                "Alleyway beneath the Goddess Statue".to_string(),
+            ),
+            ("downtowncamp".to_string(), "Downtown".to_string()),
+        ]);
+        let alias_rows = CampAliasRows {
+            version: 1,
+            generated_by: String::new(),
+            source: String::new(),
+            aliases: BTreeMap::from([
+                (
+                    "ChangeState_ZoneEnv_DED10_EnvS_100_Camp".to_string(),
+                    alias_row("DED10_Camp_01", "high"),
+                ),
+                (
+                    "ChangeState_ZoneEnv_DED10_EnvS_109_Camp".to_string(),
+                    alias_row("DED10_Camp_02", "low"),
+                ),
+            ]),
+        };
+        let camps = build_camps(rows.as_object().unwrap(), &zh, &en, &alias_rows).unwrap();
+        assert_eq!(camps.len(), 1, "low confidence guesses stay out");
+        let entry = &camps["ChangeState_ZoneEnv_DED10_EnvS_100_Camp"];
+        assert_eq!(entry.zh, "女神雕像下的巷子");
+        assert_eq!(entry.en, "Alleyway beneath the Goddess Statue");
+    }
+
+    #[test]
+    fn build_camps_rejects_duplicate_alias_rows() {
+        let rows = json!({
+            "DED10_Camp_01": { "CampName": "StatueCamp" }
+        });
+        let zh = HashMap::from([("statuecamp".to_string(), "女神雕像下的巷子".to_string())]);
+        let en = HashMap::new();
+        let alias_rows = CampAliasRows {
+            version: 1,
+            generated_by: String::new(),
+            source: String::new(),
+            aliases: BTreeMap::from([
+                (
+                    "ChangeState_ZoneEnv_DED10_EnvS_100_Camp".to_string(),
+                    alias_row("DED10_Camp_01", "high"),
+                ),
+                (
+                    "ChangeState_ZoneEnv_DED10_EnvS_109_Camp".to_string(),
+                    alias_row("DED10_Camp_01", "medium"),
+                ),
+            ]),
+        };
+        let error = build_camps(rows.as_object().unwrap(), &zh, &en, &alias_rows)
+            .err()
+            .expect("duplicate rows must fail");
+        assert!(error.contains("DED10_Camp_01"), "{error}");
     }
 
     #[test]

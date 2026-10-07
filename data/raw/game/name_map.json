@@ -4193,6 +4193,210 @@
   }
  },
  "camps": {
+  "ChangeState_ZoneEnv_ATL_01_EnvS_009_Camp": {
+   "zh": "走廊",
+   "en": "Hallway"
+  },
+  "ChangeState_ZoneEnv_ATL_01_EnvS_075_Camp": {
+   "zh": "通向标本留存实验室的路",
+   "en": "Path to the Specimen Preservation Lab"
+  },
+  "ChangeState_ZoneEnv_ATL_02_EnvS_031_Camp": {
+   "zh": "绝密科研中心",
+   "en": "Top-Secret Research Complex"
+  },
+  "ChangeState_ZoneEnv_ATL_03_EnvS_001_Camp": {
+   "zh": "破败大厅",
+   "en": "Deteriorated Lobby"
+  },
+  "ChangeState_ZoneEnv_ATL_03_EnvS_005_Camp": {
+   "zh": "侵染中央底部",
+   "en": "Bottom of the Heart of the Infection"
+  },
+  "ChangeState_ZoneEnv_AYL_01_EnvS_005_Camp": {
+   "zh": "关闭的大厅",
+   "en": "Closed Lobby"
+  },
+  "ChangeState_ZoneEnv_AYL_01_EnvS_021_Camp": {
+   "zh": "通风区域",
+   "en": "Ventilation Sector"
+  },
+  "ChangeState_ZoneEnv_AYL_03_EnvS_001_Camp": {
+   "zh": "胶囊堆放室",
+   "en": "Capsule Cluster Room"
+  },
+  "ChangeState_ZoneEnv_AYL_04_EnvS_001_Camp": {
+   "zh": "地下通道",
+   "en": "Underground Passage"
+  },
+  "ChangeState_ZoneEnv_AYL_04_EnvS_005_Camp": {
+   "zh": "反应堆室",
+   "en": "Reactor Chamber"
+  },
+  "ChangeState_ZoneEnv_AYL_05_EnvS_001_Camp": {
+   "zh": "实验室废墟",
+   "en": "Laboratory Ruins"
+  },
+  "ChangeState_ZoneEnv_AYL_06_EnvS_001_Camp": {
+   "zh": "侵蚀中央",
+   "en": "Heart of the Contamination"
+  },
+  "ChangeState_ZoneEnv_DED10_EnvS_084_Camp": {
+   "zh": "立体停车场二楼",
+   "en": "Parking Tower 2nd Floor"
+  },
+  "ChangeState_ZoneEnv_DED10_EnvS_090_Camp": {
+   "zh": "立体停车场楼顶",
+   "en": "Parking Tower Rooftop"
+  },
+  "ChangeState_ZoneEnv_DED10_EnvS_096_Camp": {
+   "zh": "荒废的车站",
+   "en": "Abandoned Station"
+  },
+  "ChangeState_ZoneEnv_DED10_EnvS_100_Camp": {
+   "zh": "女神雕像下的巷子",
+   "en": "Alleyway beneath the Goddess Statue"
+  },
+  "ChangeState_ZoneEnv_DED10_EnvS_109_Camp": {
+   "zh": "闹市区",
+   "en": "Downtown"
+  },
+  "ChangeState_ZoneEnv_DED10_EnvS_113_Camp": {
+   "zh": "立体停车场出口",
+   "en": "Parking Tower Exit"
+  },
+  "ChangeState_ZoneEnv_DED20_EnvS_103_Camp": {
+   "zh": "商业区",
+   "en": "Commercial Sector"
+  },
+  "ChangeState_ZoneEnv_DED20_EnvS_107_Camp": {
+   "zh": "广场入口",
+   "en": "Plaza Entryway"
+  },
+  "ChangeState_ZoneEnv_DED20_EnvS_113_Camp": {
+   "zh": "记忆之塔",
+   "en": "Memory Tower"
+  },
+  "ChangeState_ZoneEnv_DED20_EnvS_117_Camp": {
+   "zh": "垮塌的高架桥",
+   "en": "Fallen Overpass"
+  },
+  "ChangeState_ZoneEnv_DED20_EnvS_121_Camp": {
+   "zh": "工地",
+   "en": "Construction Zone"
+  },
+  "ChangeState_ZoneEnv_DED20_EnvS_127_Camp": {
+   "zh": "城市地下区域入口",
+   "en": "City Underground Sector Entrance"
+  },
+  "ChangeState_ZoneEnv_DED30_EnvS_026_Camp": {
+   "zh": "排水系统",
+   "en": "Sewer"
+  },
+  "ChangeState_ZoneEnv_DED30_EnvS_030_Camp": {
+   "zh": "环形山",
+   "en": "Crater"
+  },
+  "ChangeState_ZoneEnv_ME_01_EnvS_017_Camp": {
+   "zh": "隐蔽所",
+   "en": "Hideout"
+  },
+  "ChangeState_ZoneEnv_ME_01_EnvS_018_Camp": {
+   "zh": "6829号地下区域",
+   "en": "Underground Sector 6829"
+  },
+  "ChangeState_ZoneEnv_ME_03_EnvS_005_Camp": {
+   "zh": "变形的铁桥",
+   "en": "Twisted Iron Bridge"
+  },
+  "ChangeState_ZoneEnv_ME_03_EnvS_015_Camp": {
+   "zh": "车辆段",
+   "en": "Rail Yard"
+  },
+  "ChangeState_ZoneEnv_ME_03_EnvS_023_Camp": {
+   "zh": "车辆段入口",
+   "en": "Rail Yard Entrance"
+  },
+  "ChangeState_ZoneEnv_ME_04_EnvS_008_Camp": {
+   "zh": "地下排水系统入口",
+   "en": "Underground Sewer Entrance"
+  },
+  "ChangeState_ZoneEnv_ME_04_EnvS_009_Camp": {
+   "zh": "地下庇护圣所",
+   "en": "Underground Sanctuary"
+  },
+  "ChangeState_ZoneEnv_ME_05_EnvS_003_Camp": {
+   "zh": "临时军械库入口",
+   "en": "Temporary Armory Entrance"
+  },
+  "ChangeState_ZoneEnv_ME_05_EnvS_030_Camp": {
+   "zh": "临时军械库",
+   "en": "Temporary Armory"
+  },
+  "ChangeState_ZoneEnv_ME_06_EnvS_001_Camp": {
+   "zh": "污水净化厂入口",
+   "en": "Contaminated Water Purification Plant Entrance"
+  },
+  "ChangeState_ZoneEnv_ME_06_EnvS_010_Camp": {
+   "zh": "底层",
+   "en": "Abyss"
+  },
+  "ChangeState_ZoneEnv_Nest_10_EnvS_002_Camp": {
+   "zh": "巢窝",
+   "en": "Nest"
+  },
+  "ChangeState_ZoneEnv_SE_01_EnvS_011_Camp": {
+   "zh": "上拉斐尔大坝",
+   "en": "Upper Raphael Dam"
+  },
+  "ChangeState_ZoneEnv_SE_02_EnvS_010_Camp": {
+   "zh": "超级管道入口",
+   "en": "Hypertube Entrance"
+  },
+  "ChangeState_ZoneEnv_SE_05_EnvS_011_Camp": {
+   "zh": "太空物流中心入口",
+   "en": "Space Logistics Complex Entrance"
+  },
+  "ChangeState_ZoneEnv_SE_05_EnvS_014_Camp": {
+   "zh": "太空物流中心",
+   "en": "Space Logistics Center"
+  },
+  "ChangeState_ZoneEnv_SE_05_EnvS_017_Camp": {
+   "zh": "拉斐尔太空中心停车区域",
+   "en": "Raphael Space Center Parking Lot"
+  },
+  "ChangeState_ZoneEnv_SE_05_EnvS_042_Camp": {
+   "zh": "太空物流转运区",
+   "en": "Space Logistics Conveyor"
+  },
+  "ChangeState_ZoneEnv_SE_06_EnvS_002_Camp": {
+   "zh": "拉斐尔太空中心大厅",
+   "en": "Raphael Space Center Lobby"
+  },
+  "ChangeState_ZoneEnv_SE_06_EnvS_008_Camp": {
+   "zh": "拉斐尔太空中心入口",
+   "en": "Raphael Space Center Entrance"
+  },
+  "ChangeState_ZoneEnv_SE_07_EnvS_033_Camp": {
+   "zh": "121号货用升降装置",
+   "en": "Cargo Lift 121"
+  },
+  "ChangeState_ZoneEnv_SE_07_EnvS_036_Camp": {
+   "zh": "外墙维护通道",
+   "en": "Outer Wall Maintenance Channel"
+  },
+  "ChangeState_ZoneEnv_SE_08_EnvS_019_Camp": {
+   "zh": "贵宾区",
+   "en": "Prestige Lounge"
+  },
+  "ChangeState_ZoneEnv_SE_08_EnvS_043_Camp": {
+   "zh": "161号客用升降装置",
+   "en": "Passenger Lift 161"
+  },
+  "ChangeState_ZoneEnv_SE_09_EnvS_001_Camp": {
+   "zh": "中央核心入口",
+   "en": "Central Core Entrance"
+  },
   "ChangeState_ZoneEnv_WLA_10_EnvS_001_Camp": {
    "zh": "隐秘之路",
    "en": "Hidden Path"
@@ -4212,6 +4416,10 @@
   "ChangeState_ZoneEnv_WLA_10_EnvS_065_Camp": {
    "zh": "日光塔入口",
    "en": "Solar Tower Entrance"
+  },
+  "ChangeState_ZoneEnv_WLA_10_EnvS_154_Camp": {
+   "zh": "隐秘峡谷",
+   "en": "Hidden Canyon"
   },
   "ChangeState_ZoneEnv_WLA_30_EnvS_008_Camp": {
    "zh": "废品场",
@@ -4272,6 +4480,10 @@
   "ChangeState_ZoneEnv_WLB_10_EnvS_138_Camp": {
    "zh": "迫降地点",
    "en": "Crash Landing Point"
+  },
+  "ChangeState_ZoneEnv_WLB_20_EnvS_025_Camp": {
+   "zh": "11号矩阵入口",
+   "en": "Matrix 11 Entrance"
   },
   "ChangeState_ZoneEnv_WLB_20_EnvS_032_Camp": {
    "zh": "掩埋的废墟（南）",

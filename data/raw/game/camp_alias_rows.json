@@ -1,0 +1,541 @@
+{
+ "version": 1,
+ "generated_by": "hand maintained (alias -> ZoneCampTable row)",
+ "source": "Derived from the reference save (DataMap_SBEnv actor locations + ZoneEventItemStorageList coin spawn points, UIStorage red-dot camp order, SBAchievement unlock order) and ZoneCampTable; rows with confidence low are unverified guesses and are not merged into name_map.json",
+ "aliases": {
+  "ChangeState_ZoneEnv_ATL_01_EnvS_009_Camp": {
+   "row": "ATL01_Camp_01",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to ATL_01_E_ItemS_001 (133u)"
+  },
+  "ChangeState_ZoneEnv_ATL_01_EnvS_075_Camp": {
+   "row": "ATL01_Camp_02",
+   "confidence": "medium",
+   "method": "elimination",
+   "detail": "elimination within zone"
+  },
+  "ChangeState_ZoneEnv_ATL_02_EnvS_031_Camp": {
+   "row": "ATL02_Camp_01",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to ATL_02_E_ItemS_001 (136u)"
+  },
+  "ChangeState_ZoneEnv_ATL_03_EnvS_001_Camp": {
+   "row": "ATL03_Camp_01",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to ATL_03_E_ItemS_001 (136u)"
+  },
+  "ChangeState_ZoneEnv_ATL_03_EnvS_005_Camp": {
+   "row": "ATL03_Camp_02",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to ATL_03_E_ItemS_002 (94u)"
+  },
+  "ChangeState_ZoneEnv_AYL_01_EnvS_005_Camp": {
+   "row": "AYL01_Camp_02",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to AYL_01_E_ItemS_007 (79u)"
+  },
+  "ChangeState_ZoneEnv_AYL_01_EnvS_021_Camp": {
+   "row": "AYL01_Camp_01",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to AYL_01_E_ItemS_011 (91u)"
+  },
+  "ChangeState_ZoneEnv_AYL_03_EnvS_001_Camp": {
+   "row": "AYL03_Camp_01",
+   "confidence": "medium",
+   "method": "elimination",
+   "detail": "elimination within zone"
+  },
+  "ChangeState_ZoneEnv_AYL_04_EnvS_001_Camp": {
+   "row": "AYL04_Camp_01",
+   "confidence": "medium",
+   "method": "elimination",
+   "detail": "elimination within zone"
+  },
+  "ChangeState_ZoneEnv_AYL_04_EnvS_005_Camp": {
+   "row": "AYL04_Camp_02",
+   "confidence": "medium",
+   "method": "elimination",
+   "detail": "elimination within zone"
+  },
+  "ChangeState_ZoneEnv_AYL_05_EnvS_001_Camp": {
+   "row": "AYL05_Camp_01",
+   "confidence": "medium",
+   "method": "elimination",
+   "detail": "elimination within zone"
+  },
+  "ChangeState_ZoneEnv_AYL_06_EnvS_001_Camp": {
+   "row": "AYL06_Camp_01",
+   "confidence": "medium",
+   "method": "elimination",
+   "detail": "elimination within zone"
+  },
+  "ChangeState_ZoneEnv_DED10_EnvS_084_Camp": {
+   "row": "DED10_Camp_03",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to DED10_E_ItemS_072 (158u)"
+  },
+  "ChangeState_ZoneEnv_DED10_EnvS_090_Camp": {
+   "row": "DED10_Camp_04",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to DED10_E_ItemS_060 (134u)"
+  },
+  "ChangeState_ZoneEnv_DED10_EnvS_096_Camp": {
+   "row": "DED10_Camp_06",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to DED10_E_ItemS_061 (147u)"
+  },
+  "ChangeState_ZoneEnv_DED10_EnvS_100_Camp": {
+   "row": "DED10_Camp_01",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to DED10_E_ItemS_058 (230u)"
+  },
+  "ChangeState_ZoneEnv_DED10_EnvS_109_Camp": {
+   "row": "DED10_Camp_02",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to DED10_E_ItemS_062 (118u)"
+  },
+  "ChangeState_ZoneEnv_DED10_EnvS_113_Camp": {
+   "row": "DED10_Camp_05",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to DED10_E_ItemS_063 (269u)"
+  },
+  "ChangeState_ZoneEnv_DED20_EnvS_103_Camp": {
+   "row": "DED20_Camp_01",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to DED20_E_ItemS_005 (196u)"
+  },
+  "ChangeState_ZoneEnv_DED20_EnvS_107_Camp": {
+   "row": "DED20_Camp_02",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to DED20_E_ItemS_007 (117u)"
+  },
+  "ChangeState_ZoneEnv_DED20_EnvS_113_Camp": {
+   "row": "DED20_Camp_03",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to DED20_E_ItemS_017 (224u)"
+  },
+  "ChangeState_ZoneEnv_DED20_EnvS_117_Camp": {
+   "row": "DED20_Camp_04",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to DED20_E_ItemS_019 (61u)"
+  },
+  "ChangeState_ZoneEnv_DED20_EnvS_121_Camp": {
+   "row": "DED20_Camp_05",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to DED20_E_ItemS_020 (99u)"
+  },
+  "ChangeState_ZoneEnv_DED20_EnvS_127_Camp": {
+   "row": "DED20_Camp_06",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to DED20_E_ItemS_021 (111u)"
+  },
+  "ChangeState_ZoneEnv_DED30_EnvS_026_Camp": {
+   "row": "DED30_Camp_01",
+   "confidence": "medium",
+   "method": "elimination",
+   "detail": "elimination within zone"
+  },
+  "ChangeState_ZoneEnv_DED30_EnvS_030_Camp": {
+   "row": "DED30_Camp_02",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to DED30_E_ItemS_011 (99u)"
+  },
+  "ChangeState_ZoneEnv_DED40_EnvS_039_Camp": {
+   "row": "DEDA_Camp_02",
+   "confidence": "low",
+   "method": "order-guess",
+   "detail": "no game data; positional guess (Eidos 9)"
+  },
+  "ChangeState_ZoneEnv_DED40_EnvS_043_Camp": {
+   "row": "DEDA_Camp_05",
+   "confidence": "low",
+   "method": "order-guess",
+   "detail": "no game data; positional guess (Eidos 9)"
+  },
+  "ChangeState_ZoneEnv_DED40_EnvS_050_Camp": {
+   "row": "DEDA_Camp_03",
+   "confidence": "low",
+   "method": "order-guess",
+   "detail": "no game data; positional guess (Eidos 9)"
+  },
+  "ChangeState_ZoneEnv_DED40_EnvS_054_Camp": {
+   "row": "DEDA_Camp_06",
+   "confidence": "low",
+   "method": "order-guess",
+   "detail": "no game data; positional guess (Eidos 9)"
+  },
+  "ChangeState_ZoneEnv_DED40_EnvS_092_Camp": {
+   "row": "DEDA_Camp_01",
+   "confidence": "low",
+   "method": "order-guess",
+   "detail": "no game data; positional guess (Eidos 9)"
+  },
+  "ChangeState_ZoneEnv_DED40_EnvS_096_Camp": {
+   "row": "DEDA_Camp_04",
+   "confidence": "low",
+   "method": "order-guess",
+   "detail": "no game data; positional guess (Eidos 9)"
+  },
+  "ChangeState_ZoneEnv_ME_01_EnvS_017_Camp": {
+   "row": "ME01_Camp_01",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to ME_01_E_ItemS_001 (238u)"
+  },
+  "ChangeState_ZoneEnv_ME_01_EnvS_018_Camp": {
+   "row": "ME01_Camp_02",
+   "confidence": "medium",
+   "method": "elimination",
+   "detail": "elimination within zone"
+  },
+  "ChangeState_ZoneEnv_ME_03_EnvS_005_Camp": {
+   "row": "ME03_Camp_01",
+   "confidence": "medium",
+   "method": "elimination",
+   "detail": "elimination within zone"
+  },
+  "ChangeState_ZoneEnv_ME_03_EnvS_015_Camp": {
+   "row": "ME03_Camp_03",
+   "confidence": "medium",
+   "method": "elimination",
+   "detail": "elimination within zone"
+  },
+  "ChangeState_ZoneEnv_ME_03_EnvS_023_Camp": {
+   "row": "ME03_Camp_02",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to ME_03_E_ItemS_003 (153u)"
+  },
+  "ChangeState_ZoneEnv_ME_04_EnvS_008_Camp": {
+   "row": "ME04_Camp_01",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to ME_04_E_ItemS_003 (501u)"
+  },
+  "ChangeState_ZoneEnv_ME_04_EnvS_009_Camp": {
+   "row": "ME04_Camp_02",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to ME_04_E_ItemS_004 (164u)"
+  },
+  "ChangeState_ZoneEnv_ME_05_EnvS_003_Camp": {
+   "row": "ME05_Camp_01",
+   "confidence": "medium",
+   "method": "elimination",
+   "detail": "elimination within zone"
+  },
+  "ChangeState_ZoneEnv_ME_05_EnvS_030_Camp": {
+   "row": "ME05_Camp_02",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to ME_05_E_ItemS_016 (219u)"
+  },
+  "ChangeState_ZoneEnv_ME_06_EnvS_001_Camp": {
+   "row": "ME06_Camp_02",
+   "confidence": "medium",
+   "method": "elimination",
+   "detail": "elimination within zone"
+  },
+  "ChangeState_ZoneEnv_ME_06_EnvS_010_Camp": {
+   "row": "ME06_Camp_01",
+   "confidence": "medium",
+   "method": "elimination",
+   "detail": "elimination within zone"
+  },
+  "ChangeState_ZoneEnv_Nest_10_EnvS_002_Camp": {
+   "row": "Nest30_Camp_01",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to Nest_10_E_ItemS_001 (211u)"
+  },
+  "ChangeState_ZoneEnv_SE_01_EnvS_011_Camp": {
+   "row": "SE01_Camp_02",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to SE_01_E_ItemS_006 (166u)"
+  },
+  "ChangeState_ZoneEnv_SE_02_EnvS_010_Camp": {
+   "row": "SE02_Camp_02",
+   "confidence": "medium",
+   "method": "elimination",
+   "detail": "elimination within zone"
+  },
+  "ChangeState_ZoneEnv_SE_05_EnvS_011_Camp": {
+   "row": "SE05_Camp_01",
+   "confidence": "medium",
+   "method": "elimination",
+   "detail": "elimination within zone"
+  },
+  "ChangeState_ZoneEnv_SE_05_EnvS_014_Camp": {
+   "row": "SE05_Camp_03",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to SE_05_E_ItemS_002 (117u)"
+  },
+  "ChangeState_ZoneEnv_SE_05_EnvS_017_Camp": {
+   "row": "SE05_Camp_04",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to SE_05_E_ItemS_003 (154u)"
+  },
+  "ChangeState_ZoneEnv_SE_05_EnvS_042_Camp": {
+   "row": "SE05_Camp_02",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to SE_05_E_ItemS_013 (157u)"
+  },
+  "ChangeState_ZoneEnv_SE_06_EnvS_002_Camp": {
+   "row": "SE06_Camp_02",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to SE_06_E_ItemS_001 (140u)"
+  },
+  "ChangeState_ZoneEnv_SE_06_EnvS_008_Camp": {
+   "row": "SE06_Camp_01",
+   "confidence": "medium",
+   "method": "elimination",
+   "detail": "elimination within zone"
+  },
+  "ChangeState_ZoneEnv_SE_07_EnvS_033_Camp": {
+   "row": "SE07_Camp_01",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to SE_07_E_ItemS_018 (299u)"
+  },
+  "ChangeState_ZoneEnv_SE_07_EnvS_036_Camp": {
+   "row": "SE07_Camp_02",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to SE_07_E_ItemS_019 (270u)"
+  },
+  "ChangeState_ZoneEnv_SE_08_EnvS_019_Camp": {
+   "row": "SE08_Camp_02_Re",
+   "confidence": "medium",
+   "method": "elimination",
+   "detail": "elimination within zone"
+  },
+  "ChangeState_ZoneEnv_SE_08_EnvS_043_Camp": {
+   "row": "SE08_Camp_01",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to SE_08_E_ItemS_017 (345u)"
+  },
+  "ChangeState_ZoneEnv_SE_09_EnvS_001_Camp": {
+   "row": "SE09_Camp_01",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to SE_09_E_ItemS_001 (319u)"
+  },
+  "ChangeState_ZoneEnv_WLA_10_EnvS_001_Camp": {
+   "row": "WLA10_Camp_01",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLA_10_EnvS_050_Camp": {
+   "row": "WLA10_Camp_02",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLA_10_EnvS_057_Camp": {
+   "row": "WLA10_Camp_04",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLA_10_EnvS_061_Camp": {
+   "row": "WLA10_Camp_05",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLA_10_EnvS_065_Camp": {
+   "row": "WLA10_Camp_06",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLA_10_EnvS_154_Camp": {
+   "row": "WLA10_Camp_07",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to WLA_10_E_ItemS_029 (141u)"
+  },
+  "ChangeState_ZoneEnv_WLA_30_EnvS_008_Camp": {
+   "row": "WLA30_Camp_01",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLA_30_EnvS_028_Camp": {
+   "row": "WLA30_Camp_02",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLA_30_EnvS_041_Camp": {
+   "row": "WLA30_Camp_03",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLA_40_EnvS_022_Camp": {
+   "row": "WLA40_Camp_01",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLA_40_EnvS_026_Camp": {
+   "row": "WLA40_Camp_02",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLA_50_EnvS_016_Camp": {
+   "row": "WLA50_Camp_01",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLB_10_EnvS_001_Camp": {
+   "row": "WLB10_Camp_01",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLB_10_EnvS_028_Camp": {
+   "row": "WLB10_Camp_03",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLB_10_EnvS_034_Camp": {
+   "row": "WLB10_Camp_04",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLB_10_EnvS_040_Camp": {
+   "row": "WLB10_Camp_02",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLB_10_EnvS_118_Camp": {
+   "row": "WLB10_Camp_05",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLB_10_EnvS_125_Camp": {
+   "row": "WLB10_Camp_06",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLB_10_EnvS_131_Camp": {
+   "row": "WLB10_Camp_07",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLB_10_EnvS_138_Camp": {
+   "row": "WLB10_Camp_08",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLB_20_EnvS_025_Camp": {
+   "row": "WLB20_Camp_01",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to WLB_20_E_ItemS_015 (283u)"
+  },
+  "ChangeState_ZoneEnv_WLB_20_EnvS_032_Camp": {
+   "row": "WLB20_Camp_02",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLB_20_EnvS_155_Camp": {
+   "row": "WLB20_Camp_05",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLB_20_EnvS_176_Camp": {
+   "row": "WLB20_Camp_04",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLB_20_EnvS_183_Camp": {
+   "row": "WLB20_Camp_03",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLB_30_EnvS_014_Camp": {
+   "row": "WLB30_Camp_01",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLB_30_EnvS_067_Camp": {
+   "row": "WLB30_Camp_02",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLB_30_EnvS_071_Camp": {
+   "row": "WLB30_Camp_03",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLB_50_EnvS_017_Camp": {
+   "row": "WLB50_Camp_01",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLB_50_EnvS_178_Camp": {
+   "row": "WLB50_Camp_03",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLB_50_EnvS_182_Camp": {
+   "row": "WLB50_Camp_02",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  },
+  "ChangeState_ZoneEnv_WLB_50_EnvS_226_Camp": {
+   "row": "WLB50_Camp_06",
+   "confidence": "high",
+   "method": "table",
+   "detail": "game table ForceCampTrophyAchievementForEnvState"
+  }
+ }
+}

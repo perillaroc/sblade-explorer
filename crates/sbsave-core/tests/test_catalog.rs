@@ -78,7 +78,7 @@ fn game_data_names_applied() {
 #[test]
 fn catalog_counts() {
     let catalog = load_catalog(None).expect("catalog");
-    assert_eq!(catalog.items.len(), 932);
+    assert_eq!(catalog.items.len(), 922);
     assert_eq!(catalog.categories.len(), 15);
     assert_eq!(catalog.by_category("nano_suits").len(), 126);
     assert_eq!(catalog.by_category("cans").len(), 49);
@@ -90,7 +90,8 @@ fn catalog_counts() {
         .iter()
         .filter(|item| item.confidence != "high")
         .count();
-    assert_eq!(low_confidence, 69);
+    // 仅埃多斯9号 6 座营地的别名→行号仍为顺序推定（无存档坐标数据）
+    assert_eq!(low_confidence, 6);
 }
 
 #[test]
@@ -157,7 +158,8 @@ fn album_categories_cover_game_album() {
 fn record_types_cover_records() {
     let catalog = load_catalog(None).expect("catalog");
     let records = catalog.by_category("records");
-    assert_eq!(records.len(), 310);
+    // 与游戏 AlbumTable 的记录数一致（记忆棒 186 + 文档 114）
+    assert_eq!(records.len(), 300);
     let missing: Vec<&str> = records
         .iter()
         .filter(|item| item.record_type.is_none() || item.record_type_zh.is_none())
@@ -170,9 +172,9 @@ fn record_types_cover_records() {
         let key = item.record_type.as_deref().unwrap_or("?");
         *counts.entry(key).or_default() += 1;
     }
-    assert_eq!(counts["memorystick"], 187);
+    assert_eq!(counts["memorystick"], 186);
     assert_eq!(counts["document_series"], 27);
-    assert_eq!(counts["document_promotions"], 27);
+    assert_eq!(counts["document_promotions"], 18);
     assert_eq!(counts["document_messages"], 15);
     assert_eq!(counts["document_journal"], 12);
     assert_eq!(counts["document_log_data"], 11);
@@ -190,7 +192,7 @@ fn record_types_cover_records() {
 }
 
 #[test]
-fn record_type_samples_and_variant_inheritance() {
+fn record_type_samples_and_variant_aliases() {
     let catalog = load_catalog(None).expect("catalog");
     let index = catalog.alias_index();
     let type_of = |id: &str| {
@@ -216,17 +218,30 @@ fn record_type_samples_and_variant_inheritance() {
         (Some("memorystick"), Some("记忆棒"))
     );
     assert_eq!(
-        type_of("Item_Records_Day1_Memory_09_1"),
-        (Some("document_promotions"), Some("文档·宣传"))
-    );
-    assert_eq!(
-        type_of("Item_Records_ME01_Memory_01_2"),
-        (Some("memorystick"), Some("记忆棒"))
-    );
-    assert_eq!(
         type_of("Item_Records_WLA_Memory_05"),
         (Some("memorystick"), Some("记忆棒"))
     );
+
+    // 重复获取的副本别名并入基础条目（游戏数据库只有一条记录），不再单列；
+    // 副本别名仍参与已获得判定。
+    let variant = &index["Item_Records_Day1_Memory_09_1"];
+    assert_eq!(variant.id, "Item_Records_Day1_Memory_09");
+    assert_eq!(variant.record_type.as_deref(), Some("document_promotions"));
+    assert!(variant
+        .aliases
+        .iter()
+        .any(|alias| alias == "Item_Records_Day1_Memory_09_1"));
+    assert!(!catalog
+        .items
+        .iter()
+        .any(|item| item.id == "Item_Records_Day1_Memory_09_1"));
+    let memory = &index["Item_Records_ME01_Memory_01_2"];
+    assert_eq!(memory.id, "Item_Records_ME01_Memory_01");
+    assert_eq!(memory.record_type.as_deref(), Some("memorystick"));
+    assert!(memory
+        .aliases
+        .iter()
+        .any(|alias| alias == "Item_Records_ME01_Memory_01_2"));
 }
 
 #[test]
@@ -237,7 +252,7 @@ fn memorysticks_follow_in_game_menu_order() {
         .iter()
         .filter(|item| item.record_type.as_deref() == Some("memorystick"))
         .collect();
-    assert_eq!(memories.len(), 187);
+    assert_eq!(memories.len(), 186);
     let mut orders: Vec<i64> = memories.iter().map(|item| item.order).collect();
     assert!(orders.iter().all(|order| *order > 0));
     orders.sort_unstable();
@@ -401,8 +416,8 @@ fn guide_links_cover_catalog() {
     }
     // 仅默认外观类条目没有可链接的攻略（发型：默认马尾与首领挑战奖励）
     assert_eq!(missing, ["Hair_000", "Hair_Nikke_01"]);
-    assert_eq!(with_web, 804);
-    assert_eq!(with_video, 696);
+    assert_eq!(with_web, 794);
+    assert_eq!(with_video, 686);
     let index = catalog.alias_index();
     let can = index["Can_011"].guides.as_ref().expect("can guides");
     assert_eq!(
@@ -478,7 +493,7 @@ fn chinese_translations_cover_guide_text() {
         .iter()
         .filter(|item| item.obtain.is_some())
         .collect();
-    assert_eq!(with_obtain.len(), 810);
+    assert_eq!(with_obtain.len(), 800);
     let missing: Vec<&str> = with_obtain
         .iter()
         .filter(|item| item.obtain_zh.is_none())

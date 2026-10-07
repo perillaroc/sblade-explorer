@@ -156,6 +156,9 @@ struct CrosswalkCamp {
     #[serde(default)]
     #[allow(dead_code)]
     confidence: Option<String>,
+    #[serde(default)]
+    #[allow(dead_code)]
+    note: Option<String>,
 }
 
 #[derive(Deserialize)]
@@ -1391,19 +1394,59 @@ fn normalize_record_aliases(universe: &Value, suffix_re: &Regex) -> BTreeSet<Str
     aliases
 }
 
+/// Returns the base alias when `alias` is a repeated-pickup copy of a record
+/// that also exists in `aliases` (`Item_Records_Xion_Memory_14_1` ->
+/// `Item_Records_Xion_Memory_14`). The game keeps one Data Bank entry per
+/// record (see `AlbumTable`); the numeric copy suffix only marks repeated
+/// pickups, so those aliases are merged into the base item instead of becoming
+/// separate catalog entries.
+fn record_variant_root(alias: &str, aliases: &BTreeSet<String>) -> Option<String> {
+    let mut current = alias;
+    let mut root: Option<String> = None;
+    while let Some((base, suffix)) = current.rsplit_once('_') {
+        if suffix.is_empty()
+            || !suffix.chars().all(|character| character.is_ascii_digit())
+            || !aliases.contains(base)
+        {
+            break;
+        }
+        root = Some(base.to_string());
+        current = base;
+    }
+    root
+}
+
 fn build_records(universe: &Value, crosswalk: &Crosswalk) -> Result<Vec<CatalogItem>, String> {
     let zone_re = Regex::new(r"^Item_Records_([A-Za-z0-9]+?)_(Memory|Passcode)_(\d+)(.*)$")
         .expect("records regex");
     let suffix_re = Regex::new(r"_(Maintain|Used|Popup)$").expect("suffix regex");
+    let aliases = normalize_record_aliases(universe, &suffix_re);
+    let mut variants: HashMap<String, Vec<String>> = HashMap::new();
+    let mut roots: BTreeSet<String> = BTreeSet::new();
+    for alias in &aliases {
+        match record_variant_root(alias, &aliases) {
+            Some(root) => variants.entry(root).or_default().push(alias.clone()),
+            None => {
+                roots.insert(alias.clone());
+            }
+        }
+    }
+    for variant_aliases in variants.values_mut() {
+        variant_aliases.sort();
+    }
     let mut items: Vec<CatalogItem> = Vec::new();
-    for alias in normalize_record_aliases(universe, &suffix_re) {
+    for alias in roots {
+        let mut item_aliases = vec![alias.clone()];
+        if let Some(variant_aliases) = variants.get(&alias) {
+            item_aliases.extend(variant_aliases.iter().cloned());
+        }
         let Some(captures) = zone_re.captures(&alias) else {
             items.push(plain_item(
                 alias.clone(),
                 alias.replace("Item_Records_", "记录："),
                 alias.clone(),
                 "records",
-                vec![alias.clone()],
+                item_aliases,
                 None,
                 "任务/活动记录，名称来自内部 ID",
                 "low",
@@ -1417,26 +1460,20 @@ fn build_records(universe: &Value, crosswalk: &Crosswalk) -> Result<Vec<CatalogI
         let number: i64 = captures[3]
             .parse()
             .map_err(|_| format!("记录编号非法: {alias}"))?;
-        let suffix = captures[4].to_string();
         let kind_zh = if kind == "Memory" { "记录" } else { "密码" };
         let category = if kind == "Memory" {
             "records"
         } else {
             "passcodes"
         };
-        let suffix_zh = match suffix.as_str() {
-            "_1" => "（版本2）",
-            "_2" => "（版本3）",
-            _ => "",
-        };
         let label = zone_label(&zone, &crosswalk.zone_zh);
-        let name = format!("{label} {kind_zh} {number:02}{suffix_zh}");
+        let name = format!("{label} {kind_zh} {number:02}");
         items.push(plain_item(
             alias.clone(),
             name,
             alias.clone(),
             category,
-            vec![alias],
+            item_aliases,
             Some(label),
             "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
             "low",
@@ -2061,13 +2098,13 @@ pub fn run(root: &Path) -> Result<(), String> {
 
 #[cfg(test)]
 mod tests {
-    use std::collections::HashMap;
+    use std::collections::{BTreeSet, HashMap};
 
     use super::{
         apply_document_location, apply_guides, apply_memorystick_order, crosswalk_title_matches,
         fold_record_title, loose_record_title, normalize_name, plain_item, record_type_from_site,
-        resolve_guides, zone_label, AreaGuides, CategoryGuides, GuideLink, GuideSet, GuidesFile,
-        MemorystickOrder, MemorystickRegion, SiteItem,
+        record_variant_root, resolve_guides, zone_label, AreaGuides, CategoryGuides, GuideLink,
+        GuideSet, GuidesFile, MemorystickOrder, MemorystickRegion, SiteItem,
     };
 
     fn link(title: &str, url: &str) -> GuideLink {
@@ -2377,6 +2414,37 @@ mod tests {
                 })
                 .collect(),
         }
+    }
+
+    #[test]
+    fn record_variant_root_merges_copy_suffixes() {
+        let aliases: BTreeSet<String> = [
+            "Item_Records_Xion_Memory_14",
+            "Item_Records_Xion_Memory_14_1",
+            "Item_Records_Xion_Memory_14_4",
+            "Item_Records_Quest_Request_006_01",
+            "Item_Records_Quest_Request_006_02",
+        ]
+        .iter()
+        .map(|alias| alias.to_string())
+        .collect();
+        assert_eq!(
+            record_variant_root("Item_Records_Xion_Memory_14_1", &aliases).as_deref(),
+            Some("Item_Records_Xion_Memory_14")
+        );
+        assert_eq!(
+            record_variant_root("Item_Records_Xion_Memory_14_4", &aliases).as_deref(),
+            Some("Item_Records_Xion_Memory_14")
+        );
+        assert_eq!(
+            record_variant_root("Item_Records_Xion_Memory_14", &aliases),
+            None
+        );
+        assert_eq!(
+            record_variant_root("Item_Records_Quest_Request_006_01", &aliases),
+            None,
+            "Quest Request parts are distinct records, not copies"
+        );
     }
 
     #[test]

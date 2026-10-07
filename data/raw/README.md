@@ -14,7 +14,8 @@
 | `fish_obtain.json` | 手工维护的鱼类获取文案（别名 -> 中英文案：钓点 + 鱼饵；鱼类没有站点条目） |
 | `memorystick_order.json` | 记忆棒的游戏内数据库选单顺序（按区域分组、组内顺序，覆盖全部 186 条；据 Map Genie 与游民星空列表整理） |
 | `guides.json` | 手工维护的中文攻略链接快照（游民星空图文 + B 站「喂狗组-文轩」全收集视频）；`catalog build` 解析为每条物品的 `guides.web` / `guides.video`；纳米战衣与设计图逐件对应游民星空服装图鉴分页 |
-| `game/name_map.json` | 游戏数据表 + `Game.locres` 提取的内部别名→官方名称映射（生成物；含 `items`、`camps`、`album` 三段） |
+| `game/name_map.json` | 游戏数据表 + `Game.locres` 提取的内部别名→官方名称映射（生成物；含 `items`、`camps`、`album` 三段；`camps` 合并 `game/camp_alias_rows.json` 中置信度非 low 的对照） |
+| `game/camp_alias_rows.json` | 营地别名 → `ZoneCampTable` 行号对照（数据表未直接关联的营地；含置信度与方法，`low` 条目不并入 `name_map.json`） |
 | `reference/Sources_TrainerCore_*.swift` | 中文名称对照（来自 stellar-blade-macos-save-editor） |
 | `reference/*.sav` | 参考存档（仅本地校验用，已在 .gitignore 中忽略） |
 
@@ -33,6 +34,10 @@
 - 游戏本体数据表（`ItemTable`、`ZoneCampTable`、`AlbumTable`）与 `Game.locres`（zh-Hans/en）——
   内部别名到官方名称的精确映射，经 `cargo run -p sbsave-tools -- mine-names` 生成 `game/name_map.json`；
   `album` 段收录图鉴数据表的孽奇拔（67）与角色（55 页）条目，含官方说明文字
+- 参考存档（100% 完成度）的 `DataMap_SBEnv`（别名与事件点坐标）、`UIStorage` 红点营地顺序与
+  `SBAchievement` 成就顺序，配合 `ZoneCampTable` 的 `CoinSpawnPointName` —— 数据表未直接关联的
+  营地别名 → 行号对照（`game/camp_alias_rows.json`；坐标法 36 条、区域内排除法 17 条、
+  埃多斯9号 6 条顺序推定且保持低置信度）
 - <https://www.gamersky.com>（《剑星》全收集攻略、全饮料罐、全钓鱼点、全宝箱密码等）与
   <https://www.bilibili.com>（喂狗组-文轩「剑星全收集」分 P 视频）—— `guides.json` 的中文攻略链接；
   仅在桌面端点按按钮时由系统浏览器打开，程序运行时不联网
@@ -66,6 +71,10 @@ cargo run -p sbsave-cli -- catalog check
 `crates/sbsave-core/tests/test_catalog.rs` 会校验覆盖率）。如只需修正个别条目，优先使用
 `%LOCALAPPDATA%\sbsave\catalog.user.json` 覆盖文件。
 
+记录别名中的重复获取副本（`Item_Records_*_<N>`，如 `Item_Records_Xion_Memory_14_1`）在生成时
+并入基础条目：游戏数据库（`AlbumTable`）每份记录只有一条，副本别名只表示重复拾取；合并后记录数
+（300 条）与游戏数据库一致，副本别名仍参与「已获得」判定。
+
 ## 刷新游戏名称映射（需要本机安装游戏）
 
 需要社区工具 `cue4parse.exe`、`repak.exe` 与社区 `.usmap`。把它们放在同一目录后执行：
@@ -78,8 +87,9 @@ cargo run -p sbsave-tools -- mine-names `
 
 `--game` 会把 `ItemTable`、`ZoneCampTable`、`AlbumTable` 导出到 `data/raw/game/dump`
 （已在 .gitignore 中忽略）并解包 `Game.{zh-Hans,en}.locres`，然后写出
-`data/raw/game/name_map.json`（`items`/`camps`/`album` 三段）。也可以先用
-`retoc`/`cue4parse` 自行导出，再用 `--dump 目录` 离线运行。
+`data/raw/game/name_map.json`（`items`/`camps`/`album` 三段）。数据表未直接关联的营地按
+`data/raw/game/camp_alias_rows.json` 的别名 → 行号对照补充名称（置信度 `low` 的条目跳过，
+对应条目在目录库中保持低置信度）。也可以先用 `retoc`/`cue4parse` 自行导出，再用 `--dump 目录` 离线运行。
 
 > `repak` 解包 Oodle 压缩的 pak 需要 `oo2core_9_win64.dll`：放在 tools 目录即可；
 > 若首次运行自动下载失败，可设置 `HTTP_PROXY`/`HTTPS_PROXY` 走本机代理。

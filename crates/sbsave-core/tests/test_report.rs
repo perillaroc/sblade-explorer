@@ -268,7 +268,7 @@ fn album_sections_in_report() {
     assert!(markdown.contains("| 孽奇拔 | 0/67 (0%) | 67 |"));
 
     let payload = analysis_to_dict(&analysis, false);
-    assert_eq!(payload["summary"]["catalog_total"], 810);
+    assert_eq!(payload["summary"]["catalog_total"], 800);
     assert_eq!(payload["summary"]["album_total"], 122);
     assert_eq!(payload["summary"]["album_obtained"], 0);
     assert_eq!(payload["summary"]["album_missing_total"], 122);

@@ -10,7 +10,7 @@ fn catalog_build_matches_committed_file() {
         output.bytes, committed,
         "data/catalog.json 与生成结果不一致，请运行 cargo run -p sbsave-tools -- catalog build"
     );
-    assert_eq!(output.item_count, 932);
+    assert_eq!(output.item_count, 922);
     assert_eq!(output.alias_count, 942);
 }
 
@@ -61,8 +61,8 @@ fn catalog_build_attaches_guide_links() {
         }
     }
     // Regression sentinels: keep the Chinese guide coverage from shrinking.
-    assert_eq!(with_web, 804);
-    assert_eq!(with_video, 696);
+    assert_eq!(with_web, 794);
+    assert_eq!(with_video, 686);
     // 图鉴条目（孽奇拔 67 + 角色 55）没有攻略链接、但有官方说明
     assert_eq!(album_items, 122);
     // 仅默认外观类条目没有可链接的攻略（发型：默认马尾与首领挑战奖励）

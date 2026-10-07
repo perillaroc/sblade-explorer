@@ -41,8 +41,9 @@ shown separately in reports and the UI and is unlocked through the achievement a
 
 ## What does "Mapping unconfirmed" mean?
 
-It means the name/alias mapping for that entry has low confidence (69 entries in total: a few record
-version variants and unlinked camps). It does not affect obtained detection; if an entry is missing
+It means the name/alias mapping for that entry has low confidence (6 entries in total: the Eidos 9
+camps map alias → row by achievement order because the save has no coordinates for them). It does
+not affect obtained detection; if an entry is missing
 or mapped incorrectly you can fix it with a custom catalog, see
 [Data sources & catalog](../reference/data.md#custom-catalog).
 

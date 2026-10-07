@@ -10,7 +10,8 @@
   别名全集与数据校验（`data/raw/universe/aliases.json`）
 - 游戏本体数据表（`ItemTable`、`ZoneCampTable`、`AlbumTable`）与 `Game.locres`（zh-Hans/en）——
   内部别名到官方名称的精确映射，经 `cargo run -p sbsave-tools -- mine-names` 生成
-  `data/raw/game/name_map.json`
+  `data/raw/game/name_map.json`；数据表未直接关联的营地经 `data/raw/game/camp_alias_rows.json`
+  对照到 `ZoneCampTable` 的行
 - [mapgenie.io](https://mapgenie.io/stellar-blade/guides/memory-sticks) 与
   [游民星空](https://www.gamersky.com/handbook/202507/1953527.shtml) ——
   记忆棒的游戏内数据库选单顺序（`data/raw/memorystick_order.json`，两份来源顺序一致）
@@ -32,13 +33,17 @@
 
 - 目录库 `data/catalog.json` 由 `sbsave-tools catalog build` 生成，禁止手改；
   收集品的唯一事实来源是 `data/raw/crosswalk.json`（site id → 别名 → 中文名，手工维护），
-  其中 `camps` 段维护营地别名 → 站点条目映射（营地获取文案来源）；图鉴条目由游戏数据挖掘
+  其中 `camps` 段维护营地别名 → 站点条目映射（营地获取文案来源）；营地别名 → `ZoneCampTable`
+  行号的对照维护在 `data/raw/game/camp_alias_rows.json`；图鉴条目由游戏数据挖掘
   （`AlbumTable` + `Game.locres`）生成。
 - 只要物品的任一 `aliases` 出现在存档物品集合、从成就记录派生的别名或成就别名（图鉴）中，
   即视为「已获得」。
 - 读取存档中的 `NewGamePlusPlayCount`，标注「需要二周目(NG+)」/「需要三周目(NG++)」。
 - 记录/密码/罐子/设计图案/外观名称由游戏数据挖掘覆盖为官方简中名称并置 `confidence="high"`；
-  少量记录版本变体与未关联营地保留低置信度（共 69 条），报告中标记「映射待确认」。
+  仅埃多斯9号 6 座营地的别名 → `ZoneCampTable` 行号仍为顺序推定（存档无坐标数据），
+  保留低置信度并标记「映射待确认」。
+- 记录别名中的重复获取副本（如 `Item_Records_Xion_Memory_14_1`）并入基础条目：游戏数据库
+  （`AlbumTable`）每份记录只有一条，副本别名只表示重复拾取；合并后 300 条记录与游戏数据库一致。
 - 获取文案：收集品由站点 `description`（英文）+ `api/i18n/obtain_*.json`（中文）提供；
   鱼类无站点条目，文案维护在 `data/raw/fish_obtain.json`；未收录进站点快照的个别营地
   在 `crosswalk.json` 的 `camps` 段内直接写明中英文案。
@@ -103,14 +108,14 @@ CLI 亦可用 `--catalog 路径.json` 临时附加；条目内 `area_zh`/`locati
 
 ## 回归哨兵
 
-- 目录库 932 条 / 15 分类：13 类收集品 810 条 + 图鉴 122 条（孽奇拔 67、角色 55）；
-  纳米战衣 126、罐子 49、营地 89、低置信度 69。
-- 获取文案：810 条收集品全部有 `obtain` + `obtain_zh`（鱼类 35 条来自 `fish_obtain.json`，
+- 目录库 922 条 / 15 分类：13 类收集品 800 条 + 图鉴 122 条（孽奇拔 67、角色 55）；
+  纳米战衣 126、罐子 49、营地 89、低置信度 6。
+- 获取文案：800 条收集品全部有 `obtain` + `obtain_zh`（鱼类 35 条来自 `fish_obtain.json`，
   营地 89 条来自站点 `description` + `obtain_camps.json`）；仅图鉴 122 条以官方 `desc` 代替，
   属设计如此。
 - 图鉴按页入库：孽奇拔分组 12/36/10/6/3，角色 55 页（艾德姆 5 页、迅驰 3 页、母主领域 1 页），
   全部带 `desc_zh`/`desc_en`，且无内置攻略链接。
-- 记录 310 条全部带游戏内类型（记忆棒 187、文档 123）与攻略获取方式；记忆棒 186 条带游戏内选单顺序
-  （版本变体继承基础条目）；密码 23 条全部带攻略获取方式。
-- 中文攻略链接：收集品 808/810 条有内置链接（图文 804、视频 696；发型类的默认马尾与首领挑战奖励无内置
+- 记录 300 条全部带游戏内类型（记忆棒 186、文档 114）与攻略获取方式；记忆棒 186 条带游戏内选单顺序
+  （重复获取副本并入基础条目）；密码 23 条全部带攻略获取方式。
+- 中文攻略链接：收集品 798/800 条有内置链接（图文 794、视频 686；发型类的默认马尾与首领挑战奖励无内置
   链接，可直接用「搜索图文攻略 / 搜索视频攻略」检索）；链接均为 https 且域名在白名单内。

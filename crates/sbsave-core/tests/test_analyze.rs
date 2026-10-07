@@ -179,9 +179,9 @@ fn album_achievements_count_as_obtained() {
     assert_eq!(characters.obtained_count, 1);
 
     // 图鉴不计入目录进度
-    assert_eq!(result.catalog_total, 810);
+    assert_eq!(result.catalog_total, 800);
     assert_eq!(result.catalog_obtained, 0);
-    assert_eq!(result.missing_total(), 810);
+    assert_eq!(result.missing_total(), 800);
     assert_eq!(result.album_total, 122);
     assert_eq!(result.album_obtained, 2);
     assert_eq!(result.album_missing_total(), 120);

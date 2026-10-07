@@ -65,8 +65,8 @@ spot across playthroughs:
   album entries are unlocked through their achievements.
 - The app reads `NewGamePlusPlayCount` from the save and labels items with
   "Requires NG+" / "Requires NG++".
-- A few entries have low mapping confidence ("Mapping unconfirmed", 69 in total); a category page
-  may also point out that "N obtained aliases are not linked to catalog entries".
+- A few entries have low mapping confidence ("Mapping unconfirmed", 6 in total, all Eidos 9 camps);
+  a category page may also point out that "N obtained aliases are not linked to catalog entries".
 
-The catalog has 932 entries in 15 categories (810 collectibles in 13 categories + 122 album pages);
+The catalog has 922 entries in 15 categories (800 collectibles in 13 categories + 122 album pages);
 see [Data sources & catalog](../reference/data.md) for the alias model and data sources.

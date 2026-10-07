@@ -8776,7 +8776,8 @@
    "name_en": "Curse the Heaven's Royalty!",
    "category": "records",
    "aliases": [
-    "Item_Records_Day1_Memory_09"
+    "Item_Records_Day1_Memory_09",
+    "Item_Records_Day1_Memory_09_1"
    ],
    "area": "Xion",
    "location": "Xion City",
@@ -8787,40 +8788,6 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": "希雍",
-   "location_zh": "希雍城",
-   "obtain_zh": "在下楼梯去姐妹废品店之前，先走上其右侧的楼梯。海报就在右侧楼梯上去的金属卷帘门上。",
-   "record_type": "document_promotions",
-   "record_type_zh": "文档·宣传",
-   "record_type_en": "Documents · Promotions",
-   "guides": {
-    "web": {
-     "title": "游民星空《剑星》全收集攻略·希雍",
-     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
-    },
-    "video": {
-     "title": "B站·喂狗组-文轩 剑星全收集07 全文档篇",
-     "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=84"
-    }
-   }
-  },
-  {
-   "id": "Item_Records_Day1_Memory_09_1",
-   "name": "第一天 记录 09（版本2）",
-   "name_en": "Item_Records_Day1_Memory_09_1",
-   "category": "records",
-   "aliases": [
-    "Item_Records_Day1_Memory_09_1"
-   ],
-   "area": "Xion",
-   "location": "Xion City",
-   "obtain": "Before going down the stairs to Sisters' Junk, head up the stairs to the right of them. The poster is on a metal shutter up the stairs to the right.",
-   "ng_plus": 0,
-   "dlc": null,
-   "missable": false,
-   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
-   "confidence": "low",
-   "source": null,
    "area_zh": "希雍",
    "location_zh": "希雍城",
    "obtain_zh": "在下楼梯去姐妹废品店之前，先走上其右侧的楼梯。海报就在右侧楼梯上去的金属卷帘门上。",
@@ -8844,7 +8811,8 @@
    "name_en": "Funding Announcement: Colony-bound Rocket",
    "category": "records",
    "aliases": [
-    "Item_Records_Day1_Memory_10"
+    "Item_Records_Day1_Memory_10",
+    "Item_Records_Day1_Memory_10_1"
    ],
    "area": "Xion",
    "location": "Xion City",
@@ -8855,40 +8823,6 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": "希雍",
-   "location_zh": "希雍城",
-   "obtain_zh": "从传送点转身180度向前跑，在蓝色工作台右侧的金属卷帘门上。",
-   "record_type": "document_promotions",
-   "record_type_zh": "文档·宣传",
-   "record_type_en": "Documents · Promotions",
-   "guides": {
-    "web": {
-     "title": "游民星空《剑星》全收集攻略·希雍",
-     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
-    },
-    "video": {
-     "title": "B站·喂狗组-文轩 剑星全收集07 全文档篇",
-     "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=84"
-    }
-   }
-  },
-  {
-   "id": "Item_Records_Day1_Memory_10_1",
-   "name": "第一天 记录 10（版本2）",
-   "name_en": "Item_Records_Day1_Memory_10_1",
-   "category": "records",
-   "aliases": [
-    "Item_Records_Day1_Memory_10_1"
-   ],
-   "area": "Xion",
-   "location": "Xion City",
-   "obtain": "From the waypoint, turn 180 degrees and run forward. On a metal shutter, to the right of a blue work desk.",
-   "ng_plus": 0,
-   "dlc": null,
-   "missable": false,
-   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
-   "confidence": "low",
-   "source": null,
    "area_zh": "希雍",
    "location_zh": "希雍城",
    "obtain_zh": "从传送点转身180度向前跑，在蓝色工作台右侧的金属卷帘门上。",
@@ -8912,7 +8846,8 @@
    "name_en": "Angels Are Rigged",
    "category": "records",
    "aliases": [
-    "Item_Records_Day1_Memory_11"
+    "Item_Records_Day1_Memory_11",
+    "Item_Records_Day1_Memory_11_1"
    ],
    "area": "Xion",
    "location": "Xion City",
@@ -8923,40 +8858,6 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": "希雍",
-   "location_zh": "希雍城",
-   "obtain_zh": "在“最后一杯”附近、委托《失踪的丈夫》尸体旁的墙上。",
-   "record_type": "document_promotions",
-   "record_type_zh": "文档·宣传",
-   "record_type_en": "Documents · Promotions",
-   "guides": {
-    "web": {
-     "title": "游民星空《剑星》全收集攻略·希雍",
-     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
-    },
-    "video": {
-     "title": "B站·喂狗组-文轩 剑星全收集07 全文档篇",
-     "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=84"
-    }
-   }
-  },
-  {
-   "id": "Item_Records_Day1_Memory_11_1",
-   "name": "第一天 记录 11（版本2）",
-   "name_en": "Item_Records_Day1_Memory_11_1",
-   "category": "records",
-   "aliases": [
-    "Item_Records_Day1_Memory_11_1"
-   ],
-   "area": "Xion",
-   "location": "Xion City",
-   "obtain": "On the wall by the body for the Missing Husband Request, near The Last Gulp.",
-   "ng_plus": 0,
-   "dlc": null,
-   "missable": false,
-   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
-   "confidence": "low",
-   "source": null,
    "area_zh": "希雍",
    "location_zh": "希雍城",
    "obtain_zh": "在“最后一杯”附近、委托《失踪的丈夫》尸体旁的墙上。",
@@ -8980,7 +8881,8 @@
    "name_en": "Prayer Meeting Guide",
    "category": "records",
    "aliases": [
-    "Item_Records_Day1_Memory_12"
+    "Item_Records_Day1_Memory_12",
+    "Item_Records_Day1_Memory_12_1"
    ],
    "area": "Xion",
    "location": "Xion City",
@@ -8991,40 +8893,6 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": "希雍",
-   "location_zh": "希雍城",
-   "obtain_zh": "从上一个箱子处下楼梯后向右，海报就在右侧的金属卷帘门上。",
-   "record_type": "document_promotions",
-   "record_type_zh": "文档·宣传",
-   "record_type_en": "Documents · Promotions",
-   "guides": {
-    "web": {
-     "title": "游民星空《剑星》全收集攻略·希雍",
-     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
-    },
-    "video": {
-     "title": "B站·喂狗组-文轩 剑星全收集07 全文档篇",
-     "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=84"
-    }
-   }
-  },
-  {
-   "id": "Item_Records_Day1_Memory_12_1",
-   "name": "第一天 记录 12（版本2）",
-   "name_en": "Item_Records_Day1_Memory_12_1",
-   "category": "records",
-   "aliases": [
-    "Item_Records_Day1_Memory_12_1"
-   ],
-   "area": "Xion",
-   "location": "Xion City",
-   "obtain": "From the previous chest, go down the stairs and head right. The poster is on a metal shutter to the right.",
-   "ng_plus": 0,
-   "dlc": null,
-   "missable": false,
-   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
-   "confidence": "low",
-   "source": null,
    "area_zh": "希雍",
    "location_zh": "希雍城",
    "obtain_zh": "从上一个箱子处下楼梯后向右，海报就在右侧的金属卷帘门上。",
@@ -9048,7 +8916,8 @@
    "name_en": "For You Dimwits Still Believing in Mother Sphere",
    "category": "records",
    "aliases": [
-    "Item_Records_Day1_Memory_13"
+    "Item_Records_Day1_Memory_13",
+    "Item_Records_Day1_Memory_13_1"
    ],
    "area": "Xion",
    "location": "Xion City",
@@ -9059,40 +8928,6 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": "希雍",
-   "location_zh": "希雍城",
-   "obtain_zh": "上楼梯到姐妹废品店后左转，围栏旁的角落里还有一张海报。",
-   "record_type": "document_promotions",
-   "record_type_zh": "文档·宣传",
-   "record_type_en": "Documents · Promotions",
-   "guides": {
-    "web": {
-     "title": "游民星空《剑星》全收集攻略·希雍",
-     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
-    },
-    "video": {
-     "title": "B站·喂狗组-文轩 剑星全收集07 全文档篇",
-     "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=84"
-    }
-   }
-  },
-  {
-   "id": "Item_Records_Day1_Memory_13_1",
-   "name": "第一天 记录 13（版本2）",
-   "name_en": "Item_Records_Day1_Memory_13_1",
-   "category": "records",
-   "aliases": [
-    "Item_Records_Day1_Memory_13_1"
-   ],
-   "area": "Xion",
-   "location": "Xion City",
-   "obtain": "After heading up the stairs to Sisters' Junk, take a left and there's another poster there, in the corner near the fence.",
-   "ng_plus": 0,
-   "dlc": null,
-   "missable": false,
-   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
-   "confidence": "low",
-   "source": null,
    "area_zh": "希雍",
    "location_zh": "希雍城",
    "obtain_zh": "上楼梯到姐妹废品店后左转，围栏旁的角落里还有一张海报。",
@@ -9627,7 +9462,8 @@
    "name_en": "Employee 38's Memory",
    "category": "records",
    "aliases": [
-    "Item_Records_ME01_Memory_01"
+    "Item_Records_ME01_Memory_01",
+    "Item_Records_ME01_Memory_01_2"
    ],
    "area": "Matrix 11",
    "location": null,
@@ -9638,41 +9474,6 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": "矩阵11",
-   "location_zh": null,
-   "obtain_zh": "在下一段列车轨道区域，右侧。很难错过。",
-   "record_type": "memorystick",
-   "record_type_zh": "记忆棒",
-   "record_type_en": "Memory Sticks",
-   "order": 72,
-   "guides": {
-    "web": {
-     "title": "游民星空《剑星》全收集攻略·11号矩阵",
-     "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"
-    },
-    "video": {
-     "title": "B站·喂狗组-文轩 剑星全收集08 全记忆棒 前篇",
-     "url": "https://www.bilibili.com/video/BV1WD421A76w?p=68"
-    }
-   }
-  },
-  {
-   "id": "Item_Records_ME01_Memory_01_2",
-   "name": "矩阵11-1 记录 01（版本3）",
-   "name_en": "Item_Records_ME01_Memory_01_2",
-   "category": "records",
-   "aliases": [
-    "Item_Records_ME01_Memory_01_2"
-   ],
-   "area": "Matrix 11",
-   "location": null,
-   "obtain": "In the next train track section, on the right. Hard to miss.",
-   "ng_plus": 0,
-   "dlc": null,
-   "missable": false,
-   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
-   "confidence": "low",
-   "source": null,
    "area_zh": "矩阵11",
    "location_zh": null,
    "obtain_zh": "在下一段列车轨道区域，右侧。很难错过。",
@@ -16433,7 +16234,9 @@
    "name_en": "Xion Freedom Liberation Alliance Flyer",
    "category": "records",
    "aliases": [
-    "Item_Records_Xion_Memory_14"
+    "Item_Records_Xion_Memory_14",
+    "Item_Records_Xion_Memory_14_1",
+    "Item_Records_Xion_Memory_14_4"
    ],
    "area": "Xion",
    "location": "Xion City",
@@ -16444,74 +16247,6 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": "希雍",
-   "location_zh": "希雍城",
-   "obtain_zh": "从姐妹废品店下楼梯后向右（南）走，直到地上出现蒸汽格栅，然后向左。海报就在狭窄小巷的金属卷帘门上。",
-   "record_type": "document_promotions",
-   "record_type_zh": "文档·宣传",
-   "record_type_en": "Documents · Promotions",
-   "guides": {
-    "web": {
-     "title": "游民星空《剑星》全收集攻略·希雍",
-     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
-    },
-    "video": {
-     "title": "B站·喂狗组-文轩 剑星全收集07 全文档篇",
-     "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=84"
-    }
-   }
-  },
-  {
-   "id": "Item_Records_Xion_Memory_14_1",
-   "name": "希雍 记录 14（版本2）",
-   "name_en": "Item_Records_Xion_Memory_14_1",
-   "category": "records",
-   "aliases": [
-    "Item_Records_Xion_Memory_14_1"
-   ],
-   "area": "Xion",
-   "location": "Xion City",
-   "obtain": "Down the stairs from Sisters' Junk, take a right (south) until you reach a steam grate on the floor, and then head left. The poster is on a metal shutter in the thin alleyway.",
-   "ng_plus": 0,
-   "dlc": null,
-   "missable": false,
-   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
-   "confidence": "low",
-   "source": null,
-   "area_zh": "希雍",
-   "location_zh": "希雍城",
-   "obtain_zh": "从姐妹废品店下楼梯后向右（南）走，直到地上出现蒸汽格栅，然后向左。海报就在狭窄小巷的金属卷帘门上。",
-   "record_type": "document_promotions",
-   "record_type_zh": "文档·宣传",
-   "record_type_en": "Documents · Promotions",
-   "guides": {
-    "web": {
-     "title": "游民星空《剑星》全收集攻略·希雍",
-     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
-    },
-    "video": {
-     "title": "B站·喂狗组-文轩 剑星全收集07 全文档篇",
-     "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=84"
-    }
-   }
-  },
-  {
-   "id": "Item_Records_Xion_Memory_14_4",
-   "name": "希雍 记录 14",
-   "name_en": "Item_Records_Xion_Memory_14_4",
-   "category": "records",
-   "aliases": [
-    "Item_Records_Xion_Memory_14_4"
-   ],
-   "area": "Xion",
-   "location": "Xion City",
-   "obtain": "Down the stairs from Sisters' Junk, take a right (south) until you reach a steam grate on the floor, and then head left. The poster is on a metal shutter in the thin alleyway.",
-   "ng_plus": 0,
-   "dlc": null,
-   "missable": false,
-   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
-   "confidence": "low",
-   "source": null,
    "area_zh": "希雍",
    "location_zh": "希雍城",
    "obtain_zh": "从姐妹废品店下楼梯后向右（南）走，直到地上出现蒸汽格栅，然后向左。海报就在狭窄小巷的金属卷帘门上。",
@@ -17150,7 +16885,8 @@
    "name_en": "Attention, Citizens! 1",
    "category": "records",
    "aliases": [
-    "Item_Records_Xion_Memory_33"
+    "Item_Records_Xion_Memory_33",
+    "Item_Records_Xion_Memory_33_2"
    ],
    "area": "Xion",
    "location": "Xion City",
@@ -17161,40 +16897,6 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": "希雍",
-   "location_zh": "希雍城",
-   "obtain_zh": "就在传送点右侧。",
-   "record_type": "document_promotions",
-   "record_type_zh": "文档·宣传",
-   "record_type_en": "Documents · Promotions",
-   "guides": {
-    "web": {
-     "title": "游民星空《剑星》全收集攻略·希雍",
-     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
-    },
-    "video": {
-     "title": "B站·喂狗组-文轩 剑星全收集07 全文档篇",
-     "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=84"
-    }
-   }
-  },
-  {
-   "id": "Item_Records_Xion_Memory_33_2",
-   "name": "希雍 记录 33（版本3）",
-   "name_en": "Item_Records_Xion_Memory_33_2",
-   "category": "records",
-   "aliases": [
-    "Item_Records_Xion_Memory_33_2"
-   ],
-   "area": "Xion",
-   "location": "Xion City",
-   "obtain": "Just to the right of the waypoint.",
-   "ng_plus": 0,
-   "dlc": null,
-   "missable": false,
-   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
-   "confidence": "low",
-   "source": null,
    "area_zh": "希雍",
    "location_zh": "希雍城",
    "obtain_zh": "就在传送点右侧。",
@@ -17218,7 +16920,8 @@
    "name_en": "Attention, Citizens! 2",
    "category": "records",
    "aliases": [
-    "Item_Records_Xion_Memory_34"
+    "Item_Records_Xion_Memory_34",
+    "Item_Records_Xion_Memory_34_2"
    ],
    "area": "Xion",
    "location": "Xion City",
@@ -17229,40 +16932,6 @@
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
-   "area_zh": "希雍",
-   "location_zh": "希雍城",
-   "obtain_zh": "在谒见厅外亚当和莉莉与你分别处的传送点向左几步。",
-   "record_type": "document_promotions",
-   "record_type_zh": "文档·宣传",
-   "record_type_en": "Documents · Promotions",
-   "guides": {
-    "web": {
-     "title": "游民星空《剑星》全收集攻略·希雍",
-     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
-    },
-    "video": {
-     "title": "B站·喂狗组-文轩 剑星全收集07 全文档篇",
-     "url": "https://www.bilibili.com/video/BV1wD421P7BD?p=84"
-    }
-   }
-  },
-  {
-   "id": "Item_Records_Xion_Memory_34_2",
-   "name": "希雍 记录 34（版本3）",
-   "name_en": "Item_Records_Xion_Memory_34_2",
-   "category": "records",
-   "aliases": [
-    "Item_Records_Xion_Memory_34_2"
-   ],
-   "area": "Xion",
-   "location": "Xion City",
-   "obtain": "A few steps left of the waypoint near where Adam and Lily parted ways with you outside of the Presence Chamber.",
-   "ng_plus": 0,
-   "dlc": null,
-   "missable": false,
-   "note": "按内部 ID 生成名称；区域/地点与获取方式继承基础条目",
-   "confidence": "low",
-   "source": null,
    "area_zh": "希雍",
    "location_zh": "希雍城",
    "obtain_zh": "在谒见厅外亚当和莉莉与你分别处的传送点向左几步。",
@@ -18778,8 +18447,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_ATL_01_EnvS_009_Camp",
-   "name": "阿尔忒斯勒瓦尔 营地 #9",
-   "name_en": "ChangeState_ZoneEnv_ATL_01_EnvS_009_Camp",
+   "name": "走廊",
+   "name_en": "Hallway",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_ATL_01_EnvS_009_Camp"
@@ -18790,9 +18459,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "在卢瓦高层漫长的胶囊走廊之后。击败第一只感染体后继续沿走廊前进，营地就在左侧。",
@@ -18808,8 +18477,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_ATL_01_EnvS_075_Camp",
-   "name": "阿尔忒斯勒瓦尔 营地 #75",
-   "name_en": "ChangeState_ZoneEnv_ATL_01_EnvS_075_Camp",
+   "name": "通向标本留存实验室的路",
+   "name_en": "Path to the Specimen Preservation Lab",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_ATL_01_EnvS_075_Camp"
@@ -18820,9 +18489,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "在需要按正确符号顺序跳跃的平台课程之后的走廊里。",
@@ -18838,8 +18507,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_ATL_02_EnvS_031_Camp",
-   "name": "阿尔忒斯勒瓦尔 营地 #31",
-   "name_en": "ChangeState_ZoneEnv_ATL_02_EnvS_031_Camp",
+   "name": "绝密科研中心",
+   "name_en": "Top-Secret Research Complex",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_ATL_02_EnvS_031_Camp"
@@ -18850,9 +18519,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "位于绝密科研中心区域的入口处，就在解完激光谜题、乘电梯从标本留存实验室下来之后。",
@@ -18868,8 +18537,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_ATL_03_EnvS_001_Camp",
-   "name": "阿尔忒斯勒瓦尔 营地 #1",
-   "name_en": "ChangeState_ZoneEnv_ATL_03_EnvS_001_Camp",
+   "name": "破败大厅",
+   "name_en": "Deteriorated Lobby",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_ATL_03_EnvS_001_Camp"
@@ -18880,9 +18549,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "位于破败大厅二楼，需先在一楼通过激光战斗才能进入。出电梯后营地就在正前方。",
@@ -18898,8 +18567,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_ATL_03_EnvS_005_Camp",
-   "name": "阿尔忒斯勒瓦尔 营地 #5",
-   "name_en": "ChangeState_ZoneEnv_ATL_03_EnvS_005_Camp",
+   "name": "侵染中央底部",
+   "name_en": "Bottom of the Heart of the Infection",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_ATL_03_EnvS_005_Camp"
@@ -18910,9 +18579,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "位于与玛尔斯特罗姆战斗前到达的区域。离开通风管道后爬进满是变异触须的大房间，营地就在右侧。",
@@ -18928,8 +18597,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_AYL_01_EnvS_005_Camp",
-   "name": "深渊勒瓦尔 营地 #5",
-   "name_en": "ChangeState_ZoneEnv_AYL_01_EnvS_005_Camp",
+   "name": "关闭的大厅",
+   "name_en": "Closed Lobby",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_AYL_01_EnvS_005_Camp"
@@ -18940,9 +18609,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "在紧急出口区域通风管道尽头击败蜂巢后找到。绕到原本挂着蜂巢的位置后方，向右看即可看到营地。",
@@ -18958,8 +18627,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_AYL_01_EnvS_021_Camp",
-   "name": "深渊勒瓦尔 营地 #21",
-   "name_en": "ChangeState_ZoneEnv_AYL_01_EnvS_021_Camp",
+   "name": "通风区域",
+   "name_en": "Ventilation Sector",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_AYL_01_EnvS_021_Camp"
@@ -18970,9 +18639,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "位于卢瓦底层的紧急出口区域。离开电梯后走下第一段楼梯，穿过一扇门即可直接到达补给营地。",
@@ -18988,8 +18657,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_AYL_03_EnvS_001_Camp",
-   "name": "深渊勒瓦尔 营地 #1",
-   "name_en": "ChangeState_ZoneEnv_AYL_03_EnvS_001_Camp",
+   "name": "胶囊堆放室",
+   "name_en": "Capsule Cluster Room",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_AYL_03_EnvS_001_Camp"
@@ -19000,9 +18669,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "走到胶囊堆放室隧道尽头后，会进入一条走廊，营地就在左侧。",
@@ -19018,8 +18687,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_AYL_04_EnvS_001_Camp",
-   "name": "深渊勒瓦尔 营地 #1",
-   "name_en": "ChangeState_ZoneEnv_AYL_04_EnvS_001_Camp",
+   "name": "地下通道",
+   "name_en": "Underground Passage",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_AYL_04_EnvS_001_Camp"
@@ -19030,9 +18699,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "在控制室打开前进道路、逃离胶囊堆放室隧道后，营地就在左侧一段楼梯上方。",
@@ -19048,8 +18717,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_AYL_04_EnvS_005_Camp",
-   "name": "深渊勒瓦尔 营地 #5",
-   "name_en": "ChangeState_ZoneEnv_AYL_04_EnvS_005_Camp",
+   "name": "反应堆室",
+   "name_en": "Reactor Chamber",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_AYL_04_EnvS_005_Camp"
@@ -19060,9 +18729,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "打开地下通道区域的上锁大门后找到。击败上锁大门后的变异敌群，进入一间俯瞰另一个大厅的岗亭，营地就在左侧。",
@@ -19078,8 +18747,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_AYL_05_EnvS_001_Camp",
-   "name": "深渊勒瓦尔 营地 #1",
-   "name_en": "ChangeState_ZoneEnv_AYL_05_EnvS_001_Camp",
+   "name": "实验室废墟",
+   "name_en": "Laboratory Ruins",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_AYL_05_EnvS_001_Camp"
@@ -19090,9 +18759,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "位于实验室废墟区域入口处。进入废墟前会走过一条长满藤蔓与绿植的长廊，营地就在该房间右侧。",
@@ -19108,8 +18777,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_AYL_06_EnvS_001_Camp",
-   "name": "深渊勒瓦尔 营地 #1",
-   "name_en": "ChangeState_ZoneEnv_AYL_06_EnvS_001_Camp",
+   "name": "侵蚀中央",
+   "name_en": "Heart of the Contamination",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_AYL_06_EnvS_001_Camp"
@@ -19120,9 +18789,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "位于侵蚀中央区域。就在进入玛尔斯特罗姆首领房间之前，补给营地位于入口右侧。",
@@ -19138,8 +18807,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_DED10_EnvS_084_Camp",
-   "name": "大沙漠1 营地 #84",
-   "name_en": "ChangeState_ZoneEnv_DED10_EnvS_084_Camp",
+   "name": "立体停车场二楼",
+   "name_en": "Parking Tower 2nd Floor",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_DED10_EnvS_084_Camp"
@@ -19150,9 +18819,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "在立体停车场的二楼。这里是一段过场动画的一部分，不会错过。",
@@ -19168,8 +18837,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_DED10_EnvS_090_Camp",
-   "name": "大沙漠1 营地 #90",
-   "name_en": "ChangeState_ZoneEnv_DED10_EnvS_090_Camp",
+   "name": "立体停车场楼顶",
+   "name_en": "Parking Tower Rooftop",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_DED10_EnvS_090_Camp"
@@ -19180,9 +18849,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "在立体停车场楼顶的角落里。",
@@ -19198,8 +18867,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_DED10_EnvS_096_Camp",
-   "name": "大沙漠1 营地 #96",
-   "name_en": "ChangeState_ZoneEnv_DED10_EnvS_096_Camp",
+   "name": "荒废的车站",
+   "name_en": "Abandoned Station",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_DED10_EnvS_096_Camp"
@@ -19210,9 +18879,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "探索荒废车站时会沿电梯井中的绳索滑上来，从电梯井跳出的正前方就是荒废车站补给营地。",
@@ -19228,8 +18897,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_DED10_EnvS_100_Camp",
-   "name": "大沙漠1 营地 #100",
-   "name_en": "ChangeState_ZoneEnv_DED10_EnvS_100_Camp",
+   "name": "女神雕像下的巷子",
+   "name_en": "Alleyway beneath the Goddess Statue",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_DED10_EnvS_100_Camp"
@@ -19240,9 +18909,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "离开立体停车场时用两个聚变电池打开卷帘门，对面雕像下方就是营地。",
@@ -19258,8 +18927,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_DED10_EnvS_109_Camp",
-   "name": "大沙漠1 营地 #109",
-   "name_en": "ChangeState_ZoneEnv_DED10_EnvS_109_Camp",
+   "name": "闹市区",
+   "name_en": "Downtown",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_DED10_EnvS_109_Camp"
@@ -19270,9 +18939,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "从水中爬上梯子，营地就在正前方。",
@@ -19288,8 +18957,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_DED10_EnvS_113_Camp",
-   "name": "大沙漠1 营地 #113",
-   "name_en": "ChangeState_ZoneEnv_DED10_EnvS_113_Camp",
+   "name": "立体停车场出口",
+   "name_en": "Parking Tower Exit",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_DED10_EnvS_113_Camp"
@@ -19300,9 +18969,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "立体停车场出口处的营地，位于停车场内离开雕像塔、前往雕像巷的路上（攻略未单独列出）。",
@@ -19318,8 +18987,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_DED20_EnvS_103_Camp",
-   "name": "大沙漠2 营地 #103",
-   "name_en": "ChangeState_ZoneEnv_DED20_EnvS_103_Camp",
+   "name": "商业区",
+   "name_en": "Commercial Sector",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_DED20_EnvS_103_Camp"
@@ -19330,9 +18999,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "乘单轨列车到达淹水商业区后，下楼梯离开车站，出口正对面就是淹水商业区营地。",
@@ -19348,8 +19017,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_DED20_EnvS_107_Camp",
-   "name": "大沙漠2 营地 #107",
-   "name_en": "ChangeState_ZoneEnv_DED20_EnvS_107_Camp",
+   "name": "广场入口",
+   "name_en": "Plaza Entryway",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_DED20_EnvS_107_Camp"
@@ -19360,9 +19029,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "主线剧情中用密码进入淹水商业区的广场后，向右看即可看到广场入口补给营地。",
@@ -19378,8 +19047,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_DED20_EnvS_113_Camp",
-   "name": "大沙漠2 营地 #113",
-   "name_en": "ChangeState_ZoneEnv_DED20_EnvS_113_Camp",
+   "name": "记忆之塔",
+   "name_en": "Memory Tower",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_DED20_EnvS_113_Camp"
@@ -19390,9 +19059,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "位于淹水商业区通往胜利纪念碑的路上。从有巨大钟楼的区域穿过上锁的门，来到一处俯瞰胜利纪念碑的小区域，下到该区域的最低点即可找到营地。",
@@ -19408,8 +19077,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_DED20_EnvS_117_Camp",
-   "name": "大沙漠2 营地 #117",
-   "name_en": "ChangeState_ZoneEnv_DED20_EnvS_117_Camp",
+   "name": "垮塌的高架桥",
+   "name_en": "Fallen Overpass",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_DED20_EnvS_117_Camp"
@@ -19420,9 +19089,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "击败腐蚀者首领后，穿过小巷来到有梯子通往上方高架路的区域。爬上梯子到达顶部后向右看，即可发现营地。",
@@ -19438,8 +19107,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_DED20_EnvS_121_Camp",
-   "name": "大沙漠2 营地 #121",
-   "name_en": "ChangeState_ZoneEnv_DED20_EnvS_121_Camp",
+   "name": "工地",
+   "name_en": "Construction Zone",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_DED20_EnvS_121_Camp"
@@ -19450,9 +19119,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "位于施工区中央，与你落入区域同一层，在前两个收集品上方（两者之间）。",
@@ -19468,8 +19137,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_DED20_EnvS_127_Camp",
-   "name": "大沙漠2 营地 #127",
-   "name_en": "ChangeState_ZoneEnv_DED20_EnvS_127_Camp",
+   "name": "城市地下区域入口",
+   "name_en": "City Underground Sector Entrance",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_DED20_EnvS_127_Camp"
@@ -19480,9 +19149,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "走过钢梁后，穿过左侧的门即可找到营地。",
@@ -19498,8 +19167,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_DED30_EnvS_026_Camp",
-   "name": "大沙漠3 营地 #26",
-   "name_en": "ChangeState_ZoneEnv_DED30_EnvS_026_Camp",
+   "name": "排水系统",
+   "name_en": "Sewer",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_DED30_EnvS_026_Camp"
@@ -19510,9 +19179,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "沿绳索爬回去，沿隧道向左走，再向右转即可找到营地。",
@@ -19528,8 +19197,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_DED30_EnvS_030_Camp",
-   "name": "大沙漠3 营地 #30",
-   "name_en": "ChangeState_ZoneEnv_DED30_EnvS_030_Camp",
+   "name": "环形山",
+   "name_en": "Crater",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_DED30_EnvS_030_Camp"
@@ -19540,9 +19209,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "进入环形山区域后向右爬上岩石即可看到，很难错过。",
@@ -19738,8 +19407,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_ME_01_EnvS_017_Camp",
-   "name": "矩阵11-1 营地 #17",
-   "name_en": "ChangeState_ZoneEnv_ME_01_EnvS_017_Camp",
+   "name": "隐蔽所",
+   "name_en": "Hideout",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_ME_01_EnvS_017_Camp"
@@ -19750,9 +19419,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "探索11号矩阵的封闭站台时找到。沿该区域主路击败骷髅狂战士后下到一间工坊，进入后正前方就是营地。",
@@ -19768,8 +19437,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_ME_01_EnvS_018_Camp",
-   "name": "矩阵11-1 营地 #18",
-   "name_en": "ChangeState_ZoneEnv_ME_01_EnvS_018_Camp",
+   "name": "6829号地下区域",
+   "name_en": "Underground Sector 6829",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_ME_01_EnvS_018_Camp"
@@ -19780,9 +19449,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "使用聚变电池离开垃圾填埋场后，会来到一条长长的地铁隧道。沿隧道前进直到看见前方长桥，进入该区域时营地就在左侧。",
@@ -19798,8 +19467,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_ME_03_EnvS_005_Camp",
-   "name": "矩阵11-3 营地 #5",
-   "name_en": "ChangeState_ZoneEnv_ME_03_EnvS_005_Camp",
+   "name": "变形的铁桥",
+   "name_en": "Twisted Iron Bridge",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_ME_03_EnvS_005_Camp"
@@ -19810,9 +19479,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "到达铁桥前半段顶部并打开前方卷帘门后，左侧就是补给营地。",
@@ -19828,8 +19497,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_ME_03_EnvS_015_Camp",
-   "name": "矩阵11-3 营地 #15",
-   "name_en": "ChangeState_ZoneEnv_ME_03_EnvS_015_Camp",
+   "name": "车辆段",
+   "name_en": "Rail Yard",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_ME_03_EnvS_015_Camp"
@@ -19840,9 +19509,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "位于11号矩阵的调车场。这座营地不会错过——伊芙会在过场动画中自动激活并在此休息。",
@@ -19858,8 +19527,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_ME_03_EnvS_023_Camp",
-   "name": "矩阵11-3 营地 #23",
-   "name_en": "ChangeState_ZoneEnv_ME_03_EnvS_023_Camp",
+   "name": "车辆段入口",
+   "name_en": "Rail Yard Entrance",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_ME_03_EnvS_023_Camp"
@@ -19870,9 +19539,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "从桥上下来进入下方隧道后，在穿过破损地铁车厢的长坡道左侧可以看到一家药店，进入药店即可找到营地。",
@@ -19888,8 +19557,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_ME_04_EnvS_008_Camp",
-   "name": "矩阵11-4 营地 #8",
-   "name_en": "ChangeState_ZoneEnv_ME_04_EnvS_008_Camp",
+   "name": "地下排水系统入口",
+   "name_en": "Underground Sewer Entrance",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_ME_04_EnvS_008_Camp"
@@ -19900,9 +19569,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "绕过11号矩阵地下排水系统的第一个区域，来到腐化迷宫入口附近。就在进入腐化迷宫的门前，营地就在通往该区域的门内。",
@@ -19918,8 +19587,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_ME_04_EnvS_009_Camp",
-   "name": "矩阵11-4 营地 #9",
-   "name_en": "ChangeState_ZoneEnv_ME_04_EnvS_009_Camp",
+   "name": "地下庇护圣所",
+   "name_en": "Underground Sanctuary",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_ME_04_EnvS_009_Camp"
@@ -19930,9 +19599,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "进入腐化迷宫中第一道聚变电池门后的废弃幸存者藏身处，上到二楼即可看到左侧的营地。",
@@ -19948,8 +19617,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_ME_05_EnvS_003_Camp",
-   "name": "矩阵11-5 营地 #3",
-   "name_en": "ChangeState_ZoneEnv_ME_05_EnvS_003_Camp",
+   "name": "临时军械库入口",
+   "name_en": "Temporary Armory Entrance",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_ME_05_EnvS_003_Camp"
@@ -19960,9 +19629,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "位于11号矩阵腐化迷宫区域的尽头。完成该区域结尾的电梯战斗后，会来到一个带补给营地的小区域。",
@@ -19978,8 +19647,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_ME_05_EnvS_030_Camp",
-   "name": "矩阵11-5 营地 #30",
-   "name_en": "ChangeState_ZoneEnv_ME_05_EnvS_030_Camp",
+   "name": "临时军械库",
+   "name_en": "Temporary Armory",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_ME_05_EnvS_030_Camp"
@@ -19990,9 +19659,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "在临时军械库补给营地正后方的房间。击败房间里的主宰首领后，前往后方左角二楼的出口，在需要穿过离开的卷帘门旁即可找到营地。",
@@ -20008,8 +19677,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_ME_06_EnvS_001_Camp",
-   "name": "矩阵11-6 营地 #1",
-   "name_en": "ChangeState_ZoneEnv_ME_06_EnvS_001_Camp",
+   "name": "污水净化厂入口",
+   "name_en": "Contaminated Water Purification Plant Entrance",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_ME_06_EnvS_001_Camp"
@@ -20020,9 +19689,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "就在与第二只阿尔法孽奇拔首领战斗之前。这座营地不会错过——伊芙会在过场动画中激活它。",
@@ -20038,8 +19707,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_ME_06_EnvS_010_Camp",
-   "name": "矩阵11-6 营地 #10",
-   "name_en": "ChangeState_ZoneEnv_ME_06_EnvS_010_Camp",
+   "name": "底层",
+   "name_en": "Abyss",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_ME_06_EnvS_010_Camp"
@@ -20050,9 +19719,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "使用密码离开列车墓地后找到。穿过出口会来到一条带楼梯的走道，进入该房间时向左看即可找到营地。",
@@ -20068,8 +19737,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_Nest_10_EnvS_002_Camp",
-   "name": "巢穴 营地 #2",
-   "name_en": "ChangeState_ZoneEnv_Nest_10_EnvS_002_Camp",
+   "name": "巢窝",
+   "name_en": "Nest",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_Nest_10_EnvS_002_Camp"
@@ -20080,9 +19749,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "沿巢穴主路前进，在与上古孽奇拔相遇前会找到最后一座补给营地。",
@@ -20098,8 +19767,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_SE_01_EnvS_011_Camp",
-   "name": "尖塔4(推测) 营地 #11",
-   "name_en": "ChangeState_ZoneEnv_SE_01_EnvS_011_Camp",
+   "name": "上拉斐尔大坝",
+   "name_en": "Upper Raphael Dam",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_SE_01_EnvS_011_Camp"
@@ -20110,9 +19779,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "到达虎鲸太空中心后，需要找到前往中央核心的路。途中需关闭水闸进入水坝；爬上通往水坝控制闸门的梯子，到达顶部时营地就在梯子右侧。",
@@ -20128,8 +19797,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_SE_02_EnvS_010_Camp",
-   "name": "尖塔4(推测) 营地 #10",
-   "name_en": "ChangeState_ZoneEnv_SE_02_EnvS_010_Camp",
+   "name": "超级管道入口",
+   "name_en": "Hypertube Entrance",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_SE_02_EnvS_010_Camp"
@@ -20140,9 +19809,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "进入超级管道前，入口旁就是补给营地。",
@@ -20158,8 +19827,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_SE_05_EnvS_011_Camp",
-   "name": "尖塔4(推测) 营地 #11",
-   "name_en": "ChangeState_ZoneEnv_SE_05_EnvS_011_Camp",
+   "name": "太空物流中心入口",
+   "name_en": "Space Logistics Complex Entrance",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_SE_05_EnvS_011_Camp"
@@ -20170,9 +19839,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "在超级管道中被神秘孽奇拔袭击后会来到一个新园区。战斗结束后爬上远处的楼梯，到达顶部即可找到太空物流中心入口补给营地。",
@@ -20188,8 +19857,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_SE_05_EnvS_014_Camp",
-   "name": "尖塔4(推测) 营地 #14",
-   "name_en": "ChangeState_ZoneEnv_SE_05_EnvS_014_Camp",
+   "name": "太空物流中心",
+   "name_en": "Space Logistics Center",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_SE_05_EnvS_014_Camp"
@@ -20200,9 +19869,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "在太空物流中心的补给线上前进后，继续主线前会看到一座补给营地。",
@@ -20218,8 +19887,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_SE_05_EnvS_017_Camp",
-   "name": "尖塔4(推测) 营地 #17",
-   "name_en": "ChangeState_ZoneEnv_SE_05_EnvS_017_Camp",
+   "name": "拉斐尔太空中心停车区域",
+   "name_en": "Raphael Space Center Parking Lot",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_SE_05_EnvS_017_Camp"
@@ -20230,9 +19899,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "离开太空物流中心后会来到拉斐尔太空中心前。沿绳索跳下时，左侧半毁的墙边有一座小营地。",
@@ -20248,8 +19917,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_SE_05_EnvS_042_Camp",
-   "name": "尖塔4(推测) 营地 #42",
-   "name_en": "ChangeState_ZoneEnv_SE_05_EnvS_042_Camp",
+   "name": "太空物流转运区",
+   "name_en": "Space Logistics Conveyor",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_SE_05_EnvS_042_Camp"
@@ -20260,9 +19929,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "在伊芙躲开坠落的集装箱后，朝设施方向爬上平台，向左看即可找到一座小营地；需要跳上移动的集装箱再跳过去才能到达。",
@@ -20278,8 +19947,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_SE_06_EnvS_002_Camp",
-   "name": "尖塔4(推测) 营地 #2",
-   "name_en": "ChangeState_ZoneEnv_SE_06_EnvS_002_Camp",
+   "name": "拉斐尔太空中心大厅",
+   "name_en": "Raphael Space Center Lobby",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_SE_06_EnvS_002_Camp"
@@ -20290,9 +19959,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "恢复拉斐尔太空中心供电后，穿过已解锁的大门来到另一片开阔区域。击败附近巡逻的孽奇拔，即可在该区域后方右角找到拉斐尔太空中心大厅补给营地，位置有些隐蔽。",
@@ -20308,8 +19977,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_SE_06_EnvS_008_Camp",
-   "name": "尖塔4(推测) 营地 #8",
-   "name_en": "ChangeState_ZoneEnv_SE_06_EnvS_008_Camp",
+   "name": "拉斐尔太空中心入口",
+   "name_en": "Raphael Space Center Entrance",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_SE_06_EnvS_008_Camp"
@@ -20320,9 +19989,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "进入拉斐尔太空中心后继续向前，很快会在走廊尽头遇到一座小营地，之后继续深入中心。",
@@ -20338,8 +20007,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_SE_07_EnvS_033_Camp",
-   "name": "尖塔4(推测) 营地 #33",
-   "name_en": "ChangeState_ZoneEnv_SE_07_EnvS_033_Camp",
+   "name": "121号货用升降装置",
+   "name_en": "Cargo Lift 121",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_SE_07_EnvS_033_Camp"
@@ -20350,9 +20019,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "进入货用升降装置后，沿墙藏在左侧的就是一座小营地。",
@@ -20368,8 +20037,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_SE_07_EnvS_036_Camp",
-   "name": "尖塔4(推测) 营地 #36",
-   "name_en": "ChangeState_ZoneEnv_SE_07_EnvS_036_Camp",
+   "name": "外墙维护通道",
+   "name_en": "Outer Wall Maintenance Channel",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_SE_07_EnvS_036_Camp"
@@ -20380,9 +20049,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "进入维护区后击败巡逻的孽奇拔，跳过远处的缺口，另一侧右侧有一座小营地。此处就在继续主线所需飞墙走壁之前。",
@@ -20398,8 +20067,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_SE_08_EnvS_019_Camp",
-   "name": "尖塔4(推测) 营地 #19",
-   "name_en": "ChangeState_ZoneEnv_SE_08_EnvS_019_Camp",
+   "name": "贵宾区",
+   "name_en": "Prestige Lounge",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_SE_08_EnvS_019_Camp"
@@ -20410,9 +20079,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "到达贵宾区时会遇到贵宾区补给营地。这座营地属于主线剧情，不会错过。",
@@ -20428,8 +20097,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_SE_08_EnvS_043_Camp",
-   "name": "尖塔4(推测) 营地 #43",
-   "name_en": "ChangeState_ZoneEnv_SE_08_EnvS_043_Camp",
+   "name": "161号客用升降装置",
+   "name_en": "Passenger Lift 161",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_SE_08_EnvS_043_Camp"
@@ -20440,9 +20109,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "进入客用升降装置后，营地就在正左侧。",
@@ -20458,8 +20127,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_SE_09_EnvS_001_Camp",
-   "name": "尖塔4(推测) 营地 #1",
-   "name_en": "ChangeState_ZoneEnv_SE_09_EnvS_001_Camp",
+   "name": "中央核心入口",
+   "name_en": "Central Core Entrance",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_SE_09_EnvS_001_Camp"
@@ -20470,9 +20139,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "到达高轨道空间站后，爬上损坏的电梯井，中央核心入口补给营地就在右侧。",
@@ -20638,8 +20307,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_WLA_10_EnvS_154_Camp",
-   "name": "废土A 营地 #154",
-   "name_en": "ChangeState_ZoneEnv_WLA_10_EnvS_154_Camp",
+   "name": "隐秘峡谷",
+   "name_en": "Hidden Canyon",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_WLA_10_EnvS_154_Camp"
@@ -20650,9 +20319,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "回到地面准备与上古孽奇拔战斗时，看到渡鸦的留言后，营地就在左侧。",
@@ -21088,8 +20757,8 @@
   },
   {
    "id": "ChangeState_ZoneEnv_WLB_20_EnvS_025_Camp",
-   "name": "废土B 营地 #25",
-   "name_en": "ChangeState_ZoneEnv_WLB_20_EnvS_025_Camp",
+   "name": "11号矩阵入口",
+   "name_en": "Matrix 11 Entrance",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_WLB_20_EnvS_025_Camp"
@@ -21100,9 +20769,9 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": false,
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "前往11号矩阵的主线途中自动激活；位于大沙漠一侧的11号矩阵入口。",

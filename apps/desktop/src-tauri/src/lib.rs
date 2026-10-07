@@ -398,7 +398,7 @@ mod tests {
             return;
         };
         let value = analyze_save(Some(path), None, None, None).expect("analyze");
-        assert_eq!(value["summary"]["catalog_total"].as_u64(), Some(810));
+        assert_eq!(value["summary"]["catalog_total"].as_u64(), Some(800));
         assert_eq!(value["summary"]["album_total"].as_u64(), Some(122));
         assert!(value["categories"]
             .as_array()
@@ -409,7 +409,7 @@ mod tests {
     fn guide_links_returns_chinese_guides() {
         let links = guide_links(None).expect("guide links");
         let links = links.as_object().expect("object");
-        assert_eq!(links.len(), 808);
+        assert_eq!(links.len(), 798);
         let can = links.get("Can_001").expect("can guide");
         assert!(can["web"]["url"]
             .as_str()
