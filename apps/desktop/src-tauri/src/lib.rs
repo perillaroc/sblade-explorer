@@ -475,6 +475,37 @@ mod tests {
     }
 
     #[test]
+    fn csp_locks_down_remote_content_and_allows_ipc() {
+        let manifest_dir = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+        let config: serde_json::Value = serde_json::from_str(
+            &std::fs::read_to_string(manifest_dir.join("tauri.conf.json")).expect("read config"),
+        )
+        .expect("parse config");
+        let csp = config["app"]["security"]["csp"]
+            .as_str()
+            .expect("csp 必须是字符串：release 构建依赖该策略");
+        for directive in [
+            "default-src 'self'",
+            "script-src 'self'",
+            "style-src 'self'",
+            "img-src 'self' data:",
+            "connect-src 'self' ipc: http://ipc.localhost",
+            "object-src 'none'",
+            "base-uri 'self'",
+            "frame-ancestors 'none'",
+            "form-action 'none'",
+        ] {
+            assert!(
+                csp.contains(directive),
+                "CSP 缺少指令: {directive}（当前: {csp}）"
+            );
+        }
+        // 前端产物没有内联脚本/样式，`:style` 走 CSSOM；生产包无 eval/new Function。
+        assert!(!csp.contains("'unsafe-inline'"), "不应放行内联样式: {csp}");
+        assert!(!csp.contains("'unsafe-eval'"), "不应放行 eval: {csp}");
+    }
+
+    #[test]
     fn export_report_writes_markdown() {
         let Some(path) = first_save_path() else {
             return;

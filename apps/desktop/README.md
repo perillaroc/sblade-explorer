@@ -34,6 +34,28 @@ pnpm tauri build --no-bundle   # 只出便携版 exe：target/release/sblade-exp
 pnpm tauri build               # NSIS/MSI 安装包：target/release/bundle/{nsis,msi}/
 ```
 
+## 安全（CSP）
+
+`tauri.conf.json` 的 `app.security.csp` 限制 WebView 可加载的资源。该策略只在 release/便携版生效
+（由自定义协议响应头下发；`pnpm tauri dev` 直接加载 Vite 服务器，不套用策略），当前为：
+
+```text
+default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' ipc: http://ipc.localhost; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'none'
+```
+
+盘点依据（改动前端依赖或构建配置前请重新核对）：
+
+- Vite 产物：`dist/index.html` 只引用外部 JS/CSS，无内联脚本/样式；生产包无 `eval`/`new Function`
+  （不需要 `'unsafe-eval'`），Vue `:style` 走 CSSOM（不需要 `style-src 'unsafe-inline'`）；
+- Tailwind CSS v4：生产构建输出到同一个外部 CSS 文件；dev 模式 Vite 会注入 `<style>`，但该模式不套用 CSP；
+- Lucide 图标：`@lucide/vue` 打包为内联 SVG 组件；应用图标 `app-icon.svg` 被 Vite 内联为 `data:` URL，
+  因此 `img-src` 需放行 `data:`；
+- 截图与字体：界面不展示远程截图（攻略链接经 opener 插件交给系统浏览器），无 `@font-face`，只用系统字体栈；
+- IPC：`@tauri-apps/api` 向 `http://ipc.localhost`（其他平台为 `ipc:`）发请求，`connect-src` 需放行这两个来源。
+
+哨兵：`src-tauri/src/lib.rs` 的 `csp_locks_down_remote_content_and_allows_ipc` 校验上述指令齐全、
+且未放行 `'unsafe-inline'`/`'unsafe-eval'`。
+
 ## 相关文档
 
 - 开发环境、CI 与发布、布局不变量：[../../docs/development/index.md](../../docs/development/index.md)
