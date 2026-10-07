@@ -276,6 +276,45 @@ struct AreaGuides {
     record_types: HashMap<String, GuideSet>,
 }
 
+/// `data/raw/missable.json`: hand maintained list of entries that can be lost
+/// permanently in a playthrough (region locks, optional areas, quest rewards).
+#[derive(Debug, Default, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct MissableFile {
+    #[serde(default)]
+    #[allow(dead_code)]
+    version: i64,
+    #[serde(default)]
+    #[allow(dead_code)]
+    generated_by: String,
+    #[serde(default)]
+    #[allow(dead_code)]
+    note: String,
+    #[serde(default)]
+    #[allow(dead_code)]
+    sources: Vec<String>,
+    #[serde(default)]
+    groups: Vec<MissableGroup>,
+}
+
+#[derive(Debug, Default, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct MissableGroup {
+    key: String,
+    #[serde(default)]
+    #[allow(dead_code)]
+    note: String,
+    #[serde(default)]
+    #[allow(dead_code)]
+    source: String,
+    #[serde(default)]
+    areas: Vec<String>,
+    #[serde(default)]
+    camp_zones: Vec<String>,
+    #[serde(default)]
+    ids: Vec<String>,
+}
+
 #[derive(Serialize)]
 struct CatalogItem {
     id: String,
@@ -1903,6 +1942,68 @@ fn load_guides(root: &Path) -> Result<GuidesFile, String> {
     serde_json::from_str(&text).map_err(|error| format!("解析 {} 失败: {error}", path.display()))
 }
 
+fn load_missable(root: &Path) -> Result<MissableFile, String> {
+    let path = root.join("data/raw/missable.json");
+    let text = std::fs::read_to_string(&path)
+        .map_err(|error| format!("读取 {} 失败: {error}", path.display()))?;
+    serde_json::from_str(&text).map_err(|error| format!("解析 {} 失败: {error}", path.display()))
+}
+
+/// Marks entries listed in `data/raw/missable.json`. Selectors (`areas`,
+/// `camp_zones`) and explicit `ids` are validated so typos fail the build.
+fn apply_missable(items: &mut [CatalogItem], missable: &MissableFile) -> Result<(), String> {
+    let mut marked: BTreeSet<String> = BTreeSet::new();
+    for group in &missable.groups {
+        for area in &group.areas {
+            let hits: Vec<&str> = items
+                .iter()
+                .filter(|item| item.area.as_deref() == Some(area.as_str()))
+                .map(|item| item.id.as_str())
+                .collect();
+            if hits.is_empty() {
+                return Err(format!(
+                    "missable.json 的 {} 未匹配到区域: {area}",
+                    group.key
+                ));
+            }
+            marked.extend(hits.into_iter().map(str::to_string));
+        }
+        for zone in &group.camp_zones {
+            let prefix = format!("ChangeState_ZoneEnv_{zone}_");
+            let hits: Vec<&str> = items
+                .iter()
+                .filter(|item| item.category == "camps" && item.id.starts_with(&prefix))
+                .map(|item| item.id.as_str())
+                .collect();
+            if hits.is_empty() {
+                return Err(format!(
+                    "missable.json 的 {} 未匹配到营地: {zone}",
+                    group.key
+                ));
+            }
+            marked.extend(hits.into_iter().map(str::to_string));
+        }
+        for id in &group.ids {
+            if !items.iter().any(|item| item.id == *id) {
+                return Err(format!(
+                    "missable.json 的 {} 指向不存在的条目: {id}",
+                    group.key
+                ));
+            }
+            marked.insert(id.clone());
+        }
+        if group.areas.is_empty() && group.camp_zones.is_empty() && group.ids.is_empty() {
+            return Err(format!("missable.json 的 {} 没有任何选择器", group.key));
+        }
+    }
+    for item in items.iter_mut() {
+        if marked.contains(&item.id) {
+            item.missable = true;
+        }
+    }
+    Ok(())
+}
+
 /// Applies `data/raw/guides.json` to every item and rejects keys that do not
 /// exist in the catalog (typo guard for the hand maintained snapshot).
 fn apply_guides(items: &mut [CatalogItem], guides: &GuidesFile) -> Result<(), String> {
@@ -2028,6 +2129,7 @@ pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
     validate_crosswalk_titles(&site, &crosswalk, &game_names)?;
     let guides = load_guides(root)?;
     let fish_obtain = load_fish_obtain(root)?;
+    let missable = load_missable(root)?;
 
     let mut items: Vec<CatalogItem> = Vec::new();
     items.extend(build_nano_suits(&site, &crosswalk)?);
@@ -2041,6 +2143,7 @@ pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
     apply_record_types(&mut items, &site, &crosswalk)?;
     apply_passcode_obtain(&mut items, &site)?;
     apply_memorystick_order(&mut items, &memorystick_order)?;
+    apply_missable(&mut items, &missable)?;
     apply_i18n(&mut items, &i18n);
     apply_guides(&mut items, &guides)?;
     items.extend(build_album(&game_names)?);
@@ -2101,10 +2204,11 @@ mod tests {
     use std::collections::{BTreeSet, HashMap};
 
     use super::{
-        apply_document_location, apply_guides, apply_memorystick_order, crosswalk_title_matches,
-        fold_record_title, loose_record_title, normalize_name, plain_item, record_type_from_site,
-        record_variant_root, resolve_guides, zone_label, AreaGuides, CategoryGuides, GuideLink,
-        GuideSet, GuidesFile, MemorystickOrder, MemorystickRegion, SiteItem,
+        apply_document_location, apply_guides, apply_memorystick_order, apply_missable,
+        crosswalk_title_matches, fold_record_title, loose_record_title, normalize_name, plain_item,
+        record_type_from_site, record_variant_root, resolve_guides, zone_label, AreaGuides,
+        CategoryGuides, GuideLink, GuideSet, GuidesFile, MemorystickOrder, MemorystickRegion,
+        MissableFile, MissableGroup, SiteItem,
     };
 
     fn link(title: &str, url: &str) -> GuideLink {
@@ -2414,6 +2518,105 @@ mod tests {
                 })
                 .collect(),
         }
+    }
+
+    #[test]
+    fn apply_missable_marks_areas_zones_and_ids() {
+        let mut items = vec![
+            plain_item(
+                "Item_Records_Xion_Memory_01".to_string(),
+                "希雍记录 01".to_string(),
+                "Item_Records_Xion_Memory_01".to_string(),
+                "records",
+                vec!["Item_Records_Xion_Memory_01".to_string()],
+                Some("Xion".to_string()),
+                "",
+                "high",
+                0,
+                None,
+            ),
+            plain_item(
+                "ChangeState_ZoneEnv_DED40_EnvS_001_Camp".to_string(),
+                "营地".to_string(),
+                "ChangeState_ZoneEnv_DED40_EnvS_001_Camp".to_string(),
+                "camps",
+                vec!["ChangeState_ZoneEnv_DED40_EnvS_001_Camp".to_string()],
+                None,
+                "",
+                "high",
+                0,
+                None,
+            ),
+            plain_item(
+                "BS_18".to_string(),
+                "海洋之丝".to_string(),
+                "BS_18".to_string(),
+                "nano_suits",
+                vec!["BS_18".to_string()],
+                Some("Matrix 11".to_string()),
+                "",
+                "high",
+                0,
+                None,
+            ),
+        ];
+        let missable = MissableFile {
+            version: 1,
+            groups: vec![MissableGroup {
+                key: "test".to_string(),
+                note: String::new(),
+                source: String::new(),
+                areas: vec!["Xion".to_string()],
+                camp_zones: vec!["DED40".to_string()],
+                ids: vec!["BS_18".to_string()],
+            }],
+            ..MissableFile::default()
+        };
+        apply_missable(&mut items, &missable).expect("apply");
+        assert!(items.iter().all(|item| item.missable));
+    }
+
+    #[test]
+    fn apply_missable_rejects_unknown_ids_and_selectors() {
+        let mut items = vec![plain_item(
+            "BS_18".to_string(),
+            "海洋之丝".to_string(),
+            "BS_18".to_string(),
+            "nano_suits",
+            vec!["BS_18".to_string()],
+            Some("Matrix 11".to_string()),
+            "",
+            "high",
+            0,
+            None,
+        )];
+        let unknown_id = MissableFile {
+            version: 1,
+            groups: vec![MissableGroup {
+                key: "bad".to_string(),
+                note: String::new(),
+                source: String::new(),
+                areas: Vec::new(),
+                camp_zones: Vec::new(),
+                ids: vec!["Nope".to_string()],
+            }],
+            ..MissableFile::default()
+        };
+        assert!(apply_missable(&mut items, &unknown_id).is_err());
+
+        let unknown_area = MissableFile {
+            version: 1,
+            groups: vec![MissableGroup {
+                key: "bad".to_string(),
+                note: String::new(),
+                source: String::new(),
+                areas: vec!["Nope".to_string()],
+                camp_zones: Vec::new(),
+                ids: Vec::new(),
+            }],
+            ..MissableFile::default()
+        };
+        assert!(apply_missable(&mut items, &unknown_area).is_err());
     }
 
     #[test]

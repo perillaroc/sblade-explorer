@@ -12,6 +12,7 @@
 | `universe/aliases.json` | 从参考存档与本地存档提取的物品别名全集（不含未解锁 ID） |
 | `crosswalk.json` | 手工维护的别名对照（site id -> 别名 -> 中文名，目录库生成器的唯一事实来源）；`camps` 段为营地别名 -> 站点条目映射（个别未收录营地直接内嵌中英文案），`record_type_overrides` 覆盖无法按名称自动匹配的记录类型 |
 | `fish_obtain.json` | 手工维护的鱼类获取文案（别名 -> 中英文案：钓点 + 鱼饵；鱼类没有站点条目） |
+| `missable.json` | 手工维护的易错过清单（希雍锁定 / 埃多斯9号可选区域 / 支线奖励；按区域、营地区段或显式条目选择，`catalog build` 展开为 `missable`） |
 | `memorystick_order.json` | 记忆棒的游戏内数据库选单顺序（按区域分组、组内顺序，覆盖全部 186 条；据 Map Genie 与游民星空列表整理） |
 | `guides.json` | 手工维护的中文攻略链接快照（游民星空图文 + B 站「喂狗组-文轩」全收集视频）；`catalog build` 解析为每条物品的 `guides.web` / `guides.video`；纳米战衣与设计图逐件对应游民星空服装图鉴分页 |
 | `game/name_map.json` | 游戏数据表 + `Game.locres` 提取的内部别名→官方名称映射（生成物；含 `items`、`camps`、`album` 三段；`camps` 合并 `game/camp_alias_rows.json` 中置信度非 low 的对照） |
@@ -43,6 +44,13 @@
   仅在桌面端点按按钮时由系统浏览器打开，程序运行时不联网
 - <https://www.gamersky.com/handbook/202405/1747789.shtml>（全钓鱼点位置及可钓鱼类一览）——
   `fish_obtain.json` 的钓点与鱼饵来源；妮姬联动鱼类按联动攻略注明特殊/奇怪鱼饵
+- PowerPyx（[全收集](https://www.powerpyx.com/stellar-blade-all-collectible-locations-guide/)、
+  [埃多斯9号](https://www.powerpyx.com/stellar-blade-eidos-9-collectible-locations/)页面）、
+  [Steam《Point Of No Return》指南](https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280)、
+  [巴哈姆特全结局攻略](https://forum.gamer.com.tw/C.php?bsn=36389&snA=203)与
+  [游民星空全结局攻略](https://www.gamersky.com/handbook/202404/1737597.shtml) ——
+  `missable.json` 的依据：希雍城区在完成卢瓦底层后锁定、埃多斯9号需百合进度 100% 才会开放、
+  支线任务与布告栏委托在第一个不可返回节点后失败
 
 ## 中文攻略链接（guides.json）
 
@@ -74,6 +82,9 @@ cargo run -p sbsave-cli -- catalog check
 记录别名中的重复获取副本（`Item_Records_*_<N>`，如 `Item_Records_Xion_Memory_14_1`）在生成时
 并入基础条目：游戏数据库（`AlbumTable`）每份记录只有一条，副本别名只表示重复拾取；合并后记录数
 （300 条）与游戏数据库一致，副本别名仍参与「已获得」判定。
+
+易错过清单在 `data/raw/missable.json`：按区域（希雍、埃多斯9号）、营地 EnvS 区段或显式条目选择，
+构建时校验每个选择器必须命中；缺失清单显示「可错过(注意节点)」，详情与矩阵视图带「可错过」标记。
 
 ## 刷新游戏名称映射（需要本机安装游戏）
 

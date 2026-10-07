@@ -27,6 +27,9 @@
 - `data/raw/api/i18n/` — hand-maintained Simplified Chinese translations of the English guide text
   (names still follow the game localization); `obtain_camps.json` holds the Chinese obtain text of
   the camp guide entries
+- PowerPyx (full-collection and Eidos 9 pages), the Steam "Point Of No Return" guide, Bahamut and
+  Gamersky ending guides — the two points of no return and the optional area, feeding
+  `data/raw/missable.json` (the missable list)
 
 Item-by-item notes on the raw snapshots and how to refresh them (API scraping, `mine-names`) are in
 [data/raw/README.md](https://github.com/perillaroc/sblade-explorer/blob/main/data/raw/README.md).
@@ -51,6 +54,10 @@ The app never goes online; all data is bundled with it.
 - Repeated-pickup record copies (e.g. `Item_Records_Xion_Memory_14_1`) are merged into their base
   entry: the game data bank (`AlbumTable`) keeps one entry per record and the copy aliases only mark
   repeated pickups; after the merge the 300 records match the game data exactly.
+- Missable entries live in `data/raw/missable.json` (Xion city, Eidos 9, side-quest/bulletin
+  rewards); `catalog build` expands them into the `missable` field. Missing lists show
+  "Missable (mind the checkpoint)" and the details/matrix views carry the "Missable" badge
+  (211 entries).
 - Obtain text: collectibles use the guide `description` (English) plus
   `api/i18n/obtain_*.json` (Chinese). Fish have no guide entries, so their text lives in
   `data/raw/fish_obtain.json`; the few camps missing from the guide snapshot carry their English and
@@ -136,6 +143,9 @@ exact item, records/passcodes to the area part. The full rules are in
 - Records: all 300 entries carry an in-game type (Memory Sticks 186, Documents 114) and guide-obtained
   text; 186 Memory Sticks carry the in-game menu order (repeated-pickup copies merge into the base
   entry); all 23 passcodes carry guide-obtained text.
+- Missable: 211 entries carry `missable` (Xion 156, Eidos 9 34 including 6 camps, other quest rewards
+  and quest-locked areas 21); missing lists show "Missable (mind the checkpoint)"; the six Eidos 9
+  camps also keep low mapping confidence.
 - Chinese guide links: 798/800 collectibles have a built-in link (image 794, video 686; the default
   ponytail and boss-challenge rewards of the Hairstyles category have none and can be found with
   "Search image guides / Search video guides"); all links use https and domains on the allow-list.

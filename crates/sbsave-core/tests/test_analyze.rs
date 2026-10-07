@@ -73,7 +73,21 @@ fn missing_detection() {
         .expect("cans");
     assert_eq!(cans.obtained_count, 2);
     assert_eq!(cans.missing.len(), 47);
-    assert!(cans.missing.iter().all(|status| status.reason.is_none()));
+    // 希雍城区（Can_003/009/011/019/027/036/039/045）与任务解锁区域（Can_025）的罐子标记易错过
+    let mut blocked: Vec<&str> = cans
+        .missing
+        .iter()
+        .filter(|status| status.reason.is_some())
+        .map(|status| status.item.id.as_str())
+        .collect();
+    blocked.sort_unstable();
+    assert_eq!(
+        blocked,
+        [
+            "Can_003", "Can_009", "Can_011", "Can_019", "Can_025", "Can_027", "Can_036", "Can_039",
+            "Can_045"
+        ]
+    );
 }
 
 #[test]
@@ -110,6 +124,35 @@ fn ng_plus_reason() {
         .find(|status| status.item.id == ng_item.id)
         .expect("ng missing");
     assert!(missing_ng.reason.is_none());
+}
+
+#[test]
+fn missable_reason() {
+    let catalog = load_catalog(None).expect("catalog");
+    let missable_item = catalog
+        .items
+        .iter()
+        .find(|item| item.missable && item.category == "records")
+        .expect("missable record");
+
+    let save = make_save(&[], &[], 0);
+    let filter = vec!["records".to_string()];
+    let result = analyze(&save, &catalog, Some(filter.as_slice()));
+    let missing = result.categories[0]
+        .missing
+        .iter()
+        .find(|status| status.item.id == missable_item.id)
+        .expect("missable missing");
+    assert_eq!(
+        missing.reason_label(Locale::Zh).as_deref(),
+        Some("可错过(注意节点)")
+    );
+    assert_eq!(
+        missing.reason_label(Locale::En).as_deref(),
+        Some("Missable (mind the checkpoint)")
+    );
+    let flags = missing.flags(Locale::Zh);
+    assert!(flags.iter().any(|flag| flag == "可错过"), "{flags:?}");
 }
 
 #[test]

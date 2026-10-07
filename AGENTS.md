@@ -69,6 +69,7 @@ Python 参考实现已于 2026-09-15 删除，代码历史保留在 git 中。
 - `data/raw/crosswalk.json`（site id -> 别名 -> 中文名，手工维护）是收集品的事实来源；`data/catalog.json` 为生成物；图鉴两类（`naytiba` 孽奇拔 67、`characters` 角色 55 页）由 `AlbumTable` + `Game.locres` 挖掘生成，别名是 `Ach_Album_Unlock_*` 成就别名。只想修正个别条目时，用 `%LOCALAPPDATA%\sbsave\catalog.user.json`（合并覆盖内置目录库）或 CLI 的 `--catalog path.json`，无需重新生成。
 - 目录库分两段：`section=collection`（13 类收集品，计入目录进度）与 `section=album`（图鉴，**不计入目录进度**，报告/UI 单列）；角色按页展示（`艾德姆（资料 3/5）`），图鉴条目带官方 `desc_zh`/`desc_en` 说明。
 - 记录/密码/罐子/设计图案/外观名称由 `data/raw/game/name_map.json`（游戏数据挖掘）覆盖为官方简中名称并置 `confidence="high"`；仅埃多斯9号 6 座营地的别名→行号仍为顺序推定，保留低置信度并在报告中标记 映射待确认。期望数量（126 纳米战衣、49 罐子、89 营地、67 孽奇拔、55 角色页）是回归哨兵，迁移时应保留断言。
+- 易错过条目（希雍城区、埃多斯9号、支线奖励，共 211 条）由 `data/raw/missable.json` 维护，`catalog build` 展开为 `missable` 字段；缺失清单显示「可错过(注意节点)」，详情与矩阵视图带「可错过」标记。
 - 分类参数（CLI `--category` 与 UI 筛选）同时接受分类键（`nano_suits`）和中文名（`纳米战衣`）。
 - 桌面端图鉴展示约定：孽奇拔按五种图鉴类型分组（小兵/战士/精锐/阿尔法/上古，可折叠 + 组内进度），角色按页平铺（`艾德姆（资料 3/5）`）；图鉴官方说明在详情弹窗「图鉴说明」中显示（`zh|en|both`）。
 - 攻略文案翻译在 `data/raw/api/i18n/`；`sbsave-tools catalog build` 合并为 `area_zh`/`location_zh`/`obtain_zh`；语言模式 `zh|en|both`（默认 zh，缺翻译回退英文），JSON 始终双语。

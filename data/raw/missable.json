@@ -1,0 +1,81 @@
+{
+ "version": 1,
+ "generated_by": "hand maintained",
+ "note": "一个周目内可永久错过的条目；catalog build 展开为 missable=true。areas 按目录库 area 匹配（记录的区域来自攻略地点或游戏内数据库分组），camp_zones 按营地别名中的 EnvS 区段匹配，ids 为显式清单（支线任务/布告栏委托奖励与任务解锁区域）。",
+ "sources": [
+  "https://www.powerpyx.com/stellar-blade-all-collectible-locations-guide/",
+  "https://www.powerpyx.com/stellar-blade-eidos-9-collectible-locations/",
+  "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+  "https://forum.gamer.com.tw/C.php?bsn=36389&snA=203",
+  "https://www.gamersky.com/handbook/202404/1737597.shtml"
+ ],
+ "groups": [
+  {
+   "key": "xion_lock",
+   "note": "完成卢瓦底层（Abyss Levoire）后希雍城区无法返回，城内的收集品与未完成支线随之错过（第一个不可返回节点）",
+   "source": "https://www.powerpyx.com/stellar-blade-all-collectible-locations-guide/",
+   "areas": [
+    "Xion"
+   ]
+  },
+  {
+   "key": "eidos9_optional",
+   "note": "埃多斯9号是百合进度 100% 才会开放的可选支线区域，未开放或未在最终节点前收集都会错过（与结局路线互斥）",
+   "source": "https://www.powerpyx.com/stellar-blade-eidos-9-collectible-locations/",
+   "areas": [
+    "Eidos 9"
+   ],
+   "camp_zones": [
+    "DED40"
+   ]
+  },
+  {
+   "key": "quest_rewards",
+   "note": "支线任务与布告栏委托在第一个不可返回节点后标记失败；未完成任务的奖励、以及任务解锁区域内的收集品随之错过",
+   "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+   "ids": [
+    "BS_15_Var2_E",
+    "BS_18",
+    "BS_20",
+    "BS_20_Var2",
+    "BS_26",
+    "BS_26_Var2",
+    "BS_30",
+    "BS_30_Var2",
+    "BS_33",
+    "BS_33_Var2",
+    "BS_37_Var2",
+    "BS_41",
+    "BS_41_Var2",
+    "BS_53",
+    "BS_55",
+    "BS_Bear",
+    "BS_Bear_Var2",
+    "Can_001",
+    "Can_025",
+    "DesignPattern_BS_15_Var2",
+    "DesignPattern_BS_41",
+    "DesignPattern_BS_41_Var2",
+    "Earring_008",
+    "Earring_008_Var2",
+    "Earring_014",
+    "Hair_001",
+    "Hair_002",
+    "Hair_003",
+    "Hair_004",
+    "Hair_005",
+    "Hair_006",
+    "Hair_007",
+    "Hair_008",
+    "Hair_009",
+    "Hair_010",
+    "Hair_011",
+    "Hair_012",
+    "Item_Records_DED20_Memory_13",
+    "Item_Records_DED20_Memory_14",
+    "Item_Records_DED20_Memory_20",
+    "Item_Records_Xion_Passcode_01"
+   ]
+  }
+ ]
+}

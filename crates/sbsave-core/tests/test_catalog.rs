@@ -600,3 +600,31 @@ fn chinese_translations_cover_guide_text() {
         .as_deref()
         .is_some_and(|text| text.contains("施工区东侧"))));
 }
+
+#[test]
+fn missable_entries_cover_locked_regions() {
+    let catalog = load_catalog(None).expect("catalog");
+    let missable = catalog.items.iter().filter(|item| item.missable).count();
+    // 希雍 156 + 埃多斯9号 28 + 支线奖励/任务区域（去重后）
+    assert_eq!(missable, 211);
+
+    let index = catalog.alias_index();
+    // 完成卢瓦底层后希雍城区锁定
+    assert!(index["Item_Records_Xion_Memory_01"].missable);
+    assert!(index["BS_01"].missable);
+    // 埃多斯9号：百合进度 100% 才开放的可选区域
+    assert!(index["ChangeState_ZoneEnv_DED40_EnvS_092_Camp"].missable);
+    assert!(index["Item_Records_DED40_Memory_01"].missable);
+    // 支线奖励：完成《第一位顾客》后在理发店解锁的发型
+    assert!(index["Hair_006"].missable);
+    // 常规区域与最终区域不标记
+    assert!(!index["Item_Records_WLA_Memory_01"].missable);
+    assert!(!index["ChangeState_ZoneEnv_WLA_10_EnvS_001_Camp"].missable);
+    // 图鉴不参与易错过标记
+    for category in ["naytiba", "characters"] {
+        assert!(catalog
+            .by_category(category)
+            .iter()
+            .all(|item| !item.missable));
+    }
+}
