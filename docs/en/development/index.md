@@ -54,8 +54,9 @@ cargo test -p sbsave-tools
 ```
 
 After changing catalog data sources run `catalog build` first, then `catalog check`. Manual alias
-mappings live in `data/raw/crosswalk.json` (single source of truth); guide text translations live in
-`data/raw/api/i18n/`.
+mappings live in `data/raw/crosswalk.json` (single source of truth, including the camp → guide entry
+table); guide text translations live in `data/raw/api/i18n/` and fish text in
+`data/raw/fish_obtain.json`.
 
 Refreshing the game name mapping (requires the game installed locally plus `cue4parse.exe`/`repak.exe`,
 see `data/raw/README.md`):

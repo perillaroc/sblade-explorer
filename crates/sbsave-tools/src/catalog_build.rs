@@ -136,10 +136,39 @@ struct Crosswalk {
     site_base_url: String,
     nano_suits: Vec<CrosswalkSuit>,
     appearance: Vec<CrosswalkAppearance>,
+    #[serde(default)]
+    camps: Vec<CrosswalkCamp>,
     fish_zh: HashMap<String, String>,
     zone_zh: HashMap<String, String>,
     #[serde(default)]
     record_type_overrides: HashMap<String, i64>,
+}
+
+/// One camp alias -> guide site item mapping (`crosswalk.json` `camps`). Camps
+/// missing from the guide snapshot carry a manual `obtain` pair instead.
+#[derive(Deserialize)]
+struct CrosswalkCamp {
+    alias: String,
+    #[serde(default)]
+    site_id: Option<i64>,
+    #[serde(default)]
+    obtain: Option<CrosswalkObtain>,
+    #[serde(default)]
+    #[allow(dead_code)]
+    confidence: Option<String>,
+}
+
+#[derive(Deserialize)]
+struct CrosswalkObtain {
+    en: String,
+    zh: String,
+}
+
+/// `data/raw/fish_obtain.json`: hand maintained obtain text per fish alias.
+#[derive(Deserialize)]
+struct FishObtain {
+    en: String,
+    zh: String,
 }
 
 #[derive(Deserialize)]
@@ -1418,11 +1447,16 @@ fn build_records(universe: &Value, crosswalk: &Crosswalk) -> Result<Vec<CatalogI
     Ok(items)
 }
 
-fn build_fish(universe: &Value, crosswalk: &Crosswalk) -> Vec<CatalogItem> {
+fn build_fish(
+    universe: &Value,
+    crosswalk: &Crosswalk,
+    fish_obtain: &HashMap<String, FishObtain>,
+) -> Result<Vec<CatalogItem>, String> {
     let mut items: Vec<CatalogItem> = Vec::new();
     let Some(aliases) = universe.get("fish").and_then(Value::as_array) else {
-        return items;
+        return Ok(items);
     };
+    let mut covered: BTreeSet<&str> = BTreeSet::new();
     for alias in aliases {
         let Some(alias) = alias.as_str() else {
             continue;
@@ -1430,6 +1464,10 @@ fn build_fish(universe: &Value, crosswalk: &Crosswalk) -> Vec<CatalogItem> {
         if FISH_SKIP.contains(&alias) {
             continue;
         }
+        let Some(obtain) = fish_obtain.get(alias) else {
+            return Err(format!("fish_obtain.json 缺少鱼类获取文案: {alias}"));
+        };
+        covered.insert(alias);
         let name = crosswalk
             .fish_zh
             .get(alias)
@@ -1440,7 +1478,7 @@ fn build_fish(universe: &Value, crosswalk: &Crosswalk) -> Vec<CatalogItem> {
         } else {
             None
         };
-        items.push(plain_item(
+        let mut item = plain_item(
             alias.to_string(),
             name,
             alias.replace("Fish_", ""),
@@ -1451,9 +1489,23 @@ fn build_fish(universe: &Value, crosswalk: &Crosswalk) -> Vec<CatalogItem> {
             "high",
             0,
             dlc,
+        );
+        item.obtain = Some(obtain.en.clone());
+        item.obtain_zh = Some(obtain.zh.clone());
+        items.push(item);
+    }
+    let unknown: Vec<&str> = fish_obtain
+        .keys()
+        .map(String::as_str)
+        .filter(|alias| !covered.contains(alias))
+        .collect();
+    if !unknown.is_empty() {
+        return Err(format!(
+            "fish_obtain.json 中存在未使用的别名: {}",
+            unknown.join(", ")
         ));
     }
-    items
+    Ok(items)
 }
 
 fn build_design_patterns(
@@ -1516,11 +1568,20 @@ fn build_design_patterns(
     items
 }
 
-fn build_camps(universe: &Value, crosswalk: &Crosswalk) -> Vec<CatalogItem> {
+fn build_camps(
+    universe: &Value,
+    crosswalk: &Crosswalk,
+    site: &BTreeMap<i64, SiteItem>,
+) -> Result<Vec<CatalogItem>, String> {
     let camp_re = Regex::new(r"^ChangeState_ZoneEnv_(.+?)_EnvS_(\d+)_Camp$").expect("camp regex");
+    let mapping: HashMap<&str, &CrosswalkCamp> = crosswalk
+        .camps
+        .iter()
+        .map(|camp| (camp.alias.as_str(), camp))
+        .collect();
     let mut items: Vec<CatalogItem> = Vec::new();
     let Some(aliases) = universe.get("camps").and_then(Value::as_array) else {
-        return items;
+        return Ok(items);
     };
     for alias in aliases {
         let Some(alias) = alias.as_str() else {
@@ -1534,7 +1595,7 @@ fn build_camps(universe: &Value, crosswalk: &Crosswalk) -> Vec<CatalogItem> {
             None => ("?".to_string(), 0),
         };
         let label = zone_label(&zone, &crosswalk.zone_zh);
-        items.push(plain_item(
+        let mut item = plain_item(
             alias.to_string(),
             format!("{label} 营地 #{number}"),
             alias.to_string(),
@@ -1545,9 +1606,52 @@ fn build_camps(universe: &Value, crosswalk: &Crosswalk) -> Vec<CatalogItem> {
             "low",
             0,
             None,
+        );
+        let Some(entry) = mapping.get(alias) else {
+            return Err(format!("crosswalk.json camps 缺少营地映射: {alias}"));
+        };
+        match entry.site_id {
+            Some(site_id) => {
+                let info = site
+                    .get(&site_id)
+                    .ok_or_else(|| format!("营地 {alias} 的 site id {site_id} 不存在"))?;
+                if info.source_file != "collectibles__camps.json" {
+                    return Err(format!(
+                        "营地 {alias} 的 site id {site_id} 不是营地条目（{}）",
+                        info.source_file
+                    ));
+                }
+                if info.description.is_empty() {
+                    return Err(format!(
+                        "营地 {alias} 的站点条目 {site_id} 缺少 description"
+                    ));
+                }
+                item.obtain = Some(info.description.clone());
+            }
+            None => {
+                let obtain = entry
+                    .obtain
+                    .as_ref()
+                    .ok_or_else(|| format!("营地 {alias} 既没有 site id 也没有手工文案"))?;
+                item.obtain = Some(obtain.en.clone());
+                item.obtain_zh = Some(obtain.zh.clone());
+            }
+        }
+        items.push(item);
+    }
+    let known: BTreeSet<&str> = aliases.iter().filter_map(Value::as_str).collect();
+    let unknown: Vec<&str> = mapping
+        .keys()
+        .copied()
+        .filter(|alias| !known.contains(alias))
+        .collect();
+    if !unknown.is_empty() {
+        return Err(format!(
+            "crosswalk.json camps 中存在未知别名: {}",
+            unknown.join(", ")
         ));
     }
-    items
+    Ok(items)
 }
 
 fn load_string_map(path: &Path) -> Result<HashMap<String, String>, String> {
@@ -1605,6 +1709,15 @@ fn load_i18n(i18n_dir: &Path, site: &BTreeMap<i64, SiteItem>) -> Result<I18n, St
     })
 }
 
+/// `data/raw/fish_obtain.json`: manual fish obtain text (fish have no guide
+/// site ids, so they bypass `api/i18n/`).
+fn load_fish_obtain(root: &Path) -> Result<HashMap<String, FishObtain>, String> {
+    let path = root.join("data/raw/fish_obtain.json");
+    let text = std::fs::read_to_string(&path)
+        .map_err(|error| format!("读取 {} 失败: {error}", path.display()))?;
+    serde_json::from_str(&text).map_err(|error| format!("解析 {} 失败: {error}", path.display()))
+}
+
 fn apply_game_names(items: &mut [CatalogItem], game_names: &Value) {
     let names = game_names.get("items").and_then(Value::as_object);
     let camps = game_names.get("camps").and_then(Value::as_object);
@@ -1657,11 +1770,15 @@ fn apply_i18n(items: &mut [CatalogItem], i18n: &I18n) {
             .as_ref()
             .and_then(|key| i18n.locations.get(key))
             .cloned();
-        item.obtain_zh = item
-            .obtain
-            .as_ref()
-            .and_then(|key| i18n.obtain.get(key))
-            .cloned();
+        // Items with hand maintained text (fish, unlisted camps) already carry
+        // `obtain_zh`; the guide translations fill the remaining ones.
+        if item.obtain_zh.is_none() {
+            item.obtain_zh = item
+                .obtain
+                .as_ref()
+                .and_then(|key| i18n.obtain.get(key))
+                .cloned();
+        }
     }
 }
 
@@ -1873,13 +1990,14 @@ pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
     let i18n = load_i18n(&api_dir.join("i18n"), &site)?;
     validate_crosswalk_titles(&site, &crosswalk, &game_names)?;
     let guides = load_guides(root)?;
+    let fish_obtain = load_fish_obtain(root)?;
 
     let mut items: Vec<CatalogItem> = Vec::new();
     items.extend(build_nano_suits(&site, &crosswalk)?);
     items.extend(build_cans(&site, &game_names, &crosswalk)?);
     items.extend(build_records(&universe, &crosswalk)?);
-    items.extend(build_fish(&universe, &crosswalk));
-    items.extend(build_camps(&universe, &crosswalk));
+    items.extend(build_fish(&universe, &crosswalk, &fish_obtain)?);
+    items.extend(build_camps(&universe, &crosswalk, &site)?);
     items.extend(build_appearance(&site, &crosswalk)?);
     items.extend(build_design_patterns(&site, &universe, &crosswalk));
     apply_game_names(&mut items, &game_names);

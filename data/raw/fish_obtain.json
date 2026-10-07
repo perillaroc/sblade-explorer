@@ -1,0 +1,142 @@
+{
+ "Fish_Goldfish": {
+  "zh": "钓点：大沙漠（绿洲）、希雍、废土（洞窟）、废土（工厂）、埃多斯7号、埃多斯9号；鱼饵：虾米。",
+  "en": "Fishing spots: Great Desert (Oasis), Xion, Wasteland (Cave), Wasteland (Factory), Eidos 7, Eidos 9; bait: Shrimp."
+ },
+ "Fish_Goby": {
+  "zh": "钓点：大沙漠（绿洲）、希雍、废土（洞窟）、埃多斯9号；鱼饵：虾米。",
+  "en": "Fishing spots: Great Desert (Oasis), Xion, Wasteland (Cave), Eidos 9; bait: Shrimp."
+ },
+ "Fish_PorcupineFish": {
+  "zh": "钓点：大沙漠（绿洲）、希雍、废土（洞窟）、废土（工厂）、埃多斯7号；鱼饵：虾米。",
+  "en": "Fishing spots: Great Desert (Oasis), Xion, Wasteland (Cave), Wasteland (Factory), Eidos 7; bait: Shrimp."
+ },
+ "Fish_Lobster": {
+  "zh": "钓点：大沙漠（绿洲）、废土（洞窟）、废土（工厂）、埃多斯7号、埃多斯9号；鱼饵：虾米。",
+  "en": "Fishing spots: Great Desert (Oasis), Wasteland (Cave), Wasteland (Factory), Eidos 7, Eidos 9; bait: Shrimp."
+ },
+ "Fish_FlyingFish": {
+  "zh": "钓点：希雍、废土（工厂）、埃多斯7号、埃多斯9号；鱼饵：蠕动的虫子。",
+  "en": "Fishing spots: Xion, Wasteland (Factory), Eidos 7, Eidos 9; bait: Wriggling Worm."
+ },
+ "Fish_Triggerfish": {
+  "zh": "钓点：希雍、废土（洞窟）、废土（工厂）、埃多斯7号、埃多斯9号；鱼饵：蠕动的虫子。",
+  "en": "Fishing spots: Xion, Wasteland (Cave), Wasteland (Factory), Eidos 7, Eidos 9; bait: Wriggling Worm."
+ },
+ "Fish_SeaBass": {
+  "zh": "钓点：希雍、废土（洞窟）、废土（工厂）；鱼饵：蠕动的虫子。",
+  "en": "Fishing spots: Xion, Wasteland (Cave), Wasteland (Factory); bait: Wriggling Worm."
+ },
+ "Fish_mackerel": {
+  "zh": "钓点：废土（洞窟）、废土（工厂）、埃多斯7号；鱼饵：蠕动的虫子。",
+  "en": "Fishing spots: Wasteland (Cave), Wasteland (Factory), Eidos 7; bait: Wriggling Worm."
+ },
+ "Fish_ChannelCatfish": {
+  "zh": "钓点：希雍、废土（洞窟）、废土（工厂）；鱼饵：蠕动的虫子。",
+  "en": "Fishing spots: Xion, Wasteland (Cave), Wasteland (Factory); bait: Wriggling Worm."
+ },
+ "Fish_MahiMahi": {
+  "zh": "钓点：希雍、废土（洞窟）、废土（工厂）、埃多斯7号、埃多斯9号；鱼饵：鱼片。",
+  "en": "Fishing spots: Xion, Wasteland (Cave), Wasteland (Factory), Eidos 7, Eidos 9; bait: Fish Fillet."
+ },
+ "Fish_Halibut": {
+  "zh": "钓点：废土（工厂）、埃多斯7号；鱼饵：鱼片。",
+  "en": "Fishing spots: Wasteland (Factory), Eidos 7; bait: Fish Fillet."
+ },
+ "Fish_MolaMola": {
+  "zh": "钓点：废土（洞窟）、废土（工厂）、埃多斯7号、埃多斯9号；鱼饵：鱼片。",
+  "en": "Fishing spots: Wasteland (Cave), Wasteland (Factory), Eidos 7, Eidos 9; bait: Fish Fillet."
+ },
+ "Fish_CannedFish": {
+  "zh": "钓点：废土（洞窟）、大沙漠（绿洲）；鱼饵：奇怪的鱼饵。",
+  "en": "Fishing spots: Wasteland (Cave), Great Desert (Oasis); bait: Strange Bait."
+ },
+ "Fish_FishCake": {
+  "zh": "钓点：废土（洞窟）、埃多斯7号；鱼饵：奇怪的鱼饵。",
+  "en": "Fishing spots: Wasteland (Cave), Eidos 7; bait: Strange Bait."
+ },
+ "Fish_NuclearWaste": {
+  "zh": "钓点：废土（洞窟）、埃多斯7号；鱼饵：奇怪的鱼饵。",
+  "en": "Fishing spots: Wasteland (Cave), Eidos 7; bait: Strange Bait."
+ },
+ "Fish_Tire": {
+  "zh": "钓点：废土（洞窟）、废土（工厂）、希雍；鱼饵：奇怪的鱼饵。",
+  "en": "Fishing spots: Wasteland (Cave), Wasteland (Factory), Xion; bait: Strange Bait."
+ },
+ "Fish_Betta": {
+  "zh": "钓点：大沙漠（绿洲）、希雍；鱼饵：虾米。",
+  "en": "Fishing spots: Great Desert (Oasis), Xion; bait: Shrimp."
+ },
+ "Fish_FancyCarp": {
+  "zh": "钓点：希雍、废土（洞窟）、废土（工厂）、埃多斯7号、埃多斯9号；鱼饵：蠕动的虫子。",
+  "en": "Fishing spots: Xion, Wasteland (Cave), Wasteland (Factory), Eidos 7, Eidos 9; bait: Wriggling Worm."
+ },
+ "Fish_Salmon": {
+  "zh": "钓点：希雍、废土（洞窟）、废土（工厂）、埃多斯9号；鱼饵：蠕动的虫子。",
+  "en": "Fishing spots: Xion, Wasteland (Cave), Wasteland (Factory), Eidos 9; bait: Wriggling Worm."
+ },
+ "Fish_SailFish": {
+  "zh": "钓点：废土（洞窟）、废土（工厂）、埃多斯7号、埃多斯9号；鱼饵：鱼片。",
+  "en": "Fishing spots: Wasteland (Cave), Wasteland (Factory), Eidos 7, Eidos 9; bait: Fish Fillet."
+ },
+ "Fish_Tuna": {
+  "zh": "钓点：废土（洞窟）、埃多斯7号；鱼饵：鱼片。",
+  "en": "Fishing spots: Wasteland (Cave), Eidos 7; bait: Fish Fillet."
+ },
+ "Fish_Arowana": {
+  "zh": "钓点：大沙漠（绿洲）、埃多斯9号；鱼饵：特殊鱼饵。",
+  "en": "Fishing spots: Great Desert (Oasis), Eidos 9; bait: Special Bait."
+ },
+ "Fish_Pirarucu": {
+  "zh": "钓点：大沙漠（绿洲）、埃多斯9号；鱼饵：特殊鱼饵。",
+  "en": "Fishing spots: Great Desert (Oasis), Eidos 9; bait: Special Bait."
+ },
+ "Fish_ButterflyFish": {
+  "zh": "钓点：大沙漠（绿洲）；鱼饵：虾米。",
+  "en": "Fishing spots: Great Desert (Oasis); bait: Shrimp."
+ },
+ "Fish_FootBallfish": {
+  "zh": "钓点：废土（洞窟）、埃多斯7号、埃多斯9号；鱼饵：蠕动的虫子。",
+  "en": "Fishing spots: Wasteland (Cave), Eidos 7, Eidos 9; bait: Wriggling Worm."
+ },
+ "Fish_SeaBream": {
+  "zh": "钓点：希雍、废土（洞窟）、废土（工厂）、埃多斯7号、埃多斯9号；鱼饵：蠕动的虫子。",
+  "en": "Fishing spots: Xion, Wasteland (Cave), Wasteland (Factory), Eidos 7, Eidos 9; bait: Wriggling Worm."
+ },
+ "Fish_GreatWhiteShark": {
+  "zh": "钓点：大沙漠（绿洲）、埃多斯9号；鱼饵：特殊鱼饵。",
+  "en": "Fishing spots: Great Desert (Oasis), Eidos 9; bait: Special Bait."
+ },
+ "Fish_WhaleShark": {
+  "zh": "钓点：大沙漠（绿洲）；鱼饵：神奇鱼饵。",
+  "en": "Fishing spots: Great Desert (Oasis); bait: Fantastic Bait."
+ },
+ "Fish_Dunkleosteus": {
+  "zh": "钓点：大沙漠（绿洲）；鱼饵：神奇鱼饵。",
+  "en": "Fishing spots: Great Desert (Oasis); bait: Fantastic Bait."
+ },
+ "Fish_Nikke_Poli": {
+  "zh": "《胜利女神：妮姬》联动新增鱼类；在废土或大沙漠（绿洲）的钓鱼点使用特殊鱼饵钓获。",
+  "en": "NIKKE crossover fish; caught at the Wasteland or Great Desert (Oasis) fishing spots with Special Bait."
+ },
+ "Fish_Nikke_Laplace": {
+  "zh": "《胜利女神：妮姬》联动新增鱼类；在废土或大沙漠（绿洲）的钓鱼点使用特殊鱼饵钓获。",
+  "en": "NIKKE crossover fish; caught at the Wasteland or Great Desert (Oasis) fishing spots with Special Bait."
+ },
+ "Fish_Nikke_Rapunzel": {
+  "zh": "《胜利女神：妮姬》联动新增鱼类；在废土或大沙漠（绿洲）的钓鱼点使用特殊鱼饵钓获。",
+  "en": "NIKKE crossover fish; caught at the Wasteland or Great Desert (Oasis) fishing spots with Special Bait."
+ },
+ "Fish_Nikke_SnowWhite": {
+  "zh": "《胜利女神：妮姬》联动新增鱼类；在废土或大沙漠（绿洲）的钓鱼点使用特殊鱼饵钓获。",
+  "en": "NIKKE crossover fish; caught at the Wasteland or Great Desert (Oasis) fishing spots with Special Bait."
+ },
+ "Fish_Nikke_Tape": {
+  "zh": "《胜利女神：妮姬》联动新增鱼类；在废土或大沙漠（绿洲）的钓鱼点使用奇怪的鱼饵钓获。",
+  "en": "NIKKE crossover fish; caught at the Wasteland or Great Desert (Oasis) fishing spots with Strange Bait."
+ },
+ "Fish_Nikke_Glasses": {
+  "zh": "《胜利女神：妮姬》联动新增鱼类；在废土或大沙漠（绿洲）的钓鱼点使用奇怪的鱼饵钓获。",
+  "en": "NIKKE crossover fish; caught at the Wasteland or Great Desert (Oasis) fishing spots with Strange Bait."
+ }
+}

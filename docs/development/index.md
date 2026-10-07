@@ -52,7 +52,8 @@ cargo test -p sbsave-tools
 ```
 
 修改目录库数据源后的顺序：先 `catalog build`，再 `catalog check`。人工别名映射在
-`data/raw/crosswalk.json`（唯一事实来源）；攻略文案翻译在 `data/raw/api/i18n/`。
+`data/raw/crosswalk.json`（唯一事实来源，含营地 → 站点条目对照）；攻略文案翻译在
+`data/raw/api/i18n/`，鱼类文案在 `data/raw/fish_obtain.json`。
 
 刷新游戏名称映射（需要本机安装游戏与 `cue4parse.exe`/`repak.exe`，详见 `data/raw/README.md`）：
 

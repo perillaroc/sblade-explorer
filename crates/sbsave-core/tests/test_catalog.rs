@@ -478,13 +478,32 @@ fn chinese_translations_cover_guide_text() {
         .iter()
         .filter(|item| item.obtain.is_some())
         .collect();
-    assert_eq!(with_obtain.len(), 686);
+    assert_eq!(with_obtain.len(), 810);
     let missing: Vec<&str> = with_obtain
         .iter()
         .filter(|item| item.obtain_zh.is_none())
         .map(|item| item.id.as_str())
         .collect();
     assert!(missing.is_empty(), "{missing:?}");
+
+    // 仅图鉴以官方说明代替获取方式，其余收集品全部有获取文案
+    let collection_missing: Vec<&str> = catalog
+        .items
+        .iter()
+        .filter(|item| item.category != "naytiba" && item.category != "characters")
+        .filter(|item| item.obtain.is_none() || item.obtain_zh.is_none())
+        .map(|item| item.id.as_str())
+        .collect();
+    assert!(collection_missing.is_empty(), "{collection_missing:?}");
+
+    let camps = catalog.by_category("camps");
+    assert!(camps
+        .iter()
+        .all(|item| item.obtain.is_some() && item.obtain_zh.is_some()));
+    let fish = catalog.by_category("fish");
+    assert!(fish
+        .iter()
+        .all(|item| item.obtain.is_some() && item.obtain_zh.is_some()));
 
     let records = catalog.by_category("records");
     assert_eq!(
@@ -511,6 +530,33 @@ fn chinese_translations_cover_guide_text() {
         .obtain_zh
         .as_deref()
         .is_some_and(|text| text.starts_with("完成支线任务《第一位顾客》")));
+
+    // 营地获取文案来自站点 description（英文原文 + obtain_camps.json 翻译）
+    let camp = &index["ChangeState_ZoneEnv_WLA_10_EnvS_001_Camp"];
+    assert!(camp
+        .obtain
+        .as_deref()
+        .is_some_and(|text| text.contains("Solar Tower")));
+    assert!(camp
+        .obtain_zh
+        .as_deref()
+        .is_some_and(|text| text.contains("太阳塔")));
+    // 未收录进站点快照的营地使用 crosswalk 手工文案
+    assert!(index["ChangeState_ZoneEnv_WLB_20_EnvS_025_Camp"]
+        .obtain_zh
+        .as_deref()
+        .is_some_and(|text| text.contains("11号矩阵")));
+
+    // 鱼类获取文案来自 fish_obtain.json（钓点 + 鱼饵）
+    let fish = &index["Fish_Dunkleosteus"];
+    assert!(fish
+        .obtain_zh
+        .as_deref()
+        .is_some_and(|text| text.contains("钓点") && text.contains("神奇鱼饵")));
+    assert!(fish
+        .obtain
+        .as_deref()
+        .is_some_and(|text| text.contains("Great Desert (Oasis)")));
 
     assert!(index["Item_Records_DED10_Memory_09"]
         .obtain_zh

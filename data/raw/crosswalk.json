@@ -1841,6 +1841,459 @@
    "confidence": "high"
   }
  ],
+ "camps": [
+  {
+   "alias": "ChangeState_ZoneEnv_ATL_01_EnvS_009_Camp",
+   "site_id": 44,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_ATL_01_EnvS_075_Camp",
+   "site_id": 47,
+   "confidence": "medium"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_ATL_02_EnvS_031_Camp",
+   "site_id": 55,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_ATL_03_EnvS_001_Camp",
+   "site_id": 35,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_ATL_03_EnvS_005_Camp",
+   "site_id": 34,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_AYL_01_EnvS_005_Camp",
+   "site_id": 9,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_AYL_01_EnvS_021_Camp",
+   "site_id": 8,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_AYL_03_EnvS_001_Camp",
+   "site_id": 2,
+   "confidence": "medium"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_AYL_04_EnvS_001_Camp",
+   "site_id": 3,
+   "confidence": "medium"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_AYL_04_EnvS_005_Camp",
+   "site_id": 26,
+   "confidence": "medium"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_AYL_05_EnvS_001_Camp",
+   "site_id": 30,
+   "confidence": "medium"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_AYL_06_EnvS_001_Camp",
+   "site_id": 24,
+   "confidence": "medium"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED10_EnvS_084_Camp",
+   "site_id": 168,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED10_EnvS_090_Camp",
+   "site_id": 172,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED10_EnvS_096_Camp",
+   "site_id": 72,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED10_EnvS_100_Camp",
+   "site_id": 176,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED10_EnvS_109_Camp",
+   "site_id": 204,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED10_EnvS_113_Camp",
+   "confidence": "high",
+   "obtain": {
+    "en": "Parking Tower Exit camp; inside the parking tower on the way out, before the statue alley (not listed separately by the guide).",
+    "zh": "立体停车场出口处的营地，位于停车场内离开雕像塔、前往雕像巷的路上（攻略未单独列出）。"
+   }
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED20_EnvS_103_Camp",
+   "site_id": 120,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED20_EnvS_107_Camp",
+   "site_id": 126,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED20_EnvS_113_Camp",
+   "site_id": 131,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED20_EnvS_117_Camp",
+   "site_id": 163,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED20_EnvS_121_Camp",
+   "site_id": 90,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED20_EnvS_127_Camp",
+   "site_id": 73,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED30_EnvS_026_Camp",
+   "site_id": 83,
+   "confidence": "medium"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED30_EnvS_030_Camp",
+   "site_id": 109,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED40_EnvS_039_Camp",
+   "site_id": 246,
+   "confidence": "low"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED40_EnvS_043_Camp",
+   "site_id": 225,
+   "confidence": "low"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED40_EnvS_050_Camp",
+   "site_id": 260,
+   "confidence": "low"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED40_EnvS_054_Camp",
+   "site_id": 253,
+   "confidence": "low"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED40_EnvS_092_Camp",
+   "site_id": 231,
+   "confidence": "low"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_DED40_EnvS_096_Camp",
+   "site_id": 211,
+   "confidence": "low"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_ME_01_EnvS_017_Camp",
+   "site_id": 468,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_ME_01_EnvS_018_Camp",
+   "site_id": 508,
+   "confidence": "medium"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_ME_03_EnvS_005_Camp",
+   "site_id": 477,
+   "confidence": "medium"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_ME_03_EnvS_015_Camp",
+   "site_id": 497,
+   "confidence": "medium"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_ME_03_EnvS_023_Camp",
+   "site_id": 489,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_ME_04_EnvS_008_Camp",
+   "site_id": 576,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_ME_04_EnvS_009_Camp",
+   "site_id": 526,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_ME_05_EnvS_003_Camp",
+   "site_id": 540,
+   "confidence": "medium"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_ME_05_EnvS_030_Camp",
+   "site_id": 549,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_ME_06_EnvS_001_Camp",
+   "site_id": 561,
+   "confidence": "medium"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_ME_06_EnvS_010_Camp",
+   "site_id": 557,
+   "confidence": "medium"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_Nest_10_EnvS_002_Camp",
+   "site_id": 614,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_SE_01_EnvS_011_Camp",
+   "site_id": 621,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_SE_02_EnvS_010_Camp",
+   "site_id": 629,
+   "confidence": "medium"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_SE_05_EnvS_011_Camp",
+   "site_id": 606,
+   "confidence": "medium"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_SE_05_EnvS_014_Camp",
+   "site_id": 674,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_SE_05_EnvS_017_Camp",
+   "site_id": 681,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_SE_05_EnvS_042_Camp",
+   "site_id": 670,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_SE_06_EnvS_002_Camp",
+   "site_id": 659,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_SE_06_EnvS_008_Camp",
+   "site_id": 687,
+   "confidence": "medium"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_SE_07_EnvS_033_Camp",
+   "site_id": 577,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_SE_07_EnvS_036_Camp",
+   "site_id": 612,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_SE_08_EnvS_019_Camp",
+   "site_id": 636,
+   "confidence": "medium"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_SE_08_EnvS_043_Camp",
+   "site_id": 630,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_SE_09_EnvS_001_Camp",
+   "site_id": 593,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLA_10_EnvS_001_Camp",
+   "site_id": 697,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLA_10_EnvS_050_Camp",
+   "site_id": 762,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLA_10_EnvS_057_Camp",
+   "site_id": 765,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLA_10_EnvS_061_Camp",
+   "site_id": 706,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLA_10_EnvS_065_Camp",
+   "site_id": 719,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLA_10_EnvS_154_Camp",
+   "site_id": 808,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLA_30_EnvS_008_Camp",
+   "site_id": 843,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLA_30_EnvS_028_Camp",
+   "site_id": 776,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLA_30_EnvS_041_Camp",
+   "site_id": 782,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLA_40_EnvS_022_Camp",
+   "site_id": 821,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLA_40_EnvS_026_Camp",
+   "site_id": 827,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLA_50_EnvS_016_Camp",
+   "site_id": 853,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_10_EnvS_001_Camp",
+   "site_id": 318,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_10_EnvS_028_Camp",
+   "site_id": 326,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_10_EnvS_034_Camp",
+   "site_id": 420,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_10_EnvS_040_Camp",
+   "site_id": 399,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_10_EnvS_118_Camp",
+   "site_id": 308,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_10_EnvS_125_Camp",
+   "site_id": 265,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_10_EnvS_131_Camp",
+   "site_id": 390,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_10_EnvS_138_Camp",
+   "site_id": 419,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_20_EnvS_025_Camp",
+   "confidence": "high",
+   "obtain": {
+    "en": "Activated during the story on the way to Matrix 11; at the Matrix 11 entrance on the Great Desert side.",
+    "zh": "前往11号矩阵的主线途中自动激活；位于大沙漠一侧的11号矩阵入口。"
+   }
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_20_EnvS_032_Camp",
+   "site_id": 445,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_20_EnvS_155_Camp",
+   "site_id": 347,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_20_EnvS_176_Camp",
+   "site_id": 436,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_20_EnvS_183_Camp",
+   "site_id": 431,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_30_EnvS_014_Camp",
+   "site_id": 375,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_30_EnvS_067_Camp",
+   "site_id": 358,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_30_EnvS_071_Camp",
+   "site_id": 387,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_50_EnvS_017_Camp",
+   "site_id": 307,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_50_EnvS_178_Camp",
+   "site_id": 300,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_50_EnvS_182_Camp",
+   "site_id": 367,
+   "confidence": "high"
+  },
+  {
+   "alias": "ChangeState_ZoneEnv_WLB_50_EnvS_226_Camp",
+   "site_id": 286,
+   "confidence": "high"
+  }
+ ],
  "fish_zh": {
   "Fish_Arowana": "龙鱼",
   "Fish_Betta": "斗鱼",

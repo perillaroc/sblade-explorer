@@ -8,9 +8,10 @@
 | --- | --- |
 | `api/*.json` | stellarbladeguide.com API 响应（物品名称、位置描述、周目标签） |
 | `api/i18n/levels.json`、`locations.json` | 攻略区域/地点的简体中文翻译（英文原文 -> 中文） |
-| `api/i18n/obtain_*.json` | 攻略获取描述的简体中文翻译（站点条目 id -> 中文） |
+| `api/i18n/obtain_*.json` | 攻略获取描述的简体中文翻译（站点条目 id -> 中文；`obtain_camps.json` 为营地文案） |
 | `universe/aliases.json` | 从参考存档与本地存档提取的物品别名全集（不含未解锁 ID） |
-| `crosswalk.json` | 手工维护的别名对照（site id -> 别名 -> 中文名，目录库生成器的唯一事实来源）；`record_type_overrides` 覆盖无法按名称自动匹配的记录类型 |
+| `crosswalk.json` | 手工维护的别名对照（site id -> 别名 -> 中文名，目录库生成器的唯一事实来源）；`camps` 段为营地别名 -> 站点条目映射（个别未收录营地直接内嵌中英文案），`record_type_overrides` 覆盖无法按名称自动匹配的记录类型 |
+| `fish_obtain.json` | 手工维护的鱼类获取文案（别名 -> 中英文案：钓点 + 鱼饵；鱼类没有站点条目） |
 | `memorystick_order.json` | 记忆棒的游戏内数据库选单顺序（按区域分组、组内顺序，覆盖全部 186 条；据 Map Genie 与游民星空列表整理） |
 | `guides.json` | 手工维护的中文攻略链接快照（游民星空图文 + B 站「喂狗组-文轩」全收集视频）；`catalog build` 解析为每条物品的 `guides.web` / `guides.video`；纳米战衣与设计图逐件对应游民星空服装图鉴分页 |
 | `game/name_map.json` | 游戏数据表 + `Game.locres` 提取的内部别名→官方名称映射（生成物；含 `items`、`camps`、`album` 三段） |
@@ -35,6 +36,8 @@
 - <https://www.gamersky.com>（《剑星》全收集攻略、全饮料罐、全钓鱼点、全宝箱密码等）与
   <https://www.bilibili.com>（喂狗组-文轩「剑星全收集」分 P 视频）—— `guides.json` 的中文攻略链接；
   仅在桌面端点按按钮时由系统浏览器打开，程序运行时不联网
+- <https://www.gamersky.com/handbook/202405/1747789.shtml>（全钓鱼点位置及可钓鱼类一览）——
+  `fish_obtain.json` 的钓点与鱼饵来源；妮姬联动鱼类按联动攻略注明特殊/奇怪鱼饵
 
 ## 中文攻略链接（guides.json）
 

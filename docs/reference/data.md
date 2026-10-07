@@ -19,7 +19,11 @@
   [哔哩哔哩](https://www.bilibili.com/video/BV1Wfj1ztEuj)（126 套纳米服全收集、
   [喂狗组-文轩「剑星全收集」](https://www.bilibili.com/video/BV1or421L7XQ) 分 P 视频）——
   `data/raw/guides.json` 中的中文攻略链接
-- `data/raw/api/i18n/` —— 上述英文攻略文案的手工简体中文翻译（名称仍以游戏本地化为准）
+- `data/raw/fish_obtain.json` —— 鱼类获取文案（钓点 + 鱼饵，手工维护，来源为上述游民星空
+  [全钓鱼点攻略](https://www.gamersky.com/handbook/202405/1747789.shtml)与游戏内钓鱼点信息；
+  妮姬联动鱼类注明联动鱼饵）
+- `data/raw/api/i18n/` —— 上述英文攻略文案的手工简体中文翻译（名称仍以游戏本地化为准）；
+  `obtain_camps.json` 为营地站点条目的中文获取文案
 
 原始数据快照的逐项说明与刷新方式（API 抓取、`mine-names`）见 [data/raw/README.md](https://github.com/perillaroc/sblade-explorer/blob/main/data/raw/README.md)。
 程序运行时不联网，全部数据内置于程序。
@@ -28,12 +32,16 @@
 
 - 目录库 `data/catalog.json` 由 `sbsave-tools catalog build` 生成，禁止手改；
   收集品的唯一事实来源是 `data/raw/crosswalk.json`（site id → 别名 → 中文名，手工维护），
-  图鉴条目由游戏数据挖掘（`AlbumTable` + `Game.locres`）生成。
+  其中 `camps` 段维护营地别名 → 站点条目映射（营地获取文案来源）；图鉴条目由游戏数据挖掘
+  （`AlbumTable` + `Game.locres`）生成。
 - 只要物品的任一 `aliases` 出现在存档物品集合、从成就记录派生的别名或成就别名（图鉴）中，
   即视为「已获得」。
 - 读取存档中的 `NewGamePlusPlayCount`，标注「需要二周目(NG+)」/「需要三周目(NG++)」。
 - 记录/密码/罐子/设计图案/外观名称由游戏数据挖掘覆盖为官方简中名称并置 `confidence="high"`；
   少量记录版本变体与未关联营地保留低置信度（共 69 条），报告中标记「映射待确认」。
+- 获取文案：收集品由站点 `description`（英文）+ `api/i18n/obtain_*.json`（中文）提供；
+  鱼类无站点条目，文案维护在 `data/raw/fish_obtain.json`；未收录进站点快照的个别营地
+  在 `crosswalk.json` 的 `camps` 段内直接写明中英文案。
 - 分类参数（CLI `--category` 与 UI 筛选）同时接受分类键（`nano_suits`）、中文名（`纳米战衣`）与英文名（`Nano Suits`）。
 - 分类分两段：`section=collection`（13 类收集品，计入目录进度）与 `section=album`
   （图鉴：孽奇拔 67、角色 55，**不计入目录进度**，在报告/UI 中单列）。
@@ -97,6 +105,9 @@ CLI 亦可用 `--catalog 路径.json` 临时附加；条目内 `area_zh`/`locati
 
 - 目录库 932 条 / 15 分类：13 类收集品 810 条 + 图鉴 122 条（孽奇拔 67、角色 55）；
   纳米战衣 126、罐子 49、营地 89、低置信度 69。
+- 获取文案：810 条收集品全部有 `obtain` + `obtain_zh`（鱼类 35 条来自 `fish_obtain.json`，
+  营地 89 条来自站点 `description` + `obtain_camps.json`）；仅图鉴 122 条以官方 `desc` 代替，
+  属设计如此。
 - 图鉴按页入库：孽奇拔分组 12/36/10/6/3，角色 55 页（艾德姆 5 页、迅驰 3 页、母主领域 1 页），
   全部带 `desc_zh`/`desc_en`，且无内置攻略链接。
 - 记录 310 条全部带游戏内类型（记忆棒 187、文档 123）与攻略获取方式；记忆棒 186 条带游戏内选单顺序
