@@ -1,7 +1,7 @@
 import { reactive, watch } from "vue";
 import type { UiLocale } from "../locales";
 import { UI_LOCALES } from "../locales";
-import type { Lang } from "../types";
+import type { ItemFilter, Lang } from "../types";
 
 /** A browser detected on this machine by the `list_browsers` command. */
 export interface BrowserInfo {
@@ -45,7 +45,14 @@ export interface Settings {
   lastSavePath: string;
   /** Left sidebar collapsed to the icon rail (w-14); new in v0.3.0. */
   sidebarCollapsed: boolean;
+  /** Per-category list/matrix preference; missing key = catalog default. */
+  categoryViews: Partial<Record<string, CategoryView>>;
+  /** Per-category filter preference; missing key = "all". Search terms are not stored. */
+  categoryFilters: Partial<Record<string, ItemFilter>>;
 }
+
+/** Category page view preference persisted across restarts (F4). */
+export type CategoryView = "matrix" | "list";
 
 const STORAGE_KEY = "sbsave.settings.v1";
 
@@ -64,7 +71,29 @@ function defaultSettings(): Settings {
     browserName: "",
     lastSavePath: "",
     sidebarCollapsed: false,
+    categoryViews: {},
+    categoryFilters: {},
   };
+}
+
+function sanitizeViews(value: unknown): Partial<Record<string, CategoryView>> {
+  const views: Partial<Record<string, CategoryView>> = {};
+  if (value && typeof value === "object") {
+    for (const [key, view] of Object.entries(value as Record<string, unknown>)) {
+      if (view === "matrix" || view === "list") views[key] = view;
+    }
+  }
+  return views;
+}
+
+function sanitizeFilters(value: unknown): Partial<Record<string, ItemFilter>> {
+  const filters: Partial<Record<string, ItemFilter>> = {};
+  if (value && typeof value === "object") {
+    for (const [key, filter] of Object.entries(value as Record<string, unknown>)) {
+      if (filter === "all" || filter === "obtained" || filter === "missing") filters[key] = filter;
+    }
+  }
+  return filters;
 }
 
 function load(): Settings {
@@ -89,6 +118,8 @@ function load(): Settings {
         typeof parsed.sidebarCollapsed === "boolean"
           ? parsed.sidebarCollapsed
           : fallback.sidebarCollapsed,
+      categoryViews: sanitizeViews(parsed.categoryViews),
+      categoryFilters: sanitizeFilters(parsed.categoryFilters),
     };
   } catch (reason) {
     console.warn("Failed to load settings; using defaults", reason);

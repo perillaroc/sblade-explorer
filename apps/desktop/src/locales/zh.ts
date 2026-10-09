@@ -60,6 +60,13 @@ export const messages = {
     expand: "展开侧栏",
     complete: "无缺失条目",
   },
+  search: {
+    placeholder: "搜索收集物…",
+    empty: "没有匹配的收集物",
+    hits: "命中 {count} 条",
+    hint: "按 Ctrl+K 或 / 聚焦搜索",
+    shortcut: "Ctrl K",
+  },
   savePicker: {
     label: "存档",
     scanning: "正在查找存档…",

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useSlots } from "vue";
+import { computed, ref, useSlots } from "vue";
 
 /**
  * Text input with an optional leading icon (search boxes, keyword filters).
@@ -24,6 +24,17 @@ const emit = defineEmits<{ "update:modelValue": [value: string] }>();
 const slots = useSlots();
 const hasIcon = computed(() => Boolean(slots.icon));
 
+const element = ref<HTMLInputElement | null>(null);
+
+/** Lets callers focus/select the inner input (global search shortcut). */
+defineExpose({
+  focus: () => element.value?.focus(),
+  select: () => {
+    element.value?.focus();
+    element.value?.select();
+  },
+});
+
 const classes = computed(() => [
   "w-full rounded-md border border-edge bg-surface-card text-ink transition-colors duration-fast",
   "placeholder:text-ink-subtle focus:border-brand disabled:cursor-not-allowed disabled:opacity-50",
@@ -45,6 +56,7 @@ function onInput(event: Event) {
       <slot name="icon" />
     </span>
     <input
+      ref="element"
       :id="id"
       :type="type"
       :class="classes"

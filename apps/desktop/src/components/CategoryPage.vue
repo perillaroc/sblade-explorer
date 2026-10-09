@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { computed, nextTick, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import {
   ChevronDown,
@@ -15,6 +15,7 @@ import type { CategoryResult, ItemFilter, Lang } from "../types";
 import { areaAccent } from "../lib/area";
 import { areaLabel, categoryName, recordTypeLabel } from "../lib/display";
 import { categoryRows, matchesQuery, type ItemRow } from "../lib/items";
+import { settings, type CategoryView } from "../lib/settings";
 import ItemTable from "./ItemTable.vue";
 import MatrixView from "./MatrixView.vue";
 import { UiCard, UiEmpty, UiInput, UiProgress, UiSegmented, UiTabs } from "./ui";
@@ -60,6 +61,9 @@ const props = defineProps<{
   ngPlusCount: number;
   lang: Lang;
   matrix: boolean;
+  /** Global-search target: reset view/filter and open this item (F4). */
+  focusItemId?: string | null;
+  focusNonce?: number;
 }>();
 
 const { t } = useI18n({ useScope: "global" });
@@ -75,11 +79,24 @@ const VIEW_OPTIONS = computed<{ value: ViewMode; label: string; icon: LucideIcon
   { value: "list", label: t("categoryPage.viewList"), icon: List },
 ]);
 
-const filter = ref<ItemFilter>("all");
+const filter = ref<ItemFilter>(settings.categoryFilters[props.category.key] ?? "all");
 const query = ref("");
-const view = ref<ViewMode>(props.matrix ? "matrix" : "list");
+const view = ref<CategoryView>(
+  settings.categoryViews[props.category.key] ?? (props.matrix ? "matrix" : "list"),
+);
 const activeRecordType = ref<string | null>(null);
 const collapsedAreas = ref<Set<string>>(new Set());
+
+/** Programmatic resets (global-search focus) must not overwrite preferences. */
+let applyingFocus = false;
+
+watch(view, (value) => {
+  if (!applyingFocus) settings.categoryViews[props.category.key] = value;
+});
+
+watch(filter, (value) => {
+  if (!applyingFocus) settings.categoryFilters[props.category.key] = value;
+});
 
 function setView(value: string): void {
   view.value = value as ViewMode;
@@ -210,6 +227,32 @@ watch(recordGroups, (groups) => {
   activeRecordType.value = fallback?.key ?? null;
 });
 
+/**
+ * Global-search focus: reset to a neutral list view so the item exists in the
+ * rendered rows, then let the matching ItemTable open its detail drawer.
+ */
+watch(
+  () => [props.focusItemId, props.focusNonce] as const,
+  ([itemId]) => {
+    if (!itemId) return;
+    applyingFocus = true;
+    filter.value = "all";
+    query.value = "";
+    collapsedAreas.value = new Set();
+    if (view.value === "matrix") view.value = "list";
+    if (isRecords.value) {
+      const group = recordGroups.value.find((candidate) =>
+        candidate.rows.some((row) => row.id === itemId),
+      );
+      if (group) activeRecordType.value = group.key;
+    }
+    void nextTick(() => {
+      applyingFocus = false;
+    });
+  },
+  { immediate: true },
+);
+
 const percent = computed(() =>
   props.category.total === 0 ? 0 : (props.category.obtained / props.category.total) * 100,
 );
@@ -331,6 +374,8 @@ const percent = computed(() =>
                 :ng-plus-count="ngPlusCount"
                 :lang="lang"
                 hide-location
+                :open-item-id="focusItemId"
+                :open-nonce="focusNonce"
               />
             </section>
           </template>
@@ -339,6 +384,8 @@ const percent = computed(() =>
             :rows="activeRecordGroup.rows"
             :ng-plus-count="ngPlusCount"
             :lang="lang"
+            :open-item-id="focusItemId"
+            :open-nonce="focusNonce"
           />
         </template>
       </UiCard>
@@ -372,12 +419,20 @@ const percent = computed(() =>
           :ng-plus-count="ngPlusCount"
           :lang="lang"
           hide-location
+          :open-item-id="focusItemId"
+          :open-nonce="focusNonce"
         />
       </UiCard>
     </template>
 
     <UiCard v-else padding="none">
-      <ItemTable :rows="rows" :ng-plus-count="ngPlusCount" :lang="lang" />
+      <ItemTable
+        :rows="rows"
+        :ng-plus-count="ngPlusCount"
+        :lang="lang"
+        :open-item-id="focusItemId"
+        :open-nonce="focusNonce"
+      />
     </UiCard>
 
     <p v-if="category.extra_obtained_aliases.length > 0" class="px-1 text-[11px] text-ink-subtle">

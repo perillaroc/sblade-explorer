@@ -7,6 +7,7 @@ import { categoryName } from "../lib/display";
 import { APP_ICON, categoryIcon, SUMMARY_ICON } from "../lib/icons";
 import { settings } from "../lib/settings";
 import AboutDialog from "./AboutDialog.vue";
+import GlobalSearch from "./GlobalSearch.vue";
 import SaveCard from "./SaveCard.vue";
 import SettingsDialog from "./SettingsDialog.vue";
 import { UiBadge, UiButton, UiProgress } from "./ui";
@@ -33,6 +34,7 @@ const emit = defineEmits<{
   refreshSaves: [];
   pickSave: [];
   openDir: [path: string];
+  searchSelect: [hit: { categoryKey: string; itemId: string }];
 }>();
 
 const { t } = useI18n({ useScope: "global" });
@@ -132,6 +134,15 @@ function footerClass(): (string | false)[] {
         </UiButton>
       </template>
     </header>
+
+    <div class="px-2 pb-2" :class="collapsed && 'flex justify-center'">
+      <GlobalSearch
+        :analysis="analysis"
+        :collapsed="collapsed"
+        @select="emit('searchSelect', $event)"
+        @expand="emit('toggleCollapse')"
+      />
+    </div>
 
     <div class="px-2 pb-2">
       <SaveCard

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { computed, nextTick, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { CircleCheck, CircleX, TriangleAlert } from "@lucide/vue";
 import type { Lang } from "../types";
@@ -26,6 +26,9 @@ const props = defineProps<{
   ngPlusCount: number;
   lang: Lang;
   hideLocation?: boolean;
+  /** Global-search jump target: open this row's drawer and scroll to it. */
+  openItemId?: string | null;
+  openNonce?: number;
 }>();
 
 const { t } = useI18n({ useScope: "global" });
@@ -52,6 +55,22 @@ watch(
   () => {
     selectedIndex.value = -1;
   },
+);
+
+watch(
+  () => [props.openItemId, props.openNonce] as const,
+  ([itemId]) => {
+    if (!itemId) return;
+    const index = props.rows.findIndex((row) => row.id === itemId);
+    if (index < 0) return;
+    selectedIndex.value = index;
+    void nextTick(() => {
+      const element = document.querySelector(`tr[data-key="${itemId}"]`);
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      element?.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" });
+    });
+  },
+  { immediate: true },
 );
 
 function open(index: number): void {

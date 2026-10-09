@@ -58,6 +58,13 @@ export const en = {
     expand: "Expand sidebar",
     complete: "No missing items",
   },
+  search: {
+    placeholder: "Search collectibles…",
+    empty: "No matching collectibles",
+    hits: "{count} matches",
+    hint: "Press Ctrl+K or / to focus search",
+    shortcut: "Ctrl K",
+  },
   savePicker: {
     label: "Save",
     scanning: "Searching for saves…",

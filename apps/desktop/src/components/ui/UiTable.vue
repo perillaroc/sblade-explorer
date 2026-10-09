@@ -63,6 +63,7 @@ function cellValue(row: T, key: string): unknown {
         <tr
           v-for="(row, index) in rows"
           :key="rowKey(row, index)"
+          :data-key="rowKey(row, index)"
           class="border-t border-edge align-top transition-colors duration-fast"
           :class="[
             clickable && 'cursor-pointer hover:bg-graphite-100 dark:hover:bg-white/5',

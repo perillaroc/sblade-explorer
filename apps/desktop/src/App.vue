@@ -9,9 +9,11 @@ import AppTopbar from "./components/AppTopbar.vue";
 import CategoryPage from "./components/CategoryPage.vue";
 import SaveGuide from "./components/SaveGuide.vue";
 import SummaryPage from "./components/SummaryPage.vue";
+import { UiToastHost } from "./components/ui";
 import { categoryName } from "./lib/display";
 import { loadGuides } from "./lib/guides";
 import { settings } from "./lib/settings";
+import { showToast } from "./lib/toast";
 import { isNarrow } from "./lib/viewport";
 import type { Analysis, SaveSlot, SaveSource } from "./types";
 
@@ -38,8 +40,21 @@ const scanning = ref(false);
 const loading = ref(false);
 const error = ref("");
 const page = ref(SUMMARY_PAGE);
-const notice = ref("");
-const noticeError = ref(false);
+
+/**
+ * Global-search target: after selecting a hit, the category page resets its
+ * view/filter and opens the item's detail drawer (F4 "jump and locate").
+ */
+const focusCategory = ref("");
+const focusItemId = ref("");
+const focusNonce = ref(0);
+
+function openSearchResult(hit: { categoryKey: string; itemId: string }) {
+  focusCategory.value = hit.categoryKey;
+  focusItemId.value = hit.itemId;
+  focusNonce.value += 1;
+  page.value = hit.categoryKey;
+}
 
 /** Automatically discovered slots plus files picked manually this session. */
 const allSaves = computed(() => {
@@ -107,9 +122,9 @@ watch(analysis, (value) => {
   }
 });
 
-function showNotice(message: string, isError = false) {
-  notice.value = message;
-  noticeError.value = isError;
+/** Transient feedback now goes through the toast host (F4). */
+function notify(message: string, isError = false) {
+  if (message) showToast(message, isError ? "danger" : "success", isError ? 6000 : 4000);
 }
 
 /** Re-checks slots picked manually; files that vanished are dropped. */
@@ -190,7 +205,7 @@ async function selectSave(slot: SaveSlot, remember = true) {
   selected.value = slot;
   loading.value = true;
   error.value = "";
-  showNotice("");
+
   try {
     analysis.value = await invoke<Analysis>("analyze_save", {
       path: slot.path,
@@ -227,7 +242,7 @@ async function pickSaveFile() {
     }
     await selectSave(slot);
   } catch (reason) {
-    showNotice(t("app.pickError", { reason: String(reason) }), true);
+    notify(t("app.pickError", { reason: String(reason) }), true);
   }
 }
 
@@ -235,7 +250,7 @@ async function openSaveDir(path: string) {
   try {
     await invoke("open_save_dir", { path, locale: settings.uiLocale });
   } catch (reason) {
-    showNotice(t("app.openDirError", { reason: String(reason) }), true);
+    notify(t("app.openDirError", { reason: String(reason) }), true);
   }
 }
 
@@ -255,9 +270,9 @@ async function exportReport(format: "json" | "markdown") {
       outPath: target,
       locale: settings.uiLocale,
     });
-    showNotice(t("app.exported", { path: target }));
+    notify(t("app.exported", { path: target }));
   } catch (reason) {
-    showNotice(t("app.exportError", { reason: String(reason) }), true);
+    notify(t("app.exportError", { reason: String(reason) }), true);
   }
 }
 
@@ -283,18 +298,11 @@ onMounted(() => {
       @refresh-saves="refreshSaves"
       @pick-save="pickSaveFile"
       @open-dir="openSaveDir"
+      @search-select="openSearchResult"
     />
 
     <div class="flex min-w-0 flex-1 flex-col">
       <AppTopbar :title="pageTitle" :analysis="analysis" @export="exportReport" />
-
-      <p
-        v-if="notice"
-        class="shrink-0 px-4 py-1.5 text-xs"
-        :class="noticeError ? 'text-danger' : 'text-success'"
-      >
-        {{ notice }}
-      </p>
 
       <main
         v-if="loading"
@@ -338,10 +346,14 @@ onMounted(() => {
               :ng-plus-count="analysis.save.ng_plus_count"
               :lang="settings.contentLang"
               :matrix="MATRIX_CATEGORIES.includes(activeCategory.key)"
+              :focus-item-id="activeCategory.key === focusCategory ? focusItemId : null"
+              :focus-nonce="focusNonce"
             />
           </KeepAlive>
         </div>
       </main>
     </div>
+
+    <UiToastHost />
   </div>
 </template>
