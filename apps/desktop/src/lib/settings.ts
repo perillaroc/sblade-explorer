@@ -43,6 +43,8 @@ export interface Settings {
   browserName: string;
   /** Save opened last time; empty means "pick the newest save on startup". */
   lastSavePath: string;
+  /** Left sidebar collapsed to the icon rail (w-14); new in v0.3.0. */
+  sidebarCollapsed: boolean;
 }
 
 const STORAGE_KEY = "sbsave.settings.v1";
@@ -61,6 +63,7 @@ function defaultSettings(): Settings {
     browserPath: "",
     browserName: "",
     lastSavePath: "",
+    sidebarCollapsed: false,
   };
 }
 
@@ -82,6 +85,10 @@ function load(): Settings {
       browserPath: typeof parsed.browserPath === "string" ? parsed.browserPath : "",
       browserName: typeof parsed.browserName === "string" ? parsed.browserName : "",
       lastSavePath: typeof parsed.lastSavePath === "string" ? parsed.lastSavePath : "",
+      sidebarCollapsed:
+        typeof parsed.sidebarCollapsed === "boolean"
+          ? parsed.sidebarCollapsed
+          : fallback.sidebarCollapsed,
     };
   } catch (reason) {
     console.warn("Failed to load settings; using defaults", reason);

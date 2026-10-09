@@ -8,6 +8,8 @@ interface SegmentedOption {
   icon?: Component;
   count?: number | string;
   title?: string;
+  /** Accessible name for icon-only options (falls back to `title`). */
+  ariaLabel?: string;
   disabled?: boolean;
 }
 
@@ -62,6 +64,7 @@ function optionClass(option: SegmentedOption): (string | false | undefined)[] {
       :class="optionClass(option)"
       :disabled="option.disabled"
       :title="option.title"
+      :aria-label="option.ariaLabel ?? option.title"
       :aria-pressed="modelValue === option.value"
       @click="emit('update:modelValue', option.value)"
     >

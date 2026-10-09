@@ -1,5 +1,6 @@
 import type { Lang } from "../types";
 import { translate } from "./i18n";
+import { settings } from "./settings";
 
 export function localized(
   zh: string | null | undefined,
@@ -170,4 +171,15 @@ export function matrixObtain(
     return `${zh}（${en}）`;
   }
   return zh || en;
+}
+
+/** Save file size in MB with one decimal (sidebar save card / slot list). */
+export function saveSize(size: number): string {
+  return `${(size / 1024 / 1024).toFixed(1)} MB`;
+}
+
+/** Save file timestamp for the current interface locale. */
+export function saveTime(mtimeMs: number): string {
+  const locale = settings.uiLocale === "zh" ? "zh-CN" : "en-US";
+  return new Date(mtimeMs).toLocaleString(locale, { hour12: false });
 }

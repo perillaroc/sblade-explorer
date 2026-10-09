@@ -12,6 +12,7 @@ export { default as UiCard } from "./UiCard.vue";
 export { default as UiDialog } from "./UiDialog.vue";
 export { default as UiEmpty } from "./UiEmpty.vue";
 export { default as UiInput } from "./UiInput.vue";
+export { default as UiPopover } from "./UiPopover.vue";
 export { default as UiProgress } from "./UiProgress.vue";
 export { default as UiSegmented } from "./UiSegmented.vue";
 export { default as UiTable } from "./UiTable.vue";
