@@ -1,7 +1,236 @@
 @import "tailwindcss";
 
 /*
- * `appearance` 设置通过 <html> 上的 `dark` 类切换主题（见 src/lib/theme.ts），
- * 因此这里覆盖 Tailwind 默认的 `prefers-color-scheme` 暗色变体。
+ * `appearance` switches themes through the `dark` class on <html>
+ * (see src/lib/theme.ts), so override Tailwind's default
+ * `prefers-color-scheme` dark variant.
  */
 @custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Design tokens (phase 2 / F1, direction A "sci-fi instrument", dark-first).
+ * Source document: doc/2026-10-07-roadmap/design/04-tokens.md.
+ * Raw scales live here; components use the semantic aliases defined below.
+ */
+@theme {
+  /* ---------- Brand: cyan (interaction / brand accent) ---------- */
+  --color-brand-50: #ecfeff;
+  --color-brand-100: #cffafe;
+  --color-brand-200: #a5f3fc;
+  --color-brand-300: #67e8f9;
+  --color-brand-400: #22d3ee;
+  --color-brand-500: #06b6d4;
+  --color-brand-600: #0891b2;
+  --color-brand-700: #0e7490;
+  --color-brand-800: #155e75;
+  --color-brand-900: #164e63;
+  --color-brand-950: #083344;
+
+  /* ---------- Neutrals: graphite (blue-leaning grey) ---------- */
+  --color-graphite-50: #f6f8fa;
+  --color-graphite-100: #eceff3;
+  --color-graphite-200: #d5dbe2;
+  --color-graphite-300: #b3bcc7;
+  --color-graphite-400: #8a94a3;
+  --color-graphite-500: #646e7d;
+  --color-graphite-600: #4a5361;
+  --color-graphite-700: #353d49;
+  --color-graphite-800: #242a34;
+  --color-graphite-900: #171c23;
+  --color-graphite-950: #0d1117;
+
+  /* ---------- Radius ---------- */
+  --radius-sm: 0.375rem; /* 6px:  controls */
+  --radius-md: 0.5rem; /* 8px:  buttons / inputs */
+  --radius-card: 0.75rem; /* 12px: cards */
+  --radius-xl: 1rem; /* 16px: dialogs / drawers */
+
+  /* ---------- Shadows (dark theme separates layers with borders) ---------- */
+  --shadow-card: 0 1px 2px rgb(13 17 23 / 0.06);
+  --shadow-overlay: 0 8px 30px rgb(0 0 0 / 0.35);
+  --shadow-glow-brand:
+    0 0 0 1px rgb(34 211 238 / 0.35), 0 0 12px rgb(34 211 238 / 0.15);
+
+  /* ---------- Typography: system stack, offline ---------- */
+  --font-sans:
+    "Segoe UI", system-ui, -apple-system, "Microsoft YaHei", "PingFang SC",
+    "Noto Sans CJK SC", sans-serif;
+  --font-mono:
+    "Cascadia Mono", ui-monospace, "JetBrains Mono", Consolas, monospace;
+
+  /* ---------- Spacing rhythm: 4px base grid ---------- */
+  --spacing: 0.25rem;
+
+  /* ---------- Motion ---------- */
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ---------- Overlay enter animations ---------- */
+  --animate-overlay-in: ui-overlay-in var(--duration-normal) var(--ease-out-soft);
+  --animate-modal-in: ui-modal-in var(--duration-fast) var(--ease-out-soft);
+  --animate-drawer-in: ui-drawer-in var(--duration-normal) var(--ease-out-soft);
+
+  @keyframes ui-overlay-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes ui-modal-in {
+    from {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+  }
+
+  @keyframes ui-drawer-in {
+    from {
+      transform: translateX(100%);
+    }
+  }
+}
+
+/*
+ * Semantic tokens. Values are calibrated for WCAG AA text contrast (see
+ * 04-tokens.md); `text-muted` is 4.8:1 on the light surface and 5.6:1 on the
+ * dark card, `brand` is 5.4:1 (light) and 10:1 (dark).
+ */
+:root {
+  color-scheme: light;
+
+  --sb-surface: var(--color-graphite-50);
+  --sb-surface-card: #ffffff;
+  --sb-surface-raised: #ffffff;
+  --sb-surface-sunken: var(--color-graphite-100);
+  --sb-border: var(--color-graphite-200);
+  --sb-text: var(--color-graphite-900);
+  --sb-text-muted: var(--color-graphite-500);
+  --sb-text-subtle: var(--color-graphite-400);
+  --sb-focus: var(--color-brand-600);
+  --sb-brand: var(--color-brand-700);
+  --sb-brand-soft: var(--color-brand-50);
+  --sb-success: #047857; /* emerald-700 */
+  --sb-warning: #b45309; /* amber-700 */
+  --sb-danger: #be123c; /* rose-700 */
+  --sb-album: #0369a1; /* sky-700 */
+}
+
+.dark {
+  color-scheme: dark;
+
+  --sb-surface: var(--color-graphite-950);
+  --sb-surface-card: var(--color-graphite-900);
+  --sb-surface-raised: var(--color-graphite-800);
+  --sb-surface-sunken: rgb(0 0 0 / 0.25);
+  --sb-border: rgb(255 255 255 / 0.08);
+  --sb-text: var(--color-graphite-100);
+  --sb-text-muted: var(--color-graphite-400);
+  --sb-text-subtle: var(--color-graphite-500);
+  --sb-focus: var(--color-brand-400);
+  --sb-brand: var(--color-brand-400);
+  --sb-brand-soft: rgb(8 51 68 / 0.4);
+  --sb-success: #34d399; /* emerald-400 */
+  --sb-warning: #fbbf24; /* amber-400 */
+  --sb-danger: #fb7185; /* rose-400 */
+  --sb-album: #38bdf8; /* sky-400 */
+}
+
+/*
+ * `inline` keeps utilities pointing at the semantic variables above, so the
+ * `.dark` overrides cascade into every `bg-surface` / `text-ink` class.
+ */
+@theme inline {
+  --color-surface: var(--sb-surface);
+  --color-surface-card: var(--sb-surface-card);
+  --color-surface-raised: var(--sb-surface-raised);
+  --color-surface-sunken: var(--sb-surface-sunken);
+  --color-edge: var(--sb-border);
+  --color-ink: var(--sb-text);
+  --color-ink-muted: var(--sb-text-muted);
+  --color-ink-subtle: var(--sb-text-subtle);
+  --color-brand: var(--sb-brand);
+  --color-brand-soft: var(--sb-brand-soft);
+  --color-success: var(--sb-success);
+  --color-warning: var(--sb-warning);
+  --color-danger: var(--sb-danger);
+  --color-album: var(--sb-album);
+}
+
+/*
+ * z-index scale used by the ui layer:
+ *   z-page 0 < z-sticky 10 < z-overlay 80 < z-tooltip 85 < z-toast 90
+ * Toast always sits above dialogs; tooltips stay above dialog surfaces.
+ */
+@utility z-page {
+  z-index: 0;
+}
+
+@utility z-sticky {
+  z-index: 10;
+}
+
+@utility z-overlay {
+  z-index: 80;
+}
+
+@utility z-tooltip {
+  z-index: 85;
+}
+
+@utility z-toast {
+  z-index: 90;
+}
+
+/* Duration tokens (Tailwind has no `--duration-*` utility namespace). */
+@utility duration-fast {
+  transition-duration: var(--duration-fast);
+}
+
+@utility duration-normal {
+  transition-duration: var(--duration-normal);
+}
+
+@layer base {
+  body {
+    background-color: var(--sb-surface);
+    color: var(--sb-text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* One visible focus ring everywhere; components must not remove it. */
+  :focus-visible {
+    outline: 2px solid var(--sb-focus);
+    outline-offset: 2px;
+  }
+}
+
+/* UiToastHost list transitions. */
+.ui-toast-move,
+.ui-toast-enter-active,
+.ui-toast-leave-active {
+  transition:
+    opacity var(--duration-normal) var(--ease-out-soft),
+    transform var(--duration-normal) var(--ease-out-soft);
+}
+
+.ui-toast-enter-from,
+.ui-toast-leave-to {
+  opacity: 0;
+  transform: translateX(0.5rem);
+}
+
+/*
+ * Motion downgrade: keep state changes instant for users who ask for less
+ * motion (F1 spec: all ui components rely on this global net).
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
