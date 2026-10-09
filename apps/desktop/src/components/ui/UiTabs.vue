@@ -86,7 +86,7 @@ function onKeydown(event: KeyboardEvent, index: number): void {
       <span
         v-if="tab.count !== undefined"
         class="text-[11px]"
-        :class="modelValue === tab.value ? 'text-brand' : 'text-ink-subtle'"
+        :class="modelValue === tab.value ? 'text-brand' : 'text-ink-muted'"
       >
         {{ tab.count }}
       </span>

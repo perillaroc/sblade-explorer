@@ -105,13 +105,13 @@
   --sb-surface-sunken: var(--color-graphite-100);
   --sb-border: var(--color-graphite-200);
   --sb-text: var(--color-graphite-900);
-  --sb-text-muted: var(--color-graphite-500);
-  --sb-text-subtle: var(--color-graphite-400);
+  --sb-text-muted: #616b7a; /* graphite-500 adjusted for 4.66:1 on sunken */
+  --sb-text-subtle: #68727f; /* audited: 4.58:1 on graphite-50, 4.88:1 on white */
   --sb-focus: var(--color-brand-600);
   --sb-brand: var(--color-brand-700);
   --sb-brand-soft: var(--color-brand-50);
-  --sb-success: #047857; /* emerald-700 */
-  --sb-warning: #b45309; /* amber-700 */
+  --sb-success: #065f46; /* emerald-800: emerald-700 fell to 4.44:1 on success/15 badges */
+  --sb-warning: #92400e; /* amber-800: amber-700 missed AA on amber/15 badges */
   --sb-danger: #be123c; /* rose-700 */
   --sb-album: #0369a1; /* sky-700 */
 }
@@ -126,7 +126,7 @@
   --sb-border: rgb(255 255 255 / 0.08);
   --sb-text: var(--color-graphite-100);
   --sb-text-muted: var(--color-graphite-400);
-  --sb-text-subtle: var(--color-graphite-500);
+  --sb-text-subtle: #838e9d; /* audited: 4.50:1 on graphite-800 raised surface */
   --sb-focus: var(--color-brand-400);
   --sb-brand: var(--color-brand-400);
   --sb-brand-soft: rgb(8 51 68 / 0.4);

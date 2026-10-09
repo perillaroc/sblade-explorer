@@ -13,7 +13,7 @@ const STYLES = {
   missing: "text-rose-600 dark:text-rose-400",
   locked: "text-slate-500",
   dlc: "text-violet-600 dark:text-violet-400",
-  defaultAppearance: "text-slate-400 dark:text-slate-600",
+  defaultAppearance: "text-slate-500 dark:text-slate-400",
 } as const;
 
 const ICONS: Record<keyof typeof STYLES, LucideIcon> = {

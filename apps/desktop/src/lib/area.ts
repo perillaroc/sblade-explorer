@@ -41,7 +41,7 @@ const PALETTE: AreaAccent[] = [
     cell: "bg-rose-500/10",
     border: "border-rose-400/70",
     dot: "bg-rose-400",
-    text: "text-rose-200",
+    text: "text-rose-700 dark:text-rose-200",
   },
   {
     band: "bg-violet-500/15",
