@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { CircleCheck, CircleX, TriangleAlert } from "@lucide/vue";
 import type { Lang } from "../types";
@@ -13,10 +13,14 @@ import {
   reasonLabel,
 } from "../lib/display";
 import type { ItemRow } from "../lib/items";
-import ItemDetailDialog from "./ItemDetailDialog.vue";
+import DetailDrawer from "./DetailDrawer.vue";
+import { UiBadge, UiTable } from "./ui";
 
-const { t } = useI18n({ useScope: "global" });
-
+/**
+ * Item table (list view and area groups inside the category page).
+ * Rows are clickable / keyboard-activatable and open the unified detail
+ * drawer with prev/next navigation inside the passed rows.
+ */
 const props = defineProps<{
   rows: ItemRow[];
   ngPlusCount: number;
@@ -24,18 +28,39 @@ const props = defineProps<{
   hideLocation?: boolean;
 }>();
 
-const selected = ref<ItemRow | null>(null);
+const { t } = useI18n({ useScope: "global" });
 
-function areaText(row: ItemRow): string {
-  return areaLabel(row.item, props.lang);
+const columns = computed(() => {
+  const list = [
+    { key: "status", label: t("itemTable.status"), headerClass: "w-24" },
+    { key: "item", label: t("itemTable.item") },
+  ];
+  if (!props.hideLocation) list.push({ key: "location", label: t("itemTable.location") });
+  list.push({ key: "obtain", label: t("itemTable.obtain") });
+  list.push({ key: "flags", label: t("itemTable.flags"), headerClass: "w-56" });
+  return list;
+});
+
+const selectedIndex = ref(-1);
+
+const selected = computed(() =>
+  selectedIndex.value >= 0 ? (props.rows[selectedIndex.value] ?? null) : null,
+);
+
+watch(
+  () => props.rows,
+  () => {
+    selectedIndex.value = -1;
+  },
+);
+
+function open(index: number): void {
+  selectedIndex.value = index;
 }
 
-function locationText(row: ItemRow): string {
-  return locationLabel(row.item, props.lang);
-}
-
-function flags(row: ItemRow): string[] {
-  return flagLabels(row.item);
+function navigate(delta: number): void {
+  const next = selectedIndex.value + delta;
+  if (next >= 0 && next < props.rows.length) selectedIndex.value = next;
 }
 
 function reason(row: ItemRow): string | null {
@@ -44,96 +69,77 @@ function reason(row: ItemRow): string | null {
 </script>
 
 <template>
-  <div class="overflow-x-auto">
-    <table class="w-full text-xs">
-      <thead class="sticky top-0 bg-white dark:bg-slate-900">
-        <tr class="text-left text-slate-500">
-          <th class="px-4 py-2">{{ t("itemTable.status") }}</th>
-          <th class="px-4 py-2">{{ t("itemTable.item") }}</th>
-          <th v-if="!hideLocation" class="px-4 py-2">{{ t("itemTable.location") }}</th>
-          <th class="px-4 py-2">{{ t("itemTable.obtain") }}</th>
-          <th class="px-4 py-2">{{ t("itemTable.flags") }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          v-for="row in rows"
-          :key="row.id"
-          class="cursor-pointer border-t border-slate-200 dark:border-slate-800/70 align-top transition-colors hover:bg-slate-100 dark:hover:bg-slate-800/20"
-          :class="row.obtained ? '' : 'bg-slate-50 dark:bg-slate-950/30'"
-          @click="selected = row"
-        >
-          <td class="px-4 py-2">
-            <span
-              class="inline-flex items-center gap-0.5 rounded px-1.5 py-0.5 text-[11px]"
-              :class="
-                row.obtained
-                  ? 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300'
-                  : 'bg-rose-100 dark:bg-rose-900/40 text-rose-700 dark:text-rose-300'
-              "
-            >
-              <CircleCheck v-if="row.obtained" class="h-3 w-3" />
-              <CircleX v-else class="h-3 w-3" />
-              {{ row.obtained ? t("itemTable.obtained") : t("itemTable.missing") }}
-            </span>
-          </td>
-          <td class="px-4 py-2">
-            <div class="text-slate-900 dark:text-slate-100">{{ itemName(row.item, lang) }}</div>
-            <div class="text-[11px] text-slate-500">{{ row.id }}</div>
-          </td>
-          <td v-if="!hideLocation" class="px-4 py-2">
-            <div
-              class="inline-flex max-w-72 flex-col rounded-r-md border-l-4 py-1 pl-2.5 pr-3"
-              :class="[areaAccent(row.item.area).border, areaAccent(row.item.area).cell]"
-            >
-              <template v-if="locationText(row)">
-                <span class="text-[11px] font-semibold" :class="areaAccent(row.item.area).text">
-                  {{ areaText(row) || t("common.uncategorized") }}
-                </span>
-                <span class="text-sm font-medium text-slate-900 dark:text-slate-100">{{ locationText(row) }}</span>
-              </template>
-              <span
-                v-else
-                class="text-sm font-semibold"
-                :class="areaAccent(row.item.area).text"
-              >
-                {{ areaText(row) || t("common.uncategorized") }}
-              </span>
-            </div>
-          </td>
-          <td class="px-4 py-2 text-slate-600 dark:text-slate-400">{{ obtainLabel(row.item, lang) || "—" }}</td>
-          <td class="px-4 py-2">
-            <span
-              v-for="flag in flags(row)"
-              :key="flag"
-              class="mr-1 inline-block rounded bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 text-[11px] text-amber-700 dark:text-amber-300"
-            >
-              {{ flag }}
-            </span>
-            <span
-              v-if="reason(row)"
-              class="mr-1 inline-block rounded bg-amber-100 dark:bg-amber-900/40 px-1.5 py-0.5 text-[11px] text-amber-700 dark:text-amber-200"
-            >
-              {{ reason(row) }}
-            </span>
-            <span
-              v-if="row.obtained && row.item.missable"
-              class="mr-1 inline-flex items-center gap-0.5 rounded bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 text-[11px] text-slate-600 dark:text-slate-400"
-            >
-              <TriangleAlert class="h-3 w-3" />
-              {{ t("itemTable.missable") }}
-            </span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <UiTable
+    :columns="columns"
+    :rows="rows"
+    :row-key="(row) => row.id"
+    clickable
+    :row-class="(row) => (row.obtained ? undefined : 'bg-graphite-50/70 dark:bg-black/20')"
+    @row-activate="(_row, index) => open(index)"
+  >
+    <template #cell-status="{ row }">
+      <UiBadge :tone="row.obtained ? 'success' : 'danger'">
+        <template #icon>
+          <CircleCheck v-if="row.obtained" class="h-3 w-3" />
+          <CircleX v-else class="h-3 w-3" />
+        </template>
+        {{ row.obtained ? t("itemTable.obtained") : t("itemTable.missing") }}
+      </UiBadge>
+    </template>
 
-    <ItemDetailDialog
-      v-if="selected"
-      :row="selected"
-      :ng-plus-count="ngPlusCount"
-      :lang="lang"
-      @close="selected = null"
-    />
-  </div>
+    <template #cell-item="{ row }">
+      <div class="text-ink">{{ itemName(row.item, lang) }}</div>
+      <div class="font-mono text-[11px] text-ink-subtle">{{ row.id }}</div>
+    </template>
+
+    <template #cell-location="{ row }">
+      <div
+        class="inline-flex max-w-72 flex-col rounded-r-md border-l-4 py-1 pl-2.5 pr-3"
+        :class="[areaAccent(row.item.area).border, areaAccent(row.item.area).cell]"
+      >
+        <template v-if="locationLabel(row.item, lang)">
+          <span class="text-[11px] font-semibold" :class="areaAccent(row.item.area).text">
+            {{ areaLabel(row.item, lang) || t("common.uncategorized") }}
+          </span>
+          <span class="text-sm font-medium text-ink">{{ locationLabel(row.item, lang) }}</span>
+        </template>
+        <span v-else class="text-sm font-semibold" :class="areaAccent(row.item.area).text">
+          {{ areaLabel(row.item, lang) || t("common.uncategorized") }}
+        </span>
+      </div>
+    </template>
+
+    <template #cell-obtain="{ row }">
+      <span class="text-ink-muted">{{ obtainLabel(row.item, lang) || "—" }}</span>
+    </template>
+
+    <template #cell-flags="{ row }">
+      <span class="inline-flex flex-wrap items-center gap-1">
+        <UiBadge v-for="flag in flagLabels(row.item)" :key="flag" tone="warning">
+          {{ flag }}
+        </UiBadge>
+        <UiBadge v-if="reason(row)" tone="warning">
+          {{ reason(row) }}
+        </UiBadge>
+        <UiBadge v-if="row.obtained && row.item.missable" tone="neutral">
+          <template #icon>
+            <TriangleAlert class="h-3 w-3" />
+          </template>
+          {{ t("itemTable.missable") }}
+        </UiBadge>
+      </span>
+    </template>
+  </UiTable>
+
+  <DetailDrawer
+    v-if="selected"
+    :row="selected"
+    :ng-plus-count="ngPlusCount"
+    :lang="lang"
+    :has-previous="selectedIndex > 0"
+    :has-next="selectedIndex < rows.length - 1"
+    @close="selectedIndex = -1"
+    @previous="navigate(-1)"
+    @next="navigate(1)"
+  />
 </template>

@@ -6,12 +6,14 @@
 
 - `src/` —— Vue 3 前端（Vite + TypeScript + Tailwind CSS v4）：
   - `components/` —— 应用骨架（`AppSidebar` 可折叠导航、`AppTopbar` 顶栏、`SaveCard` 存档卡）、
-    汇总页、分类页、周目矩阵、详情弹窗、关于/设置对话框等
+    仪表盘汇总页、分类页（sticky 工具栏 + 矩阵/列表 + 记录 tabs + 图鉴分组）、周目矩阵、
+    统一详情抽屉（`DetailDrawer`）、启动空态引导、关于/设置对话框；页面均消费设计令牌
   - `components/ui/` —— 基础组件层（F1）：按钮 / 分段 / 输入 / 卡片 / 徽章 / 进度条 / BaseDialog /
     Toast / Tabs / 表格 / 空态 / Tooltip / Popover；统一消费 `styles.css` 的设计令牌
     （`bg-surface`、`text-ink` 等），页面与弹窗重做时优先复用（见 `components/ui/index.ts`）
   - `lib/` —— 前端辅助逻辑（展示、区域、矩阵、状态、攻略链接、设置、主题、i18n、视口等）；
-    `lib/viewport.ts` 提供 1100px 窄窗响应式状态；`lib/toast.ts` 提供 Toast 队列
+    `lib/viewport.ts` 提供 1100px 窄窗响应式状态；`lib/actionable.ts` 派生仪表盘「可优先收集」
+    （missing 且无阻塞原因）与易错过提示；`lib/toast.ts` 提供 Toast 队列
     （`showToast`，由 `UiToastHost` 渲染，F4 起替换 `App.vue` 内联 notice）
   - `locales/zh.ts` / `locales/en.ts` —— vue-i18n 语言包（`zh.ts` 是 `MessageSchema` 事实来源，
     `en.ts` 用 `satisfies` 约束；新增文案必须同时补两份）

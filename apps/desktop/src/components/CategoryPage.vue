@@ -17,9 +17,12 @@ import { areaLabel, categoryName, recordTypeLabel } from "../lib/display";
 import { categoryRows, matchesQuery, type ItemRow } from "../lib/items";
 import ItemTable from "./ItemTable.vue";
 import MatrixView from "./MatrixView.vue";
+import { UiCard, UiEmpty, UiInput, UiProgress, UiSegmented, UiTabs } from "./ui";
 
-const { t } = useI18n({ useScope: "global" });
-
+/**
+ * Category page: sticky toolbar (title / progress / view / search / filter)
+ * plus the list, cycle matrix, record-type tabs and album groupings.
+ */
 type ViewMode = "matrix" | "list";
 
 interface RecordAreaGroup {
@@ -59,10 +62,12 @@ const props = defineProps<{
   matrix: boolean;
 }>();
 
-const FILTER_OPTIONS = computed<{ value: ItemFilter; label: string }[]>(() => [
-  { value: "all", label: t("categoryPage.filterAll") },
-  { value: "obtained", label: t("categoryPage.filterObtained") },
-  { value: "missing", label: t("categoryPage.filterMissing") },
+const { t } = useI18n({ useScope: "global" });
+
+const FILTER_OPTIONS = computed<{ value: ItemFilter; label: string; count: number }[]>(() => [
+  { value: "all", label: t("categoryPage.filterAll"), count: props.category.total },
+  { value: "obtained", label: t("categoryPage.filterObtained"), count: props.category.obtained },
+  { value: "missing", label: t("categoryPage.filterMissing"), count: props.category.missing.length },
 ]);
 
 const VIEW_OPTIONS = computed<{ value: ViewMode; label: string; icon: LucideIcon }[]>(() => [
@@ -75,6 +80,14 @@ const query = ref("");
 const view = ref<ViewMode>(props.matrix ? "matrix" : "list");
 const activeRecordType = ref<string | null>(null);
 const collapsedAreas = ref<Set<string>>(new Set());
+
+function setView(value: string): void {
+  view.value = value as ViewMode;
+}
+
+function setFilter(value: string): void {
+  filter.value = value as ItemFilter;
+}
 
 function toggleArea(key: string) {
   const next = new Set(collapsedAreas.value);
@@ -101,7 +114,7 @@ function compareOrder(left: ItemRow, right: ItemRow): number {
   return orderOf(left) - orderOf(right) || left.id.localeCompare(right.id);
 }
 
-function groupRowsByArea(allRows: ItemRow[], visibleRows: ItemRow[]): RecordAreaGroup[] {
+function groupRowsByArea(allAreaRows: ItemRow[], visibleRows: ItemRow[]): RecordAreaGroup[] {
   const areas = new Map<string, RecordAreaGroup>();
   const ensure = (row: ItemRow) => {
     const key = row.item.area ?? "";
@@ -118,7 +131,7 @@ function groupRowsByArea(allRows: ItemRow[], visibleRows: ItemRow[]): RecordArea
     }
     return area;
   };
-  for (const row of allRows) {
+  for (const row of allAreaRows) {
     const area = ensure(row);
     area.total += 1;
     if (row.obtained) area.obtained += 1;
@@ -175,6 +188,15 @@ const activeRecordGroup = computed<RecordGroup | null>(() => {
   return groups.find((group) => group.key === activeRecordType.value) ?? groups[0] ?? null;
 });
 
+const recordTabs = computed(() =>
+  recordGroups.value.map((group) => ({
+    value: group.key,
+    label: group.name,
+    count: `${group.obtained}/${group.total}`,
+    muted: group.rows.length === 0,
+  })),
+);
+
 const naytibaGroups = computed<RecordAreaGroup[]>(() => {
   if (!isNaytiba.value) return [];
   return groupRowsByArea(allRows.value, rows.value);
@@ -191,207 +213,156 @@ watch(recordGroups, (groups) => {
 const percent = computed(() =>
   props.category.total === 0 ? 0 : (props.category.obtained / props.category.total) * 100,
 );
-
-function count(value: ItemFilter): number {
-  if (value === "obtained") return props.category.obtained;
-  if (value === "missing") return props.category.missing.length;
-  return props.category.total;
-}
-
-function onInput(event: Event) {
-  query.value = (event.target as HTMLInputElement).value;
-}
 </script>
 
 <template>
-  <section class="rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60">
-    <header class="space-y-3 border-b border-slate-200 dark:border-slate-800 px-4 py-3">
+  <div class="space-y-3">
+    <div class="sticky top-0 z-toolbar -mx-4 -mt-4 border-b border-edge bg-surface-card px-4 py-3">
       <div class="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <h2 class="text-base font-semibold">{{ categoryName(category, lang) }}</h2>
-          <p class="mt-0.5 text-xs text-slate-600 dark:text-slate-400">
-            {{ t("categoryPage.progress", { obtained: category.obtained, total: category.total, missing: category.missing.length, percent: percent.toFixed(0) }) }}
+        <div class="min-w-0">
+          <h2 class="truncate text-base font-semibold text-ink">
+            {{ categoryName(category, lang) }}
+          </h2>
+          <p class="mt-0.5 text-xs text-ink-muted">
+            {{
+              t("categoryPage.progress", {
+                obtained: category.obtained,
+                total: category.total,
+                missing: category.missing.length,
+                percent: percent.toFixed(0),
+              })
+            }}
           </p>
         </div>
         <div class="flex flex-wrap items-center gap-2">
-          <div
+          <UiSegmented
             v-if="matrix"
-            class="flex overflow-hidden rounded border border-slate-300 dark:border-slate-700 text-xs"
+            :model-value="view"
+            :options="VIEW_OPTIONS"
+            :aria-label="t('categoryPage.viewLabel')"
+            @update:model-value="setView"
+          />
+          <UiInput
+            v-model="query"
+            type="search"
+            :placeholder="t('categoryPage.searchPlaceholder')"
+            class="w-64 max-w-full"
           >
-            <button
-              v-for="option in VIEW_OPTIONS"
-              :key="option.value"
-              type="button"
-              class="inline-flex items-center gap-1 px-2 py-1"
-              :class="
-                view === option.value
-                  ? 'bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white'
-                  : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
-              "
-              @click="view = option.value"
-            >
-              <component :is="option.icon" class="h-3.5 w-3.5" />
-              {{ option.label }}
-            </button>
-          </div>
-          <div class="relative">
-            <Search
-              class="pointer-events-none absolute left-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-500"
-            />
-            <input
-              class="w-64 rounded border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 py-1 pl-7 pr-2 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-500 dark:placeholder:text-slate-600"
-              type="search"
-              :placeholder="t('categoryPage.searchPlaceholder')"
-              :value="query"
-              @input="onInput"
-            />
-          </div>
+            <template #icon>
+              <Search class="h-3.5 w-3.5" />
+            </template>
+          </UiInput>
         </div>
       </div>
 
-      <div class="h-1.5 overflow-hidden rounded bg-slate-200 dark:bg-slate-800">
-        <div class="h-full rounded bg-emerald-500" :style="{ width: `${percent}%` }"></div>
-      </div>
+      <UiProgress
+        class="mt-2.5"
+        size="md"
+        :value="percent"
+        :tone="category.section === 'album' ? 'album' : 'success'"
+      />
 
-      <div class="flex items-center gap-1.5">
-        <ListFilter class="h-3.5 w-3.5 text-slate-500" />
-        <div class="flex overflow-hidden rounded border border-slate-300 dark:border-slate-700 text-xs">
-          <button
-            v-for="option in FILTER_OPTIONS"
-            :key="option.value"
-            type="button"
-            class="px-3 py-1"
-            :class="
-              filter === option.value
-                ? 'bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white'
-                : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
-            "
-            @click="filter = option.value"
-          >
-            {{ option.label }}
-            <span class="ml-1 text-slate-500">{{ count(option.value) }}</span>
-          </button>
-        </div>
-        <span v-if="!matrix || view === 'list'" class="ml-auto text-[11px] text-slate-500 dark:text-slate-600">
+      <div class="mt-2.5 flex flex-wrap items-center gap-2">
+        <ListFilter class="h-3.5 w-3.5 shrink-0 text-ink-subtle" aria-hidden="true" />
+        <UiSegmented
+          :model-value="filter"
+          :options="FILTER_OPTIONS"
+          :aria-label="t('categoryPage.filterLabel')"
+          @update:model-value="setFilter"
+        />
+        <span class="ml-auto hidden text-[11px] text-ink-subtle min-[1100px]:inline">
           {{ t("categoryPage.clickHint") }}
         </span>
       </div>
-    </header>
+    </div>
 
-    <p
-      v-if="rows.length === 0"
-      class="flex items-center justify-center gap-2 px-4 py-10 text-center text-xs text-slate-500"
-    >
-      <SearchX class="h-4 w-4" />
-      {{ t("categoryPage.empty") }}
-    </p>
-    <MatrixView
-      v-else-if="matrix && view === 'matrix'"
-      :rows="rows"
-      :all-rows="allRows"
-      :ng-plus-count="ngPlusCount"
-      :lang="lang"
-    />
-    <template v-else-if="isRecords">
-      <nav
-        class="flex gap-0.5 overflow-x-auto border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 px-2"
-        role="tablist"
-      >
-        <button
-          v-for="group in recordGroups"
-          :key="group.key"
-          type="button"
-          role="tab"
-          :aria-selected="activeRecordGroup?.key === group.key"
-          class="flex shrink-0 items-baseline gap-1.5 border-b-2 px-3 py-2 text-xs transition-colors"
-          :class="[
-            activeRecordGroup?.key === group.key
-              ? 'border-emerald-500 bg-white dark:bg-slate-900/80 text-slate-900 dark:text-slate-100'
-              : 'border-transparent text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900/50 hover:text-slate-800 dark:hover:text-slate-200',
-            group.rows.length === 0 ? 'opacity-40' : '',
-          ]"
-          @click="activeRecordType = group.key"
-        >
-          {{ group.name }}
-          <span
-            class="text-[11px]"
-            :class="activeRecordGroup?.key === group.key ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-500'"
-          >
-            {{ group.obtained }}/{{ group.total }}
-          </span>
-        </button>
-      </nav>
-      <template v-if="activeRecordGroup">
-        <p
-          v-if="activeRecordGroup.rows.length === 0"
-          class="flex items-center justify-center gap-2 px-4 py-10 text-center text-xs text-slate-500"
-        >
-          <SearchX class="h-4 w-4" />
-          {{ t("categoryPage.empty") }}
-        </p>
-        <template v-else-if="activeRecordGroup.areas.length > 0">
-          <section v-for="area in activeRecordGroup.areas" :key="area.key">
-            <button
-              type="button"
-              class="flex w-full flex-wrap items-center justify-between gap-2 border-t border-slate-200 dark:border-slate-800/70 px-4 py-2 text-left"
-              :class="areaAccent(area.key).band"
-              :aria-expanded="!collapsedAreas.has(area.key)"
-              @click="toggleArea(area.key)"
-            >
-              <span
-                class="flex items-center gap-2 text-sm font-semibold"
-                :class="areaAccent(area.key).text"
-              >
-                <component
-                  :is="collapsedAreas.has(area.key) ? ChevronRight : ChevronDown"
-                  class="h-4 w-4 shrink-0"
-                />
-                <span
-                  class="h-2.5 w-2.5 shrink-0 rounded-full"
-                  :class="areaAccent(area.key).dot"
-                ></span>
-                {{ area.label }}
-              </span>
-              <span class="text-xs text-slate-600 dark:text-slate-400">
-                {{ t("categoryPage.areaProgress", { obtained: area.obtained, total: area.total }) }}
-              </span>
-            </button>
-            <ItemTable
-              v-if="!collapsedAreas.has(area.key)"
-              :rows="area.rows"
-              :ng-plus-count="ngPlusCount"
-              :lang="lang"
-              hide-location
-            />
-          </section>
-        </template>
-        <ItemTable v-else :rows="activeRecordGroup.rows" :ng-plus-count="ngPlusCount" :lang="lang" />
-      </template>
+    <UiEmpty v-if="rows.length === 0" :icon="SearchX" :description="t('categoryPage.empty')" />
+
+    <template v-else-if="matrix && view === 'matrix'">
+      <UiCard padding="none">
+        <MatrixView
+          :rows="rows"
+          :all-rows="allRows"
+          :ng-plus-count="ngPlusCount"
+          :lang="lang"
+        />
+      </UiCard>
     </template>
+
+    <template v-else-if="isRecords">
+      <UiCard padding="none">
+        <UiTabs
+          :model-value="activeRecordGroup?.key ?? ''"
+          :tabs="recordTabs"
+          :aria-label="t('categoryPage.recordTypes')"
+          @update:model-value="activeRecordType = $event"
+        />
+        <template v-if="activeRecordGroup">
+          <UiEmpty
+            v-if="activeRecordGroup.rows.length === 0"
+            :icon="SearchX"
+            :description="t('categoryPage.empty')"
+          />
+          <template v-else-if="activeRecordGroup.areas.length > 0">
+            <section v-for="area in activeRecordGroup.areas" :key="area.key">
+              <button
+                type="button"
+                class="flex w-full flex-wrap items-center justify-between gap-2 border-t border-edge px-4 py-2 text-left transition-colors duration-fast first:border-t-0"
+                :class="areaAccent(area.key).band"
+                :aria-expanded="!collapsedAreas.has(area.key)"
+                @click="toggleArea(area.key)"
+              >
+                <span class="flex items-center gap-2 text-sm font-semibold" :class="areaAccent(area.key).text">
+                  <component
+                    :is="collapsedAreas.has(area.key) ? ChevronRight : ChevronDown"
+                    class="h-4 w-4 shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span class="h-2.5 w-2.5 shrink-0 rounded-full" :class="areaAccent(area.key).dot"></span>
+                  {{ area.label }}
+                </span>
+                <span class="text-xs text-ink-muted">
+                  {{ t("categoryPage.areaProgress", { obtained: area.obtained, total: area.total }) }}
+                </span>
+              </button>
+              <ItemTable
+                v-if="!collapsedAreas.has(area.key)"
+                :rows="area.rows"
+                :ng-plus-count="ngPlusCount"
+                :lang="lang"
+                hide-location
+              />
+            </section>
+          </template>
+          <ItemTable
+            v-else
+            :rows="activeRecordGroup.rows"
+            :ng-plus-count="ngPlusCount"
+            :lang="lang"
+          />
+        </template>
+      </UiCard>
+    </template>
+
     <template v-else-if="isNaytiba">
-      <section v-for="area in naytibaGroups" :key="area.key">
+      <UiCard v-for="area in naytibaGroups" :key="area.key" padding="none">
         <button
           type="button"
-          class="flex w-full flex-wrap items-center justify-between gap-2 border-t border-slate-200 dark:border-slate-800/70 px-4 py-2 text-left"
+          class="flex w-full flex-wrap items-center justify-between gap-2 px-4 py-2 text-left transition-colors duration-fast"
           :class="areaAccent(area.key).band"
           :aria-expanded="!collapsedAreas.has(area.key)"
           @click="toggleArea(area.key)"
         >
-          <span
-            class="flex items-center gap-2 text-sm font-semibold"
-            :class="areaAccent(area.key).text"
-          >
+          <span class="flex items-center gap-2 text-sm font-semibold" :class="areaAccent(area.key).text">
             <component
               :is="collapsedAreas.has(area.key) ? ChevronRight : ChevronDown"
               class="h-4 w-4 shrink-0"
+              aria-hidden="true"
             />
-            <span
-              class="h-2.5 w-2.5 shrink-0 rounded-full"
-              :class="areaAccent(area.key).dot"
-            ></span>
+            <span class="h-2.5 w-2.5 shrink-0 rounded-full" :class="areaAccent(area.key).dot"></span>
             {{ area.label }}
           </span>
-          <span class="text-xs text-slate-600 dark:text-slate-400">
+          <span class="text-xs text-ink-muted">
             {{ t("categoryPage.areaProgress", { obtained: area.obtained, total: area.total }) }}
           </span>
         </button>
@@ -402,12 +373,15 @@ function onInput(event: Event) {
           :lang="lang"
           hide-location
         />
-      </section>
+      </UiCard>
     </template>
-    <ItemTable v-else :rows="rows" :ng-plus-count="ngPlusCount" :lang="lang" />
-  </section>
 
-  <p v-if="category.extra_obtained_aliases.length > 0" class="mt-2 px-1 text-[11px] text-slate-500">
-    {{ t("categoryPage.extraAliases", { count: category.extra_obtained_aliases.length }) }}
-  </p>
+    <UiCard v-else padding="none">
+      <ItemTable :rows="rows" :ng-plus-count="ngPlusCount" :lang="lang" />
+    </UiCard>
+
+    <p v-if="category.extra_obtained_aliases.length > 0" class="px-1 text-[11px] text-ink-subtle">
+      {{ t("categoryPage.extraAliases", { count: category.extra_obtained_aliases.length }) }}
+    </p>
+  </div>
 </template>

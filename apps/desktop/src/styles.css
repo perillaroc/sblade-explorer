@@ -159,7 +159,7 @@
 
 /*
  * z-index scale used by the ui layer:
- *   z-page 0 < z-sticky 10 < z-overlay 80 < z-tooltip 85 < z-toast 90
+ *   z-page 0 < z-sticky 10 < z-toolbar 20 < z-overlay 80 < z-tooltip 85 < z-toast 90
  * Toast always sits above dialogs; tooltips stay above dialog surfaces.
  */
 @utility z-page {
@@ -168,6 +168,11 @@
 
 @utility z-sticky {
   z-index: 10;
+}
+
+/* Page-local toolbar above sticky table headers. */
+@utility z-toolbar {
+  z-index: 20;
 }
 
 @utility z-overlay {
@@ -189,6 +194,15 @@
 
 @utility duration-normal {
   transition-duration: var(--duration-normal);
+}
+
+/* Matrix cells whose only entries are blocked by NG+/DLC (F0 wireframes). */
+@utility cell-blocked {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgb(244 63 94 / 0.08) 0 4px,
+    transparent 4px 10px
+  );
 }
 
 @layer base {

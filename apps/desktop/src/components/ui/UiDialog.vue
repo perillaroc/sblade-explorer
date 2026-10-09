@@ -93,13 +93,16 @@ const rootClass = computed(() =>
 );
 
 const panelClass = computed(() => [
-  "relative flex w-full flex-col border-edge bg-surface-raised shadow-overlay focus:outline-none",
+  "relative flex flex-col border-edge bg-surface-raised shadow-overlay focus:outline-none",
   props.variant === "drawer"
     ? [
-        "h-full border-l animate-drawer-in max-[1099px]:w-full",
+        "h-full border-l animate-drawer-in max-[1099px]:w-full max-w-full",
         DRAWER_SIZES[props.size],
       ]
-    : ["max-h-[85vh] rounded-xl border animate-modal-in", MODAL_SIZES[props.size]],
+    : [
+        "w-full max-h-[85vh] rounded-xl border animate-modal-in",
+        MODAL_SIZES[props.size],
+      ],
 ]);
 
 const titleId = useId();

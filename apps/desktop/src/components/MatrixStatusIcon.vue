@@ -14,7 +14,7 @@ const status = computed(() => matrixStatus(props.row, props.ngPlusCount));
 <template>
   <component
     :is="status.icon"
-    class="h-3.5 w-3.5 shrink-0"
+    class="h-4 w-4 shrink-0"
     :class="status.className"
     :aria-label="status.label"
   >

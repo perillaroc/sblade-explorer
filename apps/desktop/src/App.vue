@@ -328,6 +328,7 @@ onMounted(() => {
               v-if="page === SUMMARY_PAGE"
               :key="SUMMARY_PAGE"
               :analysis="analysis"
+              :slot="selected"
               @navigate="page = $event"
             />
             <CategoryPage

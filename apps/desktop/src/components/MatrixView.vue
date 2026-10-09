@@ -14,11 +14,15 @@ import {
   type MatrixUnit,
 } from "../lib/matrix";
 import { matrixStatusLegend } from "../lib/status";
-import MatrixDetailDialog from "./MatrixDetailDialog.vue";
+import DetailDrawer from "./DetailDrawer.vue";
 import MatrixStatusIcon from "./MatrixStatusIcon.vue";
 
-const { t } = useI18n({ useScope: "global" });
-
+/**
+ * Cycle matrix ("area x location x playthrough"), visually rebuilt on the
+ * design tokens. Blocked cells (NG+/DLC only, not obtained) get a subtle
+ * diagonal texture so they stand out from plain missing cells. A row click
+ * opens the unified detail drawer in group mode.
+ */
 const props = defineProps<{
   rows: ItemRow[];
   allRows: ItemRow[];
@@ -32,6 +36,8 @@ interface SelectedUnit {
   areaLabel: string;
   locationLabel: string;
 }
+
+const { t } = useI18n({ useScope: "global" });
 
 const areas = computed(() => buildMatrix(props.rows, props.allRows, props.lang));
 const columns = computed(() => matrixColumns(props.allRows));
@@ -60,6 +66,17 @@ function areaUnitCount(area: MatrixArea): number {
   return area.locations.reduce((total, location) => total + location.units.length, 0);
 }
 
+/** All entries in a cell are blocked by NG+/DLC and none is obtained yet. */
+function cellBlocked(entries: ItemRow[]): boolean {
+  return (
+    entries.length > 0 &&
+    entries.every(
+      (entry) =>
+        !entry.obtained && (entry.item.dlc !== null || entry.item.ng_plus > props.ngPlusCount),
+    )
+  );
+}
+
 function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, unit: MatrixUnit) {
   selected.value = { unit, areaKey, areaLabel, locationLabel };
 }
@@ -67,24 +84,23 @@ function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, u
 
 <template>
   <div class="p-4">
-    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500">
-      <span
-        v-for="status in legend"
-        :key="status.label"
-        class="inline-flex items-center gap-1"
-      >
-        <component :is="status.icon" class="h-3.5 w-3.5" :class="status.className" />
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-ink-muted">
+      <span v-for="status in legend" :key="status.label" class="inline-flex items-center gap-1">
+        <component :is="status.icon" class="h-4 w-4" :class="status.className" />
         {{ status.label }}
       </span>
     </div>
-    <p class="mt-1 text-[11px] text-slate-500 dark:text-slate-600">
+    <p class="mt-1 text-[11px] text-ink-subtle">
       {{ t("matrix.hint") }}
     </p>
+
     <div class="mt-2 overflow-x-auto">
       <table class="w-full text-xs">
         <thead>
-          <tr class="text-left text-slate-500">
-            <th class="w-40 py-1 pr-3 text-sm font-semibold text-slate-700 dark:text-slate-300">{{ t("matrix.location") }}</th>
+          <tr class="text-left text-ink-muted">
+            <th class="w-40 py-1 pr-3 text-sm font-semibold text-ink-muted">
+              {{ t("matrix.location") }}
+            </th>
             <th v-for="index in columns" :key="index" class="py-1 pr-3">
               {{ columnLabels[index] }}
             </th>
@@ -97,7 +113,7 @@ function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, u
               <td :colspan="columns.length + 2" class="pb-1 pt-4">
                 <button
                   type="button"
-                  class="flex w-full items-center gap-2 rounded-md px-3 py-1.5 text-sm font-bold"
+                  class="flex w-full items-center gap-2 rounded-md px-3 py-1.5 text-sm font-bold transition-colors duration-fast"
                   :class="[areaAccent(area.key).band, areaAccent(area.key).text]"
                   :aria-expanded="!collapsedAreas.has(area.key)"
                   @click="toggleArea(area.key)"
@@ -105,13 +121,14 @@ function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, u
                   <component
                     :is="collapsedAreas.has(area.key) ? ChevronRight : ChevronDown"
                     class="h-4 w-4 shrink-0"
+                    aria-hidden="true"
                   />
                   <span
                     class="h-2.5 w-2.5 shrink-0 rounded-full"
                     :class="areaAccent(area.key).dot"
                   ></span>
                   <span>{{ area.label }}</span>
-                  <span class="ml-auto text-xs font-normal text-slate-600 dark:text-slate-400">
+                  <span class="ml-auto text-xs font-normal text-ink-muted">
                     {{ t("matrix.itemCount", { count: areaUnitCount(area) }) }}
                   </span>
                 </button>
@@ -121,7 +138,7 @@ function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, u
               <template v-for="location in area.locations" :key="location.key">
                 <tr
                   v-if="collapsedLocations.has(location.key)"
-                  class="cursor-pointer border-t border-slate-200 dark:border-slate-800/70 align-top hover:bg-slate-100 dark:hover:bg-slate-800/20"
+                  class="cursor-pointer border-t border-edge align-top transition-colors duration-fast hover:bg-graphite-100 dark:hover:bg-white/5"
                   @click="toggleLocation(location.key)"
                 >
                   <td
@@ -130,15 +147,18 @@ function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, u
                   >
                     <button
                       type="button"
-                      class="flex w-full items-start gap-1.5 px-3 py-2 text-left text-sm font-semibold text-slate-900 dark:text-slate-100"
+                      class="flex w-full items-start gap-1.5 px-3 py-2 text-left text-sm font-semibold text-ink"
                       :aria-expanded="false"
                       @click.stop="toggleLocation(location.key)"
                     >
-                      <ChevronRight class="mt-0.5 h-3.5 w-3.5 shrink-0 text-slate-600 dark:text-slate-400" />
+                      <ChevronRight
+                        class="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink-subtle"
+                        aria-hidden="true"
+                      />
                       <span>{{ location.label }}</span>
                     </button>
                   </td>
-                  <td :colspan="columns.length + 1" class="py-2 pr-3 text-xs text-slate-500">
+                  <td :colspan="columns.length + 1" class="py-2 pr-3 text-xs text-ink-subtle">
                     {{ t("matrix.collapsedCount", { count: location.units.length }) }}
                   </td>
                 </tr>
@@ -146,7 +166,7 @@ function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, u
                   <tr
                     v-for="(unit, unitIndex) in location.units"
                     :key="unit.key"
-                    class="cursor-pointer border-t border-slate-200 dark:border-slate-800/70 align-top hover:bg-slate-100 dark:hover:bg-slate-800/20"
+                    class="cursor-pointer border-t border-edge align-top transition-colors duration-fast hover:bg-graphite-100 dark:hover:bg-white/5"
                     @click="selectUnit(area.key, area.label, location.label, unit)"
                   >
                     <td
@@ -158,34 +178,38 @@ function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, u
                     >
                       <button
                         type="button"
-                        class="flex w-full items-start gap-1.5 px-3 py-2 text-left text-sm font-semibold text-slate-900 dark:text-slate-100"
+                        class="flex w-full items-start gap-1.5 px-3 py-2 text-left text-sm font-semibold text-ink"
                         :aria-expanded="true"
                         @click.stop="toggleLocation(location.key)"
                       >
-                        <ChevronDown class="mt-0.5 h-3.5 w-3.5 shrink-0 text-slate-600 dark:text-slate-400" />
+                        <ChevronDown
+                          class="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink-subtle"
+                          aria-hidden="true"
+                        />
                         <span>{{ location.label }}</span>
                       </button>
                     </td>
-                    <td v-for="index in columns" :key="index" class="py-1.5 pr-3">
+                    <td
+                      v-for="index in columns"
+                      :key="index"
+                      class="py-1.5 pr-3"
+                      :class="cellBlocked(unit.cells[index]) && 'cell-blocked'"
+                    >
                       <div
                         v-for="entry in unit.cells[index]"
                         :key="entry.id"
                         class="flex items-start gap-1"
                       >
-                        <MatrixStatusIcon
-                          :row="entry"
-                          :ng-plus-count="ngPlusCount"
-                          class="mt-px"
-                        />
+                        <MatrixStatusIcon :row="entry" :ng-plus-count="ngPlusCount" class="mt-px" />
                         <span>{{ matrixName(entry.item, lang) }}</span>
                       </div>
-                      <span v-if="unit.cells[index].length === 0" class="text-slate-500 dark:text-slate-600">—</span>
+                      <span v-if="unit.cells[index].length === 0" class="text-ink-subtle">—</span>
                     </td>
                     <td class="py-1.5 pr-3">
                       <div class="flex items-start gap-1">
-                        <span class="mt-px text-slate-500 dark:text-slate-600">▸</span>
+                        <span class="mt-px text-ink-subtle" aria-hidden="true">▸</span>
                         <p
-                          class="line-clamp-2 max-w-72 text-slate-600 dark:text-slate-400"
+                          class="line-clamp-2 max-w-72 text-ink-muted"
                           :title="unit.obtain || undefined"
                         >
                           {{ unit.obtain || "—" }}
@@ -201,12 +225,9 @@ function selectUnit(areaKey: string, areaLabel: string, locationLabel: string, u
       </table>
     </div>
 
-    <MatrixDetailDialog
+    <DetailDrawer
       v-if="selected"
-      :unit="selected.unit"
-      :area-key="selected.areaKey"
-      :area-label="selected.areaLabel"
-      :location-label="selected.locationLabel"
+      :unit="selected"
       :ng-plus-count="ngPlusCount"
       :lang="lang"
       @close="selected = null"
