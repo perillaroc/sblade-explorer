@@ -1018,6 +1018,62 @@
    ],
    "zh": "流浪剑客",
    "confidence": "low"
+  },
+  {
+   "aliases": [
+    "BS_Bayonetta_01"
+   ],
+   "zh": "时装子弹（蓓优妮塔）",
+   "name_en": "Couture Bullet (Bayonetta)",
+   "area": "Bayonetta Collab",
+   "location": "Free Update 1.5.0",
+   "obtain": {
+    "en": "Added in the free 1.5.0 Bayonetta collaboration update.",
+    "zh": "1.5.0 免费更新新增的《蓓优妮塔》联动内容。"
+   },
+   "confidence": "high"
+  },
+  {
+   "aliases": [
+    "BS_Bayonetta_02"
+   ],
+   "zh": "时装子弹（修女）",
+   "name_en": "Couture Bullet (Nun)",
+   "area": "Bayonetta Collab",
+   "location": "Free Update 1.5.0",
+   "obtain": {
+    "en": "Added in the free 1.5.0 Bayonetta collaboration update.",
+    "zh": "1.5.0 免费更新新增的《蓓优妮塔》联动内容。"
+   },
+   "confidence": "high"
+  },
+  {
+   "aliases": [
+    "BS_Bayonetta_03"
+   ],
+   "zh": "时装子弹（贞德）",
+   "name_en": "Couture Bullet (Jeanne)",
+   "area": "Bayonetta Collab",
+   "location": "Free Update 1.5.0",
+   "obtain": {
+    "en": "Added in the free 1.5.0 Bayonetta collaboration update.",
+    "zh": "1.5.0 免费更新新增的《蓓优妮塔》联动内容。"
+   },
+   "confidence": "high"
+  },
+  {
+   "aliases": [
+    "BS_Bayonetta_04"
+   ],
+   "zh": "时装子弹（黑编发）",
+   "name_en": "Couture Bullet (Black Tresses)",
+   "area": "Bayonetta Collab",
+   "location": "Free Update 1.5.0",
+   "obtain": {
+    "en": "Added in the free 1.5.0 Bayonetta collaboration update.",
+    "zh": "1.5.0 免费更新新增的《蓓优妮塔》联动内容。"
+   },
+   "confidence": "high"
   }
  ],
  "appearance": [
@@ -1838,6 +1894,66 @@
    ],
    "zh": "休息日",
    "category": "lily_costumes",
+   "confidence": "high"
+  },
+  {
+   "aliases": [
+    "FaceAccessory_Bayonetta_001"
+   ],
+   "zh": "蓓优妮塔的眼镜",
+   "name_en": "Bayonetta's Glasses",
+   "area": "Bayonetta Collab",
+   "location": "Free Update 1.5.0",
+   "obtain": {
+    "en": "Added in the free 1.5.0 Bayonetta collaboration update.",
+    "zh": "1.5.0 免费更新新增的《蓓优妮塔》联动内容。"
+   },
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "aliases": [
+    "FaceAccessory_Bayonetta_002"
+   ],
+   "zh": "修女的眼镜",
+   "name_en": "Nun's Glasses",
+   "area": "Bayonetta Collab",
+   "location": "Free Update 1.5.0",
+   "obtain": {
+    "en": "Added in the free 1.5.0 Bayonetta collaboration update.",
+    "zh": "1.5.0 免费更新新增的《蓓优妮塔》联动内容。"
+   },
+   "category": "glasses",
+   "confidence": "high"
+  },
+  {
+   "aliases": [
+    "Earring_Bayonetta_001"
+   ],
+   "zh": "蓓优妮塔的耳环",
+   "name_en": "Bayonetta's Earrings",
+   "area": "Bayonetta Collab",
+   "location": "Free Update 1.5.0",
+   "obtain": {
+    "en": "Added in the free 1.5.0 Bayonetta collaboration update.",
+    "zh": "1.5.0 免费更新新增的《蓓优妮塔》联动内容。"
+   },
+   "category": "earrings",
+   "confidence": "high"
+  },
+  {
+   "aliases": [
+    "Earring_Bayonetta_003"
+   ],
+   "zh": "贞德的耳环",
+   "name_en": "Jeanne's Earrings",
+   "area": "Bayonetta Collab",
+   "location": "Free Update 1.5.0",
+   "obtain": {
+    "en": "Added in the free 1.5.0 Bayonetta collaboration update.",
+    "zh": "1.5.0 免费更新新增的《蓓优妮塔》联动内容。"
+   },
+   "category": "earrings",
    "confidence": "high"
   }
  ],

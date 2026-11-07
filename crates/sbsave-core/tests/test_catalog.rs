@@ -76,11 +76,31 @@ fn game_data_names_applied() {
 }
 
 #[test]
+fn bayonetta_collab_entries_are_mapped() {
+    let catalog = load_catalog(None).expect("catalog");
+    let index = catalog.alias_index();
+    assert_eq!(index["BS_Bayonetta_01"].name, "时装子弹（蓓优妮塔）");
+    assert_eq!(
+        index["BS_Bayonetta_01"].name_en.as_deref(),
+        Some("Couture Bullet (Bayonetta)")
+    );
+    assert_eq!(index["BS_Bayonetta_03"].name, "时装子弹（贞德）");
+    assert_eq!(index["FaceAccessory_Bayonetta_002"].name, "修女的眼镜");
+    assert_eq!(index["Earring_Bayonetta_003"].name, "贞德的耳环");
+    assert_eq!(index["Earring_Bayonetta_003"].category, "earrings");
+    assert_eq!(index["BS_Bayonetta_02"].confidence, "high");
+    assert_eq!(
+        index["BS_Bayonetta_02"].area.as_deref(),
+        Some("Bayonetta Collab")
+    );
+}
+
+#[test]
 fn catalog_counts() {
     let catalog = load_catalog(None).expect("catalog");
-    assert_eq!(catalog.items.len(), 922);
+    assert_eq!(catalog.items.len(), 930);
     assert_eq!(catalog.categories.len(), 15);
-    assert_eq!(catalog.by_category("nano_suits").len(), 126);
+    assert_eq!(catalog.by_category("nano_suits").len(), 130);
     assert_eq!(catalog.by_category("cans").len(), 49);
     assert_eq!(catalog.by_category("camps").len(), 89);
     assert_eq!(catalog.by_category("naytiba").len(), 67);
@@ -416,8 +436,8 @@ fn guide_links_cover_catalog() {
     }
     // 仅默认外观类条目没有可链接的攻略（发型：默认马尾与首领挑战奖励）
     assert_eq!(missing, ["Hair_000", "Hair_Nikke_01"]);
-    assert_eq!(with_web, 794);
-    assert_eq!(with_video, 686);
+    assert_eq!(with_web, 798);
+    assert_eq!(with_video, 694);
     let index = catalog.alias_index();
     let can = index["Can_011"].guides.as_ref().expect("can guides");
     assert_eq!(
@@ -493,7 +513,7 @@ fn chinese_translations_cover_guide_text() {
         .iter()
         .filter(|item| item.obtain.is_some())
         .collect();
-    assert_eq!(with_obtain.len(), 800);
+    assert_eq!(with_obtain.len(), 808);
     let missing: Vec<&str> = with_obtain
         .iter()
         .filter(|item| item.obtain_zh.is_none())

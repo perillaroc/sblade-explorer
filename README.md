@@ -2,9 +2,10 @@
 
 **[简体中文](README.md) | [English](README.en.md)**
 
-[![CI](https://github.com/perillaroc/sblade-explorer/actions/workflows/ci.yml/badge.svg)](https://github.com/perillaroc/sblade-explorer/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/perillaroc/sblade-explorer)](https://github.com/perillaroc/sblade-explorer/releases)
 ![100% Vibe Coded](https://img.shields.io/badge/100%25-Vibe_Coded-blueviolet)
+[![Release](https://img.shields.io/github/v/release/perillaroc/sblade-explorer)](https://github.com/perillaroc/sblade-explorer/releases)
+[![CI](https://github.com/perillaroc/sblade-explorer/actions/workflows/ci.yml/badge.svg)](https://github.com/perillaroc/sblade-explorer/actions/workflows/ci.yml)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/12901971-6ff6-4dfe-bc46-08d735ffa6aa/deploy-status)](https://app.netlify.com/projects/sblade-explorer/deploys)
 
 读取 Steam《剑星》(Stellar Blade) 存档，报告尚未收集的收集物。**Windows 桌面应用是主要发布形式**，
 另提供 `sbsave` 命令行工具。只读、离线：绝不修改存档，解析与统计全部在内存中完成，运行时不联网。

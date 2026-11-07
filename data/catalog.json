@@ -4412,6 +4412,142 @@
    }
   },
   {
+   "id": "BS_Bayonetta_01",
+   "name": "时装子弹（蓓优妮塔）",
+   "name_en": "Couture Bullet (Bayonetta)",
+   "category": "nano_suits",
+   "aliases": [
+    "BS_Bayonetta_01"
+   ],
+   "area": "Bayonetta Collab",
+   "location": "Free Update 1.5.0",
+   "obtain": "Added in the free 1.5.0 Bayonetta collaboration update.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": null,
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "《蓓优妮塔》联动",
+   "location_zh": "1.5.0 免费更新",
+   "obtain_zh": "1.5.0 免费更新新增的《蓓优妮塔》联动内容。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》女主服装图鉴",
+     "url": "https://www.gamersky.com/handbook/202404/1737082.shtml"
+    },
+    "video": {
+     "title": "B站·摩尔寄居蟹 剑星126套纳米服全收集",
+     "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj"
+    }
+   }
+  },
+  {
+   "id": "BS_Bayonetta_02",
+   "name": "时装子弹（修女）",
+   "name_en": "Couture Bullet (Nun)",
+   "category": "nano_suits",
+   "aliases": [
+    "BS_Bayonetta_02"
+   ],
+   "area": "Bayonetta Collab",
+   "location": "Free Update 1.5.0",
+   "obtain": "Added in the free 1.5.0 Bayonetta collaboration update.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": null,
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "《蓓优妮塔》联动",
+   "location_zh": "1.5.0 免费更新",
+   "obtain_zh": "1.5.0 免费更新新增的《蓓优妮塔》联动内容。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》女主服装图鉴",
+     "url": "https://www.gamersky.com/handbook/202404/1737082.shtml"
+    },
+    "video": {
+     "title": "B站·摩尔寄居蟹 剑星126套纳米服全收集",
+     "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj"
+    }
+   }
+  },
+  {
+   "id": "BS_Bayonetta_03",
+   "name": "时装子弹（贞德）",
+   "name_en": "Couture Bullet (Jeanne)",
+   "category": "nano_suits",
+   "aliases": [
+    "BS_Bayonetta_03"
+   ],
+   "area": "Bayonetta Collab",
+   "location": "Free Update 1.5.0",
+   "obtain": "Added in the free 1.5.0 Bayonetta collaboration update.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": null,
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "《蓓优妮塔》联动",
+   "location_zh": "1.5.0 免费更新",
+   "obtain_zh": "1.5.0 免费更新新增的《蓓优妮塔》联动内容。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》女主服装图鉴",
+     "url": "https://www.gamersky.com/handbook/202404/1737082.shtml"
+    },
+    "video": {
+     "title": "B站·摩尔寄居蟹 剑星126套纳米服全收集",
+     "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj"
+    }
+   }
+  },
+  {
+   "id": "BS_Bayonetta_04",
+   "name": "时装子弹（黑编发）",
+   "name_en": "Couture Bullet (Black Tresses)",
+   "category": "nano_suits",
+   "aliases": [
+    "BS_Bayonetta_04"
+   ],
+   "area": "Bayonetta Collab",
+   "location": "Free Update 1.5.0",
+   "obtain": "Added in the free 1.5.0 Bayonetta collaboration update.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": null,
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "《蓓优妮塔》联动",
+   "location_zh": "1.5.0 免费更新",
+   "obtain_zh": "1.5.0 免费更新新增的《蓓优妮塔》联动内容。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》女主服装图鉴",
+     "url": "https://www.gamersky.com/handbook/202404/1737082.shtml"
+    },
+    "video": {
+     "title": "B站·摩尔寄居蟹 剑星126套纳米服全收集",
+     "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj"
+    }
+   }
+  },
+  {
    "id": "Can_025",
    "name": "灵泉胡萝卜汁",
    "name_en": "Elixir Carrot",
@@ -24090,6 +24226,126 @@
     "video": {
      "title": "B站·摩尔寄居蟹 剑星126套纳米服全收集",
      "url": "https://www.bilibili.com/video/BV1Wfj1ztEuj?p=91"
+    }
+   }
+  },
+  {
+   "id": "FaceAccessory_Bayonetta_001",
+   "name": "蓓优妮塔的眼镜",
+   "name_en": "Bayonetta's Glasses",
+   "category": "glasses",
+   "aliases": [
+    "FaceAccessory_Bayonetta_001"
+   ],
+   "area": "Bayonetta Collab",
+   "location": "Free Update 1.5.0",
+   "obtain": "Added in the free 1.5.0 Bayonetta collaboration update.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": null,
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "《蓓优妮塔》联动",
+   "location_zh": "1.5.0 免费更新",
+   "obtain_zh": "1.5.0 免费更新新增的《蓓优妮塔》联动内容。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "video": {
+     "title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇",
+     "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=2"
+    }
+   }
+  },
+  {
+   "id": "FaceAccessory_Bayonetta_002",
+   "name": "修女的眼镜",
+   "name_en": "Nun's Glasses",
+   "category": "glasses",
+   "aliases": [
+    "FaceAccessory_Bayonetta_002"
+   ],
+   "area": "Bayonetta Collab",
+   "location": "Free Update 1.5.0",
+   "obtain": "Added in the free 1.5.0 Bayonetta collaboration update.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": null,
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "《蓓优妮塔》联动",
+   "location_zh": "1.5.0 免费更新",
+   "obtain_zh": "1.5.0 免费更新新增的《蓓优妮塔》联动内容。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "video": {
+     "title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇",
+     "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=2"
+    }
+   }
+  },
+  {
+   "id": "Earring_Bayonetta_001",
+   "name": "蓓优妮塔的耳环",
+   "name_en": "Bayonetta's Earrings",
+   "category": "earrings",
+   "aliases": [
+    "Earring_Bayonetta_001"
+   ],
+   "area": "Bayonetta Collab",
+   "location": "Free Update 1.5.0",
+   "obtain": "Added in the free 1.5.0 Bayonetta collaboration update.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": null,
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "《蓓优妮塔》联动",
+   "location_zh": "1.5.0 免费更新",
+   "obtain_zh": "1.5.0 免费更新新增的《蓓优妮塔》联动内容。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "video": {
+     "title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇",
+     "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=2"
+    }
+   }
+  },
+  {
+   "id": "Earring_Bayonetta_003",
+   "name": "贞德的耳环",
+   "name_en": "Jeanne's Earrings",
+   "category": "earrings",
+   "aliases": [
+    "Earring_Bayonetta_003"
+   ],
+   "area": "Bayonetta Collab",
+   "location": "Free Update 1.5.0",
+   "obtain": "Added in the free 1.5.0 Bayonetta collaboration update.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": null,
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "《蓓优妮塔》联动",
+   "location_zh": "1.5.0 免费更新",
+   "obtain_zh": "1.5.0 免费更新新增的《蓓优妮塔》联动内容。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "video": {
+     "title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇",
+     "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=2"
     }
    }
   },

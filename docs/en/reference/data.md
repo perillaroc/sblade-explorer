@@ -133,11 +133,11 @@ exact item, records/passcodes to the area part. The full rules are in
 
 ## Regression sentinels
 
-- Catalog: 922 entries in 15 categories — 800 collectibles in 13 categories + 122 album pages
-  (67 Naytiba, 55 characters); Nano Suits 126, Cans 49, Camps 89, 6 low-confidence entries.
-- Obtain text: all 800 collectibles carry `obtain` + `obtain_zh` (35 fish from `fish_obtain.json`,
-  89 camps from the guide `description` + `obtain_camps.json`); only the 122 album pages rely on the
-  official `desc` instead, by design.
+- Catalog: 930 entries in 15 categories — 808 collectibles in 13 categories + 122 album pages
+  (67 Naytiba, 55 characters); Nano Suits 130, Cans 49, Camps 89, 6 low-confidence entries.
+- Obtain text: all 808 collectibles carry `obtain` + `obtain_zh` (35 fish from `fish_obtain.json`,
+  89 camps from the guide `description` + `obtain_camps.json`, 8 from the 1.5.0 collaboration in
+  `crosswalk.json`); only the 122 album pages rely on the official `desc` instead, by design.
 - Album by page: Naytiba groups 12/36/10/6/3, characters 55 pages (Adam 5, Tachy 3, Mother Sphere 1),
   all with `desc_zh`/`desc_en` and without built-in guide links.
 - Records: all 300 entries carry an in-game type (Memory Sticks 186, Documents 114) and guide-obtained
@@ -146,6 +146,6 @@ exact item, records/passcodes to the area part. The full rules are in
 - Missable: 211 entries carry `missable` (Xion 156, Eidos 9 34 including 6 camps, other quest rewards
   and quest-locked areas 21); missing lists show "Missable (mind the checkpoint)"; the six Eidos 9
   camps also keep low mapping confidence.
-- Chinese guide links: 798/800 collectibles have a built-in link (image 794, video 686; the default
+- Chinese guide links: 806/808 collectibles have a built-in link (image 798, video 694; the default
   ponytail and boss-challenge rewards of the Hairstyles category have none and can be found with
   "Search image guides / Search video guides"); all links use https and domains on the allow-list.

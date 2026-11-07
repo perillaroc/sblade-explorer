@@ -174,19 +174,42 @@ struct FishObtain {
     zh: String,
 }
 
+/// Nano suit mapping. `site_id` is absent for content the guide snapshot does
+/// not cover yet (e.g. free collab updates); those entries carry their own
+/// `name_en` and `obtain` text instead.
 #[derive(Deserialize)]
 struct CrosswalkSuit {
-    site_id: i64,
+    #[serde(default)]
+    site_id: Option<i64>,
     aliases: Vec<String>,
     zh: String,
+    #[serde(default)]
+    name_en: Option<String>,
+    #[serde(default)]
+    area: Option<String>,
+    #[serde(default)]
+    location: Option<String>,
+    #[serde(default)]
+    obtain: Option<CrosswalkObtain>,
     confidence: String,
 }
 
+/// Appearance mapping, with the same optional guide-site linkage as
+/// [`CrosswalkSuit`].
 #[derive(Deserialize)]
 struct CrosswalkAppearance {
-    site_id: i64,
+    #[serde(default)]
+    site_id: Option<i64>,
     aliases: Vec<String>,
     zh: String,
+    #[serde(default)]
+    name_en: Option<String>,
+    #[serde(default)]
+    area: Option<String>,
+    #[serde(default)]
+    location: Option<String>,
+    #[serde(default)]
+    obtain: Option<CrosswalkObtain>,
     category: String,
     confidence: String,
 }
@@ -641,27 +664,42 @@ fn build_nano_suits(
     let mut items: Vec<CatalogItem> = Vec::new();
     let mut covered: BTreeSet<i64> = BTreeSet::new();
     for suit in &crosswalk.nano_suits {
-        let info = site
-            .get(&suit.site_id)
-            .ok_or_else(|| format!("nano suit site id {} not found", suit.site_id))?;
-        covered.insert(suit.site_id);
+        let info = match suit.site_id {
+            Some(site_id) => {
+                let info = site
+                    .get(&site_id)
+                    .ok_or_else(|| format!("nano suit site id {site_id} not found"))?;
+                covered.insert(site_id);
+                Some(info)
+            }
+            None => None,
+        };
         let item_id = suit
             .aliases
             .first()
             .cloned()
-            .ok_or_else(|| format!("nano suit site id {} 缺少别名", suit.site_id))?;
-        items.push(make_item(
+            .ok_or_else(|| "nano suit 条目缺少别名".to_string())?;
+        let mut item = make_item(
             item_id,
             suit.zh.clone(),
             "nano_suits",
             suit.aliases.clone(),
-            Some(info),
+            info,
             &suit.confidence,
+            suit.name_en.clone(),
             None,
-            None,
-            None,
+            info.is_none().then(|| "game".to_string()),
             &crosswalk.site_base_url,
-        ));
+        );
+        if info.is_none() {
+            item.area = suit.area.clone();
+            item.location = suit.location.clone();
+            if let Some(obtain) = &suit.obtain {
+                item.obtain = Some(obtain.en.clone());
+                item.obtain_zh = Some(obtain.zh.clone());
+            }
+        }
+        items.push(item);
     }
     let missing: Vec<i64> = site
         .iter()
@@ -699,26 +737,39 @@ fn build_appearance(
 ) -> Result<Vec<CatalogItem>, String> {
     let mut items: Vec<CatalogItem> = Vec::new();
     for appearance in &crosswalk.appearance {
-        let info = site
-            .get(&appearance.site_id)
-            .ok_or_else(|| format!("appearance site id {} not found", appearance.site_id))?;
+        let info = match appearance.site_id {
+            Some(site_id) => Some(
+                site.get(&site_id)
+                    .ok_or_else(|| format!("appearance site id {site_id} not found"))?,
+            ),
+            None => None,
+        };
         let item_id = appearance
             .aliases
             .first()
             .cloned()
-            .ok_or_else(|| format!("appearance site id {} 缺少别名", appearance.site_id))?;
-        items.push(make_item(
+            .ok_or_else(|| "appearance 条目缺少别名".to_string())?;
+        let mut item = make_item(
             item_id,
             appearance.zh.clone(),
             &appearance.category,
             appearance.aliases.clone(),
-            Some(info),
+            info,
             &appearance.confidence,
+            appearance.name_en.clone(),
             None,
-            None,
-            None,
+            info.is_none().then(|| "game".to_string()),
             &crosswalk.site_base_url,
-        ));
+        );
+        if info.is_none() {
+            item.area = appearance.area.clone();
+            item.location = appearance.location.clone();
+            if let Some(obtain) = &appearance.obtain {
+                item.obtain = Some(obtain.en.clone());
+                item.obtain_zh = Some(obtain.zh.clone());
+            }
+        }
+        items.push(item);
     }
     Ok(items)
 }
@@ -1177,13 +1228,15 @@ fn validate_crosswalk_titles(
     let entries = crosswalk
         .nano_suits
         .iter()
-        .map(|suit| (suit.site_id, &suit.aliases, "纳米战衣"))
-        .chain(
-            crosswalk
-                .appearance
-                .iter()
-                .map(|appearance| (appearance.site_id, &appearance.aliases, "外观")),
-        );
+        .filter_map(|suit| {
+            suit.site_id
+                .map(|site_id| (site_id, &suit.aliases, "纳米战衣"))
+        })
+        .chain(crosswalk.appearance.iter().filter_map(|appearance| {
+            appearance
+                .site_id
+                .map(|site_id| (site_id, &appearance.aliases, "外观"))
+        }));
     for (site_id, aliases, label) in entries {
         if CROSSWALK_TITLE_EXCEPTIONS.contains(&site_id) {
             continue;
@@ -1613,7 +1666,7 @@ fn build_design_patterns(
             continue;
         }
         covered.extend(candidates.iter().cloned());
-        let info = site.get(&suit.site_id);
+        let info = suit.site_id.and_then(|site_id| site.get(&site_id));
         items.push(make_item(
             candidates[0].clone(),
             format!("设计图案：{}", suit.zh),
