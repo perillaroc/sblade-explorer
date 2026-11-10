@@ -1,52 +1,48 @@
 # Getting started
 
-This page walks new users through the shortest path: **download → unzip → launch → find your save → check completion → review what is missing → export the result**.
-The app is read-only and offline: parsing and analysis run entirely on your machine and it never modifies your save.
+You can check your collection progress in just a few steps: **download → extract → launch → select a save → review missing items → export a report**.
+The app is read-only and works offline. All parsing and analysis happen on your computer, and your save is never modified.
 
 ## 1. Download
 
-The desktop app is published on [GitHub Releases](https://github.com/perillaroc/sblade-explorer/releases):
-download `sblade-explorer-<tag>-x86_64-pc-windows-msvc.zip` (latest version on
-[releases/latest](https://github.com/perillaroc/sblade-explorer/releases/latest)).
-The release list, CLI and system requirements are covered in [Download & install](./installation.md).
+Download `sblade-explorer-<tag>-x86_64-pc-windows-msvc.zip` from
+[GitHub Releases](https://github.com/perillaroc/sblade-explorer/releases), or go directly to the
+[latest release](https://github.com/perillaroc/sblade-explorer/releases/latest).
+For information about release assets, the CLI, and system requirements, see [Download & install](./installation.md).
 
-## 2. Unzip and launch
+## 2. Extract and launch
 
-Unzip the archive and run `sblade-explorer.exe`. The portable build needs no installation; it requires
-Windows 10/11 and the WebView2 runtime (usually already present with Edge).
+Extract the ZIP archive and run `sblade-explorer.exe`. No installation is required. The app supports Windows 10 and 11
+and requires the WebView2 Runtime, which is usually installed with Microsoft Edge.
 
-## 3. Find your save
+## 3. Select a save
 
-On first launch the app scans the default directories, picks the most recently written main slot and
-opens it. The **Save** dropdown at the top switches slots and shows the file size and modification
-time; **Refresh** rescans the directories. Manually picked saves are remembered, and
-**Choose a save file…** opens a save from anywhere.
-If no save is found, the app lists the directories it scanned together with actions you can take; see
-[Save locations](./save-location.md).
+On first launch, the app automatically scans the default save directories and opens the most recently modified main slot.
+Use the **Save** dropdown at the top to switch slots. The file size and modification time are shown alongside it;
+click **Refresh** to scan again. The app remembers saves you select manually, and **Choose a save file…** lets you open one from any location.
+If no save is found, the app lists the directories it scanned and the actions you can take. See [Save locations](./save-location.md) for details.
 
-## 4. Check your completion
+## 4. Check your progress
 
-The **Summary** page on the left shows:
+The **Summary** page in the sidebar shows:
 
-- Save info: SteamID, playthrough (including the NG+ count), difficulty and play time;
-- **Catalog progress**: total completion of the 13 collectible categories and how many are missing;
-- **Album progress**: the Naytiba and character albums, shown separately and excluded from catalog progress.
+- **Save information**: SteamID, playthrough (including the NG+ count), difficulty, and play time;
+- **Catalog progress**: Overall progress across 13 collectible categories and the number of missing items;
+- **Album progress**: Naytiba and character album progress, shown separately and not included in catalog progress.
 
-Select any category in the sidebar to open its own page. Category pages support the
-**All / Obtained / Missing** filters and search by name, location or ID; select an item for full
-details. See [Completion analysis](./collections.md).
+Select a category in the sidebar to open its page. You can filter by **All / Obtained / Missing**,
+search by name, location, or ID, and select any item to view its full details. See [Completion analysis](./collections.md).
 
-## 5. Review what is missing
+## 5. Review missing items
 
-Pick the **Missing** filter on a category page, or search by name; selecting an item opens the detail
-dialog with how to obtain it, the Chinese guide buttons and the reason it is missing
-(for example "Requires NG+").
+Select **Missing** on a category page, or search for an item by name. Select an item to open its details,
+including acquisition instructions, Chinese guides, and the reason it is still missing (for example, "Requires NG+").
 
-## 6. Export the result
+## 6. Export a report
 
-The top right offers **Export JSON** and **Export Markdown**. The **Content** switch next to them
-toggles item text between 中文 / English / Both, and the interface language is changed separately
-under **Settings → Interface language**. See [Exporting reports](./export.md).
+Click **Export JSON** or **Export Markdown** in the top-right corner to save a report.
+The **Content** button switches item details between Chinese, English, and both languages.
+To change the language of menus and buttons, go to **Settings → Interface language**. See [Exporting reports](./export.md).
 
 ## Next steps
 

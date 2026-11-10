@@ -2,37 +2,28 @@
 
 ## Automatic discovery
 
-On startup the app recursively searches the directories below for `StellarBladeSave*.sav`. Any
-directory named `Backup` is ignored:
+When the app starts, it recursively searches the following directories for `StellarBladeSave*.sav`, ignoring any directory named `Backup`:
 
 | Location | Description |
 | --- | --- |
-| `%LOCALAPPDATA%\SB\Saved\SaveGames\<SteamID64>\StellarBladeSave00.sav` | Main save of the full game |
-| `%USERPROFILE%\Documents\StellarBlade\<SteamID64>\` | Some versions / demo |
-| `%LOCALAPPDATA%\SB_Demo\Saved\SaveGames\` | Demo |
+| `%LOCALAPPDATA%\SB\Saved\SaveGames\<SteamID64>\StellarBladeSave00.sav` | Main save for the full game |
+| `%USERPROFILE%\Documents\StellarBlade\<SteamID64>\` | Saves for some versions or the demo |
+| `%LOCALAPPDATA%\SB_Demo\Saved\SaveGames\` | Demo saves |
 
-- Slot files are named `StellarBladeSave00.sav`, `StellarBladeSave01.sav`, and so on;
-  `<SteamID64>` is the numeric account directory;
-- The app selects the **most recently written main slot** (`StellarBladeSave00`) by default; other
-  slots can be picked in the top dropdown;
-- The manually selected save is remembered (including other slots and files opened with
-  **Choose a save file…**) and reopened on the next launch. When the file no longer exists the app
-  falls back to the newest main slot; **Switch to automatic** in the settings restores that behaviour;
-- The selected save shows its file size, modification time and full path.
+- Save slots are named `StellarBladeSave00.sav`, `StellarBladeSave01.sav`, and so on. `<SteamID64>` is the numeric account directory.
+- By default, the app opens the **most recently modified main slot** (`StellarBladeSave00`). You can select another slot from the dropdown at the top.
+- The app remembers the last save you selected, including other slots and files opened with **Choose a save file…**, and opens it on the next launch.
+  If that file no longer exists, the app falls back to the most recently modified main slot. You can also select **Switch to automatic** in Settings.
+- The selected save's file size, modification time, and full path are displayed.
 
-## When no save is found
+## If no save is found
 
-- The app lists the directories it actually scanned and marks which ones exist; existing directories
-  can be opened in File Explorer with **Open**;
-- **Choose a save file…** opens saves outside the default directories (backups, other disks, Steam
-  Cloud copies, ...); the file name does not have to follow the game's naming scheme;
-- Alternatively put the save into one of the directories above and press **Refresh** at the top to
-  rescan;
-- Backup files inside a `Backup` directory are not discovered automatically; open them manually with
-  **Choose a save file…**.
+- The app lists every directory it scanned and indicates whether each one exists. For directories that do exist, click **Open** to view them in File Explorer.
+- To open a save outside the default directories, such as a backup, a save on another drive, or a Steam Cloud copy, click **Choose a save file…**. The file name does not need to follow the game's naming convention.
+- Alternatively, place the save in one of the directories listed above and click **Refresh** at the top to scan again.
+- Backup files inside a `Backup` directory are not discovered automatically. Use **Choose a save file…** to open them manually.
 
-## Troubleshooting with the CLI
+## Troubleshoot with the CLI
 
-`sbsave saves` lists the discovered saves (slot, SteamID, size, modification time, path).
-Use `report --save <path>` or `--slot <slot>` to select any save; see the
-[CLI docs](../cli/index.md).
+`sbsave saves` lists discovered saves, including their slot, SteamID, size, modification time, and path.
+Use `report --save <path>` or `--slot <slot>` to select a save for analysis. See the [CLI documentation](../cli/index.md) for details.

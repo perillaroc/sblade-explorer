@@ -2,41 +2,37 @@
 
 ## Desktop app
 
-The top right offers two export buttons:
+Two export formats are available in the top-right corner:
 
 | Button | Content |
 | --- | --- |
-| **Export JSON** | Complete analysis data, always with both Chinese and English fields |
-| **Export Markdown** | Readable report generated for the current content language |
+| **Export JSON** | Complete analysis data, always including both Chinese and English fields |
+| **Export Markdown** | A readable report generated in the current content language |
 
-Pick a destination (default file names `sblade-report.json` / `sblade-report.md`); on success the app
-shows `Exported <path>`. Exporting only reads the save and never modifies any file.
+Click a button and choose where to save the report. The default file names are `sblade-report.json` and `sblade-report.md`.
+Once the export succeeds, the app displays `Exported <path>`. Exporting only reads your save and does not modify any files.
 
-There are two independent language settings:
+The two language settings are independent:
 
-- **Content language** (the **Content** switch at the top right): toggles 中文 / English / Both and
-  affects item text and the Markdown report content; JSON always contains both languages.
-- **Interface language** (Settings → Interface language): menus, buttons, prompts and the exported
-  Markdown headings/table headers; on first launch it follows the system language.
+- **Content language** (the **Content** button in the top-right corner): Choose Chinese, English, or both for item details in the app and Markdown reports. JSON always includes both languages.
+- **Interface language** (**Settings → Interface language**): Controls menus, buttons, prompts, and the headings and table headers in exported Markdown reports. It is inferred from your system language on first launch.
 
-The Markdown report contains:
+A Markdown report includes:
 
-- Save information: SteamID, playthrough, difficulty, play time, catalog/album progress;
-- Category summary and album summary tables;
-- Comparison tables for matrix categories;
-- Missing items: matrix categories as comparison tables, other categories as a list with location,
-  how to obtain, the reason it is missing and flags;
-- Unmapped aliases (if any).
+- Save information: SteamID, playthrough, difficulty, play time, and catalog/album progress;
+- Category and album summary tables;
+- Comparison tables for categories that support the cycle matrix;
+- Missing items: comparison tables for matrix categories, and a list of locations, acquisition instructions, reasons items are missing, and flags for other categories;
+- Unmapped aliases, if any.
 
 ## CLI
 
-`sbsave report` prints a console report and can export the same JSON / Markdown:
+`sbsave report` prints a report to the console and can also export the same data as JSON or Markdown:
 
 ```powershell
 cargo run -p sbsave-cli -- report --json report.json --markdown report.md
 cargo run -p sbsave-cli -- report --ui-lang en --lang en    # English interface + English item text
 ```
 
-`--lang zh|en|both` controls the item text (JSON is always bilingual), `--ui-lang zh|en` controls
-help, headers, errors and other interface text (defaults to the system language); `--all` also lists
-obtained items. See the [CLI docs](../cli/index.md) for all commands and options.
+`--lang zh|en|both` controls item text in reports (JSON is always bilingual), while `--ui-lang zh|en` controls help, table headers, errors, and other interface text (the system language is used by default).
+Add `--all` to include obtained items. See the [CLI documentation](../cli/index.md) for all commands and options.

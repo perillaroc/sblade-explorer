@@ -52,7 +52,7 @@ export default defineConfig({
             { text: "Save locations", link: "/en/guide/save-location" },
             { text: "Completion analysis", link: "/en/guide/collections" },
             {
-              text: "Cycles & matrix",
+              text: "Playthroughs & matrix",
               link: "/en/guide/collections#cycles-and-the-collection-matrix",
             },
             { text: "Exporting reports", link: "/en/guide/export" },

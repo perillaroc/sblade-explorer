@@ -2,97 +2,66 @@
 
 ## Data sources
 
-- [stellarbladeguide.com](https://stellarbladeguide.com) — English item names, location descriptions,
-  how to obtain items and Base/NG+/NG++/DLC cycle tags (`data/raw/api/*.json`)
-- [stellar-blade-macos-save-editor](https://github.com/wuxiao00j/stellar-blade-macos-save-editor) —
-  Simplified Chinese item names and alias mappings (`data/raw/reference/Sources_TrainerCore_*.swift`)
-- [Stellar-Blade-100-completion-save-file](https://github.com/lecher-wang/Stellar-Blade-100-completion-save-file) —
-  full alias universe and data validation (`data/raw/universe/aliases.json`)
-- Game data tables (`ItemTable`, `ZoneCampTable`, `AlbumTable`) and `Game.locres` (zh-Hans/en) —
-  exact mapping from internal aliases to official names, generated with
-  `cargo run -p sbsave-tools -- mine-names` into `data/raw/game/name_map.json`; camps the tables do
-  not link directly are resolved to a `ZoneCampTable` row via `data/raw/game/camp_alias_rows.json`
-- [mapgenie.io](https://mapgenie.io/stellar-blade/guides/memory-sticks) and
-  [Gamersky](https://www.gamersky.com/handbook/202507/1953527.shtml) —
-  in-game Data Bank order of Memory Sticks (`data/raw/memorystick_order.json`; both sources agree)
-- [Gamersky](https://www.gamersky.com/handbook/202404/1738505.shtml) (full-collection image guides,
-  cans, fishing spots, passcodes and the
-  [outfit catalogue](https://www.gamersky.com/handbook/202404/1737082.shtml)) and
-  [Bilibili](https://www.bilibili.com/video/BV1Wfj1ztEuj) (all 126 nano suits;
-  [Wengouzu-Wenxuan's full-collection series](https://www.bilibili.com/video/BV1or421L7XQ)) —
-  the Chinese guide links in `data/raw/guides.json`
-- `data/raw/fish_obtain.json` — fish obtain text (spots + bait, maintained by hand from the Gamersky
-  [fishing-spot guide](https://www.gamersky.com/handbook/202405/1747789.shtml) and the in-game
-  fishing spots; NIKKE crossover fish list their crossover bait)
-- `data/raw/api/i18n/` — hand-maintained Simplified Chinese translations of the English guide text
-  (names still follow the game localization); `obtain_camps.json` holds the Chinese obtain text of
-  the camp guide entries
-- PowerPyx (full-collection and Eidos 9 pages), the Steam "Point Of No Return" guide, Bahamut and
-  Gamersky ending guides — the two points of no return and the optional area, feeding
-  `data/raw/missable.json` (the missable list)
+- [stellarbladeguide.com](https://stellarbladeguide.com): English item names, location descriptions, acquisition instructions, and Base/NG+/NG++/DLC tags (`data/raw/api/*.json`).
+- [stellar-blade-macos-save-editor](https://github.com/wuxiao00j/stellar-blade-macos-save-editor): Simplified Chinese item names and alias mappings (`data/raw/reference/Sources_TrainerCore_*.swift`).
+- [Stellar-Blade-100-completion-save-file](https://github.com/lecher-wang/Stellar-Blade-100-completion-save-file): A complete set of aliases used for data validation (`data/raw/universe/aliases.json`).
+- Game data tables (`ItemTable`, `ZoneCampTable`, `AlbumTable`) and `Game.locres` (zh-Hans/en): Mappings from internal aliases to official names.
+  `cargo run -p sbsave-tools -- mine-names` generates `data/raw/game/name_map.json` from these sources.
+  For camps without a direct table association, `data/raw/game/camp_alias_rows.json` maps aliases to `ZoneCampTable` rows.
+- [mapgenie.io](https://mapgenie.io/stellar-blade/guides/memory-sticks) and [Gamersky](https://www.gamersky.com/handbook/202507/1953527.shtml): The order of Memory Sticks in the in-game Data Bank (`data/raw/memorystick_order.json`; both sources use the same order).
+- [Gamersky](https://www.gamersky.com/handbook/202404/1738505.shtml) (full-collection illustrated guides, cans, fishing spots, passcodes, and the [outfit catalog](https://www.gamersky.com/handbook/202404/1737082.shtml)) and
+  [Bilibili](https://www.bilibili.com/video/BV1Wfj1ztEuj) (all 126 Nano Suits and [Wengouzu-Wenxuan's full-collection series](https://www.bilibili.com/video/BV1or421L7XQ)): The Chinese guide links in `data/raw/guides.json`.
+- `data/raw/fish_obtain.json`: Manually maintained acquisition instructions for fish (fishing spots and bait), based on the Gamersky [fishing-spot guide](https://www.gamersky.com/handbook/202405/1747789.shtml) and in-game fishing information. NIKKE crossover fish include the required crossover bait.
+- `data/raw/api/i18n/`: Manually maintained Simplified Chinese translations of the English guide text. Item names follow the game's localization. `obtain_camps.json` contains Chinese acquisition instructions for camp entries.
+- PowerPyx (full-collection and Eidos 9 pages), the Steam "Point Of No Return" guide, and Bahamut and Gamersky ending guides: Information about the two points of no return and the optional area, used to maintain `data/raw/missable.json`.
 
-Item-by-item notes on the raw snapshots and how to refresh them (API scraping, `mine-names`) are in
+For details about each raw data snapshot and how to update it (API scraping and `mine-names`), see
 [data/raw/README.md](https://github.com/perillaroc/sblade-explorer/blob/main/data/raw/README.md).
-The app never goes online; all data is bundled with it.
+All data is bundled with the app, which does not connect to the internet at runtime.
 
 ## Catalog and alias model
 
-- The catalog `data/catalog.json` is generated by `sbsave-tools catalog build` and must not be edited
-  by hand. The single source of truth for collectibles is `data/raw/crosswalk.json` (site id → alias
-  → Chinese name, maintained manually); its `camps` section maps camp aliases to guide site entries
-  (the source of the camp obtain text); the camp alias → `ZoneCampTable` row crosswalk lives in
-  `data/raw/game/camp_alias_rows.json`; album entries are mined from the game data (`AlbumTable` +
-  `Game.locres`).
-- An item counts as obtained when any of its `aliases` appears in the save's item set, in an alias
-  derived from the achievement records, or in an album achievement alias.
-- The app reads `NewGamePlusPlayCount` from the save and labels items with
-  "Requires NG+" / "Requires NG++".
-- Record/passcode/can/design-pattern/appearance names are overridden with the official Simplified
-  Chinese names mined from the game data and marked `confidence="high"`; only the six Eidos 9 camps
-  still map alias → `ZoneCampTable` row by order (no save coordinates) and keep a low confidence,
-  flagged as "Mapping unconfirmed" in reports.
-- Repeated-pickup record copies (e.g. `Item_Records_Xion_Memory_14_1`) are merged into their base
-  entry: the game data bank (`AlbumTable`) keeps one entry per record and the copy aliases only mark
-  repeated pickups; after the merge the 300 records match the game data exactly.
-- Missable entries live in `data/raw/missable.json` (Xion city, Eidos 9, side-quest/bulletin
-  rewards); `catalog build` expands them into the `missable` field. Missing lists show
-  "Missable (mind the checkpoint)" and the details/matrix views carry the "Missable" badge
-  (211 entries).
-- Obtain text: collectibles use the guide `description` (English) plus
-  `api/i18n/obtain_*.json` (Chinese). Fish have no guide entries, so their text lives in
-  `data/raw/fish_obtain.json`; the few camps missing from the guide snapshot carry their English and
-  Chinese text directly in the `camps` section of `crosswalk.json`.
-- Category arguments (CLI `--category` and the UI filters) accept the category key (`nano_suits`), the
-  Chinese name (`纳米战衣`) and the English name (`Nano Suits`).
-- Categories come in two sections: `section=collection` (13 collectible categories, counted in catalog
-  progress) and `section=album` (album: 67 Naytiba, 55 character pages, **excluded from catalog
-  progress** and listed separately in reports/UI).
-- Categories carry `name` (Chinese) and `name_en` (English); record entries carry
-  `record_type`/`record_type_zh`/`record_type_en`. The English names are maintained in `CATEGORIES` /
-  `RECORD_TYPES` in `crates/sbsave-tools/src/catalog_build.rs` and generated with the catalog; the
-  analysis JSON exposes the same fields so the desktop app can follow the content language.
+- The catalog, `data/catalog.json`, is generated by `sbsave-tools catalog build`; do not edit it manually.
+  Collectible data comes from the manually maintained `data/raw/crosswalk.json` (site ID → alias → Chinese name).
+  Its `camps` section maps camp aliases to guide-site entries, which provide camp acquisition instructions.
+  The mapping from camp aliases to `ZoneCampTable` rows is maintained in `data/raw/game/camp_alias_rows.json`.
+  Album entries are extracted from game data (`AlbumTable` and `Game.locres`).
+- An item counts as obtained if any of its `aliases` appears in the save's item set, an alias derived from achievement records, or an album achievement alias.
+- The app reads `NewGamePlusPlayCount` from the save to determine whether to label an item "Requires NG+" or "Requires NG++".
+- Records, passcodes, cans, design patterns, and appearance items use official Simplified Chinese names extracted from game data and are marked `confidence="high"`.
+  Only the six camps in Eidos 9 still have their aliases mapped to `ZoneCampTable` rows by sequence because the save contains no coordinates for them. They retain low confidence and are marked "Mapping unconfirmed".
+- Aliases for repeatedly collected copies of a record (for example, `Item_Records_Xion_Memory_14_1`) are merged into the base entry.
+  The game database (`AlbumTable`) contains only one entry per record; copy aliases represent repeated pickups. After merging, the 300 record entries match the game database.
+- Missable entries are maintained in `data/raw/missable.json`, covering Xion, Eidos 9, and side-quest and bulletin-board request rewards.
+  `catalog build` converts them into the `missable` field. Missing-item lists show "Missable (mind the checkpoint)", and the details and matrix views display a **Missable** badge for 211 entries.
+- Acquisition instructions for collectibles combine the guide site's `description` (English) with `api/i18n/obtain_*.json` (Chinese).
+  Fish do not have guide-site entries, so their instructions are maintained in `data/raw/fish_obtain.json`.
+  The few camps missing from the guide-site snapshot have English and Chinese instructions directly in the `camps` section of `crosswalk.json`.
+- Category arguments (CLI `--category` and UI filters) accept a category key (`nano_suits`), Chinese name (`纳米战衣`), or English name (`Nano Suits`).
+- The catalog has two sections: `section=collection` (13 collectible categories included in catalog progress) and
+  `section=album` (67 Naytiba entries and 55 character pages, **excluded from catalog progress** and listed separately in reports and the app).
+- Categories include `name` (Chinese) and `name_en` (English). Record entries include `record_type`, `record_type_zh`, and `record_type_en`.
+  English names are maintained in `CATEGORIES` and `RECORD_TYPES` in `crates/sbsave-tools/src/catalog_build.rs` and generated with the catalog.
+  The analysis JSON includes the same fields so the desktop app can display them according to the content language.
 
 ## Album (AlbumTable)
 
-The in-game album table `SB/Content/Local/Data/AlbumTable.uasset` has 524 entries, split by
-`ESBAlbumType` into Memory Sticks / Documents / Passcodes / Naytiba (Native) / Fish / Characters /
-Other / Photo Challenge / NieR DLC. This project includes two of them, marked `section=album`:
+The in-game album table, `SB/Content/Local/Data/AlbumTable.uasset`, contains 524 entries. They are grouped by
+`ESBAlbumType` into Memory Sticks, Documents, Passcodes, Naytiba (Native), Fish, Characters, Other, Photo Challenge, and NieR DLC.
+This project includes two of these groups, marked `section=album`:
 
-- `naytiba` (67 entries): Minion 12, Warrior 36, Elite 10, Alpha 6, Elder 3;
-- `characters` (55 entries): 20 characters × 2–5 profile pages, named like `Adam (Profile 3/5)`.
+- `naytiba` (67 entries): 12 Minions, 36 Warriors, 10 Elites, 6 Alphas, and 3 Elders;
+- `characters` (55 pages): 20 characters with 2–5 profile pages each, named in the form `Adam (Profile 3/5)`.
 
-Each album entry's `aliases` are save achievement aliases (`Ach_Album_Unlock_*`); an entry counts as
-unlocked once its achievement appears in the achievement list. Entries carry the official
-`desc_zh`/`desc_en` text (creature pages contain "ecological/combat intelligence", character pages
-accumulated story text; rich-text markers such as `<Orange>`/`<NewLine>` were stripped when the data
-was mined). The album is excluded from catalog progress and only listed separately in reports and the
-UI. Memory Sticks/Documents/Passcodes/Fish are already covered by the collectible categories, so they
-are not duplicated here.
+Each album entry's `aliases` are save achievement aliases (`Ach_Album_Unlock_*`). An entry is unlocked when its achievement appears in the achievement list.
+Entries include official `desc_zh` and `desc_en` descriptions: Naytiba entries contain ecological and combat information, while character entries contain cumulative story text.
+Rich-text markers such as `<Orange>` and `<NewLine>` are removed when the data is imported.
+The album does not count toward catalog progress and is listed separately in reports and the app.
+Memory Sticks, Documents, Passcodes, and Fish are already included in the collectible categories, so they are not duplicated here.
 
 ## Custom catalog
 
-If an entry is missing or mapped incorrectly, create a user override file (no code changes and no
-catalog regeneration needed):
+If you find a missing or incorrectly mapped entry, create a user override file. You do not need to change any code or regenerate the catalog:
 
 `%LOCALAPPDATA%\sbsave\catalog.user.json`
 
@@ -113,39 +82,35 @@ catalog regeneration needed):
 }
 ```
 
-The CLI can also attach an override temporarily with `--catalog path.json`; the `area_zh` /
-`location_zh` / `obtain_zh` fields inside an entry take precedence over the built-in translations.
+The CLI can also load an override temporarily with `--catalog path.json`.
+The `area_zh`, `location_zh`, and `obtain_zh` fields in an entry take precedence over the built-in translations.
 
 ## Chinese guide links
 
-`data/raw/guides.json` overrides links level by level (`item > location > area > category`) and can
-define `web` (image) and `video` links. `catalog build` validates that links use https, that their
-domains are on the `www.gamersky.com` / `www.bilibili.com` allow-list, and that every key matches the
-catalog (a typo fails the build).
+`data/raw/guides.json` applies overrides in order of specificity: `item > location > area > category`. It supports `web` (illustrated) and `video` links.
+`catalog build` verifies that links use HTTPS, that their domains are on the `www.gamersky.com` or `www.bilibili.com` allowlist,
+and that every key matches an entry in the catalog. A misspelled key causes the build to fail.
 
-Based on this data the desktop detail dialog shows "Image guide" and "Video guide" buttons, plus
-"Search image guides" (Bing by default, Baidu / Google selectable in the settings) and
-"Search video guides" (Bilibili) so entries without a built-in link can still be found. Nano Suits and
-Design Patterns link to the specific pages of the Gamersky Stellar Blade outfit catalogue and each
-suit video points at the corresponding Bilibili part of "all 126 nano suits"; cans/fish link to the
-exact item, records/passcodes to the area part. The full rules are in
-[data/raw/README.md](https://github.com/perillaroc/sblade-explorer/blob/main/data/raw/README.md).
+The desktop app's detail dialog uses this data to display **Image guide** and **Video guide** buttons.
+It also always provides **Search image guides** (Bing by default, with Baidu and Google available in Settings) and **Search video guides** (Bilibili),
+so you can find guides even when no built-in link is available.
+Nano Suits and Design Patterns link to the corresponding pages in the Gamersky *Stellar Blade* outfit catalog, and each suit links to the appropriate part of the Bilibili "all 126 nano suits" video.
+Cans and fish link to individual items; records and passcodes link to the part for their area.
+For the complete rules, see [data/raw/README.md](https://github.com/perillaroc/sblade-explorer/blob/main/data/raw/README.md).
 
-## Regression sentinels
+## Regression checks
 
-- Catalog: 930 entries in 15 categories — 808 collectibles in 13 categories + 122 album pages
-  (67 Naytiba, 55 characters); Nano Suits 130, Cans 49, Camps 89, 6 low-confidence entries.
-- Obtain text: all 808 collectibles carry `obtain` + `obtain_zh` (35 fish from `fish_obtain.json`,
-  89 camps from the guide `description` + `obtain_camps.json`, 8 from the 1.5.0 collaboration in
-  `crosswalk.json`); only the 122 album pages rely on the official `desc` instead, by design.
-- Album by page: Naytiba groups 12/36/10/6/3, characters 55 pages (Adam 5, Tachy 3, Mother Sphere 1),
-  all with `desc_zh`/`desc_en` and without built-in guide links.
-- Records: all 300 entries carry an in-game type (Memory Sticks 186, Documents 114) and guide-obtained
-  text; 186 Memory Sticks carry the in-game menu order (repeated-pickup copies merge into the base
-  entry); all 23 passcodes carry guide-obtained text.
-- Missable: 211 entries carry `missable` (Xion 156, Eidos 9 34 including 6 camps, other quest rewards
-  and quest-locked areas 21); missing lists show "Missable (mind the checkpoint)"; the six Eidos 9
-  camps also keep low mapping confidence.
-- Chinese guide links: 806/808 collectibles have a built-in link (image 798, video 694; the default
-  ponytail and boss-challenge rewards of the Hairstyles category have none and can be found with
-  "Search image guides / Search video guides"); all links use https and domains on the allow-list.
+- The catalog contains 930 entries in 15 categories: 808 collectibles across 13 categories and 122 album entries (67 Naytiba and 55 character pages).
+  This includes 130 Nano Suits, 49 Cans, 89 Camps, and 6 low-confidence entries.
+- All 808 collectibles include `obtain` and `obtain_zh`: 35 fish entries from `fish_obtain.json`,
+  89 camp entries from the guide site's `description` and `obtain_camps.json`, and 8 version 1.5.0 crossover entries from manually written text in `crosswalk.json`.
+  Only the 122 album entries use the official `desc` instead, by design.
+- Albums are stored by page: Naytiba groups contain 12/36/10/6/3 entries, and characters contain 55 pages (Adam 5, Tachy 3, Mother Sphere 1).
+  Every entry includes `desc_zh` and `desc_en` and has no built-in guide links.
+- All 300 records include an in-game type (186 Memory Sticks and 114 Documents) and acquisition instructions from guides.
+  The 186 Memory Sticks include their in-game menu order, and repeated-pickup copies are merged into base entries. All 23 passcodes include acquisition instructions from guides.
+- There are 211 entries with `missable`: 156 in Xion, 34 in Eidos 9 (including 6 camps), and 21 for other side-quest rewards and quest areas.
+  Missing-item lists show "Missable (mind the checkpoint)". The six camps in Eidos 9 also have low mapping confidence.
+- Of the 808 collectibles, 806 have built-in Chinese guide links (798 illustrated guides and 694 videos).
+  The default ponytail and boss-challenge rewards in Hairstyles have no built-in links, but you can use **Search image guides** or **Search video guides**.
+  All links use HTTPS and domains on the allowlist.

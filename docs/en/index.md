@@ -3,11 +3,11 @@ layout: home
 
 hero:
   name: sblade-explorer
-  text: Stellar Blade save completion analyzer
-  tagline: Read a Stellar Blade PC save and quickly find the outfits, records, cans, camps and more you have not collected yet.
+  text: Save completion analyzer for Stellar Blade
+  tagline: Analyze your PC save and quickly find the outfits, records, cans, camps, and other collectibles you're still missing.
   image:
     src: /screenshots/overview.webp
-    alt: sblade-explorer summary page with catalog progress, album progress and category summary
+    alt: sblade-explorer summary page showing catalog progress, album progress, and a category overview
   actions:
     - theme: brand
       text: Download the latest release
@@ -21,38 +21,38 @@ hero:
 
 features:
   - icon: 🔒
-    title: Read-only and safe
-    details: Never modifies save files
+    title: Safe and read-only
+    details: Never modifies your save files
   - icon: ✈️
     title: Fully offline
-    details: Parsing and analysis run entirely on your machine
+    details: All parsing and analysis happen on your computer
   - icon: 🔍
-    title: Auto discovery
-    details: Finds your Steam save automatically
+    title: Automatic discovery
+    details: Finds your Steam saves automatically
   - icon: 📦
     title: Completion analysis
-    details: Covers the main collectibles and the in-game album
+    details: Covers the main collectibles and in-game albums
   - icon: 🔁
-    title: Cycle matrix
-    details: Analyses Base / NG+ / NG++ item variants
+    title: Playthrough matrix
+    details: Compare item variants across Base, NG+, and NG++
   - icon: 🌐
-    title: Bilingual
-    details: Interface and item names in Chinese / English
+    title: Bilingual data
+    details: Chinese and English interface and item names
 ---
 
 ## Download
 
-Grab the portable desktop app and the `sbsave` CLI from
+Get the portable desktop app or the `sbsave` CLI from
 [GitHub Releases](https://github.com/perillaroc/sblade-explorer/releases/latest)
-(Windows 10/11, WebView2 runtime required); see
-[Download & install](./guide/installation.md) for the release list and system requirements.
+(Windows 10 or 11 and the WebView2 Runtime required). See
+[Download & install](./guide/installation.md) for system requirements and installation and upgrade instructions.
 
 ## Documentation
 
-- [User guide](./guide/getting-started.md): installation, save locations, completion analysis, exporting and FAQ
+- [User guide](./guide/getting-started.md): Installation, save locations, completion analysis, report exports, and FAQs
 - [CLI](./cli/index.md): `sbsave` commands and options
-- [Data notes](./reference/data.md): data sources, catalog and alias model
-- [Development](./development/index.md): dev environment, data pipeline, CI and releases
+- [Data overview](./reference/data.md): Data sources, the catalog, and the alias model
+- [Development](./development/index.md): Development environment, data pipeline, CI, and releases
+- [中文文档](/)：本文档的简体中文版
 
-Source code, bug reports and all releases live in the
-[GitHub repository](https://github.com/perillaroc/sblade-explorer).
+Visit the [GitHub repository](https://github.com/perillaroc/sblade-explorer) for source code, issue reporting, and all releases.

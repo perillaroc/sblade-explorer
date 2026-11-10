@@ -2,74 +2,63 @@
 
 ## Summary page
 
-**Summary** on the left shows save information and two levels of progress:
+The **Summary** page in the sidebar shows save information and separate progress totals for the catalog and albums:
 
-- Save info: SteamID, playthrough (including the NG+ count), difficulty (Easy / Normal / Hard) and
-  play time;
-- **Catalog progress** `x/y (n%)`: the missing count and obtained-alias statistics;
-- **Album progress** `x/y (n%)`: shown separately and marked as excluded from catalog progress.
+- **Save information**: SteamID, playthrough (including the NG+ count), difficulty (Easy / Normal / Hard), and play time;
+- **Catalog progress** `x/y (n%)`: Shows the number of missing items and obtained-alias statistics;
+- **Album progress** `x/y (n%)`: Shown separately and marked as excluded from catalog progress.
 
-The sidebar groups content into two sections:
+The sidebar organizes content into two groups:
 
-- **Collectible categories** (counted in catalog progress, 13 categories): Nano Suits, Cans,
+- **Collectible categories** (13 categories included in catalog progress): Nano Suits, Cans,
   Records (Documents/Memory Sticks), Passcodes, Camps, Hairstyles, Glasses & Face Accessories,
-  Earrings, Drone Skins, Adam's Outfits, Lily's Outfits, Design Patterns and Fish;
+  Earrings, Drone Skins, Adam's Outfits, Lily's Outfits, Design Patterns, and Fish;
 - **Album (excluded from total progress)**: 67 Naytiba entries and 55 character pages.
 
 ## Category pages
 
-Select a category in the sidebar to open its own page:
+Select a category in the sidebar to open its page. Each category page includes:
 
-- **All / Obtained / Missing** filters at the top, each with its item count;
-- Search by name, location or ID;
-- A category progress bar plus "Obtained x/y · Missing z · n%";
-- Select any item for full details.
+- **All / Obtained / Missing** filters at the top, with the number of items in each group;
+- Search by name, location, or ID;
+- A progress bar and a summary reading "Obtained x/y · Missing z · n%";
+- Full item details, available by selecting any entry.
 
-Some categories are organised differently:
+Some categories are organized differently:
 
-- **Records**: tabbed by in-game type (Memory Sticks, Documents, ...); Memory Sticks are further
-  grouped by area and collapsible;
-- **Naytiba**: grouped by area and collapsible.
+- **Records**: Split into tabs by in-game type (Memory Sticks, Documents, etc.). Memory Sticks are further grouped by area, with collapsible sections;
+- **Naytiba**: Grouped by area, with collapsible sections.
 
 ## Item details
 
-The item detail dialog contains:
+Selecting an item opens a dialog containing:
 
-- Name, ID, collection status, area and location;
-- **Album description** (album entries);
+- Name, ID, collection status, area, and location;
+- **Album description** (album entries only);
 - **How to obtain**;
-- **Chinese guides**: built-in links appear as "Image guide" and "Video guide", and
-  "Search image guides" (the search engine is configurable in the settings) plus
-  "Search video guides" (Bilibili) are always available;
-- **Why it is missing**: for example "Requires NG+", "Requires NG++" or
-  "Missable (mind the checkpoint)";
-- **Details**: cycle, DLC, missable, record type, mapping confidence and source;
+- **Chinese guides**: Built-in links are shown as **Image guide** and **Video guide**. **Search image guides** (using the search engine selected in Settings) and **Search video guides** (Bilibili) are always available;
+- **Why it is missing**: For example, "Requires NG+", "Requires NG++", or "Missable (mind the checkpoint)";
+- **Details**: Playthrough, DLC, missable status, record type, mapping confidence, and data source;
 - Aliases and notes.
 
 ## Cycles and the collection matrix
 
-Nano Suits, Design Patterns, Earrings, Glasses & Face Accessories, Drone Skins, Adam's Outfits and
-Lily's Outfits offer both a **cycle matrix** and a **list** view. The matrix compares one acquisition
-spot across playthroughs:
+Nano Suits, Design Patterns, Earrings, Glasses & Face Accessories, Drone Skins, Adam's Outfits, and
+Lily's Outfits offer both a **Cycle matrix** and a **List** view. The matrix makes it easy to compare the items available at the same location across playthroughs:
 
-- Columns are **Base / NG+ / NG++ / DLC/Deluxe**;
-- Each row is one acquisition spot; later cycles replace the item found there, so compare
-  horizontally to spot gaps;
-- Status legend: Obtained, Missing, Higher playthrough required, DLC/Deluxe, Default appearance;
-- Select a row for details such as how to obtain the item.
+- Columns represent **Base / NG+ / NG++ / DLC/Deluxe**;
+- Each row represents one acquisition location. The item found there changes in later playthroughs, so comparing entries across the row reveals what you are missing;
+- Statuses include Obtained, Missing, Higher playthrough required, DLC/Deluxe, and Default appearance;
+- Select a row to view acquisition instructions and other details.
 
-## How counts are calculated
+## How items are counted
 
-- An item counts as obtained when any of its aliases appears in the save's item set, in an alias
-  derived from the achievement records, or in an album achievement alias (`Ach_Album_Unlock_*`);
-  album entries are unlocked through their achievements.
-- The app reads `NewGamePlusPlayCount` from the save and labels items with
-  "Requires NG+" / "Requires NG++".
-- 211 entries are flagged as missable from community sources: Xion city (locked after Abyss Levoire),
-  Eidos 9 (only opens with Lily's gauge at 100%) and side-quest/bulletin rewards; missing lists show
-  "Missable (mind the checkpoint)" and the details/matrix views carry the "Missable" badge.
-- A few entries have low mapping confidence ("Mapping unconfirmed", 6 in total, all Eidos 9 camps);
-  a category page may also point out that "N obtained aliases are not linked to catalog entries".
+- An item counts as obtained if any of its aliases appears in the save's item set, an alias derived from achievement records, or an album achievement alias (`Ach_Album_Unlock_*`). Album entries are unlocked through their corresponding achievements.
+- The app reads `NewGamePlusPlayCount` from the save to determine whether to label an item "Requires NG+" or "Requires NG++".
+- Based on community resources, 211 entries are marked as missable. These include items in Xion (locked after completing Abyss Levoire), Eidos 9 (available once Lily's progress reaches 100%), and side-quest and bulletin-board request rewards.
+  Missing-item lists show "Missable (mind the checkpoint)", and the details and matrix views display a **Missable** badge.
+- Six entries have a mapping confidence of "Low (mapping unconfirmed)", all of them camps in Eidos 9.
+  A category page may also report that "N more obtained aliases are not linked to catalog entries".
 
-The catalog has 930 entries in 15 categories (808 collectibles in 13 categories + 122 album pages);
-see [Data sources & catalog](../reference/data.md) for the alias model and data sources.
+The catalog contains 930 entries in 15 categories: 808 collectibles across 13 categories and 122 album entries.
+See [Data sources & catalog](../reference/data.md) for details about the alias model and data sources.

@@ -1,86 +1,79 @@
 # FAQ
 
-## Will it modify my save?
+## Will the app modify my save?
 
-No. The app only reads the save; parsing and analysis happen entirely in memory and the save file is
-never written to. Local settings stay on your machine and are not written to the save or the
-registry.
+No. The app only reads your save, and all parsing and analysis happen in memory. It never writes to the save file.
+Settings are stored locally and are not written to your save or the Windows registry.
 
-## Does it need an internet connection?
+## Does the app need an internet connection?
 
-No. The data is bundled with the app and nothing goes online at runtime; the guide and search
-buttons only open links in your browser when you click them.
+No. All required data is bundled with the app, which does not connect to the internet at runtime.
+Guide and search links open in your browser only when you click them.
 
 ## Which platforms are supported?
 
-Windows 10/11. Save discovery only covers the Windows paths listed under
-[Save locations](./save-location.md); other platforms are not supported.
+Windows 10 and 11. Automatic save discovery only covers the Windows paths listed under
+[Save locations](./save-location.md). Other operating systems are not supported.
 
-## Is there an installer? How do I upgrade?
+## Do I need to install it? How do I update?
 
-The build is portable: unzip and run. There is no installer, Start menu shortcut or uninstall entry,
-and the app is read-only and does not write to the registry. To upgrade, replace the exe with the new
-version.
+No installation is required. Simply extract the portable app and run it. No Start menu shortcuts or uninstall entries are created, and the app does not write to the Windows registry.
+To update, replace `sblade-explorer.exe` with the newer version.
 
-## It reports that the WebView2 runtime is missing
+## What should I do if the WebView2 Runtime is missing?
 
-Install the Microsoft Edge WebView2 Evergreen Runtime and restart the app (Windows 10/11 usually
-ships with it through Edge).
+Install the Microsoft Edge WebView2 Evergreen Runtime and restart the app.
+The runtime is usually installed with Microsoft Edge on Windows 10 and 11.
 
-## No save is found
+## What should I do if no save is found?
 
-The app lists the directories it actually scanned (open them in File Explorer with **Open**), and
-**Choose a save file…** lets you pick any `StellarBladeSave*.sav` from anywhere. Directory list and
-file naming rules are in [Save locations](./save-location.md).
+The app lists every directory it scanned. Click **Open** to view an existing directory in File Explorer.
+You can also click **Choose a save file…** to select a `StellarBladeSave*.sav` file from any location.
+For scan directories and file naming rules, see [Save locations](./save-location.md).
 
-## Why is the album excluded from completion progress?
+## Why don't albums count toward completion progress?
 
-Catalog progress only counts the 13 collectible categories; the album (Naytiba and characters) is
-shown separately in reports and the UI and is unlocked through the achievement aliases
-`Ach_Album_Unlock_*`, so it does not affect catalog progress.
+Catalog progress includes only the 13 collectible categories. Naytiba and character album entries are unlocked through the achievement aliases `Ach_Album_Unlock_*`
+and are displayed separately in reports and the app, so they do not affect catalog progress.
 
 ## What does "Mapping unconfirmed" mean?
 
-It means the name/alias mapping for that entry has low confidence (6 entries in total: the Eidos 9
-camps map alias → row by achievement order because the save has no coordinates for them). It does
-not affect obtained detection; if an entry is missing
-or mapped incorrectly you can fix it with a custom catalog, see
-[Data sources & catalog](../reference/data.md#custom-catalog).
+It means the name/alias mapping for an entry has low confidence. This currently applies to six entries, all camps in Eidos 9.
+Because the save contains no coordinates for these camps, their aliases are matched to table rows based on achievement order.
+This does not affect whether an item is detected as obtained. If you find a missing or incorrectly mapped entry, you can correct it with a custom catalog.
+See [Data sources & catalog](../reference/data.md#custom-catalog).
 
 ## How do I fix missing or incorrect entries?
 
-Create the user override file `%LOCALAPPDATA%\sbsave\catalog.user.json`, or attach an override
-temporarily with the CLI's `--catalog <path>`; no catalog regeneration is needed. The format is
-documented under [Custom catalog](../reference/data.md#custom-catalog).
+Create a user override file at `%LOCALAPPDATA%\sbsave\catalog.user.json`, or temporarily load an override with the CLI's `--catalog <path>` option.
+You do not need to regenerate the catalog. For the file format, see [Custom catalog](../reference/data.md#custom-catalog).
 
-## What if parsing fails after a game update?
+## What should I do if parsing fails after a game update?
 
-A parse failure produces a clear error. Check that the game and the save versions match, and do not
-force an old catalog onto a save from a newer game version.
+The app displays a specific error when parsing fails. Check that your game and save versions match,
+and do not force an older catalog onto a save created by a newer version of the game.
 
-## Are NG+ and DLC contents supported?
+## Is NG+ and DLC content supported?
 
-Yes. The app reads `NewGamePlusPlayCount` and labels items with "Requires NG+" / "Requires NG++";
-DLC and deluxe items are flagged separately and appear in the "DLC/Deluxe" column of the cycle
-matrix, see [Cycles and the collection matrix](./collections.md#cycles-and-the-collection-matrix).
+Yes. The app reads `NewGamePlusPlayCount` from the save and labels items "Requires NG+" or "Requires NG++".
+DLC and Deluxe Edition items are flagged separately and can be compared in the **DLC/Deluxe** column of the cycle matrix.
+See [Cycles and the collection matrix](./collections.md#cycles-and-the-collection-matrix).
 
-## What is "N obtained aliases are not linked to catalog entries" at the bottom of a category page?
+## Why does a category page report unlinked obtained aliases?
 
-It means the save contains obtained aliases that could not be matched to catalog entries; it reflects
-data coverage. To fix a mapping, see [Custom catalog](../reference/data.md#custom-catalog).
+The save contains obtained aliases that could not be matched to catalog entries. This message helps indicate gaps in data coverage.
+To correct a mapping, see [Custom catalog](../reference/data.md#custom-catalog).
 
 ## Are gear affixes (Gear) and skills (PT) supported?
 
-Not in v1. Only collectibles and the album are analysed.
+Not in v1. Only collectibles and album entries are currently analyzed.
 
 ## Where are settings stored?
 
-The appearance (Dark / Light / Follow system), default search engine (Bing / Baidu / Google), the
-browser used for links and the save opened on startup are configured under **Settings** at the bottom
-of the sidebar and are stored locally only. Guide links open in the selected browser, falling back to
-the system default when launching fails.
+Appearance (Dark / Light / Follow system), the default search engine (Bing / Baidu / Google), the browser used to open links, and the save opened on startup can be configured in **Settings** at the bottom of the sidebar.
+These preferences are stored only on your computer. Guide links open in your selected browser; if it cannot be launched, the app falls back to your system default browser.
 
-## Where do I use the CLI?
+## How do I use the CLI?
 
-See the [CLI docs](../cli/index.md): `saves` lists saves, `report` analyses and exports, `dump`
-debugs and `catalog` validates the catalog.
+See the [CLI documentation](../cli/index.md): `saves` lists save files, `report` analyzes saves and exports reports,
+`dump` provides debugging information, and `catalog` validates the catalog.
