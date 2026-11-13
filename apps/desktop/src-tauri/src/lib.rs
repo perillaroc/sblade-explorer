@@ -549,4 +549,89 @@ mod tests {
         assert!(text.contains("## Category summary"));
         let _ = std::fs::remove_file(&written);
     }
+
+    /// Synthetic save directory for tests that must not depend on a real save.
+    struct FixtureDir {
+        root: std::path::PathBuf,
+    }
+
+    impl FixtureDir {
+        fn new(name: &str) -> Self {
+            static NEXT: std::sync::atomic::AtomicUsize = std::sync::atomic::AtomicUsize::new(0);
+            let unique = NEXT.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+            let root = std::env::temp_dir().join(format!(
+                "sbsave-ui-fixture-{}-{name}-{unique}",
+                std::process::id()
+            ));
+            let _ = std::fs::remove_dir_all(&root);
+            std::fs::create_dir_all(&root).expect("create scratch dir");
+            Self { root }
+        }
+
+        fn save_path(&self) -> String {
+            sbsave_core::fixture::SyntheticSave::default()
+                .write_to(&self.root)
+                .expect("write fixture")
+                .to_string_lossy()
+                .into_owned()
+        }
+    }
+
+    impl Drop for FixtureDir {
+        fn drop(&mut self) {
+            let _ = std::fs::remove_dir_all(&self.root);
+        }
+    }
+
+    #[test]
+    fn analyze_save_with_synthetic_fixture() {
+        let fixture = FixtureDir::new("analyze");
+        let value = analyze_save(Some(fixture.save_path()), None, None, Some("zh".into()))
+            .expect("analyze synthetic save");
+        assert_eq!(value["save"]["steam_id"], sbsave_core::fixture::STEAM_ID);
+        assert_eq!(value["summary"]["catalog_total"].as_u64(), Some(808));
+        assert_eq!(value["summary"]["catalog_obtained"].as_u64(), Some(10));
+        assert_eq!(value["summary"]["missing_total"].as_u64(), Some(798));
+        assert_eq!(value["summary"]["unmapped_aliases"].as_u64(), Some(3));
+        assert!(value["categories"]
+            .as_array()
+            .is_some_and(|categories| categories.len() == 15));
+    }
+
+    #[test]
+    fn export_report_with_synthetic_fixture() {
+        let fixture = FixtureDir::new("export");
+
+        let json_target = fixture.root.join("report.json");
+        let written = export_report(
+            Some(fixture.save_path()),
+            None,
+            None,
+            "zh".to_string(),
+            "json".to_string(),
+            json_target.to_string_lossy().into_owned(),
+            None,
+        )
+        .expect("json export");
+        let report: serde_json::Value =
+            serde_json::from_str(&std::fs::read_to_string(&written).expect("read json export"))
+                .expect("parse json export");
+        assert_eq!(report["summary"]["catalog_total"].as_u64(), Some(808));
+        assert_eq!(report["summary"]["catalog_obtained"].as_u64(), Some(10));
+
+        let markdown_target = fixture.root.join("report.md");
+        let written = export_report(
+            Some(fixture.save_path()),
+            None,
+            None,
+            "zh".to_string(),
+            "markdown".to_string(),
+            markdown_target.to_string_lossy().into_owned(),
+            None,
+        )
+        .expect("markdown export");
+        let text = std::fs::read_to_string(&written).expect("read markdown export");
+        assert!(text.contains("# 剑星存档分析"), "{text}");
+        assert!(text.contains("Can_009"), "{text}");
+    }
 }

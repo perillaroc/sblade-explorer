@@ -1,5 +1,7 @@
 pub mod analyze;
 pub mod catalog;
+/// Synthetic saves shared by the test suites; not used at runtime.
+pub mod fixture;
 pub mod gvas;
 pub mod i18n;
 mod paths;
