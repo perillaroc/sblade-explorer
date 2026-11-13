@@ -45,6 +45,21 @@ fn counters_and_achievements() {
 }
 
 #[test]
+fn quest_state_parses_real_save() {
+    let Some(save) = real_save() else {
+        return;
+    };
+    assert!(!save.quests.is_empty());
+    assert!(save.quests.completed.len() > 10);
+    assert!(save
+        .quests
+        .completed
+        .iter()
+        .chain(&save.quests.active)
+        .any(|alias| alias.starts_with("Quest_Epic_")));
+}
+
+#[test]
 fn derived_aliases_covers_camps() {
     let Some(save) = real_save() else {
         return;

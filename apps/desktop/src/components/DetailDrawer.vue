@@ -12,6 +12,7 @@ import {
   flagLabels,
   itemName,
   locationLabel,
+  missableBadge,
   obtainLabel,
   reasonLabel,
   recordTypeLabel,
@@ -111,6 +112,11 @@ const reason = computed(() =>
     ? reasonLabel(activeRow.value.item, props.ngPlusCount)
     : null,
 );
+
+const activeBadge = computed(() => {
+  const row = activeRow.value;
+  return row ? missableBadge(row.item, row.obtained) : null;
+});
 
 const aliases = computed(() => {
   const item = activeRow.value?.item;
@@ -222,11 +228,15 @@ const navVisible = computed(
               <UiBadge v-for="flag in flagLabels(entry.item)" :key="flag" tone="warning" size="xs">
                 {{ flag }}
               </UiBadge>
+              <UiBadge
+                v-if="missableBadge(entry.item, entry.obtained)"
+                :tone="missableBadge(entry.item, entry.obtained)!.tone"
+                size="xs"
+              >
+                {{ missableBadge(entry.item, entry.obtained)!.label }}
+              </UiBadge>
               <UiBadge v-if="reasonLabel(entry.item, ngPlusCount) && !entry.obtained" tone="warning" size="xs">
                 {{ reasonLabel(entry.item, ngPlusCount) }}
-              </UiBadge>
-              <UiBadge v-if="entry.obtained && entry.item.missable" tone="neutral" size="xs">
-                {{ t("itemTable.missable") }}
               </UiBadge>
             </span>
             <span class="mt-1 block whitespace-pre-wrap text-[11px] leading-5 text-ink-muted">
@@ -271,8 +281,8 @@ const navVisible = computed(
         >
           {{ locationLabel(activeRow.item, lang) }}
         </span>
-        <UiBadge v-if="activeRow.item.missable" tone="warning" size="sm">
-          {{ t("itemTable.missable") }}
+        <UiBadge v-if="activeBadge" :tone="activeBadge.tone" size="sm">
+          {{ activeBadge.label }}
         </UiBadge>
       </div>
 
@@ -335,9 +345,11 @@ const navVisible = computed(
             <dt class="text-ink-subtle">{{ t("itemDetail.dlc") }}</dt>
             <dd class="text-ink-muted">{{ dlcLabel(activeRow.item.dlc) }}</dd>
           </template>
-          <template v-if="activeRow.item.missable">
+          <template v-if="activeBadge">
             <dt class="text-ink-subtle">{{ t("itemDetail.missable") }}</dt>
-            <dd class="text-warning">{{ t("common.yes") }}</dd>
+            <dd :class="activeBadge.tone === 'danger' ? 'text-danger' : 'text-warning'">
+              {{ activeBadge.label }}
+            </dd>
           </template>
           <template v-if="recordTypeLabel(activeRow.item, lang)">
             <dt class="text-ink-subtle">{{ t("itemDetail.recordType") }}</dt>

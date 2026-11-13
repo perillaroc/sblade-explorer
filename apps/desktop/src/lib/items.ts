@@ -1,4 +1,10 @@
-import type { CategoryResult, Item, ItemFilter, ObtainedItem } from "../types";
+import type {
+  CategoryResult,
+  Item,
+  ItemFilter,
+  MissableState,
+  ObtainedItem,
+} from "../types";
 
 export type AnyItem = Item | ObtainedItem;
 
@@ -9,6 +15,7 @@ export interface ItemRow {
   flags: string[];
   reason: string | null;
   source: string | null;
+  missableState: MissableState | null;
 }
 
 function canNumber(id: string): number {
@@ -18,7 +25,7 @@ function canNumber(id: string): number {
 
 export function categoryRows(category: CategoryResult, filter: ItemFilter): ItemRow[] {
   const rows: ItemRow[] = [];
-  if (filter !== "missing") {
+  if (filter !== "missing" && filter !== "missed" && filter !== "open") {
     rows.push(
       ...category.obtained_items.map((item) => ({
         id: item.id,
@@ -27,19 +34,26 @@ export function categoryRows(category: CategoryResult, filter: ItemFilter): Item
         flags: [],
         reason: null,
         source: item.source,
+        missableState: null,
       })),
     );
   }
   if (filter !== "obtained") {
     rows.push(
-      ...category.missing.map((item) => ({
-        id: item.id,
-        item,
-        obtained: false,
-        flags: item.flags,
-        reason: item.reason,
-        source: null,
-      })),
+      ...category.missing
+        .filter((item) => {
+          if (filter === "all" || filter === "missing") return true;
+          return item.missable_state === filter;
+        })
+        .map((item) => ({
+          id: item.id,
+          item,
+          obtained: false,
+          flags: item.flags,
+          reason: item.reason,
+          source: null,
+          missableState: item.missable_state,
+        })),
     );
   }
   if (category.key === "cans") {

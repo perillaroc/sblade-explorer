@@ -5,7 +5,7 @@
 //! `data/raw/memorystick_order.json`.
 //! Output: `data/catalog.json` (byte-identical to the Python generator).
 
-use std::collections::{BTreeMap, BTreeSet, HashMap};
+use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet};
 use std::path::{Path, PathBuf};
 
 use regex::Regex;
@@ -336,6 +336,67 @@ struct MissableGroup {
     camp_zones: Vec<String>,
     #[serde(default)]
     ids: Vec<String>,
+    /// Item is lost once any of these quests completed.
+    #[serde(default)]
+    void_after_quests: Vec<String>,
+    /// Item only becomes obtainable after one of these quests started.
+    #[serde(default)]
+    requires_quests: Vec<String>,
+    /// Item is lost when one of these quests is failed.
+    #[serde(default)]
+    void_on_failed_quests: Vec<String>,
+}
+
+/// Machine readable condition embedded into `catalog.json` items.
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize)]
+struct MissableRule {
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    void_after_quests: Vec<String>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    requires_quests: Vec<String>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    void_on_failed_quests: Vec<String>,
+}
+
+impl MissableRule {
+    fn is_empty(&self) -> bool {
+        self.void_after_quests.is_empty()
+            && self.requires_quests.is_empty()
+            && self.void_on_failed_quests.is_empty()
+    }
+
+    /// Merges another group's rule into this one, keeping the order stable.
+    fn merge(&mut self, other: &MissableRule) {
+        for (target, source) in [
+            (&mut self.void_after_quests, &other.void_after_quests),
+            (&mut self.requires_quests, &other.requires_quests),
+            (
+                &mut self.void_on_failed_quests,
+                &other.void_on_failed_quests,
+            ),
+        ] {
+            for alias in source {
+                if !target.contains(alias) {
+                    target.push(alias.clone());
+                }
+            }
+        }
+    }
+}
+
+/// `data/raw/quest_aliases.json`: committed snapshot of quest aliases seen in
+/// `DataMap_SBQuest`, used to reject typo rules at build time.
+#[derive(Debug, Default, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct QuestAliasFile {
+    #[serde(default)]
+    #[allow(dead_code)]
+    version: i64,
+    #[serde(default)]
+    #[allow(dead_code)]
+    generated_by: String,
+    #[serde(default)]
+    aliases: Vec<String>,
 }
 
 #[derive(Serialize)]
@@ -351,6 +412,8 @@ struct CatalogItem {
     ng_plus: i64,
     dlc: Option<String>,
     missable: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    missable_rule: Option<MissableRule>,
     note: Option<String>,
     confidence: String,
     source: Option<String>,
@@ -582,6 +645,7 @@ fn make_item(
         ng_plus: cycle_to_ng_plus(cycle),
         dlc,
         missable: false,
+        missable_rule: None,
         note,
         confidence: confidence.to_string(),
         source,
@@ -623,6 +687,7 @@ fn plain_item(
         ng_plus,
         dlc,
         missable: false,
+        missable_rule: None,
         note: Some(note.to_string()),
         confidence: confidence.to_string(),
         source: None,
@@ -1375,6 +1440,7 @@ fn album_item(
         ng_plus: 0,
         dlc: None,
         missable: false,
+        missable_rule: None,
         note: None,
         confidence: "high".to_string(),
         source: Some("game".to_string()),
@@ -2002,11 +2068,29 @@ fn load_missable(root: &Path) -> Result<MissableFile, String> {
     serde_json::from_str(&text).map_err(|error| format!("解析 {} 失败: {error}", path.display()))
 }
 
+fn load_quest_aliases(root: &Path) -> Result<HashSet<String>, String> {
+    let path = root.join("data/raw/quest_aliases.json");
+    let text = std::fs::read_to_string(&path)
+        .map_err(|error| format!("读取 {} 失败: {error}", path.display()))?;
+    let file: QuestAliasFile = serde_json::from_str(&text)
+        .map_err(|error| format!("解析 {} 失败: {error}", path.display()))?;
+    Ok(file.aliases.into_iter().collect())
+}
+
 /// Marks entries listed in `data/raw/missable.json`. Selectors (`areas`,
-/// `camp_zones`) and explicit `ids` are validated so typos fail the build.
-fn apply_missable(items: &mut [CatalogItem], missable: &MissableFile) -> Result<(), String> {
+/// `camp_zones`) and explicit `ids` are validated so typos fail the build;
+/// quest aliases in the optional rules must exist in the committed
+/// `quest_aliases.json` snapshot.
+fn apply_missable(
+    items: &mut [CatalogItem],
+    missable: &MissableFile,
+    known_quests: &HashSet<String>,
+) -> Result<(), String> {
     let mut marked: BTreeSet<String> = BTreeSet::new();
+    let mut rules: BTreeMap<String, MissableRule> = BTreeMap::new();
+
     for group in &missable.groups {
+        let mut selected: Vec<String> = Vec::new();
         for area in &group.areas {
             let hits: Vec<&str> = items
                 .iter()
@@ -2019,7 +2103,7 @@ fn apply_missable(items: &mut [CatalogItem], missable: &MissableFile) -> Result<
                     group.key
                 ));
             }
-            marked.extend(hits.into_iter().map(str::to_string));
+            selected.extend(hits.into_iter().map(str::to_string));
         }
         for zone in &group.camp_zones {
             let prefix = format!("ChangeState_ZoneEnv_{zone}_");
@@ -2034,7 +2118,7 @@ fn apply_missable(items: &mut [CatalogItem], missable: &MissableFile) -> Result<
                     group.key
                 ));
             }
-            marked.extend(hits.into_iter().map(str::to_string));
+            selected.extend(hits.into_iter().map(str::to_string));
         }
         for id in &group.ids {
             if !items.iter().any(|item| item.id == *id) {
@@ -2043,15 +2127,42 @@ fn apply_missable(items: &mut [CatalogItem], missable: &MissableFile) -> Result<
                     group.key
                 ));
             }
-            marked.insert(id.clone());
+            selected.push(id.clone());
         }
         if group.areas.is_empty() && group.camp_zones.is_empty() && group.ids.is_empty() {
             return Err(format!("missable.json 的 {} 没有任何选择器", group.key));
         }
+
+        let rule = MissableRule {
+            void_after_quests: group.void_after_quests.clone(),
+            requires_quests: group.requires_quests.clone(),
+            void_on_failed_quests: group.void_on_failed_quests.clone(),
+        };
+        for quest in rule
+            .void_after_quests
+            .iter()
+            .chain(&rule.requires_quests)
+            .chain(&rule.void_on_failed_quests)
+        {
+            if !known_quests.contains(quest) {
+                return Err(format!(
+                    "missable.json 的 {} 引用未知任务别名: {quest}",
+                    group.key
+                ));
+            }
+        }
+        for id in selected {
+            marked.insert(id.clone());
+            if !rule.is_empty() {
+                rules.entry(id).or_default().merge(&rule);
+            }
+        }
     }
+
     for item in items.iter_mut() {
         if marked.contains(&item.id) {
             item.missable = true;
+            item.missable_rule = rules.get(&item.id).filter(|rule| !rule.is_empty()).cloned();
         }
     }
     Ok(())
@@ -2183,6 +2294,7 @@ pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
     let guides = load_guides(root)?;
     let fish_obtain = load_fish_obtain(root)?;
     let missable = load_missable(root)?;
+    let quest_aliases = load_quest_aliases(root)?;
 
     let mut items: Vec<CatalogItem> = Vec::new();
     items.extend(build_nano_suits(&site, &crosswalk)?);
@@ -2196,7 +2308,7 @@ pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
     apply_record_types(&mut items, &site, &crosswalk)?;
     apply_passcode_obtain(&mut items, &site)?;
     apply_memorystick_order(&mut items, &memorystick_order)?;
-    apply_missable(&mut items, &missable)?;
+    apply_missable(&mut items, &missable, &quest_aliases)?;
     apply_i18n(&mut items, &i18n);
     apply_guides(&mut items, &guides)?;
     items.extend(build_album(&game_names)?);
@@ -2254,7 +2366,7 @@ pub fn run(root: &Path) -> Result<(), String> {
 
 #[cfg(test)]
 mod tests {
-    use std::collections::{BTreeSet, HashMap};
+    use std::collections::{BTreeSet, HashMap, HashSet};
 
     use super::{
         apply_document_location, apply_guides, apply_memorystick_order, apply_missable,
@@ -2622,11 +2734,25 @@ mod tests {
                 areas: vec!["Xion".to_string()],
                 camp_zones: vec!["DED40".to_string()],
                 ids: vec!["BS_18".to_string()],
+                void_after_quests: vec!["Quest_Epic_08".to_string()],
+                requires_quests: Vec::new(),
+                void_on_failed_quests: Vec::new(),
             }],
             ..MissableFile::default()
         };
-        apply_missable(&mut items, &missable).expect("apply");
+        let known: HashSet<String> = ["Quest_Epic_08".to_string()].into_iter().collect();
+        apply_missable(&mut items, &missable, &known).expect("apply");
         assert!(items.iter().all(|item| item.missable));
+        let xion = items
+            .iter()
+            .find(|item| item.id == "Item_Records_Xion_Memory_01")
+            .expect("xion item");
+        assert_eq!(
+            xion.missable_rule
+                .as_ref()
+                .map(|rule| rule.void_after_quests.as_slice()),
+            Some(["Quest_Epic_08".to_string()].as_slice())
+        );
     }
 
     #[test]
@@ -2652,10 +2778,13 @@ mod tests {
                 areas: Vec::new(),
                 camp_zones: Vec::new(),
                 ids: vec!["Nope".to_string()],
+                void_after_quests: Vec::new(),
+                requires_quests: Vec::new(),
+                void_on_failed_quests: Vec::new(),
             }],
             ..MissableFile::default()
         };
-        assert!(apply_missable(&mut items, &unknown_id).is_err());
+        assert!(apply_missable(&mut items, &unknown_id, &HashSet::new()).is_err());
 
         let unknown_area = MissableFile {
             version: 1,
@@ -2666,10 +2795,32 @@ mod tests {
                 areas: vec!["Nope".to_string()],
                 camp_zones: Vec::new(),
                 ids: Vec::new(),
+                void_after_quests: Vec::new(),
+                requires_quests: Vec::new(),
+                void_on_failed_quests: Vec::new(),
             }],
             ..MissableFile::default()
         };
-        assert!(apply_missable(&mut items, &unknown_area).is_err());
+        assert!(apply_missable(&mut items, &unknown_area, &HashSet::new()).is_err());
+
+        let unknown_quest = MissableFile {
+            version: 1,
+            groups: vec![MissableGroup {
+                key: "bad-quest".to_string(),
+                note: String::new(),
+                source: String::new(),
+                areas: Vec::new(),
+                camp_zones: Vec::new(),
+                ids: vec!["BS_18".to_string()],
+                void_after_quests: vec!["Quest_Nope".to_string()],
+                requires_quests: Vec::new(),
+                void_on_failed_quests: Vec::new(),
+            }],
+            ..MissableFile::default()
+        };
+        let error = apply_missable(&mut items, &unknown_quest, &HashSet::new())
+            .expect_err("unknown quest alias must fail the build");
+        assert!(error.contains("Quest_Nope"), "{error}");
     }
 
     #[test]

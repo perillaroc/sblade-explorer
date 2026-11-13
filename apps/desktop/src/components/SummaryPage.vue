@@ -6,6 +6,7 @@ import {
   CalendarClock,
   ChevronRight,
   CircleCheck,
+  CircleSlash,
   Clock,
   Database,
   Gauge,
@@ -276,6 +277,14 @@ function navigate(delta: number): void {
       >
         <TriangleAlert class="h-4 w-4 shrink-0" aria-hidden="true" />
         {{ t("summary.priorityMissable", { count: missable.length }) }}
+      </div>
+
+      <div
+        v-if="summary.missed_count > 0"
+        class="mb-3 flex items-center gap-2 rounded-md bg-danger/10 px-3 py-2 text-xs text-danger"
+      >
+        <CircleSlash class="h-4 w-4 shrink-0" aria-hidden="true" />
+        {{ t("summary.missedSummary", { count: summary.missed_count }) }}
       </div>
 
       <p v-if="actionable.length === 0" class="py-4 text-center text-xs text-ink-muted">

@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use serde_json::{Map, Value};
 
-use crate::analyze::{Analysis, CategoryResult, ItemStatus};
+use crate::analyze::{Analysis, CategoryResult, ItemStatus, MissableState};
 use crate::catalog::CatalogItem;
 use crate::i18n::{Locale, Messages};
 use crate::savegame::SaveData;
@@ -362,6 +362,10 @@ pub fn print_report(analysis: &Analysis, show_all: bool, lang: &str, locale: Loc
             analysis.album_missing_total(),
         )
     ));
+    out.push_str(&format!(
+        "{}\n",
+        messages.report_missable_line(analysis.missed_count(), analysis.missable_open_count())
+    ));
     out.push('\n');
 
     out.push_str(messages.category_summary());
@@ -373,13 +377,15 @@ pub fn print_report(analysis: &Analysis, show_all: bool, lang: &str, locale: Loc
             continue;
         }
         out.push_str(&format!(
-            "{} | {}/{} ({:.0}%) | {} | {} | {}\n",
+            "{} | {}/{} ({:.0}%) | {} | {} | {} | {} | {}\n",
             result.category.localized_name(locale),
             result.obtained_count,
             result.total,
             result.percent(),
             result.missing.len(),
             result.blocked_count,
+            result.missed_count(),
+            result.missable_open_count(),
             result.extra_obtained.len()
         ));
     }
@@ -560,6 +566,18 @@ fn catalog_item_to_dict(item: &CatalogItem) -> Value {
     Value::Object(object)
 }
 
+fn missable_state_to_dict(status: &ItemStatus) -> Value {
+    if !status.item.missable || status.obtained {
+        return Value::Null;
+    }
+    let state = match status.missable_state {
+        MissableState::Open => "open",
+        MissableState::Missed => "missed",
+        MissableState::Unknown => "unknown",
+    };
+    Value::String(state.to_string())
+}
+
 fn item_to_dict(status: &ItemStatus) -> Value {
     let item = status.item;
     let mut object = Map::new();
@@ -607,6 +625,7 @@ fn item_to_dict(status: &ItemStatus) -> Value {
         "confidence".to_string(),
         Value::String(item.confidence.clone()),
     );
+    object.insert("missable_state".to_string(), missable_state_to_dict(status));
     object.insert(
         "reason".to_string(),
         match status.reason_label(Locale::Zh) {
@@ -766,6 +785,14 @@ pub fn analysis_to_dict(analysis: &Analysis, include_obtained: bool) -> Value {
         "unmapped_aliases".to_string(),
         Value::from(analysis.unmapped_obtained.len()),
     );
+    summary.insert(
+        "missed_count".to_string(),
+        Value::from(analysis.missed_count()),
+    );
+    summary.insert(
+        "missable_open_count".to_string(),
+        Value::from(analysis.missable_open_count()),
+    );
 
     let mut payload = Map::new();
     payload.insert("save".to_string(), Value::Object(save_object));
@@ -830,22 +857,29 @@ pub fn render_markdown(analysis: &Analysis, lang: &str, locale: Locale) -> Strin
         analysis.album_missing_total(),
     ));
     lines.push(String::new());
+    lines.push(format!(
+        "- {}",
+        messages.report_missable_line(analysis.missed_count(), analysis.missable_open_count())
+    ));
+    lines.push(String::new());
     lines.push(messages.markdown_summary_heading().to_string());
     lines.push(String::new());
     lines.push(messages.markdown_summary_header().to_string());
-    lines.push("| --- | ---: | ---: | ---: |".to_string());
+    lines.push("| --- | ---: | ---: | ---: | ---: | ---: |".to_string());
     for result in &analysis.categories {
         if is_album_category(result) {
             continue;
         }
         lines.push(format!(
-            "| {} | {}/{} ({:.0}%) | {} | {} |",
+            "| {} | {}/{} ({:.0}%) | {} | {} | {} | {} |",
             result.category.localized_name(locale),
             result.obtained_count,
             result.total,
             result.percent(),
             result.missing.len(),
-            result.blocked_count
+            result.blocked_count,
+            result.missed_count(),
+            result.missable_open_count()
         ));
     }
     lines.push(String::new());

@@ -187,6 +187,8 @@ fn report_json_with_synthetic_fixture() {
     assert_eq!(report["summary"]["catalog_obtained"], 10);
     assert_eq!(report["summary"]["missing_total"], 798);
     assert_eq!(report["summary"]["unmapped_aliases"], 3);
+    assert_eq!(report["summary"]["missed_count"], 154);
+    assert_eq!(report["summary"]["missable_open_count"], 29);
     assert_eq!(report["categories"].as_array().map(Vec::len), Some(15));
 
     let cans = report["categories"]
@@ -201,7 +203,32 @@ fn report_json_with_synthetic_fixture() {
         .iter()
         .find(|item| item["id"] == "Can_009")
         .expect("Can_009 should be missing");
-    assert_eq!(can_009["reason"], "可错过(注意节点)");
+    assert_eq!(can_009["reason"], "已错过（本存档无法再获取）");
+    assert_eq!(can_009["missable_state"], "missed");
+}
+
+#[test]
+fn dump_json_summarises_quests_with_synthetic_fixture() {
+    let fixture = FixtureEnv::new("dump-json");
+    let json_path = fixture.root.join("dump.json");
+    let json_text = json_path.to_string_lossy().into_owned();
+    let output = sbsave_with_fixture(
+        &["dump", "--json", &json_text],
+        &fixture.root,
+        &fixture.root,
+    );
+    assert!(
+        output.status.success(),
+        "{}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+    let summary: serde_json::Value =
+        serde_json::from_str(&std::fs::read_to_string(&json_path).expect("read dump"))
+            .expect("parse dump");
+    assert_eq!(summary["obtained_count"], 10);
+    assert_eq!(summary["quests"]["completed"], 2);
+    assert_eq!(summary["quests"]["failed"], 1);
+    assert_eq!(summary["quests"]["active"], 2);
 }
 
 #[test]
@@ -235,5 +262,7 @@ fn report_category_filter_uses_synthetic_fixture() {
     assert_eq!(report["summary"]["catalog_total"], 49);
     assert_eq!(report["summary"]["catalog_obtained"], 2);
     assert_eq!(report["summary"]["missing_total"], 47);
+    assert_eq!(report["summary"]["missed_count"], 8);
+    assert_eq!(report["summary"]["missable_open_count"], 0);
     assert_eq!(report["categories"].as_array().map(Vec::len), Some(1));
 }

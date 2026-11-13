@@ -9,6 +9,7 @@ import {
   flagLabels,
   itemName,
   locationLabel,
+  missableBadge,
   obtainLabel,
   reasonLabel,
 } from "../lib/display";
@@ -85,6 +86,10 @@ function navigate(delta: number): void {
 function reason(row: ItemRow): string | null {
   return row.obtained ? null : reasonLabel(row.item, props.ngPlusCount);
 }
+
+function missable(row: ItemRow) {
+  return missableBadge(row.item, row.obtained);
+}
 </script>
 
 <template>
@@ -134,17 +139,17 @@ function reason(row: ItemRow): string | null {
 
     <template #cell-flags="{ row }">
       <span class="inline-flex flex-wrap items-center gap-1">
+        <UiBadge v-if="missable(row)" :tone="missable(row)!.tone">
+          <template v-if="row.obtained || missable(row)!.tone === 'danger'" #icon>
+            <TriangleAlert class="h-3 w-3" />
+          </template>
+          {{ missable(row)!.label }}
+        </UiBadge>
         <UiBadge v-for="flag in flagLabels(row.item)" :key="flag" tone="warning">
           {{ flag }}
         </UiBadge>
         <UiBadge v-if="reason(row)" tone="warning">
           {{ reason(row) }}
-        </UiBadge>
-        <UiBadge v-if="row.obtained && row.item.missable" tone="neutral">
-          <template #icon>
-            <TriangleAlert class="h-3 w-3" />
-          </template>
-          {{ t("itemTable.missable") }}
         </UiBadge>
       </span>
     </template>

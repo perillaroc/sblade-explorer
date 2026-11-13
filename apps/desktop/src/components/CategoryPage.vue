@@ -68,11 +68,35 @@ const props = defineProps<{
 
 const { t } = useI18n({ useScope: "global" });
 
-const FILTER_OPTIONS = computed<{ value: ItemFilter; label: string; count: number }[]>(() => [
-  { value: "all", label: t("categoryPage.filterAll"), count: props.category.total },
-  { value: "obtained", label: t("categoryPage.filterObtained"), count: props.category.obtained },
-  { value: "missing", label: t("categoryPage.filterMissing"), count: props.category.missing.length },
-]);
+const missedCount = computed(
+  () => props.category.missing.filter((item) => item.missable_state === "missed").length,
+);
+const openCount = computed(
+  () => props.category.missing.filter((item) => item.missable_state === "open").length,
+);
+
+const FILTER_OPTIONS = computed<{ value: ItemFilter; label: string; count: number }[]>(() => {
+  const options: { value: ItemFilter; label: string; count: number }[] = [
+    { value: "all", label: t("categoryPage.filterAll"), count: props.category.total },
+    { value: "obtained", label: t("categoryPage.filterObtained"), count: props.category.obtained },
+    { value: "missing", label: t("categoryPage.filterMissing"), count: props.category.missing.length },
+  ];
+  if (missedCount.value > 0) {
+    options.push({
+      value: "missed",
+      label: t("categoryPage.filterMissed"),
+      count: missedCount.value,
+    });
+  }
+  if (openCount.value > 0) {
+    options.push({
+      value: "open",
+      label: t("categoryPage.filterOpen"),
+      count: openCount.value,
+    });
+  }
+  return options;
+});
 
 const VIEW_OPTIONS = computed<{ value: ViewMode; label: string; icon: LucideIcon }[]>(() => [
   { value: "matrix", label: t("categoryPage.viewMatrix"), icon: LayoutGrid },
@@ -96,6 +120,12 @@ watch(view, (value) => {
 
 watch(filter, (value) => {
   if (!applyingFocus) settings.categoryFilters[props.category.key] = value;
+});
+
+// A save change can remove every entry of the active state filter; fall back
+// to "all" instead of leaving the segmented control without a selection.
+watch(FILTER_OPTIONS, (options) => {
+  if (!options.some((option) => option.value === filter.value)) filter.value = "all";
 });
 
 function setView(value: string): void {

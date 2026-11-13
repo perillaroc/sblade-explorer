@@ -507,6 +507,14 @@ fn command_dump(
             "obtained_count".to_string(),
             serde_json::Value::from(save_data.obtained_items.len()),
         );
+        summary.insert(
+            "quests".to_string(),
+            serde_json::json!({
+                "completed": save_data.quests.completed.len(),
+                "failed": save_data.quests.failed.len(),
+                "active": save_data.quests.active.len(),
+            }),
+        );
         let text = serde_json::to_string_pretty(&serde_json::Value::Object(summary))
             .unwrap_or_else(|_| "{}".to_string());
         if let Err(error) = std::fs::write(&path, text) {

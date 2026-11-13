@@ -41,6 +41,18 @@ impl SyntheticAchievement {
     }
 }
 
+/// Shape of the `DataMap_SBQuest` property in the fixture.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum QuestMapShape {
+    /// A well formed map with the three quest lists.
+    #[default]
+    Normal,
+    /// No `DataMap_SBQuest` property at all (older saves).
+    Missing,
+    /// Present but not a map of structs (unexpected type).
+    Malformed,
+}
+
 /// One synthetic save. The default value is the shared baseline fixture; tests
 /// that need a different quest state clone it and edit the relevant vector.
 #[derive(Debug, Clone)]
@@ -50,6 +62,7 @@ pub struct SyntheticSave {
     pub completed_quests: Vec<String>,
     pub failed_quests: Vec<String>,
     pub active_quests: Vec<String>,
+    pub quest_map: QuestMapShape,
     pub map_name: String,
     pub ng_plus_count: i32,
     pub difficulty: i32,
@@ -97,6 +110,7 @@ impl Default for SyntheticSave {
                 "Quest_Epic_Hidden".to_string(),
                 "CQ_Public_ForceGreenDot".to_string(),
             ],
+            quest_map: QuestMapShape::Normal,
             map_name: "E04".to_string(),
             ng_plus_count: 1,
             difficulty: 2,
@@ -122,12 +136,16 @@ impl SyntheticSave {
             quest_list("FailedQuestList", &self.failed_quests, 2),
             quest_list("ProgressQuestList", &self.active_quests, 1),
         ]);
-        let quest_map = map_prop(
-            "DataMap_SBQuest",
-            "NameProperty",
-            "StructProperty",
-            &[(fstr("Quest"), quest_struct)],
-        );
+        let quest_map = match self.quest_map {
+            QuestMapShape::Normal => Some(map_prop(
+                "DataMap_SBQuest",
+                "NameProperty",
+                "StructProperty",
+                &[(fstr("Quest"), quest_struct)],
+            )),
+            QuestMapShape::Missing => None,
+            QuestMapShape::Malformed => Some(str_prop("DataMap_SBQuest", "not-a-map")),
+        };
 
         let string_map = map_prop(
             "DataMap_FString",
@@ -206,7 +224,14 @@ impl SyntheticSave {
         );
 
         let mut payload = header();
-        for property in [quest_map, item_map, string_map, int_map, achievements, shop] {
+        let mut properties = Vec::new();
+        if let Some(quest_map) = quest_map {
+            properties.push(quest_map);
+        }
+        properties.extend([item_map, string_map, int_map, achievements, shop]);
+        // Unknown properties must be ignored by the parser (new game fields).
+        properties.push(str_prop("UnknownFixtureProperty", "ignored"));
+        for property in properties {
             payload.extend_from_slice(&property);
         }
         payload.extend_from_slice(&fstr("None"));
@@ -347,6 +372,8 @@ fn quest_list(name: &str, aliases: &[String], state: u8) -> Vec<u8> {
             struct_body(&[
                 str_prop("QuestAlias", alias),
                 byte_prop("QuestState", state),
+                // Fields a newer game build may add: the parser must skip them.
+                int_prop("UnknownQuestField", 0),
             ])
         })
         .collect();

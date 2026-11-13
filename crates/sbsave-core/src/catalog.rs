@@ -50,6 +50,26 @@ pub struct Guides {
     pub video: Option<GuideLink>,
 }
 
+/// Machine readable condition behind a `missable` entry. Each list holds quest
+/// aliases from `DataMap_SBQuest`.
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct MissableRule {
+    /// The item can no longer be obtained once any of these quests completed.
+    pub void_after_quests: Vec<String>,
+    /// The item only becomes obtainable after one of these quests started.
+    pub requires_quests: Vec<String>,
+    /// The item is lost when one of these quests appears in the failed list.
+    pub void_on_failed_quests: Vec<String>,
+}
+
+impl MissableRule {
+    pub fn is_empty(&self) -> bool {
+        self.void_after_quests.is_empty()
+            && self.requires_quests.is_empty()
+            && self.void_on_failed_quests.is_empty()
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct CatalogItem {
     pub id: String,
@@ -65,6 +85,7 @@ pub struct CatalogItem {
     pub ng_plus: i64,
     pub dlc: Option<String>,
     pub missable: bool,
+    pub missable_rule: Option<MissableRule>,
     pub note: Option<String>,
     pub confidence: String,
     pub source: Option<String>,
@@ -208,6 +229,30 @@ fn parse_guides(raw: &JsonValue) -> Option<Guides> {
     Some(guides)
 }
 
+fn parse_string_list(raw: Option<&JsonValue>) -> Vec<String> {
+    raw.and_then(JsonValue::as_array)
+        .map(|values| {
+            values
+                .iter()
+                .filter_map(JsonValue::as_str)
+                .map(str::to_string)
+                .collect()
+        })
+        .unwrap_or_default()
+}
+
+fn parse_missable_rule(raw: &JsonValue) -> Option<MissableRule> {
+    let rule = MissableRule {
+        void_after_quests: parse_string_list(raw.get("void_after_quests")),
+        requires_quests: parse_string_list(raw.get("requires_quests")),
+        void_on_failed_quests: parse_string_list(raw.get("void_on_failed_quests")),
+    };
+    if rule.is_empty() {
+        return None;
+    }
+    Some(rule)
+}
+
 fn parse_item(raw: &JsonValue) -> CatalogItem {
     let id = json_str(raw, "id").unwrap_or_default();
     let name = json_str(raw, "name")
@@ -241,6 +286,7 @@ fn parse_item(raw: &JsonValue) -> CatalogItem {
             .get("missable")
             .and_then(JsonValue::as_bool)
             .unwrap_or(false),
+        missable_rule: raw.get("missable_rule").and_then(parse_missable_rule),
         note: json_str(raw, "note"),
         confidence: json_str(raw, "confidence").unwrap_or_else(|| "high".to_string()),
         source: json_str(raw, "source"),

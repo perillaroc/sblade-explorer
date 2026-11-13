@@ -6,7 +6,7 @@ use sbsave_core::catalog::load_catalog;
 use sbsave_core::gvas::{EngineVersion, GvasFile, GvasHeader};
 use sbsave_core::i18n::Locale;
 use sbsave_core::report::{analysis_to_dict, print_report, render_markdown};
-use sbsave_core::savegame::SaveData;
+use sbsave_core::savegame::{QuestState, SaveData};
 
 fn make_header() -> GvasHeader {
     GvasHeader {
@@ -46,6 +46,7 @@ fn make_save(obtained: &[&str], derived: &[&str], ng_plus: i64) -> SaveData {
         achievements: HashMap::new(),
         shop_purchases: HashMap::new(),
         friendships: HashMap::new(),
+        quests: QuestState::default(),
     }
 }
 
@@ -290,4 +291,97 @@ fn album_sections_in_report() {
     assert!(thorn["desc_en"]
         .as_str()
         .is_some_and(|text| text.contains("Ecological Information")));
+}
+
+fn with_completed_quests(mut save: SaveData, completed: &[&str]) -> SaveData {
+    save.quests = QuestState {
+        completed: completed.iter().map(|alias| alias.to_string()).collect(),
+        failed: HashSet::new(),
+        active: HashSet::new(),
+    };
+    save
+}
+
+fn missing_item<'a>(
+    dict: &'a serde_json::Value,
+    category: &str,
+    id: &str,
+) -> &'a serde_json::Value {
+    dict["categories"]
+        .as_array()
+        .expect("categories")
+        .iter()
+        .find(|entry| entry["key"] == category)
+        .expect("category")["missing"]
+        .as_array()
+        .expect("missing")
+        .iter()
+        .find(|item| item["id"] == id)
+        .expect("missing item")
+}
+
+#[test]
+fn report_adds_missable_state_without_removing_old_fields() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = with_completed_quests(make_save(&[], &[], 0), &["Quest_Epic_08"]);
+    let analysis = analyze(&save, &catalog, None);
+    let dict = analysis_to_dict(&analysis, false);
+
+    assert!(dict["summary"]["missed_count"].as_u64().unwrap() > 0);
+    assert_eq!(dict["summary"]["missable_open_count"].as_u64(), Some(0));
+
+    let item = missing_item(&dict, "cans", "Can_009");
+    assert_eq!(item["missable"], true);
+    assert_eq!(item["missable_state"], "missed");
+    assert_eq!(item["reason"], "已错过（本存档无法再获取）");
+    for key in [
+        "id",
+        "name",
+        "name_en",
+        "aliases",
+        "area",
+        "area_zh",
+        "location",
+        "location_zh",
+        "obtain",
+        "obtain_zh",
+        "ng_plus",
+        "dlc",
+        "missable",
+        "note",
+        "confidence",
+        "reason",
+        "flags",
+        "record_type",
+        "record_type_zh",
+        "record_type_en",
+        "desc_zh",
+        "desc_en",
+        "order",
+    ] {
+        assert!(item.get(key).is_some(), "old field {key} disappeared");
+    }
+
+    let console = print_report(&analysis, false, "zh", Locale::Zh);
+    assert!(console.contains("易错过: 已错过"), "{console}");
+    assert!(console.contains("已错过 | 还来得及"), "{console}");
+    let markdown = render_markdown(&analysis, "zh", Locale::Zh);
+    assert!(
+        markdown.contains("| 分类 | 进度 | 缺失 | 需多周目/DLC | 已错过 | 还来得及 |"),
+        "{markdown}"
+    );
+}
+
+#[test]
+fn report_without_quest_data_keeps_static_missable_text() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = make_save(&[], &[], 0);
+    let analysis = analyze(&save, &catalog, None);
+    let dict = analysis_to_dict(&analysis, false);
+
+    assert_eq!(dict["summary"]["missed_count"].as_u64(), Some(0));
+    assert_eq!(dict["summary"]["missable_open_count"].as_u64(), Some(0));
+    let item = missing_item(&dict, "cans", "Can_009");
+    assert_eq!(item["missable_state"], "unknown");
+    assert_eq!(item["reason"], "可错过(注意节点)");
 }

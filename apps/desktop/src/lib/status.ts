@@ -1,4 +1,14 @@
-import { CircleCheck, CircleX, Gift, Lock, Minus, type LucideIcon } from "@lucide/vue";
+import {
+  CircleCheck,
+  CircleHelp,
+  CircleSlash,
+  CircleX,
+  Gift,
+  Lock,
+  Minus,
+  TriangleAlert,
+  type LucideIcon,
+} from "@lucide/vue";
 import { translate } from "./i18n";
 import type { ItemRow } from "./items";
 
@@ -14,6 +24,9 @@ const STYLES = {
   locked: "text-slate-500",
   dlc: "text-violet-600 dark:text-violet-400",
   defaultAppearance: "text-slate-500 dark:text-slate-400",
+  missed: "text-rose-700 dark:text-rose-300",
+  missableOpen: "text-amber-600 dark:text-amber-400",
+  missableUnknown: "text-indigo-600 dark:text-indigo-400",
 } as const;
 
 const ICONS: Record<keyof typeof STYLES, LucideIcon> = {
@@ -22,6 +35,9 @@ const ICONS: Record<keyof typeof STYLES, LucideIcon> = {
   locked: Lock,
   dlc: Gift,
   defaultAppearance: Minus,
+  missed: CircleSlash,
+  missableOpen: TriangleAlert,
+  missableUnknown: CircleHelp,
 };
 
 function status(key: keyof typeof STYLES): MatrixStatus {
@@ -42,5 +58,8 @@ export function matrixStatus(row: ItemRow, ngPlusCount: number): MatrixStatus {
   if (row.item.dlc) return status("dlc");
   if (row.item.ng_plus > ngPlusCount) return status("locked");
   if (row.item.aliases.length === 0) return status("defaultAppearance");
+  if (row.missableState === "missed") return status("missed");
+  if (row.missableState === "open") return status("missableOpen");
+  if (row.item.missable && row.missableState === "unknown") return status("missableUnknown");
   return status("missing");
 }

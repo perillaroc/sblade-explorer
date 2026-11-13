@@ -23,6 +23,9 @@ export interface SaveInfo {
   play_time_seconds: number;
 }
 
+/** Save-aware state of a statically missable entry. */
+export type MissableState = "open" | "missed" | "unknown";
+
 export interface Summary {
   catalog_total: number;
   catalog_obtained: number;
@@ -34,6 +37,8 @@ export interface Summary {
   album_percent: number;
   obtained_aliases: number;
   unmapped_aliases: number;
+  missed_count: number;
+  missable_open_count: number;
 }
 
 export interface Item {
@@ -50,6 +55,7 @@ export interface Item {
   ng_plus: number;
   dlc: string | null;
   missable: boolean;
+  missable_state: MissableState | null;
   note: string | null;
   confidence: string;
   reason: string | null;
@@ -109,4 +115,4 @@ export interface Analysis {
 
 export type Lang = "zh" | "en" | "both";
 
-export type ItemFilter = "all" | "obtained" | "missing";
+export type ItemFilter = "all" | "obtained" | "missing" | "missed" | "open";

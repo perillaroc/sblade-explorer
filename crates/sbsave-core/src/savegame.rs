@@ -126,6 +126,30 @@ pub struct ShopEntry {
     pub fields: Vec<(String, Value)>,
 }
 
+/// Quest progress read from `DataMap_SBQuest`.
+///
+/// Missing fields, unexpected types or older saves simply produce empty sets so
+/// the rest of the save still parses.
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
+pub struct QuestState {
+    pub completed: HashSet<String>,
+    pub failed: HashSet<String>,
+    pub active: HashSet<String>,
+}
+
+impl QuestState {
+    /// True when the save carries no quest data at all; callers must treat the
+    /// state as unknown instead of assuming "nothing completed".
+    pub fn is_empty(&self) -> bool {
+        self.completed.is_empty() && self.failed.is_empty() && self.active.is_empty()
+    }
+
+    /// A quest counts as started once it is active or completed.
+    pub fn has_started(&self, alias: &str) -> bool {
+        self.active.contains(alias) || self.completed.contains(alias)
+    }
+}
+
 #[derive(Debug)]
 pub struct SaveData {
     pub path: PathBuf,
@@ -139,6 +163,7 @@ pub struct SaveData {
     pub achievements: HashMap<String, AchievementRecord>,
     pub shop_purchases: HashMap<String, ShopEntry>,
     pub friendships: HashMap<String, i64>,
+    pub quests: QuestState,
 }
 
 impl SaveData {
@@ -401,6 +426,47 @@ fn text_value(value: &Value) -> String {
     }
 }
 
+fn quest_aliases(structure: &crate::gvas::StructValue, field: &str) -> HashSet<String> {
+    let mut aliases = HashSet::new();
+    let Some(listing) = structure.get(field) else {
+        return aliases;
+    };
+    let Value::Array(array) = &listing.value else {
+        return aliases;
+    };
+    for element in &array.elements {
+        let Value::Struct(record) = element else {
+            continue;
+        };
+        if let Some(Value::Str(alias)) = record.get("QuestAlias").map(|property| &property.value) {
+            aliases.insert(alias.clone());
+        }
+    }
+    aliases
+}
+
+/// Reads the three quest lists from `DataMap_SBQuest`; any missing field or
+/// unexpected type yields an empty set rather than failing the whole save.
+fn read_quest_state(gvas: &GvasFile) -> QuestState {
+    let Some(quest_map) = gvas.get("DataMap_SBQuest") else {
+        return QuestState::default();
+    };
+    let Value::Map(map) = &quest_map.value else {
+        return QuestState::default();
+    };
+    let Some(entry) = map.get(&Value::Str("Quest".to_string())) else {
+        return QuestState::default();
+    };
+    let Value::Struct(structure) = entry else {
+        return QuestState::default();
+    };
+    QuestState {
+        completed: quest_aliases(structure, "CompleteQuestList"),
+        failed: quest_aliases(structure, "FailedQuestList"),
+        active: quest_aliases(structure, "ProgressQuestList"),
+    }
+}
+
 pub fn extract(
     path: PathBuf,
     gvas: GvasFile,
@@ -529,6 +595,8 @@ pub fn extract(
         }
     }
 
+    let quests = read_quest_state(&gvas);
+
     if obtained.is_empty() && gvas.header.save_game_class_name != SAVE_GAME_CLASS {
         return Err(SaveError("unsupported save game class".to_string()));
     }
@@ -551,6 +619,7 @@ pub fn extract(
         achievements,
         shop_purchases: purchases,
         friendships,
+        quests,
     })
 }
 

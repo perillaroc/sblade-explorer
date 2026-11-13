@@ -9,7 +9,7 @@ use std::sync::atomic::{AtomicUsize, Ordering};
 
 use sbsave_core::analyze::analyze;
 use sbsave_core::catalog::load_catalog;
-use sbsave_core::fixture::{SyntheticSave, SAVE_FILE_NAME, STEAM_ID};
+use sbsave_core::fixture::{QuestMapShape, SyntheticSave, SAVE_FILE_NAME, STEAM_ID};
 use sbsave_core::report::analysis_to_dict;
 use sbsave_core::savegame::{discover_saves, load_save};
 use serde_json::Value;
@@ -94,6 +94,34 @@ fn fixture_parses_every_covered_field() {
     );
     assert!(save.shop_purchases.contains_key("Shop_Kaya"));
     assert_eq!(save.friendships.get("Lily"), Some(&100));
+    assert!(save.quests.completed.contains("Quest_Epic_08"));
+    assert!(save.quests.failed.contains("CQ_Xion10_GetFirstCan"));
+    assert!(save.quests.active.contains("Quest_Epic_Hidden"));
+    assert!(!save.quests.has_started("Quest_Epic_12"));
+}
+
+#[test]
+fn missing_or_malformed_quest_map_yields_empty_state() {
+    for shape in [QuestMapShape::Missing, QuestMapShape::Malformed] {
+        let dir = ScratchDir::new(match shape {
+            QuestMapShape::Missing => "quests-missing",
+            QuestMapShape::Malformed => "quests-malformed",
+            QuestMapShape::Normal => unreachable!(),
+        });
+        let save = SyntheticSave {
+            quest_map: shape,
+            ..SyntheticSave::default()
+        };
+        let path = save.write_to(dir.path()).expect("write fixture");
+        let loaded = load_save(&path, None).expect("load fixture");
+        assert!(loaded.quests.is_empty(), "{shape:?}");
+        // Other fields must still parse.
+        assert!(loaded.obtained_items.contains("Can_001"));
+        assert_eq!(
+            loaded.string_counters.get("MapName").map(String::as_str),
+            Some("E04")
+        );
+    }
 }
 
 #[test]
@@ -134,6 +162,9 @@ fn report_json_summarises_fixture() {
     // 10 direct aliases + 3 derived from achievements.
     assert_eq!(report["summary"]["obtained_aliases"], 13);
     assert_eq!(report["summary"]["unmapped_aliases"], 3);
+    // Quest_Epic_08 completed (Xion locked) + Quest_Epic_Hidden active (Eidos 9 open).
+    assert_eq!(report["summary"]["missed_count"], 154);
+    assert_eq!(report["summary"]["missable_open_count"], 29);
     assert_eq!(report["categories"].as_array().map(Vec::len), Some(15));
 
     let save_json = &report["save"];
@@ -147,7 +178,11 @@ fn report_json_summarises_fixture() {
     // Blocking reasons: missable, NG++ and DLC gating respectively.
     assert_eq!(
         missing_item(&report, "cans", "Can_009")["reason"],
-        "可错过(注意节点)"
+        "已错过（本存档无法再获取）"
+    );
+    assert_eq!(
+        missing_item(&report, "cans", "Can_009")["missable_state"],
+        "missed"
     );
     assert_eq!(missing_item(&report, "cans", "Can_009")["missable"], true);
     assert_eq!(
@@ -157,6 +192,10 @@ fn report_json_summarises_fixture() {
     assert_eq!(
         missing_item(&report, "nano_suits", "BS_Nikke_06")["reason"],
         "NIKKE DLC限定"
+    );
+    assert_eq!(
+        missing_item(&report, "records", "Item_Records_DED40_Memory_01")["missable_state"],
+        "open"
     );
 
     let unmapped: Vec<&str> = report["unmapped_obtained"]

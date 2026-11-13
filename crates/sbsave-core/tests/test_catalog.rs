@@ -648,3 +648,31 @@ fn missable_entries_cover_locked_regions() {
             .all(|item| !item.missable));
     }
 }
+
+#[test]
+fn missable_rules_are_expanded_from_raw_data() {
+    let catalog = load_catalog(None).expect("catalog");
+    let index = catalog.alias_index();
+
+    let xion = index["Can_009"].missable_rule.as_ref().expect("xion rule");
+    assert_eq!(xion.void_after_quests, vec!["Quest_Epic_08".to_string()]);
+    assert!(xion.requires_quests.is_empty());
+    assert!(xion.void_on_failed_quests.is_empty());
+
+    let eidos = index["Item_Records_DED40_Memory_01"]
+        .missable_rule
+        .as_ref()
+        .expect("eidos rule");
+    assert_eq!(eidos.requires_quests, vec!["Quest_Epic_Hidden".to_string()]);
+
+    // quest_rewards is not enabled yet: statically missable, no rule.
+    assert!(index["BS_18"].missable);
+    assert!(index["BS_18"].missable_rule.is_none());
+
+    let with_rule = catalog
+        .items
+        .iter()
+        .filter(|item| item.missable_rule.is_some())
+        .count();
+    assert_eq!(with_rule, 190);
+}

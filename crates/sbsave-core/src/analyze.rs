@@ -10,6 +10,20 @@ pub enum BlockReason {
     NgPlus(i64),
     Dlc(String),
     Missable,
+    /// The save's quest state proves the item is no longer obtainable.
+    Missed,
+}
+
+/// Save-aware state of a statically missable entry.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum MissableState {
+    /// The rule is satisfied now, so the item can still be collected.
+    Open,
+    /// A quest in the save's completed/failed lists closed the window.
+    Missed,
+    /// No rule, no quest data, or an incomplete rule: never report missed.
+    #[default]
+    Unknown,
 }
 
 #[derive(Debug, Clone)]
@@ -17,6 +31,7 @@ pub struct ItemStatus<'a> {
     pub item: &'a CatalogItem,
     pub obtained: bool,
     pub reason: Option<BlockReason>,
+    pub missable_state: MissableState,
 }
 
 impl ItemStatus<'_> {
@@ -30,7 +45,11 @@ impl ItemStatus<'_> {
             flags.push(self.item.ng_plus_label(locale));
         }
         if self.item.missable {
-            flags.push(messages.flag_missable().to_string());
+            flags.push(if self.missable_state == MissableState::Missed {
+                messages.flag_missed().to_string()
+            } else {
+                messages.flag_missable().to_string()
+            });
         }
         if self.item.confidence != "high" {
             flags.push(messages.flag_unconfirmed().to_string());
@@ -44,7 +63,14 @@ impl ItemStatus<'_> {
         self.reason.as_ref().map(|reason| match reason {
             BlockReason::NgPlus(ng_plus) => messages.reason_ng_plus(*ng_plus),
             BlockReason::Dlc(dlc) => messages.reason_dlc(dlc),
-            BlockReason::Missable => messages.reason_missable().to_string(),
+            BlockReason::Missable => {
+                if self.missable_state == MissableState::Open {
+                    messages.reason_missable_open().to_string()
+                } else {
+                    messages.reason_missable().to_string()
+                }
+            }
+            BlockReason::Missed => messages.reason_missed().to_string(),
         })
     }
 }
@@ -68,6 +94,22 @@ impl CategoryResult<'_> {
         } else {
             self.obtained_count as f64 / self.total as f64 * 100.0
         }
+    }
+
+    /// Missing entries proven unobtainable in this save.
+    pub fn missed_count(&self) -> usize {
+        self.statuses
+            .iter()
+            .filter(|status| !status.obtained && status.missable_state == MissableState::Missed)
+            .count()
+    }
+
+    /// Missing entries that are still obtainable in this save.
+    pub fn missable_open_count(&self) -> usize {
+        self.statuses
+            .iter()
+            .filter(|status| !status.obtained && status.missable_state == MissableState::Open)
+            .count()
     }
 }
 
@@ -120,19 +162,85 @@ impl Analysis<'_> {
             self.album_obtained as f64 / self.album_total as f64 * 100.0
         }
     }
+
+    /// Missing entries proven unobtainable in this save.
+    pub fn missed_count(&self) -> usize {
+        self.categories
+            .iter()
+            .map(CategoryResult::missed_count)
+            .sum()
+    }
+
+    /// Missing entries that are still obtainable in this save.
+    pub fn missable_open_count(&self) -> usize {
+        self.categories
+            .iter()
+            .map(CategoryResult::missable_open_count)
+            .sum()
+    }
 }
 
-fn blocked_reason(item: &CatalogItem, save: &SaveData) -> Option<BlockReason> {
+/// Evaluates a `missable_rule` against the save's quest lists.
+///
+/// Unknown beats missed: when the save has no quest data, or a rule lacks a
+/// condition we can evaluate, the entry falls back to the legacy static text.
+fn missable_state(item: &CatalogItem, save: &SaveData) -> MissableState {
+    let Some(rule) = item.missable_rule.as_ref() else {
+        return MissableState::Unknown;
+    };
+    if save.quests.is_empty() {
+        return MissableState::Unknown;
+    }
+    if rule
+        .void_after_quests
+        .iter()
+        .any(|quest| save.quests.completed.contains(quest))
+    {
+        return MissableState::Missed;
+    }
+    if rule
+        .void_on_failed_quests
+        .iter()
+        .any(|quest| save.quests.failed.contains(quest))
+    {
+        return MissableState::Missed;
+    }
+    if !rule.requires_quests.is_empty()
+        && !rule
+            .requires_quests
+            .iter()
+            .any(|quest| save.quests.has_started(quest))
+    {
+        // The area has not opened yet; without the final node rule we cannot
+        // tell whether the entry has already been lost.
+        return MissableState::Unknown;
+    }
+    MissableState::Open
+}
+
+fn evaluate(item: &CatalogItem, save: &SaveData) -> (Option<BlockReason>, MissableState) {
     if item.ng_plus > save.ng_plus_count() {
-        return Some(BlockReason::NgPlus(item.ng_plus));
+        return (
+            Some(BlockReason::NgPlus(item.ng_plus)),
+            MissableState::Unknown,
+        );
     }
     if let Some(dlc) = item.dlc.as_deref() {
-        return Some(BlockReason::Dlc(dlc.to_string()));
+        return (
+            Some(BlockReason::Dlc(dlc.to_string())),
+            MissableState::Unknown,
+        );
     }
     if item.missable {
-        return Some(BlockReason::Missable);
+        let state = missable_state(item, save);
+        let reason = if state == MissableState::Missed {
+            BlockReason::Missed
+        } else {
+            BlockReason::Missable
+        };
+        return (Some(reason), state);
     }
-    None
+    (None, MissableState::Unknown)
 }
 
 fn alias_prefix(alias: &str) -> &str {
@@ -211,10 +319,10 @@ pub fn analyze<'a>(
                 .satisfy_aliases()
                 .iter()
                 .any(|alias| obtained.contains(*alias) || save.achievements.contains_key(*alias));
-            let reason = if is_obtained {
-                None
+            let (reason, missable_state) = if is_obtained {
+                (None, MissableState::Unknown)
             } else {
-                blocked_reason(item, save)
+                evaluate(item, save)
             };
             if reason.is_some() {
                 blocked += 1;
@@ -226,6 +334,7 @@ pub fn analyze<'a>(
                 item,
                 obtained: is_obtained,
                 reason,
+                missable_state,
             };
             if !is_obtained {
                 missing.push(status.clone());

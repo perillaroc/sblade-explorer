@@ -153,6 +153,15 @@ impl Messages {
         }
     }
 
+    /// Flag for an entry the save proves is already gone.
+    pub const fn flag_missed(&self) -> &'static str {
+        if self.is_zh() {
+            "已错过"
+        } else {
+            "Missed"
+        }
+    }
+
     pub const fn flag_unconfirmed(&self) -> &'static str {
         if self.is_zh() {
             "映射待确认"
@@ -184,6 +193,24 @@ impl Messages {
             "可错过(注意节点)"
         } else {
             "Missable (mind the checkpoint)"
+        }
+    }
+
+    /// Reason for an entry the save proves is no longer obtainable.
+    pub const fn reason_missed(&self) -> &'static str {
+        if self.is_zh() {
+            "已错过（本存档无法再获取）"
+        } else {
+            "Missed (unobtainable in this save)"
+        }
+    }
+
+    /// Reason for a missable entry whose rule is currently satisfied.
+    pub const fn reason_missable_open(&self) -> &'static str {
+        if self.is_zh() {
+            "可错过（仍可获得）"
+        } else {
+            "Missable (still obtainable)"
         }
     }
 
@@ -251,6 +278,15 @@ impl Messages {
         }
     }
 
+    /// Save-aware split of the statically missable entries.
+    pub fn report_missable_line(&self, missed: usize, open: usize) -> String {
+        if self.is_zh() {
+            format!("易错过: 已错过 {missed} 条 | 还来得及 {open} 条")
+        } else {
+            format!("Missable: {missed} missed | {open} still obtainable")
+        }
+    }
+
     pub const fn category_summary(&self) -> &'static str {
         if self.is_zh() {
             "分类汇总"
@@ -261,9 +297,9 @@ impl Messages {
 
     pub const fn category_summary_header(&self) -> &'static str {
         if self.is_zh() {
-            "分类 | 进度 | 缺失 | 其中需多周目/DLC | 未映射别名"
+            "分类 | 进度 | 缺失 | 其中需多周目/DLC | 已错过 | 还来得及 | 未映射别名"
         } else {
-            "Category | Progress | Missing | Requires NG+/DLC | Unmapped aliases"
+            "Category | Progress | Missing | Requires NG+/DLC | Missed | Still obtainable | Unmapped aliases"
         }
     }
 
@@ -384,9 +420,9 @@ impl Messages {
 
     pub const fn markdown_summary_header(&self) -> &'static str {
         if self.is_zh() {
-            "| 分类 | 进度 | 缺失 | 需多周目/DLC |"
+            "| 分类 | 进度 | 缺失 | 需多周目/DLC | 已错过 | 还来得及 |"
         } else {
-            "| Category | Progress | Missing | Requires NG+/DLC |"
+            "| Category | Progress | Missing | Requires NG+/DLC | Missed | Still obtainable |"
         }
     }
 

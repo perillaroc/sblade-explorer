@@ -1,4 +1,4 @@
-import type { Lang } from "../types";
+import type { Lang, MissableState } from "../types";
 import { translate } from "./i18n";
 import { settings } from "./settings";
 
@@ -124,6 +124,7 @@ interface FlagItem {
   dlc?: string | null;
   ng_plus: number;
   missable?: boolean;
+  missable_state?: MissableState | null;
   confidence?: string;
 }
 
@@ -132,11 +133,32 @@ export function flagLabels(item: FlagItem): string[] {
   const flags: string[] = [];
   if (item.dlc) flags.push(dlcLabel(item.dlc));
   if (item.ng_plus > 0) flags.push(cycleLabel(item.ng_plus));
-  if (item.missable) flags.push(translate("itemTable.missable"));
   if (item.confidence && item.confidence !== "high") {
     flags.push(translate("itemTable.mappingUnconfirmed"));
   }
   return flags;
+}
+
+export interface MissableBadge {
+  label: string;
+  tone: "danger" | "warning" | "neutral";
+}
+
+/** Three-state badge for a statically missable entry. */
+export function missableBadge(
+  item: { missable?: boolean; missable_state?: MissableState | null },
+  obtained = false,
+): MissableBadge | null {
+  if (!item.missable) return null;
+  if (obtained) return { label: translate("itemTable.missable"), tone: "neutral" };
+  switch (item.missable_state) {
+    case "missed":
+      return { label: translate("itemTable.missed"), tone: "danger" };
+    case "open":
+      return { label: translate("itemTable.missableOpen"), tone: "warning" };
+    default:
+      return { label: translate("itemTable.missable"), tone: "warning" };
+  }
 }
 
 /** Localized explanation of why the item is missing. */
@@ -147,7 +169,11 @@ export function reasonLabel(item: FlagItem, ngPlusCount: number): string | null 
   if (item.dlc) {
     return translate("reasons.dlcOnly", { label: dlcLabel(item.dlc) });
   }
-  if (item.missable) return translate("reasons.missable");
+  if (item.missable) {
+    if (item.missable_state === "missed") return translate("reasons.missed");
+    if (item.missable_state === "open") return translate("reasons.missableOpen");
+    return translate("reasons.missable");
+  }
   return null;
 }
 

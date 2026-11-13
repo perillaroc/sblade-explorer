@@ -1,7 +1,7 @@
 {
  "version": 1,
  "generated_by": "hand maintained",
- "note": "一个周目内可永久错过的条目；catalog build 展开为 missable=true。areas 按目录库 area 匹配（记录的区域来自攻略地点或游戏内数据库分组），camp_zones 按营地别名中的 EnvS 区段匹配，ids 为显式清单（支线任务/布告栏委托奖励与任务解锁区域）。",
+ "note": "一个周目内可永久错过的条目；catalog build 展开为 missable=true。areas 按目录库 area 匹配（记录的区域来自攻略地点或游戏内数据库分组），camp_zones 按营地别名中的 EnvS 区段匹配，ids 为显式清单（支线任务/布告栏委托奖励与任务解锁区域）。可选的 void_after_quests / requires_quests / void_on_failed_quests 提供机器可读的存档任务条件，catalog build 展开为 missable_rule 并校验任务别名（data/raw/quest_aliases.json）。",
  "sources": [
   "https://www.powerpyx.com/stellar-blade-all-collectible-locations-guide/",
   "https://www.powerpyx.com/stellar-blade-eidos-9-collectible-locations/",
@@ -16,6 +16,9 @@
    "source": "https://www.powerpyx.com/stellar-blade-all-collectible-locations-guide/",
    "areas": [
     "Xion"
+   ],
+   "void_after_quests": [
+    "Quest_Epic_08"
    ]
   },
   {
@@ -27,6 +30,9 @@
    ],
    "camp_zones": [
     "DED40"
+   ],
+   "requires_quests": [
+    "Quest_Epic_Hidden"
    ]
   },
   {

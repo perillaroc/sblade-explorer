@@ -1,11 +1,11 @@
 use std::collections::{HashMap, HashSet};
 use std::path::PathBuf;
 
-use sbsave_core::analyze::analyze;
+use sbsave_core::analyze::{analyze, Analysis, BlockReason, ItemStatus, MissableState};
 use sbsave_core::catalog::load_catalog;
 use sbsave_core::gvas::{EngineVersion, GvasFile, GvasHeader};
 use sbsave_core::i18n::Locale;
-use sbsave_core::savegame::{AchievementRecord, SaveData};
+use sbsave_core::savegame::{AchievementRecord, QuestState, SaveData};
 
 fn make_header() -> GvasHeader {
     GvasHeader {
@@ -45,6 +45,7 @@ fn make_save(obtained: &[&str], derived: &[&str], ng_plus: i64) -> SaveData {
         achievements: HashMap::new(),
         shop_purchases: HashMap::new(),
         friendships: HashMap::new(),
+        quests: QuestState::default(),
     }
 }
 
@@ -235,4 +236,116 @@ fn album_achievements_count_as_obtained() {
     assert_eq!(album_only.catalog_total, 0);
     assert_eq!(album_only.album_total, 67);
     assert_eq!(album_only.album_obtained, 1);
+}
+
+fn with_quests(
+    mut save: SaveData,
+    completed: &[&str],
+    failed: &[&str],
+    active: &[&str],
+) -> SaveData {
+    let set = |aliases: &[&str]| aliases.iter().map(|alias| alias.to_string()).collect();
+    save.quests = QuestState {
+        completed: set(completed),
+        failed: set(failed),
+        active: set(active),
+    };
+    save
+}
+
+fn status_for<'a>(result: &'a Analysis<'_>, id: &str) -> &'a ItemStatus<'a> {
+    result
+        .categories
+        .iter()
+        .flat_map(|category| &category.statuses)
+        .find(|status| status.item.id == id)
+        .unwrap_or_else(|| panic!("status for {id}"))
+}
+
+#[test]
+fn xion_items_are_missed_after_epic_08() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = with_quests(make_save(&[], &[], 0), &["Quest_Epic_08"], &[], &[]);
+    let result = analyze(&save, &catalog, None);
+    let status = status_for(&result, "Can_009");
+
+    assert_eq!(status.missable_state, MissableState::Missed);
+    assert_eq!(status.reason, Some(BlockReason::Missed));
+    assert_eq!(
+        status.reason_label(Locale::Zh).as_deref(),
+        Some("已错过（本存档无法再获取）")
+    );
+    assert_eq!(
+        status.reason_label(Locale::En).as_deref(),
+        Some("Missed (unobtainable in this save)")
+    );
+    assert!(status.flags(Locale::Zh).iter().any(|flag| flag == "已错过"));
+    assert!(result.missed_count() > 0);
+}
+
+#[test]
+fn xion_items_stay_open_before_epic_08() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = with_quests(make_save(&[], &[], 0), &["Quest_Epic_07"], &[], &[]);
+    let result = analyze(&save, &catalog, None);
+    let status = status_for(&result, "Can_009");
+
+    assert_eq!(status.missable_state, MissableState::Open);
+    assert_eq!(status.reason, Some(BlockReason::Missable));
+    assert_eq!(
+        status.reason_label(Locale::Zh).as_deref(),
+        Some("可错过（仍可获得）")
+    );
+    assert_eq!(result.missed_count(), 0);
+    assert!(result.missable_open_count() > 0);
+}
+
+#[test]
+fn eidos9_items_open_after_hidden_quest_started() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = with_quests(make_save(&[], &[], 0), &[], &[], &["Quest_Epic_Hidden"]);
+    let result = analyze(&save, &catalog, None);
+    let status = status_for(&result, "Item_Records_DED40_Memory_01");
+
+    assert_eq!(status.missable_state, MissableState::Open);
+    assert_eq!(status.reason, Some(BlockReason::Missable));
+    assert!(result.missable_open_count() > 0);
+}
+
+#[test]
+fn eidos9_items_stay_unknown_before_hidden_quest() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = with_quests(make_save(&[], &[], 0), &["Quest_Epic_08"], &[], &[]);
+    let result = analyze(&save, &catalog, None);
+    let status = status_for(&result, "Item_Records_DED40_Memory_01");
+
+    assert_eq!(status.missable_state, MissableState::Unknown);
+    assert_eq!(
+        status.reason_label(Locale::Zh).as_deref(),
+        Some("可错过(注意节点)")
+    );
+}
+
+#[test]
+fn entries_without_rules_fall_back_to_unknown() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = with_quests(make_save(&[], &[], 0), &["Quest_Epic_08"], &[], &[]);
+    let result = analyze(&save, &catalog, None);
+    let status = status_for(&result, "BS_18");
+
+    assert!(status.item.missable);
+    assert_eq!(status.missable_state, MissableState::Unknown);
+    assert_eq!(status.reason, Some(BlockReason::Missable));
+    assert!(status.flags(Locale::Zh).iter().any(|flag| flag == "可错过"));
+}
+
+#[test]
+fn empty_quest_state_never_reports_missed() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = make_save(&[], &[], 0);
+    let result = analyze(&save, &catalog, None);
+    let status = status_for(&result, "Can_009");
+
+    assert_eq!(status.missable_state, MissableState::Unknown);
+    assert_eq!(result.missed_count(), 0);
 }
