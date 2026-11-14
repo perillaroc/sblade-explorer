@@ -46,7 +46,8 @@ All data is bundled with the app, which does not connect to the internet at runt
   Fish do not have guide-site entries, so their instructions are maintained in `data/raw/fish_obtain.json`.
   The few camps missing from the guide-site snapshot have English and Chinese instructions directly in the `camps` section of `crosswalk.json`.
 - Category arguments (CLI `--category` and UI filters) accept a category key (`nano_suits`), Chinese name (`纳米战衣`), or English name (`Nano Suits`).
-- The catalog has two sections: `section=collection` (13 collectible categories included in catalog progress) and
+- The catalog has three sections: `section=collection` (13 collectible categories included in catalog progress),
+  `section=growth` (gear and exospines, **excluded from catalog progress**), and
   `section=album` (67 Naytiba entries and 55 character pages, **excluded from catalog progress** and listed separately in reports and the app).
 - Categories include `name` (Chinese) and `name_en` (English). Record entries include `record_type`, `record_type_zh`, and `record_type_en`.
   English names are maintained in `CATEGORIES` and `RECORD_TYPES` in `crates/sbsave-tools/src/catalog_build.rs` and generated with the catalog.
@@ -168,6 +169,14 @@ so you can find guides even when no built-in link is available.
 Nano Suits and Design Patterns link to the corresponding pages in the Gamersky *Stellar Blade* outfit catalog, and each suit links to the appropriate part of the Bilibili "all 126 nano suits" video.
 Cans and fish link to individual items; records and passcodes link to the part for their area.
 For the complete rules, see [data/raw/README.md](https://github.com/perillaroc/sblade-explorer/blob/main/data/raw/README.md).
+
+## Data health check
+
+`cargo run -p sbsave-tools -- doctor` writes `doctor.md` and `doctor.json` under `target/` and checks the two-way
+site/catalog diff, guide links, low-confidence or duplicate entries, missing obtain text, alias-universe coverage,
+and missable/region/quest rules. With `--strict`, new unregistered site entries, stale site ids, duplicate aliases,
+or a stale allowlist make it exit non-zero. CI runs it as a non-blocking step.
+See [Development](../development/index.md) for usage and the allowlist.
 
 ## Regression checks
 

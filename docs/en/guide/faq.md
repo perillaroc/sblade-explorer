@@ -95,6 +95,12 @@ belongs to the same entry, so it is never double counted. Skills (PT) are still 
 No. The 12 exospines appear in the **Growth** section and do not count toward catalog progress. Their obtained status is read
 from the save's exospine enhancement state, and the upgraded Mk2 copy belongs to the same entry.
 
+## Why don't gear and exospines count toward the collection rate?
+
+The collection rate covers only the 13 collectible categories (808 entries). Gear and exospines belong to the growth
+system and are listed separately, so their state is visible without changing the existing catalog-progress definition;
+they are also not required to finish the game.
+
 ## Why are Body / Beta / Weapon Cores, Tumbler modules, and Drone modules not tracked?
 
 They are consumables: the save only keeps the current inventory amount (also affected by shop purchases and NG+ carry-over),

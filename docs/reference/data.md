@@ -46,7 +46,8 @@
   鱼类没有攻略站条目，其说明维护在 `data/raw/fish_obtain.json`；
   少数未被攻略站快照收录的营地，则在 `crosswalk.json` 的 `camps` 段中直接提供中英文说明。
 - 分类参数（CLI `--category` 和 UI 筛选）接受分类键（`nano_suits`）、中文名（`纳米战衣`）和英文名（`Nano Suits`）。
-- 目录库分为两部分：`section=collection`（13 类收集品，计入目录进度）和
+- 目录库分为三段：`section=collection`（13 类收集品，计入目录进度）、
+  `section=growth`（装备与辅助脊椎，**不计入目录进度**）和
   `section=album`（图鉴：孽奇拔 67 条、角色 55 页，**不计入目录进度**，在报告和 UI 中单独列出）。
 - 分类包含 `name`（中文）和 `name_en`（英文），记录条目包含 `record_type`、`record_type_zh` 和 `record_type_en`。
   英文名称维护在 `crates/sbsave-tools/src/catalog_build.rs` 的 `CATEGORIES` 和 `RECORD_TYPES` 中，随目录库一起生成；
@@ -167,6 +168,13 @@ CLI 也可以通过 `--catalog 路径.json` 临时加载覆盖文件。
 纳米战衣和设计图逐件链接到游民星空《剑星》女主服装图鉴的具体分页，战衣视频逐套链接到 B 站
 「126 套纳米服全收集」的对应分 P；罐子和鱼类精确到单个物品，记录和密码精确到区域分 P。
 完整规则见 [data/raw/README.md](https://github.com/perillaroc/sblade-explorer/blob/main/data/raw/README.md)。
+
+## 数据维护检查
+
+`cargo run -p sbsave-tools -- doctor` 会在 `target/` 生成 `doctor.md` 与 `doctor.json`，离线检查站点条目与
+目录库的双向差集、攻略链接、低置信度/重复别名/空获取文案、别名词库覆盖以及易错过与区域/任务规则。
+加 `--strict` 时，新增未入库条目、失效站点 id、重复别名或白名单失效会让命令退出码非 0。
+CI 以非阻塞方式运行该检查。用法与白名单说明见[开发与发布](../development/index.md)。
 
 ## 回归检查基准
 
