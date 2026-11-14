@@ -13,9 +13,11 @@ import {
   HardDrive,
   IdCard,
   ListChecks,
+  MapPin,
   Package,
   Repeat,
   Save,
+  Swords,
   TriangleAlert,
   Zap,
   type LucideIcon,
@@ -23,7 +25,7 @@ import {
 import type { Analysis, CategoryResult, SaveSlot } from "../types";
 import { actionableRows, missableRows } from "../lib/actionable";
 import { areaAccent, type AreaAccent } from "../lib/area";
-import { areaLabel, categoryName, itemName, locationLine, saveSize, saveTime } from "../lib/display";
+import { areaLabel, categoryName, itemName, localized, locationLine, saveSize, saveTime } from "../lib/display";
 import { categoryIcon } from "../lib/icons";
 import type { ItemRow } from "../lib/items";
 import { settings } from "../lib/settings";
@@ -63,41 +65,81 @@ const playTimeLabel = computed(() => {
   return t("summary.playTimeValue", { hours, minutes: String(minutes).padStart(2, "0") });
 });
 
+const currentAreaLabel = computed(() => {
+  const save = props.analysis.save;
+  if (!save.current_map) return null;
+  return (
+    localized(save.current_map_name_zh, save.current_map_name, settings.contentLang) ||
+    save.current_map
+  );
+});
+
+const currentQuestLabel = computed(() => {
+  const save = props.analysis.save;
+  if (!save.current_epic_quest) return null;
+  return (
+    localized(
+      save.current_epic_quest_title_zh,
+      save.current_epic_quest_title,
+      settings.contentLang,
+    ) || save.current_epic_quest
+  );
+});
+
 const infoFields = computed<{ key: string; icon: LucideIcon; label: string; value: string }[]>(
-  () => [
-    {
-      key: "file",
-      icon: HardDrive,
-      label: t("summary.slot"),
-      value: props.slot?.label ?? props.analysis.save.path.split(/[\\/]/).pop() ?? "—",
-    },
-    {
-      key: "steam",
-      icon: IdCard,
-      label: "SteamID",
-      value: props.analysis.save.steam_id ?? t("common.unknown"),
-    },
-    {
-      key: "playthrough",
-      icon: Repeat,
-      label: t("summary.playthrough"),
-      value: `${playthroughLabel.value} (NG+${props.analysis.save.ng_plus_count})`,
-    },
-    { key: "difficulty", icon: Gauge, label: t("summary.difficulty"), value: difficultyLabel.value },
-    { key: "playtime", icon: Clock, label: t("summary.playTime"), value: playTimeLabel.value },
-    {
-      key: "size",
-      icon: Database,
-      label: t("summary.fileSize"),
-      value: props.slot ? saveSize(props.slot.size) : "—",
-    },
-    {
-      key: "modified",
-      icon: CalendarClock,
-      label: t("summary.modified"),
-      value: props.slot ? saveTime(props.slot.mtimeMs) : "—",
-    },
-  ],
+  () => {
+    const fields = [
+      {
+        key: "file",
+        icon: HardDrive,
+        label: t("summary.slot"),
+        value: props.slot?.label ?? props.analysis.save.path.split(/[\\/]/).pop() ?? "—",
+      },
+      {
+        key: "steam",
+        icon: IdCard,
+        label: "SteamID",
+        value: props.analysis.save.steam_id ?? t("common.unknown"),
+      },
+      {
+        key: "playthrough",
+        icon: Repeat,
+        label: t("summary.playthrough"),
+        value: `${playthroughLabel.value} (NG+${props.analysis.save.ng_plus_count})`,
+      },
+      { key: "difficulty", icon: Gauge, label: t("summary.difficulty"), value: difficultyLabel.value },
+      { key: "playtime", icon: Clock, label: t("summary.playTime"), value: playTimeLabel.value },
+      {
+        key: "size",
+        icon: Database,
+        label: t("summary.fileSize"),
+        value: props.slot ? saveSize(props.slot.size) : "—",
+      },
+      {
+        key: "modified",
+        icon: CalendarClock,
+        label: t("summary.modified"),
+        value: props.slot ? saveTime(props.slot.mtimeMs) : "—",
+      },
+    ];
+    if (currentAreaLabel.value) {
+      fields.push({
+        key: "area",
+        icon: MapPin,
+        label: t("summary.currentArea"),
+        value: currentAreaLabel.value,
+      });
+    }
+    if (currentQuestLabel.value) {
+      fields.push({
+        key: "quest",
+        icon: Swords,
+        label: t("summary.currentQuest"),
+        value: currentQuestLabel.value,
+      });
+    }
+    return fields;
+  },
 );
 
 const sections = computed<

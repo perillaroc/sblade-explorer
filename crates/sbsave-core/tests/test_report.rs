@@ -385,3 +385,68 @@ fn report_without_quest_data_keeps_static_missable_text() {
     assert_eq!(item["missable_state"], "unknown");
     assert_eq!(item["reason"], "可错过(注意节点)");
 }
+
+fn with_story(mut save: SaveData, map: Option<&str>, active: &[&str]) -> SaveData {
+    if let Some(map) = map {
+        save.string_counters
+            .insert("MapName".to_string(), map.to_string());
+    }
+    save.quests = QuestState {
+        completed: HashSet::new(),
+        failed: HashSet::new(),
+        active: active.iter().map(|alias| alias.to_string()).collect(),
+    };
+    save
+}
+
+#[test]
+fn report_shows_current_area_and_main_quest() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = with_story(make_save(&[], &[], 0), Some("E04"), &["Quest_Epic_11"]);
+    let analysis = analyze(&save, &catalog, None);
+
+    let dict = analysis_to_dict(&analysis, false);
+    assert_eq!(dict["save"]["current_map"], "E04");
+    assert_eq!(dict["save"]["current_map_name"], "Xion");
+    assert_eq!(dict["save"]["current_map_name_zh"], "希雍");
+    assert_eq!(dict["save"]["current_epic_quest"], "Quest_Epic_11");
+    assert_eq!(dict["save"]["current_epic_quest_title"], "Burning Xion");
+    assert_eq!(dict["save"]["current_epic_quest_title_zh"], "燃烧的希雍");
+
+    let console = print_report(&analysis, false, "zh", Locale::Zh);
+    assert!(console.contains("当前区域: 希雍"), "{console}");
+    assert!(console.contains("当前主线: 燃烧的希雍"), "{console}");
+    let english = print_report(&analysis, false, "en", Locale::En);
+    assert!(english.contains("Current area: Xion"), "{english}");
+    assert!(
+        english.contains("Current main quest: Burning Xion"),
+        "{english}"
+    );
+    let markdown = render_markdown(&analysis, "zh", Locale::Zh);
+    assert!(markdown.contains("- 当前区域: 希雍"), "{markdown}");
+}
+
+#[test]
+fn report_shows_raw_code_for_unknown_map_and_hides_missing_values() {
+    let catalog = load_catalog(None).expect("catalog");
+
+    let unknown_save = with_story(make_save(&[], &[], 0), Some("E99"), &["Quest_Epic_99"]);
+    let unknown = analyze(&unknown_save, &catalog, None);
+    let dict = analysis_to_dict(&unknown, false);
+    assert_eq!(dict["save"]["current_map"], "E99");
+    assert!(dict["save"]["current_map_name"].is_null());
+    assert_eq!(dict["save"]["current_epic_quest"], "Quest_Epic_99");
+    assert!(dict["save"]["current_epic_quest_title"].is_null());
+    let console = print_report(&unknown, false, "zh", Locale::Zh);
+    assert!(console.contains("当前区域: E99"), "{console}");
+    assert!(console.contains("当前主线: Quest_Epic_99"), "{console}");
+
+    let none_save = with_story(make_save(&[], &[], 0), None, &["CQ_Public_ForceGreenDot"]);
+    let none = analyze(&none_save, &catalog, None);
+    let dict = analysis_to_dict(&none, false);
+    assert!(dict["save"]["current_map"].is_null());
+    assert!(dict["save"]["current_epic_quest"].is_null());
+    let console = print_report(&none, false, "zh", Locale::Zh);
+    assert!(!console.contains("当前区域"), "{console}");
+    assert!(!console.contains("当前主线"), "{console}");
+}

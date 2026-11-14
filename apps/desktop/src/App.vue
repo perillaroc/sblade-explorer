@@ -346,6 +346,7 @@ onMounted(() => {
               :ng-plus-count="analysis.save.ng_plus_count"
               :lang="settings.contentLang"
               :matrix="MATRIX_CATEGORIES.includes(activeCategory.key)"
+              :current-area="analysis.save.current_map_name"
               :focus-item-id="activeCategory.key === focusCategory ? focusItemId : null"
               :focus-nonce="focusNonce"
             />

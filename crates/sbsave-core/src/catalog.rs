@@ -50,6 +50,13 @@ pub struct Guides {
     pub video: Option<GuideLink>,
 }
 
+/// Official local name for a region code or quest alias.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct LocalizedName {
+    pub name: String,
+    pub name_zh: String,
+}
+
 /// Machine readable condition behind a `missable` entry. Each list holds quest
 /// aliases from `DataMap_SBQuest`.
 #[derive(Debug, Clone, Default, PartialEq, Eq)]
@@ -138,6 +145,10 @@ pub struct Catalog {
     pub version: i64,
     pub categories: HashMap<String, Category>,
     pub items: Vec<CatalogItem>,
+    /// `DataMap_FString.MapName` code -> region name.
+    pub map_names: HashMap<String, LocalizedName>,
+    /// Quest alias -> `Quest_*_Title` text.
+    pub quest_titles: HashMap<String, LocalizedName>,
 }
 
 impl Catalog {
@@ -166,6 +177,14 @@ impl Catalog {
                 .then_with(|| left.name.cmp(&right.name))
         });
         categories
+    }
+
+    pub fn map_name(&self, code: &str) -> Option<&LocalizedName> {
+        self.map_names.get(code)
+    }
+
+    pub fn quest_title(&self, alias: &str) -> Option<&LocalizedName> {
+        self.quest_titles.get(alias)
     }
 }
 
@@ -251,6 +270,23 @@ fn parse_missable_rule(raw: &JsonValue) -> Option<MissableRule> {
         return None;
     }
     Some(rule)
+}
+
+fn parse_localized_names(raw: Option<&JsonValue>) -> HashMap<String, LocalizedName> {
+    let mut names = HashMap::new();
+    let Some(entries) = raw.and_then(JsonValue::as_object) else {
+        return names;
+    };
+    for (key, value) in entries {
+        let Some(name) = json_str(value, "name").filter(|name| !name.is_empty()) else {
+            continue;
+        };
+        let name_zh = json_str(value, "name_zh")
+            .filter(|name| !name.is_empty())
+            .unwrap_or_else(|| name.clone());
+        names.insert(key.clone(), LocalizedName { name, name_zh });
+    }
+    names
 }
 
 fn parse_item(raw: &JsonValue) -> CatalogItem {
@@ -349,6 +385,8 @@ fn parse_catalog(payload: &JsonValue) -> Catalog {
             .unwrap_or(1),
         categories,
         items,
+        map_names: parse_localized_names(payload.get("map_names")),
+        quest_titles: parse_localized_names(payload.get("quest_titles")),
     }
 }
 

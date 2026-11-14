@@ -98,6 +98,22 @@ fn fixture_parses_every_covered_field() {
     assert!(save.quests.failed.contains("CQ_Xion10_GetFirstCan"));
     assert!(save.quests.active.contains("Quest_Epic_Hidden"));
     assert!(!save.quests.has_started("Quest_Epic_12"));
+    assert_eq!(save.current_map(), Some("E04"));
+    assert_eq!(save.current_epic_quest(), Some("Quest_Epic_11"));
+}
+
+#[test]
+fn current_story_hides_when_data_is_missing() {
+    let dir = ScratchDir::new("no-story");
+    let save = SyntheticSave {
+        map_name: String::new(),
+        active_quests: Vec::new(),
+        ..SyntheticSave::default()
+    };
+    let path = save.write_to(dir.path()).expect("write fixture");
+    let loaded = load_save(&path, None).expect("load fixture");
+    assert_eq!(loaded.current_map(), None);
+    assert_eq!(loaded.current_epic_quest(), None);
 }
 
 #[test]
@@ -259,7 +275,11 @@ fn quest_state_is_readable_from_the_fixture() {
     assert_eq!(aliases("FailedQuestList"), ["CQ_Xion10_GetFirstCan"]);
     assert_eq!(
         aliases("ProgressQuestList"),
-        ["Quest_Epic_Hidden", "CQ_Public_ForceGreenDot"]
+        [
+            "Quest_Epic_11",
+            "Quest_Epic_Hidden",
+            "CQ_Public_ForceGreenDot"
+        ]
     );
     assert_eq!(
         save.string_counters.get("MapName").map(String::as_str),

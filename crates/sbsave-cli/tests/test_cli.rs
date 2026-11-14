@@ -183,6 +183,13 @@ fn report_json_with_synthetic_fixture() {
             .expect("parse report");
     assert_eq!(report["save"]["steam_id"], STEAM_ID);
     assert_eq!(report["save"]["playthrough"], "NG+1");
+    assert_eq!(report["save"]["current_map"], "E04");
+    assert_eq!(report["save"]["current_map_name"], "Xion");
+    assert_eq!(report["save"]["current_map_name_zh"], "希雍");
+    assert_eq!(report["save"]["current_epic_quest"], "Quest_Epic_11");
+    assert_eq!(report["save"]["current_epic_quest_title"], "Burning Xion");
+    assert_eq!(report["save"]["current_epic_quest_title_zh"], "燃烧的希雍");
+    assert!(stdout(&output).contains("当前区域: 希雍"));
     assert_eq!(report["summary"]["catalog_total"], 808);
     assert_eq!(report["summary"]["catalog_obtained"], 10);
     assert_eq!(report["summary"]["missing_total"], 798);
@@ -228,7 +235,7 @@ fn dump_json_summarises_quests_with_synthetic_fixture() {
     assert_eq!(summary["obtained_count"], 10);
     assert_eq!(summary["quests"]["completed"], 2);
     assert_eq!(summary["quests"]["failed"], 1);
-    assert_eq!(summary["quests"]["active"], 2);
+    assert_eq!(summary["quests"]["active"], 3);
 }
 
 #[test]

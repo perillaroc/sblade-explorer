@@ -58,6 +58,34 @@ fn display_name(item: &CatalogItem, lang: &str) -> String {
     item.name.clone()
 }
 
+/// Localized current area / main quest labels. Unknown map codes fall back to
+/// the raw code; a missing `MapName` hides the area instead of guessing.
+fn story_labels(analysis: &Analysis, lang: &str) -> (Option<String>, Option<String>) {
+    let area = analysis.story.map_code.map(|code| {
+        analysis
+            .story
+            .map
+            .map(|name| localized(Some(name.name_zh.as_str()), Some(name.name.as_str()), lang))
+            .filter(|label| !label.is_empty())
+            .unwrap_or_else(|| code.to_string())
+    });
+    let quest = analysis.story.epic_quest.map(|alias| {
+        analysis
+            .story
+            .epic_quest_title
+            .map(|title| {
+                localized(
+                    Some(title.name_zh.as_str()),
+                    Some(title.name.as_str()),
+                    lang,
+                )
+            })
+            .filter(|label| !label.is_empty())
+            .unwrap_or_else(|| alias.to_string())
+    });
+    (area, quest)
+}
+
 fn location_label(status: &ItemStatus, lang: &str) -> String {
     let item = status.item;
     let parts = [
@@ -343,6 +371,10 @@ pub fn print_report(analysis: &Analysis, show_all: bool, lang: &str, locale: Loc
             &save.play_time_label(locale),
         )
     ));
+    let (story_area, story_quest) = story_labels(analysis, lang);
+    if let Some(line) = messages.report_story_line(story_area.as_deref(), story_quest.as_deref()) {
+        out.push_str(&format!("{line}\n"));
+    }
     out.push_str(&format!(
         "{}\n",
         messages.report_progress_line(
@@ -746,6 +778,40 @@ pub fn analysis_to_dict(analysis: &Analysis, include_obtained: bool) -> Value {
         "play_time_seconds".to_string(),
         Value::from(save.play_time_seconds()),
     );
+    save_object.insert(
+        "current_map".to_string(),
+        optional_string(analysis.story.map_code),
+    );
+    save_object.insert(
+        "current_map_name".to_string(),
+        optional_string(analysis.story.map.map(|name| name.name.as_str())),
+    );
+    save_object.insert(
+        "current_map_name_zh".to_string(),
+        optional_string(analysis.story.map.map(|name| name.name_zh.as_str())),
+    );
+    save_object.insert(
+        "current_epic_quest".to_string(),
+        optional_string(analysis.story.epic_quest),
+    );
+    save_object.insert(
+        "current_epic_quest_title".to_string(),
+        optional_string(
+            analysis
+                .story
+                .epic_quest_title
+                .map(|title| title.name.as_str()),
+        ),
+    );
+    save_object.insert(
+        "current_epic_quest_title_zh".to_string(),
+        optional_string(
+            analysis
+                .story
+                .epic_quest_title
+                .map(|title| title.name_zh.as_str()),
+        ),
+    );
 
     let mut summary = Map::new();
     summary.insert(
@@ -856,6 +922,10 @@ pub fn render_markdown(analysis: &Analysis, lang: &str, locale: Locale) -> Strin
         analysis.missing_total(),
         analysis.album_missing_total(),
     ));
+    let (story_area, story_quest) = story_labels(analysis, lang);
+    if let Some(line) = messages.report_story_line(story_area.as_deref(), story_quest.as_deref()) {
+        lines.push(format!("- {line}"));
+    }
     lines.push(String::new());
     lines.push(format!(
         "- {}",

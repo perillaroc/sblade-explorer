@@ -349,3 +349,65 @@ fn empty_quest_state_never_reports_missed() {
     assert_eq!(status.missable_state, MissableState::Unknown);
     assert_eq!(result.missed_count(), 0);
 }
+
+fn with_story(mut save: SaveData, map: Option<&str>, active: &[&str]) -> SaveData {
+    if let Some(map) = map {
+        save.string_counters
+            .insert("MapName".to_string(), map.to_string());
+    }
+    save.quests = QuestState {
+        completed: HashSet::new(),
+        failed: HashSet::new(),
+        active: active.iter().map(|alias| alias.to_string()).collect(),
+    };
+    save
+}
+
+#[test]
+fn analysis_resolves_current_area_and_main_quest() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = with_story(make_save(&[], &[], 0), Some("E04"), &["Quest_Epic_11"]);
+    let result = analyze(&save, &catalog, None);
+
+    assert_eq!(result.story.map_code, Some("E04"));
+    assert_eq!(
+        result.story.map.map(|name| name.name.as_str()),
+        Some("Xion")
+    );
+    assert_eq!(
+        result.story.map.map(|name| name.name_zh.as_str()),
+        Some("希雍")
+    );
+    assert_eq!(result.story.epic_quest, Some("Quest_Epic_11"));
+    assert_eq!(
+        result
+            .story
+            .epic_quest_title
+            .map(|title| title.name.as_str()),
+        Some("Burning Xion")
+    );
+}
+
+#[test]
+fn analysis_falls_back_to_raw_codes_when_names_are_unknown() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = with_story(make_save(&[], &[], 0), Some("E99"), &["Quest_Epic_99"]);
+    let result = analyze(&save, &catalog, None);
+
+    assert_eq!(result.story.map_code, Some("E99"));
+    assert!(result.story.map.is_none());
+    assert_eq!(result.story.epic_quest, Some("Quest_Epic_99"));
+    assert!(result.story.epic_quest_title.is_none());
+}
+
+#[test]
+fn analysis_hides_story_when_save_has_no_map_or_epic_quest() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = with_story(make_save(&[], &[], 0), None, &["CQ_Public_ForceGreenDot"]);
+    let result = analyze(&save, &catalog, None);
+
+    assert!(result.story.map_code.is_none());
+    assert!(result.story.map.is_none());
+    assert!(result.story.epic_quest.is_none());
+    assert!(result.story.epic_quest_title.is_none());
+}

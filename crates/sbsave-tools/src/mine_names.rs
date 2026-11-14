@@ -74,6 +74,10 @@ struct NameMapPayload {
     items: BTreeMap<String, NameEntry>,
     camps: BTreeMap<String, NameEntry>,
     album: BTreeMap<String, AlbumEntry>,
+    /// `MapName` save codes (`E04`, `F02`, ...) mapped to region names.
+    regions: BTreeMap<String, NameEntry>,
+    /// Quest alias (`Quest_Epic_11`) mapped to its `_Title` text.
+    quests: BTreeMap<String, NameEntry>,
 }
 
 /// `data/raw/game/camp_alias_rows.json`: alias -> `ZoneCampTable` row crosswalk
@@ -130,6 +134,10 @@ pub fn run(options: &Options) -> Result<(), String> {
     }
     let zh = locres::flatten(&localisations["zh"]);
     let en = locres::flatten(&localisations["en"]);
+    // `flatten` lowercases keys, but region codes and quest aliases are
+    // case-sensitive identifiers; keep an exact-case copy for them.
+    let zh_exact = exact_case(&localisations["zh"]);
+    let en_exact = exact_case(&localisations["en"]);
 
     let item_table = find_first(&dump, "ItemTable.json");
     let camp_table = find_first(&dump, "ZoneCampTable.json");
@@ -171,6 +179,8 @@ pub fn run(options: &Options) -> Result<(), String> {
     let items = build_items(&load_rows(&item_table)?, &zh, &en, &universe);
     let camps = build_camps(&load_rows(&camp_table)?, &zh, &en, &alias_rows)?;
     let album = build_album(&load_rows(&album_table)?, &zh, &en);
+    let regions = build_regions(&zh_exact, &en_exact);
+    let quests = build_quests(&zh_exact, &en_exact);
 
     let payload = NameMapPayload {
         version: 1,
@@ -179,6 +189,8 @@ pub fn run(options: &Options) -> Result<(), String> {
         items,
         camps,
         album,
+        regions,
+        quests,
     };
     let bytes =
         jsonio::to_bytes(&payload).map_err(|error| format!("序列化名称映射失败: {error}"))?;
@@ -195,11 +207,13 @@ pub fn run(options: &Options) -> Result<(), String> {
         .map_err(|error| format!("写入 {} 失败: {error}", out.display()))?;
     let shown = out.strip_prefix(&root).unwrap_or(&out);
     eprintln!(
-        "wrote {}: {} item names, {} camps, {} album entries",
+        "wrote {}: {} item names, {} camps, {} album entries, {} regions, {} quest titles",
         shown.display(),
         payload.items.len(),
         payload.camps.len(),
-        payload.album.len()
+        payload.album.len(),
+        payload.regions.len(),
+        payload.quests.len()
     );
     Ok(())
 }
@@ -591,13 +605,89 @@ fn build_album(
     album
 }
 
+const REGION_ALIAS_PREFIX: &str = "UI_RegionAlias_";
+const QUEST_TITLE_SUFFIX: &str = "_Title";
+
+/// Flattens `.locres` namespaces while keeping the original key case.
+fn exact_case(namespaces: &locres::Namespaces) -> HashMap<String, String> {
+    let mut out: HashMap<String, String> = HashMap::new();
+    for (_, entries) in namespaces {
+        for (key, text) in entries {
+            out.entry(key.clone()).or_insert_with(|| text.clone());
+        }
+    }
+    out
+}
+
+/// `UI_RegionAlias_<code>` entries become the `MapName` code table.
+fn build_regions(
+    zh: &HashMap<String, String>,
+    en: &HashMap<String, String>,
+) -> BTreeMap<String, NameEntry> {
+    let mut regions: BTreeMap<String, NameEntry> = BTreeMap::new();
+    for (key, en_name) in en {
+        let Some(code) = key.strip_prefix(REGION_ALIAS_PREFIX) else {
+            continue;
+        };
+        if code.is_empty() || en_name.trim().is_empty() {
+            continue;
+        }
+        let zh_name = zh
+            .get(key)
+            .filter(|name| !name.trim().is_empty())
+            .cloned()
+            .unwrap_or_else(|| en_name.clone());
+        regions.insert(
+            code.to_string(),
+            NameEntry {
+                zh: zh_name,
+                en: en_name.clone(),
+            },
+        );
+    }
+    regions
+}
+
+/// `Quest_*_Title` entries become quest alias -> title.
+fn build_quests(
+    zh: &HashMap<String, String>,
+    en: &HashMap<String, String>,
+) -> BTreeMap<String, NameEntry> {
+    let mut quests: BTreeMap<String, NameEntry> = BTreeMap::new();
+    for (key, en_title) in en {
+        if !key.starts_with("Quest_") || !key.ends_with(QUEST_TITLE_SUFFIX) {
+            continue;
+        }
+        let alias = &key[..key.len() - QUEST_TITLE_SUFFIX.len()];
+        if alias.is_empty() || en_title.trim().is_empty() {
+            continue;
+        }
+        let zh_title = zh
+            .get(key)
+            .filter(|title| !title.trim().is_empty())
+            .cloned()
+            .unwrap_or_else(|| en_title.clone());
+        quests.insert(
+            alias.to_string(),
+            NameEntry {
+                zh: zh_title,
+                en: en_title.clone(),
+            },
+        );
+    }
+    quests
+}
+
 #[cfg(test)]
 mod tests {
     use std::collections::{BTreeMap, HashMap};
 
     use serde_json::json;
 
-    use super::{build_album, build_camps, build_items, load_rows, CampAliasRow, CampAliasRows};
+    use super::{
+        build_album, build_camps, build_items, build_quests, build_regions, load_rows,
+        CampAliasRow, CampAliasRows,
+    };
 
     fn empty_alias_rows() -> CampAliasRows {
         CampAliasRows {
@@ -818,5 +908,42 @@ mod tests {
         let rows = load_rows(&path).expect("parse");
         assert_eq!(rows["A"]["Name"], "X");
         let _ = std::fs::remove_file(&path);
+    }
+
+    #[test]
+    fn build_regions_maps_map_codes() {
+        let zh = HashMap::from([
+            ("UI_RegionAlias_E04".to_string(), "希雍".to_string()),
+            ("UI_RegionAlias_F02".to_string(), "埃多斯7号".to_string()),
+        ]);
+        let en = HashMap::from([
+            ("UI_RegionAlias_E04".to_string(), "Xion".to_string()),
+            ("UI_RegionAlias_F02".to_string(), "Eidos 7".to_string()),
+            (
+                "UI_RegionAlias_Matrix11".to_string(),
+                "Matrix 11".to_string(),
+            ),
+        ]);
+        let regions = build_regions(&zh, &en);
+        assert_eq!(regions["E04"].zh, "希雍");
+        assert_eq!(regions["E04"].en, "Xion");
+        assert_eq!(regions["F02"].en, "Eidos 7");
+        assert_eq!(regions["Matrix11"].zh, "Matrix 11");
+    }
+
+    #[test]
+    fn build_quests_strips_title_suffix() {
+        let zh = HashMap::from([("Quest_Epic_11_Title".to_string(), "燃烧的希雍".to_string())]);
+        let en = HashMap::from([
+            (
+                "Quest_Epic_11_Title".to_string(),
+                "Burning Xion".to_string(),
+            ),
+            ("Quest_Epic_11_Desc".to_string(), "not a title".to_string()),
+        ]);
+        let quests = build_quests(&zh, &en);
+        assert_eq!(quests.len(), 1);
+        assert_eq!(quests["Quest_Epic_11"].zh, "燃烧的希雍");
+        assert_eq!(quests["Quest_Epic_11"].en, "Burning Xion");
     }
 }

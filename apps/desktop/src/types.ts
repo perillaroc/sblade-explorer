@@ -21,6 +21,12 @@ export interface SaveInfo {
   ng_plus_count: number;
   difficulty: number;
   play_time_seconds: number;
+  current_map: string | null;
+  current_map_name: string | null;
+  current_map_name_zh: string | null;
+  current_epic_quest: string | null;
+  current_epic_quest_title: string | null;
+  current_epic_quest_title_zh: string | null;
 }
 
 /** Save-aware state of a statically missable entry. */
@@ -115,4 +121,4 @@ export interface Analysis {
 
 export type Lang = "zh" | "en" | "both";
 
-export type ItemFilter = "all" | "obtained" | "missing" | "missed" | "open";
+export type ItemFilter = "all" | "obtained" | "missing" | "missed" | "open" | "currentArea";

@@ -16,7 +16,7 @@
 | `quest_aliases.json` | `DataMap_SBQuest` 中见过的任务别名快照（本地、Demo、100% 三份存档，117 条）；`catalog build` 用它对 `missable.json` 的任务条件做拼写校验 |
 | `memorystick_order.json` | 记忆棒在游戏内数据库中的排列顺序（按区域分组并记录组内顺序，覆盖全部 186 条；根据 Map Genie 和游民星空列表整理） |
 | `guides.json` | 手工维护的中文攻略链接快照（游民星空图文和 B 站「喂狗组-文轩」全收集视频）；`catalog build` 将其解析为每个物品的 `guides.web` 和 `guides.video`；纳米战衣和设计图逐件对应游民星空服装图鉴分页 |
-| `game/name_map.json` | 从游戏数据表和 `Game.locres` 提取的内部别名与官方名称映射（生成文件，包含 `items`、`camps` 和 `album` 三段；`camps` 合并 `game/camp_alias_rows.json` 中置信度不为 low 的对照） |
+| `game/name_map.json` | 从游戏数据表和 `Game.locres` 提取的内部别名与官方名称映射（生成文件，包含 `items`、`camps`、`album`、`regions`、`quests` 五段；`regions` 是 `UI_RegionAlias_*` 区域代号表，`quests` 是 `Quest_*_Title` 任务标题；`camps` 合并 `game/camp_alias_rows.json` 中置信度不为 low 的对照） |
 | `game/camp_alias_rows.json` | 营地别名与 `ZoneCampTable` 行号的对照（用于数据表未直接关联的营地，包含置信度和匹配方法；`low` 条目不并入 `name_map.json`） |
 | `reference/Sources_TrainerCore_*.swift` | 中文名称对照（来自 stellar-blade-macos-save-editor） |
 | `reference/*.sav` | 参考存档（仅供本地校验，已在 .gitignore 中忽略） |
@@ -36,6 +36,7 @@
 - 游戏数据表（`ItemTable`、`ZoneCampTable`、`AlbumTable`）与 `Game.locres`（zh-Hans/en）：
   提供内部别名与官方名称的对应关系，通过 `cargo run -p sbsave-tools -- mine-names` 生成 `game/name_map.json`；
   `album` 段收录图鉴数据表中的孽奇拔（67 条）和角色（55 页）条目，包含官方说明文字；
+  `regions` / `quests` 段来自 locres 的 `UI_RegionAlias_*` 与 `Quest_*_Title`，用于显示存档当前区域与主线；
 - Steam《剑星》1.5.0 更新公告和 `Game.locres`（zh-Hans/en）：提供蓓优妮塔联动 8 件收集物
   （4 件纳米战衣、2 个眼镜、2 个耳饰）的官方中英文名称；攻略站尚未收录这些物品，因此通过
   `crosswalk.json` 中省略 `site_id` 的手工条目入库；

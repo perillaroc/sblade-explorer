@@ -23,9 +23,14 @@ function canNumber(id: string): number {
   return match ? Number(match[1]) : Number.MAX_SAFE_INTEGER;
 }
 
-export function categoryRows(category: CategoryResult, filter: ItemFilter): ItemRow[] {
+export function categoryRows(
+  category: CategoryResult,
+  filter: ItemFilter,
+  currentArea?: string | null,
+): ItemRow[] {
   const rows: ItemRow[] = [];
-  if (filter !== "missing" && filter !== "missed" && filter !== "open") {
+  const obtainedOnly = filter === "all" || filter === "obtained";
+  if (obtainedOnly) {
     rows.push(
       ...category.obtained_items.map((item) => ({
         id: item.id,
@@ -43,6 +48,7 @@ export function categoryRows(category: CategoryResult, filter: ItemFilter): Item
       ...category.missing
         .filter((item) => {
           if (filter === "all" || filter === "missing") return true;
+          if (filter === "currentArea") return Boolean(currentArea) && item.area === currentArea;
           return item.missable_state === filter;
         })
         .map((item) => ({

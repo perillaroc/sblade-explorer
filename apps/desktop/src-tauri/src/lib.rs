@@ -589,6 +589,11 @@ mod tests {
         let value = analyze_save(Some(fixture.save_path()), None, None, Some("zh".into()))
             .expect("analyze synthetic save");
         assert_eq!(value["save"]["steam_id"], sbsave_core::fixture::STEAM_ID);
+        assert_eq!(value["save"]["current_map"], "E04");
+        assert_eq!(value["save"]["current_map_name"], "Xion");
+        assert_eq!(value["save"]["current_map_name_zh"], "希雍");
+        assert_eq!(value["save"]["current_epic_quest"], "Quest_Epic_11");
+        assert_eq!(value["save"]["current_epic_quest_title"], "Burning Xion");
         assert_eq!(value["summary"]["catalog_total"].as_u64(), Some(808));
         assert_eq!(value["summary"]["catalog_obtained"].as_u64(), Some(10));
         assert_eq!(value["summary"]["missing_total"].as_u64(), Some(798));

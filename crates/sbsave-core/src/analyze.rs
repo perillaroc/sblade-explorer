@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use crate::catalog::{Catalog, CatalogItem, Category};
+use crate::catalog::{Catalog, CatalogItem, Category, LocalizedName};
 use crate::i18n::{Locale, Messages};
 use crate::savegame::SaveData;
 
@@ -113,6 +113,18 @@ impl CategoryResult<'_> {
     }
 }
 
+#[derive(Debug, Clone, Copy)]
+pub struct CurrentStory<'a> {
+    /// Raw `MapName` code from the save (e.g. `E04`), when present.
+    pub map_code: Option<&'a str>,
+    /// Resolved region name; `None` when the code is unknown.
+    pub map: Option<&'a LocalizedName>,
+    /// Active `Quest_Epic_*` alias, when present.
+    pub epic_quest: Option<&'a str>,
+    /// Resolved quest title; `None` when the title is not in the data.
+    pub epic_quest_title: Option<&'a LocalizedName>,
+}
+
 #[derive(Debug)]
 pub struct Analysis<'a> {
     pub save: &'a SaveData,
@@ -122,6 +134,7 @@ pub struct Analysis<'a> {
     pub catalog_obtained: usize,
     pub album_total: usize,
     pub album_obtained: usize,
+    pub story: CurrentStory<'a>,
 }
 
 fn is_album(category: &Category) -> bool {
@@ -388,6 +401,14 @@ pub fn analyze<'a>(
         .filter(|result| is_album(result.category))
         .map(|result| result.obtained_count)
         .sum();
+    let map_code = save.current_map();
+    let epic_quest = save.current_epic_quest();
+    let story = CurrentStory {
+        map_code,
+        map: map_code.and_then(|code| catalog.map_name(code)),
+        epic_quest,
+        epic_quest_title: epic_quest.and_then(|alias| catalog.quest_title(alias)),
+    };
     Analysis {
         save,
         categories: results,
@@ -396,5 +417,6 @@ pub fn analyze<'a>(
         catalog_obtained,
         album_total,
         album_obtained,
+        story,
     }
 }

@@ -61,6 +61,8 @@ const props = defineProps<{
   ngPlusCount: number;
   lang: Lang;
   matrix: boolean;
+  /** Current save region (catalog area key); enables the "current area" filter. */
+  currentArea?: string | null;
   /** Global-search target: reset view/filter and open this item (F4). */
   focusItemId?: string | null;
   focusNonce?: number;
@@ -73,6 +75,11 @@ const missedCount = computed(
 );
 const openCount = computed(
   () => props.category.missing.filter((item) => item.missable_state === "open").length,
+);
+const currentAreaCount = computed(() =>
+  props.currentArea
+    ? props.category.missing.filter((item) => item.area === props.currentArea).length
+    : 0,
 );
 
 const FILTER_OPTIONS = computed<{ value: ItemFilter; label: string; count: number }[]>(() => {
@@ -93,6 +100,13 @@ const FILTER_OPTIONS = computed<{ value: ItemFilter; label: string; count: numbe
       value: "open",
       label: t("categoryPage.filterOpen"),
       count: openCount.value,
+    });
+  }
+  if (currentAreaCount.value > 0) {
+    options.push({
+      value: "currentArea",
+      label: t("categoryPage.filterCurrentArea"),
+      count: currentAreaCount.value,
     });
   }
   return options;
@@ -144,7 +158,9 @@ function toggleArea(key: string) {
 }
 
 const rows = computed(() =>
-  categoryRows(props.category, filter.value).filter((row) => matchesQuery(row.item, query.value)),
+  categoryRows(props.category, filter.value, props.currentArea).filter((row) =>
+    matchesQuery(row.item, query.value),
+  ),
 );
 
 const allRows = computed(() => categoryRows(props.category, "all"));

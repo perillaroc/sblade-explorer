@@ -107,6 +107,7 @@ impl Default for SyntheticSave {
             completed_quests: vec!["Quest_Epic_08".to_string(), "CQ_SD10_RR".to_string()],
             failed_quests: vec!["CQ_Xion10_GetFirstCan".to_string()],
             active_quests: vec![
+                "Quest_Epic_11".to_string(),
                 "Quest_Epic_Hidden".to_string(),
                 "CQ_Public_ForceGreenDot".to_string(),
             ],

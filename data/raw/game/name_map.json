@@ -6050,5 +6050,413 @@
    "unlocked": "Ach_Album_Unlock_WeaponMasterA",
    "id": 10378
   }
+ },
+ "regions": {
+  "AbyssLaboa": {
+   "zh": "卢瓦底层",
+   "en": "Abyss Levoire"
+  },
+  "AltesLaboa": {
+   "zh": "卢瓦高层",
+   "en": "Altess Levoire"
+  },
+  "B07": {
+   "zh": "4号高塔",
+   "en": "Spire 4"
+  },
+  "C05": {
+   "zh": "巢窝",
+   "en": "Nest"
+  },
+  "E03": {
+   "zh": "废土",
+   "en": "Wasteland"
+  },
+  "E04": {
+   "zh": "希雍",
+   "en": "Xion"
+  },
+  "E05": {
+   "zh": "大沙漠",
+   "en": "Great Desert"
+  },
+  "Eidos9": {
+   "zh": "埃多斯9号",
+   "en": "Eidos 9"
+  },
+  "F02": {
+   "zh": "埃多斯7号",
+   "en": "Eidos 7"
+  },
+  "G03": {
+   "zh": "星临",
+   "en": "Star Descent"
+  },
+  "Matrix11": {
+   "zh": "11号矩阵",
+   "en": "Matrix 11"
+  },
+  "ScarletBossChallenge": {
+   "zh": "月下谷",
+   "en": "Moonlit Valley"
+  }
+ },
+ "quests": {
+  "Quest_Epic_01": {
+   "zh": "第7空降小队",
+   "en": "7th Airborne Squad"
+  },
+  "Quest_Epic_02": {
+   "zh": "拾荒者艾德姆",
+   "en": "Scavenger Adam"
+  },
+  "Quest_Epic_03": {
+   "zh": "希雍，仅存之城",
+   "en": "Xion, the Last Remaining City"
+  },
+  "Quest_Epic_04": {
+   "zh": "卢瓦高层",
+   "en": "Altess Levoire"
+  },
+  "Quest_Epic_05": {
+   "zh": "希望之灯",
+   "en": "Light of Hope"
+  },
+  "Quest_Epic_06": {
+   "zh": "阿尔法信号",
+   "en": "Alpha Signal"
+  },
+  "Quest_Epic_07": {
+   "zh": "隐藏的真相",
+   "en": "Hidden Truth"
+  },
+  "Quest_Epic_08": {
+   "zh": "卢瓦底层",
+   "en": "Abyss Levoire"
+  },
+  "Quest_Epic_09": {
+   "zh": "奥尔科的证言",
+   "en": "Orcal's Testimony"
+  },
+  "Quest_Epic_10": {
+   "zh": "风暴中心",
+   "en": "Eye of the Hurricane"
+  },
+  "Quest_Epic_11": {
+   "zh": "燃烧的希雍",
+   "en": "Burning Xion"
+  },
+  "Quest_Epic_12": {
+   "zh": "最后的碎片",
+   "en": "Last Fragment"
+  },
+  "Quest_Epic_13": {
+   "zh": "种族抉择",
+   "en": "Selection of Species"
+  },
+  "Quest_Epic_14_1": {
+   "zh": "伊芙计划",
+   "en": "EVE Protocol"
+  },
+  "Quest_Epic_14_2": {
+   "zh": "伊芙计划",
+   "en": "EVE Protocol"
+  },
+  "Quest_Epic_14_3": {
+   "zh": "伊芙计划",
+   "en": "EVE Protocol"
+  },
+  "Quest_Request_001": {
+   "zh": "睡美人",
+   "en": "Sleeping Beauty"
+  },
+  "Quest_Request_002": {
+   "zh": "寻猫",
+   "en": "Find the Cat"
+  },
+  "Quest_Request_003": {
+   "zh": "简单谜题",
+   "en": "Simple Puzzle"
+  },
+  "Quest_Request_004": {
+   "zh": "复杂谜题",
+   "en": "Wisdom Puzzle"
+  },
+  "Quest_Request_005": {
+   "zh": "失踪的丈夫",
+   "en": "Missing Husband"
+  },
+  "Quest_Request_006": {
+   "zh": "失踪的妻子",
+   "en": "Missing Wife"
+  },
+  "Quest_Request_007": {
+   "zh": "复仇时刻",
+   "en": "Time for Revenge"
+  },
+  "Quest_Request_008": {
+   "zh": "丢失的设备",
+   "en": "Lost Device"
+  },
+  "Quest_Request_009": {
+   "zh": "贵重的货物",
+   "en": "Valuable Cargo"
+  },
+  "Quest_Request_010": {
+   "zh": "不知所踪的物品",
+   "en": "Where's the Item"
+  },
+  "Quest_Request_011": {
+   "zh": "招募钓鱼爱好者",
+   "en": "Recruit Fishing Maniacs"
+  },
+  "Quest_Request_012": {
+   "zh": "猎杀伏藏兽",
+   "en": "Lurker Hunt"
+  },
+  "Quest_Request_013": {
+   "zh": "珍贵宝物",
+   "en": "Precious Treasure"
+  },
+  "Quest_Request_014": {
+   "zh": "军团的秘密所在",
+   "en": "Legion's Secret Stash"
+  },
+  "Quest_Request_015": {
+   "zh": "丰饶的空投舱",
+   "en": "Generous Drop Pod"
+  },
+  "Quest_Request_016": {
+   "zh": "最后的酒",
+   "en": "The Last Wine"
+  },
+  "Quest_Request_017": {
+   "zh": "噩梦之源",
+   "en": "Source of the Nightmare"
+  },
+  "Quest_Request_018": {
+   "zh": "妻子的药",
+   "en": "Wife's Medicine"
+  },
+  "Quest_Request_019": {
+   "zh": "日记的复仇",
+   "en": "The Diary's Revenge"
+  },
+  "Quest_Request_020": {
+   "zh": "秘密委托",
+   "en": "Secret Request"
+  },
+  "Quest_Request_021": {
+   "zh": "寻找我的弟弟",
+   "en": "Looking for My Brother"
+  },
+  "Quest_Request_022": {
+   "zh": "招募密码专家",
+   "en": "Recruit Passcode Specialists"
+  },
+  "Quest_Request_023": {
+   "zh": "妻子的鱼缸",
+   "en": "Wife’s Water Tank"
+  },
+  "Quest_Request_024": {
+   "zh": "令人难忘的鱼料理",
+   "en": "An Unforgettable Fish Dish"
+  },
+  "Quest_Request_025": {
+   "zh": "关于鱼的研究",
+   "en": "Fish Research"
+  },
+  "Quest_Request_026": {
+   "zh": "致狂热钓鱼爱好者的礼物",
+   "en": "A Gift for a Fishing Maniac"
+  },
+  "Quest_Request_027": {
+   "zh": "神奇鱼饵在哪里？",
+   "en": "Where Is The Fantastic Bait?"
+  },
+  "Quest_Request_028": {
+   "zh": "传说之鱼",
+   "en": "The Fish of Legends"
+  },
+  "Quest_Request_029": {
+   "zh": "摄影俱乐部",
+   "en": "Photography Club"
+  },
+  "Quest_Request_030": {
+   "zh": "如梦如蝶",
+   "en": "Like Butterflies"
+  },
+  "Quest_Request_031": {
+   "zh": "双鱼",
+   "en": "Pisces"
+  },
+  "Quest_Request_032": {
+   "zh": "猫咪摄影展",
+   "en": "Cat Photo Exhibition"
+  },
+  "Quest_Request_033": {
+   "zh": "红莲与伏特的际遇",
+   "en": "Scarlet and Volt's Situation"
+  },
+  "Quest_Request_034": {
+   "zh": "红莲与伏特的阻滞",
+   "en": "Scarlet and Volt's Predicament"
+  },
+  "Quest_Request_035": {
+   "zh": "红莲与伏特的窘境",
+   "en": "Scarlet and Volt's Plight"
+  },
+  "Quest_Request_036": {
+   "zh": "红莲与伏特的困境",
+   "en": "Scarlet and Volt's Circumstance"
+  },
+  "Quest_Request_037": {
+   "zh": "红莲与伏特的困厄",
+   "en": "Scarlet and Volt's Quagmire"
+  },
+  "Quest_Request_038": {
+   "zh": "异常的信号",
+   "en": "Strange Signal"
+  },
+  "Quest_Sub_001": {
+   "zh": "拾荒者的故事",
+   "en": "The Scavenger's Story"
+  },
+  "Quest_Sub_002": {
+   "zh": "相遇与交锋",
+   "en": "Encounter"
+  },
+  "Quest_Sub_005": {
+   "zh": "望着你",
+   "en": "Looking at You"
+  },
+  "Quest_Sub_006": {
+   "zh": "保守秘密",
+   "en": "Keeping Secrets"
+  },
+  "Quest_Sub_007": {
+   "zh": "机械夫人",
+   "en": "Madama Machine"
+  },
+  "Quest_Sub_011": {
+   "zh": "计划净化地球",
+   "en": "Plan to Clean the Earth"
+  },
+  "Quest_Sub_012": {
+   "zh": "CnL - 通信与链接",
+   "en": "CnL - Communicate and Link"
+  },
+  "Quest_Sub_016": {
+   "zh": "窥心之镜",
+   "en": "Looking Glass"
+  },
+  "Quest_Sub_017": {
+   "zh": "固执",
+   "en": "Stubbornness"
+  },
+  "Quest_Sub_018": {
+   "zh": "重启！",
+   "en": "Reboot!"
+  },
+  "Quest_Sub_019": {
+   "zh": "重启！！！",
+   "en": "Reboot!!!"
+  },
+  "Quest_Sub_020": {
+   "zh": "玩偶的记忆",
+   "en": "Memories in the Doll"
+  },
+  "Quest_Sub_021": {
+   "zh": "失落的方舟",
+   "en": "Lost Ark"
+  },
+  "Quest_Sub_022": {
+   "zh": "终结噩梦",
+   "en": "End of the Nightmare"
+  },
+  "Quest_Sub_023": {
+   "zh": "塞壬之歌",
+   "en": "Siren's Song"
+  },
+  "Quest_Sub_024": {
+   "zh": "巴里和酒",
+   "en": "Barry and Wine"
+  },
+  "Quest_Sub_025": {
+   "zh": "堕落天使",
+   "en": "Fallen Angel"
+  },
+  "Quest_Sub_026": {
+   "zh": "死亡天使",
+   "en": "Angel of Death"
+  },
+  "Quest_Sub_027": {
+   "zh": "母主领域的话语",
+   "en": "The Words of Mother Sphere"
+  },
+  "Quest_Sub_028": {
+   "zh": "禁忌",
+   "en": "Taboo"
+  },
+  "Quest_Sub_029": {
+   "zh": "我不会忘记你",
+   "en": "I Won't Forget You"
+  },
+  "Quest_Sub_030": {
+   "zh": "遗忘",
+   "en": "Oblivion"
+  },
+  "Quest_Sub_031": {
+   "zh": "第一位顾客",
+   "en": "First Customer"
+  },
+  "Quest_Sub_032": {
+   "zh": "失窃的珍宝",
+   "en": "Stolen Treasure"
+  },
+  "Quest_Sub_033": {
+   "zh": "紧急情报",
+   "en": "Urgent Information"
+  },
+  "Quest_Sub_034": {
+   "zh": "拾荒者的生活",
+   "en": "Life of the Scavengers"
+  },
+  "Quest_Sub_035": {
+   "zh": "惹麻烦的巴里",
+   "en": "Barry in Trouble"
+  },
+  "Quest_Sub_036": {
+   "zh": "禁闭",
+   "en": "Incarceration"
+  },
+  "Quest_Sub_037": {
+   "zh": "管道之王",
+   "en": "The King of the Tunnel"
+  },
+  "Quest_Sub_038": {
+   "zh": "有名字的宝贝",
+   "en": "A Treasure with a Name"
+  },
+  "Quest_Sub_039": {
+   "zh": "团结的人民坚不可摧",
+   "en": "A United People Cannot be Defeated"
+  },
+  "Quest_Sub_040": {
+   "zh": "愿世界再度沐浴光辉",
+   "en": "Let There be Light Again"
+  },
+  "Quest_Sub_041": {
+   "zh": "无法拒绝的交易",
+   "en": "An Offer You Can't Refuse"
+  },
+  "Quest_Sub_042": {
+   "zh": "以眼还眼，以牙还牙",
+   "en": "An Eye for an Eye, a Tooth for a Tooth"
+  },
+  "Quest_Sub_043": {
+   "zh": "不明礼物",
+   "en": "An Unknown Present"
+  }
  }
 }

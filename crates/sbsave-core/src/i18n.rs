@@ -287,6 +287,30 @@ impl Messages {
         }
     }
 
+    /// Current area / main quest line; hidden when neither value is known.
+    pub fn report_story_line(&self, area: Option<&str>, quest: Option<&str>) -> Option<String> {
+        let mut parts: Vec<String> = Vec::new();
+        if let Some(area) = area {
+            parts.push(if self.is_zh() {
+                format!("当前区域: {area}")
+            } else {
+                format!("Current area: {area}")
+            });
+        }
+        if let Some(quest) = quest {
+            parts.push(if self.is_zh() {
+                format!("当前主线: {quest}")
+            } else {
+                format!("Current main quest: {quest}")
+            });
+        }
+        if parts.is_empty() {
+            None
+        } else {
+            Some(parts.join(" | "))
+        }
+    }
+
     pub const fn category_summary(&self) -> &'static str {
         if self.is_zh() {
             "分类汇总"

@@ -189,6 +189,24 @@ impl SaveData {
         self.counters.get("PlayTime").copied().unwrap_or(0)
     }
 
+    /// Current world/map code from `DataMap_FString.MapName` (e.g. `E04`).
+    pub fn current_map(&self) -> Option<&str> {
+        self.string_counters
+            .get("MapName")
+            .map(String::as_str)
+            .filter(|code| !code.is_empty())
+    }
+
+    /// First active `Quest_Epic_*` alias, in a stable order.
+    pub fn current_epic_quest(&self) -> Option<&str> {
+        self.quests
+            .active
+            .iter()
+            .filter(|alias| alias.starts_with("Quest_Epic_"))
+            .min()
+            .map(String::as_str)
+    }
+
     pub fn save_version(&self) -> i64 {
         self.counters.get("Version").copied().unwrap_or(1)
     }

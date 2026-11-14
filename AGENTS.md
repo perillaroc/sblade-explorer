@@ -8,7 +8,7 @@
 
 - `crates/sbsave-core/` - Rust 核心库：`gvas`（GVAS/EVAS 解析）、`savegame`（存档探测与提取）、`catalog`（目录库）、`analyze`（差集与 NG+/DLC 逻辑）、`report`（JSON 契约/Markdown/控制台）。
 - `crates/sbsave-cli/` - clap CLI（二进制 `sbsave`），命令与输出沿用原 Python 版约定。
-- `crates/sbsave-tools/` - 构建期数据管线（二进制 `sbsave-tools`）：`catalog build` 由 `data/raw` 生成 `data/catalog.json`；`mine-names` 从游戏数据表（`ItemTable`、`ZoneCampTable`、`AlbumTable`）+ `Game.locres` 提取内部别名→官方名称（未直接关联的营地经 `camp_alias_rows.json` 对照行号），生成 `data/raw/game/name_map.json`（需本机游戏与 cue4parse/repak，dump 目录不入库）。
+- `crates/sbsave-tools/` - 构建期数据管线（二进制 `sbsave-tools`）：`catalog build` 由 `data/raw` 生成 `data/catalog.json`；`mine-names` 从游戏数据表（`ItemTable`、`ZoneCampTable`、`AlbumTable`）+ `Game.locres` 提取内部别名→官方名称（未直接关联的营地经 `camp_alias_rows.json` 对照行号），以及区域代号（`UI_RegionAlias_*`）和任务标题（`Quest_*_Title`），生成 `data/raw/game/name_map.json`（需本机游戏与 cue4parse/repak，dump 目录不入库）。
 - `apps/desktop/` - Tauri 2 桌面应用：前端 Vue 3 + Vite + TypeScript + Tailwind CSS v4 在工程根，Rust 在 `src-tauri/`。
 - `data/raw/` - 已提交的数据快照（`api/`、`api/i18n/` 手工中文翻译、`crosswalk.json` 手工别名映射、`universe/aliases.json`、`game/name_map.json`、`reference/`）。运行时绝不联网。
 - `data/catalog.json` - 由 `sbsave-tools catalog build` 生成的目录库；禁止手改。
@@ -68,7 +68,7 @@ Python 参考实现已于 2026-09-15 删除，代码历史保留在 git 中。
 - 只要物品的任一 `aliases` 出现在存档物品集合、从成就记录派生的别名或成就别名（图鉴）中，即视为"已获得"。
 - `data/raw/crosswalk.json`（site id -> 别名 -> 中文名，手工维护）是收集品的事实来源；`data/catalog.json` 为生成物；图鉴两类（`naytiba` 孽奇拔 67、`characters` 角色 55 页）由 `AlbumTable` + `Game.locres` 挖掘生成，别名是 `Ach_Album_Unlock_*` 成就别名。只想修正个别条目时，用 `%LOCALAPPDATA%\sbsave\catalog.user.json`（合并覆盖内置目录库）或 CLI 的 `--catalog path.json`，无需重新生成。站点尚未收录的联动/更新内容（如 1.5.0 蓓优妮塔联动）在 crosswalk 条目中省略 `site_id`，直接提供 `name_en`、`area` 与 `obtain`（中英），名称取自 `Game.locres`。
 - 目录库分两段：`section=collection`（13 类收集品，计入目录进度）与 `section=album`（图鉴，**不计入目录进度**，报告/UI 单列）；角色按页展示（`艾德姆（资料 3/5）`），图鉴条目带官方 `desc_zh`/`desc_en` 说明。
-- 记录/密码/罐子/设计图案/外观名称由 `data/raw/game/name_map.json`（游戏数据挖掘）覆盖为官方简中名称并置 `confidence="high"`；仅埃多斯9号 6 座营地的别名→行号仍为顺序推定，保留低置信度并在报告中标记 映射待确认。期望数量（130 纳米战衣、49 罐子、89 营地、67 孽奇拔、55 角色页）是回归哨兵，迁移时应保留断言。
+- 记录/密码/罐子/设计图案/外观名称由 `data/raw/game/name_map.json`（游戏数据挖掘）覆盖为官方简中名称并置 `confidence="high"`；同一文件的 `regions` / `quests` 段提供 `MapName` 区域代号与任务标题（`catalog build` 并入 `catalog.json`）；仅埃多斯9号 6 座营地的别名→行号仍为顺序推定，保留低置信度并在报告中标记 映射待确认。期望数量（130 纳米战衣、49 罐子、89 营地、67 孽奇拔、55 角色页）是回归哨兵，迁移时应保留断言。
 - 易错过条目（希雍城区、埃多斯9号、支线奖励，共 211 条）由 `data/raw/missable.json` 维护，`catalog build` 展开为 `missable` 字段；缺失清单显示「可错过(注意节点)」，详情与矩阵视图带「可错过」标记。
 - 分类参数（CLI `--category` 与 UI 筛选）同时接受分类键（`nano_suits`）和中文名（`纳米战衣`）。
 - 桌面端图鉴展示约定：孽奇拔按五种图鉴类型分组（小兵/战士/精锐/阿尔法/上古，可折叠 + 组内进度），角色按页平铺（`艾德姆（资料 3/5）`）；图鉴官方说明在详情弹窗「图鉴说明」中显示（`zh|en|both`）。

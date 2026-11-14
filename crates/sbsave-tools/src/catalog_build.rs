@@ -442,6 +442,13 @@ struct CategoryEntry {
     section: &'static str,
 }
 
+/// Localized name embedded in `catalog.json` (region codes and quest aliases).
+#[derive(Serialize)]
+struct LocalizedName {
+    name: String,
+    name_zh: String,
+}
+
 #[derive(Serialize)]
 struct CatalogPayload {
     version: i64,
@@ -449,6 +456,10 @@ struct CatalogPayload {
     sources: &'static [&'static str],
     categories: Vec<CategoryEntry>,
     items: Vec<CatalogItem>,
+    /// `DataMap_FString.MapName` code -> region name.
+    map_names: BTreeMap<String, LocalizedName>,
+    /// Quest alias -> `Quest_*_Title` text.
+    quest_titles: BTreeMap<String, LocalizedName>,
 }
 
 struct I18n {
@@ -2267,6 +2278,32 @@ fn apply_guides(items: &mut [CatalogItem], guides: &GuidesFile) -> Result<(), St
     Ok(())
 }
 
+fn localized_names(game_names: &Value, section: &str) -> BTreeMap<String, LocalizedName> {
+    let mut names: BTreeMap<String, LocalizedName> = BTreeMap::new();
+    let Some(entries) = game_names.get(section).and_then(Value::as_object) else {
+        return names;
+    };
+    for (key, entry) in entries {
+        let en = entry.get("en").and_then(Value::as_str).unwrap_or("");
+        let zh = entry
+            .get("zh")
+            .and_then(Value::as_str)
+            .filter(|name| !name.trim().is_empty())
+            .unwrap_or(en);
+        if key.is_empty() || en.trim().is_empty() {
+            continue;
+        }
+        names.insert(
+            key.clone(),
+            LocalizedName {
+                name: en.to_string(),
+                name_zh: zh.to_string(),
+            },
+        );
+    }
+    names
+}
+
 pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
     let api_dir = root.join("data/raw/api");
     let site = load_site_index(&api_dir)?;
@@ -2283,6 +2320,8 @@ pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
     } else {
         Value::Object(Map::new())
     };
+    let map_names = localized_names(&game_names, "regions");
+    let quest_titles = localized_names(&game_names, "quests");
     let memorystick_order_path = root.join("data/raw/memorystick_order.json");
     let memorystick_order: MemorystickOrder = serde_json::from_str(
         &std::fs::read_to_string(&memorystick_order_path)
@@ -2340,6 +2379,8 @@ pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
             })
             .collect(),
         items,
+        map_names,
+        quest_titles,
     };
     let bytes = jsonio::to_bytes(&payload).map_err(|error| format!("序列化目录库失败: {error}"))?;
     Ok(BuildOutput {

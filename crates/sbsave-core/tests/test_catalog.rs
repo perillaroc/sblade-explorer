@@ -676,3 +676,22 @@ fn missable_rules_are_expanded_from_raw_data() {
         .count();
     assert_eq!(with_rule, 190);
 }
+
+#[test]
+fn map_and_quest_names_are_embedded() {
+    let catalog = load_catalog(None).expect("catalog");
+
+    let xion = catalog.map_name("E04").expect("E04");
+    assert_eq!(xion.name, "Xion");
+    assert_eq!(xion.name_zh, "希雍");
+    assert_eq!(catalog.map_name("F02").expect("F02").name, "Eidos 7");
+    assert_eq!(catalog.map_name("C05").expect("C05").name, "Nest");
+    assert!(catalog.map_name("E99").is_none());
+    assert_eq!(catalog.map_names.len(), 12);
+
+    let burning = catalog.quest_title("Quest_Epic_11").expect("Epic 11");
+    assert_eq!(burning.name, "Burning Xion");
+    assert_eq!(burning.name_zh, "燃烧的希雍");
+    assert!(catalog.quest_title("Quest_Nope").is_none());
+    assert_eq!(catalog.quest_titles.len(), 89);
+}
