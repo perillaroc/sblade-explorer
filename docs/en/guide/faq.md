@@ -71,9 +71,9 @@ and enter the ready-to-collect list. DLC you did not declare stays limited. This
 
 The app reads quest state from the save and combines it with the missable rules in the catalog:
 
-- **Missed**: this save has passed a point of no return, so the item can no longer be obtained;
+- **Missed**: this save has passed a point of no return, or the side quest / bulletin-board request that awards the item is in the failed list;
 - **Still available**: the item can still be collected now, so it is worth picking up before leaving;
-- **Missable (mind the checkpoint)**: a rule is missing, or an older save has no quest data, so the app cannot tell.
+- **Missable (mind the checkpoint)**: no rule, no quest data in an older save, or an incomplete condition, so the app cannot tell.
   It never reports a false "missed" in this case.
 
 Items blocked by a higher playthrough or an unowned DLC are shown under those limits first. See

@@ -183,7 +183,7 @@ fn report_json_summarises_fixture() {
     assert_eq!(report["summary"]["growth_obtained"], 2);
     // Quest_Epic_08 completed (Xion locked) + Quest_Epic_Hidden active (Eidos 9 open).
     assert_eq!(report["summary"]["missed_count"], 154);
-    assert_eq!(report["summary"]["missable_open_count"], 29);
+    assert_eq!(report["summary"]["missable_open_count"], 45);
     assert_eq!(report["categories"].as_array().map(Vec::len), Some(17));
 
     let save_json = &report["save"];

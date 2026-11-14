@@ -195,7 +195,7 @@ fn report_json_with_synthetic_fixture() {
     assert_eq!(report["summary"]["missing_total"], 798);
     assert_eq!(report["summary"]["unmapped_aliases"], 3);
     assert_eq!(report["summary"]["missed_count"], 154);
-    assert_eq!(report["summary"]["missable_open_count"], 29);
+    assert_eq!(report["summary"]["missable_open_count"], 45);
     assert_eq!(report["categories"].as_array().map(Vec::len), Some(17));
 
     let cans = report["categories"]
@@ -271,7 +271,8 @@ fn report_category_filter_uses_synthetic_fixture() {
     assert_eq!(report["summary"]["catalog_obtained"], 2);
     assert_eq!(report["summary"]["missing_total"], 47);
     assert_eq!(report["summary"]["missed_count"], 8);
-    assert_eq!(report["summary"]["missable_open_count"], 0);
+    // Can_001 belongs to the Oblivion quest group and is still obtainable.
+    assert_eq!(report["summary"]["missable_open_count"], 1);
     assert_eq!(report["categories"].as_array().map(Vec::len), Some(1));
 }
 

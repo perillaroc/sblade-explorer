@@ -40,9 +40,8 @@
 - 重复拾取产生的记录别名（如 `Item_Records_Xion_Memory_14_1`）会并入基础条目。
   游戏数据库（`AlbumTable`）中每份记录只有一条，副本别名仅表示重复拾取；合并后的 300 条记录与游戏数据库一致。
 - 易错过条目由 `data/raw/missable.json` 维护，涵盖希雍城区、埃多斯9号以及支线任务和布告栏奖励。
-  `catalog build` 会将其展开为 `missable` 字段和可选的 `missable_rule`；其中 `xion_lock` / `eidos9_optional`
-  两组规则会结合存档任务状态显示「已错过 / 还来得及 / 未知」，其余 21 条支线奖励仍为静态标记。
-  详见[存档解析与判定](#存档解析与判定)。
+  `catalog build` 会将其展开为 `missable` 字段和可选的 `missable_rule`；21 条支线奖励按来源任务分组，
+  对应任务出现在 `FailedQuestList` 时判为「已错过」。详见[存档解析与判定](#存档解析与判定)。
 - 获取说明：收集品使用攻略站的 `description`（英文）和 `api/i18n/obtain_*.json`（中文）。
   鱼类没有攻略站条目，其说明维护在 `data/raw/fish_obtain.json`；
   少数未被攻略站快照收录的营地，则在 `crosswalk.json` 的 `camps` 段中直接提供中英文说明。
@@ -73,14 +72,16 @@
 
 `data/raw/missable.json` 的每个分组可用 `void_after_quests`、`requires_quests`、
 `void_on_failed_quests` 声明存档任务条件。`catalog build` 会把条件展开到条目的 `missable_rule`，
-并用 `data/raw/quest_aliases.json` 校验任务别名；拼写错误会直接使构建失败。目前启用两组：
+并用 `data/raw/quest_aliases.json` 校验任务别名；拼写错误会直接使构建失败。目前所有 211 条都有规则：
 
 | 分组 | 条件 | 条目数 |
 | --- | --- | --- |
 | `xion_lock` | 完成 `Quest_Epic_08` 后失效 | 156 |
-| `eidos9_optional` | 需要 `Quest_Epic_Hidden` 已开始 | 34 |
+| `eidos9_optional` | 需要 `Quest_Epic_Hidden` 已开始；完成 `Quest_Epic_12` 后失效 | 34 |
+| `quest_rewards_*`（7 组） | 来源任务（Oblivion、Strange Signal 等）出现在 `FailedQuestList` 时失效 | 21 |
 
-支线奖励分组（21 条）暂未启用机器规则，仍按静态 `missable` 展示。
+支线奖励按来源任务拆分，任务名与别名对照见 `data/raw/missable.json` 的 `note`；
+完成但未拾取的奖励仍保持「还来得及」。
 
 分析结果分为：
 
@@ -190,8 +191,8 @@ CLI 也可以通过 `--catalog 路径.json` 临时加载覆盖文件。
 - 300 条记录全部包含游戏内类型（记忆棒 186 条、文档 114 条）和攻略获取方式；
   186 条记忆棒包含游戏内选单顺序，重复拾取副本并入基础条目；23 条密码全部包含攻略获取方式。
 - 易错过：211 条带有 `missable`，包括希雍 156 条、埃多斯9号 34 条（含 6 座营地），以及其他支线奖励和任务区域 21 条。
-  其中 190 条带有 `missable_rule`（希雍 156、埃多斯9号 34），21 条仅保留静态标记；
-  分析结果区分「已错过 / 还来得及 / 未知」。
+  全部 211 条都带有 `missable_rule`：希雍按 `Quest_Epic_08` 失效、埃多斯9号按 `Quest_Epic_Hidden` 开放且
+  `Quest_Epic_12` 后失效、支线奖励按来源任务失败判定；分析结果区分「已错过 / 还来得及 / 未知」。
 - 区域与任务：`catalog.json` 含 12 个 `map_names`（`UI_RegionAlias_*`）和 89 条 `quest_titles`
   （`Quest_*_Title`）；`quest_aliases.json` 含 117 条任务别名。
 - 中文攻略链接：808 条收集品、77 条装备和 12 条辅助脊椎中有 895 条内置链接（图文 887 条、视频 694 条）。

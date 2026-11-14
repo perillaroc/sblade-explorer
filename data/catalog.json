@@ -462,6 +462,11 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Sub_030"
+    ]
+   },
    "note": null,
    "confidence": "high",
    "source": "game",
@@ -497,6 +502,11 @@
    "ng_plus": 1,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Sub_030"
+    ]
+   },
    "note": null,
    "confidence": "high",
    "source": "game",
@@ -533,6 +543,11 @@
    "ng_plus": 2,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Sub_030"
+    ]
+   },
    "note": null,
    "confidence": "high",
    "source": "game",
@@ -2430,6 +2445,11 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Request_022"
+    ]
+   },
    "note": null,
    "confidence": "high",
    "source": "game",
@@ -2465,6 +2485,11 @@
    "ng_plus": 1,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Request_022"
+    ]
+   },
    "note": null,
    "confidence": "high",
    "source": "game",
@@ -3341,6 +3366,11 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Request_038"
+    ]
+   },
    "note": null,
    "confidence": "high",
    "source": "game",
@@ -3376,6 +3406,11 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Request_013"
+    ]
+   },
    "note": null,
    "confidence": "high",
    "source": "game",
@@ -3411,6 +3446,11 @@
    "ng_plus": 1,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Request_013"
+    ]
+   },
    "note": null,
    "confidence": "high",
    "source": "game",
@@ -3446,6 +3486,11 @@
    "ng_plus": 2,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Request_013"
+    ]
+   },
    "note": null,
    "confidence": "high",
    "source": "game",
@@ -4045,6 +4090,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -4085,6 +4133,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -4125,6 +4176,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -4165,6 +4219,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -4205,6 +4262,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -4246,6 +4306,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -4286,6 +4349,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -4326,6 +4392,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -4366,6 +4435,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -4927,6 +4999,11 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Sub_030"
+    ]
+   },
    "note": null,
    "confidence": "high",
    "source": "game",
@@ -4962,6 +5039,11 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Sub_030"
+    ]
+   },
    "note": null,
    "confidence": "high",
    "source": "game",
@@ -8143,6 +8225,11 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Sub_022"
+    ]
+   },
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
@@ -8178,6 +8265,11 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Sub_028"
+    ]
+   },
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
@@ -8392,6 +8484,11 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Sub_030"
+    ]
+   },
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
@@ -8787,6 +8884,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -8828,6 +8928,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -8869,6 +8972,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -8910,6 +9016,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -8951,6 +9060,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -8992,6 +9104,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -9033,6 +9148,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -9074,6 +9192,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -9114,6 +9235,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -9154,6 +9278,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -9194,6 +9321,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -18193,6 +18323,11 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Sub_030"
+    ]
+   },
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
@@ -20509,6 +20644,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -20545,6 +20683,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -20581,6 +20722,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -20617,6 +20761,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -20653,6 +20800,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -20689,6 +20839,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -24106,6 +24259,11 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Request_015"
+    ]
+   },
    "note": null,
    "confidence": "high",
    "source": "game",
@@ -24141,6 +24299,11 @@
    "ng_plus": 1,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Request_015"
+    ]
+   },
    "note": null,
    "confidence": "high",
    "source": "game",
@@ -24176,6 +24339,11 @@
    "ng_plus": 2,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Request_015"
+    ]
+   },
    "note": null,
    "confidence": "high",
    "source": "game",
@@ -28797,6 +28965,11 @@
    "ng_plus": 0,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Sub_030"
+    ]
+   },
    "note": "图案名称来自游戏数据（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
@@ -28832,6 +29005,11 @@
    "ng_plus": 1,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Sub_030"
+    ]
+   },
    "note": "图案名称来自游戏数据（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
@@ -28867,6 +29045,11 @@
    "ng_plus": 2,
    "dlc": null,
    "missable": true,
+   "missable_rule": {
+    "void_on_failed_quests": [
+     "Quest_Sub_030"
+    ]
+   },
    "note": "图案名称来自游戏数据（zh-Hans 本地化）",
    "confidence": "high",
    "source": "game",
@@ -31321,6 +31504,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -31361,6 +31547,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -31401,6 +31590,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -31441,6 +31633,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -31481,6 +31676,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -31521,6 +31719,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -31561,6 +31762,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]
@@ -31601,6 +31805,9 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
+    "void_after_quests": [
+     "Quest_Epic_12"
+    ],
     "requires_quests": [
      "Quest_Epic_Hidden"
     ]

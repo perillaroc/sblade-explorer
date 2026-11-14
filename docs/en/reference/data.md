@@ -39,9 +39,9 @@ All data is bundled with the app, which does not connect to the internet at runt
 - Aliases for repeatedly collected copies of a record (for example, `Item_Records_Xion_Memory_14_1`) are merged into the base entry.
   The game database (`AlbumTable`) contains only one entry per record; copy aliases represent repeated pickups. After merging, the 300 record entries match the game database.
 - Missable entries are maintained in `data/raw/missable.json`, covering Xion, Eidos 9, and side-quest and bulletin-board request rewards.
-  `catalog build` converts them into the `missable` field and an optional `missable_rule`; the `xion_lock` and
-  `eidos9_optional` rules combine with the save's quest state to show "missed / still available / unknown".
-  The remaining 21 side-quest rewards keep a static mark. See [Save parsing and judgments](#save-parsing-and-judgments).
+  `catalog build` converts them into the `missable` field and an optional `missable_rule`; the 21 quest rewards are grouped by
+  their source quest and become missed when that quest appears in `FailedQuestList`.
+  See [Save parsing and judgments](#save-parsing-and-judgments).
 - Acquisition instructions for collectibles combine the guide site's `description` (English) with `api/i18n/obtain_*.json` (Chinese).
   Fish do not have guide-site entries, so their instructions are maintained in `data/raw/fish_obtain.json`.
   The few camps missing from the guide-site snapshot have English and Chinese instructions directly in the `camps` section of `crosswalk.json`.
@@ -73,14 +73,16 @@ The current main quest is the first active `Quest_Epic_*`, with its title resolv
 Each group in `data/raw/missable.json` can declare save-based conditions with `void_after_quests`,
 `requires_quests`, and `void_on_failed_quests`. `catalog build` expands them into each entry's
 `missable_rule` and validates every quest alias against `data/raw/quest_aliases.json`; a typo fails the build.
-Two groups are enabled:
+All 211 entries now have a rule:
 
 | Group | Condition | Entries |
 | --- | --- | --- |
 | `xion_lock` | Lost after `Quest_Epic_08` completes | 156 |
-| `eidos9_optional` | Requires `Quest_Epic_Hidden` to have started | 34 |
+| `eidos9_optional` | Requires `Quest_Epic_Hidden` to have started; lost after `Quest_Epic_12` | 34 |
+| `quest_rewards_*` (7 groups) | Lost when the source quest (Oblivion, Strange Signal, ...) is in `FailedQuestList` | 21 |
 
-The side-quest reward group (21 entries) has no machine rule yet and keeps its static `missable` mark.
+Quest rewards are split by source quest; the quest-name-to-alias mapping is described in `data/raw/missable.json`.
+A completed quest whose reward was not picked up stays "still obtainable".
 
 The analysis exposes three states:
 
@@ -192,7 +194,8 @@ For the complete rules, see [data/raw/README.md](https://github.com/perillaroc/s
 - All 300 records include an in-game type (186 Memory Sticks and 114 Documents) and acquisition instructions from guides.
   The 186 Memory Sticks include their in-game menu order, and repeated-pickup copies are merged into base entries. All 23 passcodes include acquisition instructions from guides.
 - There are 211 entries with `missable`: 156 in Xion, 34 in Eidos 9 (including 6 camps), and 21 for other side-quest rewards and quest areas.
-  190 of them carry a `missable_rule` (156 Xion, 34 Eidos 9); the other 21 keep only the static mark.
+  All 211 carry a `missable_rule`: Xion voids after `Quest_Epic_08`, Eidos 9 opens with `Quest_Epic_Hidden` and voids after
+  `Quest_Epic_12`, and quest rewards follow their source quest's failed state.
   Results distinguish "missed / still available / unknown".
 - Regions and quests: `catalog.json` contains 12 `map_names` (`UI_RegionAlias_*`) and 89 `quest_titles`
   (`Quest_*_Title`); `quest_aliases.json` contains 117 quest aliases.

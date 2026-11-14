@@ -33,54 +33,100 @@
    ],
    "requires_quests": [
     "Quest_Epic_Hidden"
+   ],
+   "void_after_quests": [
+    "Quest_Epic_12"
    ]
   },
   {
-   "key": "quest_rewards",
-   "note": "支线任务与布告栏委托在第一个不可返回节点后标记失败；未完成任务的奖励、以及任务解锁区域内的收集品随之错过",
+   "key": "quest_rewards_oblivion",
+   "note": "支线《遗忘》（Oblivion）相关奖励与排水后区域内的收集品；任务失败或错过节点后无法再获取",
    "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
    "ids": [
     "BS_15_Var2_E",
-    "BS_18",
-    "BS_20",
-    "BS_20_Var2",
-    "BS_26",
-    "BS_26_Var2",
-    "BS_30",
-    "BS_30_Var2",
-    "BS_33",
-    "BS_33_Var2",
-    "BS_37_Var2",
     "BS_41",
     "BS_41_Var2",
-    "BS_53",
-    "BS_55",
-    "BS_Bear",
-    "BS_Bear_Var2",
     "Can_001",
     "Can_025",
     "DesignPattern_BS_15_Var2",
     "DesignPattern_BS_41",
     "DesignPattern_BS_41_Var2",
-    "Earring_008",
-    "Earring_008_Var2",
-    "Earring_014",
-    "Hair_001",
-    "Hair_002",
-    "Hair_003",
-    "Hair_004",
-    "Hair_005",
-    "Hair_006",
-    "Hair_007",
-    "Hair_008",
-    "Hair_009",
-    "Hair_010",
-    "Hair_011",
-    "Hair_012",
-    "Item_Records_DED20_Memory_13",
-    "Item_Records_DED20_Memory_14",
     "Item_Records_DED20_Memory_20",
     "Item_Records_Xion_Passcode_01"
+   ],
+   "void_on_failed_quests": [
+    "Quest_Sub_030"
+   ]
+  },
+  {
+   "key": "quest_rewards_strange_signal",
+   "note": "布告栏委托《奇怪的信号》（Strange Signal）的奖励与后续记录",
+   "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+   "ids": [
+    "BS_18"
+   ],
+   "void_on_failed_quests": [
+    "Quest_Request_038"
+   ]
+  },
+  {
+   "key": "quest_rewards_precious_treasure",
+   "note": "布告栏委托《珍贵的宝物》（Precious Treasure）开启的补给箱奖励",
+   "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+   "ids": [
+    "BS_20",
+    "BS_20_Var2",
+    "BS_26_Var2"
+   ],
+   "void_on_failed_quests": [
+    "Quest_Request_013"
+   ]
+  },
+  {
+   "key": "quest_rewards_recruit_passcodes",
+   "note": "布告栏委托《招募密码专家》（Recruit Passcode Specialists）的奖励",
+   "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+   "ids": [
+    "BS_33_Var2",
+    "BS_37_Var2"
+   ],
+   "void_on_failed_quests": [
+    "Quest_Request_022"
+   ]
+  },
+  {
+   "key": "quest_rewards_drop_pod",
+   "note": "布告栏委托《慷慨的空投舱》（Generous Drop Pod）的耳饰奖励",
+   "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+   "ids": [
+    "Earring_008",
+    "Earring_008_Var2",
+    "Earring_014"
+   ],
+   "void_on_failed_quests": [
+    "Quest_Request_015"
+   ]
+  },
+  {
+   "key": "quest_rewards_end_of_nightmare",
+   "note": "支线《梦魇的终结》（End of the Nightmare）相关记录",
+   "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+   "ids": [
+    "Item_Records_DED20_Memory_13"
+   ],
+   "void_on_failed_quests": [
+    "Quest_Sub_022"
+   ]
+  },
+  {
+   "key": "quest_rewards_taboo",
+   "note": "支线《禁忌》（Taboo）相关记录",
+   "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+   "ids": [
+    "Item_Records_DED20_Memory_14"
+   ],
+   "void_on_failed_quests": [
+    "Quest_Sub_028"
    ]
   }
  ]

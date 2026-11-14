@@ -61,12 +61,12 @@ Lily's Outfits offer both a **Cycle matrix** and a **List** view. The matrix mak
 
 - An item counts as obtained if any of its aliases appears in the save's item set, an alias derived from achievement records, or an album achievement alias (`Ach_Album_Unlock_*`). Album entries are unlocked through their corresponding achievements.
 - The app reads `NewGamePlusPlayCount` from the save to determine whether to label an item "Requires NG+" or "Requires NG++".
-- Based on community resources, 211 entries are marked as missable. These include items in Xion (locked after completing Abyss Levoire), Eidos 9 (available once Lily's progress reaches 100%), and side-quest and bulletin-board request rewards.
-  The app combines them with the save's quest state and resolves 190 entries as "missed" or "still available".
-  When no rule exists or an older save has no quest data, it shows "Missable (mind the checkpoint)" and never reports a false "missed".
+- Based on community resources, 211 entries are marked as missable. These include items in Xion (locked after completing Abyss Levoire), Eidos 9 (available once Lily's progress reaches 100%, lost after "Last Fragment"), and side-quest and bulletin-board request rewards.
+  The app combines them with the save's quest state and resolves all 211 entries as "missed" or "still available"; quest rewards become missed when their source quest fails.
+  When an older save has no quest data, it shows "Missable (mind the checkpoint)" and never reports a false "missed".
   See [Save parsing and judgments](../reference/data.md#save-parsing-and-judgments).
 - DLC entries are marked as limited by default; declaring owned DLC in **Settings → Owned DLC** removes that block.
-- Six entries have a mapping confidence of "Low (mapping unconfirmed)", all of them camps in Eidos 9.
+- There are no low-confidence mapping entries; the six Eidos 9 camps were confirmed from save coordinates.
   A category page may also report that "N more obtained aliases are not linked to catalog entries".
 
 The catalog contains 1019 entries in 17 categories: 808 collectibles across 13 categories, 77 gear entries and 12 exospines in the growth section, and 122 album entries.

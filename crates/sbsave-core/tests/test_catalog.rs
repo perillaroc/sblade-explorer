@@ -736,17 +736,32 @@ fn missable_rules_are_expanded_from_raw_data() {
         .as_ref()
         .expect("eidos rule");
     assert_eq!(eidos.requires_quests, vec!["Quest_Epic_Hidden".to_string()]);
+    assert_eq!(eidos.void_after_quests, vec!["Quest_Epic_12".to_string()]);
 
-    // quest_rewards is not enabled yet: statically missable, no rule.
-    assert!(index["BS_18"].missable);
-    assert!(index["BS_18"].missable_rule.is_none());
+    // Quest reward groups are keyed by the source quest's failure list.
+    let strange_signal = index["BS_18"]
+        .missable_rule
+        .as_ref()
+        .expect("strange signal rule");
+    assert_eq!(
+        strange_signal.void_on_failed_quests,
+        vec!["Quest_Request_038".to_string()]
+    );
+    let oblivion = index["Can_001"]
+        .missable_rule
+        .as_ref()
+        .expect("oblivion rule");
+    assert_eq!(
+        oblivion.void_on_failed_quests,
+        vec!["Quest_Sub_030".to_string()]
+    );
 
     let with_rule = catalog
         .items
         .iter()
-        .filter(|item| item.missable_rule.is_some())
+        .filter(|item| item.missable && item.missable_rule.is_some())
         .count();
-    assert_eq!(with_rule, 190);
+    assert_eq!(with_rule, 211);
 }
 
 #[test]

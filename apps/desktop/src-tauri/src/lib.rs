@@ -620,7 +620,7 @@ mod tests {
         assert_eq!(value["summary"]["missing_total"].as_u64(), Some(798));
         assert_eq!(value["summary"]["unmapped_aliases"].as_u64(), Some(3));
         assert_eq!(value["summary"]["missed_count"].as_u64(), Some(154));
-        assert_eq!(value["summary"]["missable_open_count"].as_u64(), Some(29));
+        assert_eq!(value["summary"]["missable_open_count"].as_u64(), Some(45));
         assert!(value["categories"]
             .as_array()
             .is_some_and(|categories| categories.len() == 17));

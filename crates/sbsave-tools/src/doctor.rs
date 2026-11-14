@@ -550,6 +550,6 @@ mod tests {
         assert!(report.quality.duplicate_aliases.is_empty(), "{report:?}");
         assert!(report.ok(), "{:?}", report.strict_failures);
         assert_eq!(report.rules.missable_total, 211);
-        assert_eq!(report.rules.missable_without_rule, 21);
+        assert_eq!(report.rules.missable_without_rule, 0);
     }
 }

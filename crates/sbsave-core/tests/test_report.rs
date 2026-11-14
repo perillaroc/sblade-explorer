@@ -360,7 +360,8 @@ fn report_adds_missable_state_without_removing_old_fields() {
     let dict = analysis_to_dict(&analysis, false);
 
     assert!(dict["summary"]["missed_count"].as_u64().unwrap() > 0);
-    assert_eq!(dict["summary"]["missable_open_count"].as_u64(), Some(0));
+    // Quest reward groups stay open until their quest fails.
+    assert!(dict["summary"]["missable_open_count"].as_u64().unwrap() > 0);
 
     let item = missing_item(&dict, "cans", "Can_009");
     assert_eq!(item["missable"], true);

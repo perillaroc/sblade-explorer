@@ -362,6 +362,22 @@ fn eidos9_items_open_after_hidden_quest_started() {
 }
 
 #[test]
+fn eidos9_items_missed_after_last_fragment() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = with_quests(
+        make_save(&[], &[], 0),
+        &["Quest_Epic_12"],
+        &[],
+        &["Quest_Epic_Hidden"],
+    );
+    let result = analyze(&save, &catalog, None);
+    let status = status_for(&result, "Item_Records_DED40_Memory_01");
+
+    assert_eq!(status.missable_state, MissableState::Missed);
+    assert_eq!(status.reason, Some(BlockReason::Missed));
+}
+
+#[test]
 fn eidos9_items_stay_unknown_before_hidden_quest() {
     let catalog = load_catalog(None).expect("catalog");
     let save = with_quests(make_save(&[], &[], 0), &["Quest_Epic_08"], &[], &[]);
@@ -376,16 +392,35 @@ fn eidos9_items_stay_unknown_before_hidden_quest() {
 }
 
 #[test]
-fn entries_without_rules_fall_back_to_unknown() {
+fn failed_quest_marks_reward_missed() {
     let catalog = load_catalog(None).expect("catalog");
-    let save = with_quests(make_save(&[], &[], 0), &["Quest_Epic_08"], &[], &[]);
+    let save = with_quests(
+        make_save(&[], &[], 0),
+        &[],
+        &["Quest_Request_038", "Quest_Sub_030"],
+        &[],
+    );
+    let result = analyze(&save, &catalog, None);
+
+    let request = status_for(&result, "BS_18");
+    assert_eq!(request.missable_state, MissableState::Missed);
+    assert_eq!(request.reason, Some(BlockReason::Missed));
+
+    let oblivion = status_for(&result, "Can_001");
+    assert_eq!(oblivion.missable_state, MissableState::Missed);
+    assert_eq!(oblivion.reason, Some(BlockReason::Missed));
+    assert!(result.missed_count() >= 2);
+}
+
+#[test]
+fn unfinished_quest_reward_stays_open() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = with_quests(make_save(&[], &[], 0), &[], &[], &["Quest_Request_038"]);
     let result = analyze(&save, &catalog, None);
     let status = status_for(&result, "BS_18");
 
-    assert!(status.item.missable);
-    assert_eq!(status.missable_state, MissableState::Unknown);
+    assert_eq!(status.missable_state, MissableState::Open);
     assert_eq!(status.reason, Some(BlockReason::Missable));
-    assert!(status.flags(Locale::Zh).iter().any(|flag| flag == "可错过"));
 }
 
 #[test]
