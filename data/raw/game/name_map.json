@@ -4297,6 +4297,30 @@
    "zh": "环形山",
    "en": "Crater"
   },
+  "ChangeState_ZoneEnv_DED40_EnvS_039_Camp": {
+   "zh": "中央立体停车场",
+   "en": "Central Parking Tower"
+  },
+  "ChangeState_ZoneEnv_DED40_EnvS_043_Camp": {
+   "zh": "水下城市",
+   "en": "Submerged City"
+  },
+  "ChangeState_ZoneEnv_DED40_EnvS_050_Camp": {
+   "zh": "倾颓的建筑",
+   "en": "Slanted Building"
+  },
+  "ChangeState_ZoneEnv_DED40_EnvS_054_Camp": {
+   "zh": "艺术工作室",
+   "en": "Atelier"
+  },
+  "ChangeState_ZoneEnv_DED40_EnvS_092_Camp": {
+   "zh": "岔路",
+   "en": "Forked Road"
+  },
+  "ChangeState_ZoneEnv_DED40_EnvS_096_Camp": {
+   "zh": "水下城市的空地",
+   "en": "Submerged City Empty Lot"
+  },
   "ChangeState_ZoneEnv_ME_01_EnvS_017_Camp": {
    "zh": "隐蔽所",
    "en": "Hideout"

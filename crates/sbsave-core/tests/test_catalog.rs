@@ -96,6 +96,26 @@ fn bayonetta_collab_entries_are_mapped() {
 }
 
 #[test]
+fn eidos9_camps_use_confirmed_rows() {
+    let catalog = load_catalog(None).expect("catalog");
+    let index = catalog.alias_index();
+    let parking = index["ChangeState_ZoneEnv_DED40_EnvS_039_Camp"];
+    assert_eq!(parking.name, "中央立体停车场");
+    assert_eq!(parking.name_en.as_deref(), Some("Central Parking Tower"));
+    assert_eq!(parking.confidence, "high");
+    assert_eq!(
+        index["ChangeState_ZoneEnv_DED40_EnvS_054_Camp"]
+            .name_en
+            .as_deref(),
+        Some("Atelier")
+    );
+    assert!(catalog
+        .by_category("camps")
+        .iter()
+        .all(|item| item.confidence == "high"));
+}
+
+#[test]
 fn gear_categories_are_growth_only() {
     let catalog = load_catalog(None).expect("catalog");
     assert_eq!(catalog.categories["gear"].section, "growth");
@@ -161,8 +181,8 @@ fn catalog_counts() {
         .iter()
         .filter(|item| item.confidence != "high")
         .count();
-    // 仅埃多斯9号 6 座营地的别名→行号仍为顺序推定（无存档坐标数据）
-    assert_eq!(low_confidence, 6);
+    // 埃多斯9号 6 座营地已用存档坐标确认行号，不再有低置信度条目
+    assert_eq!(low_confidence, 0);
 }
 
 #[test]

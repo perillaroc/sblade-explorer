@@ -2093,39 +2093,39 @@
   },
   {
    "alias": "ChangeState_ZoneEnv_DED40_EnvS_039_Camp",
-   "site_id": 246,
-   "confidence": "low",
-   "note": "无存档坐标数据；行号按成就解锁顺序推定（见 game/camp_alias_rows.json），游戏内核对前保持低置信度"
+   "site_id": 231,
+   "confidence": "high",
+   "note": "行号经存档坐标与 DED40_E_ItemS_* 邻近匹配确认（见 game/camp_alias_rows.json）"
   },
   {
    "alias": "ChangeState_ZoneEnv_DED40_EnvS_043_Camp",
-   "site_id": 225,
-   "confidence": "low",
-   "note": "无存档坐标数据；行号按成就解锁顺序推定（见 game/camp_alias_rows.json），游戏内核对前保持低置信度"
+   "site_id": 246,
+   "confidence": "high",
+   "note": "行号经存档坐标与 DED40_E_ItemS_* 邻近匹配确认（见 game/camp_alias_rows.json）"
   },
   {
    "alias": "ChangeState_ZoneEnv_DED40_EnvS_050_Camp",
    "site_id": 260,
-   "confidence": "low",
-   "note": "无存档坐标数据；行号按成就解锁顺序推定（见 game/camp_alias_rows.json），游戏内核对前保持低置信度"
+   "confidence": "high",
+   "note": "行号经存档坐标与 DED40_E_ItemS_* 邻近匹配确认（见 game/camp_alias_rows.json）"
   },
   {
    "alias": "ChangeState_ZoneEnv_DED40_EnvS_054_Camp",
-   "site_id": 253,
-   "confidence": "low",
-   "note": "无存档坐标数据；行号按成就解锁顺序推定（见 game/camp_alias_rows.json），游戏内核对前保持低置信度"
+   "site_id": 211,
+   "confidence": "high",
+   "note": "行号经存档坐标与 DED40_E_ItemS_* 邻近匹配确认（见 game/camp_alias_rows.json）"
   },
   {
    "alias": "ChangeState_ZoneEnv_DED40_EnvS_092_Camp",
-   "site_id": 231,
-   "confidence": "low",
-   "note": "无存档坐标数据；行号按成就解锁顺序推定（见 game/camp_alias_rows.json），游戏内核对前保持低置信度"
+   "site_id": 225,
+   "confidence": "high",
+   "note": "行号经存档坐标与 DED40_E_ItemS_* 邻近匹配确认（见 game/camp_alias_rows.json）"
   },
   {
    "alias": "ChangeState_ZoneEnv_DED40_EnvS_096_Camp",
-   "site_id": 211,
-   "confidence": "low",
-   "note": "无存档坐标数据；行号按成就解锁顺序推定（见 game/camp_alias_rows.json），游戏内核对前保持低置信度"
+   "site_id": 253,
+   "confidence": "high",
+   "note": "行号经存档坐标与 DED40_E_ItemS_* 邻近匹配确认（见 game/camp_alias_rows.json）"
   },
   {
    "alias": "ChangeState_ZoneEnv_ME_01_EnvS_017_Camp",

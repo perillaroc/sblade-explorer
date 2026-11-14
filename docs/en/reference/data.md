@@ -33,7 +33,9 @@ All data is bundled with the app, which does not connect to the internet at runt
 - An item counts as obtained if any of its `aliases` appears in the save's item set, an alias derived from achievement records, or an album achievement alias.
 - The app reads `NewGamePlusPlayCount` from the save to determine whether to label an item "Requires NG+" or "Requires NG++".
 - Records, passcodes, cans, design patterns, and appearance items use official Simplified Chinese names extracted from game data and are marked `confidence="high"`.
-  Only the six camps in Eidos 9 still have their aliases mapped to `ZoneCampTable` rows by sequence because the save contains no coordinates for them. They retain low confidence and are marked "Mapping unconfirmed".
+  All camp aliases are now mapped to `ZoneCampTable` rows with confidence; the six Eidos 9 camps were matched by
+  proximity (138–719 units) between `DataMap_SBEnv.ZoneEnvStorageList` coordinates in the local save and each row's
+  `CoinSpawnPointName` position. No low-confidence entries remain.
 - Aliases for repeatedly collected copies of a record (for example, `Item_Records_Xion_Memory_14_1`) are merged into the base entry.
   The game database (`AlbumTable`) contains only one entry per record; copy aliases represent repeated pickups. After merging, the 300 record entries match the game database.
 - Missable entries are maintained in `data/raw/missable.json`, covering Xion, Eidos 9, and side-quest and bulletin-board request rewards.
@@ -168,7 +170,7 @@ For the complete rules, see [data/raw/README.md](https://github.com/perillaroc/s
 ## Regression checks
 
 - The catalog contains 1019 entries in 17 categories: 808 collectibles across 13 categories, 77 gear entries and 12 exospine entries in the growth section, and 122 album entries (67 Naytiba and 55 character pages).
-  This includes 130 Nano Suits, 49 Cans, 89 Camps, and 6 low-confidence entries.
+  This includes 130 Nano Suits, 49 Cans, 89 Camps, and 0 low-confidence entries.
 - All 808 collectibles, all 77 gear entries, and all 12 exospine entries include `obtain` and `obtain_zh`:
   35 fish entries from `fish_obtain.json`, 89 camp entries from the guide site's `description` and `obtain_camps.json`,
   8 version 1.5.0 crossover entries from manually written text in `crosswalk.json`, 77 gear entries from `api/i18n/obtain_gear.json`,
@@ -191,7 +193,7 @@ For the complete rules, see [data/raw/README.md](https://github.com/perillaroc/s
   The 186 Memory Sticks include their in-game menu order, and repeated-pickup copies are merged into base entries. All 23 passcodes include acquisition instructions from guides.
 - There are 211 entries with `missable`: 156 in Xion, 34 in Eidos 9 (including 6 camps), and 21 for other side-quest rewards and quest areas.
   190 of them carry a `missable_rule` (156 Xion, 34 Eidos 9); the other 21 keep only the static mark.
-  Results distinguish "missed / still available / unknown". The six camps in Eidos 9 also have low mapping confidence.
+  Results distinguish "missed / still available / unknown".
 - Regions and quests: `catalog.json` contains 12 `map_names` (`UI_RegionAlias_*`) and 89 `quest_titles`
   (`Quest_*_Title`); `quest_aliases.json` contains 117 quest aliases.
 - Of the 808 collectibles, 77 gear entries, and 12 exospines, 895 have built-in Chinese guide links (887 illustrated guides and 694 videos).

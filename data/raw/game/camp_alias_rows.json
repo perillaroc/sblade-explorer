@@ -1,7 +1,7 @@
 {
  "version": 1,
  "generated_by": "hand maintained (alias -> ZoneCampTable row)",
- "source": "Derived from the reference save (DataMap_SBEnv actor locations + ZoneEventItemStorageList coin spawn points, UIStorage red-dot camp order, SBAchievement unlock order) and ZoneCampTable; rows with confidence low are unverified guesses and are not merged into name_map.json",
+ "source": "Derived from the reference save (DataMap_SBEnv actor locations + ZoneEventItemStorageList coin spawn points, UIStorage red-dot camp order, SBAchievement unlock order) and ZoneCampTable; Eidos 9 aliases were matched to DEDA rows by proximity between DataMap_SBEnv env locations and the row CoinSpawnPointName spawn points in the local save",
  "aliases": {
   "ChangeState_ZoneEnv_ATL_01_EnvS_009_Camp": {
    "row": "ATL01_Camp_01",
@@ -160,40 +160,40 @@
    "detail": "proximity to DED30_E_ItemS_011 (99u)"
   },
   "ChangeState_ZoneEnv_DED40_EnvS_039_Camp": {
-   "row": "DEDA_Camp_02",
-   "confidence": "low",
-   "method": "order-guess",
-   "detail": "no game data; positional guess (Eidos 9)"
+   "row": "DEDA_Camp_01",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to DED40_E_ItemS_024 (241u)"
   },
   "ChangeState_ZoneEnv_DED40_EnvS_043_Camp": {
-   "row": "DEDA_Camp_05",
-   "confidence": "low",
-   "method": "order-guess",
-   "detail": "no game data; positional guess (Eidos 9)"
+   "row": "DEDA_Camp_02",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to DED40_E_ItemS_025 (719u)"
   },
   "ChangeState_ZoneEnv_DED40_EnvS_050_Camp": {
    "row": "DEDA_Camp_03",
-   "confidence": "low",
-   "method": "order-guess",
-   "detail": "no game data; positional guess (Eidos 9)"
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to DED40_E_ItemS_026 (223u)"
   },
   "ChangeState_ZoneEnv_DED40_EnvS_054_Camp": {
-   "row": "DEDA_Camp_06",
-   "confidence": "low",
-   "method": "order-guess",
-   "detail": "no game data; positional guess (Eidos 9)"
+   "row": "DEDA_Camp_04",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to DED40_E_ItemS_027 (356u)"
   },
   "ChangeState_ZoneEnv_DED40_EnvS_092_Camp": {
-   "row": "DEDA_Camp_01",
-   "confidence": "low",
-   "method": "order-guess",
-   "detail": "no game data; positional guess (Eidos 9)"
+   "row": "DEDA_Camp_05",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to DED40_E_ItemS_058 (267u)"
   },
   "ChangeState_ZoneEnv_DED40_EnvS_096_Camp": {
-   "row": "DEDA_Camp_04",
-   "confidence": "low",
-   "method": "order-guess",
-   "detail": "no game data; positional guess (Eidos 9)"
+   "row": "DEDA_Camp_06",
+   "confidence": "high",
+   "method": "proximity",
+   "detail": "proximity to DED40_E_ItemS_059 (138u)"
   },
   "ChangeState_ZoneEnv_ME_01_EnvS_017_Camp": {
    "row": "ME01_Camp_01",

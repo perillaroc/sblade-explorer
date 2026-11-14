@@ -38,10 +38,11 @@ and are displayed separately in reports and the app, so they do not affect catal
 
 ## What does "Mapping unconfirmed" mean?
 
-It means the name/alias mapping for an entry has low confidence. This currently applies to six entries, all camps in Eidos 9.
-Because the save contains no coordinates for these camps, their aliases are matched to table rows based on achievement order.
-This does not affect whether an item is detected as obtained. If you find a missing or incorrectly mapped entry, you can correct it with a custom catalog.
-See [Data sources & catalog](../reference/data.md#custom-catalog).
+It means the name/alias mapping for an entry has low confidence. The catalog currently has **no** low-confidence entries:
+the six Eidos 9 camps were confirmed by matching save coordinates from `DataMap_SBEnv.ZoneEnvStorageList` with each
+table row's `CoinSpawnPointName` position. If you still see the mark with an older or custom catalog, that entry has
+not been confirmed; it does not affect whether the item is detected as obtained.
+See [Data sources & catalog](../reference/data.md#custom-catalog) for how to correct it.
 
 ## How do I fix missing or incorrect entries?
 

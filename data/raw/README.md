@@ -49,10 +49,10 @@
 - Steam《剑星》1.5.0 更新公告和 `Game.locres`（zh-Hans/en）：提供蓓优妮塔联动 8 件收集物
   （4 件纳米战衣、2 个眼镜、2 个耳饰）的官方中英文名称；攻略站尚未收录这些物品，因此通过
   `crosswalk.json` 中省略 `site_id` 的手工条目入库；
-- 参考存档（100% 完成度）的 `DataMap_SBEnv`（别名和事件点坐标）、`UIStorage` 红点营地顺序、
+- 参考存档与本机存档的 `DataMap_SBEnv`（别名和事件点坐标）、`UIStorage` 红点营地顺序、
   `SBAchievement` 成就顺序，以及 `ZoneCampTable` 的 `CoinSpawnPointName`：用于建立数据表未直接关联的
-  营地别名与行号对照（`game/camp_alias_rows.json`；坐标法 36 条、区域内排除法 17 条、
-  埃多斯9号 6 条按顺序推定并保持低置信度）；
+  营地别名与行号对照（`game/camp_alias_rows.json`；坐标法 42 条，其中埃多斯9号 6 条用
+  `ZoneEnvStorageList` 坐标与 `CoinSpawnPointName` 邻近匹配；区域内排除法 17 条）；
 - <https://www.gamersky.com>（《剑星》全收集攻略、全饮料罐、全钓鱼点、全宝箱密码等）和
   <https://www.bilibili.com>（喂狗组-文轩「剑星全收集」分 P 视频）：`guides.json` 中的中文攻略链接；
   只有在桌面端点击按钮时才会通过系统浏览器打开，程序运行时不会联网；
@@ -114,7 +114,7 @@ cargo run -p sbsave-tools -- mine-names `
 （已在 .gitignore 中忽略），解包 `Game.{zh-Hans,en}.locres`，然后生成
 `data/raw/game/name_map.json`（包含 `items`、`camps` 和 `album` 三段）。
 对于数据表未直接关联的营地，程序根据 `data/raw/game/camp_alias_rows.json` 中的别名与行号对照补充名称，
-跳过置信度为 `low` 的条目，对应条目在目录库中保持低置信度。
+跳过置信度为 `low` 的条目（当前为 0 条），对应条目在目录库中保持低置信度。
 也可以先使用 `retoc` 或 `cue4parse` 自行导出，再通过 `--dump 目录` 离线运行。
 
 > `repak` 解包使用 Oodle 压缩的 pak 时需要 `oo2core_9_win64.dll`，将其放在 tools 目录即可。

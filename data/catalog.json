@@ -19972,11 +19972,46 @@
   },
   {
    "id": "ChangeState_ZoneEnv_DED40_EnvS_039_Camp",
-   "name": "大沙漠4 营地 #39",
-   "name_en": "ChangeState_ZoneEnv_DED40_EnvS_039_Camp",
+   "name": "中央立体停车场",
+   "name_en": "Central Parking Tower",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_DED40_EnvS_039_Camp"
+   ],
+   "area": "大沙漠4",
+   "location": null,
+   "obtain": "When reaching the gated-off parking garage in Sector 2, continue down the nearby stairwell, and you'll eventually find a small makeshift camp.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": true,
+   "missable_rule": {
+    "requires_quests": [
+     "Quest_Epic_Hidden"
+    ]
+   },
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": null,
+   "location_zh": null,
+   "obtain_zh": "到达2号区域铁栅门后的停车场时，沿旁边的楼梯下去，最终会找到一座简易小营地。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·大沙漠",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"
+    }
+   }
+  },
+  {
+   "id": "ChangeState_ZoneEnv_DED40_EnvS_043_Camp",
+   "name": "水下城市",
+   "name_en": "Submerged City",
+   "category": "camps",
+   "aliases": [
+    "ChangeState_ZoneEnv_DED40_EnvS_043_Camp"
    ],
    "area": "大沙漠4",
    "location": null,
@@ -19989,9 +20024,9 @@
      "Quest_Epic_Hidden"
     ]
    },
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "一进入水下城市区域即可在左侧看到。乘坐停车楼后方小岛蛹茧战斗路线上的红色过山车即可到达该区域。",
@@ -20006,44 +20041,9 @@
    }
   },
   {
-   "id": "ChangeState_ZoneEnv_DED40_EnvS_043_Camp",
-   "name": "大沙漠4 营地 #43",
-   "name_en": "ChangeState_ZoneEnv_DED40_EnvS_043_Camp",
-   "category": "camps",
-   "aliases": [
-    "ChangeState_ZoneEnv_DED40_EnvS_043_Camp"
-   ],
-   "area": "大沙漠4",
-   "location": null,
-   "obtain": "After killing the first 3 Cocoons, and on your way to the objective, just after Adam tells you there's 6 more, there's a camp on the left.",
-   "ng_plus": 0,
-   "dlc": null,
-   "missable": true,
-   "missable_rule": {
-    "requires_quests": [
-     "Quest_Epic_Hidden"
-    ]
-   },
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
-   "area_zh": null,
-   "location_zh": null,
-   "obtain_zh": "击败前 3 个蛹茧后，在前往目标的路上——亚当告诉你还剩 6 个之后，左侧有一座营地。",
-   "record_type": null,
-   "record_type_zh": null,
-   "record_type_en": null,
-   "guides": {
-    "web": {
-     "title": "游民星空《剑星》全收集攻略·大沙漠",
-     "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"
-    }
-   }
-  },
-  {
    "id": "ChangeState_ZoneEnv_DED40_EnvS_050_Camp",
-   "name": "大沙漠4 营地 #50",
-   "name_en": "ChangeState_ZoneEnv_DED40_EnvS_050_Camp",
+   "name": "倾颓的建筑",
+   "name_en": "Slanted Building",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_DED40_EnvS_050_Camp"
@@ -20059,9 +20059,9 @@
      "Quest_Epic_Hidden"
     ]
    },
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "在爬上高楼前往六个蛹茧之一时，到达楼顶前梯子的左侧有一座小营地。",
@@ -20077,81 +20077,11 @@
   },
   {
    "id": "ChangeState_ZoneEnv_DED40_EnvS_054_Camp",
-   "name": "大沙漠4 营地 #54",
-   "name_en": "ChangeState_ZoneEnv_DED40_EnvS_054_Camp",
+   "name": "艺术工作室",
+   "name_en": "Atelier",
    "category": "camps",
    "aliases": [
     "ChangeState_ZoneEnv_DED40_EnvS_054_Camp"
-   ],
-   "area": "大沙漠4",
-   "location": null,
-   "obtain": "Found while climbing up the skyscraper in the Submerged City. It's just down the ladder from the Corruptor and Dozer duo boss fight.",
-   "ng_plus": 0,
-   "dlc": null,
-   "missable": true,
-   "missable_rule": {
-    "requires_quests": [
-     "Quest_Epic_Hidden"
-    ]
-   },
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
-   "area_zh": null,
-   "location_zh": null,
-   "obtain_zh": "在攀登水下城市的摩天大楼时找到。就在腐蚀者与推土机双首领战之后的梯子下方。",
-   "record_type": null,
-   "record_type_zh": null,
-   "record_type_en": null,
-   "guides": {
-    "web": {
-     "title": "游民星空《剑星》全收集攻略·大沙漠",
-     "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"
-    }
-   }
-  },
-  {
-   "id": "ChangeState_ZoneEnv_DED40_EnvS_092_Camp",
-   "name": "大沙漠4 营地 #92",
-   "name_en": "ChangeState_ZoneEnv_DED40_EnvS_092_Camp",
-   "category": "camps",
-   "aliases": [
-    "ChangeState_ZoneEnv_DED40_EnvS_092_Camp"
-   ],
-   "area": "大沙漠4",
-   "location": null,
-   "obtain": "When reaching the gated-off parking garage in Sector 2, continue down the nearby stairwell, and you'll eventually find a small makeshift camp.",
-   "ng_plus": 0,
-   "dlc": null,
-   "missable": true,
-   "missable_rule": {
-    "requires_quests": [
-     "Quest_Epic_Hidden"
-    ]
-   },
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
-   "area_zh": null,
-   "location_zh": null,
-   "obtain_zh": "到达2号区域铁栅门后的停车场时，沿旁边的楼梯下去，最终会找到一座简易小营地。",
-   "record_type": null,
-   "record_type_zh": null,
-   "record_type_en": null,
-   "guides": {
-    "web": {
-     "title": "游民星空《剑星》全收集攻略·大沙漠",
-     "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"
-    }
-   }
-  },
-  {
-   "id": "ChangeState_ZoneEnv_DED40_EnvS_096_Camp",
-   "name": "大沙漠4 营地 #96",
-   "name_en": "ChangeState_ZoneEnv_DED40_EnvS_096_Camp",
-   "category": "camps",
-   "aliases": [
-    "ChangeState_ZoneEnv_DED40_EnvS_096_Camp"
    ],
    "area": "大沙漠4",
    "location": null,
@@ -20164,12 +20094,82 @@
      "Quest_Epic_Hidden"
     ]
    },
-   "note": "按内部 ID 生成名称；位置请参考攻略同区域营地列表",
-   "confidence": "low",
-   "source": null,
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
    "area_zh": null,
    "location_zh": null,
    "obtain_zh": "沿轨道车前进，跳过漂浮的集装箱，朝远处的大花园前进。到达艺术工作室后沿路绕行，在进入室内前会看到路边的营地。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·大沙漠",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"
+    }
+   }
+  },
+  {
+   "id": "ChangeState_ZoneEnv_DED40_EnvS_092_Camp",
+   "name": "岔路",
+   "name_en": "Forked Road",
+   "category": "camps",
+   "aliases": [
+    "ChangeState_ZoneEnv_DED40_EnvS_092_Camp"
+   ],
+   "area": "大沙漠4",
+   "location": null,
+   "obtain": "After killing the first 3 Cocoons, and on your way to the objective, just after Adam tells you there's 6 more, there's a camp on the left.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": true,
+   "missable_rule": {
+    "requires_quests": [
+     "Quest_Epic_Hidden"
+    ]
+   },
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": null,
+   "location_zh": null,
+   "obtain_zh": "击败前 3 个蛹茧后，在前往目标的路上——亚当告诉你还剩 6 个之后，左侧有一座营地。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·大沙漠",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"
+    }
+   }
+  },
+  {
+   "id": "ChangeState_ZoneEnv_DED40_EnvS_096_Camp",
+   "name": "水下城市的空地",
+   "name_en": "Submerged City Empty Lot",
+   "category": "camps",
+   "aliases": [
+    "ChangeState_ZoneEnv_DED40_EnvS_096_Camp"
+   ],
+   "area": "大沙漠4",
+   "location": null,
+   "obtain": "Found while climbing up the skyscraper in the Submerged City. It's just down the ladder from the Corruptor and Dozer duo boss fight.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": true,
+   "missable_rule": {
+    "requires_quests": [
+     "Quest_Epic_Hidden"
+    ]
+   },
+   "note": "名称来自游戏营地数据（zh-Hans 本地化）",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": null,
+   "location_zh": null,
+   "obtain_zh": "在攀登水下城市的摩天大楼时找到。就在腐蚀者与推土机双首领战之后的梯子下方。",
    "record_type": null,
    "record_type_zh": null,
    "record_type_en": null,
