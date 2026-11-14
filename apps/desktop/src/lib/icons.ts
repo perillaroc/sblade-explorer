@@ -1,4 +1,5 @@
 import {
+  Bone,
   Bug,
   CupSoda,
   Fish,
@@ -38,6 +39,7 @@ const CATEGORY_ICONS: Record<string, LucideIcon> = {
   naytiba: Bug,
   characters: Users,
   gear: Wrench,
+  exospines: Bone,
 };
 
 export const SUMMARY_ICON = LayoutDashboard;

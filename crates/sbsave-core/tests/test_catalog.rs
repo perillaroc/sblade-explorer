@@ -124,10 +124,33 @@ fn gear_categories_are_growth_only() {
 }
 
 #[test]
+fn exospines_are_matched_by_game_name() {
+    let catalog = load_catalog(None).expect("catalog");
+    assert_eq!(catalog.categories["exospines"].section, "growth");
+    let exospines = catalog.by_category("exospines");
+    assert_eq!(exospines.len(), 12);
+    assert!(exospines.iter().all(|item| !item.missable));
+
+    let index = catalog.alias_index();
+    let combo = index["PT_Combo"];
+    assert_eq!(combo.name, "“连锁反应”型辅助脊椎");
+    assert_eq!(combo.name_en.as_deref(), Some("Chain-Type Exospine"));
+    assert_eq!(
+        combo.aliases,
+        vec!["PT_Combo".to_string(), "PT_Combo_MK2".to_string()]
+    );
+    // Guide spelling "Judgement" is normalized to the game's "Judgment".
+    assert_eq!(
+        index["PT_Tachy"].name_en.as_deref(),
+        Some("Judgment-Type Exospine")
+    );
+}
+
+#[test]
 fn catalog_counts() {
     let catalog = load_catalog(None).expect("catalog");
-    assert_eq!(catalog.items.len(), 1007);
-    assert_eq!(catalog.categories.len(), 16);
+    assert_eq!(catalog.items.len(), 1019);
+    assert_eq!(catalog.categories.len(), 17);
     assert_eq!(catalog.by_category("nano_suits").len(), 130);
     assert_eq!(catalog.by_category("cans").len(), 49);
     assert_eq!(catalog.by_category("camps").len(), 89);
@@ -464,7 +487,7 @@ fn guide_links_cover_catalog() {
     }
     // 仅默认外观类条目没有可链接的攻略（发型：默认马尾与首领挑战奖励）
     assert_eq!(missing, ["Hair_000", "Hair_Nikke_01"]);
-    assert_eq!(with_web, 875);
+    assert_eq!(with_web, 887);
     assert_eq!(with_video, 694);
     let index = catalog.alias_index();
     let can = index["Can_011"].guides.as_ref().expect("can guides");
@@ -541,8 +564,8 @@ fn chinese_translations_cover_guide_text() {
         .iter()
         .filter(|item| item.obtain.is_some())
         .collect();
-    // 808 收集品 + 77 装备（成长区块）均带获取文案与中文翻译
-    assert_eq!(with_obtain.len(), 885);
+    // 808 收集品 + 77 装备 + 12 辅助脊椎（成长区块）均带获取文案与中文翻译
+    assert_eq!(with_obtain.len(), 897);
     let missing: Vec<&str> = with_obtain
         .iter()
         .filter(|item| item.obtain_zh.is_none())

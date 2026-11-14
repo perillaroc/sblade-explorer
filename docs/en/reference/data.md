@@ -167,15 +167,20 @@ For the complete rules, see [data/raw/README.md](https://github.com/perillaroc/s
 
 ## Regression checks
 
-- The catalog contains 1007 entries in 16 categories: 808 collectibles across 13 categories, 77 gear entries in the growth section, and 122 album entries (67 Naytiba and 55 character pages).
+- The catalog contains 1019 entries in 17 categories: 808 collectibles across 13 categories, 77 gear entries and 12 exospine entries in the growth section, and 122 album entries (67 Naytiba and 55 character pages).
   This includes 130 Nano Suits, 49 Cans, 89 Camps, and 6 low-confidence entries.
-- All 808 collectibles and all 77 gear entries include `obtain` and `obtain_zh`: 35 fish entries from `fish_obtain.json`,
-  89 camp entries from the guide site's `description` and `obtain_camps.json`, 8 version 1.5.0 crossover entries from manually written text in `crosswalk.json`,
-  and 77 gear entries from `api/i18n/obtain_gear.json`. Only the 122 album entries use the official `desc` instead, by design.
+- All 808 collectibles, all 77 gear entries, and all 12 exospine entries include `obtain` and `obtain_zh`:
+  35 fish entries from `fish_obtain.json`, 89 camp entries from the guide site's `description` and `obtain_camps.json`,
+  8 version 1.5.0 crossover entries from manually written text in `crosswalk.json`, 77 gear entries from `api/i18n/obtain_gear.json`,
+  and 12 exospine entries from `api/i18n/obtain_exospines.json`. Only the 122 album entries use the official `desc` instead, by design.
 - Gear affixes: the 77 pickup entries live in `section=growth` and **do not count toward catalog progress**.
   Aliases are derived from the in-game English name plus the star rating (`Gear_*_Common` / `_Uncommon` / `_Rare`);
   the upgraded `_MK2` alias is attached to the same entry, so upgrading still counts as obtained (154 aliases total).
   Gear never carries the missable mark.
+- Exospines: 12 entries live in `section=growth` and **do not count toward catalog progress**. Guide titles match the in-game
+  English names (`Judgement` is normalized to the official `Judgment`); `PT_*` and `PT_*_MK2` share one entry (24 aliases).
+  Obtained status comes from the save's `ItemEnhanceState.ExospineEnhanceStateMap` (actor data plus NG+ base data), not the
+  inventory; exospines never carry the missable mark.
 - Albums are stored by page: Naytiba groups contain 12/36/10/6/3 entries, and characters contain 55 pages (Adam 5, Tachy 3, Mother Sphere 1).
   Every entry includes `desc_zh` and `desc_en` and has no built-in guide links.
 - All 300 records include an in-game type (186 Memory Sticks and 114 Documents) and acquisition instructions from guides.
@@ -185,6 +190,6 @@ For the complete rules, see [data/raw/README.md](https://github.com/perillaroc/s
   Results distinguish "missed / still available / unknown". The six camps in Eidos 9 also have low mapping confidence.
 - Regions and quests: `catalog.json` contains 12 `map_names` (`UI_RegionAlias_*`) and 89 `quest_titles`
   (`Quest_*_Title`); `quest_aliases.json` contains 117 quest aliases.
-- Of the 808 collectibles and 77 gear entries, 883 have built-in Chinese guide links (875 illustrated guides and 694 videos).
+- Of the 808 collectibles, 77 gear entries, and 12 exospines, 895 have built-in Chinese guide links (887 illustrated guides and 694 videos).
   The default ponytail and boss-challenge rewards in Hairstyles have no built-in links, but you can use **Search image guides** or **Search video guides**.
   All links use HTTPS and domains on the allowlist.

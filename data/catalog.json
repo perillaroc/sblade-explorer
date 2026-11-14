@@ -121,6 +121,13 @@
    "name_en": "Gear",
    "order": 160,
    "section": "growth"
+  },
+  {
+   "key": "exospines",
+   "name": "辅助脊椎",
+   "name_en": "Exospines",
+   "order": 170,
+   "section": "growth"
   }
  ],
  "items": [
@@ -27523,6 +27530,378 @@
    "area_zh": "尖塔4",
    "location_zh": "高轨道空间站",
    "obtain_zh": "击败高轨道站的首领后掉落。受到的伤害越高，爆发能量充能效率越高（4）。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·4号高塔",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_37.shtml"
+    }
+   }
+  },
+  {
+   "id": "PT_Combo",
+   "name": "“连锁反应”型辅助脊椎",
+   "name_en": "Chain-Type Exospine",
+   "category": "exospines",
+   "aliases": [
+    "PT_Combo",
+    "PT_Combo_MK2"
+   ],
+   "area": "Eidos 7",
+   "location": "Parking Tower",
+   "obtain": "Found in a case on the 2nd floor of the parking tower, in the corner next to the stacked wooden crates.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；获得判定来自存档的辅助脊椎强化状态",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "埃多斯7号",
+   "location_zh": "停车塔",
+   "obtain_zh": "在停车塔 2 楼、堆叠木箱旁的角落，箱子里。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·立体停车场",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_2.shtml"
+    }
+   }
+  },
+  {
+   "id": "PT_Grenade",
+   "name": "“掷弹兵”型辅助脊椎",
+   "name_en": "Grenadier-Type Exospine",
+   "category": "exospines",
+   "aliases": [
+    "PT_Grenade",
+    "PT_Grenade_MK2"
+   ],
+   "area": "Eidos 7",
+   "location": "Flooded Commercial Sector",
+   "obtain": "On the northern side of the plaza is a walkway. At the end is a crate with this Exospine in it.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；获得判定来自存档的辅助脊椎强化状态",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "埃多斯7号",
+   "location_zh": "淹水商业区",
+   "obtain_zh": "广场北侧有一条通道，尽头的箱子内。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·淹水商业区",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_3.shtml"
+    }
+   }
+  },
+  {
+   "id": "PT_Survive",
+   "name": "“防护”型辅助脊椎",
+   "name_en": "Protection-Type Exospine",
+   "category": "exospines",
+   "aliases": [
+    "PT_Survive",
+    "PT_Survive_MK2"
+   ],
+   "area": "Eidos 7",
+   "location": "Construction Zone",
+   "obtain": "In the northwest corner (to the right of the elevator and up the shipping crates). Pretty much above the Locked Supply Chest.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；获得判定来自存档的辅助脊椎强化状态",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "埃多斯7号",
+   "location_zh": "施工区",
+   "obtain_zh": "在施工区西北角（电梯右侧，爬上货箱），就在上锁补给箱的上方。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·工地",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_5.shtml"
+    }
+   }
+  },
+  {
+   "id": "PT_Stab",
+   "name": "“伪装”型辅助脊椎",
+   "name_en": "Camouflage-Type Exospine",
+   "category": "exospines",
+   "aliases": [
+    "PT_Stab",
+    "PT_Stab_MK2"
+   ],
+   "area": "Wasteland",
+   "location": "Barren Lands",
+   "obtain": "At the top of the Solar Tower, in the western area of the Wasteland.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；获得判定来自存档的辅助脊椎强化状态",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "废土",
+   "location_zh": "荒芜之地",
+   "obtain_zh": "废土太阳塔顶部的西侧区域。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·废土",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_13.shtml"
+    }
+   }
+  },
+  {
+   "id": "PT_Crowd",
+   "name": "“强力冲击”型辅助脊椎",
+   "name_en": "Impact-Type Exospine",
+   "category": "exospines",
+   "aliases": [
+    "PT_Crowd",
+    "PT_Crowd_MK2"
+   ],
+   "area": "Wasteland",
+   "location": "Barren Lands",
+   "obtain": "Defeat the three waves of enemies in the small arena to the north of the Robot and you'll find this in the case at the end.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；获得判定来自存档的辅助脊椎强化状态",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "废土",
+   "location_zh": "荒芜之地",
+   "obtain_zh": "击败机械人北侧小竞技场的三波敌人后，尽头的箱子内。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·废土",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_13.shtml"
+    }
+   }
+  },
+  {
+   "id": "PT_Shoot",
+   "name": "“鹰眼”型辅助脊椎",
+   "name_en": "Eagle Eye-Type Exospine",
+   "category": "exospines",
+   "aliases": [
+    "PT_Shoot",
+    "PT_Shoot_MK2"
+   ],
+   "area": "Wasteland",
+   "location": "Great Canyon",
+   "obtain": "To the right of the lift that leads down towards the main mission objective.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；获得判定来自存档的辅助脊椎强化状态",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "废土",
+   "location_zh": "大峡谷",
+   "obtain_zh": "通往主线目标的下行升降梯右侧。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·废土",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_13.shtml"
+    }
+   }
+  },
+  {
+   "id": "PT_Guard",
+   "name": "“本能反应”型辅助脊椎",
+   "name_en": "Reflex-Type Exospine",
+   "category": "exospines",
+   "aliases": [
+    "PT_Guard",
+    "PT_Guard_MK2"
+   ],
+   "area": "Matrix 11",
+   "location": "Closed Off Platform",
+   "obtain": "In the front of the train carriage that just flew down the tracks and crashed.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；获得判定来自存档的辅助脊椎强化状态",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "矩阵11",
+   "location_zh": "封锁站台",
+   "obtain_zh": "刚从轨道上冲下坠毁的列车车厢前部。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·11号矩阵",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"
+    }
+   }
+  },
+  {
+   "id": "PT_Burst",
+   "name": "“爆发出神”型辅助脊椎",
+   "name_en": "Burst Trance-Type Exospine",
+   "category": "exospines",
+   "aliases": [
+    "PT_Burst",
+    "PT_Burst_MK2"
+   ],
+   "area": "Matrix 11",
+   "location": "Underground Sewer",
+   "obtain": "Head north and then west into a small room. The chest with this item is inside.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；获得判定来自存档的辅助脊椎强化状态",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "矩阵11",
+   "location_zh": "地下下水道",
+   "obtain_zh": "向北再向西进入小房间，宝箱内。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·11号矩阵",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"
+    }
+   }
+  },
+  {
+   "id": "PT_Skill",
+   "name": "“贝塔出神”型辅助脊椎",
+   "name_en": "Beta Trance-Type Exospine",
+   "category": "exospines",
+   "aliases": [
+    "PT_Skill",
+    "PT_Skill_MK2"
+   ],
+   "area": "Matrix 11",
+   "location": "Rotten Labyrinth",
+   "obtain": "Head east from the main junction and destroy the two planks (and 3 enemies). The box with this Exospine is straight ahead.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；获得判定来自存档的辅助脊椎强化状态",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "矩阵11",
+   "location_zh": "腐朽迷宫",
+   "obtain_zh": "从主路口向东，破坏两块木板（并击败 3 名敌人），正前方的箱子内。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·11号矩阵",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"
+    }
+   }
+  },
+  {
+   "id": "PT_Recovery",
+   "name": "“恢复”型辅助脊椎",
+   "name_en": "Recovery-Type Exospine",
+   "category": "exospines",
+   "aliases": [
+    "PT_Recovery",
+    "PT_Recovery_MK2"
+   ],
+   "area": "Great Desert",
+   "location": "Solar Tower",
+   "obtain": "Just slightly north of the previous memorystick. On the metal walkway of the overpass.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；获得判定来自存档的辅助脊椎强化状态",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "大沙漠",
+   "location_zh": "太阳塔",
+   "obtain_zh": "在上一条记忆棒稍北、高架路的金属步道上。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·大沙漠",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"
+    }
+   }
+  },
+  {
+   "id": "PT_Down",
+   "name": "“碾压”型辅助脊椎",
+   "name_en": "Suppression-Type Exospine",
+   "category": "exospines",
+   "aliases": [
+    "PT_Down",
+    "PT_Down_MK2"
+   ],
+   "area": "Great Desert",
+   "location": "Northern Great Desert",
+   "obtain": "Slightly northeast of the Legion Camp is a platform with two Turret Droids on it. The crate with this Exospine is in, is on there",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；获得判定来自存档的辅助脊椎强化状态",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "大沙漠",
+   "location_zh": "大沙漠北部",
+   "obtain_zh": "军团营地东北方、两台炮台机兵所在的平台上，箱子内。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·大沙漠",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"
+    }
+   }
+  },
+  {
+   "id": "PT_Tachy",
+   "name": "“审判”型辅助脊椎",
+   "name_en": "Judgment-Type Exospine",
+   "category": "exospines",
+   "aliases": [
+    "PT_Tachy",
+    "PT_Tachy_MK2"
+   ],
+   "area": "Spire 4",
+   "location": "Space Logistics Complex",
+   "obtain": "Put the 4 balls in their respective holes in the first open area and this will literally drop out of the sky. Well, the container it's in will.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；获得判定来自存档的辅助脊椎强化状态",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "尖塔4",
+   "location_zh": "太空物流综合体",
+   "obtain_zh": "在第一个开阔区域把 4 个球放入对应孔位，装它的容器会从空中落下。",
    "record_type": null,
    "record_type_zh": null,
    "record_type_en": null,

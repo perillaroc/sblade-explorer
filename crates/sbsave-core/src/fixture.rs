@@ -62,6 +62,8 @@ pub struct SyntheticSave {
     pub completed_quests: Vec<String>,
     pub failed_quests: Vec<String>,
     pub active_quests: Vec<String>,
+    /// `PT_*` / `PT_*_MK2` keys of `ItemEnhanceState.ExospineEnhanceStateMap`.
+    pub exospines: Vec<String>,
     pub quest_map: QuestMapShape,
     pub map_name: String,
     pub ng_plus_count: i32,
@@ -111,6 +113,7 @@ impl Default for SyntheticSave {
                 "Quest_Epic_Hidden".to_string(),
                 "CQ_Public_ForceGreenDot".to_string(),
             ],
+            exospines: vec!["PT_Combo".to_string(), "PT_Survive".to_string()],
             quest_map: QuestMapShape::Normal,
             map_name: "E04".to_string(),
             ng_plus_count: 1,
@@ -224,12 +227,35 @@ impl SyntheticSave {
             ]),
         );
 
+        let exospine_entries: Vec<(Vec<u8>, Vec<u8>)> = self
+            .exospines
+            .iter()
+            .map(|alias| (fstr(alias), vec![0u8]))
+            .collect();
+        let enhance_state = struct_body(&[map_prop(
+            "ExospineEnhanceStateMap",
+            "NameProperty",
+            "BoolProperty",
+            &exospine_entries,
+        )]);
+        let actor = struct_body(&[struct_prop(
+            "ItemEnhanceState",
+            "SBActorItemEnhanceState",
+            &enhance_state,
+        )]);
+        let actor_map = map_prop(
+            "DataMap_SBActor",
+            "NameProperty",
+            "StructProperty",
+            &[(fstr("PlayerActor"), actor)],
+        );
+
         let mut payload = header();
         let mut properties = Vec::new();
         if let Some(quest_map) = quest_map {
             properties.push(quest_map);
         }
-        properties.extend([item_map, string_map, int_map, achievements, shop]);
+        properties.extend([item_map, string_map, int_map, achievements, shop, actor_map]);
         // Unknown properties must be ignored by the parser (new game fields).
         properties.push(str_prop("UnknownFixtureProperty", "ignored"));
         for property in properties {

@@ -25,7 +25,7 @@ const SOURCES: [&str; 6] = [
     "https://mapgenie.io + https://www.gamersky.com (in-game Data Bank order of memorysticks)",
 ];
 
-const CATEGORIES: [(&str, &str, &str, i64, &str); 16] = [
+const CATEGORIES: [(&str, &str, &str, i64, &str); 17] = [
     ("nano_suits", "纳米战衣", "Nano Suits", 10, "collection"),
     ("cans", "罐子", "Cans", 20, "collection"),
     (
@@ -72,6 +72,7 @@ const CATEGORIES: [(&str, &str, &str, i64, &str); 16] = [
     ("naytiba", "孽奇拔", "Naytiba", 140, "album"),
     ("characters", "角色", "Characters", 150, "album"),
     ("gear", "装备", "Gear", 160, "growth"),
+    ("exospines", "辅助脊椎", "Exospines", 170, "growth"),
 ];
 
 // In-game album (`AlbumTable`) groups used for the 孽奇拔 category order.
@@ -130,6 +131,9 @@ fn game_note(category: &str) -> Option<&'static str> {
         "design_patterns" => Some("图案名称来自游戏数据（zh-Hans 本地化）"),
         "gear" => {
             Some("名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备")
+        }
+        "exospines" => {
+            Some("名称来自游戏数据（zh-Hans 本地化）；获得判定来自存档的辅助脊椎强化状态")
         }
         _ => None,
     }
@@ -1896,6 +1900,88 @@ fn build_gear(
     Ok(items)
 }
 
+fn normalize_exospine_title(title: &str) -> String {
+    title
+        .to_ascii_lowercase()
+        .replace("judgement", "judgment")
+        .chars()
+        .filter(|character| character.is_ascii_alphanumeric())
+        .collect()
+}
+
+/// Exospines are unique items: the guide title matches the in-game English
+/// name (`Chain-Type Exospine` -> `PT_Combo`). The save records their state in
+/// `ItemEnhanceState.ExospineEnhanceStateMap`, so `PT_*` / `PT_*_MK2` are both
+/// attached to one entry (NG+ Mk2 still counts as the same exospine).
+fn build_exospines(
+    site: &BTreeMap<i64, SiteItem>,
+    game_names: &Value,
+    crosswalk: &Crosswalk,
+) -> Result<Vec<CatalogItem>, String> {
+    let items_map = game_names
+        .get("items")
+        .and_then(Value::as_object)
+        .ok_or_else(|| "name_map.json 缺少 items 映射".to_string())?;
+    let mut aliases_by_name: HashMap<String, String> = HashMap::new();
+    for (alias, entry) in items_map {
+        if !alias.starts_with("PT_") || alias.ends_with("_MK2") {
+            continue;
+        }
+        let Some(name_en) = entry.get("en").and_then(Value::as_str) else {
+            continue;
+        };
+        if !name_en.ends_with("Exospine") {
+            continue;
+        }
+        aliases_by_name.insert(normalize_exospine_title(name_en), alias.clone());
+    }
+
+    let mut ids: Vec<i64> = site
+        .iter()
+        .filter(|(_, item)| item.source_file == "upgrades__exospines.json")
+        .map(|(id, _)| *id)
+        .collect();
+    ids.sort_by_key(|id| site[id].order);
+
+    let mut items: Vec<CatalogItem> = Vec::new();
+    let mut matched: BTreeSet<String> = BTreeSet::new();
+    for site_id in ids {
+        let info = &site[&site_id];
+        let alias = aliases_by_name
+            .get(&normalize_exospine_title(&info.title))
+            .ok_or_else(|| {
+                format!(
+                    "攻略辅助脊椎条目未匹配到游戏名称: {}（site id {site_id}）",
+                    info.title
+                )
+            })?;
+        if !matched.insert(alias.clone()) {
+            return Err(format!(
+                "攻略辅助脊椎条目重复匹配: {}（{alias}）",
+                info.title
+            ));
+        }
+        let mut aliases = vec![alias.clone()];
+        let mk2 = format!("{alias}_MK2");
+        if items_map.contains_key(&mk2) {
+            aliases.push(mk2);
+        }
+        items.push(make_item(
+            alias.clone(),
+            info.title.clone(),
+            "exospines",
+            aliases,
+            Some(info),
+            "high",
+            Some(info.title.clone()),
+            None,
+            None,
+            &crosswalk.site_base_url,
+        ));
+    }
+    Ok(items)
+}
+
 fn build_camps(
     universe: &Value,
     crosswalk: &Crosswalk,
@@ -2478,6 +2564,7 @@ pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
     items.extend(build_camps(&universe, &crosswalk, &site)?);
     items.extend(build_appearance(&site, &crosswalk)?);
     items.extend(build_gear(&site, &game_names, &crosswalk)?);
+    items.extend(build_exospines(&site, &game_names, &crosswalk)?);
     items.extend(build_design_patterns(&site, &universe, &crosswalk));
     apply_game_names(&mut items, &game_names);
     apply_record_types(&mut items, &site, &crosswalk)?;

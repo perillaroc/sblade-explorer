@@ -415,14 +415,14 @@ mod tests {
         assert_eq!(value["summary"]["album_total"].as_u64(), Some(122));
         assert!(value["categories"]
             .as_array()
-            .is_some_and(|categories| categories.len() == 16));
+            .is_some_and(|categories| categories.len() == 17));
     }
 
     #[test]
     fn guide_links_returns_chinese_guides() {
         let links = guide_links(None).expect("guide links");
         let links = links.as_object().expect("object");
-        assert_eq!(links.len(), 883);
+        assert_eq!(links.len(), 895);
         let can = links.get("Can_001").expect("can guide");
         assert!(can["web"]["url"]
             .as_str()
@@ -623,7 +623,7 @@ mod tests {
         assert_eq!(value["summary"]["missable_open_count"].as_u64(), Some(29));
         assert!(value["categories"]
             .as_array()
-            .is_some_and(|categories| categories.len() == 16));
+            .is_some_and(|categories| categories.len() == 17));
     }
 
     #[test]

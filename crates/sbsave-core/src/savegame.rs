@@ -485,6 +485,57 @@ fn read_quest_state(gvas: &GvasFile) -> QuestState {
     }
 }
 
+/// Exospine unlocks live in `ItemEnhanceState.ExospineEnhanceStateMap` (keys
+/// are `PT_*` / `PT_*_MK2` aliases). They are read from the actor and, for NG+
+/// saves, the base actor data; missing structures yield an empty set.
+fn exospine_aliases(gvas: &GvasFile) -> HashSet<String> {
+    let mut aliases = HashSet::new();
+
+    fn collect(state: &Value, aliases: &mut HashSet<String>) {
+        let Value::Struct(fields) = state else {
+            return;
+        };
+        let Some(property) = fields.get("ExospineEnhanceStateMap") else {
+            return;
+        };
+        let Value::Map(map) = &property.value else {
+            return;
+        };
+        for (key, _) in &map.entries {
+            let alias = text_value(key);
+            if alias.starts_with("PT_") {
+                aliases.insert(alias);
+            }
+        }
+    }
+
+    if let Some(property) = gvas.get("DataMap_SBActor") {
+        if let Value::Map(map) = &property.value {
+            for (_, actor) in &map.entries {
+                if let Value::Struct(fields) = actor {
+                    if let Some(state) = fields.get("ItemEnhanceState") {
+                        collect(&state.value, &mut aliases);
+                    }
+                }
+            }
+        }
+    }
+
+    if let Some(property) = gvas.get("NewGamePlusBaseData") {
+        if let Value::Struct(fields) = &property.value {
+            if let Some(actor) = fields.get("ActorSaveData") {
+                if let Value::Struct(actor_fields) = &actor.value {
+                    if let Some(state) = actor_fields.get("ItemEnhanceState") {
+                        collect(&state.value, &mut aliases);
+                    }
+                }
+            }
+        }
+    }
+
+    aliases
+}
+
 pub fn extract(
     path: PathBuf,
     gvas: GvasFile,
@@ -510,6 +561,8 @@ pub fn extract(
             }
         }
     }
+
+    obtained.extend(exospine_aliases(&gvas));
 
     if let Some(int_map) = gvas.get("DataMap_int32") {
         if let Value::Map(map) = &int_map.value {

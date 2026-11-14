@@ -27,6 +27,9 @@
 - `api/upgrades__gear.json`：装备词条的拾取位置。标题末尾的 ★ 数对应稀有度（★ 普通、★★ 精良、★★★ 稀有），
   `catalog build` 结合 `game/name_map.json` 的官方英文名推导 `Gear_*_Common` / `_Uncommon` / `_Rare` 别名，
   并把升级后的 `_MK2` 并入同一条目；中文获取文案在 `api/i18n/obtain_gear.json`；
+- `api/upgrades__exospines.json`：辅助脊椎的拾取位置。标题与 `game/name_map.json` 的官方英文名一一对应
+  （`Judgement` 统一为官方拼写 `Judgment`），推导 `PT_*` 别名并把 `_MK2` 并入同一条目；
+  中文获取文案在 `api/i18n/obtain_exospines.json`；
 - <https://mapgenie.io/stellar-blade/guides/memory-sticks> 和 <https://www.gamersky.com/handbook/202507/1953527.shtml>：
   记忆棒在游戏内数据库中的排列顺序（`memorystick_order.json`，两份来源的顺序一致）；
 - 文档和密码的区域、地点直接取自攻略条目，与其他收集物使用同一套区域/地点模型；

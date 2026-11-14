@@ -175,13 +175,16 @@ fn report_json_summarises_fixture() {
     assert_eq!(report["summary"]["album_obtained"], 1);
     assert_eq!(report["summary"]["missing_total"], 798);
     assert_eq!(report["summary"]["percent"], 1.24);
-    // 10 direct aliases + 3 derived from achievements.
-    assert_eq!(report["summary"]["obtained_aliases"], 13);
+    // 10 direct aliases + 3 derived from achievements + 2 exospine states.
+    assert_eq!(report["summary"]["obtained_aliases"], 15);
     assert_eq!(report["summary"]["unmapped_aliases"], 3);
+    // Growth section tracks gear and exospines separately from the collection rate.
+    assert_eq!(report["summary"]["growth_total"], 89);
+    assert_eq!(report["summary"]["growth_obtained"], 2);
     // Quest_Epic_08 completed (Xion locked) + Quest_Epic_Hidden active (Eidos 9 open).
     assert_eq!(report["summary"]["missed_count"], 154);
     assert_eq!(report["summary"]["missable_open_count"], 29);
-    assert_eq!(report["categories"].as_array().map(Vec::len), Some(16));
+    assert_eq!(report["categories"].as_array().map(Vec::len), Some(17));
 
     let save_json = &report["save"];
     assert_eq!(save_json["steam_id"], STEAM_ID);

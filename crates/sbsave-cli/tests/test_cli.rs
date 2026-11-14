@@ -196,7 +196,7 @@ fn report_json_with_synthetic_fixture() {
     assert_eq!(report["summary"]["unmapped_aliases"], 3);
     assert_eq!(report["summary"]["missed_count"], 154);
     assert_eq!(report["summary"]["missable_open_count"], 29);
-    assert_eq!(report["categories"].as_array().map(Vec::len), Some(16));
+    assert_eq!(report["categories"].as_array().map(Vec::len), Some(17));
 
     let cans = report["categories"]
         .as_array()
@@ -232,7 +232,8 @@ fn dump_json_summarises_quests_with_synthetic_fixture() {
     let summary: serde_json::Value =
         serde_json::from_str(&std::fs::read_to_string(&json_path).expect("read dump"))
             .expect("parse dump");
-    assert_eq!(summary["obtained_count"], 10);
+    // 10 direct aliases + 2 exospine states from ItemEnhanceState.
+    assert_eq!(summary["obtained_count"], 12);
     assert_eq!(summary["quests"]["completed"], 2);
     assert_eq!(summary["quests"]["failed"], 1);
     assert_eq!(summary["quests"]["active"], 3);

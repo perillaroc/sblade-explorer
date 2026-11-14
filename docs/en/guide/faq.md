@@ -89,6 +89,18 @@ Gear affixes are supported: the 77 pickup entries appear in the **Growth** secti
 The number of stars at the end of a guide title is its rarity (★ Common, ★★ Uncommon, ★★★ Rare), and the upgraded Mk2 copy
 belongs to the same entry, so it is never double counted. Skills (PT) are still unsupported.
 
+## Are exospines collectibles?
+
+No. The 12 exospines appear in the **Growth** section and do not count toward catalog progress. Their obtained status is read
+from the save's exospine enhancement state, and the upgraded Mk2 copy belongs to the same entry.
+
+## Why are Body / Beta / Weapon Cores, Tumbler modules, and Drone modules not tracked?
+
+They are consumables: the save only keeps the current inventory amount (also affected by shop purchases and NG+ carry-over),
+and there is no per-pickup record. Tumbler and Drone guide entries also share one title each, so they cannot be tied to a
+specific pickup. We therefore omit their progress instead of showing a misleading "obtained / total". Gear affixes and
+exospines have reliable per-item state and are listed in the **Growth** section.
+
 ## Where are settings stored?
 
 Appearance (Dark / Light / Follow system), the default search engine (Bing / Baidu / Google), the browser used to open links, the save opened on startup, and owned DLC can be configured in **Settings** at the bottom of the sidebar.

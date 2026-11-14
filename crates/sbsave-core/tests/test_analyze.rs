@@ -261,10 +261,29 @@ fn growth_items_count_separately_from_collection_progress() {
     assert_eq!(result.catalog_total, 808);
     assert_eq!(result.catalog_obtained, 0);
     assert_eq!(result.missing_total(), 808);
-    assert_eq!(result.growth_total, 77);
+    assert_eq!(result.growth_total, 89);
     assert_eq!(result.growth_obtained, 1);
-    assert_eq!(result.growth_missing_total(), 76);
-    assert!((result.growth_percent() - 100.0 / 77.0).abs() < 1e-9);
+    assert_eq!(result.growth_missing_total(), 88);
+    assert!((result.growth_percent() - 100.0 / 89.0).abs() < 1e-9);
+    assert!(result.unmapped_obtained.is_empty());
+}
+
+#[test]
+fn exospine_enhance_state_counts_as_obtained() {
+    let catalog = load_catalog(None).expect("catalog");
+    // `PT_Combo` comes from ItemEnhanceState.ExospineEnhanceStateMap; the
+    // catalog entry also accepts the NG+ Mk2 alias.
+    let save = make_save(&["PT_Combo", "PT_Survive_MK2"], &[], 0);
+    let result = analyze(&save, &catalog, None);
+
+    let exospines = result
+        .categories
+        .iter()
+        .find(|category| category.category.key == "exospines")
+        .expect("exospines");
+    assert_eq!(exospines.total, 12);
+    assert_eq!(exospines.obtained_count, 2);
+    assert_eq!(exospines.missing.len(), 10);
     assert!(result.unmapped_obtained.is_empty());
 }
 
