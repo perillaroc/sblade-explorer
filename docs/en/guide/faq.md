@@ -101,6 +101,13 @@ and there is no per-pickup record. Tumbler and Drone guide entries also share on
 specific pickup. We therefore omit their progress instead of showing a misleading "obtained / total". Gear affixes and
 exospines have reliable per-item state and are listed in the **Growth** section.
 
+## Why are Supply Boxes and Supply Chests not tracked?
+
+The 193 supply boxes and supply chests in the guide are generic containers holding consumables or random loot; their
+contents never enter the item list. The save records their open state as `ChangeState_ZoneEnv_*_SupplyBox` achievements
+(287 in the local save, 293 in the 100% reference save), but guide entries only carry area and location text, with no
+container alias, and the two totals do not line up. Per-item progress is therefore not shown.
+
 ## Where are settings stored?
 
 Appearance (Dark / Light / Follow system), the default search engine (Bing / Baidu / Google), the browser used to open links, the save opened on startup, and owned DLC can be configured in **Settings** at the bottom of the sidebar.

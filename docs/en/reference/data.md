@@ -181,6 +181,10 @@ For the complete rules, see [data/raw/README.md](https://github.com/perillaroc/s
   English names (`Judgement` is normalized to the official `Judgment`); `PT_*` and `PT_*_MK2` share one entry (24 aliases).
   Obtained status comes from the save's `ItemEnhanceState.ExospineEnhanceStateMap` (actor data plus NG+ base data), not the
   inventory; exospines never carry the missable mark.
+- Materials (151 supply boxes and 42 supply chests) are not in the catalog: they are generic containers whose contents never
+  enter the item list. The save records their open state as `ChangeState_ZoneEnv_*_SupplyBox` achievements (287 in the local
+  save, 293 in the 100% reference save), but guide entries only carry area/location text with no container alias, and the two
+  totals do not line up. No per-item or count-based progress is provided.
 - Albums are stored by page: Naytiba groups contain 12/36/10/6/3 entries, and characters contain 55 pages (Adam 5, Tachy 3, Mother Sphere 1).
   Every entry includes `desc_zh` and `desc_en` and has no built-in guide links.
 - All 300 records include an in-game type (186 Memory Sticks and 114 Documents) and acquisition instructions from guides.
