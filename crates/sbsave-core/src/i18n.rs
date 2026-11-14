@@ -287,6 +287,23 @@ impl Messages {
         }
     }
 
+    /// Gear / upgrade progress; kept out of the collection rate on purpose.
+    pub fn report_growth_line(
+        &self,
+        obtained: usize,
+        total: usize,
+        percent: f64,
+        missing: usize,
+    ) -> String {
+        if self.is_zh() {
+            format!("成长进度: {obtained}/{total} ({percent:.1}%) | 未收集: {missing}（不计入目录进度）")
+        } else {
+            format!(
+                "Growth progress: {obtained}/{total} ({percent:.1}%) | Missing: {missing} (excluded from catalog progress)"
+            )
+        }
+    }
+
     /// Save-aware split of the statically missable entries.
     pub fn report_missable_line(&self, missed: usize, open: usize) -> String {
         if self.is_zh() {
@@ -349,6 +366,22 @@ impl Messages {
             "图鉴 | 进度 | 缺失"
         } else {
             "Album | Progress | Missing"
+        }
+    }
+
+    pub const fn growth_summary(&self) -> &'static str {
+        if self.is_zh() {
+            "成长汇总（不计入目录进度）"
+        } else {
+            "Growth summary (excluded from catalog progress)"
+        }
+    }
+
+    pub const fn growth_summary_header(&self) -> &'static str {
+        if self.is_zh() {
+            "分类 | 进度 | 缺失"
+        } else {
+            "Category | Progress | Missing"
         }
     }
 
@@ -472,6 +505,22 @@ impl Messages {
             "| 图鉴 | 进度 | 缺失 |"
         } else {
             "| Album | Progress | Missing |"
+        }
+    }
+
+    pub const fn markdown_growth_heading(&self) -> &'static str {
+        if self.is_zh() {
+            "## 成长汇总（不计入目录进度）"
+        } else {
+            "## Growth summary (excluded from catalog progress)"
+        }
+    }
+
+    pub const fn markdown_growth_header(&self) -> &'static str {
+        if self.is_zh() {
+            "| 分类 | 进度 | 缺失 |"
+        } else {
+            "| Category | Progress | Missing |"
         }
     }
 

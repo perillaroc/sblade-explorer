@@ -196,7 +196,7 @@ fn report_json_with_synthetic_fixture() {
     assert_eq!(report["summary"]["unmapped_aliases"], 3);
     assert_eq!(report["summary"]["missed_count"], 154);
     assert_eq!(report["summary"]["missable_open_count"], 29);
-    assert_eq!(report["categories"].as_array().map(Vec::len), Some(15));
+    assert_eq!(report["categories"].as_array().map(Vec::len), Some(16));
 
     let cans = report["categories"]
         .as_array()
@@ -272,6 +272,35 @@ fn report_category_filter_uses_synthetic_fixture() {
     assert_eq!(report["summary"]["missed_count"], 8);
     assert_eq!(report["summary"]["missable_open_count"], 0);
     assert_eq!(report["categories"].as_array().map(Vec::len), Some(1));
+}
+
+#[test]
+fn report_filters_growth_category_by_chinese_name() {
+    let fixture = FixtureEnv::new("report-gear");
+    let json_path = fixture.root.join("report-gear.json");
+    let json_text = json_path.to_string_lossy().into_owned();
+    let output = sbsave_with_fixture(
+        &["report", "--category", "装备", "--json", &json_text],
+        &fixture.root,
+        &fixture.root,
+    );
+    assert!(
+        output.status.success(),
+        "{}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+
+    let report: serde_json::Value =
+        serde_json::from_str(&std::fs::read_to_string(&json_path).expect("read report"))
+            .expect("parse report");
+    assert_eq!(report["summary"]["catalog_total"], 0);
+    assert_eq!(report["summary"]["growth_total"], 77);
+    assert_eq!(report["summary"]["growth_obtained"], 0);
+    let categories = report["categories"].as_array().expect("categories");
+    assert_eq!(categories.len(), 1);
+    assert_eq!(categories[0]["key"], "gear");
+    assert_eq!(categories[0]["section"], "growth");
+    assert_eq!(categories[0]["total"], 77);
 }
 
 #[test]

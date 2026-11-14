@@ -53,6 +53,7 @@ export const en = {
     about: "About",
     aboutTitle: "About this tool and its data sources",
     collectionsGroup: "Collectible categories",
+    growthGroup: "Growth (excluded from total progress)",
     albumGroup: "Album (excluded from total progress)",
     collapse: "Collapse sidebar",
     expand: "Expand sidebar",
@@ -117,6 +118,7 @@ export const en = {
     expandAll: "Show all",
     collapse: "Show less",
     categoriesTitle: "Categories",
+    growthSection: "Growth",
     albumSection: "Album",
   },
   categoryPage: {

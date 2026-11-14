@@ -293,6 +293,38 @@ fn album_sections_in_report() {
         .is_some_and(|text| text.contains("Ecological Information")));
 }
 
+#[test]
+fn growth_sections_stay_out_of_collection_progress() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = make_save(&["Gear_AdditiveFixedDamage_Common"], &[], 0);
+    let analysis = analyze(&save, &catalog, None);
+
+    let text = print_report(&analysis, false, "zh", Locale::Zh);
+    assert!(text.contains("成长汇总（不计入目录进度）"));
+    assert!(text.contains("成长进度: 1/77 (1.3%)"));
+    assert!(text.contains("装备 | 1/77 (1%) | 76"));
+    // Collection totals keep the 13 collectible categories only.
+    assert!(text.contains("目录进度: 0/808 (0.0%)"));
+
+    let markdown = render_markdown(&analysis, "zh", Locale::Zh);
+    assert!(markdown.contains("## 成长汇总（不计入目录进度）"));
+    assert!(markdown.contains("- 成长进度: 1/77 (1.3%)"));
+    assert!(markdown.contains("| 装备 | 1/77 (1%) | 76 |"));
+
+    let payload = analysis_to_dict(&analysis, false);
+    assert_eq!(payload["summary"]["catalog_total"], 808);
+    assert_eq!(payload["summary"]["growth_total"], 77);
+    assert_eq!(payload["summary"]["growth_obtained"], 1);
+    assert_eq!(payload["summary"]["growth_missing_total"], 76);
+    let gear = payload["categories"]
+        .as_array()
+        .expect("categories")
+        .iter()
+        .find(|category| category["key"] == "gear")
+        .expect("gear");
+    assert_eq!(gear["section"], "growth");
+}
+
 fn with_completed_quests(mut save: SaveData, completed: &[&str]) -> SaveData {
     save.quests = QuestState {
         completed: completed.iter().map(|alias| alias.to_string()).collect(),

@@ -55,6 +55,7 @@ export const messages = {
     about: "关于",
     aboutTitle: "关于本工具与数据来源",
     collectionsGroup: "可收集物分类",
+    growthGroup: "成长（不计入总进度）",
     albumGroup: "图鉴（不计入总进度）",
     collapse: "折叠侧栏",
     expand: "展开侧栏",
@@ -119,6 +120,7 @@ export const messages = {
     expandAll: "展开全部",
     collapse: "收起",
     categoriesTitle: "分类导览",
+    growthSection: "成长",
     albumSection: "图鉴",
   },
   categoryPage: {

@@ -17,6 +17,7 @@ import {
   Tent,
   UserRound,
   Users,
+  Wrench,
   type LucideIcon,
 } from "@lucide/vue";
 
@@ -36,6 +37,7 @@ const CATEGORY_ICONS: Record<string, LucideIcon> = {
   fish: Fish,
   naytiba: Bug,
   characters: Users,
+  gear: Wrench,
 };
 
 export const SUMMARY_ICON = LayoutDashboard;

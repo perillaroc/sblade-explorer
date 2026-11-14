@@ -69,5 +69,6 @@ Lily's Outfits offer both a **Cycle matrix** and a **List** view. The matrix mak
 - Six entries have a mapping confidence of "Low (mapping unconfirmed)", all of them camps in Eidos 9.
   A category page may also report that "N more obtained aliases are not linked to catalog entries".
 
-The catalog contains 930 entries in 15 categories: 808 collectibles across 13 categories and 122 album entries.
+The catalog contains 1007 entries in 16 categories: 808 collectibles across 13 categories, 77 gear entries in the growth section, and 122 album entries.
+Gear does not count toward collection progress, and an upgraded Mk2 copy still counts as obtained.
 See [Data sources & catalog](../reference/data.md) for details about the alias model and data sources.

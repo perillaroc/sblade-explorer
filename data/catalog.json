@@ -114,6 +114,13 @@
    "name_en": "Characters",
    "order": 150,
    "section": "album"
+  },
+  {
+   "key": "gear",
+   "name": "装备",
+   "name_en": "Gear",
+   "order": 160,
+   "section": "growth"
   }
  ],
  "items": [
@@ -25136,6 +25143,2393 @@
     "video": {
      "title": "B站·喂狗组-文轩 剑星全收集01 服装&外观篇",
      "url": "https://www.bilibili.com/video/BV1or421L7XQ?p=2"
+    }
+   }
+  },
+  {
+   "id": "Gear_ComboAttackAdditiveDamage_Common",
+   "name": "组合连击增强组件",
+   "name_en": "Combo Attack Enhancement Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_ComboAttackAdditiveDamage_Common",
+    "Gear_ComboAttackAdditiveDamage_Common_MK2"
+   ],
+   "area": "Eidos 7",
+   "location": "Silent Street",
+   "obtain": "In a supply box on the left side after crossing the broken bridge at the beginning of Silent Street. Increases Combo Attack Power Level 2 or Higher +14%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "埃多斯7号",
+   "location_zh": "寂静街",
+   "obtain_zh": "在寂静街起点断桥后左侧的补给箱内。连击攻击力达到 2 级及以上时 +14%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·寂静街道",
+     "url": "https://www.gamersky.com/handbook/202404/1738505.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_BetaGaugeAdditiveRate_Common",
+   "name": "贝塔充能组件",
+   "name_en": "Beta Charge Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_BetaGaugeAdditiveRate_Common",
+    "Gear_BetaGaugeAdditiveRate_Common_MK2"
+   ],
+   "area": "Eidos 7",
+   "location": "Parking Tower",
+   "obtain": "Dropped by Abaddon on the rooftop of the Parking Tower. Increases Beta Energy Recharge +6%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "埃多斯7号",
+   "location_zh": "停车塔",
+   "obtain_zh": "击败停车塔楼顶的阿巴顿后掉落。贝塔能量充能 +6%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·立体停车场",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_2.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_MeleeRangeDamageReductionRate_Common",
+   "name": "防护组件",
+   "name_en": "Protection Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_MeleeRangeDamageReductionRate_Common",
+    "Gear_MeleeRangeDamageReductionRate_Common_MK2"
+   ],
+   "area": "Eidos 7",
+   "location": "Parking Tower",
+   "obtain": "Dropped by Abaddon on the rooftop of the Parking Tower. Decreases Damage taken from enemies by 4.5%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "埃多斯7号",
+   "location_zh": "停车塔",
+   "obtain_zh": "击败停车塔楼顶的阿巴顿后掉落。受到的敌人伤害 -4.5%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·立体停车场",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_2.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_AdditiveFixedDamage_Common",
+   "name": "固定伤害组件",
+   "name_en": "Fixed Damage Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_AdditiveFixedDamage_Common",
+    "Gear_AdditiveFixedDamage_Common_MK2"
+   ],
+   "area": "Eidos 7",
+   "location": "Parking Tower",
+   "obtain": "After exiting the parking garage, turn right twice and continue to the end. Inside the supply chest.Increases Fixed Damage upon Combo Attack 65.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "埃多斯7号",
+   "location_zh": "停车塔",
+   "obtain_zh": "离开停车库后右转两次走到尽头，在补给箱内。连击攻击 65 时提升固定伤害。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·立体停车场",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_2.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_MeleeAttackDamageReductionRate_Common",
+   "name": "近战防护组件",
+   "name_en": "Melee Protection Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_MeleeAttackDamageReductionRate_Common",
+    "Gear_MeleeAttackDamageReductionRate_Common_MK2"
+   ],
+   "area": "Eidos 7",
+   "location": "Memory Tower",
+   "obtain": "Dropped by the Corrupter past the Memory Tower. Decreases Melee Damage taken from enemies by 7%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "埃多斯7号",
+   "location_zh": "记忆之塔",
+   "obtain_zh": "击败记忆塔之后的腐蚀者后掉落。受到的近战伤害 -7%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·记忆之塔",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_4.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_ShieldAttackPowerRate_Common",
+   "name": "护盾伤害组件",
+   "name_en": "Shield Destruction Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_ShieldAttackPowerRate_Common",
+    "Gear_ShieldAttackPowerRate_Common_MK2"
+   ],
+   "area": "Eidos 7",
+   "location": "Memory Tower",
+   "obtain": "Dropped by the Corrupter past the Memory Tower. Increases damage to shields by 18%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "埃多斯7号",
+   "location_zh": "记忆之塔",
+   "obtain_zh": "击败记忆塔之后的腐蚀者后掉落。对护盾造成的伤害 +18%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·记忆之塔",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_4.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_AdditiveBetaSkillDamage_Common",
+   "name": "贝塔增强组件",
+   "name_en": "Beta Enhancement Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_AdditiveBetaSkillDamage_Common",
+    "Gear_AdditiveBetaSkillDamage_Common_MK2"
+   ],
+   "area": "Eidos 7",
+   "location": "Construction Zone",
+   "obtain": "Under the building to the right of the Construction Zone camp. Contains Beta Enhancement Gear ★. Increases Beta Skill Attack Power +4.5%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "埃多斯7号",
+   "location_zh": "施工区",
+   "obtain_zh": "在施工区营地右侧的建筑下方，补给箱内。贝塔技能攻击力 +4.5%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·工地",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_5.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_AttackSpeed_Common",
+   "name": "加速组件",
+   "name_en": "Speed Increase Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_AttackSpeed_Common",
+    "Gear_AttackSpeed_Common_MK2"
+   ],
+   "area": "Eidos 7",
+   "location": "City Underground",
+   "obtain": "In a supply box next to the first Floodgate Key, near the second camp of the City Underground area. Increases Attack Speed by 10%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "埃多斯7号",
+   "location_zh": "城市地下",
+   "obtain_zh": "在城市地下第二座营地附近、第一把水闸钥匙旁的补给箱内。攻击速度 +10%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·埃多斯7号",
+     "url": "https://www.gamersky.com/handbook/202404/1738505.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_CriticalPercentage_Common",
+   "name": "暴击强化组件",
+   "name_en": "Crit Boost Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_CriticalPercentage_Common",
+    "Gear_CriticalPercentage_Common_MK2"
+   ],
+   "area": "Eidos 7",
+   "location": "Crater",
+   "obtain": "Dropped by Gigas at the pod in the Crater. Increases Crit. Rate +4.5%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "埃多斯7号",
+   "location_zh": "陨石坑",
+   "obtain_zh": "击败陨坑舱体处的基加斯后掉落。暴击率 +4.5%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·环形山",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_7.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_MaxShield_Common",
+   "name": "护盾增强组件",
+   "name_en": "Shield Enhancement Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_MaxShield_Common",
+    "Gear_MaxShield_Common_MK2"
+   ],
+   "area": "Eidos 7",
+   "location": "Crater",
+   "obtain": "Dropped by Gigas at the pod in the Crater. Increases Max Shield Capacity by 100.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "埃多斯7号",
+   "location_zh": "陨石坑",
+   "obtain_zh": "击败陨坑舱体处的基加斯后掉落。最大护盾容量 +100。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·环形山",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_7.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_RangeAttackDamageReductionRate_Common",
+   "name": "远程防护组件",
+   "name_en": "Ranged Protection Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_RangeAttackDamageReductionRate_Common",
+    "Gear_RangeAttackDamageReductionRate_Common_MK2"
+   ],
+   "area": "Xion",
+   "location": "Xion City",
+   "obtain": "On the platform under the tetrapod, inside a supply box in Xion. Decreases Ranged Damage taken from enemies by 9%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
+   "obtain_zh": "希雍城中四脚架下方的平台上，补给箱内。受到的远程伤害 -9%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·希雍",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_LowHpDamageAdditiveRate_Common",
+   "name": "背水一战组件",
+   "name_en": "Risk Taking Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_LowHpDamageAdditiveRate_Common",
+    "Gear_LowHpDamageAdditiveRate_Common_MK2"
+   ],
+   "area": "Xion",
+   "location": "Xion City",
+   "obtain": "In a supply box near the innermost phone booth, hidden behind the bar in Xion. Increases Attack Power by 9% when HP is low.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
+   "obtain_zh": "希雍城最深处电话亭旁的补给箱，藏在吧台后方。生命值较低时攻击力 +9%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·希雍",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_GainBetaGaugeValueOnDamaged_Uncommon",
+   "name": "贝塔恢复组件",
+   "name_en": "Beta Recovery Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_GainBetaGaugeValueOnDamaged_Uncommon",
+    "Gear_GainBetaGaugeValueOnDamaged_Uncommon_MK2"
+   ],
+   "area": "Xion",
+   "location": "Xion City",
+   "obtain": "Can be purchased from Kaya at Sisters' Junk in Xion. Increases Beta Energy Recharge Proportional to Damage Taken 3.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
+   "obtain_zh": "可在希雍「姐妹废品站」的卡雅处购买。受到的伤害越高，贝塔能量充能效率越高（3）。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·希雍",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_AdditiveBustSkillDamage_Uncommon",
+   "name": "爆发增强组件",
+   "name_en": "Burst Enhancement Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_AdditiveBustSkillDamage_Uncommon",
+    "Gear_AdditiveBustSkillDamage_Uncommon_MK2"
+   ],
+   "area": "Xion",
+   "location": "Xion City",
+   "obtain": "Can be purchased from Kaya at Sisters' Junk in Xion. Increases Burst Skill Attack Power +19%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
+   "obtain_zh": "可在希雍「姐妹废品站」的卡雅处购买。爆发技能攻击力 +19%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·希雍",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_KillEnemyHealHP_Uncommon",
+   "name": "战斗补给组件",
+   "name_en": "Combat Supply Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_KillEnemyHealHP_Uncommon",
+    "Gear_KillEnemyHealHP_Uncommon_MK2"
+   ],
+   "area": "Xion",
+   "location": "Xion City",
+   "obtain": "Can be purchased from Kaya at Sisters' Junk in Xion. Recovers 135 HP upon defeating an enemy.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
+   "obtain_zh": "可在希雍「姐妹废品站」的卡雅处购买。击败敌人时恢复 135 点生命。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·希雍",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_CriticalPercentage_Rare",
+   "name": "暴击强化组件",
+   "name_en": "Crit Boost Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_CriticalPercentage_Rare",
+    "Gear_CriticalPercentage_Rare_MK2"
+   ],
+   "area": "Xion",
+   "location": "Xion City",
+   "obtain": "Can be purchased from Kaya at Sisters' Junk in Xion. Increases Crit. Rate +8%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
+   "obtain_zh": "可在希雍「姐妹废品站」的卡雅处购买。暴击率 +8%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·希雍",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_AdditiveGiveAndReciveDamageRate_Common",
+   "name": "双刃组件",
+   "name_en": "Double Edged Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_AdditiveGiveAndReciveDamageRate_Common",
+    "Gear_AdditiveGiveAndReciveDamageRate_Common_MK2"
+   ],
+   "area": "Xion",
+   "location": "Xion City",
+   "obtain": "Can be purchased from Kaya at Sisters' Junk in Xion. Increases Attack Power +15% but increases Damage Taken by 23%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
+   "obtain_zh": "可在希雍「姐妹废品站」的卡雅处购买。攻击力 +15%，但受到的伤害 +23%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·希雍",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_BetaCrystalAdditiveRate_Uncommon",
+   "name": "金方组件",
+   "name_en": "Gold Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_BetaCrystalAdditiveRate_Uncommon",
+    "Gear_BetaCrystalAdditiveRate_Uncommon_MK2"
+   ],
+   "area": "Xion",
+   "location": "Xion City",
+   "obtain": "Can be purchased from Kaya at Sisters' Junk in Xion. Increases Gold Drop by 70%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
+   "obtain_zh": "可在希雍「姐妹废品站」的卡雅处购买。金币掉落 +70%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·希雍",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_HighHpDamageAdditiveRate_Uncommon",
+   "name": "完美战斗组件",
+   "name_en": "Perfect Combat Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_HighHpDamageAdditiveRate_Uncommon",
+    "Gear_HighHpDamageAdditiveRate_Uncommon_MK2"
+   ],
+   "area": "Xion",
+   "location": "Xion City",
+   "obtain": "Can be purchased from Kaya at Sisters' Junk in Xion. Increases Attack Power by 9.5% when HP is high.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
+   "obtain_zh": "可在希雍「姐妹废品站」的卡雅处购买。生命值较高时攻击力 +9.5%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·希雍",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_MeleeRangeDamageReductionRate_Uncommon",
+   "name": "防护组件",
+   "name_en": "Protection Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_MeleeRangeDamageReductionRate_Uncommon",
+    "Gear_MeleeRangeDamageReductionRate_Uncommon_MK2"
+   ],
+   "area": "Xion",
+   "location": "Xion City",
+   "obtain": "Can be purchased from Kaya at Sisters' Junk in Xion. Decreases Damage taken from enemies by 6.5%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
+   "obtain_zh": "可在希雍「姐妹废品站」的卡雅处购买。受到的敌人伤害 -6.5%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·希雍",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_LowHpDamageAdditiveRate_Uncommon",
+   "name": "背水一战组件",
+   "name_en": "Risk Taking Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_LowHpDamageAdditiveRate_Uncommon",
+    "Gear_LowHpDamageAdditiveRate_Uncommon_MK2"
+   ],
+   "area": "Xion",
+   "location": "Xion City",
+   "obtain": "Can be purchased from Kaya at Sisters' Junk in Xion. Increases Attack Power by 12 % when HP is low.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
+   "obtain_zh": "可在希雍「姐妹废品站」的卡雅处购买。生命值较低时攻击力 +12%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·希雍",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_MaxShield_Uncommon",
+   "name": "护盾增强组件",
+   "name_en": "Shield Enhancement Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_MaxShield_Uncommon",
+    "Gear_MaxShield_Uncommon_MK2"
+   ],
+   "area": "Xion",
+   "location": "Xion City",
+   "obtain": "Can be purchased from Kaya at Sisters' Junk in Xion. Increases Max Shield Capacity by 200.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
+   "obtain_zh": "可在希雍「姐妹废品站」的卡雅处购买。最大护盾容量 +200。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·希雍",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_ShieldIgnorePercentage_Uncommon",
+   "name": "护盾穿透组件",
+   "name_en": "Shield Penetration Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_ShieldIgnorePercentage_Uncommon",
+    "Gear_ShieldIgnorePercentage_Uncommon_MK2"
+   ],
+   "area": "Xion",
+   "location": "Xion City",
+   "obtain": "Can be purchased from Kaya at Sisters' Junk in Xion. Increases Shield Penetration by 13%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
+   "obtain_zh": "可在希雍「姐妹废品站」的卡雅处购买。护盾穿透 +13%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·希雍",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_SPExpAdditiveRate_Uncommon",
+   "name": "训练组件",
+   "name_en": "Training Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_SPExpAdditiveRate_Uncommon",
+    "Gear_SPExpAdditiveRate_Uncommon_MK2"
+   ],
+   "area": "Xion",
+   "location": "Xion City",
+   "obtain": "Can be purchased from Kaya at Sisters' Junk in Xion. Grants Bonus SP EXP Acquisition by 15%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
+   "obtain_zh": "可在希雍「姐妹废品站」的卡雅处购买。额外获得 SP 经验 +15%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·希雍",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_ComboAttackAdditiveDamage_Rare",
+   "name": "组合连击增强组件",
+   "name_en": "Combo Attack Enhancement Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_ComboAttackAdditiveDamage_Rare",
+    "Gear_ComboAttackAdditiveDamage_Rare_MK2"
+   ],
+   "area": "Xion",
+   "location": "Xion City",
+   "obtain": "Dropped by the Unidentified Naytiba in the Presence Chamber during the Burning Xion mission. Increases Combo Attack Power Level 2 or Higher +24%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
+   "obtain_zh": "「燃烧的希雍」任务中，击败谒见厅的未确认孽奇拔后掉落。连击攻击力达到 2 级及以上时 +24%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·希雍",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_AttackSpeed_Rare",
+   "name": "加速组件",
+   "name_en": "Speed Increase Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_AttackSpeed_Rare",
+    "Gear_AttackSpeed_Rare_MK2"
+   ],
+   "area": "Xion",
+   "location": "Xion City",
+   "obtain": "Dropped by the Unidentified Naytiba in the Presence Chamber during the Burning Xion mission. Increases Attack Speed by 15%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
+   "obtain_zh": "「燃烧的希雍」任务中，击败谒见厅的未确认孽奇拔后掉落。攻击速度 +15%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·希雍",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_AdditiveBetaSkillDamage_Rare",
+   "name": "贝塔增强组件",
+   "name_en": "Beta Enhancement Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_AdditiveBetaSkillDamage_Rare",
+    "Gear_AdditiveBetaSkillDamage_Rare_MK2"
+   ],
+   "area": "Xion",
+   "location": "Xion City",
+   "obtain": "Received from D1G-g2r during the Burning Xion mission if you completed his side quests. Increases Beta Skill Attack Power +8%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
+   "obtain_zh": "「燃烧的希雍」任务中，完成 D1G-g2r 的支线后由其赠送。贝塔技能攻击力 +8%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·希雍",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_CriticalValueRate_Rare",
+   "name": "暴击伤害增强组件",
+   "name_en": "Crit Enhancement Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_CriticalValueRate_Rare",
+    "Gear_CriticalValueRate_Rare_MK2"
+   ],
+   "area": "Xion",
+   "location": "Xion City",
+   "obtain": "Received from Kaya during the Burning Xion mission if you completed her side quests. Increases Crit. Damage +15.5%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
+   "obtain_zh": "「燃烧的希雍」任务中，完成卡雅的支线后由她赠送。暴击伤害 +15.5%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·希雍",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_MeleeRangeDamageReductionRate_Rare",
+   "name": "防护组件",
+   "name_en": "Protection Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_MeleeRangeDamageReductionRate_Rare",
+    "Gear_MeleeRangeDamageReductionRate_Rare_MK2"
+   ],
+   "area": "Xion",
+   "location": "Xion City",
+   "obtain": "Received from Enya during the Burning Xion mission if you completed her side quests. Decreases Damage taken from enemies by 8%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "希雍",
+   "location_zh": "希雍城",
+   "obtain_zh": "「燃烧的希雍」任务中，完成恩雅的支线后由她赠送。受到的敌人伤害 -8%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·希雍",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_9.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_KillEnemyHealHP_Common",
+   "name": "战斗补给组件",
+   "name_en": "Combat Supply Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_KillEnemyHealHP_Common",
+    "Gear_KillEnemyHealHP_Common_MK2"
+   ],
+   "area": "Wasteland",
+   "location": "Great Canyon",
+   "obtain": "In a chest near the ship wreckage on higher ground in the Great Canyon. Contains Combat Supply Gear ★ which recovers 90 HP upon defeating an enemy.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "废土",
+   "location_zh": "大峡谷",
+   "obtain_zh": "大峡谷高处飞船残骸旁的宝箱内。击败敌人时恢复 90 点生命。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·废土",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_13.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_SPExpAdditiveRate_Common",
+   "name": "训练组件",
+   "name_en": "Training Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_SPExpAdditiveRate_Common",
+    "Gear_SPExpAdditiveRate_Common_MK2"
+   ],
+   "area": "Wasteland",
+   "location": "Great Canyon",
+   "obtain": "After descending the rope from the Solar Tower camp, the supply box is to the right. Grants Bonus SP EXP Acquisition by 10%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "废土",
+   "location_zh": "大峡谷",
+   "obtain_zh": "从太阳塔营地沿绳索下降后，补给箱在右侧。额外获得 SP 经验 +10%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·废土",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_13.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_AdditiveFixedDamage_Uncommon",
+   "name": "固定伤害组件",
+   "name_en": "Fixed Damage Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_AdditiveFixedDamage_Uncommon",
+    "Gear_AdditiveFixedDamage_Uncommon_MK2"
+   ],
+   "area": "Wasteland",
+   "location": "Great Canyon",
+   "obtain": "In the shortcut area to the left of the Altess Levoire entrance. Follow the path up the rocky mountains to a chest guarded by a group of enemies. Increases Fixed Damage upon Combo Attack 90.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "废土",
+   "location_zh": "大峡谷",
+   "obtain_zh": "在阿尔忒斯·勒瓦尔入口左侧的捷径区域，沿岩石山路向上，开启被一群敌人看守的宝箱。连击攻击 90 时提升固定伤害。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·废土",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_13.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_RangeAttackDamageAdditiveRate_Common",
+   "name": "远程增强组件",
+   "name_en": "Ranged Enhancement Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_RangeAttackDamageAdditiveRate_Common",
+    "Gear_RangeAttackDamageAdditiveRate_Common_MK2"
+   ],
+   "area": "Wasteland",
+   "location": "Scrap Plains",
+   "obtain": "East of the bulletin board at the Bus Stop Camp, hidden inside a blue container in the Scrap Plains. Increases Ranged Attack Power  by 4.5%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "废土",
+   "location_zh": "废料平原",
+   "obtain_zh": "在废料平原公交站营地公告板以东，蓝色集装箱内。远程攻击力 +4.5%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·废土",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_13.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_KillEnemyAdditiveDamageRate_Common",
+   "name": "战斗延续组件",
+   "name_en": "Combat Continuation Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_KillEnemyAdditiveDamageRate_Common",
+    "Gear_KillEnemyAdditiveDamageRate_Common_MK2"
+   ],
+   "area": "Wasteland",
+   "location": "Oil Storage Facility",
+   "obtain": "Dropped by the Gigas in the Oil Storage Facility. Increases Attack Power +6% for 10 seconds upon defeating an enemy.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "废土",
+   "location_zh": "储油设施",
+   "obtain_zh": "击败储油设施中的基加斯后掉落。击败敌人后 10 秒内攻击力 +6%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·废土",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_13.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_GainBetaGaugeValueOnDamaged_Common",
+   "name": "贝塔恢复组件",
+   "name_en": "Beta Recovery Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_GainBetaGaugeValueOnDamaged_Common",
+    "Gear_GainBetaGaugeValueOnDamaged_Common_MK2"
+   ],
+   "area": "Wasteland",
+   "location": "Wasteland Basin",
+   "obtain": "Dropped by the Corrupter in the Wasteland Basin. Increases Beta Energy Recharge Proportional to Damage Taken 2.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "废土",
+   "location_zh": "废土盆地",
+   "obtain_zh": "击败废土盆地中的腐蚀者后掉落。受到的伤害越高，贝塔能量充能效率越高（2）。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·废土",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_13.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_BetaCrystalAdditiveRate_Common",
+   "name": "金方组件",
+   "name_en": "Gold Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_BetaCrystalAdditiveRate_Common",
+    "Gear_BetaCrystalAdditiveRate_Common_MK2"
+   ],
+   "area": "Wasteland",
+   "location": "Wasteland Basin",
+   "obtain": "Southwest of the waypoint is a decently sized encampment. Clear the enemies, and then use the batteries on the pressure plates to open the gates. First, the one on the left to free the orange box. Second on the right to free the second battery. Then, put both of the batteries on the plates to open the door. Push the orange box southwest, and use it to get on top of the place where you freed the trapped battery. Increase Gold Drop by 40%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "废土",
+   "location_zh": "废土盆地",
+   "obtain_zh": "在传送点西南方的营地清空敌人，用电池压住压力板开门：先踩左侧放出橙色箱子，再踩右侧放出第二块电池，把两块电池放上压力板开门；将橙色箱子推向西南方，借它跳上取出电池的位置。金币掉落 +40%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·废土",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_13.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_HighHpDamageAdditiveRate_Common",
+   "name": "完美战斗组件",
+   "name_en": "Perfect Combat Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_HighHpDamageAdditiveRate_Common",
+    "Gear_HighHpDamageAdditiveRate_Common_MK2"
+   ],
+   "area": "Wasteland",
+   "location": "Forbidden Area",
+   "obtain": "Dropped by the Brute in the Forbidden Area during the Life of the Scavengers side quest. Increases Attack Power by 7% when HP is high.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "废土",
+   "location_zh": "禁区",
+   "obtain_zh": "「拾荒者的生活」支线中，击败禁区的蛮兽后掉落。生命值较高时攻击力 +7%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·废土",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_13.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_MaxBurstGauge_Rare",
+   "name": "爆发拓展组件",
+   "name_en": "Burst Expansion Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_MaxBurstGauge_Rare",
+    "Gear_MaxBurstGauge_Rare_MK2"
+   ],
+   "area": "Wasteland",
+   "location": "Hidden Canyon",
+   "obtain": "Dropped by Raven after defeating her in Hidden Canyon during the Last Fragment mission. Increases Max Burst Energy +400.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "废土",
+   "location_zh": "隐秘峡谷",
+   "obtain_zh": "「最后的碎片」任务中，在隐秘峡谷击败渡鸦后掉落。最大爆发能量 +400。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·废土",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_13.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_ShieldIgnorePercentage_Rare",
+   "name": "护盾穿透组件",
+   "name_en": "Shield Penetration Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_ShieldIgnorePercentage_Rare",
+    "Gear_ShieldIgnorePercentage_Rare_MK2"
+   ],
+   "area": "Wasteland",
+   "location": "Hidden Canyon",
+   "obtain": "Dropped by Raven after defeating her in Hidden Canyon during the Last Fragment mission. Increases Shield Penetration by 16%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "废土",
+   "location_zh": "隐秘峡谷",
+   "obtain_zh": "「最后的碎片」任务中，在隐秘峡谷击败渡鸦后掉落。护盾穿透 +16%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·废土",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_13.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_ShieldIgnorePercentage_Common",
+   "name": "护盾穿透组件",
+   "name_en": "Shield Penetration Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_ShieldIgnorePercentage_Common",
+    "Gear_ShieldIgnorePercentage_Common_MK2"
+   ],
+   "area": "Altess Levoire",
+   "location": "Heart of the Infection",
+   "obtain": "Dropped by the Maelstrom at the end of Altess Levoire. Increases Shield Penetration by 9%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "阿尔忒斯勒瓦尔",
+   "location_zh": "感染之心",
+   "obtain_zh": "击败阿尔忒斯·勒瓦尔尽头的漩涡后掉落。护盾穿透 +9%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·卢瓦高层",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_20.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_BetaGaugeAdditiveRate_Uncommon",
+   "name": "贝塔充能组件",
+   "name_en": "Beta Charge Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_BetaGaugeAdditiveRate_Uncommon",
+    "Gear_BetaGaugeAdditiveRate_Uncommon_MK2"
+   ],
+   "area": "Altess Levoire",
+   "location": "Heart of the Infection",
+   "obtain": "Dropped by the Maelstrom at the end of Altess Levoire. Increases Beta Energy Recharge +8%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "阿尔忒斯勒瓦尔",
+   "location_zh": "感染之心",
+   "obtain_zh": "击败阿尔忒斯·勒瓦尔尽头的漩涡后掉落。贝塔能量充能 +8%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·卢瓦高层",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_20.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_MeleeAttackDamageReductionRate_Uncommon",
+   "name": "近战防护组件",
+   "name_en": "Melee Protection Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_MeleeAttackDamageReductionRate_Uncommon",
+    "Gear_MeleeAttackDamageReductionRate_Uncommon_MK2"
+   ],
+   "area": "Matrix 11",
+   "location": "Closed Off Platform",
+   "obtain": "In a chest behind the door that a Naytiba bursts through. Decreases Melee Damage taken from enemies by 10%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "矩阵11",
+   "location_zh": "封锁站台",
+   "obtain_zh": "在孽奇拔破门而入的那扇门后的宝箱内。受到的近战伤害 -10%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·11号矩阵",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_CriticalValueRate_Common",
+   "name": "暴击伤害增强组件",
+   "name_en": "Crit Enhancement Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_CriticalValueRate_Common",
+    "Gear_CriticalValueRate_Common_MK2"
+   ],
+   "area": "Matrix 11",
+   "location": "Collapsed Rail Bridge",
+   "obtain": "In a supply box on the platform near two enemies, after crossing the broken bridge in the Collapsed Rail Bridge area. Increases Crit. Damage +9%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "矩阵11",
+   "location_zh": "坍塌铁路桥",
+   "obtain_zh": "穿过坍塌铁轨桥的断桥后，两名敌人附近平台上的补给箱内。暴击伤害 +9%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·11号矩阵",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_AttackSpeed_Uncommon",
+   "name": "加速组件",
+   "name_en": "Speed Increase Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_AttackSpeed_Uncommon",
+    "Gear_AttackSpeed_Uncommon_MK2"
+   ],
+   "area": "Matrix 11",
+   "location": "Collapsed Rail Bridge",
+   "obtain": "Before heading up to the Stalker boss, backtrack slightly. The supply box is guarded by a Hive Naytiba. Increases Attack Speed by 12.5%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "矩阵11",
+   "location_zh": "坍塌铁路桥",
+   "obtain_zh": "前往潜行者首领前稍微折返，补给箱由一只巢穴孽奇拔看守。攻击速度 +12.5%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·11号矩阵",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_BurstGaugeAdditiveRate_Common",
+   "name": "爆发充能组件",
+   "name_en": "Burst Charge Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_BurstGaugeAdditiveRate_Common",
+    "Gear_BurstGaugeAdditiveRate_Common_MK2"
+   ],
+   "area": "Matrix 11",
+   "location": "Collapsed Rail Bridge",
+   "obtain": "Dropped by the Stalker in the Rail Yard. Increases Burst Energy Recharge +16%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "矩阵11",
+   "location_zh": "坍塌铁路桥",
+   "obtain_zh": "击败铁路场的潜行者后掉落。爆发能量充能 +16%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·11号矩阵",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_MaxShield_Rare",
+   "name": "护盾增强组件",
+   "name_en": "Shield Enhancement Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_MaxShield_Rare",
+    "Gear_MaxShield_Rare_MK2"
+   ],
+   "area": "Matrix 11",
+   "location": "Collapsed Rail Bridge",
+   "obtain": "Dropped by the Stalker in the Rail Yard. Increases Max Shield Capacity by 300.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "矩阵11",
+   "location_zh": "坍塌铁路桥",
+   "obtain_zh": "击败铁路场的潜行者后掉落。最大护盾容量 +300。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·11号矩阵",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_AdditiveBetaSkillDamage_Uncommon",
+   "name": "贝塔增强组件",
+   "name_en": "Beta Enhancement Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_AdditiveBetaSkillDamage_Uncommon",
+    "Gear_AdditiveBetaSkillDamage_Uncommon_MK2"
+   ],
+   "area": "Matrix 11",
+   "location": "Temporary Armoury",
+   "obtain": "Dropped by the Juggernaut in the Temporary Armoury. Increases Beta Skill Attack Power +6.5%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "矩阵11",
+   "location_zh": "临时军械库",
+   "obtain_zh": "击败临时军械库的巨兽后掉落。贝塔技能攻击力 +6.5%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·11号矩阵",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_CriticalPercentage_Uncommon",
+   "name": "暴击强化组件",
+   "name_en": "Crit Boost Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_CriticalPercentage_Uncommon",
+    "Gear_CriticalPercentage_Uncommon_MK2"
+   ],
+   "area": "Matrix 11",
+   "location": "Temporary Armoury",
+   "obtain": "Dropped by the Juggernaut in the Temporary Armoury. Increases Crit. Rate +6.5%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "矩阵11",
+   "location_zh": "临时军械库",
+   "obtain_zh": "击败临时军械库的巨兽后掉落。暴击率 +6.5%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·11号矩阵",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_AdditiveBustSkillDamage_Common",
+   "name": "爆发增强组件",
+   "name_en": "Burst Enhancement Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_AdditiveBustSkillDamage_Common",
+    "Gear_AdditiveBustSkillDamage_Common_MK2"
+   ],
+   "area": "Matrix 11",
+   "location": "Temporary Armoury",
+   "obtain": "In the Juggernaut's boss room, hidden in the back left corner. Contains Burst Enhancement Gear ★. Increases Burst Skill Attack Power +14%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "矩阵11",
+   "location_zh": "临时军械库",
+   "obtain_zh": "巨兽首领房间左后方角落，补给箱内。爆发技能攻击力 +14%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·11号矩阵",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_ShieldAttackPowerRate_Uncommon",
+   "name": "护盾伤害组件",
+   "name_en": "Shield Destruction Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_ShieldAttackPowerRate_Uncommon",
+    "Gear_ShieldAttackPowerRate_Uncommon_MK2"
+   ],
+   "area": "Matrix 11",
+   "location": "Temporary Armoury",
+   "obtain": "In the Temporary Armoury, after sliding down into the water the supply box is directly in front of you. Increases damage to shields by 26%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "矩阵11",
+   "location_zh": "临时军械库",
+   "obtain_zh": "在临时军械库滑入水中后，补给箱就在正前方。对护盾造成的伤害 +26%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·11号矩阵",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_MaxBurstGauge_Uncommon",
+   "name": "爆发拓展组件",
+   "name_en": "Burst Expansion Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_MaxBurstGauge_Uncommon",
+    "Gear_MaxBurstGauge_Uncommon_MK2"
+   ],
+   "area": "Matrix 11",
+   "location": "Contaminated Water Purification Plant",
+   "obtain": "Dropped by the Alpha Naytiba at the Contaminated Water Purification Plant. Increases Max Burst Energy +200.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "矩阵11",
+   "location_zh": "污染水净化厂",
+   "obtain_zh": "击败受污染净水厂的阿尔法孽奇拔后掉落。最大爆发能量 +200。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·11号矩阵",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_KillEnemyHealHP_Rare",
+   "name": "战斗补给组件",
+   "name_en": "Combat Supply Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_KillEnemyHealHP_Rare",
+    "Gear_KillEnemyHealHP_Rare_MK2"
+   ],
+   "area": "Matrix 11",
+   "location": "Contaminated Water Purification Plant",
+   "obtain": "Dropped by the Alpha Naytiba at the Contaminated Water Purification Plant. Recovers 160 HP upon defeating an enemy.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "矩阵11",
+   "location_zh": "污染水净化厂",
+   "obtain_zh": "击败受污染净水厂的阿尔法孽奇拔后掉落。击败敌人时恢复 160 点生命。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·11号矩阵",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_21.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_GainBurstGaugeValueOnDamaged_Common",
+   "name": "爆发恢复组件",
+   "name_en": "Burst Recovery Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_GainBurstGaugeValueOnDamaged_Common",
+    "Gear_GainBurstGaugeValueOnDamaged_Common_MK2"
+   ],
+   "area": "Great Desert",
+   "location": "Solar Tower",
+   "obtain": "Dropped by the Stalker near the Solar Tower. Increases Burst Energy Recharge Proportional to Damage Taken 2.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "大沙漠",
+   "location_zh": "太阳塔",
+   "obtain_zh": "击败太阳塔附近的潜行者后掉落。受到的伤害越高，爆发能量充能效率越高（2）。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·大沙漠",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_SPExpAdditiveRate_Rare",
+   "name": "训练组件",
+   "name_en": "Training Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_SPExpAdditiveRate_Rare",
+    "Gear_SPExpAdditiveRate_Rare_MK2"
+   ],
+   "area": "Great Desert",
+   "location": "Solar Tower",
+   "obtain": "Northwest of the solar tower, up on the cliffs overlooking the area. Grants Bonus SP EXP Acquisition by 20%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "大沙漠",
+   "location_zh": "太阳塔",
+   "obtain_zh": "在太阳塔西北方、俯瞰该区域的悬崖上。额外获得 SP 经验 +20%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·大沙漠",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_RangeAttackDamageReductionRate_Uncommon",
+   "name": "远程防护组件",
+   "name_en": "Ranged Protection Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_RangeAttackDamageReductionRate_Uncommon",
+    "Gear_RangeAttackDamageReductionRate_Uncommon_MK2"
+   ],
+   "area": "Great Desert",
+   "location": "Collapsed Overpass",
+   "obtain": "East from the Debris-filled Entryway camp, hidden between ruins. Decreases Ranged Damage taken from enemies by12%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "大沙漠",
+   "location_zh": "坍塌高架桥",
+   "obtain_zh": "从碎石入口营地往东，藏在废墟之间。受到的远程伤害 -12%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·大沙漠",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_RangeAttackDamageAdditiveRate_Uncommon",
+   "name": "远程增强组件",
+   "name_en": "Ranged Enhancement Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_RangeAttackDamageAdditiveRate_Uncommon",
+    "Gear_RangeAttackDamageAdditiveRate_Uncommon_MK2"
+   ],
+   "area": "Great Desert",
+   "location": "Collapsed Overpass",
+   "obtain": "East from the Debris-filled Entryway camp. Climb the orange crate on top of the small building, make your way to the higher building, and find the supply box in the corner. Increases Ranged Attack Power by 6.5%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "大沙漠",
+   "location_zh": "坍塌高架桥",
+   "obtain_zh": "从碎石入口营地往东，爬上小楼顶部的橙色箱子，再前往更高的建筑，补给箱在角落。远程攻击力 +6.5%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·大沙漠",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_KillEnemyAdditiveDamageRate_Uncommon",
+   "name": "战斗延续组件",
+   "name_en": "Combat Continuation Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_KillEnemyAdditiveDamageRate_Uncommon",
+    "Gear_KillEnemyAdditiveDamageRate_Uncommon_MK2"
+   ],
+   "area": "Great Desert",
+   "location": "Buried Ruins",
+   "obtain": "Dropped by Abaddon in the Buried Ruins during the An Eye for an Eye, a Tooth for a Tooth side quest. Increases Attack Power +8.5% for 10 seconds upon defeating an enemy.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "大沙漠",
+   "location_zh": "掩埋遗迹",
+   "obtain_zh": "「以眼还眼，以牙还牙」支线中，击败埋没遗迹的阿巴顿后掉落。击败敌人后 10 秒内攻击力 +8.5%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·大沙漠",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_BetaCrystalAdditiveRate_Rare",
+   "name": "金方组件",
+   "name_en": "Gold Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_BetaCrystalAdditiveRate_Rare",
+    "Gear_BetaCrystalAdditiveRate_Rare_MK2"
+   ],
+   "area": "Great Desert",
+   "location": "Buried Ruins",
+   "obtain": "Northeast from the North of Buried Ruins camp. Inside the area guarded by a Guard Turret. Solve the cart puzzle and find the supply box inside the garage. Increases Gold Drop by 100%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "大沙漠",
+   "location_zh": "掩埋遗迹",
+   "obtain_zh": "从埋没遗迹北部营地往东北，在守卫炮台看守的区域内解开推车谜题，车库内的补给箱。金币掉落 +100%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·大沙漠",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_ComboAttackAdditiveDamage_Uncommon",
+   "name": "组合连击增强组件",
+   "name_en": "Combo Attack Enhancement Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_ComboAttackAdditiveDamage_Uncommon",
+    "Gear_ComboAttackAdditiveDamage_Uncommon_MK2"
+   ],
+   "area": "Great Desert",
+   "location": "Buried Ruins",
+   "obtain": "Northwest of the West of Buried Ruins camp, inside the building with explosives. Three enemies patrol nearby. Contains Combo Attack Enhancement Gear ★★. Increases Combo Attack Power Level 2 or Higher +20%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "大沙漠",
+   "location_zh": "掩埋遗迹",
+   "obtain_zh": "从埋没遗迹西部营地往西北，进入有爆炸物的建筑，附近有三名敌人巡逻。连击攻击力达到 2 级及以上时 +20%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·大沙漠",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_AdditiveGiveAndReciveDamageRate_Uncommon",
+   "name": "双刃组件",
+   "name_en": "Double Edged Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_AdditiveGiveAndReciveDamageRate_Uncommon",
+    "Gear_AdditiveGiveAndReciveDamageRate_Uncommon_MK2"
+   ],
+   "area": "Great Desert",
+   "location": "Northern Great Desert",
+   "obtain": "Dropped by the Behemoth in the Northern Great Desert during the Encounter side quest. Increases Attack Power +20% but increases Damage Taken by 30%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "大沙漠",
+   "location_zh": "大沙漠北部",
+   "obtain_zh": "「遭遇」支线中，击败大沙漠北部的比蒙巨兽后掉落。攻击力 +20%，但受到的伤害 +30%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·大沙漠",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_27.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_BurstGaugeAdditiveRate_Uncommon",
+   "name": "爆发充能组件",
+   "name_en": "Burst Charge Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_BurstGaugeAdditiveRate_Uncommon",
+    "Gear_BurstGaugeAdditiveRate_Uncommon_MK2"
+   ],
+   "area": "Abyss Levoire",
+   "location": "Heart of the Contamination",
+   "obtain": "Dropped by the Maelstrom at the end of Abyss Levoire. Increases Burst Energy Recharge +22%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "深渊勒瓦尔",
+   "location_zh": "污染之心",
+   "obtain_zh": "击败深渊·勒瓦尔尽头的漩涡后掉落。爆发能量充能 +22%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·卢瓦底层",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_34.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_CriticalValueRate_Uncommon",
+   "name": "暴击伤害增强组件",
+   "name_en": "Crit Enhancement Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_CriticalValueRate_Uncommon",
+    "Gear_CriticalValueRate_Uncommon_MK2"
+   ],
+   "area": "Abyss Levoire",
+   "location": "Heart of the Contamination",
+   "obtain": "Dropped by the Maelstrom at the end of Abyss Levoire. Increases Crit. Damage +13%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "深渊勒瓦尔",
+   "location_zh": "污染之心",
+   "obtain_zh": "击败深渊·勒瓦尔尽头的漩涡后掉落。暴击伤害 +13%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·卢瓦底层",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_34.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_GainBurstGaugeValueOnDamaged_Uncommon",
+   "name": "爆发恢复组件",
+   "name_en": "Burst Recovery Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_GainBurstGaugeValueOnDamaged_Uncommon",
+    "Gear_GainBurstGaugeValueOnDamaged_Uncommon_MK2"
+   ],
+   "area": "Eidos 9",
+   "location": "Submerged City",
+   "obtain": "Dropped by the Corruptor at the top of the Submerged City highrise. Increases Burst Energy Recharge Proportional to Damage Taken 3.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "埃多斯9号",
+   "location_zh": "淹没之城",
+   "obtain_zh": "击败水下城市高楼顶部的腐蚀者后掉落。受到的伤害越高，爆发能量充能效率越高（3）。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·埃多斯9号",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_35.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_AdditiveGiveAndReciveDamageRate_Rare",
+   "name": "双刃组件",
+   "name_en": "Double Edged Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_AdditiveGiveAndReciveDamageRate_Rare",
+    "Gear_AdditiveGiveAndReciveDamageRate_Rare_MK2"
+   ],
+   "area": "Eidos 9",
+   "location": "Submerged City",
+   "obtain": "Dropped by the Corruptor at the top of the Submerged City highrise. Increases Attack Power +25% but increases Damage Taken by 38%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "埃多斯9号",
+   "location_zh": "淹没之城",
+   "obtain_zh": "击败水下城市高楼顶部的腐蚀者后掉落。攻击力 +25%，但受到的伤害 +38%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·埃多斯9号",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_35.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_KillEnemyAdditiveDamageRate_Rare",
+   "name": "战斗延续组件",
+   "name_en": "Combat Continuation Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_KillEnemyAdditiveDamageRate_Rare",
+    "Gear_KillEnemyAdditiveDamageRate_Rare_MK2"
+   ],
+   "area": "Eidos 9",
+   "location": "Submerged City",
+   "obtain": "In a chest near the Corruptor boss arena at the top of the Submerged City highrise. Contains Combat Continuation Gear ★★★. Increases Attack Power +10% for 10 seconds upon defeating an enemy.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "埃多斯9号",
+   "location_zh": "淹没之城",
+   "obtain_zh": "水下城市高楼顶部腐蚀者首领战场附近的宝箱内。击败敌人后 10 秒内攻击力 +10%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·埃多斯9号",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_35.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_HighHpDamageAdditiveRate_Rare",
+   "name": "完美战斗组件",
+   "name_en": "Perfect Combat Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_HighHpDamageAdditiveRate_Rare",
+    "Gear_HighHpDamageAdditiveRate_Rare_MK2"
+   ],
+   "area": "Spire 4",
+   "location": "Orca Space Complex",
+   "obtain": "After stopping the waterfall and entering with a passcode, the ground ahead falls away. Before jumping across, turn left for the supply box. Increases Attack Power by 11.5% when HP is high.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "尖塔4",
+   "location_zh": "奥卡太空综合体",
+   "obtain_zh": "止住瀑布并用密码进入后，前方地面会塌陷；跳过去之前向左转，补给箱在左侧。生命值较高时攻击力 +11.5%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·4号高塔",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_37.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_MeleeAttackDamageReductionRate_Rare",
+   "name": "近战防护组件",
+   "name_en": "Melee Protection Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_MeleeAttackDamageReductionRate_Rare",
+    "Gear_MeleeAttackDamageReductionRate_Rare_MK2"
+   ],
+   "area": "Spire 4",
+   "location": "Hypertube",
+   "obtain": "After arriving at the Hypertube area, turn left immediately. This supply box is guarded by a Naytiba. Decreases Melee Damage taken from enemies by 12%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "尖塔4",
+   "location_zh": "高速管道",
+   "obtain_zh": "抵达超级管道区域后立即左转，补给箱由一只孽奇拔看守。受到的近战伤害 -12%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·4号高塔",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_37.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_GainBetaGaugeValueOnDamaged_Rare",
+   "name": "贝塔恢复组件",
+   "name_en": "Beta Recovery Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_GainBetaGaugeValueOnDamaged_Rare",
+    "Gear_GainBetaGaugeValueOnDamaged_Rare_MK2"
+   ],
+   "area": "Spire 4",
+   "location": "Space Logistics Complex",
+   "obtain": "After entering Space Logistics Complex, turn left to find a container near the crane. Contains Beta Recovery Gear ★★★. Increases Beta Energy Recharge Proportional to Damage Taken 4.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "尖塔4",
+   "location_zh": "太空物流综合体",
+   "obtain_zh": "进入太空物流中心后左转，起重机旁的集装箱内。受到的伤害越高，贝塔能量充能效率越高（4）。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·4号高塔",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_37.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_BurstGaugeAdditiveRate_Rare",
+   "name": "爆发充能组件",
+   "name_en": "Burst Charge Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_BurstGaugeAdditiveRate_Rare",
+    "Gear_BurstGaugeAdditiveRate_Rare_MK2"
+   ],
+   "area": "Spire 4",
+   "location": "Space Logistics Complex",
+   "obtain": "In the section with green lasers and conveyor belts, ride the second conveyor belt upward against the flow. The supply box is on the right, containing Burst Charge Gear ★★★. Increases Burst Energy Recharge +27%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "尖塔4",
+   "location_zh": "太空物流综合体",
+   "obtain_zh": "在绿色激光与传送带区域，逆流乘上第二条传送带向上，右侧的补给箱内。爆发能量充能 +27%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·4号高塔",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_37.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_RangeAttackDamageAdditiveRate_Rare",
+   "name": "远程增强组件",
+   "name_en": "Ranged Enhancement Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_RangeAttackDamageAdditiveRate_Rare",
+    "Gear_RangeAttackDamageAdditiveRate_Rare_MK2"
+   ],
+   "area": "Spire 4",
+   "location": "Raphael Space Centre",
+   "obtain": "Dropped by Belial in the Raphael Space Centre. Increases Ranged Attack Power by 8%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "尖塔4",
+   "location_zh": "拉斐尔太空中心",
+   "obtain_zh": "击败拉斐尔太空中心的贝利亚尔后掉落。远程攻击力 +8%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·4号高塔",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_37.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_ShieldAttackPowerRate_Rare",
+   "name": "护盾伤害组件",
+   "name_en": "Shield Destruction Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_ShieldAttackPowerRate_Rare",
+    "Gear_ShieldAttackPowerRate_Rare_MK2"
+   ],
+   "area": "Spire 4",
+   "location": "Raphael Space Centre",
+   "obtain": "Dropped by Belial in the Raphael Space Centre. Increases damage to shields by 32%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "尖塔4",
+   "location_zh": "拉斐尔太空中心",
+   "obtain_zh": "击败拉斐尔太空中心的贝利亚尔后掉落。对护盾造成的伤害 +32%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·4号高塔",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_37.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_AdditiveBustSkillDamage_Rare",
+   "name": "爆发增强组件",
+   "name_en": "Burst Enhancement Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_AdditiveBustSkillDamage_Rare",
+    "Gear_AdditiveBustSkillDamage_Rare_MK2"
+   ],
+   "area": "Spire 4",
+   "location": "Cargo Lift 121",
+   "obtain": "Head up the stairs and jump onto the containers then go through the gaps in the wall and head to the far south for this supply box. Contains Burst Enhancement Gear ★★★. Increases Burst Skill Attack Power +23.5%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "尖塔4",
+   "location_zh": "货运升降机121",
+   "obtain_zh": "上楼梯跳到集装箱上，穿过墙上的缺口一路向南，补给箱在尽头。爆发技能攻击力 +23.5%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·4号高塔",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_37.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_AdditiveFixedDamage_Rare",
+   "name": "固定伤害组件",
+   "name_en": "Fixed Damage Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_AdditiveFixedDamage_Rare",
+    "Gear_AdditiveFixedDamage_Rare_MK2"
+   ],
+   "area": "Spire 4",
+   "location": "Prestige Lounge",
+   "obtain": "Dropped by Karakuri in the Prestige Lounge. Increases Fixed Damage upon Combo Attack 110.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "尖塔4",
+   "location_zh": "贵宾休息室",
+   "obtain_zh": "击败贵宾休息室的机关后掉落。连击攻击 110 时提升固定伤害。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·4号高塔",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_37.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_RangeAttackDamageReductionRate_Rare",
+   "name": "远程防护组件",
+   "name_en": "Ranged Protection Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_RangeAttackDamageReductionRate_Rare",
+    "Gear_RangeAttackDamageReductionRate_Rare_MK2"
+   ],
+   "area": "Spire 4",
+   "location": "Prestige Lounge",
+   "obtain": "Dropped by Karakuri in the Prestige Lounge. Decreases Ranged Damage taken from enemies by 14%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "尖塔4",
+   "location_zh": "贵宾休息室",
+   "obtain_zh": "击败贵宾休息室的机关后掉落。受到的远程伤害 -14%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·4号高塔",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_37.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_LowHpDamageAdditiveRate_Rare",
+   "name": "背水一战组件",
+   "name_en": "Risk Taking Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_LowHpDamageAdditiveRate_Rare",
+    "Gear_LowHpDamageAdditiveRate_Rare_MK2"
+   ],
+   "area": "Spire 4",
+   "location": "Vermillion Garden",
+   "obtain": "After the elevator stops, in the vertical section with ledges before the final camp. The chest is on the lower of the two ledges. Increases Attack Power by 14% when HP is low.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "尖塔4",
+   "location_zh": "朱红花园",
+   "obtain_zh": "电梯停下后，在最终营地前有平台落差的垂直区域，宝箱在较低的平台。生命值较低时攻击力 +14%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·4号高塔",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_37.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_BetaGaugeAdditiveRate_Rare",
+   "name": "贝塔充能组件",
+   "name_en": "Beta Charge Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_BetaGaugeAdditiveRate_Rare",
+    "Gear_BetaGaugeAdditiveRate_Rare_MK2"
+   ],
+   "area": "Spire 4",
+   "location": "High Orbit Station",
+   "obtain": "Dropped by Democrawler in the High Orbit Station. Increases Beta Energy Recharge +10%.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "尖塔4",
+   "location_zh": "高轨道空间站",
+   "obtain_zh": "击败高轨道站的首领后掉落。贝塔能量充能 +10%。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·4号高塔",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_37.shtml"
+    }
+   }
+  },
+  {
+   "id": "Gear_GainBurstGaugeValueOnDamaged_Rare",
+   "name": "爆发恢复组件",
+   "name_en": "Burst Recovery Gear",
+   "category": "gear",
+   "aliases": [
+    "Gear_GainBurstGaugeValueOnDamaged_Rare",
+    "Gear_GainBurstGaugeValueOnDamaged_Rare_MK2"
+   ],
+   "area": "Spire 4",
+   "location": "High Orbit Station",
+   "obtain": "Dropped by Democrawler in the High Orbit Station. Increases Burst Energy Recharge Proportional to Damage Taken 4.",
+   "ng_plus": 0,
+   "dlc": null,
+   "missable": false,
+   "note": "名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备",
+   "confidence": "high",
+   "source": "game",
+   "area_zh": "尖塔4",
+   "location_zh": "高轨道空间站",
+   "obtain_zh": "击败高轨道站的首领后掉落。受到的伤害越高，爆发能量充能效率越高（4）。",
+   "record_type": null,
+   "record_type_zh": null,
+   "record_type_en": null,
+   "guides": {
+    "web": {
+     "title": "游民星空《剑星》全收集攻略·4号高塔",
+     "url": "https://www.gamersky.com/handbook/202404/1738505_37.shtml"
     }
    }
   },

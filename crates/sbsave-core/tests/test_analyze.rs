@@ -241,6 +241,33 @@ fn album_achievements_count_as_obtained() {
     assert_eq!(album_only.album_obtained, 1);
 }
 
+#[test]
+fn growth_items_count_separately_from_collection_progress() {
+    let catalog = load_catalog(None).expect("catalog");
+    // Mk2 is an upgrade of the same gear entry: it counts as obtained.
+    let save = make_save(&["Gear_AdditiveFixedDamage_Common_MK2"], &[], 0);
+    let result = analyze(&save, &catalog, None);
+
+    let gear = result
+        .categories
+        .iter()
+        .find(|category| category.category.key == "gear")
+        .expect("gear");
+    assert_eq!(gear.total, 77);
+    assert_eq!(gear.obtained_count, 1);
+    assert_eq!(gear.missing.len(), 76);
+
+    // Collection rate and missing totals stay on the 13 collection categories.
+    assert_eq!(result.catalog_total, 808);
+    assert_eq!(result.catalog_obtained, 0);
+    assert_eq!(result.missing_total(), 808);
+    assert_eq!(result.growth_total, 77);
+    assert_eq!(result.growth_obtained, 1);
+    assert_eq!(result.growth_missing_total(), 76);
+    assert!((result.growth_percent() - 100.0 / 77.0).abs() < 1e-9);
+    assert!(result.unmapped_obtained.is_empty());
+}
+
 fn with_quests(
     mut save: SaveData,
     completed: &[&str],

@@ -268,6 +268,14 @@ fn is_album_category(result: &CategoryResult) -> bool {
     result.category.section == "album"
 }
 
+fn is_collection_category(result: &CategoryResult) -> bool {
+    result.category.section == "collection"
+}
+
+fn is_growth_category(result: &CategoryResult) -> bool {
+    result.category.section == "growth"
+}
+
 fn print_item_matrix(
     result: &CategoryResult,
     save: &SaveData,
@@ -396,6 +404,15 @@ pub fn print_report(analysis: &Analysis, show_all: bool, lang: &str, locale: Loc
     ));
     out.push_str(&format!(
         "{}\n",
+        messages.report_growth_line(
+            analysis.growth_obtained,
+            analysis.growth_total,
+            analysis.growth_percent(),
+            analysis.growth_missing_total(),
+        )
+    ));
+    out.push_str(&format!(
+        "{}\n",
         messages.report_missable_line(analysis.missed_count(), analysis.missable_open_count())
     ));
     out.push('\n');
@@ -405,7 +422,7 @@ pub fn print_report(analysis: &Analysis, show_all: bool, lang: &str, locale: Loc
     out.push_str(messages.category_summary_header());
     out.push('\n');
     for result in &analysis.categories {
-        if is_album_category(result) {
+        if !is_collection_category(result) {
             continue;
         }
         out.push_str(&format!(
@@ -439,6 +456,27 @@ pub fn print_report(analysis: &Analysis, show_all: bool, lang: &str, locale: Loc
             result.percent(),
             result.missing.len()
         ));
+    }
+
+    if analysis.growth_total > 0 {
+        out.push('\n');
+        out.push_str(messages.growth_summary());
+        out.push('\n');
+        out.push_str(messages.growth_summary_header());
+        out.push('\n');
+        for result in &analysis.categories {
+            if !is_growth_category(result) {
+                continue;
+            }
+            out.push_str(&format!(
+                "{} | {}/{} ({:.0}%) | {}\n",
+                result.category.localized_name(locale),
+                result.obtained_count,
+                result.total,
+                result.percent(),
+                result.missing.len()
+            ));
+        }
     }
 
     for result in &analysis.categories {
@@ -856,6 +894,22 @@ pub fn analysis_to_dict(analysis: &Analysis, include_obtained: bool) -> Value {
         Value::from(round2(analysis.album_percent())),
     );
     summary.insert(
+        "growth_total".to_string(),
+        Value::from(analysis.growth_total),
+    );
+    summary.insert(
+        "growth_obtained".to_string(),
+        Value::from(analysis.growth_obtained),
+    );
+    summary.insert(
+        "growth_missing_total".to_string(),
+        Value::from(analysis.growth_missing_total()),
+    );
+    summary.insert(
+        "growth_percent".to_string(),
+        Value::from(round2(analysis.growth_percent())),
+    );
+    summary.insert(
         "obtained_aliases".to_string(),
         Value::from(save.all_obtained().len()),
     );
@@ -943,13 +997,22 @@ pub fn render_markdown(analysis: &Analysis, lang: &str, locale: Locale) -> Strin
         "- {}",
         messages.report_missable_line(analysis.missed_count(), analysis.missable_open_count())
     ));
+    lines.push(format!(
+        "- {}",
+        messages.report_growth_line(
+            analysis.growth_obtained,
+            analysis.growth_total,
+            analysis.growth_percent(),
+            analysis.growth_missing_total(),
+        )
+    ));
     lines.push(String::new());
     lines.push(messages.markdown_summary_heading().to_string());
     lines.push(String::new());
     lines.push(messages.markdown_summary_header().to_string());
     lines.push("| --- | ---: | ---: | ---: | ---: | ---: |".to_string());
     for result in &analysis.categories {
-        if is_album_category(result) {
+        if !is_collection_category(result) {
             continue;
         }
         lines.push(format!(
@@ -981,6 +1044,26 @@ pub fn render_markdown(analysis: &Analysis, lang: &str, locale: Locale) -> Strin
             result.percent(),
             result.missing.len()
         ));
+    }
+    if analysis.growth_total > 0 {
+        lines.push(String::new());
+        lines.push(messages.markdown_growth_heading().to_string());
+        lines.push(String::new());
+        lines.push(messages.markdown_growth_header().to_string());
+        lines.push("| --- | ---: | ---: |".to_string());
+        for result in &analysis.categories {
+            if !is_growth_category(result) {
+                continue;
+            }
+            lines.push(format!(
+                "| {} | {}/{} ({:.0}%) | {} |",
+                result.category.localized_name(locale),
+                result.obtained_count,
+                result.total,
+                result.percent(),
+                result.missing.len()
+            ));
+        }
     }
     for result in &analysis.categories {
         if !is_matrix_category(&result.category.key) {

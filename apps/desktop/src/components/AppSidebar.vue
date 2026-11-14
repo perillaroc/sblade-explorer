@@ -49,7 +49,12 @@ const groups = computed(() => {
     {
       key: "collections",
       label: t("sidebar.collectionsGroup"),
-      categories: categories.filter((category) => category.section !== "album"),
+      categories: categories.filter((category) => category.section === "collection"),
+    },
+    {
+      key: "growth",
+      label: t("sidebar.growthGroup"),
+      categories: categories.filter((category) => category.section === "growth"),
     },
     {
       key: "album",

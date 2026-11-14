@@ -160,6 +160,8 @@ pub struct Analysis<'a> {
     pub catalog_obtained: usize,
     pub album_total: usize,
     pub album_obtained: usize,
+    pub growth_total: usize,
+    pub growth_obtained: usize,
     pub story: CurrentStory<'a>,
     /// DLC keys supplied by settings / CLI, not read from the save.
     pub owned_dlcs: Vec<String>,
@@ -169,12 +171,30 @@ fn is_album(category: &Category) -> bool {
     category.section == "album"
 }
 
+fn is_collection(category: &Category) -> bool {
+    category.section == "collection"
+}
+
+fn is_growth(category: &Category) -> bool {
+    category.section == "growth"
+}
+
 impl Analysis<'_> {
-    /// Missing entries of the collectible categories (excludes the album).
+    /// Missing entries of the collectible categories (excludes album and growth).
     pub fn missing_total(&self) -> usize {
         self.categories
             .iter()
-            .filter(|result| !is_album(result.category))
+            .filter(|result| is_collection(result.category))
+            .map(|result| result.missing.len())
+            .sum()
+    }
+
+    /// Missing entries of the growth categories (upgrades; excluded from the
+    /// collection progress).
+    pub fn growth_missing_total(&self) -> usize {
+        self.categories
+            .iter()
+            .filter(|result| is_growth(result.category))
             .map(|result| result.missing.len())
             .sum()
     }
@@ -201,6 +221,14 @@ impl Analysis<'_> {
             0.0
         } else {
             self.album_obtained as f64 / self.album_total as f64 * 100.0
+        }
+    }
+
+    pub fn growth_percent(&self) -> f64 {
+        if self.growth_total == 0 {
+            0.0
+        } else {
+            self.growth_obtained as f64 / self.growth_total as f64 * 100.0
         }
     }
 
@@ -434,12 +462,12 @@ pub fn analyze_with_dlcs<'a>(
 
     let catalog_total = results
         .iter()
-        .filter(|result| !is_album(result.category))
+        .filter(|result| is_collection(result.category))
         .map(|result| result.total)
         .sum();
     let catalog_obtained = results
         .iter()
-        .filter(|result| !is_album(result.category))
+        .filter(|result| is_collection(result.category))
         .map(|result| result.obtained_count)
         .sum();
     let album_total = results
@@ -450,6 +478,16 @@ pub fn analyze_with_dlcs<'a>(
     let album_obtained = results
         .iter()
         .filter(|result| is_album(result.category))
+        .map(|result| result.obtained_count)
+        .sum();
+    let growth_total = results
+        .iter()
+        .filter(|result| is_growth(result.category))
+        .map(|result| result.total)
+        .sum();
+    let growth_obtained = results
+        .iter()
+        .filter(|result| is_growth(result.category))
         .map(|result| result.obtained_count)
         .sum();
     let map_code = save.current_map();
@@ -468,6 +506,8 @@ pub fn analyze_with_dlcs<'a>(
         catalog_obtained,
         album_total,
         album_obtained,
+        growth_total,
+        growth_obtained,
         story,
         owned_dlcs: owned,
     }

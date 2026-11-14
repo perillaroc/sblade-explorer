@@ -18,6 +18,7 @@ import {
   Repeat,
   Save,
   Swords,
+  Wrench,
   TriangleAlert,
   Zap,
   type LucideIcon,
@@ -149,7 +150,13 @@ const sections = computed<
     key: "collections",
     title: t("summary.categoriesTitle"),
     icon: ListChecks,
-    categories: props.analysis.categories.filter((category) => category.section !== "album"),
+    categories: props.analysis.categories.filter((category) => category.section === "collection"),
+  },
+  {
+    key: "growth",
+    title: t("summary.growthSection"),
+    icon: Wrench,
+    categories: props.analysis.categories.filter((category) => category.section === "growth"),
   },
   {
     key: "album",

@@ -85,7 +85,9 @@ To correct a mapping, see [Custom catalog](../reference/data.md#custom-catalog).
 
 ## Are gear affixes (Gear) and skills (PT) supported?
 
-Not in v1. Only collectibles and album entries are currently analyzed.
+Gear affixes are supported: the 77 pickup entries appear in the **Growth** section and do not count toward catalog progress.
+The number of stars at the end of a guide title is its rarity (★ Common, ★★ Uncommon, ★★★ Rare), and the upgraded Mk2 copy
+belongs to the same entry, so it is never double counted. Skills (PT) are still unsupported.
 
 ## Where are settings stored?
 

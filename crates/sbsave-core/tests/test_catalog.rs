@@ -96,10 +96,38 @@ fn bayonetta_collab_entries_are_mapped() {
 }
 
 #[test]
+fn gear_categories_are_growth_only() {
+    let catalog = load_catalog(None).expect("catalog");
+    assert_eq!(catalog.categories["gear"].section, "growth");
+    let gear = catalog.by_category("gear");
+    assert_eq!(gear.len(), 77);
+    assert!(gear.iter().all(|item| item.confidence == "high"));
+    assert!(gear.iter().all(|item| !item.missable));
+
+    let index = catalog.alias_index();
+    let fixed = index["Gear_AdditiveFixedDamage_Common"];
+    assert_eq!(fixed.name, "固定伤害组件");
+    assert_eq!(fixed.name_en.as_deref(), Some("Fixed Damage Gear"));
+    assert_eq!(
+        fixed.aliases,
+        vec![
+            "Gear_AdditiveFixedDamage_Common".to_string(),
+            "Gear_AdditiveFixedDamage_Common_MK2".to_string()
+        ]
+    );
+    assert_eq!(fixed.area.as_deref(), Some("Eidos 7"));
+    assert_eq!(fixed.location.as_deref(), Some("Parking Tower"));
+    // Upgraded (Mk2) copies count as the same gear entry.
+    assert_eq!(index["Gear_AdditiveFixedDamage_Common_MK2"].id, fixed.id);
+    // The guide has no Common Burst Expansion pickup, so it is not an entry.
+    assert!(!index.contains_key("Gear_MaxBurstGauge_Common"));
+}
+
+#[test]
 fn catalog_counts() {
     let catalog = load_catalog(None).expect("catalog");
-    assert_eq!(catalog.items.len(), 930);
-    assert_eq!(catalog.categories.len(), 15);
+    assert_eq!(catalog.items.len(), 1007);
+    assert_eq!(catalog.categories.len(), 16);
     assert_eq!(catalog.by_category("nano_suits").len(), 130);
     assert_eq!(catalog.by_category("cans").len(), 49);
     assert_eq!(catalog.by_category("camps").len(), 89);
@@ -436,7 +464,7 @@ fn guide_links_cover_catalog() {
     }
     // 仅默认外观类条目没有可链接的攻略（发型：默认马尾与首领挑战奖励）
     assert_eq!(missing, ["Hair_000", "Hair_Nikke_01"]);
-    assert_eq!(with_web, 798);
+    assert_eq!(with_web, 875);
     assert_eq!(with_video, 694);
     let index = catalog.alias_index();
     let can = index["Can_011"].guides.as_ref().expect("can guides");
@@ -513,7 +541,8 @@ fn chinese_translations_cover_guide_text() {
         .iter()
         .filter(|item| item.obtain.is_some())
         .collect();
-    assert_eq!(with_obtain.len(), 808);
+    // 808 收集品 + 77 装备（成长区块）均带获取文案与中文翻译
+    assert_eq!(with_obtain.len(), 885);
     let missing: Vec<&str> = with_obtain
         .iter()
         .filter(|item| item.obtain_zh.is_none())

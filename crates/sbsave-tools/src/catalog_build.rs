@@ -25,7 +25,7 @@ const SOURCES: [&str; 6] = [
     "https://mapgenie.io + https://www.gamersky.com (in-game Data Bank order of memorysticks)",
 ];
 
-const CATEGORIES: [(&str, &str, &str, i64, &str); 15] = [
+const CATEGORIES: [(&str, &str, &str, i64, &str); 16] = [
     ("nano_suits", "纳米战衣", "Nano Suits", 10, "collection"),
     ("cans", "罐子", "Cans", 20, "collection"),
     (
@@ -71,6 +71,7 @@ const CATEGORIES: [(&str, &str, &str, i64, &str); 15] = [
     ("fish", "鱼类", "Fish", 130, "collection"),
     ("naytiba", "孽奇拔", "Naytiba", 140, "album"),
     ("characters", "角色", "Characters", 150, "album"),
+    ("gear", "装备", "Gear", 160, "growth"),
 ];
 
 // In-game album (`AlbumTable`) groups used for the 孽奇拔 category order.
@@ -127,6 +128,9 @@ fn game_note(category: &str) -> Option<&'static str> {
         "passcodes" => Some("名称来自游戏数据库（zh-Hans 本地化）"),
         "camps" => Some("名称来自游戏营地数据（zh-Hans 本地化）"),
         "design_patterns" => Some("图案名称来自游戏数据（zh-Hans 本地化）"),
+        "gear" => {
+            Some("名称来自游戏数据（zh-Hans 本地化）；★ 数对应稀有度，升级后的 Mk2 同属一件装备")
+        }
         _ => None,
     }
 }
@@ -1774,6 +1778,124 @@ fn build_design_patterns(
     items
 }
 
+/// Gear affixes come in Common / Uncommon / Rare variants plus `_MK2` upgrade
+/// copies of the same item. The guide snapshot marks rarity with trailing
+/// stars (`Protection Gear ★★`), so each site entry can be matched to the game
+/// alias by English name + star count; upgraded (Mk2) saves count as obtained
+/// because both aliases are attached to one catalog entry.
+fn build_gear(
+    site: &BTreeMap<i64, SiteItem>,
+    game_names: &Value,
+    crosswalk: &Crosswalk,
+) -> Result<Vec<CatalogItem>, String> {
+    let items_map = game_names
+        .get("items")
+        .and_then(Value::as_object)
+        .ok_or_else(|| "name_map.json 缺少 items 映射".to_string())?;
+    // English base name -> alias stem without the rarity suffix.
+    let mut stems: HashMap<String, String> = HashMap::new();
+    let mut known: HashSet<String> = HashSet::new();
+    for (alias, entry) in items_map {
+        if !alias.starts_with("Gear_") {
+            continue;
+        }
+        known.insert(alias.clone());
+        if alias.ends_with("_MK2") {
+            continue;
+        }
+        let Some(stem) = alias
+            .strip_suffix("_Common")
+            .or_else(|| alias.strip_suffix("_Uncommon"))
+            .or_else(|| alias.strip_suffix("_Rare"))
+        else {
+            continue;
+        };
+        let Some(name_en) = entry.get("en").and_then(Value::as_str) else {
+            continue;
+        };
+        if let Some(previous) = stems.insert(name_en.to_string(), stem.to_string()) {
+            if previous != stem {
+                return Err(format!(
+                    "装备英文名称重复: {name_en}（{previous} / {stem}）"
+                ));
+            }
+        }
+    }
+
+    let star_re = Regex::new(r"^(.*?)\s*(★+)$").expect("gear rarity regex");
+    let mut gear_ids: Vec<i64> = site
+        .iter()
+        .filter(|(_, item)| item.source_file == "upgrades__gear.json")
+        .map(|(id, _)| *id)
+        .collect();
+    gear_ids.sort_by_key(|id| site[id].order);
+
+    let mut items: Vec<CatalogItem> = Vec::new();
+    let mut matched: BTreeSet<String> = BTreeSet::new();
+    for site_id in gear_ids {
+        let info = &site[&site_id];
+        let captures = star_re
+            .captures(&info.title)
+            .ok_or_else(|| format!("攻略装备条目缺少星级: {}（site id {site_id}）", info.title))?;
+        let rarity = match captures[2].chars().count() {
+            1 => "Common",
+            2 => "Uncommon",
+            3 => "Rare",
+            stars => {
+                return Err(format!(
+                    "攻略装备条目的星级无法识别: {}（{stars} 星，site id {site_id}）",
+                    info.title
+                ));
+            }
+        };
+        let base_name = captures[1].trim();
+        let stem = stems.get(base_name).ok_or_else(|| {
+            format!(
+                "攻略装备条目未匹配到游戏名称: {}（site id {site_id}）",
+                info.title
+            )
+        })?;
+        let alias = format!("{stem}_{rarity}");
+        if !known.contains(&alias) {
+            return Err(format!(
+                "装备别名不存在于游戏名称表: {alias}（site id {site_id}）"
+            ));
+        }
+        if !matched.insert(alias.clone()) {
+            return Err(format!("攻略装备条目重复匹配: {}（{alias}）", info.title));
+        }
+        let mut aliases = vec![alias.clone()];
+        let mk2 = format!("{alias}_MK2");
+        if known.contains(&mk2) {
+            aliases.push(mk2);
+        }
+        let entry = items_map.get(&alias);
+        let name = entry
+            .and_then(|entry| entry.get("zh"))
+            .and_then(Value::as_str)
+            .filter(|text| !text.is_empty())
+            .map_or_else(|| base_name.to_string(), |text| text.to_string());
+        let name_en = entry
+            .and_then(|entry| entry.get("en"))
+            .and_then(Value::as_str)
+            .filter(|text| !text.is_empty())
+            .map(str::to_string);
+        items.push(make_item(
+            alias.clone(),
+            name,
+            "gear",
+            aliases,
+            Some(info),
+            "high",
+            name_en,
+            None,
+            None,
+            &crosswalk.site_base_url,
+        ));
+    }
+    Ok(items)
+}
+
 fn build_camps(
     universe: &Value,
     crosswalk: &Crosswalk,
@@ -2092,6 +2214,17 @@ fn load_quest_aliases(root: &Path) -> Result<HashSet<String>, String> {
 /// `camp_zones`) and explicit `ids` are validated so typos fail the build;
 /// quest aliases in the optional rules must exist in the committed
 /// `quest_aliases.json` snapshot.
+fn category_section(key: &str) -> Option<&'static str> {
+    CATEGORIES
+        .iter()
+        .find(|(category, ..)| *category == key)
+        .map(|(_, _, _, _, section)| *section)
+}
+
+fn is_collection_item(item: &CatalogItem) -> bool {
+    category_section(&item.category) == Some("collection")
+}
+
 fn apply_missable(
     items: &mut [CatalogItem],
     missable: &MissableFile,
@@ -2105,7 +2238,9 @@ fn apply_missable(
         for area in &group.areas {
             let hits: Vec<&str> = items
                 .iter()
-                .filter(|item| item.area.as_deref() == Some(area.as_str()))
+                .filter(|item| {
+                    is_collection_item(item) && item.area.as_deref() == Some(area.as_str())
+                })
                 .map(|item| item.id.as_str())
                 .collect();
             if hits.is_empty() {
@@ -2171,7 +2306,7 @@ fn apply_missable(
     }
 
     for item in items.iter_mut() {
-        if marked.contains(&item.id) {
+        if marked.contains(&item.id) && is_collection_item(item) {
             item.missable = true;
             item.missable_rule = rules.get(&item.id).filter(|rule| !rule.is_empty()).cloned();
         }
@@ -2342,6 +2477,7 @@ pub fn build_catalog_bytes(root: &Path) -> Result<BuildOutput, String> {
     items.extend(build_fish(&universe, &crosswalk, &fish_obtain)?);
     items.extend(build_camps(&universe, &crosswalk, &site)?);
     items.extend(build_appearance(&site, &crosswalk)?);
+    items.extend(build_gear(&site, &game_names, &crosswalk)?);
     items.extend(build_design_patterns(&site, &universe, &crosswalk));
     apply_game_names(&mut items, &game_names);
     apply_record_types(&mut items, &site, &crosswalk)?;
