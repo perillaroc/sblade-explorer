@@ -14,6 +14,7 @@
 | `fish_obtain.json` | 手工维护的鱼类获取说明（别名 → 中英文案：钓点和鱼饵；鱼类没有攻略站条目） |
 | `missable.json` | 手工维护的易错过清单（希雍锁定、埃多斯9号可选区域和支线奖励；可按区域、营地区段或显式条目选择，`catalog build` 展开为 `missable`）。可选的 `void_after_quests` / `requires_quests` / `void_on_failed_quests` 给出机器可读的存档任务条件，`catalog build` 展开为条目的 `missable_rule` 并校验任务别名 |
 | `quest_aliases.json` | `DataMap_SBQuest` 中见过的任务别名快照（本地、Demo、100% 三份存档，117 条）；`catalog build` 用它对 `missable.json` 的任务条件做拼写校验 |
+| `doctor_allowlist.json` | `sbsave-tools doctor` 的基线：站点条目中按设计不入库或已知没有存档别名的 id；新增未入库条目会让 `doctor --strict` 失败，确认后再更新本文件 |
 | `memorystick_order.json` | 记忆棒在游戏内数据库中的排列顺序（按区域分组并记录组内顺序，覆盖全部 186 条；根据 Map Genie 和游民星空列表整理） |
 | `guides.json` | 手工维护的中文攻略链接快照（游民星空图文和 B 站「喂狗组-文轩」全收集视频）；`catalog build` 将其解析为每个物品的 `guides.web` 和 `guides.video`；纳米战衣和设计图逐件对应游民星空服装图鉴分页 |
 | `game/name_map.json` | 从游戏数据表和 `Game.locres` 提取的内部别名与官方名称映射（生成文件，包含 `items`、`camps`、`album`、`regions`、`quests` 五段；`regions` 是 `UI_RegionAlias_*` 区域代号表，`quests` 是 `Quest_*_Title` 任务标题；`camps` 合并 `game/camp_alias_rows.json` 中置信度不为 low 的对照） |

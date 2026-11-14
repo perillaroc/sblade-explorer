@@ -57,6 +57,18 @@ After changing catalog data sources, run `catalog build` first and then `catalog
 Manual alias mappings are maintained in `data/raw/crosswalk.json` (the single source of truth for collectible data, including the camp-to-guide-entry mappings).
 Guide translations are in `data/raw/api/i18n/`, and fish acquisition instructions are in `data/raw/fish_obtain.json`.
 
+Data health check (offline, never reads a save):
+
+```powershell
+cargo run -p sbsave-tools -- doctor             # writes target/doctor.md and target/doctor.json
+cargo run -p sbsave-tools -- doctor --strict    # exits non-zero on new unregistered site entries
+```
+
+It reports the two-way site/catalog diff, guide links, low-confidence or duplicate entries, missing obtain text,
+alias coverage, and missable/region/quest data. Materials and core upgrades excluded by design are handled by
+`data/raw/doctor_allowlist.json` and a file exclusion list in code; CI runs `--strict` as a non-blocking step so
+new guide entries are noticed early.
+
 To update the game name mappings, you need a local installation of the game plus `cue4parse.exe` and `repak.exe`. See `data/raw/README.md` for details:
 
 ```powershell

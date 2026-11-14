@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "generated_by": "hand maintained (doctor baseline)",
+  "note": "站点条目中按设计不入库或已知没有存档别名的 id。材料与核心/Tumbler/无人机模块由 doctor 按文件排除，无需列在这里；下列营地与密码是攻略重复条目或没有对应存档别名，保留为已知缺口。新增的未入库条目会让 doctor --strict 失败，请先确认再更新本文件。",
+  "unused_site_ids": [194, 450, 496, 891, 901, 1024]
+}

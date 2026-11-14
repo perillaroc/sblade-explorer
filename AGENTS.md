@@ -35,6 +35,7 @@ pnpm tauri build         # Windows 打包（输出 target/release/bundle/{nsis,m
 # 数据管线（仓库根目录）
 cargo run -p sbsave-tools -- catalog build   # 重新生成 data/catalog.json
 cargo test -p sbsave-tools                   # 生成结果与已提交文件逐字节比对
+cargo run -p sbsave-tools -- doctor --strict # 数据健康检查（站点差集/链接/质量/规则）
 ```
 
 修改目录库数据源后的顺序：先 `cargo run -p sbsave-tools -- catalog build`，再用

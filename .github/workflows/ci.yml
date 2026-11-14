@@ -47,6 +47,10 @@ jobs:
         run: |
           cargo run -p sbsave-cli -- --version
           cargo run -p sbsave-cli -- catalog check
+      - name: 数据健康检查（非阻塞）
+        # 站点新增条目、断链或重复别名会让 --strict 失败，但先不阻塞合并。
+        continue-on-error: true
+        run: cargo run -p sbsave-tools -- doctor --strict --out target/doctor
 
   frontend:
     name: 前端

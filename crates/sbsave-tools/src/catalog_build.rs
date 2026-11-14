@@ -236,16 +236,17 @@ struct MemorystickRegion {
 }
 
 #[derive(Debug)]
-struct SiteItem {
-    title: String,
-    cycle: String,
-    level: String,
-    location: String,
-    description: String,
-    source_file: String,
-    order: i64,
-    types: Vec<String>,
-    subtype: Option<String>,
+pub(crate) struct SiteItem {
+    pub(crate) id: i64,
+    pub(crate) title: String,
+    pub(crate) cycle: String,
+    pub(crate) level: String,
+    pub(crate) location: String,
+    pub(crate) description: String,
+    pub(crate) source_file: String,
+    pub(crate) order: i64,
+    pub(crate) types: Vec<String>,
+    pub(crate) subtype: Option<String>,
 }
 
 /// One external guide link: a Chinese page (article or video part) plus a label
@@ -410,6 +411,8 @@ struct QuestAliasFile {
 #[derive(Serialize)]
 struct CatalogItem {
     id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    site_id: Option<i64>,
     name: String,
     name_en: Option<String>,
     category: String,
@@ -504,7 +507,7 @@ fn truthy_string_field(value: &Value, key: &str) -> Option<String> {
         .map(str::to_string)
 }
 
-fn load_site_index(api_dir: &Path) -> Result<BTreeMap<i64, SiteItem>, String> {
+pub(crate) fn load_site_index(api_dir: &Path) -> Result<BTreeMap<i64, SiteItem>, String> {
     let mut paths: Vec<PathBuf> = std::fs::read_dir(api_dir)
         .map_err(|error| format!("读取 {} 失败: {error}", api_dir.display()))?
         .filter_map(Result::ok)
@@ -585,6 +588,7 @@ fn load_site_index(api_dir: &Path) -> Result<BTreeMap<i64, SiteItem>, String> {
                     index.insert(
                         id,
                         SiteItem {
+                            id,
                             title: string_field(item, "title"),
                             cycle,
                             level: level_name.clone(),
@@ -652,6 +656,7 @@ fn make_item(
     let dlc = dlc_from_aliases(&aliases, cycle);
     CatalogItem {
         id: item_id,
+        site_id: site.map(|item| item.id),
         name,
         name_en: name_en
             .filter(|text| !text.is_empty())
@@ -696,6 +701,7 @@ fn plain_item(
 ) -> CatalogItem {
     CatalogItem {
         id,
+        site_id: None,
         name,
         name_en: Some(name_en),
         category: category.to_string(),
@@ -1048,6 +1054,7 @@ fn apply_record_types(
             return Err(format!("记录类型覆盖条目重复: {site_id}"));
         }
         item.record_type = Some(key.to_string());
+        item.site_id = Some(*site_id);
         if let Some((zh, en)) = record_type_labels(key) {
             item.record_type_zh = Some(zh.to_string());
             item.record_type_en = Some(en.to_string());
@@ -1106,6 +1113,7 @@ fn apply_record_types(
         };
         used.insert(site_id);
         item.record_type = Some(key.to_string());
+        item.site_id = Some(site_id);
         if let Some((zh, en)) = record_type_labels(key) {
             item.record_type_zh = Some(zh.to_string());
             item.record_type_en = Some(en.to_string());
@@ -1215,6 +1223,7 @@ fn apply_passcode_obtain(
         let Some(info) = site.get(site_id) else {
             continue;
         };
+        item.site_id = Some(*site_id);
         apply_guide_obtain(item, info);
         copy_guide_location(item, info);
     }
@@ -1446,6 +1455,7 @@ fn album_item(
     };
     Ok(CatalogItem {
         id: format!("Album_{key}"),
+        site_id: None,
         name,
         name_en: Some(name_en),
         category: category.to_string(),
@@ -2041,6 +2051,7 @@ fn build_camps(
                     ));
                 }
                 item.obtain = Some(info.description.clone());
+                item.site_id = Some(site_id);
             }
             None => {
                 let obtain = entry
@@ -2879,6 +2890,7 @@ mod tests {
 
     fn site_item(level: &str, location: &str) -> SiteItem {
         SiteItem {
+            id: 1,
             title: "Memo".to_string(),
             cycle: "Base".to_string(),
             level: level.to_string(),

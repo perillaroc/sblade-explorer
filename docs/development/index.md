@@ -55,6 +55,17 @@ cargo test -p sbsave-tools
 手工别名映射维护在 `data/raw/crosswalk.json`（收集品数据的唯一事实来源，包含营地与攻略站条目的对照）；
 攻略文案翻译位于 `data/raw/api/i18n/`，鱼类文案位于 `data/raw/fish_obtain.json`。
 
+数据健康检查（离线，不读取存档）：
+
+```powershell
+cargo run -p sbsave-tools -- doctor             # 输出 target/doctor.md 与 target/doctor.json
+cargo run -p sbsave-tools -- doctor --strict    # 有新增未入库条目时退出码非 0
+```
+
+检查站点条目与目录库的双向差集、攻略链接、低置信度/重复别名/空获取文案、别名覆盖，
+以及易错过规则和区域/任务标题。按设计不入库的材料与核心类由 `data/raw/doctor_allowlist.json`
+和代码中的文件排除列表处理；CI 以非阻塞方式运行 `--strict`，便于先发现站点新增条目。
+
 更新游戏名称映射前，需要在本机安装游戏，并准备 `cue4parse.exe` 和 `repak.exe`，详见 `data/raw/README.md`：
 
 ```powershell

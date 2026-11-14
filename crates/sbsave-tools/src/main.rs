@@ -1,7 +1,7 @@
 use std::path::PathBuf;
 
 use clap::{Args, Parser, Subcommand};
-use sbsave_tools::{catalog_build, mine_names, repo_root};
+use sbsave_tools::{catalog_build, doctor, mine_names, repo_root};
 
 #[derive(Parser)]
 #[command(
@@ -27,6 +27,23 @@ enum Command {
         about = "从游戏数据表与 Game.locres 提取内部别名到官方名称的映射。"
     )]
     MineNames(MineNamesArgs),
+    #[command(
+        name = "doctor",
+        about = "检查目录库、攻略链接与规则数据的一致性（离线，不读取存档）。"
+    )]
+    Doctor(DoctorArgs),
+}
+
+#[derive(Args)]
+struct DoctorArgs {
+    #[arg(
+        long,
+        value_name = "DIR",
+        help = "报告输出目录（默认 target，写入 doctor.md / doctor.json）"
+    )]
+    out: Option<PathBuf>,
+    #[arg(long, help = "发现新增未入库条目、失效站点 id 或重复别名时退出码非 0")]
+    strict: bool,
 }
 
 #[derive(Subcommand)]
@@ -95,6 +112,20 @@ fn run(cli: Cli) -> i32 {
             };
             match mine_names::run(&options) {
                 Ok(()) => 0,
+                Err(message) => {
+                    eprintln!("{message}");
+                    1
+                }
+            }
+        }
+        Command::Doctor(args) => {
+            let options = doctor::Options {
+                out: args.out,
+                strict: args.strict,
+            };
+            match doctor::run(&repo_root(), &options) {
+                Ok(true) => 0,
+                Ok(false) => 1,
                 Err(message) => {
                     eprintln!("{message}");
                     1

@@ -5,6 +5,7 @@
 //! `data/raw/crosswalk.json`.
 
 pub mod catalog_build;
+pub mod doctor;
 pub mod jsonio;
 pub mod locres;
 pub mod mine_names;
