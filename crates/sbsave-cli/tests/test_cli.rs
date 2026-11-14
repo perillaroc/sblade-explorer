@@ -90,7 +90,7 @@ fn report_with_real_save() {
     if !has_local_save() {
         return;
     }
-    let output = sbsave(&["report", "--category", "cans"]);
+    let output = sbsave(&["report", "--ui-lang", "zh", "--category", "cans"]);
     assert!(output.status.success());
     assert!(stdout(&output).contains("罐子"));
 }
@@ -167,7 +167,7 @@ fn report_json_with_synthetic_fixture() {
     let json_path = fixture.root.join("report.json");
     let json_text = json_path.to_string_lossy().into_owned();
     let output = sbsave_with_fixture(
-        &["report", "--json", &json_text],
+        &["report", "--ui-lang", "zh", "--json", &json_text],
         &fixture.root,
         &fixture.root,
     );
