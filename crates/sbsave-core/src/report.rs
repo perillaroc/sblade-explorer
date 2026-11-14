@@ -658,6 +658,7 @@ fn item_to_dict(status: &ItemStatus) -> Value {
         Value::String(item.confidence.clone()),
     );
     object.insert("missable_state".to_string(), missable_state_to_dict(status));
+    object.insert("dlc_owned".to_string(), Value::Bool(status.dlc_owned));
     object.insert(
         "reason".to_string(),
         match status.reason_label(Locale::Zh) {
@@ -810,6 +811,17 @@ pub fn analysis_to_dict(analysis: &Analysis, include_obtained: bool) -> Value {
                 .story
                 .epic_quest_title
                 .map(|title| title.name_zh.as_str()),
+        ),
+    );
+    save_object.insert(
+        "owned_dlcs".to_string(),
+        Value::Array(
+            analysis
+                .owned_dlcs
+                .iter()
+                .cloned()
+                .map(Value::String)
+                .collect(),
         ),
     );
 

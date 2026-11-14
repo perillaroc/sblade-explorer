@@ -273,3 +273,46 @@ fn report_category_filter_uses_synthetic_fixture() {
     assert_eq!(report["summary"]["missable_open_count"], 0);
     assert_eq!(report["categories"].as_array().map(Vec::len), Some(1));
 }
+
+#[test]
+fn report_with_owned_dlc_unblocks_entries() {
+    let fixture = FixtureEnv::new("owned-dlc");
+    let json_path = fixture.root.join("report-dlc.json");
+    let json_text = json_path.to_string_lossy().into_owned();
+    let output = sbsave_with_fixture(
+        &["report", "--dlc", "nikke", "--json", &json_text],
+        &fixture.root,
+        &fixture.root,
+    );
+    assert!(
+        output.status.success(),
+        "{}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+
+    let report: serde_json::Value =
+        serde_json::from_str(&std::fs::read_to_string(&json_path).expect("read report"))
+            .expect("parse report");
+    assert_eq!(report["save"]["owned_dlcs"], serde_json::json!(["nikke"]));
+
+    let missing = |id: &str| -> &serde_json::Value {
+        report["categories"]
+            .as_array()
+            .expect("categories")
+            .iter()
+            .flat_map(|category| category["missing"].as_array().expect("missing"))
+            .find(|item| item["id"] == id)
+            .unwrap_or_else(|| panic!("{id} should be missing"))
+    };
+    let nikke = missing("BS_Nikke_06");
+    assert_eq!(nikke["dlc_owned"], true);
+    assert!(nikke["reason"].is_null());
+    assert_eq!(missing("BS_Nier_01")["reason"], "尼尔 DLC限定");
+}
+
+#[test]
+fn unknown_dlc_is_rejected() {
+    let output = sbsave(&["--dlc", "foo", "catalog", "list"]);
+    assert_eq!(output.status.code(), Some(2));
+    assert!(String::from_utf8_lossy(&output.stderr).contains("foo"));
+}

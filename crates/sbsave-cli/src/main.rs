@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use std::path::PathBuf;
 
 use clap::{CommandFactory, FromArgMatches, Parser, Subcommand};
-use sbsave_core::analyze::analyze;
+use sbsave_core::analyze::{analyze_with_dlcs, KNOWN_DLCS};
 use sbsave_core::catalog::{load_catalog, Catalog};
 use sbsave_core::gvas::to_jsonable;
 use sbsave_core::i18n::{Locale, Messages};
@@ -17,6 +17,9 @@ struct Cli {
     /// Localized at runtime; see `localize_command`.
     #[arg(long, global = true, value_name = "LANG")]
     ui_lang: Option<String>,
+    /// Owned DLC keys; see `help_dlc` (localized at runtime).
+    #[arg(long, global = true, value_name = "DLCS")]
+    dlc: Option<String>,
     #[command(subcommand)]
     command: Command,
 }
@@ -103,6 +106,7 @@ fn localize_command(command: clap::Command, messages: &Messages) -> clap::Comman
     command
         .about(messages.cli_about())
         .mut_arg("ui_lang", |arg| arg.help(messages.cli_ui_lang_help()))
+        .mut_arg("dlc", |arg| arg.help(messages.help_dlc()))
         .mut_subcommand("saves", |sub| sub.about(messages.cli_saves_about()))
         .mut_subcommand("report", |sub| {
             sub.about(messages.cli_report_about())
@@ -150,10 +154,38 @@ fn main() {
             std::process::exit(2);
         }
     }
-    std::process::exit(run(cli, messages));
+    let owned_dlcs = match parse_owned_dlcs(cli.dlc.as_deref(), &messages) {
+        Ok(owned) => owned,
+        Err(message) => {
+            eprintln!("{message}");
+            std::process::exit(2);
+        }
+    };
+    std::process::exit(run(cli, messages, owned_dlcs));
 }
 
-fn run(cli: Cli, messages: Messages) -> i32 {
+fn parse_owned_dlcs(raw: Option<&str>, messages: &Messages) -> Result<Vec<String>, String> {
+    let Some(raw) = raw else {
+        return Ok(Vec::new());
+    };
+    let mut owned: Vec<String> = Vec::new();
+    for token in raw.replace('，', ",").split(',') {
+        let token = token.trim().to_ascii_lowercase();
+        if token.is_empty() {
+            continue;
+        }
+        if !KNOWN_DLCS.contains(&token.as_str()) {
+            return Err(messages.error_unknown_dlc(&token, &KNOWN_DLCS.join(", ")));
+        }
+        if !owned.contains(&token) {
+            owned.push(token);
+        }
+    }
+    owned.sort();
+    Ok(owned)
+}
+
+fn run(cli: Cli, messages: Messages, owned_dlcs: Vec<String>) -> i32 {
     match cli.command {
         Command::Saves => command_saves(messages),
         Command::Report {
@@ -177,6 +209,7 @@ fn run(cli: Cli, messages: Messages) -> i32 {
                 catalog,
             },
             messages,
+            owned_dlcs,
         ),
         Command::Dump {
             save,
@@ -341,7 +374,7 @@ struct ReportArgs {
     catalog: Option<PathBuf>,
 }
 
-fn command_report(args: ReportArgs, messages: Messages) -> i32 {
+fn command_report(args: ReportArgs, messages: Messages, owned_dlcs: Vec<String>) -> i32 {
     let ReportArgs {
         save,
         slot,
@@ -378,7 +411,7 @@ fn command_report(args: ReportArgs, messages: Messages) -> i32 {
             return 2;
         }
     };
-    let analysis = analyze(&save_data, &catalog, keys.as_deref());
+    let analysis = analyze_with_dlcs(&save_data, &catalog, keys.as_deref(), &owned_dlcs);
     print!("{}", print_report(&analysis, all, &lang, messages.locale()));
     if let Some(path) = json {
         if let Err(error) = write_json(&analysis, &path, true) {

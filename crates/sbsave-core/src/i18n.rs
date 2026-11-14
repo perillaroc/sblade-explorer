@@ -188,6 +188,15 @@ impl Messages {
         }
     }
 
+    pub fn flag_dlc_owned(&self, dlc: &str) -> String {
+        let label = self.dlc_label(dlc);
+        if self.is_zh() {
+            format!("{label}（已拥有，尚未获得）")
+        } else {
+            format!("{label} (owned, not yet obtained)")
+        }
+    }
+
     pub const fn reason_missable(&self) -> &'static str {
         if self.is_zh() {
             "可错过(注意节点)"
@@ -617,6 +626,14 @@ impl Messages {
         }
     }
 
+    pub const fn help_dlc(&self) -> &'static str {
+        if self.is_zh() {
+            "已拥有的 DLC，逗号分隔：nier,nikke（来自设置，不读取存档）"
+        } else {
+            "Owned DLC, comma separated: nier,nikke (from settings, not the save)"
+        }
+    }
+
     pub const fn help_all(&self) -> &'static str {
         if self.is_zh() {
             "同时列出已收集的物品"
@@ -736,6 +753,14 @@ impl Messages {
             format!("未知语言: {lang}（可选 {options}）")
         } else {
             format!("Unknown language: {lang} (expected one of {options})")
+        }
+    }
+
+    pub fn error_unknown_dlc(&self, dlc: &str, options: &str) -> String {
+        if self.is_zh() {
+            format!("未知 DLC: {dlc}（可选 {options}）")
+        } else {
+            format!("Unknown DLC: {dlc} (expected one of {options})")
         }
     }
 

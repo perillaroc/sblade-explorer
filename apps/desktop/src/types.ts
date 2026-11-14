@@ -27,6 +27,7 @@ export interface SaveInfo {
   current_epic_quest: string | null;
   current_epic_quest_title: string | null;
   current_epic_quest_title_zh: string | null;
+  owned_dlcs: string[];
 }
 
 /** Save-aware state of a statically missable entry. */
@@ -60,6 +61,7 @@ export interface Item {
   obtain_zh: string | null;
   ng_plus: number;
   dlc: string | null;
+  dlc_owned: boolean;
   missable: boolean;
   missable_state: MissableState | null;
   note: string | null;
@@ -87,6 +89,7 @@ export interface ObtainedItem {
   obtain_zh: string | null;
   ng_plus: number;
   dlc: string | null;
+  dlc_owned?: boolean;
   missable: boolean;
   note: string | null;
   confidence: string;

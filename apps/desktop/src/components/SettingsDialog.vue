@@ -5,10 +5,12 @@ import { invoke } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
 import { Check, RotateCcw, Settings } from "@lucide/vue";
 import {
+  DLC_KEYS,
   resetSettings,
   SEARCH_ENGINES,
   settings,
   type BrowserInfo,
+  type DlcKey,
   type SearchEngineId,
   type ThemeMode,
 } from "../lib/settings";
@@ -61,6 +63,21 @@ const engineOptions = computed(() =>
     label: t(`settings.engines.${engine.id}`),
   })),
 );
+
+const dlcOptions = computed(() =>
+  DLC_KEYS.map((id) => ({
+    id,
+    label: t(`dlc.${id}`),
+    checked: settings.ownedDlcs.includes(id),
+  })),
+);
+
+function toggleDlc(id: DlcKey): void {
+  const owned = settings.ownedDlcs;
+  settings.ownedDlcs = owned.includes(id)
+    ? owned.filter((value) => value !== id)
+    : ([...owned, id].sort() as DlcKey[]);
+}
 
 const engineValue = computed({
   get: () => settings.searchEngine,
@@ -210,6 +227,28 @@ onMounted(() => {
             size="md"
             :aria-label="t('settings.searchEngine')"
           />
+        </div>
+      </section>
+
+      <section>
+        <h4 class="text-xs font-semibold text-ink">{{ t("settings.ownedDlcs") }}</h4>
+        <p class="mt-1 text-[11px] leading-5 text-ink-subtle">
+          {{ t("settings.ownedDlcsHint") }}
+        </p>
+        <div class="mt-2 space-y-1.5">
+          <label
+            v-for="option in dlcOptions"
+            :key="option.id"
+            class="flex items-center gap-2 text-xs text-ink-muted"
+          >
+            <input
+              type="checkbox"
+              class="h-3.5 w-3.5"
+              :checked="option.checked"
+              @change="toggleDlc(option.id)"
+            />
+            {{ option.label }}
+          </label>
         </div>
       </section>
 

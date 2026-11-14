@@ -1,7 +1,7 @@
 use std::path::{Path, PathBuf};
 use std::time::UNIX_EPOCH;
 
-use sbsave_core::analyze::analyze;
+use sbsave_core::analyze::analyze_with_dlcs;
 use sbsave_core::catalog::{load_catalog, GuideLink};
 use sbsave_core::i18n::{Locale, Messages};
 use sbsave_core::report::{analysis_to_dict, write_json, write_markdown};
@@ -113,21 +113,29 @@ fn analyze_save(
     path: Option<String>,
     slot: Option<u32>,
     categories: Option<Vec<String>>,
+    owned_dlcs: Option<Vec<String>>,
     locale: Option<String>,
 ) -> Result<serde_json::Value, String> {
     let messages = Messages::new(locale_of(locale));
     let save = load_for(path, slot).map_err(|error| messages.error_load_save(&error))?;
     let catalog =
         load_catalog(None).map_err(|error| messages.error_load_catalog(&error.to_string()))?;
-    let analysis = analyze(&save, &catalog, categories.as_deref());
+    let analysis = analyze_with_dlcs(
+        &save,
+        &catalog,
+        categories.as_deref(),
+        owned_dlcs.as_deref().unwrap_or_default(),
+    );
     Ok(analysis_to_dict(&analysis, true))
 }
 
 #[tauri::command]
+#[allow(clippy::too_many_arguments)]
 fn export_report(
     path: Option<String>,
     slot: Option<u32>,
     categories: Option<Vec<String>>,
+    owned_dlcs: Option<Vec<String>>,
     lang: String,
     format: String,
     out_path: String,
@@ -137,7 +145,12 @@ fn export_report(
     let save = load_for(path, slot).map_err(|error| messages.error_load_save(&error))?;
     let catalog =
         load_catalog(None).map_err(|error| messages.error_load_catalog(&error.to_string()))?;
-    let analysis = analyze(&save, &catalog, categories.as_deref());
+    let analysis = analyze_with_dlcs(
+        &save,
+        &catalog,
+        categories.as_deref(),
+        owned_dlcs.as_deref().unwrap_or_default(),
+    );
     match format.as_str() {
         "json" => write_json(&analysis, &out_path, true),
         "markdown" => write_markdown(&analysis, &out_path, &lang, messages.locale()),
@@ -397,7 +410,7 @@ mod tests {
         let Some(path) = first_save_path() else {
             return;
         };
-        let value = analyze_save(Some(path), None, None, None).expect("analyze");
+        let value = analyze_save(Some(path), None, None, None, None).expect("analyze");
         assert_eq!(value["summary"]["catalog_total"].as_u64(), Some(808));
         assert_eq!(value["summary"]["album_total"].as_u64(), Some(122));
         assert!(value["categories"]
@@ -516,6 +529,7 @@ mod tests {
             Some(path),
             None,
             None,
+            None,
             "zh".to_string(),
             "markdown".to_string(),
             target_text,
@@ -536,6 +550,7 @@ mod tests {
         let target_text = target.to_string_lossy().into_owned();
         let written = export_report(
             Some(path),
+            None,
             None,
             None,
             "en".to_string(),
@@ -586,8 +601,14 @@ mod tests {
     #[test]
     fn analyze_save_with_synthetic_fixture() {
         let fixture = FixtureDir::new("analyze");
-        let value = analyze_save(Some(fixture.save_path()), None, None, Some("zh".into()))
-            .expect("analyze synthetic save");
+        let value = analyze_save(
+            Some(fixture.save_path()),
+            None,
+            None,
+            None,
+            Some("zh".into()),
+        )
+        .expect("analyze synthetic save");
         assert_eq!(value["save"]["steam_id"], sbsave_core::fixture::STEAM_ID);
         assert_eq!(value["save"]["current_map"], "E04");
         assert_eq!(value["save"]["current_map_name"], "Xion");
@@ -606,12 +627,36 @@ mod tests {
     }
 
     #[test]
+    fn analyze_save_honours_owned_dlcs() {
+        let fixture = FixtureDir::new("owned-dlc");
+        let value = analyze_save(
+            Some(fixture.save_path()),
+            None,
+            None,
+            Some(vec!["nikke".to_string()]),
+            Some("zh".into()),
+        )
+        .expect("analyze synthetic save");
+        assert_eq!(value["save"]["owned_dlcs"], serde_json::json!(["nikke"]));
+        let item = value["categories"]
+            .as_array()
+            .expect("categories")
+            .iter()
+            .flat_map(|category| category["missing"].as_array().expect("missing"))
+            .find(|item| item["id"] == "BS_Nikke_06")
+            .expect("NIKKE item");
+        assert_eq!(item["dlc_owned"], true);
+        assert!(item["reason"].is_null());
+    }
+
+    #[test]
     fn export_report_with_synthetic_fixture() {
         let fixture = FixtureDir::new("export");
 
         let json_target = fixture.root.join("report.json");
         let written = export_report(
             Some(fixture.save_path()),
+            None,
             None,
             None,
             "zh".to_string(),
@@ -630,6 +675,7 @@ mod tests {
         let markdown_target = fixture.root.join("report.md");
         let written = export_report(
             Some(fixture.save_path()),
+            None,
             None,
             None,
             "zh".to_string(),

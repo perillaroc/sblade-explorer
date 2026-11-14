@@ -149,6 +149,7 @@ export const en = {
     missable: "Missable",
     missed: "Missed",
     missableOpen: "Still available",
+    dlcOwned: "{label} owned, not yet obtained",
     mappingUnconfirmed: "Mapping unconfirmed",
   },
   obtainedStatus: {
@@ -236,6 +237,8 @@ export const en = {
     switchToAuto: "Switch to automatic",
     searchEngine: "Default search engine",
     searchEngineHint: "\"Search image guides\" uses the selected engine; video search always uses Bilibili.",
+    ownedDlcs: "Owned DLC",
+    ownedDlcsHint: "The save has no reliable DLC entitlement field, so declare it here. Checked DLC items are no longer marked as limited, and missing owned items become ready to collect.",
     engines: {
       bing: "Bing",
       baidu: "Baidu",

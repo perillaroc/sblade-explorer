@@ -20,6 +20,10 @@ export type SearchEngineId = "bing" | "baidu" | "google";
 /** UI appearance; `system` follows the OS light/dark setting. */
 export type ThemeMode = "dark" | "light" | "system";
 
+/** DLC keys the user can mark as owned (the save has no entitlement field). */
+export const DLC_KEYS = ["nier", "nikke"] as const;
+export type DlcKey = (typeof DLC_KEYS)[number];
+
 const THEME_MODES: readonly ThemeMode[] = ["dark", "light", "system"];
 
 const LANG_MODES: readonly Lang[] = ["zh", "en", "both"];
@@ -49,6 +53,8 @@ export interface Settings {
   categoryViews: Partial<Record<string, CategoryView>>;
   /** Per-category filter preference; missing key = "all". Search terms are not stored. */
   categoryFilters: Partial<Record<string, ItemFilter>>;
+  /** DLC ownership supplied by the user; never read from the save. */
+  ownedDlcs: DlcKey[];
 }
 
 /** Category page view preference persisted across restarts (F4). */
@@ -73,6 +79,7 @@ function defaultSettings(): Settings {
     sidebarCollapsed: false,
     categoryViews: {},
     categoryFilters: {},
+    ownedDlcs: [],
   };
 }
 
@@ -94,6 +101,12 @@ function sanitizeFilters(value: unknown): Partial<Record<string, ItemFilter>> {
     }
   }
   return filters;
+}
+
+function sanitizeDlcs(value: unknown): DlcKey[] {
+  if (!Array.isArray(value)) return [];
+  const known = new Set<string>(DLC_KEYS);
+  return [...new Set(value.filter((item): item is DlcKey => typeof item === "string" && known.has(item)))].sort();
 }
 
 function load(): Settings {
@@ -120,6 +133,7 @@ function load(): Settings {
           : fallback.sidebarCollapsed,
       categoryViews: sanitizeViews(parsed.categoryViews),
       categoryFilters: sanitizeFilters(parsed.categoryFilters),
+      ownedDlcs: sanitizeDlcs(parsed.ownedDlcs),
     };
   } catch (reason) {
     console.warn("Failed to load settings; using defaults", reason);

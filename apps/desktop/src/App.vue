@@ -209,6 +209,7 @@ async function selectSave(slot: SaveSlot, remember = true) {
   try {
     analysis.value = await invoke<Analysis>("analyze_save", {
       path: slot.path,
+      ownedDlcs: settings.ownedDlcs,
       locale: settings.uiLocale,
     });
     if (remember) {
@@ -267,6 +268,7 @@ async function exportReport(format: "json" | "markdown") {
       path: selected.value.path,
       lang: settings.contentLang,
       format,
+      ownedDlcs: settings.ownedDlcs,
       outPath: target,
       locale: settings.uiLocale,
     });
@@ -275,6 +277,13 @@ async function exportReport(format: "json" | "markdown") {
     notify(t("app.exportError", { reason: String(reason) }), true);
   }
 }
+
+watch(
+  () => settings.ownedDlcs.join(","),
+  () => {
+    if (selected.value && !loading.value) void selectSave(selected.value, false);
+  },
+);
 
 onMounted(() => {
   void loadGuides();

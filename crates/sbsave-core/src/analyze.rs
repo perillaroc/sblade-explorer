@@ -1,8 +1,28 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 use crate::catalog::{Catalog, CatalogItem, Category, LocalizedName};
 use crate::i18n::{Locale, Messages};
 use crate::savegame::SaveData;
+
+/// DLC keys the user can mark as owned. The save carries no reliable
+/// entitlement field, so ownership is supplied by settings / CLI.
+pub const KNOWN_DLCS: [&str; 2] = ["nier", "nikke"];
+
+/// Lowercases, filters to known DLC keys and deduplicates.
+pub fn normalize_owned_dlcs<I, S>(values: I) -> Vec<String>
+where
+    I: IntoIterator<Item = S>,
+    S: AsRef<str>,
+{
+    let mut owned: Vec<String> = values
+        .into_iter()
+        .map(|value| value.as_ref().trim().to_ascii_lowercase())
+        .filter(|value| KNOWN_DLCS.contains(&value.as_str()))
+        .collect();
+    owned.sort();
+    owned.dedup();
+    owned
+}
 
 /// Why a missing item cannot be obtained in the current playthrough.
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -32,14 +52,20 @@ pub struct ItemStatus<'a> {
     pub obtained: bool,
     pub reason: Option<BlockReason>,
     pub missable_state: MissableState,
+    /// The item belongs to a DLC the user marked as owned.
+    pub dlc_owned: bool,
 }
 
 impl ItemStatus<'_> {
     pub fn flags(&self, locale: Locale) -> Vec<String> {
         let messages = Messages::new(locale);
         let mut flags = Vec::new();
-        if self.item.dlc.is_some() {
-            flags.push(self.item.dlc_label(locale).unwrap_or_default());
+        if let Some(dlc) = self.item.dlc.as_deref() {
+            flags.push(if self.dlc_owned {
+                messages.flag_dlc_owned(dlc)
+            } else {
+                self.item.dlc_label(locale).unwrap_or_default()
+            });
         }
         if self.item.ng_plus > 0 {
             flags.push(self.item.ng_plus_label(locale));
@@ -135,6 +161,8 @@ pub struct Analysis<'a> {
     pub album_total: usize,
     pub album_obtained: usize,
     pub story: CurrentStory<'a>,
+    /// DLC keys supplied by settings / CLI, not read from the save.
+    pub owned_dlcs: Vec<String>,
 }
 
 fn is_album(category: &Category) -> bool {
@@ -231,7 +259,11 @@ fn missable_state(item: &CatalogItem, save: &SaveData) -> MissableState {
     MissableState::Open
 }
 
-fn evaluate(item: &CatalogItem, save: &SaveData) -> (Option<BlockReason>, MissableState) {
+fn evaluate(
+    item: &CatalogItem,
+    save: &SaveData,
+    dlc_owned: bool,
+) -> (Option<BlockReason>, MissableState) {
     if item.ng_plus > save.ng_plus_count() {
         return (
             Some(BlockReason::NgPlus(item.ng_plus)),
@@ -239,10 +271,12 @@ fn evaluate(item: &CatalogItem, save: &SaveData) -> (Option<BlockReason>, Missab
         );
     }
     if let Some(dlc) = item.dlc.as_deref() {
-        return (
-            Some(BlockReason::Dlc(dlc.to_string())),
-            MissableState::Unknown,
-        );
+        if !dlc_owned {
+            return (
+                Some(BlockReason::Dlc(dlc.to_string())),
+                MissableState::Unknown,
+            );
+        }
     }
     if item.missable {
         let state = missable_state(item, save);
@@ -310,6 +344,18 @@ pub fn analyze<'a>(
     catalog: &'a Catalog,
     categories: Option<&[String]>,
 ) -> Analysis<'a> {
+    analyze_with_dlcs(save, catalog, categories, &[])
+}
+
+/// Same as [`analyze`], with DLC ownership supplied by settings / CLI.
+pub fn analyze_with_dlcs<'a>(
+    save: &'a SaveData,
+    catalog: &'a Catalog,
+    categories: Option<&[String]>,
+    owned_dlcs: &[String],
+) -> Analysis<'a> {
+    let owned = normalize_owned_dlcs(owned_dlcs.iter());
+    let owned_set: HashSet<&str> = owned.iter().map(String::as_str).collect();
     let obtained = save.all_obtained();
     let alias_index = catalog.alias_index();
 
@@ -332,10 +378,14 @@ pub fn analyze<'a>(
                 .satisfy_aliases()
                 .iter()
                 .any(|alias| obtained.contains(*alias) || save.achievements.contains_key(*alias));
+            let dlc_owned = item
+                .dlc
+                .as_deref()
+                .is_some_and(|dlc| owned_set.contains(dlc));
             let (reason, missable_state) = if is_obtained {
                 (None, MissableState::Unknown)
             } else {
-                evaluate(item, save)
+                evaluate(item, save, dlc_owned)
             };
             if reason.is_some() {
                 blocked += 1;
@@ -348,6 +398,7 @@ pub fn analyze<'a>(
                 obtained: is_obtained,
                 reason,
                 missable_state,
+                dlc_owned,
             };
             if !is_obtained {
                 missing.push(status.clone());
@@ -418,5 +469,6 @@ pub fn analyze<'a>(
         album_total,
         album_obtained,
         story,
+        owned_dlcs: owned,
     }
 }

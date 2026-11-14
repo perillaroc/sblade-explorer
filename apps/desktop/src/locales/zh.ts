@@ -151,6 +151,7 @@ export const messages = {
     missable: "可错过",
     missed: "已错过",
     missableOpen: "还来得及",
+    dlcOwned: "{label}（已拥有，尚未获得）",
     mappingUnconfirmed: "映射待确认",
   },
   obtainedStatus: {
@@ -238,6 +239,8 @@ export const messages = {
     switchToAuto: "改为自动选择",
     searchEngine: "默认搜索引擎",
     searchEngineHint: "「搜索图文攻略」使用所选引擎检索收集物；视频搜索始终使用 B 站。",
+    ownedDlcs: "已拥有的 DLC",
+    ownedDlcsHint: "存档没有可靠的 DLC 授权字段，需要手动声明。勾选后，对应 DLC 条目不再标记为限定，未获得的条目会进入可优先收集。",
     engines: {
       bing: "必应",
       baidu: "百度",

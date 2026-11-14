@@ -55,7 +55,7 @@ export function matrixStatusLegend(): MatrixStatus[] {
 
 export function matrixStatus(row: ItemRow, ngPlusCount: number): MatrixStatus {
   if (row.obtained) return status("obtained");
-  if (row.item.dlc) return status("dlc");
+  if (row.item.dlc && !row.item.dlc_owned) return status("dlc");
   if (row.item.ng_plus > ngPlusCount) return status("locked");
   if (row.item.aliases.length === 0) return status("defaultAppearance");
   if (row.missableState === "missed") return status("missed");

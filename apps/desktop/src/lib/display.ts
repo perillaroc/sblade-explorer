@@ -122,6 +122,7 @@ export function dlcLabel(dlc: string): string {
 
 interface FlagItem {
   dlc?: string | null;
+  dlc_owned?: boolean;
   ng_plus: number;
   missable?: boolean;
   missable_state?: MissableState | null;
@@ -131,7 +132,13 @@ interface FlagItem {
 /** Localized flags for a missing item (mirrors the Rust report). */
 export function flagLabels(item: FlagItem): string[] {
   const flags: string[] = [];
-  if (item.dlc) flags.push(dlcLabel(item.dlc));
+  if (item.dlc) {
+    flags.push(
+      item.dlc_owned
+        ? translate("itemTable.dlcOwned", { label: dlcLabel(item.dlc) })
+        : dlcLabel(item.dlc),
+    );
+  }
   if (item.ng_plus > 0) flags.push(cycleLabel(item.ng_plus));
   if (item.confidence && item.confidence !== "high") {
     flags.push(translate("itemTable.mappingUnconfirmed"));
@@ -166,7 +173,7 @@ export function reasonLabel(item: FlagItem, ngPlusCount: number): string | null 
   if (item.ng_plus > ngPlusCount) {
     return translate("reasons.requires", { label: cycleLabel(item.ng_plus) });
   }
-  if (item.dlc) {
+  if (item.dlc && !item.dlc_owned) {
     return translate("reasons.dlcOnly", { label: dlcLabel(item.dlc) });
   }
   if (item.missable) {

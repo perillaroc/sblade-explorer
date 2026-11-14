@@ -72,7 +72,9 @@ function cellBlocked(entries: ItemRow[]): boolean {
     entries.length > 0 &&
     entries.every(
       (entry) =>
-        !entry.obtained && (entry.item.dlc !== null || entry.item.ng_plus > props.ngPlusCount),
+        !entry.obtained &&
+        ((entry.item.dlc !== null && !entry.item.dlc_owned) ||
+          entry.item.ng_plus > props.ngPlusCount),
     )
   );
 }

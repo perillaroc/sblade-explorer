@@ -55,12 +55,13 @@ cargo run -p sbsave-cli -- catalog check
 
 | 命令 | 参数 |
 | --- | --- |
-| `report` | `--save/-s`、`--slot`、`--category/-c`（分类键、中文名或英文名，多个分类用逗号分隔）、`--lang`（物品文本：`zh`（默认）/ `en` / `both`）、`--all`（列出已收集物品）、`--json`、`--markdown`、`--catalog` |
+| `report` | `--save/-s`、`--slot`、`--category/-c`（分类键、中文名或英文名，多个分类用逗号分隔）、`--lang`（物品文本：`zh`（默认）/ `en` / `both`）、`--all`（列出已收集物品）、`--json`、`--markdown`、`--catalog`、`--dlc`（已拥有的 DLC，逗号分隔：`nier,nikke`） |
 | `dump` | `--save/-s`、`--slot`、`--json`（摘要）、`--tree`（完整解析树）、`--obtained`（别名） |
 | `catalog` | `list` / `check`，均支持 `--catalog` 加载覆盖文件 |
 
-所有命令都接受全局参数 `--ui-lang zh|en`，用于控制帮助、表头和错误等界面文字。
-未指定时使用系统语言，无法识别时回退到中文。`--lang` 只影响物品文本和导出报告的内容。
+所有命令都接受全局参数 `--ui-lang zh|en` 与 `--dlc nier,nikke`，前者控制帮助、表头和错误等界面文字，
+后者声明已拥有的 DLC（存档中没有可靠的授权字段，仅影响 DLC 限定判定）。
+未指定语言时使用系统语言，无法识别时回退到中文。`--lang` 只影响物品文本和导出报告的内容。
 
 `--catalog` 用于临时加载用户覆盖文件，格式说明见 [data.md](../reference/data.md#自定义目录库)。
 报告中「已获得」的判定方式、NG+/DLC 标注和低置信度条目说明见 [data.md](../reference/data.md)。

@@ -1,7 +1,7 @@
 use std::collections::{HashMap, HashSet};
 use std::path::PathBuf;
 
-use sbsave_core::analyze::analyze;
+use sbsave_core::analyze::{analyze, analyze_with_dlcs};
 use sbsave_core::catalog::load_catalog;
 use sbsave_core::gvas::{EngineVersion, GvasFile, GvasHeader};
 use sbsave_core::i18n::Locale;
@@ -449,4 +449,34 @@ fn report_shows_raw_code_for_unknown_map_and_hides_missing_values() {
     let console = print_report(&none, false, "zh", Locale::Zh);
     assert!(!console.contains("当前区域"), "{console}");
     assert!(!console.contains("当前主线"), "{console}");
+}
+
+#[test]
+fn report_exposes_owned_dlcs_and_item_state() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = make_save(&[], &[], 0);
+    let owned = vec!["nikke".to_string()];
+    let analysis = analyze_with_dlcs(&save, &catalog, None, &owned);
+    let dict = analysis_to_dict(&analysis, false);
+
+    assert_eq!(dict["save"]["owned_dlcs"], serde_json::json!(["nikke"]));
+    let item = missing_item(&dict, "nano_suits", "BS_Nikke_06");
+    assert_eq!(item["dlc"], "nikke");
+    assert_eq!(item["dlc_owned"], true);
+    assert!(item["reason"].is_null());
+    assert!(item["flags"]
+        .as_array()
+        .expect("flags")
+        .iter()
+        .any(|flag| flag.as_str().is_some_and(|text| text.contains("已拥有"))));
+
+    let console = print_report(&analysis, false, "zh", Locale::Zh);
+    assert!(!console.contains("NIKKE DLC限定"), "{console}");
+
+    let unowned = analyze(&save, &catalog, None);
+    let unowned_console = print_report(&unowned, false, "zh", Locale::Zh);
+    assert!(
+        unowned_console.contains("NIKKE DLC限定"),
+        "{unowned_console}"
+    );
 }

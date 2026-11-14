@@ -1,7 +1,10 @@
 use std::collections::{HashMap, HashSet};
 use std::path::PathBuf;
 
-use sbsave_core::analyze::{analyze, Analysis, BlockReason, ItemStatus, MissableState};
+use sbsave_core::analyze::{
+    analyze, analyze_with_dlcs, normalize_owned_dlcs, Analysis, BlockReason, ItemStatus,
+    MissableState,
+};
 use sbsave_core::catalog::load_catalog;
 use sbsave_core::gvas::{EngineVersion, GvasFile, GvasHeader};
 use sbsave_core::i18n::Locale;
@@ -410,4 +413,58 @@ fn analysis_hides_story_when_save_has_no_map_or_epic_quest() {
     assert!(result.story.map.is_none());
     assert!(result.story.epic_quest.is_none());
     assert!(result.story.epic_quest_title.is_none());
+}
+
+#[test]
+fn owned_dlc_is_not_reported_as_dlc_blocked() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = make_save(&[], &[], 0);
+
+    let unowned = analyze(&save, &catalog, None);
+    let nikke = status_for(&unowned, "BS_Nikke_06");
+    assert_eq!(nikke.reason, Some(BlockReason::Dlc("nikke".to_string())));
+    assert!(!nikke.dlc_owned);
+
+    let owned = vec!["nikke".to_string()];
+    let result = analyze_with_dlcs(&save, &catalog, None, &owned);
+    assert_eq!(result.owned_dlcs, vec!["nikke".to_string()]);
+
+    let nikke = status_for(&result, "BS_Nikke_06");
+    assert!(nikke.dlc_owned);
+    assert_eq!(nikke.reason, None);
+    assert!(nikke
+        .flags(Locale::Zh)
+        .iter()
+        .any(|flag| flag.contains("已拥有")));
+
+    let nier = status_for(&result, "BS_Nier_01");
+    assert!(!nier.dlc_owned);
+    assert_eq!(nier.reason, Some(BlockReason::Dlc("nier".to_string())));
+
+    let nikke_items = result
+        .categories
+        .iter()
+        .flat_map(|category| &category.statuses)
+        .filter(|status| status.item.dlc.as_deref() == Some("nikke"))
+        .count();
+    assert_eq!(nikke_items, 18);
+    let blocked_nikke = result
+        .categories
+        .iter()
+        .flat_map(|category| &category.statuses)
+        .filter(|status| {
+            status.item.dlc.as_deref() == Some("nikke")
+                && matches!(status.reason, Some(BlockReason::Dlc(_)))
+        })
+        .count();
+    assert_eq!(blocked_nikke, 0);
+}
+
+#[test]
+fn owned_dlc_normalization_filters_unknown_and_duplicates() {
+    assert_eq!(
+        normalize_owned_dlcs(["NIKKE", "nier", "nope", "nier"]),
+        vec!["nier".to_string(), "nikke".to_string()]
+    );
+    assert!(normalize_owned_dlcs(Vec::<String>::new()).is_empty());
 }

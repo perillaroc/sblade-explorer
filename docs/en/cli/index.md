@@ -56,12 +56,14 @@ cargo run -p sbsave-cli -- catalog check
 
 | Command | Options |
 | --- | --- |
-| `report` | `--save/-s`, `--slot`, `--category/-c` (category key, Chinese name, or English name; separate multiple categories with commas), `--lang` (item text: `zh` (default) / `en` / `both`), `--all` (include obtained items), `--json`, `--markdown`, `--catalog` |
+| `report` | `--save/-s`, `--slot`, `--category/-c` (category key, Chinese name, or English name; separate multiple categories with commas), `--lang` (item text: `zh` (default) / `en` / `both`), `--all` (include obtained items), `--json`, `--markdown`, `--catalog`, `--dlc` (owned DLC, comma separated: `nier,nikke`) |
 | `dump` | `--save/-s`, `--slot`, `--json` (summary), `--tree` (full parse tree), `--obtained` (aliases) |
 | `catalog` | `list` / `check`; both support `--catalog` to load an override file |
 
-Every command accepts the global option `--ui-lang zh|en`, which controls help, table headers, errors, and other interface text.
-If omitted, the system language is used, with Chinese as the fallback. `--lang` affects only item text and exported report content.
+Every command accepts the global options `--ui-lang zh|en` and `--dlc nier,nikke`; the former controls help,
+table headers, errors, and other interface text, the latter declares owned DLC (the save has no reliable
+entitlement field, so it only affects DLC-limited judgments).
+If the language is omitted, the system language is used, with Chinese as the fallback. `--lang` affects only item text and exported report content.
 
 `--catalog` temporarily loads a user override file; see [data.md](../reference/data.md#custom-catalog) for the format.
 For obtained-item detection, NG+/DLC labels, and low-confidence entries, see [data.md](../reference/data.md).
