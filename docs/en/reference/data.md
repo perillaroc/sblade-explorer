@@ -8,12 +8,16 @@
 - Game data tables (`ItemTable`, `ZoneCampTable`, `AlbumTable`) and `Game.locres` (zh-Hans/en): Mappings from internal aliases to official names.
   `cargo run -p sbsave-tools -- mine-names` generates `data/raw/game/name_map.json` from these sources.
   For camps without a direct table association, `data/raw/game/camp_alias_rows.json` maps aliases to `ZoneCampTable` rows.
+  The `regions` / `quests` sections come from `UI_RegionAlias_*` and `Quest_*_Title` in the locres files and
+  provide the save's current area and main quest.
 - [mapgenie.io](https://mapgenie.io/stellar-blade/guides/memory-sticks) and [Gamersky](https://www.gamersky.com/handbook/202507/1953527.shtml): The order of Memory Sticks in the in-game Data Bank (`data/raw/memorystick_order.json`; both sources use the same order).
 - [Gamersky](https://www.gamersky.com/handbook/202404/1738505.shtml) (full-collection illustrated guides, cans, fishing spots, passcodes, and the [outfit catalog](https://www.gamersky.com/handbook/202404/1737082.shtml)) and
   [Bilibili](https://www.bilibili.com/video/BV1Wfj1ztEuj) (all 126 Nano Suits and [Wengouzu-Wenxuan's full-collection series](https://www.bilibili.com/video/BV1or421L7XQ)): The Chinese guide links in `data/raw/guides.json`.
 - `data/raw/fish_obtain.json`: Manually maintained acquisition instructions for fish (fishing spots and bait), based on the Gamersky [fishing-spot guide](https://www.gamersky.com/handbook/202405/1747789.shtml) and in-game fishing information. NIKKE crossover fish include the required crossover bait.
 - `data/raw/api/i18n/`: Manually maintained Simplified Chinese translations of the English guide text. Item names follow the game's localization. `obtain_camps.json` contains Chinese acquisition instructions for camp entries.
 - PowerPyx (full-collection and Eidos 9 pages), the Steam "Point Of No Return" guide, and Bahamut and Gamersky ending guides: Information about the two points of no return and the optional area, used to maintain `data/raw/missable.json`.
+- `data/raw/quest_aliases.json`: A snapshot of quest aliases seen in the local, demo, and 100% saves (117 entries),
+  used to validate the quest conditions in `missable.json` and catch rule typos.
 
 For details about each raw data snapshot and how to update it (API scraping and `mine-names`), see
 [data/raw/README.md](https://github.com/perillaroc/sblade-explorer/blob/main/data/raw/README.md).
@@ -33,7 +37,9 @@ All data is bundled with the app, which does not connect to the internet at runt
 - Aliases for repeatedly collected copies of a record (for example, `Item_Records_Xion_Memory_14_1`) are merged into the base entry.
   The game database (`AlbumTable`) contains only one entry per record; copy aliases represent repeated pickups. After merging, the 300 record entries match the game database.
 - Missable entries are maintained in `data/raw/missable.json`, covering Xion, Eidos 9, and side-quest and bulletin-board request rewards.
-  `catalog build` converts them into the `missable` field. Missing-item lists show "Missable (mind the checkpoint)", and the details and matrix views display a **Missable** badge for 211 entries.
+  `catalog build` converts them into the `missable` field and an optional `missable_rule`; the `xion_lock` and
+  `eidos9_optional` rules combine with the save's quest state to show "missed / still available / unknown".
+  The remaining 21 side-quest rewards keep a static mark. See [Save parsing and judgments](#save-parsing-and-judgments).
 - Acquisition instructions for collectibles combine the guide site's `description` (English) with `api/i18n/obtain_*.json` (Chinese).
   Fish do not have guide-site entries, so their instructions are maintained in `data/raw/fish_obtain.json`.
   The few camps missing from the guide-site snapshot have English and Chinese instructions directly in the `camps` section of `crosswalk.json`.
@@ -43,6 +49,67 @@ All data is bundled with the app, which does not connect to the internet at runt
 - Categories include `name` (Chinese) and `name_en` (English). Record entries include `record_type`, `record_type_zh`, and `record_type_en`.
   English names are maintained in `CATEGORIES` and `RECORD_TYPES` in `crates/sbsave-tools/src/catalog_build.rs` and generated with the catalog.
   The analysis JSON includes the same fields so the desktop app can display them according to the content language.
+
+## Save parsing and judgments
+
+Beyond the catalog diff, reports and the desktop app read the following save state:
+
+| Save field | Purpose |
+| --- | --- |
+| `DataMap_SBItem.ItemOtaineSet` | Obtained item aliases |
+| `SBAchievement.AchievementList` | Achievements and aliases derived from them (album unlocks, camps, ...) |
+| `DataMap_int32` / `DataMap_FString` | Playthrough, difficulty, play time, `MapName`, and other counters |
+| `DataMap_SBQuest.CompleteQuestList` / `FailedQuestList` / `ProgressQuestList` | Completed / failed / active quest aliases |
+| `DataMap_FString.MapName` | Current region code (for example `E04`) |
+
+Missing fields, unexpected types, or older saves produce an empty quest state; they never fail the parse or cause false judgments.
+The `MapName` code is resolved through `catalog.json`'s `map_names`; unknown codes are shown as-is, never guessed.
+The current main quest is the first active `Quest_Epic_*`, with its title resolved through `quest_titles`; it is hidden when no main quest is active.
+
+### Missable states
+
+Each group in `data/raw/missable.json` can declare save-based conditions with `void_after_quests`,
+`requires_quests`, and `void_on_failed_quests`. `catalog build` expands them into each entry's
+`missable_rule` and validates every quest alias against `data/raw/quest_aliases.json`; a typo fails the build.
+Two groups are enabled:
+
+| Group | Condition | Entries |
+| --- | --- | --- |
+| `xion_lock` | Lost after `Quest_Epic_08` completes | 156 |
+| `eidos9_optional` | Requires `Quest_Epic_Hidden` to have started | 34 |
+
+The side-quest reward group (21 entries) has no machine rule yet and keeps its static `missable` mark.
+
+The analysis exposes three states:
+
+- `open` (missable, still obtainable): the conditions say the window is still open;
+- `missed`: the save has passed the point of no return;
+- `unknown`: no rule, no quest data, or an incomplete condition. The legacy
+  "Missable (mind the checkpoint)" text is kept, and the app **never reports a false "missed"**.
+
+Items blocked by a higher playthrough or an unowned DLC are handled by those rules first and do not take a missable state.
+
+### DLC ownership
+
+The save has no reliable DLC entitlement field (`SaveFileVersionInfo` only contains version numbers).
+The desktop settings or CLI `--dlc nier,nikke` supply the owned list:
+
+- an unowned DLC keeps the DLC-limited block;
+- an owned DLC is no longer blocked, is labelled "owned, not yet obtained", and enters the ready-to-collect list;
+- `save.owned_dlcs` reflects settings / arguments only, never the save.
+
+### Additional JSON fields
+
+These fields are additive; existing consumers can ignore them:
+
+- `save.owned_dlcs`: owned DLC keys;
+- `save.current_map` / `current_map_name` / `current_map_name_zh`: current region code and names
+  (name fields are `null` for unknown codes);
+- `save.current_epic_quest` / `current_epic_quest_title` / `current_epic_quest_title_zh`: active main quest alias and title;
+- entry `missable_state`: `open` / `missed` / `unknown`; `null` for non-missable or obtained entries;
+- entry `dlc_owned`: whether the entry's DLC is declared as owned;
+- `summary.missed_count` / `summary.missable_open_count`: missed / still-obtainable missing entries;
+- `dump --json` `summary.quests.{completed,failed,active}`: quest-list counts.
 
 ## Album (AlbumTable)
 
@@ -110,7 +177,10 @@ For the complete rules, see [data/raw/README.md](https://github.com/perillaroc/s
 - All 300 records include an in-game type (186 Memory Sticks and 114 Documents) and acquisition instructions from guides.
   The 186 Memory Sticks include their in-game menu order, and repeated-pickup copies are merged into base entries. All 23 passcodes include acquisition instructions from guides.
 - There are 211 entries with `missable`: 156 in Xion, 34 in Eidos 9 (including 6 camps), and 21 for other side-quest rewards and quest areas.
-  Missing-item lists show "Missable (mind the checkpoint)". The six camps in Eidos 9 also have low mapping confidence.
+  190 of them carry a `missable_rule` (156 Xion, 34 Eidos 9); the other 21 keep only the static mark.
+  Results distinguish "missed / still available / unknown". The six camps in Eidos 9 also have low mapping confidence.
+- Regions and quests: `catalog.json` contains 12 `map_names` (`UI_RegionAlias_*`) and 89 `quest_titles`
+  (`Quest_*_Title`); `quest_aliases.json` contains 117 quest aliases.
 - Of the 808 collectibles, 806 have built-in Chinese guide links (798 illustrated guides and 694 videos).
   The default ponytail and boss-challenge rewards in Hairstyles have no built-in links, but you can use **Search image guides** or **Search video guides**.
   All links use HTTPS and domains on the allowlist.

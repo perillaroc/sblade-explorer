@@ -58,6 +58,25 @@ and do not force an older catalog onto a save created by a newer version of the 
 Yes. The app reads `NewGamePlusPlayCount` from the save and labels items "Requires NG+" or "Requires NG++".
 DLC and Deluxe Edition items are flagged separately and can be compared in the **DLC/Deluxe** column of the cycle matrix.
 See [Cycles and the collection matrix](./collections.md#cycles-and-the-collection-matrix).
+The save has no reliable DLC entitlement field, so owned DLC must be declared in Settings; see the next question.
+
+## Why is a DLC item no longer marked as limited?
+
+Open **Settings → Owned DLC** and check NieR / NIKKE, or use the CLI's `--dlc nier,nikke`.
+Once declared, those items are no longer blocked by DLC ownership; they are labelled "owned, not yet obtained"
+and enter the ready-to-collect list. DLC you did not declare stays limited. This setting is stored locally and never written to your save.
+
+## Why do some items show "Missed" and others "Still available"?
+
+The app reads quest state from the save and combines it with the missable rules in the catalog:
+
+- **Missed**: this save has passed a point of no return, so the item can no longer be obtained;
+- **Still available**: the item can still be collected now, so it is worth picking up before leaving;
+- **Missable (mind the checkpoint)**: a rule is missing, or an older save has no quest data, so the app cannot tell.
+  It never reports a false "missed" in this case.
+
+Items blocked by a higher playthrough or an unowned DLC are shown under those limits first. See
+[Save parsing and judgments](../reference/data.md#save-parsing-and-judgments) for the rules and JSON fields.
 
 ## Why does a category page report unlinked obtained aliases?
 
@@ -70,7 +89,7 @@ Not in v1. Only collectibles and album entries are currently analyzed.
 
 ## Where are settings stored?
 
-Appearance (Dark / Light / Follow system), the default search engine (Bing / Baidu / Google), the browser used to open links, and the save opened on startup can be configured in **Settings** at the bottom of the sidebar.
+Appearance (Dark / Light / Follow system), the default search engine (Bing / Baidu / Google), the browser used to open links, the save opened on startup, and owned DLC can be configured in **Settings** at the bottom of the sidebar.
 These preferences are stored only on your computer. Guide links open in your selected browser; if it cannot be launched, the app falls back to your system default browser.
 
 ## How do I use the CLI?

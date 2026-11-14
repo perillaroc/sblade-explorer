@@ -28,12 +28,13 @@ Download the desktop app or CLI from [GitHub Releases](https://github.com/perill
 
 ## Features
 
-- **Progress overview**: View save details such as SteamID, playthrough, difficulty, and play time, and track progress across 13 collectible categories, each with its own page.
+- **Progress overview**: View save details such as SteamID, playthrough, difficulty, play time, current area, and current main quest, and track progress across 13 collectible categories, each with its own page.
 - **Albums**: The Naytiba and character albums are listed separately and do not count toward catalog progress.
-- **Browsing and filtering**: Filter items by collection status and search by name or location. Item details include acquisition instructions, guide links, and reasons an item is still missing.
+- **Browsing and filtering**: Filter by collection status, missable state (missed / still available), and current area; search by name or location. Item details include acquisition instructions, guide links, and reasons an item is still missing.
+- **Save-aware judgments**: Quest progress from the save splits missable entries into missed / still available / unknown, without false "missed" reports when quest data is unavailable.
 - **Playthrough and record views**: Supported categories let you compare items at the same location across playthroughs. Records are organized by their in-game type and area.
 - **Languages and exports**: Choose Chinese or English for the interface, and Chinese, English, or both for item details. Export reports as JSON or Markdown with one click.
-- **Local settings**: Your theme, preferred browser for guide links, search engine, and other preferences are stored only on your computer.
+- **Local settings**: Your theme, preferred browser for guide links, search engine, owned DLC, and other preferences are stored only on your computer.
 
 ## Quick start
 
