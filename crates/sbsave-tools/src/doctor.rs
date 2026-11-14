@@ -530,10 +530,7 @@ pub fn run(root: &Path, options: &Options) -> Result<bool, String> {
     std::fs::write(out.join("doctor.json"), format!("{json}\n"))
         .map_err(|error| format!("写入 doctor.json 失败: {error}"))?;
     println!("\n报告已写入 {}", out.display());
-    if options.strict && !report.ok() {
-        return Ok(false);
-    }
-    Ok(true)
+    Ok(!options.strict || report.ok())
 }
 
 #[cfg(test)]
