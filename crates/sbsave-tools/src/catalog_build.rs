@@ -345,11 +345,11 @@ struct MissableGroup {
     camp_zones: Vec<String>,
     #[serde(default)]
     ids: Vec<String>,
-    /// Skips the ids selected by another group (by group key). Lets one area
+    /// Skips the ids selected by other groups (by group key). Lets one area
     /// be split into several expiry rules without listing shared ids twice;
-    /// the referenced group must select at least one id from this selection.
+    /// each referenced group must select at least one id from this selection.
     #[serde(default)]
-    exclude_group: Option<String>,
+    exclude_groups: Vec<String>,
     /// Item is lost once any of these quests completed.
     #[serde(default)]
     void_after_quests: Vec<String>,
@@ -2382,24 +2382,24 @@ fn apply_missable(
     missable: &MissableFile,
     known_quests: &HashSet<String>,
 ) -> Result<(), String> {
-    // Resolve every group's own selection first so `exclude_group` may point
+    // Resolve every group's own selection first so `exclude_groups` may point
     // at a group defined later in the file.
     let mut selections: BTreeMap<String, Vec<String>> = BTreeMap::new();
     for group in &missable.groups {
         if selections.contains_key(&group.key) {
             return Err(format!("missable.json 的分组 key 重复: {}", group.key));
         }
-        if group.exclude_group.as_deref() == Some(group.key.as_str()) {
+        if group.exclude_groups.contains(&group.key) {
             return Err(format!("missable.json 的 {} 不能排除自身", group.key));
         }
         let selected = select_missable_group(items, group)?;
         selections.insert(group.key.clone(), selected);
     }
     for group in &missable.groups {
-        if let Some(excluded) = group.exclude_group.as_deref() {
+        for excluded in &group.exclude_groups {
             if !selections.contains_key(excluded) {
                 return Err(format!(
-                    "missable.json 的 {} 的 exclude_group 指向不存在的分组: {excluded}",
+                    "missable.json 的 {} 的 exclude_groups 指向不存在的分组: {excluded}",
                     group.key
                 ));
             }
@@ -2411,7 +2411,7 @@ fn apply_missable(
 
     for group in &missable.groups {
         let mut selected = selections.get(&group.key).cloned().unwrap_or_default();
-        if let Some(excluded) = group.exclude_group.as_deref() {
+        for excluded in &group.exclude_groups {
             let excluded_ids: HashSet<&str> = selections
                 .get(excluded)
                 .map(|ids| ids.iter().map(String::as_str).collect())
@@ -2420,7 +2420,7 @@ fn apply_missable(
             selected.retain(|id| !excluded_ids.contains(id.as_str()));
             if selected.len() == before {
                 return Err(format!(
-                    "missable.json 的 {} 的 exclude_group {excluded} 没有排除任何条目",
+                    "missable.json 的 {} 的 exclude_groups {excluded} 没有排除任何条目",
                     group.key
                 ));
             }
@@ -3060,7 +3060,7 @@ mod tests {
                 areas: vec!["Xion".to_string()],
                 camp_zones: vec!["DED40".to_string()],
                 ids: vec!["BS_18".to_string()],
-                exclude_group: None,
+                exclude_groups: Vec::new(),
                 void_after_quests: vec!["Quest_Epic_08".to_string()],
                 requires_quests: Vec::new(),
                 void_on_failed_quests: Vec::new(),
@@ -3105,7 +3105,7 @@ mod tests {
                 areas: Vec::new(),
                 camp_zones: Vec::new(),
                 ids: vec!["Nope".to_string()],
-                exclude_group: None,
+                exclude_groups: Vec::new(),
                 void_after_quests: Vec::new(),
                 requires_quests: Vec::new(),
                 void_on_failed_quests: Vec::new(),
@@ -3123,7 +3123,7 @@ mod tests {
                 areas: vec!["Nope".to_string()],
                 camp_zones: Vec::new(),
                 ids: Vec::new(),
-                exclude_group: None,
+                exclude_groups: Vec::new(),
                 void_after_quests: Vec::new(),
                 requires_quests: Vec::new(),
                 void_on_failed_quests: Vec::new(),
@@ -3141,7 +3141,7 @@ mod tests {
                 areas: Vec::new(),
                 camp_zones: Vec::new(),
                 ids: vec!["BS_18".to_string()],
-                exclude_group: None,
+                exclude_groups: Vec::new(),
                 void_after_quests: vec!["Quest_Nope".to_string()],
                 requires_quests: Vec::new(),
                 void_on_failed_quests: Vec::new(),
@@ -3191,7 +3191,7 @@ mod tests {
                     areas: Vec::new(),
                     camp_zones: Vec::new(),
                     ids: vec!["BS_02".to_string()],
-                    exclude_group: None,
+                    exclude_groups: Vec::new(),
                     void_after_quests: vec!["Quest_Epic_12".to_string()],
                     requires_quests: Vec::new(),
                     void_on_failed_quests: Vec::new(),
@@ -3203,7 +3203,7 @@ mod tests {
                     areas: vec!["Xion".to_string()],
                     camp_zones: Vec::new(),
                     ids: Vec::new(),
-                    exclude_group: Some("xion_services".to_string()),
+                    exclude_groups: vec!["xion_services".to_string()],
                     void_after_quests: vec!["Quest_Epic_08".to_string()],
                     requires_quests: Vec::new(),
                     void_on_failed_quests: Vec::new(),
@@ -3264,7 +3264,7 @@ mod tests {
                 areas: vec!["Xion".to_string()],
                 camp_zones: Vec::new(),
                 ids: Vec::new(),
-                exclude_group: Some("nope".to_string()),
+                exclude_groups: vec!["nope".to_string()],
                 void_after_quests: Vec::new(),
                 requires_quests: Vec::new(),
                 void_on_failed_quests: Vec::new(),
@@ -3272,7 +3272,7 @@ mod tests {
             ..MissableFile::default()
         };
         let error = apply_missable(&mut items, &missable, &HashSet::new())
-            .expect_err("missing exclude_group must fail the build");
+            .expect_err("missing exclude_groups entry must fail the build");
         assert!(error.contains("nope"), "{error}");
     }
 

@@ -765,6 +765,60 @@ fn missable_rules_are_expanded_from_raw_data() {
 }
 
 #[test]
+fn xion_missable_split_is_stable() {
+    let catalog = load_catalog(None).expect("catalog");
+    // #1 回归哨兵：街道拾取与常驻 NPC 服务的拆分数不能直接断言为 211 覆盖。
+    let street = catalog
+        .items
+        .iter()
+        .filter(|item| {
+            item.area.as_deref() == Some("Xion")
+                && item
+                    .missable_rule
+                    .as_ref()
+                    .is_some_and(|rule| rule.void_after_quests == vec!["Quest_Epic_08".to_string()])
+        })
+        .count();
+    assert_eq!(street, 46);
+
+    let services = catalog
+        .items
+        .iter()
+        .filter(|item| {
+            item.area.as_deref() == Some("Xion")
+                && item
+                    .missable_rule
+                    .as_ref()
+                    .is_some_and(|rule| rule.void_after_quests == vec!["Quest_Epic_12".to_string()])
+        })
+        .count();
+    assert_eq!(services, 96);
+
+    let index = catalog.alias_index();
+    for id in ["Hair_002", "DesignPattern_BS_02", "BS_19"] {
+        let rule = index[id].missable_rule.as_ref().expect("service rule");
+        assert_eq!(
+            rule.void_after_quests,
+            vec!["Quest_Epic_12".to_string()],
+            "{id}"
+        );
+    }
+
+    // 支线/布告栏条目不再随 Epic_08 判死，而是跟随来源任务的失败列表。
+    for (id, quest) in [
+        ("BS_Bear", "Quest_Sub_020"),
+        ("BS_30", "Quest_Sub_002"),
+        ("BS_26", "Quest_Request_029"),
+        ("Item_Records_Xion_Memory_12", "Quest_Sub_030"),
+        ("Item_Records_Xion_Memory_26", "Quest_Sub_039"),
+    ] {
+        let rule = index[id].missable_rule.as_ref().expect("quest rule");
+        assert_eq!(rule.void_on_failed_quests, vec![quest.to_string()], "{id}");
+        assert!(rule.void_after_quests.is_empty(), "{id}");
+    }
+}
+
+#[test]
 fn map_and_quest_names_are_embedded() {
     let catalog = load_catalog(None).expect("catalog");
 

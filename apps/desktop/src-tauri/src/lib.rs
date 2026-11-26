@@ -619,8 +619,8 @@ mod tests {
         assert_eq!(value["summary"]["catalog_obtained"].as_u64(), Some(10));
         assert_eq!(value["summary"]["missing_total"].as_u64(), Some(798));
         assert_eq!(value["summary"]["unmapped_aliases"].as_u64(), Some(3));
-        assert_eq!(value["summary"]["missed_count"].as_u64(), Some(60));
-        assert_eq!(value["summary"]["missable_open_count"].as_u64(), Some(139));
+        assert_eq!(value["summary"]["missed_count"].as_u64(), Some(46));
+        assert_eq!(value["summary"]["missable_open_count"].as_u64(), Some(153));
         assert!(value["categories"]
             .as_array()
             .is_some_and(|categories| categories.len() == 17));
@@ -670,7 +670,7 @@ mod tests {
                 .expect("parse json export");
         assert_eq!(report["summary"]["catalog_total"].as_u64(), Some(808));
         assert_eq!(report["summary"]["catalog_obtained"].as_u64(), Some(10));
-        assert_eq!(report["summary"]["missed_count"].as_u64(), Some(60));
+        assert_eq!(report["summary"]["missed_count"].as_u64(), Some(46));
 
         let markdown_target = fixture.root.join("report.md");
         let written = export_report(

@@ -183,8 +183,8 @@ fn report_json_summarises_fixture() {
     assert_eq!(report["summary"]["growth_obtained"], 2);
     // Quest_Epic_08 completed (Xion street lock) + Quest_Epic_Hidden active
     // (Eidos 9 open); Xion services stay open until Quest_Epic_12.
-    assert_eq!(report["summary"]["missed_count"], 60);
-    assert_eq!(report["summary"]["missable_open_count"], 139);
+    assert_eq!(report["summary"]["missed_count"], 46);
+    assert_eq!(report["summary"]["missable_open_count"], 153);
     assert_eq!(report["categories"].as_array().map(Vec::len), Some(17));
 
     let save_json = &report["save"];
@@ -215,6 +215,16 @@ fn report_json_summarises_fixture() {
     );
     assert_eq!(
         missing_item(&report, "records", "Item_Records_DED40_Memory_01")["missable_state"],
+        "open"
+    );
+    // issue #1 场景：Epic_08 已完成、Epic_11 进行中、当前地图希雍，
+    // 理发店发型与罗克珊设计图案仍应可获得，而不是已错过。
+    assert_eq!(
+        missing_item(&report, "hair", "Hair_002")["missable_state"],
+        "open"
+    );
+    assert_eq!(
+        missing_item(&report, "design_patterns", "DesignPattern_BS_02")["missable_state"],
         "open"
     );
 

@@ -194,8 +194,8 @@ fn report_json_with_synthetic_fixture() {
     assert_eq!(report["summary"]["catalog_obtained"], 10);
     assert_eq!(report["summary"]["missing_total"], 798);
     assert_eq!(report["summary"]["unmapped_aliases"], 3);
-    assert_eq!(report["summary"]["missed_count"], 60);
-    assert_eq!(report["summary"]["missable_open_count"], 139);
+    assert_eq!(report["summary"]["missed_count"], 46);
+    assert_eq!(report["summary"]["missable_open_count"], 153);
     assert_eq!(report["categories"].as_array().map(Vec::len), Some(17));
 
     let cans = report["categories"]

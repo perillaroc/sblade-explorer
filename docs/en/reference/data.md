@@ -78,10 +78,13 @@ All 211 entries now have a rule:
 
 | Group | Condition | Entries |
 | --- | --- | --- |
-| `xion_lock` | Lost after `Quest_Epic_08` completes (street pickups only; services are the next row) | 60 |
+| `xion_lock` | Lost after `Quest_Epic_08` completes (street pickups only; services are the next row) | 46 |
 | `xion_services` | Lost after `Quest_Epic_12` completes (permanent NPC shops, salon, safehouse supply point) | 96 |
 | `eidos9_optional` | Requires `Quest_Epic_Hidden` to have started; lost after `Quest_Epic_12` | 34 |
-| `quest_rewards_*` (7 groups) | Lost when the source quest (Oblivion, Strange Signal, ...) is in `FailedQuestList` | 21 |
+| `quest_rewards_*` (18 groups) | Lost when the source quest (Oblivion, Strange Signal, Memories in the Doll, ...) is in `FailedQuestList` | 35 |
+
+`xion_quests` is a selector-only group of 14 Xion side-quest/bulletin-board entries, excluded from
+`xion_lock` through `exclude_groups`; their expiry rules come from the matching `quest_rewards_*` groups above.
 
 Quest rewards are split by source quest; the quest-name-to-alias mapping is described in `data/raw/missable.json`.
 A completed quest whose reward was not picked up stays "still obtainable".
@@ -203,8 +206,8 @@ See [Development](../development/index.md) for usage and the allowlist.
   Every entry includes `desc_zh` and `desc_en` and has no built-in guide links.
 - All 300 records include an in-game type (186 Memory Sticks and 114 Documents) and acquisition instructions from guides.
   The 186 Memory Sticks include their in-game menu order, and repeated-pickup copies are merged into base entries. All 23 passcodes include acquisition instructions from guides.
-- There are 211 entries with `missable`: 60 street pickups in Xion, 96 Xion permanent NPC services and safehouse supply items,
-  34 in Eidos 9 (including 6 camps), and 21 for other side-quest rewards and quest areas.
+- There are 211 entries with `missable`: 46 street pickups in Xion, 96 Xion permanent NPC services and safehouse supply items,
+  34 in Eidos 9 (including 6 camps), and 35 for other side-quest rewards and quest areas.
   All 211 carry a `missable_rule`: Xion street pickups void after `Quest_Epic_08`; Xion services void after `Quest_Epic_12`
   (still purchasable in the final chapter); Eidos 9 opens with `Quest_Epic_Hidden` and voids after `Quest_Epic_12`;
   quest rewards follow their source quest's failed state. Results distinguish "missed / still available / unknown".

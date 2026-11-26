@@ -1730,8 +1730,8 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
-    "void_after_quests": [
-     "Quest_Epic_08"
+    "void_on_failed_quests": [
+     "Quest_Sub_020"
     ]
    },
    "note": null,
@@ -1770,8 +1770,8 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
-    "void_after_quests": [
-     "Quest_Epic_08"
+    "void_on_failed_quests": [
+     "Quest_Sub_020"
     ]
    },
    "note": null,
@@ -1810,8 +1810,8 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
-    "void_after_quests": [
-     "Quest_Epic_08"
+    "void_on_failed_quests": [
+     "Quest_Sub_002"
     ]
    },
    "note": null,
@@ -1850,8 +1850,8 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
-    "void_after_quests": [
-     "Quest_Epic_08"
+    "void_on_failed_quests": [
+     "Quest_Sub_002"
     ]
    },
    "note": null,
@@ -1970,8 +1970,8 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
-    "void_after_quests": [
-     "Quest_Epic_08"
+    "void_on_failed_quests": [
+     "Quest_Request_029"
     ]
    },
    "note": null,
@@ -2010,8 +2010,8 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
-    "void_after_quests": [
-     "Quest_Epic_08"
+    "void_on_failed_quests": [
+     "Quest_Request_032"
     ]
    },
    "note": null,
@@ -2050,8 +2050,8 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
-    "void_after_quests": [
-     "Quest_Epic_08"
+    "void_on_failed_quests": [
+     "Quest_Request_030"
     ]
    },
    "note": null,
@@ -2090,8 +2090,8 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
-    "void_after_quests": [
-     "Quest_Epic_08"
+    "void_on_failed_quests": [
+     "Quest_Request_031"
     ]
    },
    "note": null,
@@ -11579,8 +11579,8 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
-    "void_after_quests": [
-     "Quest_Epic_08"
+    "void_on_failed_quests": [
+     "Quest_Request_001"
     ]
    },
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
@@ -11732,8 +11732,8 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
-    "void_after_quests": [
-     "Quest_Epic_08"
+    "void_on_failed_quests": [
+     "Quest_Request_008"
     ]
    },
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
@@ -17276,8 +17276,8 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
-    "void_after_quests": [
-     "Quest_Epic_08"
+    "void_on_failed_quests": [
+     "Quest_Sub_021"
     ]
    },
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
@@ -17397,8 +17397,8 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
-    "void_after_quests": [
-     "Quest_Epic_08"
+    "void_on_failed_quests": [
+     "Quest_Sub_030"
     ]
    },
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
@@ -17519,8 +17519,8 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
-    "void_after_quests": [
-     "Quest_Epic_08"
+    "void_on_failed_quests": [
+     "Quest_Sub_026"
     ]
    },
    "note": "名称来自游戏数据库（zh-Hans 本地化）",
@@ -17959,8 +17959,8 @@
    "dlc": null,
    "missable": true,
    "missable_rule": {
-    "void_after_quests": [
-     "Quest_Epic_08"
+    "void_on_failed_quests": [
+     "Quest_Sub_039"
     ]
    },
    "note": "名称来自游戏数据库（zh-Hans 本地化）",

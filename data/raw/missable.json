@@ -1,7 +1,7 @@
 {
  "version": 1,
  "generated_by": "hand maintained",
- "note": "一个周目内可永久错过的条目；catalog build 展开为 missable=true。areas 按目录库 area 匹配（记录的区域来自攻略地点或游戏内数据库分组），camp_zones 按营地别名中的 EnvS 区段匹配，ids 为显式清单（支线任务/布告栏委托奖励与任务解锁区域）。可选的 void_after_quests / requires_quests / void_on_failed_quests 提供机器可读的存档任务条件，catalog build 展开为 missable_rule 并校验任务别名（data/raw/quest_aliases.json）。 exclude_group 可引用另一分组，把其选中的条目从本组剔除（用于把同一区域按失效节点拆成多组）。",
+ "note": "一个周目内可永久错过的条目；catalog build 展开为 missable=true。areas 按目录库 area 匹配（记录的区域来自攻略地点或游戏内数据库分组），camp_zones 按营地别名中的 EnvS 区段匹配，ids 为显式清单（支线任务/布告栏委托奖励与任务解锁区域）。可选的 void_after_quests / requires_quests / void_on_failed_quests 提供机器可读的存档任务条件，catalog build 展开为 missable_rule 并校验任务别名（data/raw/quest_aliases.json）。 exclude_groups 可引用一个或多个分组，把其选中的条目从本组剔除（用于把同一区域按失效节点拆成多组）。",
  "sources": [
   "https://www.powerpyx.com/stellar-blade-all-collectible-locations-guide/",
   "https://www.powerpyx.com/stellar-blade-eidos-9-collectible-locations/",
@@ -12,7 +12,7 @@
  "groups": [
   {
    "key": "xion_lock",
-   "note": "希雍城区的街道拾取（记录、罐子、密码、营地等）；完成卢瓦底层（Abyss Levoire）后无法返回城区。常驻 NPC 商店/理发店/安全屋补给点另见 xion_services（2026-11 拆分，避免把终章仍可购买的条目误判为已错过）。",
+   "note": "希雍城区的街道与世界拾取（记录、罐子、密码、营地、季节活动等）；完成卢瓦底层（Abyss Levoire）后无法返回城区。常驻 NPC 服务见 xion_services，支线/布告栏相关条目见 xion_quests 与各 quest_rewards 组。",
    "source": "https://www.powerpyx.com/stellar-blade-all-collectible-locations-guide/",
    "areas": [
     "Xion"
@@ -20,7 +20,10 @@
    "void_after_quests": [
     "Quest_Epic_08"
    ],
-   "exclude_group": "xion_services"
+   "exclude_groups": [
+    "xion_services",
+    "xion_quests"
+   ]
   },
   {
    "key": "xion_services",
@@ -129,6 +132,27 @@
    ]
   },
   {
+   "key": "xion_quests",
+   "note": "希雍城区内与支线/布告栏相关的条目（仅作选择器，供 xion_lock 排除）；具体失效条件由对应 quest_rewards 组按来源任务判定，不再随 Quest_Epic_08 一刀切。",
+   "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+   "ids": [
+    "BS_Bear",
+    "BS_Bear_Var2",
+    "BS_30",
+    "BS_30_Var2",
+    "BS_26",
+    "BS_33",
+    "BS_53",
+    "BS_55",
+    "Item_Records_Quest_Request_001_01",
+    "Item_Records_Quest_Request_008_01",
+    "Item_Records_Xion_Memory_09",
+    "Item_Records_Xion_Memory_12",
+    "Item_Records_Xion_Memory_15",
+    "Item_Records_Xion_Memory_26"
+   ]
+  },
+  {
    "key": "eidos9_optional",
    "note": "埃多斯9号是百合进度 100% 才会开放的可选支线区域，未开放或未在最终节点前收集都会错过（与结局路线互斥）",
    "source": "https://www.powerpyx.com/stellar-blade-eidos-9-collectible-locations/",
@@ -159,6 +183,7 @@
     "DesignPattern_BS_41",
     "DesignPattern_BS_41_Var2",
     "Item_Records_DED20_Memory_20",
+    "Item_Records_Xion_Memory_12",
     "Item_Records_Xion_Passcode_01"
    ],
    "void_on_failed_quests": [
@@ -234,6 +259,129 @@
    ],
    "void_on_failed_quests": [
     "Quest_Sub_028"
+   ]
+  },
+  {
+   "key": "quest_rewards_doll",
+   "note": "支线《玩偶的记忆》（攻略称《洋娃娃的记忆》）的纳米服奖励",
+   "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+   "ids": [
+    "BS_Bear",
+    "BS_Bear_Var2"
+   ],
+   "void_on_failed_quests": [
+    "Quest_Sub_020"
+   ]
+  },
+  {
+   "key": "quest_rewards_encounter",
+   "note": "支线《相遇与交锋》（攻略称《相遇》）的纳米服奖励",
+   "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+   "ids": [
+    "BS_30",
+    "BS_30_Var2"
+   ],
+   "void_on_failed_quests": [
+    "Quest_Sub_002"
+   ]
+  },
+  {
+   "key": "quest_rewards_photography_club",
+   "note": "布告栏委托《摄影俱乐部》的纳米服奖励",
+   "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+   "ids": [
+    "BS_26"
+   ],
+   "void_on_failed_quests": [
+    "Quest_Request_029"
+   ]
+  },
+  {
+   "key": "quest_rewards_like_butterflies",
+   "note": "布告栏委托《如梦如蝶》（攻略称《如蝶翩跹》）的纳米服奖励",
+   "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+   "ids": [
+    "BS_33"
+   ],
+   "void_on_failed_quests": [
+    "Quest_Request_030"
+   ]
+  },
+  {
+   "key": "quest_rewards_pisces",
+   "note": "布告栏委托《双鱼》（攻略称《双鱼座》）的纳米服奖励",
+   "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+   "ids": [
+    "BS_55"
+   ],
+   "void_on_failed_quests": [
+    "Quest_Request_031"
+   ]
+  },
+  {
+   "key": "quest_rewards_cat_photo",
+   "note": "布告栏委托《猫咪摄影展》的纳米服奖励",
+   "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+   "ids": [
+    "BS_53"
+   ],
+   "void_on_failed_quests": [
+    "Quest_Request_032"
+   ]
+  },
+  {
+   "key": "quest_rewards_lost_ark",
+   "note": "支线《失落的方舟》（攻略称《失落方舟》）相关记录",
+   "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+   "ids": [
+    "Item_Records_Xion_Memory_09"
+   ],
+   "void_on_failed_quests": [
+    "Quest_Sub_021"
+   ]
+  },
+  {
+   "key": "quest_rewards_death_angel",
+   "note": "支线《死亡天使》相关记录",
+   "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+   "ids": [
+    "Item_Records_Xion_Memory_15"
+   ],
+   "void_on_failed_quests": [
+    "Quest_Sub_026"
+   ]
+  },
+  {
+   "key": "quest_rewards_united_people",
+   "note": "支线《团结的人民坚不可摧》（攻略称《团结的人民不可战胜》）相关记录",
+   "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+   "ids": [
+    "Item_Records_Xion_Memory_26"
+   ],
+   "void_on_failed_quests": [
+    "Quest_Sub_039"
+   ]
+  },
+  {
+   "key": "quest_rewards_sleeping_beauty",
+   "note": "布告栏委托《睡美人》相关记录",
+   "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+   "ids": [
+    "Item_Records_Quest_Request_001_01"
+   ],
+   "void_on_failed_quests": [
+    "Quest_Request_001"
+   ]
+  },
+  {
+   "key": "quest_rewards_lost_device",
+   "note": "布告栏委托《丢失的设备》相关记录",
+   "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=3516153280",
+   "ids": [
+    "Item_Records_Quest_Request_008_01"
+   ],
+   "void_on_failed_quests": [
+    "Quest_Request_008"
    ]
   }
  ]

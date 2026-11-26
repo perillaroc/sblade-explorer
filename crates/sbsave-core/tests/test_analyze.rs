@@ -460,6 +460,31 @@ fn unfinished_quest_reward_stays_open() {
 }
 
 #[test]
+fn xion_quest_rewards_follow_source_quest_not_epic_08() {
+    let catalog = load_catalog(None).expect("catalog");
+    // Epic_08 完成但来源任务未失败时，这些奖励仍可获得。
+    let save = with_quests(make_save(&[], &[], 0), &["Quest_Epic_08"], &[], &[]);
+    let result = analyze(&save, &catalog, None);
+    for id in ["BS_Bear", "BS_30", "Item_Records_Xion_Memory_26"] {
+        let status = status_for(&result, id);
+        assert_eq!(status.missable_state, MissableState::Open, "{id}");
+        assert_eq!(status.reason, Some(BlockReason::Missable), "{id}");
+    }
+
+    // 来源任务进入失败列表后才判为已错过。
+    let save = with_quests(
+        make_save(&[], &[], 0),
+        &["Quest_Epic_08"],
+        &["Quest_Sub_020"],
+        &[],
+    );
+    let result = analyze(&save, &catalog, None);
+    let status = status_for(&result, "BS_Bear");
+    assert_eq!(status.missable_state, MissableState::Missed);
+    assert_eq!(status.reason, Some(BlockReason::Missed));
+}
+
+#[test]
 fn empty_quest_state_never_reports_missed() {
     let catalog = load_catalog(None).expect("catalog");
     let save = make_save(&[], &[], 0);
