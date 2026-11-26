@@ -79,6 +79,12 @@ The app reads quest state from the save and combines it with the missable rules 
 Items blocked by a higher playthrough or an unowned DLC are shown under those limits first. See
 [Save parsing and judgments](../reference/data.md#save-parsing-and-judgments) for the rules and JSON fields.
 
+## Why is the Planet Diving Suit (2nd) design pattern marked as obtained after PSN linking?
+
+PSN linking unlocks the finished nano suit directly, so Roxanne no longer sells its design pattern.
+When the save owns that suit (`BS_02`), the catalog's `satisfied_by` alias marks the pattern as obtained too,
+excluding it from missing and missed counts instead of reducing collection completion.
+
 ## Why does a category page report unlinked obtained aliases?
 
 The save contains obtained aliases that could not be matched to catalog entries. This message helps indicate gaps in data coverage.

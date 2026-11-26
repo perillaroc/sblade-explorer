@@ -32,6 +32,9 @@
   营地别名与 `ZoneCampTable` 行号的对应关系维护在 `data/raw/game/camp_alias_rows.json`；
   图鉴条目则从游戏数据（`AlbumTable` 和 `Game.locres`）中提取。
 - 只要物品的任一 `aliases` 出现在存档物品集合、成就记录派生的别名或图鉴成就别名中，就视为「已获得」。
+- `satisfied_by` 是附加满足别名：命中时同样视为已获得，但不占用条目自身 `aliases`，也不参与重复别名校验。
+  目前用于 `DesignPattern_BS_02`：绑定 PSN 直接获得 `BS_02` 纳米战衣时，商店不再出售对应设计图，
+  拥有战衣即视为设计图已获得，不计入未收集或已错过。
 - 程序读取存档中的 `NewGamePlusPlayCount`，据此标注「需要二周目(NG+)」或「需要三周目(NG++)」。
 - 记录、密码、罐子、设计图案和外观的名称使用从游戏数据中提取的官方简体中文名称，并标记为 `confidence="high"`。
   所有营地别名与 `ZoneCampTable` 行号的对应关系均已确认；埃多斯9号的 6 座营地通过本机存档

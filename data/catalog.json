@@ -29184,6 +29184,9 @@
    "aliases": [
     "DesignPattern_BS_02"
    ],
+   "satisfied_by": [
+    "BS_02"
+   ],
    "area": "Xion",
    "location": "Xion City",
    "obtain": "Available to purchase from Roxanne's shop after gaining level 2 Affinity.",
@@ -29195,7 +29198,7 @@
      "Quest_Epic_12"
     ]
    },
-   "note": "图案名称来自游戏数据（zh-Hans 本地化）",
+   "note": "图案名称来自游戏数据（zh-Hans 本地化）；拥有 satisfied_by 中的战衣时也视为已获得（用于 PSN 直接解锁战衣、商店不再出售设计图的情况）",
    "confidence": "high",
    "source": "game",
    "area_zh": "希雍",

@@ -485,6 +485,33 @@ fn xion_quest_rewards_follow_source_quest_not_epic_08() {
 }
 
 #[test]
+fn psn_suit_satisfies_design_pattern() {
+    let catalog = load_catalog(None).expect("catalog");
+    // Owning the PSN-granted suit satisfies its no-longer-sold design pattern.
+    let save = with_quests(make_save(&["BS_02"], &[], 0), &["Quest_Epic_12"], &[], &[]);
+    let result = analyze(&save, &catalog, None);
+    let status = status_for(&result, "DesignPattern_BS_02");
+    assert!(status.obtained);
+    assert_eq!(status.reason, None);
+    assert_eq!(status.missable_state, MissableState::Unknown);
+
+    let patterns = result
+        .categories
+        .iter()
+        .find(|category| category.category.key == "design_patterns")
+        .expect("design patterns");
+    assert!(patterns
+        .missing
+        .iter()
+        .all(|status| status.item.id != "DesignPattern_BS_02"));
+
+    // Without the suit, the pattern remains an ordinary missing entry.
+    let save = make_save(&[], &[], 0);
+    let result = analyze(&save, &catalog, None);
+    assert!(!status_for(&result, "DesignPattern_BS_02").obtained);
+}
+
+#[test]
 fn empty_quest_state_never_reports_missed() {
     let catalog = load_catalog(None).expect("catalog");
     let save = make_save(&[], &[], 0);

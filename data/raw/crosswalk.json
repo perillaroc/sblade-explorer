@@ -154,7 +154,10 @@
     "BS_02"
    ],
    "zh": "星球空降服（第2小队）",
-   "confidence": "high"
+   "confidence": "high",
+   "satisfied_by": [
+    "BS_02"
+   ]
   },
   {
    "site_id": 937,

@@ -83,6 +83,9 @@ pub struct CatalogItem {
     pub name: String,
     pub category: String,
     pub aliases: Vec<String>,
+    /// Additional aliases that satisfy this entry without being its own ID,
+    /// e.g. a PSN-granted suit satisfying its no-longer-sold design pattern.
+    pub satisfied_by: Vec<String>,
     pub area: Option<String>,
     pub area_zh: Option<String>,
     pub location: Option<String>,
@@ -108,11 +111,13 @@ pub struct CatalogItem {
 
 impl CatalogItem {
     pub fn satisfy_aliases(&self) -> Vec<&str> {
-        if self.aliases.is_empty() {
+        let mut aliases = if self.aliases.is_empty() {
             vec![self.id.as_str()]
         } else {
             self.aliases.iter().map(String::as_str).collect()
-        }
+        };
+        aliases.extend(self.satisfied_by.iter().map(String::as_str));
+        aliases
     }
 
     pub fn ng_plus_label(&self, locale: Locale) -> String {
@@ -310,6 +315,7 @@ fn parse_item(raw: &JsonValue) -> CatalogItem {
         name,
         category: json_str(raw, "category").unwrap_or_default(),
         aliases,
+        satisfied_by: parse_string_list(raw.get("satisfied_by")),
         area: json_str(raw, "area"),
         area_zh: json_str(raw, "area_zh"),
         location: json_str(raw, "location"),

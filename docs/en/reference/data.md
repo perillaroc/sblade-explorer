@@ -31,6 +31,8 @@ All data is bundled with the app, which does not connect to the internet at runt
   The mapping from camp aliases to `ZoneCampTable` rows is maintained in `data/raw/game/camp_alias_rows.json`.
   Album entries are extracted from game data (`AlbumTable` and `Game.locres`).
 - An item counts as obtained if any of its `aliases` appears in the save's item set, an alias derived from achievement records, or an album achievement alias.
+- `satisfied_by` lists additional satisfying aliases: a match also counts as obtained without claiming the entry's own `aliases` or triggering duplicate-alias validation.
+  It is currently used by `DesignPattern_BS_02`: when PSN linking grants the `BS_02` suit directly, its design pattern is removed from the shop, so owning the suit marks the pattern as obtained and excludes it from missing or missed counts.
 - The app reads `NewGamePlusPlayCount` from the save to determine whether to label an item "Requires NG+" or "Requires NG++".
 - Records, passcodes, cans, design patterns, and appearance items use official Simplified Chinese names extracted from game data and are marked `confidence="high"`.
   All camp aliases are now mapped to `ZoneCampTable` rows with confidence; the six Eidos 9 camps were matched by

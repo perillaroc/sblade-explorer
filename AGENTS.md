@@ -66,7 +66,7 @@ Python 参考实现已于 2026-09-15 删除，代码历史保留在 git 中。
 
 ## 目录库 / 别名模型
 
-- 只要物品的任一 `aliases` 出现在存档物品集合、从成就记录派生的别名或成就别名（图鉴）中，即视为"已获得"。
+- 只要物品的任一 `aliases` 出现在存档物品集合、从成就记录派生的别名或成就别名（图鉴）中，即视为"已获得"。`satisfied_by` 是附加满足别名，命中时同样视为已获得，但不占用条目自身 `aliases`、不参与重复别名校验；`DesignPattern_BS_02` 用 `satisfied_by: ["BS_02"]` 处理 PSN 直接解锁战衣、商店不再出售设计图的情况。
 - `data/raw/crosswalk.json`（site id -> 别名 -> 中文名，手工维护）是收集品的事实来源；`data/catalog.json` 为生成物；图鉴两类（`naytiba` 孽奇拔 67、`characters` 角色 55 页）由 `AlbumTable` + `Game.locres` 挖掘生成，别名是 `Ach_Album_Unlock_*` 成就别名。只想修正个别条目时，用 `%LOCALAPPDATA%\sbsave\catalog.user.json`（合并覆盖内置目录库）或 CLI 的 `--catalog path.json`，无需重新生成。站点尚未收录的联动/更新内容（如 1.5.0 蓓优妮塔联动）在 crosswalk 条目中省略 `site_id`，直接提供 `name_en`、`area` 与 `obtain`（中英），名称取自 `Game.locres`。
 - 目录库分三段：`section=collection`（13 类收集品 808 条，计入目录进度）、`section=growth`（装备 77 条 + 辅助脊椎 12 条，**不计入目录进度**，报告/UI 单列）与 `section=album`（图鉴，**不计入目录进度**，报告/UI 单列）；角色按页展示（`艾德姆（资料 3/5）`），图鉴条目带官方 `desc_zh`/`desc_en` 说明。
 - 记录/密码/罐子/设计图案/外观名称由 `data/raw/game/name_map.json`（游戏数据挖掘）覆盖为官方简中名称并置 `confidence="high"`；同一文件的 `regions` / `quests` 段提供 `MapName` 区域代号与任务标题（`catalog build` 并入 `catalog.json`）；所有营地别名→行号均已确认（埃多斯9号 6 座营地用存档 `DataMap_SBEnv` 坐标与 `CoinSpawnPointName` 邻近匹配），目录库当前没有低置信度条目。期望数量（130 纳米战衣、49 罐子、89 营地、67 孽奇拔、55 角色页、77 装备、12 辅助脊椎）是回归哨兵，迁移时应保留断言。

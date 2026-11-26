@@ -10,7 +10,7 @@
 | `api/i18n/levels.json`、`locations.json` | 攻略区域和地点的简体中文翻译（英文原文 → 中文） |
 | `api/i18n/obtain_*.json` | 攻略获取说明的简体中文翻译（攻略站条目 id → 中文；`obtain_camps.json` 为营地文案） |
 | `universe/aliases.json` | 从参考存档和本地存档提取的物品别名全集（不含未解锁 ID） |
-| `crosswalk.json` | 手工维护的别名对照（site id → 别名 → 中文名，是目录库生成器的唯一事实来源）；`camps` 段维护营地别名与攻略站条目的映射，个别未收录营地直接内嵌中英文案；`record_type_overrides` 用于覆盖无法按名称自动匹配的记录类型；`nano_suits` 和 `appearance` 中未被攻略站收录的条目省略 `site_id`，直接内嵌 `name_en`、`area` 和 `obtain` |
+| `crosswalk.json` | 手工维护的别名对照（site id → 别名 → 中文名，是目录库生成器的唯一事实来源）；`camps` 段维护营地别名与攻略站条目的映射，个别未收录营地直接内嵌中英文案；`record_type_overrides` 用于覆盖无法按名称自动匹配的记录类型；`nano_suits` 和 `appearance` 中未被攻略站收录的条目省略 `site_id`，直接内嵌 `name_en`、`area` 和 `obtain`。纳米服可额外声明 `satisfied_by`，作为其生成设计图案的满足别名（`BS_02` 用于 PSN 直接解锁战衣、商店不再出售设计图的情况） |
 | `fish_obtain.json` | 手工维护的鱼类获取说明（别名 → 中英文案：钓点和鱼饵；鱼类没有攻略站条目） |
 | `missable.json` | 手工维护的易错过清单（希雍街道拾取、希雍常驻 NPC 服务、埃多斯9号可选区域和支线奖励；可按区域、营地区段或显式条目选择，`catalog build` 展开为 `missable`）。可选的 `void_after_quests` / `requires_quests` / `void_on_failed_quests` 给出机器可读的存档任务条件，`catalog build` 展开为条目的 `missable_rule` 并校验任务别名；`exclude_groups` 可把一个或多个分组选中的条目从本组剔除。希雍按街道拾取（`Quest_Epic_08` 后失效）与常驻 NPC 服务/安全屋补给点（终章仍可获得，`Quest_Epic_12` 后失效）拆开，另用 `xion_quests` 作支线选择器，把支线/布告栏条目交给来源任务组判定；支线奖励按来源任务拆成 18 组，对应任务出现在 `FailedQuestList` 时判为已错过；埃多斯9号在 `Quest_Epic_12`（最后的碎片）完成后失效 |
 | `quest_aliases.json` | `DataMap_SBQuest` 中见过的任务别名快照（本地、Demo、100% 三份存档，117 条）；`catalog build` 用它对 `missable.json` 的任务条件做拼写校验 |

@@ -614,7 +614,14 @@ fn command_catalog_check(catalog_path: Option<PathBuf>, messages: Messages) -> i
     let mut problems: Vec<String> = Vec::new();
     let mut seen: HashMap<String, String> = HashMap::new();
     for item in &catalog.items {
-        for alias in item.satisfy_aliases() {
+        // `satisfied_by` aliases are shared by design (e.g. the PSN suit also
+        // satisfies its design pattern); only identity aliases must be unique.
+        let aliases: Vec<&str> = if item.aliases.is_empty() {
+            vec![item.id.as_str()]
+        } else {
+            item.aliases.iter().map(String::as_str).collect()
+        };
+        for alias in aliases {
             if let Some(previous) = seen.get(alias) {
                 if previous != &item.id {
                     problems.push(messages.check_alias_duplicate(alias, previous, &item.id));

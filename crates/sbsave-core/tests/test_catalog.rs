@@ -29,7 +29,14 @@ fn aliases_are_unique() {
     let mut seen: HashMap<String, String> = HashMap::new();
     let mut duplicates: Vec<String> = Vec::new();
     for item in &catalog.items {
-        for alias in item.satisfy_aliases() {
+        // `satisfied_by` aliases are intentionally shared; only identity
+        // aliases must be unique.
+        let aliases: Vec<&str> = if item.aliases.is_empty() {
+            vec![item.id.as_str()]
+        } else {
+            item.aliases.iter().map(String::as_str).collect()
+        };
+        for alias in aliases {
             if let Some(previous) = seen.get(alias) {
                 duplicates.push(format!("{alias} {previous} {}", item.id));
             }
@@ -816,6 +823,17 @@ fn xion_missable_split_is_stable() {
         assert_eq!(rule.void_on_failed_quests, vec![quest.to_string()], "{id}");
         assert!(rule.void_after_quests.is_empty(), "{id}");
     }
+}
+
+#[test]
+fn psn_suit_satisfies_pattern_without_duplicate_alias() {
+    let catalog = load_catalog(None).expect("catalog");
+    let index = catalog.alias_index();
+    let pattern = index["DesignPattern_BS_02"];
+    assert_eq!(pattern.aliases, vec!["DesignPattern_BS_02".to_string()]);
+    assert!(pattern.satisfy_aliases().contains(&"BS_02"));
+    // The satisfying alias still belongs to the suit, not to the pattern.
+    assert_eq!(index["BS_02"].id, "BS_02");
 }
 
 #[test]

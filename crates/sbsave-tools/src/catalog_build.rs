@@ -190,6 +190,11 @@ struct CrosswalkSuit {
     #[serde(default)]
     site_id: Option<i64>,
     aliases: Vec<String>,
+    /// Additional aliases that satisfy the generated design pattern. Used for
+    /// PSN-linked suits: the suit is granted directly and its pattern is no
+    /// longer sold, so owning the suit must not leave the pattern missing.
+    #[serde(default)]
+    satisfied_by: Vec<String>,
     zh: String,
     #[serde(default)]
     name_en: Option<String>,
@@ -422,6 +427,8 @@ struct CatalogItem {
     name_en: Option<String>,
     category: String,
     aliases: Vec<String>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    satisfied_by: Vec<String>,
     area: Option<String>,
     location: Option<String>,
     obtain: Option<String>,
@@ -668,6 +675,7 @@ fn make_item(
             .or_else(|| site.map(|item| item.title.clone())),
         category: category.to_string(),
         aliases,
+        satisfied_by: Vec::new(),
         area: site.map(|item| item.level.clone()),
         location: site.map(|item| item.location.clone()),
         obtain: site.map(|item| item.description.clone()),
@@ -711,6 +719,7 @@ fn plain_item(
         name_en: Some(name_en),
         category: category.to_string(),
         aliases,
+        satisfied_by: Vec::new(),
         area,
         location: None,
         obtain: None,
@@ -1465,6 +1474,7 @@ fn album_item(
         name_en: Some(name_en),
         category: category.to_string(),
         aliases: vec![unlocked.to_string()],
+        satisfied_by: Vec::new(),
         area: entry
             .get("group_en")
             .and_then(Value::as_str)
@@ -1767,7 +1777,7 @@ fn build_design_patterns(
         }
         covered.extend(candidates.iter().cloned());
         let info = suit.site_id.and_then(|site_id| site.get(&site_id));
-        items.push(make_item(
+        let mut item = make_item(
             candidates[0].clone(),
             format!("设计图案：{}", suit.zh),
             "design_patterns",
@@ -1778,7 +1788,11 @@ fn build_design_patterns(
             Some("图案与战衣同名（存档内部 ID 推导）".to_string()),
             None,
             &crosswalk.site_base_url,
-        ));
+        );
+        if !suit.satisfied_by.is_empty() {
+            item.satisfied_by = suit.satisfied_by.clone();
+        }
+        items.push(item);
     }
     for alias in pattern_universe.difference(&covered) {
         items.push(plain_item(
@@ -2181,7 +2195,13 @@ fn apply_game_names(items: &mut [CatalogItem], game_names: &Value) {
         item.confidence = "high".to_string();
         item.source = Some("game".to_string());
         if let Some(note) = game_note(&item.category) {
-            item.note = Some(note.to_string());
+            item.note = Some(if item.satisfied_by.is_empty() {
+                note.to_string()
+            } else {
+                format!(
+                    "{note}；拥有 satisfied_by 中的战衣时也视为已获得（用于 PSN 直接解锁战衣、商店不再出售设计图的情况）"
+                )
+            });
         } else if item.category == "cans" {
             item.note = None;
         }
