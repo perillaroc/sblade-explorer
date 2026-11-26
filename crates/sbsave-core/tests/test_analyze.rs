@@ -350,6 +350,42 @@ fn xion_items_stay_open_before_epic_08() {
 }
 
 #[test]
+fn xion_service_items_stay_open_after_epic_08() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = with_quests(make_save(&[], &[], 0), &["Quest_Epic_08"], &[], &[]);
+    let result = analyze(&save, &catalog, None);
+
+    // Shops, the salon and the safehouse vending machine stay reachable into
+    // the final chapter, so Epic_08 must not void them.
+    for id in ["Hair_002", "DesignPattern_BS_02", "BS_19"] {
+        let status = status_for(&result, id);
+        assert_eq!(status.missable_state, MissableState::Open, "{id}");
+        assert_eq!(status.reason, Some(BlockReason::Missable), "{id}");
+    }
+    // Street pickups keep the earlier Xion lock.
+    let street = status_for(&result, "Can_009");
+    assert_eq!(street.missable_state, MissableState::Missed);
+}
+
+#[test]
+fn xion_service_items_missed_after_last_fragment() {
+    let catalog = load_catalog(None).expect("catalog");
+    let save = with_quests(
+        make_save(&[], &[], 0),
+        &["Quest_Epic_08", "Quest_Epic_12"],
+        &[],
+        &[],
+    );
+    let result = analyze(&save, &catalog, None);
+
+    for id in ["Hair_002", "DesignPattern_BS_02", "BS_19"] {
+        let status = status_for(&result, id);
+        assert_eq!(status.missable_state, MissableState::Missed, "{id}");
+        assert_eq!(status.reason, Some(BlockReason::Missed), "{id}");
+    }
+}
+
+#[test]
 fn eidos9_items_open_after_hidden_quest_started() {
     let catalog = load_catalog(None).expect("catalog");
     let save = with_quests(make_save(&[], &[], 0), &[], &[], &["Quest_Epic_Hidden"]);

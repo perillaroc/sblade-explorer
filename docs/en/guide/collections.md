@@ -61,7 +61,7 @@ Lily's Outfits offer both a **Cycle matrix** and a **List** view. The matrix mak
 
 - An item counts as obtained if any of its aliases appears in the save's item set, an alias derived from achievement records, or an album achievement alias (`Ach_Album_Unlock_*`). Album entries are unlocked through their corresponding achievements.
 - The app reads `NewGamePlusPlayCount` from the save to determine whether to label an item "Requires NG+" or "Requires NG++".
-- Based on community resources, 211 entries are marked as missable. These include items in Xion (locked after completing Abyss Levoire), Eidos 9 (available once Lily's progress reaches 100%, lost after "Last Fragment"), and side-quest and bulletin-board request rewards.
+- Based on community resources, 211 entries are marked as missable: street pickups in Xion (locked after completing Abyss Levoire), Xion's permanent NPC shops, salon, and safehouse supply point (still available until the final point in "Last Fragment", lost after `Quest_Epic_12`), Eidos 9 (available once Lily's progress reaches 100%, lost after "Last Fragment"), and side-quest and bulletin-board request rewards.
   The app combines them with the save's quest state and resolves all 211 entries as "missed" or "still available"; quest rewards become missed when their source quest fails.
   When an older save has no quest data, it shows "Missable (mind the checkpoint)" and never reports a false "missed".
   See [Save parsing and judgments](../reference/data.md#save-parsing-and-judgments).

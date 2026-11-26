@@ -181,9 +181,10 @@ fn report_json_summarises_fixture() {
     // Growth section tracks gear and exospines separately from the collection rate.
     assert_eq!(report["summary"]["growth_total"], 89);
     assert_eq!(report["summary"]["growth_obtained"], 2);
-    // Quest_Epic_08 completed (Xion locked) + Quest_Epic_Hidden active (Eidos 9 open).
-    assert_eq!(report["summary"]["missed_count"], 154);
-    assert_eq!(report["summary"]["missable_open_count"], 45);
+    // Quest_Epic_08 completed (Xion street lock) + Quest_Epic_Hidden active
+    // (Eidos 9 open); Xion services stay open until Quest_Epic_12.
+    assert_eq!(report["summary"]["missed_count"], 60);
+    assert_eq!(report["summary"]["missable_open_count"], 139);
     assert_eq!(report["categories"].as_array().map(Vec::len), Some(17));
 
     let save_json = &report["save"];

@@ -77,7 +77,8 @@
 
 | 分组 | 条件 | 条目数 |
 | --- | --- | --- |
-| `xion_lock` | 完成 `Quest_Epic_08` 后失效 | 156 |
+| `xion_lock` | 完成 `Quest_Epic_08` 后失效（仅街道拾取；服务类见下一行） | 60 |
+| `xion_services` | 完成 `Quest_Epic_12` 后失效（常驻 NPC 商店、理发店、安全屋补给点） | 96 |
 | `eidos9_optional` | 需要 `Quest_Epic_Hidden` 已开始；完成 `Quest_Epic_12` 后失效 | 34 |
 | `quest_rewards_*`（7 组） | 来源任务（Oblivion、Strange Signal 等）出现在 `FailedQuestList` 时失效 | 21 |
 
@@ -198,9 +199,11 @@ CI 以非阻塞方式运行该检查。用法与白名单说明见[开发与发�
   全部包含 `desc_zh` 和 `desc_en`，且不内置攻略链接。
 - 300 条记录全部包含游戏内类型（记忆棒 186 条、文档 114 条）和攻略获取方式；
   186 条记忆棒包含游戏内选单顺序，重复拾取副本并入基础条目；23 条密码全部包含攻略获取方式。
-- 易错过：211 条带有 `missable`，包括希雍 156 条、埃多斯9号 34 条（含 6 座营地），以及其他支线奖励和任务区域 21 条。
-  全部 211 条都带有 `missable_rule`：希雍按 `Quest_Epic_08` 失效、埃多斯9号按 `Quest_Epic_Hidden` 开放且
-  `Quest_Epic_12` 后失效、支线奖励按来源任务失败判定；分析结果区分「已错过 / 还来得及 / 未知」。
+- 易错过：211 条带有 `missable`，包括希雍街道拾取 60 条、希雍常驻 NPC 服务与安全屋补给点 96 条、
+  埃多斯9号 34 条（含 6 座营地），以及其他支线奖励和任务区域 21 条。
+  全部 211 条都带有 `missable_rule`：希雍街道拾取按 `Quest_Epic_08` 失效，希雍服务类按 `Quest_Epic_12` 失效
+  （终章仍可购买），埃多斯9号按 `Quest_Epic_Hidden` 开放且 `Quest_Epic_12` 后失效、支线奖励按来源任务失败判定；
+  分析结果区分「已错过 / 还来得及 / 未知」。
 - 区域与任务：`catalog.json` 含 12 个 `map_names`（`UI_RegionAlias_*`）和 89 条 `quest_titles`
   （`Quest_*_Title`）；`quest_aliases.json` 含 117 条任务别名。
 - 中文攻略链接：808 条收集品、77 条装备和 12 条辅助脊椎中有 895 条内置链接（图文 887 条、视频 694 条）。

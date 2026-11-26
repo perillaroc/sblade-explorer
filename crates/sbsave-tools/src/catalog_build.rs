@@ -345,6 +345,11 @@ struct MissableGroup {
     camp_zones: Vec<String>,
     #[serde(default)]
     ids: Vec<String>,
+    /// Skips the ids selected by another group (by group key). Lets one area
+    /// be split into several expiry rules without listing shared ids twice;
+    /// the referenced group must select at least one id from this selection.
+    #[serde(default)]
+    exclude_group: Option<String>,
     /// Item is lost once any of these quests completed.
     #[serde(default)]
     void_after_quests: Vec<String>,
@@ -2322,58 +2327,103 @@ fn is_collection_item(item: &CatalogItem) -> bool {
     category_section(&item.category) == Some("collection")
 }
 
+/// Collects the ids a group's selectors match, validating each selector.
+fn select_missable_group(
+    items: &[CatalogItem],
+    group: &MissableGroup,
+) -> Result<Vec<String>, String> {
+    let mut selected: Vec<String> = Vec::new();
+    for area in &group.areas {
+        let hits: Vec<&str> = items
+            .iter()
+            .filter(|item| is_collection_item(item) && item.area.as_deref() == Some(area.as_str()))
+            .map(|item| item.id.as_str())
+            .collect();
+        if hits.is_empty() {
+            return Err(format!(
+                "missable.json 的 {} 未匹配到区域: {area}",
+                group.key
+            ));
+        }
+        selected.extend(hits.into_iter().map(str::to_string));
+    }
+    for zone in &group.camp_zones {
+        let prefix = format!("ChangeState_ZoneEnv_{zone}_");
+        let hits: Vec<&str> = items
+            .iter()
+            .filter(|item| item.category == "camps" && item.id.starts_with(&prefix))
+            .map(|item| item.id.as_str())
+            .collect();
+        if hits.is_empty() {
+            return Err(format!(
+                "missable.json 的 {} 未匹配到营地: {zone}",
+                group.key
+            ));
+        }
+        selected.extend(hits.into_iter().map(str::to_string));
+    }
+    for id in &group.ids {
+        if !items.iter().any(|item| item.id == *id) {
+            return Err(format!(
+                "missable.json 的 {} 指向不存在的条目: {id}",
+                group.key
+            ));
+        }
+        selected.push(id.clone());
+    }
+    if group.areas.is_empty() && group.camp_zones.is_empty() && group.ids.is_empty() {
+        return Err(format!("missable.json 的 {} 没有任何选择器", group.key));
+    }
+    Ok(selected)
+}
+
 fn apply_missable(
     items: &mut [CatalogItem],
     missable: &MissableFile,
     known_quests: &HashSet<String>,
 ) -> Result<(), String> {
+    // Resolve every group's own selection first so `exclude_group` may point
+    // at a group defined later in the file.
+    let mut selections: BTreeMap<String, Vec<String>> = BTreeMap::new();
+    for group in &missable.groups {
+        if selections.contains_key(&group.key) {
+            return Err(format!("missable.json 的分组 key 重复: {}", group.key));
+        }
+        if group.exclude_group.as_deref() == Some(group.key.as_str()) {
+            return Err(format!("missable.json 的 {} 不能排除自身", group.key));
+        }
+        let selected = select_missable_group(items, group)?;
+        selections.insert(group.key.clone(), selected);
+    }
+    for group in &missable.groups {
+        if let Some(excluded) = group.exclude_group.as_deref() {
+            if !selections.contains_key(excluded) {
+                return Err(format!(
+                    "missable.json 的 {} 的 exclude_group 指向不存在的分组: {excluded}",
+                    group.key
+                ));
+            }
+        }
+    }
+
     let mut marked: BTreeSet<String> = BTreeSet::new();
     let mut rules: BTreeMap<String, MissableRule> = BTreeMap::new();
 
     for group in &missable.groups {
-        let mut selected: Vec<String> = Vec::new();
-        for area in &group.areas {
-            let hits: Vec<&str> = items
-                .iter()
-                .filter(|item| {
-                    is_collection_item(item) && item.area.as_deref() == Some(area.as_str())
-                })
-                .map(|item| item.id.as_str())
-                .collect();
-            if hits.is_empty() {
+        let mut selected = selections.get(&group.key).cloned().unwrap_or_default();
+        if let Some(excluded) = group.exclude_group.as_deref() {
+            let excluded_ids: HashSet<&str> = selections
+                .get(excluded)
+                .map(|ids| ids.iter().map(String::as_str).collect())
+                .unwrap_or_default();
+            let before = selected.len();
+            selected.retain(|id| !excluded_ids.contains(id.as_str()));
+            if selected.len() == before {
                 return Err(format!(
-                    "missable.json 的 {} 未匹配到区域: {area}",
+                    "missable.json 的 {} 的 exclude_group {excluded} 没有排除任何条目",
                     group.key
                 ));
             }
-            selected.extend(hits.into_iter().map(str::to_string));
-        }
-        for zone in &group.camp_zones {
-            let prefix = format!("ChangeState_ZoneEnv_{zone}_");
-            let hits: Vec<&str> = items
-                .iter()
-                .filter(|item| item.category == "camps" && item.id.starts_with(&prefix))
-                .map(|item| item.id.as_str())
-                .collect();
-            if hits.is_empty() {
-                return Err(format!(
-                    "missable.json 的 {} 未匹配到营地: {zone}",
-                    group.key
-                ));
-            }
-            selected.extend(hits.into_iter().map(str::to_string));
-        }
-        for id in &group.ids {
-            if !items.iter().any(|item| item.id == *id) {
-                return Err(format!(
-                    "missable.json 的 {} 指向不存在的条目: {id}",
-                    group.key
-                ));
-            }
-            selected.push(id.clone());
-        }
-        if group.areas.is_empty() && group.camp_zones.is_empty() && group.ids.is_empty() {
-            return Err(format!("missable.json 的 {} 没有任何选择器", group.key));
         }
 
         let rule = MissableRule {
@@ -3010,6 +3060,7 @@ mod tests {
                 areas: vec!["Xion".to_string()],
                 camp_zones: vec!["DED40".to_string()],
                 ids: vec!["BS_18".to_string()],
+                exclude_group: None,
                 void_after_quests: vec!["Quest_Epic_08".to_string()],
                 requires_quests: Vec::new(),
                 void_on_failed_quests: Vec::new(),
@@ -3054,6 +3105,7 @@ mod tests {
                 areas: Vec::new(),
                 camp_zones: Vec::new(),
                 ids: vec!["Nope".to_string()],
+                exclude_group: None,
                 void_after_quests: Vec::new(),
                 requires_quests: Vec::new(),
                 void_on_failed_quests: Vec::new(),
@@ -3071,6 +3123,7 @@ mod tests {
                 areas: vec!["Nope".to_string()],
                 camp_zones: Vec::new(),
                 ids: Vec::new(),
+                exclude_group: None,
                 void_after_quests: Vec::new(),
                 requires_quests: Vec::new(),
                 void_on_failed_quests: Vec::new(),
@@ -3088,6 +3141,7 @@ mod tests {
                 areas: Vec::new(),
                 camp_zones: Vec::new(),
                 ids: vec!["BS_18".to_string()],
+                exclude_group: None,
                 void_after_quests: vec!["Quest_Nope".to_string()],
                 requires_quests: Vec::new(),
                 void_on_failed_quests: Vec::new(),
@@ -3097,6 +3151,129 @@ mod tests {
         let error = apply_missable(&mut items, &unknown_quest, &HashSet::new())
             .expect_err("unknown quest alias must fail the build");
         assert!(error.contains("Quest_Nope"), "{error}");
+    }
+
+    #[test]
+    fn apply_missable_exclude_group_splits_an_area() {
+        let mut items = vec![
+            plain_item(
+                "BS_02".to_string(),
+                "星球空降服（第2小队）".to_string(),
+                "BS_02".to_string(),
+                "nano_suits",
+                vec!["BS_02".to_string()],
+                Some("Xion".to_string()),
+                "",
+                "high",
+                0,
+                None,
+            ),
+            plain_item(
+                "Can_009".to_string(),
+                "马奇内塔美式咖啡".to_string(),
+                "Can_009".to_string(),
+                "cans",
+                vec!["Can_009".to_string()],
+                Some("Xion".to_string()),
+                "",
+                "high",
+                0,
+                None,
+            ),
+        ];
+        let missable = MissableFile {
+            version: 1,
+            groups: vec![
+                MissableGroup {
+                    key: "xion_services".to_string(),
+                    note: String::new(),
+                    source: String::new(),
+                    areas: Vec::new(),
+                    camp_zones: Vec::new(),
+                    ids: vec!["BS_02".to_string()],
+                    exclude_group: None,
+                    void_after_quests: vec!["Quest_Epic_12".to_string()],
+                    requires_quests: Vec::new(),
+                    void_on_failed_quests: Vec::new(),
+                },
+                MissableGroup {
+                    key: "xion_lock".to_string(),
+                    note: String::new(),
+                    source: String::new(),
+                    areas: vec!["Xion".to_string()],
+                    camp_zones: Vec::new(),
+                    ids: Vec::new(),
+                    exclude_group: Some("xion_services".to_string()),
+                    void_after_quests: vec!["Quest_Epic_08".to_string()],
+                    requires_quests: Vec::new(),
+                    void_on_failed_quests: Vec::new(),
+                },
+            ],
+            ..MissableFile::default()
+        };
+        let known: HashSet<String> = ["Quest_Epic_08", "Quest_Epic_12"]
+            .iter()
+            .map(|alias| alias.to_string())
+            .collect();
+        apply_missable(&mut items, &missable, &known).expect("apply");
+
+        let service = items
+            .iter()
+            .find(|item| item.id == "BS_02")
+            .expect("service item");
+        assert_eq!(
+            service
+                .missable_rule
+                .as_ref()
+                .map(|rule| rule.void_after_quests.as_slice()),
+            Some(["Quest_Epic_12".to_string()].as_slice())
+        );
+        let street = items
+            .iter()
+            .find(|item| item.id == "Can_009")
+            .expect("street item");
+        assert_eq!(
+            street
+                .missable_rule
+                .as_ref()
+                .map(|rule| rule.void_after_quests.as_slice()),
+            Some(["Quest_Epic_08".to_string()].as_slice())
+        );
+    }
+
+    #[test]
+    fn apply_missable_rejects_missing_exclude_group() {
+        let mut items = vec![plain_item(
+            "Can_009".to_string(),
+            "马奇内塔美式咖啡".to_string(),
+            "Can_009".to_string(),
+            "cans",
+            vec!["Can_009".to_string()],
+            Some("Xion".to_string()),
+            "",
+            "high",
+            0,
+            None,
+        )];
+        let missable = MissableFile {
+            version: 1,
+            groups: vec![MissableGroup {
+                key: "xion_lock".to_string(),
+                note: String::new(),
+                source: String::new(),
+                areas: vec!["Xion".to_string()],
+                camp_zones: Vec::new(),
+                ids: Vec::new(),
+                exclude_group: Some("nope".to_string()),
+                void_after_quests: Vec::new(),
+                requires_quests: Vec::new(),
+                void_on_failed_quests: Vec::new(),
+            }],
+            ..MissableFile::default()
+        };
+        let error = apply_missable(&mut items, &missable, &HashSet::new())
+            .expect_err("missing exclude_group must fail the build");
+        assert!(error.contains("nope"), "{error}");
     }
 
     #[test]

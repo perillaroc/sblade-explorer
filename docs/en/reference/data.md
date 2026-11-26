@@ -78,7 +78,8 @@ All 211 entries now have a rule:
 
 | Group | Condition | Entries |
 | --- | --- | --- |
-| `xion_lock` | Lost after `Quest_Epic_08` completes | 156 |
+| `xion_lock` | Lost after `Quest_Epic_08` completes (street pickups only; services are the next row) | 60 |
+| `xion_services` | Lost after `Quest_Epic_12` completes (permanent NPC shops, salon, safehouse supply point) | 96 |
 | `eidos9_optional` | Requires `Quest_Epic_Hidden` to have started; lost after `Quest_Epic_12` | 34 |
 | `quest_rewards_*` (7 groups) | Lost when the source quest (Oblivion, Strange Signal, ...) is in `FailedQuestList` | 21 |
 
@@ -202,10 +203,11 @@ See [Development](../development/index.md) for usage and the allowlist.
   Every entry includes `desc_zh` and `desc_en` and has no built-in guide links.
 - All 300 records include an in-game type (186 Memory Sticks and 114 Documents) and acquisition instructions from guides.
   The 186 Memory Sticks include their in-game menu order, and repeated-pickup copies are merged into base entries. All 23 passcodes include acquisition instructions from guides.
-- There are 211 entries with `missable`: 156 in Xion, 34 in Eidos 9 (including 6 camps), and 21 for other side-quest rewards and quest areas.
-  All 211 carry a `missable_rule`: Xion voids after `Quest_Epic_08`, Eidos 9 opens with `Quest_Epic_Hidden` and voids after
-  `Quest_Epic_12`, and quest rewards follow their source quest's failed state.
-  Results distinguish "missed / still available / unknown".
+- There are 211 entries with `missable`: 60 street pickups in Xion, 96 Xion permanent NPC services and safehouse supply items,
+  34 in Eidos 9 (including 6 camps), and 21 for other side-quest rewards and quest areas.
+  All 211 carry a `missable_rule`: Xion street pickups void after `Quest_Epic_08`; Xion services void after `Quest_Epic_12`
+  (still purchasable in the final chapter); Eidos 9 opens with `Quest_Epic_Hidden` and voids after `Quest_Epic_12`;
+  quest rewards follow their source quest's failed state. Results distinguish "missed / still available / unknown".
 - Regions and quests: `catalog.json` contains 12 `map_names` (`UI_RegionAlias_*`) and 89 `quest_titles`
   (`Quest_*_Title`); `quest_aliases.json` contains 117 quest aliases.
 - Of the 808 collectibles, 77 gear entries, and 12 exospines, 895 have built-in Chinese guide links (887 illustrated guides and 694 videos).
