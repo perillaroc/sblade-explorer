@@ -24,7 +24,7 @@ import {
   type LucideIcon,
 } from "@lucide/vue";
 import type { Analysis, CategoryResult, SaveSlot } from "../types";
-import { actionableRows, missableRows } from "../lib/actionable";
+import { actionableRows, missableRows, missedRows } from "../lib/actionable";
 import { areaAccent, type AreaAccent } from "../lib/area";
 import { areaLabel, categoryName, itemName, localized, locationLine, saveSize, saveTime } from "../lib/display";
 import { categoryIcon } from "../lib/icons";
@@ -176,6 +176,26 @@ function blockedOf(category: CategoryResult): number {
 
 const actionable = computed(() => actionableRows(props.analysis));
 const missable = computed(() => missableRows(props.analysis));
+const missed = computed(() => missedRows(props.analysis));
+
+const missableExpanded = ref(false);
+const missedExpanded = ref(false);
+
+const categoryByItemId = computed(() => {
+  const map = new Map<string, CategoryResult>();
+  for (const category of props.analysis.categories) {
+    for (const item of category.missing) map.set(item.id, category);
+    for (const item of category.obtained_items) map.set(item.id, category);
+  }
+  return map;
+});
+
+function rowContext(row: ItemRow): string {
+  const category = categoryByItemId.value.get(row.id);
+  const categoryLabel = category ? categoryName(category, settings.contentLang) : "";
+  const location = locationLine(row.item, settings.contentLang) || row.id;
+  return categoryLabel ? `${categoryLabel} · ${location}` : location;
+}
 
 const DISPLAY_LIMIT = 8;
 const expanded = ref(false);
@@ -209,18 +229,27 @@ const actionableGroups = computed<ActionGroup[]>(() => {
   return [...map.values()];
 });
 
+type SelectedList = "actionable" | "missable" | "missed";
+
+const selectedList = ref<SelectedList>("actionable");
 const selectedIndex = ref(-1);
+const selectedRows = computed(() => {
+  if (selectedList.value === "missable") return missable.value;
+  if (selectedList.value === "missed") return missed.value;
+  return actionable.value;
+});
 const selectedRow = computed(() =>
-  selectedIndex.value >= 0 ? (actionable.value[selectedIndex.value] ?? null) : null,
+  selectedIndex.value >= 0 ? (selectedRows.value[selectedIndex.value] ?? null) : null,
 );
 
-function openAction(index: number): void {
+function openRow(list: SelectedList, index: number): void {
+  selectedList.value = list;
   selectedIndex.value = index;
 }
 
 function navigate(delta: number): void {
   const next = selectedIndex.value + delta;
-  if (next >= 0 && next < actionable.value.length) selectedIndex.value = next;
+  if (next >= 0 && next < selectedRows.value.length) selectedIndex.value = next;
 }
 </script>
 
@@ -320,20 +349,88 @@ function navigate(delta: number): void {
         </span>
       </template>
 
-      <div
-        v-if="missable.length > 0"
-        class="mb-3 flex items-center gap-2 rounded-md bg-warning/10 px-3 py-2 text-xs text-warning"
-      >
-        <TriangleAlert class="h-4 w-4 shrink-0" aria-hidden="true" />
-        {{ t("summary.priorityMissable", { count: missable.length }) }}
+      <div v-if="missable.length > 0" class="mb-3">
+        <button
+          type="button"
+          class="flex w-full items-center gap-2 rounded-md bg-warning/10 px-3 py-2 text-left text-xs text-warning"
+          :aria-expanded="missableExpanded"
+          :aria-label="missableExpanded ? t('summary.collapse') : t('summary.expandAll')"
+          @click="missableExpanded = !missableExpanded"
+        >
+          <TriangleAlert class="h-4 w-4 shrink-0" aria-hidden="true" />
+          <span class="flex-1">{{ t("summary.priorityMissable", { count: missable.length }) }}</span>
+          <ChevronRight
+            class="h-3.5 w-3.5 shrink-0 transition-transform duration-fast"
+            :class="{ 'rotate-90': missableExpanded }"
+            aria-hidden="true"
+          />
+        </button>
+        <div v-if="missableExpanded" class="mt-2 rounded-md border border-edge bg-surface-card px-2 py-1">
+          <ul class="max-h-80 overflow-y-auto">
+            <li v-for="(row, index) in missable" :key="row.id">
+              <button
+                type="button"
+                class="flex w-full items-center justify-between gap-3 rounded-md px-2 py-1.5 text-left transition-colors duration-fast hover:bg-graphite-100 dark:hover:bg-white/5"
+                @click="openRow('missable', index)"
+              >
+                <span class="min-w-0">
+                  <span class="block truncate text-sm text-ink">
+                    {{ itemName(row.item, settings.contentLang) }}
+                  </span>
+                  <span class="mt-0.5 block truncate text-[11px] text-ink-subtle">
+                    {{ rowContext(row) }}
+                  </span>
+                </span>
+                <span class="inline-flex shrink-0 items-center gap-1 text-xs text-brand">
+                  {{ t("common.view") }}
+                  <ChevronRight class="h-3.5 w-3.5" aria-hidden="true" />
+                </span>
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
 
-      <div
-        v-if="summary.missed_count > 0"
-        class="mb-3 flex items-center gap-2 rounded-md bg-danger/10 px-3 py-2 text-xs text-danger"
-      >
-        <CircleSlash class="h-4 w-4 shrink-0" aria-hidden="true" />
-        {{ t("summary.missedSummary", { count: summary.missed_count }) }}
+      <div v-if="missed.length > 0" class="mb-3">
+        <button
+          type="button"
+          class="flex w-full items-center gap-2 rounded-md bg-danger/10 px-3 py-2 text-left text-xs text-danger"
+          :aria-expanded="missedExpanded"
+          :aria-label="missedExpanded ? t('summary.collapse') : t('summary.expandAll')"
+          @click="missedExpanded = !missedExpanded"
+        >
+          <CircleSlash class="h-4 w-4 shrink-0" aria-hidden="true" />
+          <span class="flex-1">{{ t("summary.missedSummary", { count: missed.length }) }}</span>
+          <ChevronRight
+            class="h-3.5 w-3.5 shrink-0 transition-transform duration-fast"
+            :class="{ 'rotate-90': missedExpanded }"
+            aria-hidden="true"
+          />
+        </button>
+        <div v-if="missedExpanded" class="mt-2 rounded-md border border-edge bg-surface-card px-2 py-1">
+          <ul class="max-h-80 overflow-y-auto">
+            <li v-for="(row, index) in missed" :key="row.id">
+              <button
+                type="button"
+                class="flex w-full items-center justify-between gap-3 rounded-md px-2 py-1.5 text-left transition-colors duration-fast hover:bg-graphite-100 dark:hover:bg-white/5"
+                @click="openRow('missed', index)"
+              >
+                <span class="min-w-0">
+                  <span class="block truncate text-sm text-ink">
+                    {{ itemName(row.item, settings.contentLang) }}
+                  </span>
+                  <span class="mt-0.5 block truncate text-[11px] text-ink-subtle">
+                    {{ rowContext(row) }}
+                  </span>
+                </span>
+                <span class="inline-flex shrink-0 items-center gap-1 text-xs text-brand">
+                  {{ t("common.view") }}
+                  <ChevronRight class="h-3.5 w-3.5" aria-hidden="true" />
+                </span>
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <p v-if="actionable.length === 0" class="py-4 text-center text-xs text-ink-muted">
@@ -351,7 +448,7 @@ function navigate(delta: number): void {
               <button
                 type="button"
                 class="flex w-full items-center justify-between gap-3 rounded-md px-2 py-1.5 text-left transition-colors duration-fast hover:bg-graphite-100 dark:hover:bg-white/5"
-                @click="openAction(entry.index)"
+                @click="openRow('actionable', entry.index)"
               >
                 <span class="min-w-0">
                   <span class="block truncate text-sm text-ink">
@@ -442,7 +539,7 @@ function navigate(delta: number): void {
       :ng-plus-count="analysis.save.ng_plus_count"
       :lang="settings.contentLang"
       :has-previous="selectedIndex > 0"
-      :has-next="selectedIndex < actionable.length - 1"
+      :has-next="selectedIndex < selectedRows.length - 1"
       @close="selectedIndex = -1"
       @previous="navigate(-1)"
       @next="navigate(1)"

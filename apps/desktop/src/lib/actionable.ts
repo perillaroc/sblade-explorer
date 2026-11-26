@@ -47,3 +47,16 @@ export function missableRows(analysis: Analysis): ItemRow[] {
   }
   return rows;
 }
+
+/** Missing entries the save proves can no longer be collected. */
+export function missedRows(analysis: Analysis): ItemRow[] {
+  const rows: ItemRow[] = [];
+  for (const category of analysis.categories) {
+    // Growth entries (gear upgrades) are not part of the collection checklist.
+    if (category.section !== "collection") continue;
+    for (const item of category.missing) {
+      if (item.missable_state === "missed") rows.push(missingRow(item));
+    }
+  }
+  return rows;
+}
